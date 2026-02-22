@@ -350,6 +350,15 @@ body::after {
   border-color: var(--accent);
   color: var(--accent-light);
 }
+.btn-secondary {
+  background: var(--bg-secondary);
+  border: 1.5px solid var(--border-glass);
+  color: var(--text-primary);
+}
+.btn-secondary:hover {
+  background: var(--bg-glass);
+  border-color: var(--text-muted);
+}
 .btn-danger-sm {
   background: var(--red-bg);
   color: var(--red);
@@ -528,6 +537,9 @@ input[type="number"]:focus, select:focus {
   max-width: 440px;
   padding: 1.75rem;
   animation: fadeUp 0.3s ease;
+}
+.modal-lg {
+  max-width: 800px;
 }
 .modal-header {
   display: flex;

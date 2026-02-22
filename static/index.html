@@ -119,6 +119,9 @@
         <button class="btn btn-primary" id="btnAddPosition">
           ➕ Adicionar Ativo
         </button>
+        <button class="btn btn-secondary" id="btnAddBulk">
+          📥 Adicionar Vários
+        </button>
         <button class="btn btn-outline" id="btnAnalyze">
           📊 Analisar Portfólio
         </button>
@@ -344,6 +347,44 @@
   <div class="loading-overlay" id="loadingOverlay">
     <div class="spinner"></div>
     <p id="loadingText">Processando...</p>
+  </div>
+
+  <!-- Modal: Bulk Add Positions -->
+  <div class="modal-overlay" id="bulkModalOverlay">
+    <div class="modal glass modal-lg" id="bulkModal">
+      <div class="modal-header">
+        <h2>Adicionar Vários Ativos</h2>
+        <button class="modal-close" id="bulkModalClose">&times;</button>
+      </div>
+      <p class="subtitle" style="margin-bottom: 1rem;">Preencha a tabela abaixo com os ativos que deseja adicionar.</p>
+
+      <div class="table-responsive" style="max-height: 400px; margin-bottom: 1rem;">
+        <table id="bulkTable">
+          <thead>
+            <tr>
+              <th>Ativo</th>
+              <th>Quantidade</th>
+              <th>Preço de Compra</th>
+              <th>Ação</th>
+            </tr>
+          </thead>
+          <tbody id="bulkTableBody">
+            <!-- Rows added via JS -->
+          </tbody>
+        </table>
+      </div>
+
+      <div class="toolbar">
+        <button type="button" class="btn btn-outline btn-sm" id="btnBulkAddRow" style="width: auto;">
+          ➕ Nova Linha
+        </button>
+      </div>
+
+      <div class="form-actions" style="margin-top: 1.5rem;">
+        <button type="button" class="btn btn-outline" id="bulkModalCancel">Cancelar</button>
+        <button type="button" class="btn btn-primary" id="btnBulkSave">Salvar Todos</button>
+      </div>
+    </div>
   </div>
 
   <!-- Toast container -->
