@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>B3 Rebalanceamento & IA — Análise de Portfólio</title>
+  <meta name="description" content="Plataforma inteligente de análise e rebalanceamento de portfólios de investimentos na B3.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Sidebar Navigation -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <span class="sidebar-logo">📊</span>
+      <span class="sidebar-title">B3 Rebalanceamento<br><small>&amp; IA</small></span>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="#" class="nav-link active" data-section="dashboard" id="nav-dashboard">
+        <span class="nav-icon">🏠</span> Dashboard
+      </a>
+      <a href="#" class="nav-link" data-section="positions" id="nav-positions">
+        <span class="nav-icon">💼</span> Posições
+      </a>
+      <a href="#" class="nav-link" data-section="barsi" id="nav-barsi">
+        <span class="nav-icon">🎯</span> Preço-Teto
+      </a>
+      <a href="#" class="nav-link" data-section="rebalance" id="nav-rebalance">
+        <span class="nav-icon">⚖️</span> Rebalanceamento
+      </a>
+      <a href="#" class="nav-link" data-section="about" id="nav-about">
+        <span class="nav-icon">ℹ️</span> Sobre
+      </a>
+    </nav>
+    <div class="sidebar-footer">
+      <button class="btn btn-glow btn-sm" id="btnFetchData" title="Buscar dados do mercado via yfinance">
+        🔄 Atualizar Dados
+      </button>
+    </div>
+  </aside>
+
+  <!-- Mobile header -->
+  <header class="mobile-header" id="mobileHeader">
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <span class="mobile-title">📊 B3 Rebalanceamento & IA</span>
+  </header>
+  <div class="overlay" id="overlay"></div>
+
+  <!-- Main Content -->
+  <main class="main-content" id="mainContent">
+
+    <!-- ============================================================ -->
+    <!-- DASHBOARD -->
+    <!-- ============================================================ -->
+    <section class="page active" data-page="dashboard" id="page-dashboard">
+      <div class="page-header">
+        <h1>Dashboard</h1>
+        <p class="subtitle">Visão geral do seu portfólio de investimentos na B3</p>
+      </div>
+
+      <div class="stats-grid" id="statsGrid">
+        <div class="stat-card glass">
+          <div class="stat-icon">💰</div>
+          <div class="stat-label">Valor Total</div>
+          <div class="stat-value" id="statTotalValue">R$ 0,00</div>
+        </div>
+        <div class="stat-card glass">
+          <div class="stat-icon">📈</div>
+          <div class="stat-label">Posições</div>
+          <div class="stat-value" id="statPositions">0</div>
+        </div>
+        <div class="stat-card glass">
+          <div class="stat-icon">📊</div>
+          <div class="stat-label">Rentabilidade Média</div>
+          <div class="stat-value" id="statRentability">0%</div>
+        </div>
+        <div class="stat-card glass">
+          <div class="stat-icon">⚡</div>
+          <div class="stat-label">Volatilidade</div>
+          <div class="stat-value" id="statVolatility">0%</div>
+        </div>
+      </div>
+
+      <div class="charts-row">
+        <div class="card glass chart-card">
+          <h2 class="card-title">Alocação por Ativo</h2>
+          <div class="chart-container">
+            <canvas id="allocationChart"></canvas>
+          </div>
+        </div>
+        <div class="card glass chart-card">
+          <h2 class="card-title">Rentabilidade por Ativo</h2>
+          <div class="chart-container">
+            <canvas id="rentabilityChart"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <div class="alert alert-info glass" style="margin-top:1.5rem;">
+        <strong>💡 Dica:</strong> Clique em <strong>"Atualizar Dados"</strong> na barra lateral para buscar dados reais do mercado via yfinance.
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- POSIÇÕES -->
+    <!-- ============================================================ -->
+    <section class="page" data-page="positions" id="page-positions">
+      <div class="page-header">
+        <h1>Suas Posições</h1>
+        <p class="subtitle">Detalhamento de cada ativo no seu portfólio</p>
+      </div>
+
+      <div class="toolbar">
+        <button class="btn btn-primary" id="btnAddPosition">
+          ➕ Adicionar Ativo
+        </button>
+        <button class="btn btn-outline" id="btnAnalyze">
+          📊 Analisar Portfólio
+        </button>
+      </div>
+
+      <div class="card glass" id="positionsTableCard">
+        <div class="table-responsive">
+          <table id="positionsTable">
+            <thead>
+              <tr>
+                <th>Ativo</th>
+                <th>Qtd</th>
+                <th>Preço Atual</th>
+                <th>Valor</th>
+                <th>Rentab. (1a)</th>
+                <th>Volatilidade</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody id="positionsBody">
+              <tr><td colspan="7" class="empty-state">Carregando...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- PREÇO-TETO BARSI -->
+    <!-- ============================================================ -->
+    <section class="page" data-page="barsi" id="page-barsi">
+      <div class="page-header">
+        <h1>Preço-Teto — Método Barsi</h1>
+        <p class="subtitle">Preço máximo recomendado baseado em dividendos históricos</p>
+      </div>
+
+      <div class="alert alert-info glass">
+        <strong>📌 Método Barsi/Bazin:</strong> Calcula o preço máximo que você deveria pagar para obter um <em>dividend yield</em> de <strong id="barsiTargetDisplay">6%</strong> ao ano.
+      </div>
+
+      <div class="toolbar">
+        <div class="form-inline">
+          <label for="barsiYield">Yield Alvo (%):</label>
+          <input type="number" id="barsiYield" value="6" min="1" max="20" step="0.5" class="input-sm">
+        </div>
+        <button class="btn btn-primary" id="btnRunBarsi">
+          🎯 Calcular Preço-Teto
+        </button>
+      </div>
+
+      <div class="card glass" id="barsiTableCard">
+        <div class="table-responsive">
+          <table id="barsiTable">
+            <thead>
+              <tr>
+                <th>Ativo</th>
+                <th>Preço Atual</th>
+                <th>Preço-Teto</th>
+                <th>Margem</th>
+                <th>Yield Atual</th>
+                <th>Recomendação</th>
+              </tr>
+            </thead>
+            <tbody id="barsiBody">
+              <tr><td colspan="6" class="empty-state">Clique em "Calcular Preço-Teto" para iniciar a análise</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="barsi-summary glass" id="barsiSummary" style="display:none;">
+        <div class="summary-item"><span class="dot dot-green"></span> Comprar: <strong id="barsiBuy">0</strong></div>
+        <div class="summary-item"><span class="dot dot-yellow"></span> Manter: <strong id="barsiHold">0</strong></div>
+        <div class="summary-item"><span class="dot dot-red"></span> Vender: <strong id="barsiSell">0</strong></div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- REBALANCEAMENTO MARKOWITZ -->
+    <!-- ============================================================ -->
+    <section class="page" data-page="rebalance" id="page-rebalance">
+      <div class="page-header">
+        <h1>Rebalanceamento — Markowitz</h1>
+        <p class="subtitle">Otimização de alocação para máximo Sharpe Ratio</p>
+      </div>
+
+      <div class="toolbar">
+        <div class="form-inline">
+          <label for="riskFreeRate">Taxa Livre de Risco (% a.a.):</label>
+          <input type="number" id="riskFreeRate" value="10" min="0" max="30" step="0.5" class="input-sm">
+        </div>
+        <button class="btn btn-primary" id="btnRunRebalance">
+          ⚖️ Otimizar Portfólio
+        </button>
+      </div>
+
+      <div class="rebalance-results" id="rebalanceResults" style="display:none;">
+        <div class="stats-grid stats-grid-3">
+          <div class="stat-card glass">
+            <div class="stat-label">Retorno Esperado</div>
+            <div class="stat-value accent" id="rebReturn">—</div>
+          </div>
+          <div class="stat-card glass">
+            <div class="stat-label">Volatilidade</div>
+            <div class="stat-value" id="rebVol">—</div>
+          </div>
+          <div class="stat-card glass">
+            <div class="stat-label">Sharpe Ratio</div>
+            <div class="stat-value accent" id="rebSharpe">—</div>
+          </div>
+        </div>
+
+        <div class="charts-row" style="margin-top:1.5rem;">
+          <div class="card glass chart-card">
+            <h2 class="card-title">Alocação Ótima</h2>
+            <div class="chart-container">
+              <canvas id="optimalChart"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <div class="card glass" style="margin-top:1.5rem;" id="suggestionsCard">
+          <h2 class="card-title">Sugestões de Ajuste</h2>
+          <div class="table-responsive">
+            <table>
+              <thead>
+                <tr>
+                  <th>Ação</th>
+                  <th>Ativo</th>
+                  <th>Qtd</th>
+                  <th>Preço</th>
+                  <th>Valor Total</th>
+                  <th>Aloc. Atual → Alvo</th>
+                </tr>
+              </thead>
+              <tbody id="suggestionsBody">
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="card glass" id="rebalancePlaceholder">
+        <p class="empty-state" style="padding:2rem;">Clique em <strong>"Otimizar Portfólio"</strong> para calcular a alocação ótima usando a Teoria de Markowitz.</p>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- SOBRE -->
+    <!-- ============================================================ -->
+    <section class="page" data-page="about" id="page-about">
+      <div class="page-header">
+        <h1>Sobre o Projeto</h1>
+        <p class="subtitle">B3 Rebalanceamento & IA</p>
+      </div>
+
+      <div class="card glass about-content">
+        <h2>🎯 O Projeto</h2>
+        <p>Plataforma de código aberto para análise e rebalanceamento de portfólios de investimentos na B3 (Bolsa de Valores Brasileira). Oferece ferramentas para otimização de alocação de ativos usando a <strong>Teoria Moderna de Portfólio (Markowitz)</strong> e avaliação via <strong>Método Barsi/Bazin</strong>.</p>
+
+        <h2>⚙️ Funcionalidades</h2>
+        <ul>
+          <li><strong>Dashboard:</strong> Visão geral com gráficos interativos</li>
+          <li><strong>Gestão de Posições:</strong> Adicione, edite e remova ativos do portfólio</li>
+          <li><strong>Preço-Teto (Barsi):</strong> Identifica oportunidades de compra baseado em dividendos</li>
+          <li><strong>Rebalanceamento (Markowitz):</strong> Otimização para máximo Sharpe Ratio</li>
+          <li><strong>Dados em Tempo Real:</strong> Integração com yfinance para dados atualizados</li>
+        </ul>
+
+        <h2>🛠️ Tecnologias</h2>
+        <div class="tech-grid">
+          <span class="tech-badge">Python / Flask</span>
+          <span class="tech-badge">yfinance</span>
+          <span class="tech-badge">NumPy / SciPy</span>
+          <span class="tech-badge">HTML5 / CSS3</span>
+          <span class="tech-badge">JavaScript</span>
+          <span class="tech-badge">Chart.js</span>
+        </div>
+
+        <div class="alert alert-warning" style="margin-top:2rem;">
+          <strong>⚠️ Aviso Legal:</strong> Este projeto é fornecido como ferramenta educacional. Não constitui recomendação de investimento. Consulte um profissional qualificado.
+        </div>
+
+        <p class="license-text">MIT License — Você é livre para usar, modificar e distribuir.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================================ -->
+  <!-- Modal: Add/Edit Position -->
+  <!-- ============================================================ -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal glass" id="positionModal">
+      <div class="modal-header">
+        <h2 id="modalTitle">Adicionar Ativo</h2>
+        <button class="modal-close" id="modalClose">&times;</button>
+      </div>
+      <form id="positionForm">
+        <div class="form-group">
+          <label for="posTicker">Código do Ativo</label>
+          <select id="posTicker" required>
+            <option value="">Selecione...</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="posQty">Quantidade</label>
+          <input type="number" id="posQty" min="1" required placeholder="Ex: 100">
+        </div>
+        <div class="form-group">
+          <label for="posPrice">Preço de Compra (R$)</label>
+          <input type="number" id="posPrice" min="0.01" step="0.01" required placeholder="Ex: 28.50">
+        </div>
+        <div class="form-actions">
+          <button type="button" class="btn btn-outline" id="modalCancel">Cancelar</button>
+          <button type="submit" class="btn btn-primary">Salvar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Loading overlay -->
+  <div class="loading-overlay" id="loadingOverlay">
+    <div class="spinner"></div>
+    <p id="loadingText">Processando...</p>
+  </div>
+
+  <!-- Toast container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
