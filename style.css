@@ -561,6 +561,52 @@ input[type="number"]:focus, select:focus {
 }
 .modal-close:hover { color: var(--red); }
 
+/* -- Login Overlay ----------------------------------------------------- */
+.login-overlay {
+  position: fixed;
+  inset: 0;
+  background: var(--bg-dark);
+  z-index: 2000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+.login-overlay.show {
+  display: flex;
+}
+.login-card {
+  width: 100%;
+  max-width: 400px;
+  padding: 2.5rem;
+  text-align: center;
+  animation: fadeUp 0.4s ease-out;
+}
+.login-card h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+.input-lg {
+  padding: 1rem;
+  font-size: 1.1rem;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: white;
+  outline: none;
+  transition: all 0.2s;
+}
+.input-lg:focus {
+  border-color: var(--accent);
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+}
+.btn-lg {
+  padding: 1rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
 /* -- Loading overlay --------------------------------------------------- */
 .loading-overlay {
   display: none;

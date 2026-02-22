@@ -2,15 +2,31 @@
    B3 Rebalanceamento & IA — Frontend Application
    ========================================================================== */
 
+// SUPABASE CONFIGURATION - Substitua com suas credenciais do projeto Supabase
+const SUPABASE_URL = 'SUA_URL_DO_SUPABASE';
+const SUPABASE_KEY = 'SUA_ANON_KEY_DO_SUPABASE';
+
 class B3App {
   constructor() {
+    this.supabase = null;
+    this.user = null; // { id, username }
     this.portfolio = { name: 'Meu Portfólio', positions: [] };
     this.assets = [];
     this.marketData = null;
     this.analysis = null;
     this.charts = {};
-    this.brapiToken = localStorage.getItem('brapi_token') || '';
+    this.brapiToken = '';
+
+    this.initSupabase();
     this.init();
+  }
+
+  initSupabase() {
+    if (SUPABASE_URL.startsWith('http')) {
+      this.supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+    } else {
+      console.warn('Supabase não configurado. Use LocalStorage para testes.');
+    }
   }
 
   /* ------------------------------------------------------------------
@@ -21,18 +37,53 @@ class B3App {
     this.setupNavigation();
     this.setupModal();
 
-    if (this.brapiToken) {
-        this.$('brapiTokenInput').value = this.brapiToken;
-    }
-
     await this.loadAssets();
+
+    // Check for logged user
+    const savedUser = localStorage.getItem('b3_user');
+    if (savedUser) {
+      this.user = JSON.parse(savedUser);
+      this.showLogin(false);
+      await this.loadAppData();
+    } else {
+      this.showLogin(true);
+    }
+  }
+
+  async loadAppData() {
+    this.showLoading('Carregando dados...');
+    await this.fetchGlobalSettings();
     await this.loadPortfolio();
     await this.runAnalysis();
-
     this.renderPositions();
+    this.updateUIForUser();
+    this.hideLoading();
+  }
+
+  async fetchGlobalSettings() {
+    if (!this.supabase) return;
+    try {
+      const { data, error } = await this.supabase
+        .from('settings')
+        .select('value')
+        .eq('key', 'brapi_token')
+        .single();
+
+      if (data) {
+        this.brapiToken = data.value;
+      }
+    } catch (err) {
+      console.warn('Erro ao buscar configurações globais:', err);
+    }
   }
 
   bindUI() {
+    // Login
+    this.$('loginForm').addEventListener('submit', e => {
+      e.preventDefault();
+      this.handleLogin();
+    });
+
     // Buttons
     this.$('btnAddPosition').addEventListener('click', () => this.openModal());
     this.$('btnAnalyze').addEventListener('click', () => this.runAnalysis());
@@ -49,11 +100,28 @@ class B3App {
 
   $(id) { return document.getElementById(id); }
 
-  saveToken() {
-    const token = this.$('brapiTokenInput').value;
-    this.brapiToken = token;
-    localStorage.setItem('brapi_token', token);
-    this.toast('Token salvo com sucesso!', 'success');
+  async saveToken() {
+    const token = this.$('brapiTokenInput').value.trim();
+    if (!token) return;
+
+    this.showLoading('Salvando token...');
+    try {
+        if (this.supabase) {
+            const { error } = await this.supabase
+                .from('settings')
+                .upsert([{ key: 'brapi_token', value: token }]);
+
+            if (error) throw error;
+        }
+        this.brapiToken = token;
+        localStorage.setItem('brapi_token', token);
+        this.toast('Token global atualizado com sucesso!', 'success');
+    } catch (err) {
+        console.error(err);
+        this.toast('Erro ao salvar token no banco de dados.', 'error');
+    } finally {
+        this.hideLoading();
+    }
   }
 
   /* ------------------------------------------------------------------
@@ -116,23 +184,37 @@ class B3App {
     this.editIndex = editIndex;
     this.$('modalTitle').textContent = editIndex !== null ? 'Editar Ativo' : 'Adicionar Ativo';
 
-    // Populate ticker dropdown
-    const select = this.$('posTicker');
-    select.innerHTML = '<option value="">Selecione...</option>';
+    // Populate ticker datalist
+    const list = this.$('tickerList');
+    list.innerHTML = '';
     this.assets.forEach(a => {
-      select.innerHTML += `<option value="${a.ticker}">${a.ticker} — ${a.name}</option>`;
+      const opt = document.createElement('option');
+      opt.value = a.ticker.replace('.SA', '');
+      opt.textContent = a.name;
+      list.appendChild(opt);
     });
+
+    const tickerInput = this.$('posTicker');
+    const warning = this.$('tickerWarning');
+
+    tickerInput.oninput = () => {
+        const val = tickerInput.value.trim().toUpperCase();
+        const isB3 = this.assets.some(a => a.ticker.replace('.SA', '') === val);
+        warning.style.display = (val && !isB3) ? 'block' : 'none';
+    };
 
     if (editIndex !== null && this.portfolio.positions[editIndex]) {
       const pos = this.portfolio.positions[editIndex];
-      select.value = pos.ticker;
+      tickerInput.value = pos.ticker.replace('.SA', '');
       this.$('posQty').value = pos.quantity;
       this.$('posPrice').value = pos.purchase_price;
     } else {
+      tickerInput.value = '';
       this.$('posQty').value = '';
       this.$('posPrice').value = '';
     }
 
+    warning.style.display = 'none';
     this.$('modalOverlay').classList.add('show');
   }
 
@@ -156,15 +238,9 @@ class B3App {
     const tbody = this.$('bulkTableBody');
     const tr = document.createElement('tr');
 
-    // Ticker select options
-    let options = '<option value="">Selecione...</option>';
-    this.assets.forEach(a => {
-      options += `<option value="${a.ticker}">${a.ticker}</option>`;
-    });
-
     tr.innerHTML = `
       <td>
-        <select class="bulk-ticker" style="width: 100%">${options}</select>
+        <input type="text" class="bulk-ticker" placeholder="Ex: PETR4" list="tickerList" style="width: 100%; text-transform: uppercase;">
       </td>
       <td>
         <input type="number" class="bulk-qty" min="1" placeholder="Qtd" style="width: 100%">
@@ -181,37 +257,70 @@ class B3App {
 
   async saveBulkPositions() {
     const rows = document.querySelectorAll('#bulkTableBody tr');
-    const newPositions = [];
+    const toProcess = [];
     const date = new Date().toISOString().slice(0, 10);
 
     for (const row of rows) {
-      const ticker = row.querySelector('.bulk-ticker').value;
+      let ticker = row.querySelector('.bulk-ticker').value.trim().toUpperCase();
       const qty = parseInt(row.querySelector('.bulk-qty').value, 10);
       const price = parseFloat(row.querySelector('.bulk-price').value);
 
       if (ticker && !isNaN(qty) && !isNaN(price)) {
-        newPositions.push({
-          ticker,
-          quantity: qty,
-          purchase_price: price,
-          purchase_date: date
-        });
+        // Normalize
+        const isB3 = this.assets.some(a => a.ticker.replace('.SA', '') === ticker);
+        if (isB3 && !ticker.endsWith('.SA')) ticker += '.SA';
+
+        toProcess.push({ ticker, quantity: qty, purchase_price: price, purchase_date: date, user_id: this.user.id });
       }
     }
 
-    if (newPositions.length === 0) {
+    if (toProcess.length === 0) {
       this.toast('Nenhum dado válido para salvar', 'error');
       return;
     }
 
-    // Merge or just add? Usually we add to existing.
-    this.portfolio.positions.push(...newPositions);
+    this.showLoading('Salvando ativos...');
 
-    this.closeBulkModal();
-    await this.savePortfolio();
-    await this.runAnalysis();
-    this.renderPositions();
-    this.toast(`${newPositions.length} ativos adicionados!`, 'success');
+    try {
+        // We iterate and use the same aggregation logic as savePosition
+        // For simplicity in a bulk scenario, we can merge them locally first then upsert
+        for (const pos of toProcess) {
+            const existingIndex = this.portfolio.positions.findIndex(p => p.ticker === pos.ticker);
+            if (existingIndex !== -1) {
+                const existing = this.portfolio.positions[existingIndex];
+                const newTotalQty = existing.quantity + pos.quantity;
+                const newAvgPrice = ((existing.quantity * existing.purchase_price) + (pos.quantity * pos.purchase_price)) / newTotalQty;
+
+                existing.quantity = newTotalQty;
+                existing.purchase_price = newAvgPrice;
+            } else {
+                this.portfolio.positions.push(pos);
+            }
+        }
+
+        if (this.supabase) {
+            // Upsert all positions for this user
+            const { error } = await this.supabase
+                .from('positions')
+                .upsert(this.portfolio.positions);
+
+            if (error) throw error;
+            // Reload to get IDs
+            await this.loadPortfolio();
+        } else {
+            await this.savePortfolio();
+        }
+
+        this.closeBulkModal();
+        await this.runAnalysis();
+        this.renderPositions();
+        this.toast(`${toProcess.length} lançamentos processados!`, 'success');
+    } catch (err) {
+        console.error(err);
+        this.toast('Erro ao salvar lote de ativos.', 'error');
+    } finally {
+        this.hideLoading();
+    }
   }
 
   /* ------------------------------------------------------------------
@@ -226,24 +335,32 @@ class B3App {
   }
 
   async loadPortfolio() {
+    if (!this.user) return;
+
     try {
-      const saved = localStorage.getItem('b3_portfolio');
-      if (saved) {
-        this.portfolio = JSON.parse(saved);
+      if (this.supabase) {
+        const { data, error } = await this.supabase
+          .from('positions')
+          .select('*')
+          .eq('user_id', this.user.id);
+
+        if (error) throw error;
+        this.portfolio.positions = data || [];
       } else {
-        const res = await fetch('sample_portfolio.json');
-        this.portfolio = await res.json();
+        const saved = localStorage.getItem(`b3_portfolio_${this.user.username}`);
+        this.portfolio.positions = saved ? JSON.parse(saved) : [];
       }
-    } catch {
-      this.portfolio = { name: 'Meu Portfólio', positions: [] };
+    } catch (err) {
+      console.error('Erro ao carregar portfólio:', err);
+      this.portfolio.positions = [];
     }
   }
 
   async savePortfolio() {
-    try {
-      localStorage.setItem('b3_portfolio', JSON.stringify(this.portfolio));
-    } catch (err) {
-      console.error('Erro ao salvar portfólio no localStorage', err);
+    // Note: In Supabase mode, we usually upsert individual positions.
+    // This function can remain as a fallback or for local storage.
+    if (!this.supabase && this.user) {
+      localStorage.setItem(`b3_portfolio_${this.user.username}`, JSON.stringify(this.portfolio.positions));
     }
   }
 
@@ -251,32 +368,113 @@ class B3App {
      CRUD — Positions
   ------------------------------------------------------------------ */
   async savePosition() {
-    const ticker = this.$('posTicker').value;
+    let ticker = this.$('posTicker').value.trim().toUpperCase();
     const qty = parseInt(this.$('posQty').value, 10);
     const price = parseFloat(this.$('posPrice').value);
-    if (!ticker || !qty || !price) return;
+    if (!ticker || isNaN(qty) || isNaN(price)) return;
 
-    const pos = { ticker, quantity: qty, purchase_price: price, purchase_date: new Date().toISOString().slice(0, 10) };
-
-    if (this.editIndex !== null) {
-      this.portfolio.positions[this.editIndex] = pos;
-    } else {
-      this.portfolio.positions.push(pos);
+    // Normalize B3 tickers
+    const isB3Known = this.assets.some(a => a.ticker.replace('.SA', '') === ticker);
+    if (isB3Known && !ticker.endsWith('.SA')) {
+      ticker += '.SA';
     }
 
-    this.closeModal();
-    await this.savePortfolio();
-    await this.runAnalysis();
-    this.renderPositions();
-    this.toast('Ativo salvo com sucesso!', 'success');
+    this.showLoading('Salvando...');
+
+    try {
+      let finalPos = {
+        ticker,
+        quantity: qty,
+        purchase_price: price,
+        purchase_date: new Date().toISOString().slice(0, 10),
+        user_id: this.user.id
+      };
+
+      // Requirement 4: Aggregate if same ticker exists (and NOT editing a specific row)
+      const existingIndex = this.portfolio.positions.findIndex((p, i) => p.ticker === ticker && i !== this.editIndex);
+
+      if (existingIndex !== -1 && this.editIndex === null) {
+        const existing = this.portfolio.positions[existingIndex];
+        const newTotalQty = existing.quantity + qty;
+        const newAvgPrice = ((existing.quantity * existing.purchase_price) + (qty * price)) / newTotalQty;
+
+        finalPos.quantity = newTotalQty;
+        finalPos.purchase_price = newAvgPrice;
+        finalPos.id = existing.id; // Keep the same ID for Supabase upsert
+      } else if (this.editIndex !== null) {
+        // We are editing a specific row
+        finalPos.id = this.portfolio.positions[this.editIndex].id;
+      }
+
+      if (this.supabase) {
+        const { data, error } = await this.supabase
+          .from('positions')
+          .upsert([finalPos])
+          .select()
+          .single();
+
+        if (error) throw error;
+
+        if (this.editIndex !== null) {
+            this.portfolio.positions[this.editIndex] = data;
+        } else if (existingIndex !== -1) {
+            this.portfolio.positions[existingIndex] = data;
+        } else {
+            this.portfolio.positions.push(data);
+        }
+      } else {
+        // Local fallback
+        if (this.editIndex !== null) {
+          this.portfolio.positions[this.editIndex] = finalPos;
+        } else if (existingIndex !== -1) {
+          this.portfolio.positions[existingIndex] = finalPos;
+        } else {
+          this.portfolio.positions.push(finalPos);
+        }
+        await this.savePortfolio();
+      }
+
+      this.closeModal();
+      await this.runAnalysis();
+      this.renderPositions();
+      this.toast('Ativo salvo com sucesso!', 'success');
+    } catch (err) {
+      console.error(err);
+      this.toast('Erro ao salvar posição.', 'error');
+    } finally {
+      this.hideLoading();
+    }
   }
 
   async removePosition(index) {
-    this.portfolio.positions.splice(index, 1);
-    await this.savePortfolio();
-    await this.runAnalysis();
-    this.renderPositions();
-    this.toast('Ativo removido', 'info');
+    const pos = this.portfolio.positions[index];
+    if (!pos) return;
+
+    if (!confirm(`Deseja remover ${pos.ticker}?`)) return;
+
+    this.showLoading('Removendo...');
+    try {
+      if (this.supabase && pos.id) {
+        const { error } = await this.supabase
+          .from('positions')
+          .delete()
+          .eq('id', pos.id);
+
+        if (error) throw error;
+      }
+
+      this.portfolio.positions.splice(index, 1);
+      if (!this.supabase) await this.savePortfolio();
+
+      await this.runAnalysis();
+      this.renderPositions();
+      this.toast('Ativo removido', 'info');
+    } catch (err) {
+      console.error(err);
+      this.toast('Erro ao remover ativo.', 'error');
+    } finally {
+      this.hideLoading();
+    }
   }
 
   /* ------------------------------------------------------------------
@@ -492,24 +690,36 @@ class B3App {
   }
 
   async fetchMarketData() {
-    this.showLoading('Buscando dados atualizados via Brapi API...');
     const tickers = [...new Set(this.portfolio.positions.map(p => p.ticker))];
     if (!tickers.length) {
-      this.toast('Adicione ativos primeiro', 'error');
-      this.hideLoading();
+      this.toast('Adicione ativos ao seu portfólio primeiro.', 'error');
       return;
     }
 
+    if (!this.brapiToken) {
+      this.toast('Token da Brapi não configurado. Vá em "Sobre" para configurar.', 'error');
+      this.showPage('about');
+      return;
+    }
+
+    this.showLoading('Buscando dados atualizados via Brapi API...');
+
     try {
-      // Brapi requires token. We'll use the one from localStorage if exists
       const token = this.brapiToken;
       const symbols = tickers.map(t => t.replace('.SA', '')).join(',');
       const url = `https://brapi.dev/api/quote/${symbols}?token=${token}&range=1y&interval=1mo`;
 
       const res = await fetch(url);
+
+      if (res.status === 401 || res.status === 403) {
+        throw new Error('Token da Brapi inválido ou expirado.');
+      }
+
       const data = await res.json();
 
-      if (data.error || !data.results) throw new Error(data.message || 'Erro API');
+      if (data.error || !data.results) {
+        throw new Error(data.message || 'Erro na API da Brapi');
+      }
 
       const newAssets = {};
       data.results.forEach(r => {
@@ -537,7 +747,7 @@ class B3App {
       await this.runAnalysis();
     } catch (err) {
       console.error(err);
-      this.toast('Erro ao buscar dados. Verifique sua conexão ou Token Brapi.', 'error');
+      this.toast(err.message || 'Erro ao buscar dados. Verifique sua conexão.', 'error');
     } finally {
       this.hideLoading();
     }
@@ -660,7 +870,10 @@ class B3App {
         <td class="${rentClass}">${rentText}</td>
         <td>${a.volatility !== undefined ? a.volatility.toFixed(2) + '%' : '—'}</td>
         <td>
-          <button class="btn-danger-sm" onclick="app.removePosition(${i})">🗑</button>
+          <div style="display:flex; gap:0.4rem;">
+            <button class="btn-secondary" style="padding:0.35rem 0.6rem; font-size:0.75rem;" onclick="app.openModal(${i})">✏️</button>
+            <button class="btn-danger-sm" onclick="app.removePosition(${i})">🗑</button>
+          </div>
         </td>
       </tr>`;
     });
@@ -785,6 +998,67 @@ class B3App {
     const out = [];
     for (let i = 0; i < n; i++) out.push(base[i % base.length]);
     return out;
+  }
+
+  showLogin(show = true) {
+    const overlay = this.$('loginOverlay');
+    if (show) overlay.classList.add('show');
+    else overlay.classList.remove('show');
+  }
+
+  async handleLogin() {
+    const username = this.$('loginUsername').value.trim().toLowerCase();
+    if (!username) return;
+
+    this.showLoading('Autenticando...');
+
+    try {
+      let user = null;
+
+      if (this.supabase) {
+        // Find or create user in Supabase
+        const { data, error } = await this.supabase
+          .from('users')
+          .select('*')
+          .eq('username', username)
+          .single();
+
+        if (error && error.code !== 'PGRST116') throw error;
+
+        if (data) {
+          user = data;
+        } else {
+          const { data: newUser, error: createError } = await this.supabase
+            .from('users')
+            .insert([{ username }])
+            .select()
+            .single();
+
+          if (createError) throw createError;
+          user = newUser;
+        }
+      } else {
+        // Fallback for no supabase
+        user = { id: 'local-user', username };
+      }
+
+      this.user = user;
+      localStorage.setItem('b3_user', JSON.stringify(user));
+
+      this.showLogin(false);
+      await this.loadAppData();
+      this.toast(`Bem-vindo, ${username}!`, 'success');
+    } catch (err) {
+      console.error(err);
+      this.toast('Erro ao fazer login. Verifique sua conexão.', 'error');
+    } finally {
+      this.hideLoading();
+    }
+  }
+
+  updateUIForUser() {
+    // Could add username to sidebar or header
+    console.log('User updated:', this.user.username);
   }
 
   showLoading(text = 'Processando...') {

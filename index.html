@@ -10,6 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.8.0/math.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -305,9 +306,10 @@
           <h3>⚙️ Configurações</h3>
           <p>Para buscar dados em tempo real, você pode utilizar um token da API <a href="https://brapi.dev/" target="_blank" style="color:var(--accent)">Brapi.dev</a> (opcional).</p>
           <div class="form-group" style="margin-top:1rem;">
-            <label for="brapiTokenInput">Token Brapi.dev:</label>
-            <input type="password" id="brapiTokenInput" placeholder="Insira seu token aqui" class="input-sm" style="width:100%; max-width: 400px;">
-            <button class="btn btn-primary btn-sm" id="btnSaveToken" style="margin-top:0.5rem;">Salvar Token</button>
+            <label for="brapiTokenInput">Token Brapi.dev (Global):</label>
+            <input type="password" id="brapiTokenInput" placeholder="Insira o token mestre aqui" class="input-sm" style="width:100%; max-width: 400px;">
+            <button class="btn btn-primary btn-sm" id="btnSaveToken" style="margin-top:0.5rem;">Atualizar Token Global</button>
+            <p class="text-muted" style="font-size: 0.75rem; margin-top: 0.5rem;">⚠️ Isso atualizará o token para todos os usuários no banco de dados.</p>
           </div>
         </div>
 
@@ -333,9 +335,13 @@
       <form id="positionForm">
         <div class="form-group">
           <label for="posTicker">Código do Ativo</label>
-          <select id="posTicker" required>
-            <option value="">Selecione...</option>
-          </select>
+          <input type="text" id="posTicker" list="tickerList" required placeholder="Ex: PETR4 ou VALE3" autocomplete="off">
+          <datalist id="tickerList">
+            <!-- Populated via JS -->
+          </datalist>
+          <small id="tickerWarning" style="color:var(--yellow); display:none; margin-top:0.25rem;">
+            ⚠️ Ativo não listado na B3. Análise automática indisponível.
+          </small>
         </div>
         <div class="form-group">
           <label for="posQty">Quantidade</label>
@@ -350,6 +356,25 @@
           <button type="submit" class="btn btn-primary">Salvar</button>
         </div>
       </form>
+    </div>
+  </div>
+
+  <!-- Login Overlay -->
+  <div class="login-overlay show" id="loginOverlay">
+    <div class="login-card glass">
+      <div class="sidebar-header" style="margin-bottom: 2rem;">
+        <span class="sidebar-logo">📊</span>
+        <span class="sidebar-title">B3 Rebalanceamento<br><small>&amp; IA</small></span>
+      </div>
+      <h2>Bem-vindo</h2>
+      <p>Insira seu nome de usuário para acessar sua carteira:</p>
+      <form id="loginForm" style="margin-top: 1.5rem;">
+        <div class="form-group">
+          <input type="text" id="loginUsername" placeholder="Seu nome de usuário" required class="input-lg" style="width: 100%;">
+        </div>
+        <button type="submit" class="btn btn-primary btn-lg" style="width: 100%; margin-top: 1rem;">Entrar / Criar Conta</button>
+      </form>
+      <p class="text-muted" style="margin-top: 1.5rem; font-size: 0.8rem;">Seus dados serão salvos de forma centralizada.</p>
     </div>
   </div>
 
