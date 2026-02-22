@@ -1,13 +1,13 @@
 {
-  "timestamp": "2026-02-21T16:16:30.395787",
+  "timestamp": "2026-02-22T14:16:05.759794",
   "positions": [
     {
       "ticker": "PETR4.SA",
       "name": "Petróleo Brasileiro S.A. - Petrobras",
       "sector": "Energy",
-      "quantity": 100,
+      "quantity": 110,
       "current_price": 37.97,
-      "position_value": 3797.0,
+      "position_value": 4176.7,
       "rentability_1y": 23.16,
       "volatility": 2.04
     },
@@ -15,9 +15,9 @@
       "ticker": "VALE3.SA",
       "name": "Vale S.A.",
       "sector": "Basic Materials",
-      "quantity": 50,
+      "quantity": 55,
       "current_price": 86.81,
-      "position_value": 4340.5,
+      "position_value": 4774.55,
       "rentability_1y": 50.05,
       "volatility": 1.87
     },
@@ -63,15 +63,15 @@
     }
   ],
   "allocation": {
-    "PETR4.SA": 21.74,
-    "VALE3.SA": 24.85,
-    "ITUB4.SA": 21.14,
-    "BBDC4.SA": 4.98,
-    "ABEV3.SA": 18.36,
-    "WEGE3.SA": 8.93
+    "PETR4.SA": 22.85,
+    "VALE3.SA": 26.12,
+    "ITUB4.SA": 20.2,
+    "BBDC4.SA": 4.76,
+    "ABEV3.SA": 17.54,
+    "WEGE3.SA": 8.53
   },
   "summary": {
-    "total_value": 17465.85,
+    "total_value": 18279.6,
     "num_positions": 6,
     "avg_rentability": 34.54,
     "portfolio_volatility": 1.8

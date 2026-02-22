@@ -49,15 +49,20 @@ def _fetch_ticker_data(ticker: str, period: str = "5y"):
     """Fetch historical data for a single ticker via yfinance."""
     import yfinance as yf
 
-    asset = yf.Ticker(ticker)
-    hist = asset.history(period=period)
-    if hist.empty:
-        return None
+    try:
+        asset = yf.Ticker(ticker)
+        hist = asset.history(period=period)
+        if hist.empty:
+            if ticker.endswith(".SA"):
+                asset = yf.Ticker(ticker[:-3])
+                hist = asset.history(period=period)
+            if hist.empty:
+                return None
 
-    info = asset.info
-    dividends = asset.dividends
+        info = asset.info
+        dividends = asset.dividends
 
-    return {
+        return {
         "ticker": ticker,
         "name": info.get("longName", ticker),
         "sector": info.get("sector", "N/A"),
@@ -82,6 +87,9 @@ def _fetch_ticker_data(ticker: str, period: str = "5y"):
             "volatility": round(float(hist["Close"].pct_change().std() * 100), 4),
         },
     }
+    except Exception as e:
+        print(f"Error fetching {ticker}: {e}")
+        return None
 
 
 # ---------------------------------------------------------------------------

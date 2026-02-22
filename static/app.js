@@ -33,6 +33,7 @@ class B3App {
     this.$('btnRunBarsi').addEventListener('click', () => this.runBarsi());
     this.$('btnRunRebalance').addEventListener('click', () => this.runRebalance());
     this.$('btnFetchData').addEventListener('click', () => this.fetchMarketData());
+    this.$('btnAddBulk').addEventListener('click', () => this.openBulkModal());
 
     // Mobile
     this.$('hamburger').addEventListener('click', () => this.toggleSidebar());
@@ -86,6 +87,15 @@ class B3App {
     this.$('modalOverlay').addEventListener('click', e => {
       if (e.target === this.$('modalOverlay')) this.closeModal();
     });
+
+    // Bulk Modal
+    this.$('bulkModalClose').addEventListener('click', () => this.closeBulkModal());
+    this.$('bulkModalCancel').addEventListener('click', () => this.closeBulkModal());
+    this.$('btnBulkAddRow').addEventListener('click', () => this.addBulkRow());
+    this.$('btnBulkSave').addEventListener('click', () => this.saveBulkPositions());
+    this.$('bulkModalOverlay').addEventListener('click', e => {
+      if (e.target === this.$('bulkModalOverlay')) this.closeBulkModal();
+    });
   }
 
   openModal(editIndex = null) {
@@ -115,6 +125,79 @@ class B3App {
   closeModal() {
     this.$('modalOverlay').classList.remove('show');
     this.editIndex = null;
+  }
+
+  openBulkModal() {
+    const tbody = this.$('bulkTableBody');
+    tbody.innerHTML = '';
+    this.addBulkRow(); // Add one initial row
+    this.$('bulkModalOverlay').classList.add('show');
+  }
+
+  closeBulkModal() {
+    this.$('bulkModalOverlay').classList.remove('show');
+  }
+
+  addBulkRow() {
+    const tbody = this.$('bulkTableBody');
+    const tr = document.createElement('tr');
+
+    // Ticker select options
+    let options = '<option value="">Selecione...</option>';
+    this.assets.forEach(a => {
+      options += `<option value="${a.ticker}">${a.ticker}</option>`;
+    });
+
+    tr.innerHTML = `
+      <td>
+        <select class="bulk-ticker" style="width: 100%">${options}</select>
+      </td>
+      <td>
+        <input type="number" class="bulk-qty" min="1" placeholder="Qtd" style="width: 100%">
+      </td>
+      <td>
+        <input type="number" class="bulk-price" min="0" step="0.01" placeholder="Preço" style="width: 100%">
+      </td>
+      <td>
+        <button class="btn-danger-sm" onclick="this.closest('tr').remove()">🗑</button>
+      </td>
+    `;
+    tbody.appendChild(tr);
+  }
+
+  async saveBulkPositions() {
+    const rows = document.querySelectorAll('#bulkTableBody tr');
+    const newPositions = [];
+    const date = new Date().toISOString().slice(0, 10);
+
+    for (const row of rows) {
+      const ticker = row.querySelector('.bulk-ticker').value;
+      const qty = parseInt(row.querySelector('.bulk-qty').value, 10);
+      const price = parseFloat(row.querySelector('.bulk-price').value);
+
+      if (ticker && !isNaN(qty) && !isNaN(price)) {
+        newPositions.push({
+          ticker,
+          quantity: qty,
+          purchase_price: price,
+          purchase_date: date
+        });
+      }
+    }
+
+    if (newPositions.length === 0) {
+      this.toast('Nenhum dado válido para salvar', 'error');
+      return;
+    }
+
+    // Merge or just add? Usually we add to existing.
+    this.portfolio.positions.push(...newPositions);
+
+    this.closeBulkModal();
+    await this.savePortfolio();
+    await this.runAnalysis();
+    this.renderPositions();
+    this.toast(`${newPositions.length} ativos adicionados!`, 'success');
   }
 
   /* ------------------------------------------------------------------
