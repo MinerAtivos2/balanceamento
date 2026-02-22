@@ -39,6 +39,16 @@ CREATE TABLE settings (
   value TEXT NOT NULL
 );
 
+-- Tabela de Cache de Mercado (Yahoo Finance via Python)
+CREATE TABLE market_data (
+  ticker TEXT PRIMARY KEY,
+  name TEXT,
+  last_price DECIMAL,
+  history JSONB,
+  dividends JSONB,
+  updated_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now())
+);
+
 -- Inserir placeholder do token (opcional)
 INSERT INTO settings (key, value) VALUES ('brapi_token', 'SEU_TOKEN_AQUI');
 ```
@@ -74,6 +84,24 @@ Para que os preços e dividendos sejam atualizados em tempo real, você precisa 
 2. Vá em **Settings** > **Pages**.
 3. Selecione a branch `main` e clique em **Save**.
 4. O site estará disponível em `https://seu-usuario.github.io/nome-do-repo`.
+
+---
+
+## 4. Robô de Atualização (GitHub Actions + Yahoo Finance)
+
+Configuramos um robô que busca dados do Yahoo Finance via Python e salva no banco de dados.
+
+### Passo 1: Configurar Secrets no GitHub
+1. No seu repositório no GitHub, vá em **Settings** > **Secrets and variables** > **Actions**.
+2. Clique em **New repository secret** e adicione:
+   - `SUPABASE_URL`: (Sua URL do Supabase)
+   - `SUPABASE_KEY`: (Sua Service Role Key ou Anon Key com permissão de escrita)
+
+### Passo 2: Disparar a Atualização Manualmente
+1. Vá na aba **Actions** do seu repositório.
+2. Selecione o workflow **Update Market Data (Yahoo Finance)** na lateral esquerda.
+3. Clique no botão **Run workflow** > **Run workflow**.
+4. O robô irá rodar, buscar os preços dos ativos que estão nas carteiras e salvar na tabela `market_data`.
 
 ---
 *Aviso: Certifique-se de que as tabelas tenham permissões de leitura/escrita habilitadas (RLS - Row Level Security pode ser configurado ou desabilitado para simplificar inicialmente).*

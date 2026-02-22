@@ -550,9 +550,32 @@ class B3App {
 
   async loadMarketData() {
     try {
+      if (this.supabase) {
+        const { data, error } = await this.supabase
+          .from('market_data')
+          .select('*');
+
+        if (data && data.length > 0) {
+          const assets = {};
+          data.forEach(item => {
+            assets[item.ticker] = {
+              ticker: item.ticker,
+              name: item.name,
+              last_price: parseFloat(item.last_price),
+              history: item.history,
+              dividends: item.dividends,
+              stats: { volatility: 2.0 } // Placeholder
+            };
+          });
+          this.marketData = { assets };
+          return;
+        }
+      }
+
       const res = await fetch('market_data_fallback.json');
       this.marketData = await res.json();
-    } catch {
+    } catch (err) {
+      console.error('Erro ao carregar dados de mercado:', err);
       this.marketData = { assets: {} };
     }
   }
