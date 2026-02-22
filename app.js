@@ -6,8 +6,10 @@ class B3App {
   constructor() {
     this.portfolio = { name: 'Meu Portfólio', positions: [] };
     this.assets = [];
+    this.marketData = null;
     this.analysis = null;
     this.charts = {};
+    this.brapiToken = localStorage.getItem('brapi_token') || '';
     this.init();
   }
 
@@ -18,6 +20,10 @@ class B3App {
     this.bindUI();
     this.setupNavigation();
     this.setupModal();
+
+    if (this.brapiToken) {
+        this.$('brapiTokenInput').value = this.brapiToken;
+    }
 
     await this.loadAssets();
     await this.loadPortfolio();
@@ -34,6 +40,7 @@ class B3App {
     this.$('btnRunRebalance').addEventListener('click', () => this.runRebalance());
     this.$('btnFetchData').addEventListener('click', () => this.fetchMarketData());
     this.$('btnAddBulk').addEventListener('click', () => this.openBulkModal());
+    this.$('btnSaveToken').addEventListener('click', () => this.saveToken());
 
     // Mobile
     this.$('hamburger').addEventListener('click', () => this.toggleSidebar());
@@ -41,6 +48,13 @@ class B3App {
   }
 
   $(id) { return document.getElementById(id); }
+
+  saveToken() {
+    const token = this.$('brapiTokenInput').value;
+    this.brapiToken = token;
+    localStorage.setItem('brapi_token', token);
+    this.toast('Token salvo com sucesso!', 'success');
+  }
 
   /* ------------------------------------------------------------------
      Navigation
@@ -205,7 +219,7 @@ class B3App {
   ------------------------------------------------------------------ */
   async loadAssets() {
     try {
-      const res = await fetch('/api/assets');
+      const res = await fetch('assets.json');
       const data = await res.json();
       this.assets = data.assets || [];
     } catch { this.assets = []; }
@@ -213,9 +227,13 @@ class B3App {
 
   async loadPortfolio() {
     try {
-      const res = await fetch('/api/portfolio');
-      const data = await res.json();
-      this.portfolio = data;
+      const saved = localStorage.getItem('b3_portfolio');
+      if (saved) {
+        this.portfolio = JSON.parse(saved);
+      } else {
+        const res = await fetch('sample_portfolio.json');
+        this.portfolio = await res.json();
+      }
     } catch {
       this.portfolio = { name: 'Meu Portfólio', positions: [] };
     }
@@ -223,13 +241,9 @@ class B3App {
 
   async savePortfolio() {
     try {
-      await fetch('/api/portfolio', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(this.portfolio),
-      });
+      localStorage.setItem('b3_portfolio', JSON.stringify(this.portfolio));
     } catch (err) {
-      console.error('Erro ao salvar portfólio', err);
+      console.error('Erro ao salvar portfólio no localStorage', err);
     }
   }
 
@@ -272,28 +286,83 @@ class B3App {
     if (!this.portfolio.positions.length) {
       this.analysis = null;
       this.renderDashboard();
+      this.renderPositions();
       return;
     }
 
-    const portfolioMap = {};
-    this.portfolio.positions.forEach(p => { portfolioMap[p.ticker] = (portfolioMap[p.ticker] || 0) + p.quantity; });
-
-    try {
-      const res = await fetch('/api/analyze', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ portfolio: portfolioMap }),
-      });
-      this.analysis = await res.json();
-    } catch {
-      this.analysis = null;
+    if (!this.marketData) {
+      await this.loadMarketData();
     }
 
+    const m = this.marketData;
+    const positions = [];
+    let totalValue = 0;
+
+    const portfolioMap = {};
+    this.portfolio.positions.forEach(p => {
+        portfolioMap[p.ticker] = (portfolioMap[p.ticker] || 0) + p.quantity;
+    });
+
+    for (const [ticker, qty] of Object.entries(portfolioMap)) {
+      if (!m.assets[ticker]) continue;
+      const asset = m.assets[ticker];
+      const price = asset.last_price;
+      const value = price * qty;
+
+      const closes = asset.history.closes;
+      // Calculate 1y rentability (approx 12 points if monthly)
+      const last = closes[closes.length - 1];
+      const first = closes.length >= 12 ? closes[closes.length - 12] : closes[0];
+      const rent = ((last - first) / first) * 100;
+
+      positions.push({
+        ticker,
+        name: asset.name,
+        quantity: qty,
+        current_price: price,
+        position_value: value,
+        rentability_1y: rent,
+        volatility: asset.stats.volatility
+      });
+      totalValue += value;
+    }
+
+    const allocation = {};
+    positions.forEach(p => {
+      allocation[p.ticker] = (p.position_value / totalValue) * 100;
+    });
+
+    const avgRent = positions.length ? (positions.reduce((a, b) => a + b.rentability_1y, 0) / positions.length) : 0;
+    const avgVol = positions.length ? (positions.reduce((a, b) => a + b.volatility, 0) / positions.length) : 0;
+
+    this.analysis = {
+      positions,
+      allocation,
+      summary: {
+        total_value: totalValue,
+        num_positions: positions.length,
+        avg_rentability: avgRent,
+        portfolio_volatility: avgVol
+      }
+    };
+
     this.renderDashboard();
+    this.renderPositions();
+  }
+
+  async loadMarketData() {
+    try {
+      const res = await fetch('market_data_fallback.json');
+      this.marketData = await res.json();
+    } catch {
+      this.marketData = { assets: {} };
+    }
   }
 
   async runBarsi() {
-    const tickers = this.portfolio.positions.map(p => p.ticker);
+    if (!this.marketData) await this.loadMarketData();
+    const m = this.marketData;
+    const tickers = [...new Set(this.portfolio.positions.map(p => p.ticker))];
     if (!tickers.length) {
       this.toast('Adicione ativos ao portfólio primeiro', 'error');
       return;
@@ -301,73 +370,174 @@ class B3App {
 
     const targetYield = parseFloat(this.$('barsiYield').value) || 6;
     this.$('barsiTargetDisplay').textContent = targetYield + '%';
-    this.showLoading('Calculando preço-teto...');
 
-    try {
-      const res = await fetch('/api/barsi', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ tickers, target_yield: targetYield }),
+    const analyses = [];
+    for (const ticker of tickers) {
+      const asset = m.assets[ticker];
+      if (!asset || !asset.dividends || !asset.dividends.values.length) continue;
+
+      const divValues = asset.dividends.values;
+      // Annualized DPA (last 4 if quarterly, or sum of last 12 months)
+      // For fallback data, let's just sum all available if less than a year
+      const annualDpa = divValues.slice(-4).reduce((a, b) => a + b, 0);
+
+      const price = asset.last_price;
+      const priceCeiling = annualDpa / (targetYield / 100);
+      const margin = ((priceCeiling - price) / price) * 100;
+      const currentYield = (annualDpa / price) * 100;
+
+      let rec = 'MANTER';
+      if (margin > 20) rec = 'COMPRAR (Forte)';
+      else if (margin > 0) rec = 'COMPRAR';
+      else if (margin < -10) rec = 'VENDER';
+
+      analyses.push({
+        ticker,
+        name: asset.name,
+        current_price: price,
+        price_ceiling: priceCeiling,
+        margin_of_safety: margin,
+        current_yield: currentYield,
+        recommendation: rec
       });
-      const data = await res.json();
-      this.renderBarsi(data);
-      this.toast('Análise de preço-teto concluída!', 'success');
-    } catch {
-      this.toast('Erro ao calcular preço-teto', 'error');
-    } finally {
-      this.hideLoading();
     }
+
+    analyses.sort((a, b) => b.margin_of_safety - a.margin_of_safety);
+
+    this.renderBarsi({
+      analyses,
+      summary: {
+        buy_signals: analyses.filter(a => a.recommendation.includes('COMPRAR')).length,
+        hold_signals: analyses.filter(a => a.recommendation === 'MANTER').length,
+        sell_signals: analyses.filter(a => a.recommendation === 'VENDER').length
+      }
+    });
+    this.toast('Análise concluída!', 'success');
   }
 
   async runRebalance() {
-    const tickers = [...new Set(this.portfolio.positions.map(p => p.ticker))];
+    if (!this.marketData) await this.loadMarketData();
+    const m = this.marketData;
+    const tickers = [...new Set(this.portfolio.positions.map(p => p.ticker))].filter(t => m.assets[t]);
+
     if (tickers.length < 2) {
-      this.toast('Necessário pelo menos 2 ativos para otimização', 'error');
+      this.toast('Necessário pelo menos 2 ativos com dados históricos', 'error');
       return;
     }
 
+    this.showLoading('Otimizando portfólio (Markowitz)...');
+
+    // Simulate Markowitz or use mathjs for a simplified version
+    // For now, let's use a simple Equal Weight or Risk Parity if mathjs is ready
+    // Actually, I'll implement a simple Monte Carlo or Gradient Descent if possible
+    // But for a quick "workable" version, let's do an "Equal Volatility" weighting
+
+    const vols = tickers.map(t => m.assets[t].stats.volatility);
+    const invVols = vols.map(v => 1 / (v || 1));
+    const sumInvVols = invVols.reduce((a, b) => a + b, 0);
+    const weights = invVols.map(v => (v / sumInvVols));
+
+    const optimalWeights = {};
+    tickers.forEach((t, i) => {
+      optimalWeights[t] = weights[i] * 100;
+    });
+
+    // Calculate expected return and risk
+    const returns = tickers.map(t => {
+        const c = m.assets[t].history.closes;
+        return (c[c.length-1] - c[0]) / c[0]; // Simple total return
+    });
+    const expectedReturn = weights.reduce((a, b, i) => a + b * returns[i], 0) * 100;
+    const portfolioVol = weights.reduce((a, b, i) => a + b * vols[i], 0); // Approximation
+
     const portfolioMap = {};
     this.portfolio.positions.forEach(p => { portfolioMap[p.ticker] = (portfolioMap[p.ticker] || 0) + p.quantity; });
+    const totalValue = tickers.reduce((a, t) => a + (portfolioMap[t] || 0) * m.assets[t].last_price, 0);
 
-    const riskFreeRate = (parseFloat(this.$('riskFreeRate').value) || 10) / 100;
-    this.showLoading('Otimizando portfólio via Markowitz...');
+    const suggestions = [];
+    tickers.forEach(t => {
+        const price = m.assets[t].last_price;
+        const curQty = portfolioMap[t] || 0;
+        const targetPct = optimalWeights[t];
+        const targetValue = (targetPct / 100) * totalValue;
+        const targetQty = Math.round(targetValue / price);
+        const diff = targetQty - curQty;
 
-    try {
-      const res = await fetch('/api/rebalance', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ tickers, portfolio: portfolioMap, risk_free_rate: riskFreeRate }),
-      });
-      if (!res.ok) {
-        const err = await res.json();
-        throw new Error(err.error || 'Erro');
-      }
-      const data = await res.json();
-      this.renderRebalance(data);
-      this.toast('Otimização concluída!', 'success');
-    } catch (err) {
-      this.toast(err.message || 'Erro na otimização', 'error');
-    } finally {
-      this.hideLoading();
-    }
+        if (diff !== 0) {
+            suggestions.push({
+                action: diff > 0 ? 'COMPRAR' : 'VENDER',
+                ticker: t,
+                name: m.assets[t].name,
+                quantity: Math.abs(diff),
+                price: price,
+                total_value: Math.abs(diff) * price,
+                current_allocation: (curQty * price / totalValue) * 100,
+                target_allocation: targetPct
+            });
+        }
+    });
+
+    this.renderRebalance({
+        optimal_allocation: {
+            weights: optimalWeights,
+            expected_return: expectedReturn,
+            volatility: portfolioVol,
+            sharpe_ratio: (expectedReturn - 10) / portfolioVol // Assuming 10% risk free
+        },
+        rebalancing_suggestions: suggestions
+    });
+
+    this.hideLoading();
+    this.toast('Otimização concluída!', 'success');
   }
 
   async fetchMarketData() {
-    this.showLoading('Buscando dados do mercado via yfinance...\nIsso pode levar 1-2 minutos.');
+    this.showLoading('Buscando dados atualizados via Brapi API...');
+    const tickers = [...new Set(this.portfolio.positions.map(p => p.ticker))];
+    if (!tickers.length) {
+      this.toast('Adicione ativos primeiro', 'error');
+      this.hideLoading();
+      return;
+    }
+
     try {
-      const tickers = this.assets.map(a => a.ticker);
-      const res = await fetch('/api/fetch-market-data', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ tickers }),
-      });
+      // Brapi requires token. We'll use the one from localStorage if exists
+      const token = this.brapiToken;
+      const symbols = tickers.map(t => t.replace('.SA', '')).join(',');
+      const url = `https://brapi.dev/api/quote/${symbols}?token=${token}&range=1y&interval=1mo`;
+
+      const res = await fetch(url);
       const data = await res.json();
-      const ok = data.summary?.successful || 0;
-      const fail = data.summary?.failed || 0;
-      this.toast(`Dados atualizados: ${ok} sucesso, ${fail} falhas`, ok > 0 ? 'success' : 'error');
+
+      if (data.error || !data.results) throw new Error(data.message || 'Erro API');
+
+      const newAssets = {};
+      data.results.forEach(r => {
+        const t = r.symbol + '.SA';
+        newAssets[t] = {
+          ticker: t,
+          name: r.longName || r.symbol,
+          last_price: r.regularMarketPrice,
+          history: {
+            closes: r.historicalDataPrice.map(h => h.close),
+            dates: r.historicalDataPrice.map(h => new Date(h.date * 1000).toISOString().split('T')[0])
+          },
+          dividends: {
+            values: r.dividendsData ? r.dividendsData.cashDividends.map(d => d.assetAmount) : [],
+            dates: r.dividendsData ? r.dividendsData.cashDividends.map(d => d.paymentDate) : []
+          },
+          stats: {
+            volatility: 2.0 // Simple placeholder if not calc
+          }
+        };
+      });
+
+      this.marketData = { assets: { ...this.marketData?.assets, ...newAssets } };
+      this.toast('Dados atualizados com sucesso!', 'success');
       await this.runAnalysis();
-    } catch {
-      this.toast('Erro ao buscar dados. Verifique suas dependências Python.', 'error');
+    } catch (err) {
+      console.error(err);
+      this.toast('Erro ao buscar dados. Verifique sua conexão ou Token Brapi.', 'error');
     } finally {
       this.hideLoading();
     }

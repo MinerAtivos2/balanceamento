@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.8.0/math.js"></script>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -36,7 +37,7 @@
       </a>
     </nav>
     <div class="sidebar-footer">
-      <button class="btn btn-glow btn-sm" id="btnFetchData" title="Buscar dados do mercado via yfinance">
+      <button class="btn btn-glow btn-sm" id="btnFetchData" title="Buscar dados do mercado via API">
         🔄 Atualizar Dados
       </button>
     </div>
@@ -102,7 +103,7 @@
       </div>
 
       <div class="alert alert-info glass" style="margin-top:1.5rem;">
-        <strong>💡 Dica:</strong> Clique em <strong>"Atualizar Dados"</strong> na barra lateral para buscar dados reais do mercado via yfinance.
+        <strong>💡 Dica:</strong> Clique em <strong>"Atualizar Dados"</strong> na barra lateral para buscar dados reais do mercado via API.
       </div>
     </section>
 
@@ -288,17 +289,26 @@
           <li><strong>Gestão de Posições:</strong> Adicione, edite e remova ativos do portfólio</li>
           <li><strong>Preço-Teto (Barsi):</strong> Identifica oportunidades de compra baseado em dividendos</li>
           <li><strong>Rebalanceamento (Markowitz):</strong> Otimização para máximo Sharpe Ratio</li>
-          <li><strong>Dados em Tempo Real:</strong> Integração com yfinance para dados atualizados</li>
+          <li><strong>Dados em Tempo Real:</strong> Integração com APIs públicas para dados atualizados</li>
         </ul>
 
         <h2>🛠️ Tecnologias</h2>
         <div class="tech-grid">
-          <span class="tech-badge">Python / Flask</span>
-          <span class="tech-badge">yfinance</span>
-          <span class="tech-badge">NumPy / SciPy</span>
           <span class="tech-badge">HTML5 / CSS3</span>
-          <span class="tech-badge">JavaScript</span>
+          <span class="tech-badge">JavaScript (ES6+)</span>
           <span class="tech-badge">Chart.js</span>
+          <span class="tech-badge">Brapi API</span>
+          <span class="tech-badge">GitHub Pages</span>
+        </div>
+
+        <div class="card glass" style="margin-top:2rem; padding: 1.5rem;">
+          <h3>⚙️ Configurações</h3>
+          <p>Para buscar dados em tempo real, você pode utilizar um token da API <a href="https://brapi.dev/" target="_blank" style="color:var(--accent)">Brapi.dev</a> (opcional).</p>
+          <div class="form-group" style="margin-top:1rem;">
+            <label for="brapiTokenInput">Token Brapi.dev:</label>
+            <input type="password" id="brapiTokenInput" placeholder="Insira seu token aqui" class="input-sm" style="width:100%; max-width: 400px;">
+            <button class="btn btn-primary btn-sm" id="btnSaveToken" style="margin-top:0.5rem;">Salvar Token</button>
+          </div>
         </div>
 
         <div class="alert alert-warning" style="margin-top:2rem;">

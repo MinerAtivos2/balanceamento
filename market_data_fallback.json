@@ -1,0 +1,83 @@
+{
+  "timestamp": "2025-01-02T12:00:00Z",
+  "assets": {
+    "PETR4.SA": {
+      "ticker": "PETR4.SA",
+      "name": "Petrobras",
+      "sector": "Energia",
+      "last_price": 38.72,
+      "dividends": {"dates": ["2024-03-01", "2024-06-01", "2024-09-01", "2024-12-01"], "values": [1.55, 1.80, 1.20, 1.40]},
+      "history": {
+        "dates": ["2024-01-02", "2024-04-01", "2024-07-01", "2024-10-01", "2025-01-02"],
+        "closes": [36.50, 37.10, 38.00, 37.80, 38.72],
+        "volumes": [12000000, 11500000, 13000000, 12800000, 11200000]
+      },
+      "stats": {"avg_price": 37.62, "min_price": 33.10, "max_price": 42.15, "volatility": 2.41}
+    },
+    "VALE3.SA": {
+      "ticker": "VALE3.SA",
+      "name": "Vale",
+      "sector": "Mineração",
+      "last_price": 58.90,
+      "dividends": {"dates": ["2024-03-15", "2024-09-15"], "values": [2.10, 1.95]},
+      "history": {
+        "dates": ["2024-01-02", "2024-04-01", "2024-07-01", "2024-10-01", "2025-01-02"],
+        "closes": [62.30, 60.50, 57.80, 59.10, 58.90],
+        "volumes": [9500000, 10200000, 9800000, 10500000, 9300000]
+      },
+      "stats": {"avg_price": 59.72, "min_price": 54.20, "max_price": 68.50, "volatility": 1.87}
+    },
+    "ITUB4.SA": {
+      "ticker": "ITUB4.SA",
+      "name": "Itaú Unibanco",
+      "sector": "Financeiro",
+      "last_price": 34.15,
+      "dividends": {"dates": ["2024-03-01", "2024-06-01", "2024-09-01", "2024-12-01"], "values": [0.85, 0.92, 0.88, 0.95]},
+      "history": {
+        "dates": ["2024-01-02", "2024-04-01", "2024-07-01", "2024-10-01", "2025-01-02"],
+        "closes": [31.20, 32.50, 33.10, 33.80, 34.15],
+        "volumes": [14000000, 13500000, 14200000, 13800000, 13200000]
+      },
+      "stats": {"avg_price": 32.95, "min_price": 28.50, "max_price": 35.20, "volatility": 2.05}
+    },
+    "BBDC4.SA": {
+      "ticker": "BBDC4.SA",
+      "name": "Bradesco",
+      "sector": "Financeiro",
+      "last_price": 14.80,
+      "dividends": {"dates": ["2024-06-01", "2024-12-01"], "values": [0.42, 0.45]},
+      "history": {
+        "dates": ["2024-01-02", "2024-04-01", "2024-07-01", "2024-10-01", "2025-01-02"],
+        "closes": [15.20, 14.90, 14.50, 14.60, 14.80],
+        "volumes": [18000000, 17500000, 16800000, 17200000, 16500000]
+      },
+      "stats": {"avg_price": 14.80, "min_price": 12.10, "max_price": 16.50, "volatility": 2.32}
+    },
+    "ABEV3.SA": {
+      "ticker": "ABEV3.SA",
+      "name": "Ambev",
+      "sector": "Consumo",
+      "last_price": 11.95,
+      "dividends": {"dates": ["2024-04-01", "2024-10-01"], "values": [0.35, 0.38]},
+      "history": {
+        "dates": ["2024-01-02", "2024-04-01", "2024-07-01", "2024-10-01", "2025-01-02"],
+        "closes": [12.80, 12.30, 11.90, 12.10, 11.95],
+        "volumes": [22000000, 21500000, 20800000, 21200000, 20500000]
+      },
+      "stats": {"avg_price": 12.21, "min_price": 10.80, "max_price": 13.50, "volatility": 1.65}
+    },
+    "WEGE3.SA": {
+      "ticker": "WEGE3.SA",
+      "name": "WEG",
+      "sector": "Indústria",
+      "last_price": 52.40,
+      "dividends": {"dates": ["2024-05-01", "2024-11-01"], "values": [0.28, 0.31]},
+      "history": {
+        "dates": ["2024-01-02", "2024-04-01", "2024-07-01", "2024-10-01", "2025-01-02"],
+        "closes": [38.50, 42.10, 45.80, 49.20, 52.40],
+        "volumes": [5500000, 5800000, 6200000, 5900000, 6100000]
+      },
+      "stats": {"avg_price": 45.60, "min_price": 35.20, "max_price": 54.80, "volatility": 1.92}
+    }
+  }
+}
