@@ -1,0 +1,64 @@
+{
+  "assets": [
+    {
+      "ticker": "PETR4.SA",
+      "name": "Petrobras",
+      "sector": "Energia",
+      "description": "Empresa de energia e petróleo"
+    },
+    {
+      "ticker": "VALE3.SA",
+      "name": "Vale",
+      "sector": "Mineração",
+      "description": "Empresa de mineração e metais"
+    },
+    {
+      "ticker": "ITUB4.SA",
+      "name": "Itaú Unibanco",
+      "sector": "Financeiro",
+      "description": "Banco de varejo e investimentos"
+    },
+    {
+      "ticker": "BBDC4.SA",
+      "name": "Bradesco",
+      "sector": "Financeiro",
+      "description": "Banco de varejo e investimentos"
+    },
+    {
+      "ticker": "ABEV3.SA",
+      "name": "Ambev",
+      "sector": "Consumo",
+      "description": "Empresa de bebidas"
+    },
+    {
+      "ticker": "WEGE3.SA",
+      "name": "WEG",
+      "sector": "Indústria",
+      "description": "Empresa de motores e equipamentos"
+    },
+    {
+      "ticker": "JBSS3.SA",
+      "name": "JBS",
+      "sector": "Consumo",
+      "description": "Empresa de alimentos e carnes"
+    },
+    {
+      "ticker": "LREN3.SA",
+      "name": "Lojas Renner",
+      "sector": "Varejo",
+      "description": "Rede de lojas de moda"
+    },
+    {
+      "ticker": "MGLU3.SA",
+      "name": "Magazine Luiza",
+      "sector": "Varejo",
+      "description": "E-commerce e varejo"
+    },
+    {
+      "ticker": "ASAI3.SA",
+      "name": "Assaí",
+      "sector": "Varejo",
+      "description": "Rede de atacadistas"
+    }
+  ]
+}

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>B3 Rebalanceamento & IA - Análise de Portfólio</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <div class="logo">📊 B3 Rebalanceamento & IA</div>
+            <ul class="nav-links">
+                <li><a href="#" class="nav-link" data-section="dashboard">Dashboard</a></li>
+                <li><a href="#" class="nav-link" data-section="positions">Posições</a></li>
+                <li><a href="#" class="nav-link" data-section="barsi">Preço-Teto</a></li>
+                <li><a href="#" class="nav-link" data-section="allocation">Alocação</a></li>
+                <li><a href="#" class="nav-link" data-section="about">Sobre</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Dashboard Section -->
+        <section data-section-content="dashboard">
+            <div class="card" style="margin-bottom: 2rem;">
+                <h1 class="card-title">Dashboard de Portfólio</h1>
+                <p class="card-subtitle">Visão geral do seu portfólio de investimentos na B3</p>
+            </div>
+
+            <div id="portfolioSummary" class="grid grid-2" style="margin-bottom: 2rem;">
+                <!-- Preenchido por JavaScript -->
+            </div>
+
+            <div class="alert alert-info">
+                <strong>💡 Dica:</strong> Atualize seus dados executando os scripts Python para obter informações em tempo real do mercado.
+            </div>
+        </section>
+
+        <!-- Positions Section -->
+        <section data-section-content="positions" style="display: none;">
+            <div class="card" style="margin-bottom: 2rem;">
+                <h1 class="card-title">Suas Posições</h1>
+                <p class="card-subtitle">Detalhamento de cada ativo no seu portfólio</p>
+            </div>
+
+            <div id="positionsTable" class="card">
+                <!-- Preenchido por JavaScript -->
+            </div>
+        </section>
+
+        <!-- Barsi Analysis Section -->
+        <section data-section-content="barsi" style="display: none;">
+            <div class="card" style="margin-bottom: 2rem;">
+                <h1 class="card-title">Análise de Preço-Teto (Método Barsi)</h1>
+                <p class="card-subtitle">Preço máximo recomendado para cada ativo baseado em dividendos históricos</p>
+            </div>
+
+            <div class="alert alert-info">
+                <strong>📌 Método Barsi/Bazin:</strong> Calcula o preço máximo que você deveria pagar para obter um dividend yield de 6% ao ano.
+            </div>
+
+            <div id="barsiTable" class="card">
+                <!-- Preenchido por JavaScript -->
+            </div>
+        </section>
+
+        <!-- Allocation Section -->
+        <section data-section-content="allocation" style="display: none;">
+            <div class="card" style="margin-bottom: 2rem;">
+                <h1 class="card-title">Alocação do Portfólio</h1>
+                <p class="card-subtitle">Distribuição de investimentos por ativo</p>
+            </div>
+
+            <div id="allocationChart">
+                <!-- Preenchido por JavaScript -->
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section data-section-content="about" style="display: none;">
+            <div class="card">
+                <h1 class="card-title">Sobre o B3 Rebalanceamento & IA</h1>
+                
+                <h2 style="margin-top: 2rem; margin-bottom: 1rem; color: var(--primary);">O Projeto</h2>
+                <p>
+                    Uma plataforma de código aberto para análise e rebalanceamento de portfólios de investimentos na B3 (Bolsa de Valores Brasileira).
+                    Desenvolvida em Python com interface web, oferece ferramentas para otimização de alocação de ativos usando a Teoria Moderna de Portfólio (Markowitz).
+                </p>
+
+                <h2 style="margin-top: 2rem; margin-bottom: 1rem; color: var(--primary);">Funcionalidades Principais</h2>
+                <ul style="margin-left: 1.5rem; line-height: 2;">
+                    <li><strong>Dashboard de Portfólio:</strong> Visualize suas posições e rentabilidade em tempo real</li>
+                    <li><strong>Análise de Preço-Teto:</strong> Método Barsi/Bazin para identificar boas oportunidades de compra</li>
+                    <li><strong>Rebalanceamento Markowitz:</strong> Otimização de alocação para máximo Sharpe Ratio</li>
+                    <li><strong>Análise de Volatilidade:</strong> Avalie o risco do seu portfólio</li>
+                    <li><strong>Automação via GitHub Actions:</strong> Atualizações automáticas de dados diariamente</li>
+                </ul>
+
+                <h2 style="margin-top: 2rem; margin-bottom: 1rem; color: var(--primary);">Tecnologias Utilizadas</h2>
+                <ul style="margin-left: 1.5rem; line-height: 2;">
+                    <li><strong>Backend:</strong> Python, yfinance, pandas, scipy</li>
+                    <li><strong>Frontend:</strong> HTML5, CSS3, JavaScript vanilla</li>
+                    <li><strong>Automação:</strong> GitHub Actions, GitHub Pages</li>
+                    <li><strong>Hospedagem:</strong> GitHub Pages (estático)</li>
+                </ul>
+
+                <h2 style="margin-top: 2rem; margin-bottom: 1rem; color: var(--primary);">Como Usar</h2>
+                <ol style="margin-left: 1.5rem; line-height: 2;">
+                    <li>Clone o repositório do GitHub</li>
+                    <li>Instale as dependências Python: <code>pip install -r requirements.txt</code></li>
+                    <li>Execute o script de coleta de dados: <code>python scripts/data_fetcher.py</code></li>
+                    <li>Execute as análises: <code>python scripts/portfolio_analyzer.py</code></li>
+                    <li>Abra <code>web/index.html</code> no navegador para visualizar os resultados</li>
+                </ol>
+
+                <h2 style="margin-top: 2rem; margin-bottom: 1rem; color: var(--primary);">Disclaimer</h2>
+                <div class="alert alert-warning">
+                    <strong>⚠️ Aviso Legal:</strong> Este projeto é fornecido como ferramenta educacional e de auxílio à análise.
+                    Não constitui recomendação de investimento. Sempre consulte um profissional qualificado antes de tomar decisões financeiras.
+                    Os dados são obtidos via yfinance e podem ter atrasos ou inconsistências.
+                </div>
+
+                <h2 style="margin-top: 2rem; margin-bottom: 1rem; color: var(--primary);">Licença</h2>
+                <p>MIT License - Você é livre para usar, modificar e distribuir este projeto.</p>
+
+                <h2 style="margin-top: 2rem; margin-bottom: 1rem; color: var(--primary);">Contribuições</h2>
+                <p>
+                    Contribuições são bem-vindas! Abra uma issue ou pull request no repositório do GitHub.
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer style="background: var(--light-bg); border-top: 1px solid var(--border-color); padding: 2rem; margin-top: 4rem; text-align: center; color: var(--text-light);">
+        <p>&copy; 2024 B3 Rebalanceamento & IA. Desenvolvido com ❤️ para investidores brasileiros.</p>
+        <p style="margin-top: 0.5rem; font-size: 0.875rem;">
+            <a href="#" style="color: var(--primary); text-decoration: none;">GitHub</a> |
+            <a href="#" style="color: var(--primary); text-decoration: none;">Documentação</a> |
+            <a href="#" style="color: var(--primary); text-decoration: none;">Contato</a>
+        </p>
+    </footer>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
