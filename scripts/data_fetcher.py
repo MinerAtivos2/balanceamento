@@ -12,24 +12,30 @@ import pandas as pd
 
 # Configurações
 DATA_DIR = os.path.join(os.path.dirname(__file__), '..', 'data')
+ASSETS_FILE = os.path.join(os.path.dirname(__file__), '..', 'assets.json')
 OUTPUT_FILE = os.path.join(DATA_DIR, 'market_data.json')
 CACHE_DIR = os.path.join(DATA_DIR, 'cache')
 
-# Ativos B3 populares para exemplo
+# Ativos B3 populares para fallback
 DEFAULT_ASSETS = [
-    'PETR4.SA',  # Petrobras
-    'VALE3.SA',  # Vale
-    'ITUB4.SA',  # Itaú
-    'BBDC4.SA',  # Bradesco
-    'ABEV3.SA',  # Ambev
-    'WEGE3.SA',  # WEG
-    'JBSS3.SA',  # JBS
-    'LREN3.SA',  # Lojas Renner
-    'MGLU3.SA',  # Magazine Luiza
-    'ASAI3.SA',  # Assaí
+    'PETR4.SA', 'VALE3.SA', 'ITUB4.SA', 'BBDC4.SA', 'ABEV3.SA',
+    'WEGE3.SA', 'JBSS3.SA', 'LREN3.SA', 'MGLU3.SA', 'ASAI3.SA'
 ]
 
-def fetch_asset_data(ticker, period='5y'):
+def load_tickers():
+    """Carrega lista de tickers do arquivo assets.json"""
+    if os.path.exists(ASSETS_FILE):
+        try:
+            with open(ASSETS_FILE, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+                tickers = [a['ticker'] for a in data.get('assets', []) if 'ticker' in a]
+                if tickers:
+                    return tickers
+        except Exception as e:
+            print(f"⚠️ Erro ao ler {ASSETS_FILE}: {e}")
+    return DEFAULT_ASSETS
+
+def fetch_asset_data(ticker, period='2y'):
     """
     Coleta dados históricos de um ativo
     
@@ -141,8 +147,11 @@ def save_data(data, output_file=OUTPUT_FILE):
 
 def main():
     """Função principal"""
+    # Carrega tickers do arquivo de configuração
+    tickers = load_tickers()
+
     # Coleta dados
-    data = fetch_all_assets()
+    data = fetch_all_assets(tickers)
     
     # Salva dados
     save_data(data)

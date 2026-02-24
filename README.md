@@ -5,6 +5,7 @@ Plataforma inteligente para análise e rebalanceamento de portfólios de investi
 ## 🚀 Funcionalidades
 
 - **Dashboard:** Visão geral com gráficos de alocação e rentabilidade.
+- **Automação:** Atualização diária automática de dados via GitHub Actions.
 - **Posições:** Gestão completa do seu portfólio (Adição individual ou em lote).
 - **Preço-Teto (Barsi):** Cálculo automático baseado em dividendos históricos (Método Barsi/Bazin).
 - **Rebalanceamento (Markowitz):** Otimização de alocação para máximo Sharpe Ratio.
@@ -16,7 +17,7 @@ Plataforma inteligente para análise e rebalanceamento de portfólios de investi
 - `static/`: Frontend (HTML, CSS, JS).
 - `scripts/`: Scripts Python auxiliares para coleta e análise de dados.
 - `data/`: Armazenamento de cache e dados do portfólio.
-- `docs/`: Documentação detalhada do projeto.
+- `docs/`: Documentação detalhada do projeto (veja [Cadastro de Ativos](docs/CADASTRO_ATIVOS.md)).
 
 ## 🛠️ Instalação e Execução Local
 

@@ -45,51 +45,6 @@ def _save_json(path, data):
         json.dump(data, f, indent=2, ensure_ascii=False)
 
 
-def _fetch_ticker_data(ticker: str, period: str = "5y"):
-    """Fetch historical data for a single ticker via yfinance."""
-    import yfinance as yf
-
-    try:
-        asset = yf.Ticker(ticker)
-        hist = asset.history(period=period)
-        if hist.empty:
-            if ticker.endswith(".SA"):
-                asset = yf.Ticker(ticker[:-3])
-                hist = asset.history(period=period)
-            if hist.empty:
-                return None
-
-        info = asset.info
-        dividends = asset.dividends
-
-        return {
-        "ticker": ticker,
-        "name": info.get("longName", ticker),
-        "sector": info.get("sector", "N/A"),
-        "currency": info.get("currency", "BRL"),
-        "last_price": float(hist["Close"].iloc[-1]),
-        "last_update": datetime.now().isoformat(),
-        "history": {
-            "dates": hist.index.strftime("%Y-%m-%d").tolist(),
-            "closes": [round(float(c), 2) for c in hist["Close"].tolist()],
-            "volumes": [int(v) for v in hist["Volume"].tolist()],
-        },
-        "dividends": {
-            "dates": dividends.index.strftime("%Y-%m-%d").tolist(),
-            "values": [round(float(v), 4) for v in dividends.tolist()],
-        }
-        if not dividends.empty
-        else {"dates": [], "values": []},
-        "stats": {
-            "avg_price": round(float(hist["Close"].mean()), 2),
-            "min_price": round(float(hist["Close"].min()), 2),
-            "max_price": round(float(hist["Close"].max()), 2),
-            "volatility": round(float(hist["Close"].pct_change().std() * 100), 4),
-        },
-    }
-    except Exception as e:
-        print(f"Error fetching {ticker}: {e}")
-        return None
 
 
 # ---------------------------------------------------------------------------
@@ -230,30 +185,6 @@ def api_market_data():
     return jsonify(EXAMPLE_MARKET_DATA)
 
 
-@app.route("/api/fetch-market-data", methods=["POST"])
-def api_fetch_market_data():
-    """Fetch fresh data from yfinance for the given tickers."""
-    body = request.get_json(force=True)
-    tickers = body.get("tickers", [])
-    if not tickers:
-        assets = _load_json(ASSETS_FILE, {"assets": []})
-        tickers = [a["ticker"] for a in assets.get("assets", [])]
-
-    result = {"timestamp": datetime.now().isoformat(), "assets": {}, "summary": {"successful": 0, "failed": 0}}
-    for t in tickers:
-        try:
-            d = _fetch_ticker_data(t)
-            if d:
-                result["assets"][t] = d
-                result["summary"]["successful"] += 1
-            else:
-                result["summary"]["failed"] += 1
-        except Exception:
-            result["summary"]["failed"] += 1
-
-    # Cache
-    _save_json(os.path.join(DATA_DIR, "market_data.json"), result)
-    return jsonify(result)
 
 
 # ---------------------------------------------------------------------------

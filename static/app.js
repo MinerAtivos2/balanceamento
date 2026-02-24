@@ -32,7 +32,6 @@ class B3App {
     this.$('btnAnalyze').addEventListener('click', () => this.runAnalysis());
     this.$('btnRunBarsi').addEventListener('click', () => this.runBarsi());
     this.$('btnRunRebalance').addEventListener('click', () => this.runRebalance());
-    this.$('btnFetchData').addEventListener('click', () => this.fetchMarketData());
     this.$('btnAddBulk').addEventListener('click', () => this.openBulkModal());
 
     // Mobile
@@ -347,27 +346,6 @@ class B3App {
       this.toast('Otimização concluída!', 'success');
     } catch (err) {
       this.toast(err.message || 'Erro na otimização', 'error');
-    } finally {
-      this.hideLoading();
-    }
-  }
-
-  async fetchMarketData() {
-    this.showLoading('Buscando dados do mercado via yfinance...\nIsso pode levar 1-2 minutos.');
-    try {
-      const tickers = this.assets.map(a => a.ticker);
-      const res = await fetch('/api/fetch-market-data', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ tickers }),
-      });
-      const data = await res.json();
-      const ok = data.summary?.successful || 0;
-      const fail = data.summary?.failed || 0;
-      this.toast(`Dados atualizados: ${ok} sucesso, ${fail} falhas`, ok > 0 ? 'success' : 'error');
-      await this.runAnalysis();
-    } catch {
-      this.toast('Erro ao buscar dados. Verifique suas dependências Python.', 'error');
     } finally {
       this.hideLoading();
     }
