@@ -101,7 +101,7 @@ class B3App {
 
   openModal(editIndex = null) {
     this.editIndex = editIndex;
-    this.$('modalTitle').textContent = editIndex !== null ? 'Editar Ativo' : 'Adicionar Ativo';
+    this.$('modalTitle').textContent = editIndex !== null ? 'Editar Registro' : 'Adicionar Ativo';
 
     // Populate ticker dropdown
     const select = this.$('posTicker');
@@ -115,9 +115,11 @@ class B3App {
       select.value = pos.ticker;
       this.$('posQty').value = pos.quantity;
       this.$('posPrice').value = pos.purchase_price;
+      this.$('posDate').value = pos.purchase_date || new Date().toISOString().slice(0, 10);
     } else {
       this.$('posQty').value = '';
       this.$('posPrice').value = '';
+      this.$('posDate').value = new Date().toISOString().slice(0, 10);
     }
 
     this.$('modalOverlay').classList.add('show');
@@ -149,6 +151,8 @@ class B3App {
       options += `<option value="${a.ticker}">${a.ticker}</option>`;
     });
 
+    const today = new Date().toISOString().slice(0, 10);
+
     tr.innerHTML = `
       <td>
         <select class="bulk-ticker" style="width: 100%">${options}</select>
@@ -160,6 +164,9 @@ class B3App {
         <input type="number" class="bulk-price" min="0" step="0.01" placeholder="Preço" style="width: 100%">
       </td>
       <td>
+        <input type="date" class="bulk-date" value="${today}" style="width: 100%">
+      </td>
+      <td>
         <button class="btn-danger-sm" onclick="this.closest('tr').remove()">🗑</button>
       </td>
     `;
@@ -169,19 +176,19 @@ class B3App {
   async saveBulkPositions() {
     const rows = document.querySelectorAll('#bulkTableBody tr');
     const newPositions = [];
-    const date = new Date().toISOString().slice(0, 10);
 
     for (const row of rows) {
       const ticker = row.querySelector('.bulk-ticker').value;
       const qty = parseInt(row.querySelector('.bulk-qty').value, 10);
       const price = parseFloat(row.querySelector('.bulk-price').value);
+      const date = row.querySelector('.bulk-date').value;
 
       if (ticker && !isNaN(qty) && !isNaN(price)) {
         newPositions.push({
           ticker,
           quantity: qty,
           purchase_price: price,
-          purchase_date: date
+          purchase_date: date || new Date().toISOString().slice(0, 10)
         });
       }
     }
@@ -244,6 +251,45 @@ class B3App {
     localStorage.setItem('b3_portfolio', JSON.stringify(this.portfolio));
   }
 
+  consolidatePortfolio() {
+    const consolidated = {};
+
+    this.portfolio.positions.forEach((pos, index) => {
+      if (!consolidated[pos.ticker]) {
+        consolidated[pos.ticker] = {
+          ticker: pos.ticker,
+          totalQty: 0,
+          totalInvested: 0,
+          weightedDateSum: 0,
+          transactions: []
+        };
+      }
+
+      const tickerData = consolidated[pos.ticker];
+      const qty = pos.quantity;
+      const price = pos.purchase_price;
+      const date = new Date(pos.purchase_date || new Date());
+      const timestamp = date.getTime();
+
+      tickerData.totalQty += qty;
+      tickerData.totalInvested += (qty * price);
+      tickerData.weightedDateSum += (timestamp * qty);
+      tickerData.transactions.push({ ...pos, originalIndex: index });
+    });
+
+    return Object.values(consolidated).map(item => {
+      const avgPrice = item.totalInvested / item.totalQty;
+      const avgTimestamp = item.weightedDateSum / item.totalQty;
+      const avgDate = new Date(avgTimestamp).toISOString().slice(0, 10);
+
+      return {
+        ...item,
+        avgPrice: avgPrice,
+        avgDate: avgDate
+      };
+    });
+  }
+
   /* ------------------------------------------------------------------
      CRUD — Positions
   ------------------------------------------------------------------ */
@@ -251,9 +297,15 @@ class B3App {
     const ticker = this.$('posTicker').value;
     const qty = parseInt(this.$('posQty').value, 10);
     const price = parseFloat(this.$('posPrice').value);
+    const date = this.$('posDate').value;
     if (!ticker || !qty || !price) return;
 
-    const pos = { ticker, quantity: qty, purchase_price: price, purchase_date: new Date().toISOString().slice(0, 10) };
+    const pos = {
+      ticker,
+      quantity: qty,
+      purchase_price: price,
+      purchase_date: date || new Date().toISOString().slice(0, 10)
+    };
 
     if (this.editIndex !== null) {
       this.portfolio.positions[this.editIndex] = pos;
@@ -286,54 +338,68 @@ class B3App {
       return;
     }
 
-    const portfolioMap = {};
-    this.portfolio.positions.forEach(p => { portfolioMap[p.ticker] = (portfolioMap[p.ticker] || 0) + p.quantity; });
-
+    const consolidated = this.consolidatePortfolio();
     const positions = [];
     let totalValue = 0;
+    let totalInvestedValue = 0;
 
-    for (const [ticker, qty] of Object.entries(portfolioMap)) {
-      const asset = this.marketData.assets[ticker];
-      if (!asset) continue;
+    consolidated.forEach(item => {
+      const asset = this.marketData.assets[item.ticker];
+      if (!asset) return;
 
       const price = asset.last_price;
-      const value = price * qty;
+      const value = price * item.totalQty;
+
+      // Rentabilidade 1a (período analisado) - mantida para o gráfico de rentabilidade comparativa
       const closes = asset.history.closes;
       const avg_1y = closes.length >= 252
         ? closes.slice(-252).reduce((a, b) => a + b, 0) / 252
         : closes.reduce((a, b) => a + b, 0) / closes.length;
+      const rent1y = ((price - avg_1y) / avg_1y * 100);
 
-      const rent = ((price - avg_1y) / avg_1y * 100);
+      // Rentabilidade ponderada (real)
+      const rentReal = ((price - item.avgPrice) / item.avgPrice * 100);
 
       positions.push({
-        ticker,
+        ticker: item.ticker,
         name: asset.name,
         sector: asset.sector || 'N/A',
-        quantity: qty,
+        quantity: item.totalQty,
+        avgPrice: item.avgPrice,
+        avgDate: item.avgDate,
+        totalInvested: item.totalInvested,
         current_price: price,
         position_value: value,
-        rentability_1y: rent,
+        rentability_1y: rent1y,
+        rentability_real: rentReal,
         volatility: asset.stats.volatility
       });
       totalValue += value;
-    }
+      totalInvestedValue += item.totalInvested;
+    });
 
     const allocation = {};
+    const allocationInvested = {};
     positions.forEach(p => {
       allocation[p.ticker] = (p.position_value / totalValue * 100);
+      allocationInvested[p.ticker] = (p.totalInvested / totalInvestedValue * 100);
     });
 
     const avgRent = positions.reduce((a, b) => a + b.rentability_1y, 0) / positions.length;
     const avgVol = positions.reduce((a, b) => a + b.volatility, 0) / positions.length;
+    const portfolioRentReal = ((totalValue - totalInvestedValue) / totalInvestedValue * 100);
 
     this.analysis = {
       timestamp: new Date().toISOString(),
       positions,
       allocation,
+      allocationInvested,
       summary: {
         total_value: totalValue,
+        total_invested: totalInvestedValue,
         num_positions: positions.length,
         avg_rentability: avgRent,
+        portfolio_rentability_real: portfolioRentReal,
         portfolio_volatility: avgVol
       }
     };
@@ -475,19 +541,21 @@ class B3App {
   renderDashboard() {
     if (!this.analysis) {
       this.$('statTotalValue').textContent = 'R$ 0,00';
+      this.$('statTotalInvested').textContent = 'R$ 0,00';
+      this.$('statRentabilityReal').textContent = '0%';
       this.$('statPositions').textContent = '0';
-      this.$('statRentability').textContent = '—';
       this.$('statVolatility').textContent = '—';
       return;
     }
 
     const s = this.analysis.summary;
     this.$('statTotalValue').textContent = this.formatCurrency(s.total_value);
+    this.$('statTotalInvested').textContent = this.formatCurrency(s.total_invested);
     this.$('statPositions').textContent = s.num_positions;
 
-    const rentEl = this.$('statRentability');
-    rentEl.textContent = (s.avg_rentability > 0 ? '+' : '') + s.avg_rentability.toFixed(2) + '%';
-    rentEl.className = 'stat-value ' + (s.avg_rentability >= 0 ? 'positive' : 'negative');
+    const rentRealEl = this.$('statRentabilityReal');
+    rentRealEl.textContent = (s.portfolio_rentability_real > 0 ? '+' : '') + s.portfolio_rentability_real.toFixed(2) + '%';
+    rentRealEl.className = 'stat-value ' + (s.portfolio_rentability_real >= 0 ? 'positive' : 'negative');
 
     this.$('statVolatility').textContent = s.portfolio_volatility.toFixed(2) + '%';
 
@@ -501,24 +569,48 @@ class B3App {
     if (this.charts.allocation) this.charts.allocation.destroy();
 
     const labels = this.analysis.positions.map(p => p.ticker.replace('.SA', ''));
-    const values = this.analysis.positions.map(p => p.position_value);
+    const currentValues = this.analysis.positions.map(p => p.position_value);
+    const investedValues = this.analysis.positions.map(p => p.totalInvested);
     const colors = this.palette(labels.length);
 
     this.charts.allocation = new Chart(ctx, {
       type: 'doughnut',
       data: {
         labels,
-        datasets: [{ data: values, backgroundColor: colors, borderWidth: 0, hoverOffset: 8 }],
+        datasets: [
+          {
+            label: 'Valor Atual',
+            data: currentValues,
+            backgroundColor: colors,
+            borderWidth: 2,
+            borderColor: '#0b0f19',
+            hoverOffset: 8,
+            weight: 2
+          },
+          {
+            label: 'Valor Investido',
+            data: investedValues,
+            backgroundColor: colors.map(c => c + '88'), // Semi-transparent
+            borderWidth: 2,
+            borderColor: '#0b0f19',
+            hoverOffset: 8,
+            weight: 1
+          }
+        ],
       },
       options: {
         responsive: true,
         maintainAspectRatio: false,
-        cutout: '65%',
+        cutout: '40%',
         plugins: {
-          legend: { position: 'bottom', labels: { color: '#94a3b8', padding: 16, font: { family: 'Inter', size: 12 } } },
+          legend: { position: 'bottom', labels: { color: '#94a3b8', padding: 16, font: { family: 'Inter', size: 11 } } },
           tooltip: {
             callbacks: {
-              label: ctx => `${ctx.label}: R$ ${ctx.raw.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`,
+              label: context => {
+                const label = context.dataset.label || '';
+                const value = context.raw || 0;
+                return `${context.label} (${label}): R$ ${value.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`;
+              },
             },
           },
         },
@@ -532,14 +624,14 @@ class B3App {
     if (this.charts.rentability) this.charts.rentability.destroy();
 
     const labels = this.analysis.positions.map(p => p.ticker.replace('.SA', ''));
-    const values = this.analysis.positions.map(p => p.rentability_1y);
+    const values = this.analysis.positions.map(p => p.rentability_real);
     const colors = values.map(v => v >= 0 ? '#22c55e' : '#ef4444');
 
     this.charts.rentability = new Chart(ctx, {
       type: 'bar',
       data: {
         labels,
-        datasets: [{ label: 'Rentab. 1a (%)', data: values, backgroundColor: colors, borderRadius: 6, barPercentage: 0.6 }],
+        datasets: [{ label: 'Rentab. Real (%)', data: values, backgroundColor: colors, borderRadius: 6, barPercentage: 0.6 }],
       },
       options: {
         responsive: true,
@@ -550,7 +642,7 @@ class B3App {
         },
         plugins: {
           legend: { display: false },
-          tooltip: { callbacks: { label: ctx => ctx.raw.toFixed(2) + '%' } },
+          tooltip: { callbacks: { label: ctx => (ctx.raw > 0 ? '+' : '') + ctx.raw.toFixed(2) + '%' } },
         },
       },
     });
@@ -562,35 +654,98 @@ class B3App {
   renderPositions() {
     const tbody = this.$('positionsBody');
     if (!this.portfolio.positions.length) {
-      tbody.innerHTML = '<tr><td colspan="7" class="empty-state">Nenhum ativo no portfólio. Clique em "Adicionar Ativo".</td></tr>';
+      tbody.innerHTML = '<tr><td colspan="8" class="empty-state">Nenhum ativo no portfólio. Clique em "Adicionar Ativo".</td></tr>';
       return;
     }
 
+    const consolidated = this.consolidatePortfolio();
     const analysisMap = {};
     if (this.analysis) {
       this.analysis.positions.forEach(p => { analysisMap[p.ticker] = p; });
     }
 
     let html = '';
-    this.portfolio.positions.forEach((pos, i) => {
-      const a = analysisMap[pos.ticker] || {};
-      const rent = a.rentability_1y;
+    consolidated.forEach(item => {
+      const a = analysisMap[item.ticker] || {};
+      const rent = a.rentability_real;
       const rentClass = rent !== undefined ? (rent >= 0 ? 'positive' : 'negative') : '';
       const rentText = rent !== undefined ? ((rent > 0 ? '+' : '') + rent.toFixed(2) + '%') : '—';
 
       html += `<tr>
-        <td><strong>${pos.ticker.replace('.SA', '')}</strong><br><small style="color:var(--text-muted)">${a.name || pos.ticker}</small></td>
-        <td>${pos.quantity}</td>
+        <td><strong>${item.ticker.replace('.SA', '')}</strong><br><small style="color:var(--text-muted)">${a.name || item.ticker}</small></td>
+        <td>${item.totalQty}</td>
+        <td>R$ ${item.avgPrice.toFixed(2)}</td>
+        <td>${item.avgDate}</td>
         <td>${a.current_price ? 'R$ ' + a.current_price.toFixed(2) : '—'}</td>
         <td>${a.position_value ? this.formatCurrency(a.position_value) : '—'}</td>
         <td class="${rentClass}">${rentText}</td>
-        <td>${a.volatility !== undefined ? a.volatility.toFixed(2) + '%' : '—'}</td>
         <td>
-          <button class="btn-danger-sm" onclick="app.removePosition(${i})">🗑</button>
+          <button class="btn-primary-sm" onclick="app.manageTransactions('${item.ticker}')" title="Gerenciar registros">⚙️</button>
         </td>
       </tr>`;
     });
     tbody.innerHTML = html;
+  }
+
+  manageTransactions(ticker) {
+    const tickerData = this.consolidatePortfolio().find(i => i.ticker === ticker);
+    if (!tickerData) return;
+
+    // We'll use a simple alert/prompt or a new modal.
+    // Let's create a temporary modal structure in JS for simplicity or add to index.html.
+    // For now, let's create a dynamic modal.
+
+    let rows = '';
+    tickerData.transactions.forEach(t => {
+      rows += `
+        <tr>
+          <td>${t.purchase_date}</td>
+          <td>${t.quantity}</td>
+          <td>R$ ${t.purchase_price.toFixed(2)}</td>
+          <td>
+            <button class="btn-outline-sm" onclick="app.closeTransactionModal(); app.openModal(${t.originalIndex})">✏️</button>
+            <button class="btn-danger-sm" onclick="if(confirm('Excluir este registro?')){ app.removePosition(${t.originalIndex}); app.manageTransactions('${ticker}'); }">🗑</button>
+          </td>
+        </tr>
+      `;
+    });
+
+    const modalHtml = `
+      <div class="modal-overlay show" id="transactionModalOverlay">
+        <div class="modal glass modal-lg">
+          <div class="modal-header">
+            <h2>Registros: ${ticker}</h2>
+            <button class="modal-close" onclick="app.closeTransactionModal()">&times;</button>
+          </div>
+          <div class="table-responsive">
+            <table>
+              <thead>
+                <tr>
+                  <th>Data</th>
+                  <th>Quantidade</th>
+                  <th>Preço</th>
+                  <th>Ações</th>
+                </tr>
+              </thead>
+              <tbody>${rows}</tbody>
+            </table>
+          </div>
+          <div class="form-actions" style="margin-top:1.5rem">
+            <button class="btn btn-primary" onclick="app.closeTransactionModal()">Fechar</button>
+          </div>
+        </div>
+      </div>
+    `;
+
+    const div = document.createElement('div');
+    div.id = 'dynamicModalContainer';
+    div.innerHTML = modalHtml;
+    document.body.appendChild(div);
+  }
+
+  closeTransactionModal() {
+    const el = document.getElementById('dynamicModalContainer');
+    if (el) el.remove();
   }
 
   /* ------------------------------------------------------------------
