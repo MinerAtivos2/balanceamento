@@ -8,7 +8,7 @@ Plataforma inteligente para análise e rebalanceamento de portfólios de investi
 - **Automação:** Atualização diária automática de dados via GitHub Actions.
 - **Posições:** Gestão completa do seu portfólio (Adição individual ou em lote).
 - **Preço-Teto (Barsi):** Cálculo automático baseado em dividendos históricos (Método Barsi/Bazin).
-- **Rebalanceamento (Markowitz):** Otimização de alocação para máximo Sharpe Ratio.
+- **Rebalanceamento:** Otimização de alocação baseada em Volatilidade Inversa (Inverse Volatility Weighting).
 - **Dados Reais:** Integração com `yfinance` para cotações e dividendos atualizados.
 
 ## 📁 Estrutura do Projeto

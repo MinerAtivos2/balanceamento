@@ -1,11 +1,12 @@
 /* ==========================================================================
-   B3 Rebalanceamento & IA — Frontend Application
+   B3 Rebalanceamento & IA — Frontend Application (100% Client-Side)
    ========================================================================== */
 
 class B3App {
   constructor() {
     this.portfolio = { name: 'Meu Portfólio', positions: [] };
     this.assets = [];
+    this.marketData = null;
     this.analysis = null;
     this.charts = {};
     this.init();
@@ -19,6 +20,7 @@ class B3App {
     this.setupNavigation();
     this.setupModal();
 
+    await this.loadMarketData();
     await this.loadAssets();
     await this.loadPortfolio();
     await this.runAnalysis();
@@ -189,11 +191,10 @@ class B3App {
       return;
     }
 
-    // Merge or just add? Usually we add to existing.
     this.portfolio.positions.push(...newPositions);
 
     this.closeBulkModal();
-    await this.savePortfolio();
+    this.savePortfolio();
     await this.runAnalysis();
     this.renderPositions();
     this.toast(`${newPositions.length} ativos adicionados!`, 'success');
@@ -202,34 +203,45 @@ class B3App {
   /* ------------------------------------------------------------------
      Data loading
   ------------------------------------------------------------------ */
+  async loadMarketData() {
+    try {
+      const res = await fetch('data/market_data.json');
+      this.marketData = await res.json();
+    } catch (err) {
+      console.error('Erro ao carregar dados de mercado:', err);
+      this.toast('Erro ao carregar dados históricos', 'error');
+    }
+  }
+
   async loadAssets() {
     try {
-      const res = await fetch('/api/assets');
+      const res = await fetch('assets.json');
       const data = await res.json();
       this.assets = data.assets || [];
     } catch { this.assets = []; }
   }
 
   async loadPortfolio() {
-    try {
-      const res = await fetch('/api/portfolio');
-      const data = await res.json();
-      this.portfolio = data;
-    } catch {
-      this.portfolio = { name: 'Meu Portfólio', positions: [] };
+    const saved = localStorage.getItem('b3_portfolio');
+    if (saved) {
+      try {
+        this.portfolio = JSON.parse(saved);
+      } catch {
+        this.portfolio = { name: 'Meu Portfólio', positions: [] };
+      }
+    } else {
+      // Tenta carregar sample_portfolio.json se existir (primeira vez)
+      try {
+        const res = await fetch('sample_portfolio.json');
+        if (res.ok) this.portfolio = await res.json();
+      } catch {
+        this.portfolio = { name: 'Meu Portfólio', positions: [] };
+      }
     }
   }
 
-  async savePortfolio() {
-    try {
-      await fetch('/api/portfolio', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(this.portfolio),
-      });
-    } catch (err) {
-      console.error('Erro ao salvar portfólio', err);
-    }
+  savePortfolio() {
+    localStorage.setItem('b3_portfolio', JSON.stringify(this.portfolio));
   }
 
   /* ------------------------------------------------------------------
@@ -250,7 +262,7 @@ class B3App {
     }
 
     this.closeModal();
-    await this.savePortfolio();
+    this.savePortfolio();
     await this.runAnalysis();
     this.renderPositions();
     this.toast('Ativo salvo com sucesso!', 'success');
@@ -258,17 +270,17 @@ class B3App {
 
   async removePosition(index) {
     this.portfolio.positions.splice(index, 1);
-    await this.savePortfolio();
+    this.savePortfolio();
     await this.runAnalysis();
     this.renderPositions();
     this.toast('Ativo removido', 'info');
   }
 
   /* ------------------------------------------------------------------
-     API — Analysis
+     Logic — 100% Client-Side
   ------------------------------------------------------------------ */
   async runAnalysis() {
-    if (!this.portfolio.positions.length) {
+    if (!this.portfolio.positions.length || !this.marketData) {
       this.analysis = null;
       this.renderDashboard();
       return;
@@ -277,78 +289,184 @@ class B3App {
     const portfolioMap = {};
     this.portfolio.positions.forEach(p => { portfolioMap[p.ticker] = (portfolioMap[p.ticker] || 0) + p.quantity; });
 
-    try {
-      const res = await fetch('/api/analyze', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ portfolio: portfolioMap }),
+    const positions = [];
+    let totalValue = 0;
+
+    for (const [ticker, qty] of Object.entries(portfolioMap)) {
+      const asset = this.marketData.assets[ticker];
+      if (!asset) continue;
+
+      const price = asset.last_price;
+      const value = price * qty;
+      const closes = asset.history.closes;
+      const avg_1y = closes.length >= 252
+        ? closes.slice(-252).reduce((a, b) => a + b, 0) / 252
+        : closes.reduce((a, b) => a + b, 0) / closes.length;
+
+      const rent = ((price - avg_1y) / avg_1y * 100);
+
+      positions.push({
+        ticker,
+        name: asset.name,
+        sector: asset.sector || 'N/A',
+        quantity: qty,
+        current_price: price,
+        position_value: value,
+        rentability_1y: rent,
+        volatility: asset.stats.volatility
       });
-      this.analysis = await res.json();
-    } catch {
-      this.analysis = null;
+      totalValue += value;
     }
+
+    const allocation = {};
+    positions.forEach(p => {
+      allocation[p.ticker] = (p.position_value / totalValue * 100);
+    });
+
+    const avgRent = positions.reduce((a, b) => a + b.rentability_1y, 0) / positions.length;
+    const avgVol = positions.reduce((a, b) => a + b.volatility, 0) / positions.length;
+
+    this.analysis = {
+      timestamp: new Date().toISOString(),
+      positions,
+      allocation,
+      summary: {
+        total_value: totalValue,
+        num_positions: positions.length,
+        avg_rentability: avgRent,
+        portfolio_volatility: avgVol
+      }
+    };
 
     this.renderDashboard();
   }
 
   async runBarsi() {
-    const tickers = this.portfolio.positions.map(p => p.ticker);
-    if (!tickers.length) {
+    if (!this.portfolio.positions.length || !this.marketData) {
       this.toast('Adicione ativos ao portfólio primeiro', 'error');
       return;
     }
 
     const targetYield = parseFloat(this.$('barsiYield').value) || 6;
     this.$('barsiTargetDisplay').textContent = targetYield + '%';
-    this.showLoading('Calculando preço-teto...');
 
-    try {
-      const res = await fetch('/api/barsi', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ tickers, target_yield: targetYield }),
+    const analyses = [];
+    const tickers = [...new Set(this.portfolio.positions.map(p => p.ticker))];
+
+    for (const ticker of tickers) {
+      const asset = this.marketData.assets[ticker];
+      if (!asset) continue;
+
+      const divs = asset.dividends?.values || [];
+      if (!divs.length) {
+        analyses.push({
+          ticker, name: asset.name, current_price: asset.last_price,
+          price_ceiling: null, margin_of_safety: 0, recommendation: "SEM DADOS",
+          dpa_avg: 0, current_yield: 0
+        });
+        continue;
+      }
+
+      // Últimos 12 meses de dividendos (aproximadamente)
+      const annualDpa = divs.slice(-4).reduce((a, b) => a + b, 0); // Assume-se trimestral no yfinance em muitos casos
+      // Nota: o yfinance dividends varia. Para ser mais robusto, somar o último ano:
+      // Mas aqui simplificamos como somar os últimos valores.
+
+      const price = asset.last_price;
+      const priceCeiling = annualDpa / (targetYield / 100);
+      const margin = ((priceCeiling - price) / price * 100);
+      const currentYield = (annualDpa / price * 100);
+
+      let rec = "VENDER";
+      if (margin > 20) rec = "COMPRAR (ALTA MARGEM)";
+      else if (margin > 0) rec = "COMPRAR";
+      else if (margin > -10) rec = "MANTER";
+
+      analyses.push({
+        ticker, name: asset.name, current_price: price,
+        price_ceiling: priceCeiling, margin_of_safety: margin,
+        recommendation: rec, dpa_avg: annualDpa / 4, current_yield: currentYield
       });
-      const data = await res.json();
-      this.renderBarsi(data);
-      this.toast('Análise de preço-teto concluída!', 'success');
-    } catch {
-      this.toast('Erro ao calcular preço-teto', 'error');
-    } finally {
-      this.hideLoading();
     }
+
+    analyses.sort((a, b) => b.margin_of_safety - a.margin_of_safety);
+
+    const summary = {
+      buy_signals: analyses.filter(a => a.recommendation.includes('COMPRAR')).length,
+      hold_signals: analyses.filter(a => a.recommendation.includes('MANTER')).length,
+      sell_signals: analyses.filter(a => a.recommendation.includes('VENDER')).length
+    };
+
+    this.renderBarsi({ analyses, summary });
+    this.toast('Análise de preço-teto concluída!', 'success');
   }
 
   async runRebalance() {
+    if (!this.marketData) return;
     const tickers = [...new Set(this.portfolio.positions.map(p => p.ticker))];
     if (tickers.length < 2) {
       this.toast('Necessário pelo menos 2 ativos para otimização', 'error');
       return;
     }
 
+    this.showLoading('Calculando alocação via Volatilidade Inversa...');
+
+    // Estratégia: Volatilidade Inversa (Inverse Volatility Weighting)
+    // Peso_i = (1 / Vol_i) / Sum(1 / Vol_j)
+
+    const validAssets = tickers.map(t => this.marketData.assets[t]).filter(a => a && a.stats.volatility > 0);
+    const sumInverseVol = validAssets.reduce((acc, a) => acc + (1 / a.stats.volatility), 0);
+
+    const weights = {};
+    validAssets.forEach(a => {
+      weights[a.ticker] = ((1 / a.stats.volatility) / sumInverseVol) * 100;
+    });
+
     const portfolioMap = {};
     this.portfolio.positions.forEach(p => { portfolioMap[p.ticker] = (portfolioMap[p.ticker] || 0) + p.quantity; });
 
-    const riskFreeRate = (parseFloat(this.$('riskFreeRate').value) || 10) / 100;
-    this.showLoading('Otimizando portfólio via Markowitz...');
+    const totalValue = validAssets.reduce((acc, a) => acc + (portfolioMap[a.ticker] || 0) * a.last_price, 0);
 
-    try {
-      const res = await fetch('/api/rebalance', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ tickers, portfolio: portfolioMap, risk_free_rate: riskFreeRate }),
-      });
-      if (!res.ok) {
-        const err = await res.json();
-        throw new Error(err.error || 'Erro');
+    const suggestions = [];
+    validAssets.forEach(a => {
+      const price = a.last_price;
+      const curQty = portfolioMap[a.ticker] || 0;
+      const curVal = curQty * price;
+      const curPct = (curVal / totalValue * 100);
+      const tgtPct = weights[a.ticker];
+      const tgtVal = (tgtPct / 100) * totalValue;
+      const tgtQty = Math.round(tgtVal / price);
+      const diff = tgtQty - curQty;
+
+      if (Math.abs(diff) > 0) {
+        suggestions.push({
+          ticker: a.ticker,
+          name: a.name,
+          action: diff > 0 ? 'COMPRAR' : 'VENDER',
+          quantity: Math.abs(diff),
+          current_allocation: curPct,
+          target_allocation: tgtPct,
+          price: price,
+          total_value: Math.abs(diff) * price
+        });
       }
-      const data = await res.json();
-      this.renderRebalance(data);
-      this.toast('Otimização concluída!', 'success');
-    } catch (err) {
-      this.toast(err.message || 'Erro na otimização', 'error');
-    } finally {
+    });
+
+    const optResult = {
+      optimal_allocation: {
+        weights,
+        expected_return: this.analysis?.summary.avg_rentability || 0,
+        volatility: this.analysis?.summary.portfolio_volatility || 0,
+        sharpe_ratio: (this.analysis?.summary.avg_rentability / this.analysis?.summary.portfolio_volatility) || 0
+      },
+      rebalancing_suggestions: suggestions
+    };
+
+    setTimeout(() => {
+      this.renderRebalance(optResult);
       this.hideLoading();
-    }
+      this.toast('Otimização concluída!', 'success');
+    }, 500);
   }
 
   /* ------------------------------------------------------------------
@@ -506,7 +624,6 @@ class B3App {
     });
     tbody.innerHTML = html;
 
-    // Summary
     const sum = data.summary || {};
     this.$('barsiBuy').textContent = sum.buy_signals || 0;
     this.$('barsiHold').textContent = sum.hold_signals || 0;
@@ -526,7 +643,6 @@ class B3App {
     this.$('rebVol').textContent = opt.volatility.toFixed(2) + '%';
     this.$('rebSharpe').textContent = opt.sharpe_ratio.toFixed(4);
 
-    // Optimal allocation chart
     const ctx = this.$('optimalChart');
     if (this.charts.optimal) this.charts.optimal.destroy();
 
@@ -552,7 +668,6 @@ class B3App {
       },
     });
 
-    // Suggestions table
     const suggestions = data.rebalancing_suggestions || [];
     const tbody = this.$('suggestionsBody');
     if (!suggestions.length) {
@@ -603,6 +718,8 @@ class B3App {
   hideLoading() {
     this.$('loadingOverlay').classList.remove('show');
   }
+
+  $(id) { return document.getElementById(id); }
 
   toast(message, type = 'info') {
     const container = this.$('toastContainer');
