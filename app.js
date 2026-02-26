@@ -387,7 +387,7 @@ class B3App {
         position_value: value,
         rentability_1y: rent1y,
         rentability_real: rentReal,
-        volatility: asset.stats.volatility
+        volatility: asset.stats.volatility || 0
       });
       totalValue += value;
       totalInvestedValue += item.totalInvested;
@@ -400,9 +400,9 @@ class B3App {
       allocationInvested[p.ticker] = (p.totalInvested / totalInvestedValue * 100);
     });
 
-    const avgRent = positions.reduce((a, b) => a + b.rentability_1y, 0) / positions.length;
-    const avgVol = positions.reduce((a, b) => a + b.volatility, 0) / positions.length;
-    const portfolioRentReal = ((totalValue - totalInvestedValue) / totalInvestedValue * 100);
+    const avgRent = positions.reduce((a, b) => a + (b.rentability_1y || 0), 0) / (positions.length || 1);
+    const avgVol = positions.reduce((a, b) => a + (b.volatility || 0), 0) / (positions.length || 1);
+    const portfolioRentReal = totalInvestedValue > 0 ? ((totalValue - totalInvestedValue) / totalInvestedValue * 100) : 0;
 
     this.analysis = {
       timestamp: new Date().toISOString(),
@@ -453,10 +453,10 @@ class B3App {
       // Nota: o yfinance dividends varia. Para ser mais robusto, somar o último ano:
       // Mas aqui simplificamos como somar os últimos valores.
 
-      const price = asset.last_price;
+      const price = asset.last_price || 0;
       const priceCeiling = annualDpa / (targetYield / 100);
-      const margin = ((priceCeiling - price) / price * 100);
-      const currentYield = (annualDpa / price * 100);
+      const margin = price > 0 ? ((priceCeiling - price) / price * 100) : 0;
+      const currentYield = price > 0 ? (annualDpa / price * 100) : 0;
 
       let rec = "VENDER";
       if (margin > 20) rec = "COMPRAR (ALTA MARGEM)";
@@ -495,7 +495,14 @@ class B3App {
     // Estratégia: Volatilidade Inversa (Inverse Volatility Weighting)
     // Peso_i = (1 / Vol_i) / Sum(1 / Vol_j)
 
-    const validAssets = tickers.map(t => this.marketData.assets[t]).filter(a => a && a.stats.volatility > 0);
+    const validAssets = tickers.map(t => this.marketData.assets[t]).filter(a => a && (a.stats.volatility || 0) > 0);
+
+    if (validAssets.length === 0) {
+      this.hideLoading();
+      this.toast('Não há dados de volatilidade suficientes para os ativos selecionados.', 'warning');
+      return;
+    }
+
     const sumInverseVol = validAssets.reduce((acc, a) => acc + (1 / a.stats.volatility), 0);
 
     const weights = {};

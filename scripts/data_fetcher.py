@@ -6,6 +6,7 @@ Executa coleta de histórico de preços e informações de dividendos
 
 import json
 import os
+import math
 from datetime import datetime, timedelta
 import yfinance as yf
 import pandas as pd
@@ -138,11 +139,26 @@ def fetch_all_assets(assets=None):
     
     return all_data
 
+def sanitize_data(obj):
+    """Remove NaN e Infinity recursivamente de um objeto para garantir JSON válido"""
+    if isinstance(obj, dict):
+        return {k: sanitize_data(v) for k, v in obj.items()}
+    elif isinstance(obj, list):
+        return [sanitize_data(v) for v in obj]
+    elif isinstance(obj, float):
+        if math.isnan(obj) or math.isinf(obj):
+            return None
+    return obj
+
 def save_data(data, output_file=OUTPUT_FILE):
-    """Salva dados em arquivo JSON"""
+    """Salva dados em arquivo JSON, garantindo que seja válido"""
     os.makedirs(os.path.dirname(output_file), exist_ok=True)
+
+    # Limpa dados antes de salvar
+    clean_data = sanitize_data(data)
+
     with open(output_file, 'w', encoding='utf-8') as f:
-        json.dump(data, f, indent=2, ensure_ascii=False)
+        json.dump(clean_data, f, indent=2, ensure_ascii=False, allow_nan=False)
     print(f"✓ Dados salvos em: {output_file}")
 
 def main():
