@@ -212,20 +212,32 @@ class B3App {
   ------------------------------------------------------------------ */
   async loadMarketData() {
     try {
-      const res = await fetch('data/market_data.json');
+      // Use cache-buster to ensure we always get the latest data from GitHub Actions
+      const url = `./data/market_data.json?t=${new Date().getTime()}`;
+      const res = await fetch(url);
+
+      if (!res.ok) {
+        throw new Error(`Falha ao carregar arquivo (Status: ${res.status})`);
+      }
+
       this.marketData = await res.json();
+      console.log('Dados de mercado carregados com sucesso');
     } catch (err) {
       console.error('Erro ao carregar dados de mercado:', err);
-      this.toast('Erro ao carregar dados históricos', 'error');
+      this.toast('Erro ao carregar dados históricos: ' + err.message, 'error');
     }
   }
 
   async loadAssets() {
     try {
-      const res = await fetch('assets.json');
+      const res = await fetch('./assets.json');
+      if (!res.ok) throw new Error();
       const data = await res.json();
       this.assets = data.assets || [];
-    } catch { this.assets = []; }
+    } catch {
+      console.warn('Falha ao carregar assets.json');
+      this.assets = [];
+    }
   }
 
   async loadPortfolio() {
@@ -239,8 +251,11 @@ class B3App {
     } else {
       // Tenta carregar sample_portfolio.json se existir (primeira vez)
       try {
-        const res = await fetch('sample_portfolio.json');
-        if (res.ok) this.portfolio = await res.json();
+        const res = await fetch('./sample_portfolio.json');
+        if (res.ok) {
+          this.portfolio = await res.json();
+          this.savePortfolio(); // Persiste no localStorage
+        }
       } catch {
         this.portfolio = { name: 'Meu Portfólio', positions: [] };
       }
