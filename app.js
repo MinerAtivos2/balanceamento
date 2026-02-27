@@ -283,13 +283,14 @@ class B3App {
       const tickerData = consolidated[pos.ticker];
       const qty = pos.quantity;
       const price = pos.purchase_price;
-      const date = new Date(pos.purchase_date || new Date());
+      const dateStr = pos.purchase_date || new Date().toISOString().slice(0, 10);
+      const date = new Date(dateStr);
       const timestamp = date.getTime();
 
       tickerData.totalQty += qty;
       tickerData.totalInvested += (qty * price);
       tickerData.weightedDateSum += (timestamp * qty);
-      tickerData.transactions.push({ ...pos, originalIndex: index });
+      tickerData.transactions.push({ ...pos, originalIndex: index, purchase_date: dateStr });
     });
 
     return Object.values(consolidated).map(item => {
@@ -303,6 +304,28 @@ class B3App {
         avgDate: avgDate
       };
     });
+  }
+
+  findCloseForDate(asset, targetDateStr) {
+    if (!asset || !asset.history || !asset.history.dates.length) return null;
+
+    const dates = asset.history.dates;
+    const closes = asset.history.closes;
+
+    // Fallback: Se a data for anterior à primeira disponível, usa a primeira
+    if (targetDateStr < dates[0]) {
+      return closes[0];
+    }
+
+    // Busca a data exata ou o primeiro dia útil posterior
+    for (let i = 0; i < dates.length; i++) {
+      if (dates[i] >= targetDateStr) {
+        return closes[i];
+      }
+    }
+
+    // Se for posterior à última, usa a última
+    return closes[closes.length - 1];
   }
 
   /* ------------------------------------------------------------------
@@ -362,18 +385,25 @@ class B3App {
       const asset = this.marketData.assets[item.ticker];
       if (!asset) return;
 
-      const price = asset.last_price;
-      const value = price * item.totalQty;
+      const currentPrice = asset.last_price;
+      const value = currentPrice * item.totalQty;
 
-      // Rentabilidade 1a (período analisado) - mantida para o gráfico de rentabilidade comparativa
-      const closes = asset.history.closes;
-      const avg_1y = closes.length >= 252
-        ? closes.slice(-252).reduce((a, b) => a + b, 0) / 252
-        : closes.reduce((a, b) => a + b, 0) / closes.length;
-      const rent1y = ((price - avg_1y) / avg_1y * 100);
+      // Rentabilidade Real (Minha Rentabilidade): (Preço Atual / Preço Médio) - 1
+      const rentInvestor = ((currentPrice - item.avgPrice) / item.avgPrice * 100);
 
-      // Rentabilidade ponderada (real)
-      const rentReal = ((price - item.avgPrice) / item.avgPrice * 100);
+      // Rentabilidade do Ativo (Mercado): Ponderada pelas datas de compra
+      // Para cada lote: (Preço Atual / Preço na Data da Compra) - 1
+      let weightedMarketRentSum = 0;
+      item.transactions.forEach(t => {
+        const histPrice = this.findCloseForDate(asset, t.purchase_date);
+        if (histPrice) {
+          const lotRent = ((currentPrice - histPrice) / histPrice * 100);
+          weightedMarketRentSum += (lotRent * t.quantity);
+        } else {
+          weightedMarketRentSum += (rentInvestor * t.quantity); // Fallback caso bizarro
+        }
+      });
+      const rentMarket = weightedMarketRentSum / item.totalQty;
 
       positions.push({
         ticker: item.ticker,
@@ -383,10 +413,10 @@ class B3App {
         avgPrice: item.avgPrice,
         avgDate: item.avgDate,
         totalInvested: item.totalInvested,
-        current_price: price,
+        current_price: currentPrice,
         position_value: value,
-        rentability_1y: rent1y,
-        rentability_real: rentReal,
+        rentability_market: rentMarket,
+        rentability_real: rentInvestor,
         volatility: asset.stats.volatility || 0
       });
       totalValue += value;
@@ -400,7 +430,7 @@ class B3App {
       allocationInvested[p.ticker] = (p.totalInvested / totalInvestedValue * 100);
     });
 
-    const avgRent = positions.reduce((a, b) => a + (b.rentability_1y || 0), 0) / (positions.length || 1);
+    const avgRent = positions.reduce((a, b) => a + (b.rentability_market || 0), 0) / (positions.length || 1);
     const avgVol = positions.reduce((a, b) => a + (b.volatility || 0), 0) / (positions.length || 1);
     const portfolioRentReal = totalInvestedValue > 0 ? ((totalValue - totalInvestedValue) / totalInvestedValue * 100) : 0;
 
@@ -646,25 +676,50 @@ class B3App {
     if (this.charts.rentability) this.charts.rentability.destroy();
 
     const labels = this.analysis.positions.map(p => p.ticker.replace('.SA', ''));
-    const values = this.analysis.positions.map(p => p.rentability_real);
-    const colors = values.map(v => v >= 0 ? '#22c55e' : '#ef4444');
+    const marketValues = this.analysis.positions.map(p => p.rentability_market);
+    const investorValues = this.analysis.positions.map(p => p.rentability_real);
 
     this.charts.rentability = new Chart(ctx, {
       type: 'bar',
       data: {
         labels,
-        datasets: [{ label: 'Rentab. Real (%)', data: values, backgroundColor: colors, borderRadius: 6, barPercentage: 0.6 }],
+        datasets: [
+          {
+            label: 'Rentab. Ativo (%)',
+            data: marketValues,
+            backgroundColor: '#6366f1',
+            borderRadius: 4,
+            barPercentage: 0.8,
+            categoryPercentage: 0.7
+          },
+          {
+            label: 'Minha Rentab. (%)',
+            data: investorValues,
+            backgroundColor: '#22c55e',
+            borderRadius: 4,
+            barPercentage: 0.8,
+            categoryPercentage: 0.7
+          }
+        ],
       },
       options: {
         responsive: true,
         maintainAspectRatio: false,
         scales: {
-          x: { ticks: { color: '#94a3b8', font: { family: 'Inter' } }, grid: { display: false } },
+          x: { ticks: { color: '#94a3b8', font: { family: 'Inter', size: 10 } }, grid: { display: false } },
           y: { ticks: { color: '#94a3b8', callback: v => v + '%' }, grid: { color: 'rgba(255,255,255,0.05)' } },
         },
         plugins: {
-          legend: { display: false },
-          tooltip: { callbacks: { label: ctx => (ctx.raw > 0 ? '+' : '') + ctx.raw.toFixed(2) + '%' } },
+          legend: {
+            display: true,
+            position: 'top',
+            labels: { color: '#94a3b8', font: { size: 11 } }
+          },
+          tooltip: {
+            callbacks: {
+              label: ctx => `${ctx.dataset.label}: ${(ctx.raw > 0 ? '+' : '') + ctx.raw.toFixed(2)}%`
+            }
+          },
         },
       },
     });
@@ -713,9 +768,7 @@ class B3App {
     const tickerData = this.consolidatePortfolio().find(i => i.ticker === ticker);
     if (!tickerData) return;
 
-    // We'll use a simple alert/prompt or a new modal.
-    // Let's create a temporary modal structure in JS for simplicity or add to index.html.
-    // For now, let's create a dynamic modal.
+    this.closeTransactionModal(); // Ensure old modal is removed
 
     let rows = '';
     tickerData.transactions.forEach(t => {
