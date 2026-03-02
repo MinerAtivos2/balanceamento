@@ -1,6 +1,6 @@
 {
   "assets": [
-     {
+    {
     "ticker": "AALR3.SA",
     "name": "ALLIANÇA SAÚDE E PARTICIPAÇÕES S.A.",
     "sector": "Saúde",
@@ -122,6 +122,12 @@
   },
   {
     "ticker": "ALUP4.SA",
+    "name": "ALUPAR INVESTIMENTO S/A",
+    "sector": "Utilidade Pública",
+    "description": "Energia Elétrica"
+  },
+    {
+    "ticker": "ALUP11.SA",
     "name": "ALUPAR INVESTIMENTO S/A",
     "sector": "Utilidade Pública",
     "description": "Energia Elétrica"
@@ -498,6 +504,12 @@
     "sector": "Financeiro",
     "description": "Intermediários Financeiros - Bancos"
   },
+    {
+    "ticker": "BPAC11.SA",
+    "name": "BCO BTG PACTUAL S.A.",
+    "sector": "Financeiro",
+    "description": "Intermediários Financeiros - Bancos"
+  },
   {
     "ticker": "BPAR3.SA",
     "name": "BCO ESTADO DO PARA S.A.",
@@ -530,6 +542,12 @@
   },
   {
     "ticker": "BRBI4.SA",
+    "name": "BRBI BR PARTNERS S.A.",
+    "sector": "Financeiro",
+    "description": "Intermediários Financeiros - Bancos"
+  },
+    {
+    "ticker": "BRBI11.SA",
     "name": "BRBI BR PARTNERS S.A.",
     "sector": "Financeiro",
     "description": "Intermediários Financeiros - Bancos"
@@ -1110,6 +1128,12 @@
     "sector": "Utilidade Pública",
     "description": "Energia Elétrica"
   },
+    {
+    "ticker": "ENGI11.SA",
+    "name": "ENERGISA S.A.",
+    "sector": "Utilidade Pública",
+    "description": "Energia Elétrica"
+  },
   {
     "ticker": "ENJU3.SA",
     "name": "ENJOEI S.A.",
@@ -1476,6 +1500,12 @@
     "sector": "Financeiro",
     "description": "Exploração de Imóveis"
   },
+    {
+    "ticker": "IGTI11.SA",
+    "name": "IGUATEMI S.A.",
+    "sector": "Financeiro",
+    "description": "Exploração de Imóveis"
+  },
   {
     "ticker": "INEP3.SA",
     "name": "INEPAR S.A. INDUSTRIA E CONSTRUCOES",
@@ -1598,6 +1628,12 @@
   },
   {
     "ticker": "KLBN4.SA",
+    "name": "KLABIN S.A.",
+    "sector": "Materiais Básicos",
+    "description": "Madeira e Papel - Papel e Celulose"
+  },
+    {
+    "ticker": "KLBN11.SA",
     "name": "KLABIN S.A.",
     "sector": "Materiais Básicos",
     "description": "Madeira e Papel - Papel e Celulose"
@@ -2298,6 +2334,12 @@
     "sector": "Bens Industriais",
     "description": "Comércio Varejista - Material de Transporte"
   },
+    {
+    "ticker": "RBNS11.SA",
+    "name": "RODOBENS S.A",
+    "sector": "Bens Industriais",
+    "description": "Comércio Varejista - Material de Transporte"
+  },
   {
     "ticker": "RCSL3.SA",
     "name": "RECRUSUL S.A.",
@@ -2448,6 +2490,12 @@
     "sector": "Financeiro",
     "description": "Intermediários Financeiros - Bancos"
   },
+    {
+    "ticker": "SANB11.SA",
+    "name": "BCO SANTANDER (BRASIL) S.A.",
+    "sector": "Financeiro",
+    "description": "Intermediários Financeiros - Bancos"
+  },
   {
     "ticker": "SAPR3.SA",
     "name": "CIA SANEAMENTO DO PARANA - SANEPAR",
@@ -2456,6 +2504,12 @@
   },
   {
     "ticker": "SAPR4.SA",
+    "name": "CIA SANEAMENTO DO PARANA - SANEPAR",
+    "sector": "Utilidade Pública",
+    "description": "Água e Saneamento"
+  },
+    {
+    "ticker": "SAPR11.SA",
     "name": "CIA SANEAMENTO DO PARANA - SANEPAR",
     "sector": "Utilidade Pública",
     "description": "Água e Saneamento"
@@ -2594,6 +2648,12 @@
   },
   {
     "ticker": "TAEE4.SA",
+    "name": "TRANSMISSORA ALIANÇA DE ENERGIA ELÉTRICA S.A.",
+    "sector": "Utilidade Pública",
+    "description": "Energia Elétrica"
+  },
+    {
+    "ticker": "TAEE11.SA",
     "name": "TRANSMISSORA ALIANÇA DE ENERGIA ELÉTRICA S.A.",
     "sector": "Utilidade Pública",
     "description": "Energia Elétrica"
