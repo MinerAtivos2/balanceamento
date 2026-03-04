@@ -101,6 +101,44 @@
         </div>
       </div>
 
+      <div class="market-summary-section" id="marketSummarySection" style="display:none; margin-top: 2rem;">
+        <h2 class="card-title" style="margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem;">
+          🌍 Resumo do Mercado <small id="summaryDate" style="font-weight: normal; opacity: 0.7; font-size: 0.9rem;"></small>
+        </h2>
+        <div class="summary-grid">
+          <div class="card glass">
+            <h3 class="card-title" style="color: var(--success); font-size: 1.1rem;">📈 Maiores Altas</h3>
+            <div class="table-responsive">
+              <table class="summary-table">
+                <thead>
+                  <tr>
+                    <th>Ativo</th>
+                    <th>Preço</th>
+                    <th>Var.</th>
+                  </tr>
+                </thead>
+                <tbody id="gainersBody"></tbody>
+              </table>
+            </div>
+          </div>
+          <div class="card glass">
+            <h3 class="card-title" style="color: var(--danger); font-size: 1.1rem;">📉 Maiores Baixas</h3>
+            <div class="table-responsive">
+              <table class="summary-table">
+                <thead>
+                  <tr>
+                    <th>Ativo</th>
+                    <th>Preço</th>
+                    <th>Var.</th>
+                  </tr>
+                </thead>
+                <tbody id="losersBody"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div class="alert alert-info glass" style="margin-top:1.5rem;">
         <strong>💡 Dica:</strong> Os dados do mercado são atualizados automaticamente uma vez por dia.
       </div>

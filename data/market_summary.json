@@ -1,0 +1,88 @@
+{
+  "last_update": "2026-03-03T23:25:07.434317",
+  "date": "2026-03-03",
+  "gainers": [
+    {
+      "ticker": "RCSL4.SA",
+      "name": "Recrusul S/A",
+      "last_close": 1.71,
+      "prev_close": 1.39,
+      "delta": 0.23021582733812962,
+      "date": "2026-03-03"
+    },
+    {
+      "ticker": "ADMF3.SA",
+      "name": "CIABRASF - Cia. Brasileira de Serviços Financeiros S/A",
+      "last_close": 13.9,
+      "prev_close": 12.5,
+      "delta": 0.1120000000000001,
+      "date": "2026-03-03"
+    },
+    {
+      "ticker": "RCSL3.SA",
+      "name": "Recrusul S/A",
+      "last_close": 0.84,
+      "prev_close": 0.76,
+      "delta": 0.10526315789473673,
+      "date": "2026-03-03"
+    },
+    {
+      "ticker": "BGIP3.SA",
+      "name": "Banco do Estado de Sergipe S.A.",
+      "last_close": 65.0,
+      "prev_close": 60.77,
+      "delta": 0.06960671383906525,
+      "date": "2026-03-03"
+    },
+    {
+      "ticker": "RAIZ4.SA",
+      "name": "Raízen S.A.",
+      "last_close": 0.69,
+      "prev_close": 0.65,
+      "delta": 0.06153846153846132,
+      "date": "2026-03-03"
+    }
+  ],
+  "losers": [
+    {
+      "ticker": "PCAR3.SA",
+      "name": "Companhia Brasileira De Distribuicao",
+      "last_close": 2.59,
+      "prev_close": 3.15,
+      "delta": -0.1777777777777778,
+      "date": "2026-03-03"
+    },
+    {
+      "ticker": "ONCO3.SA",
+      "name": "Oncoclínicas do Brasil Serviços Médicos S.A.",
+      "last_close": 2.15,
+      "prev_close": 2.57,
+      "delta": -0.16342412451361865,
+      "date": "2026-03-03"
+    },
+    {
+      "ticker": "OIBR3.SA",
+      "name": "Oi S.A.",
+      "last_close": 0.17,
+      "prev_close": 0.2,
+      "delta": -0.15000000000000002,
+      "date": "2026-03-03"
+    },
+    {
+      "ticker": "KEPL3.SA",
+      "name": "Kepler Weber S.A.",
+      "last_close": 8.31,
+      "prev_close": 9.63,
+      "delta": -0.1370716510903427,
+      "date": "2026-03-03"
+    },
+    {
+      "ticker": "FICT3.SA",
+      "name": "Fictor Alimentos S.A.",
+      "last_close": 0.61,
+      "prev_close": 0.7,
+      "delta": -0.12857142857142856,
+      "date": "2026-03-03"
+    }
+  ]
+}

@@ -21,6 +21,7 @@ class B3App {
     this.setupModal();
 
     await this.loadMarketData();
+    await this.loadMarketSummary();
     await this.loadAssets();
     await this.loadPortfolio();
     await this.runAnalysis();
@@ -225,6 +226,18 @@ class B3App {
     } catch (err) {
       console.error('Erro ao carregar dados de mercado:', err);
       this.toast('Erro ao carregar dados históricos: ' + err.message, 'error');
+    }
+  }
+
+  async loadMarketSummary() {
+    try {
+      const url = `./data/market_summary.json?t=${new Date().getTime()}`;
+      const res = await fetch(url);
+      if (!res.ok) return;
+      const summary = await res.json();
+      this.renderMarketSummary(summary);
+    } catch (err) {
+      console.warn('Resumo de mercado não disponível');
     }
   }
 
@@ -920,6 +933,34 @@ class B3App {
     });
     tbody.innerHTML = html;
     this.$('suggestionsCard').style.display = 'block';
+  }
+
+  /* ------------------------------------------------------------------
+     Rendering — Market Summary
+  ------------------------------------------------------------------ */
+  renderMarketSummary(summary) {
+    if (!summary || !summary.gainers || !summary.losers) return;
+
+    this.$('marketSummarySection').style.display = 'block';
+    this.$('summaryDate').textContent = `(Dados de ${summary.date})`;
+
+    const renderRows = (data, isGainer) => {
+      return data.map(item => {
+        const delta = (item.delta * 100).toFixed(2);
+        const icon = isGainer ? '🚀' : '📉';
+        const cssClass = isGainer ? 'var-up' : 'var-down';
+        return `
+          <tr>
+            <td><strong>${item.ticker.replace('.SA', '')}</strong><br><small style="color:var(--text-muted)">${item.name}</small></td>
+            <td>R$ ${item.last_close.toFixed(2)}</td>
+            <td class="${cssClass}">${isGainer ? '+' : ''}${delta}% ${icon}</td>
+          </tr>
+        `;
+      }).join('');
+    };
+
+    this.$('gainersBody').innerHTML = renderRows(summary.gainers, true);
+    this.$('losersBody').innerHTML = renderRows(summary.losers, false);
   }
 
   /* ------------------------------------------------------------------
