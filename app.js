@@ -237,11 +237,8 @@ class B3App {
       const summary = await res.json();
       this.renderMarketSummary(summary);
 
-      // Also load raw markdown
-      const resMd = await fetch(`./data/market_summary.md?t=${new Date().getTime()}`);
-      if (resMd.ok) {
-        const mdText = await resMd.text();
-        this.$('markdownContent').textContent = mdText;
+      if (summary.all_assets) {
+        this.renderMarketTreemap(summary.all_assets);
       }
     } catch (err) {
       console.warn('Resumo de mercado não disponível');
@@ -952,7 +949,8 @@ class B3App {
 
     const renderRows = (data, isGainer) => {
       return data.map(item => {
-        const delta = (item.delta * 100).toFixed(2);
+        const deltaVal = item.daily_delta !== undefined ? item.daily_delta : item.delta;
+        const delta = (deltaVal * 100).toFixed(2);
         const icon = isGainer ? '🚀' : '📉';
         const cssClass = isGainer ? 'var-up' : 'var-down';
         return `
@@ -960,7 +958,7 @@ class B3App {
             <td><strong>${item.ticker.replace('.SA', '')}</strong><br><small style="color:var(--text-muted)">${item.name}</small></td>
             <td>R$ ${item.last_close.toFixed(2)}</td>
             <td>R$ ${item.prev_close.toFixed(2)}</td>
-            <td class="${cssClass}">${isGainer ? '+' : ''}${delta}% ${icon}</td>
+            <td class="${cssClass}">${(deltaVal > 0 && isGainer) ? '+' : ''}${delta}% ${icon}</td>
           </tr>
         `;
       }).join('');
@@ -968,6 +966,86 @@ class B3App {
 
     this.$('gainersBody').innerHTML = renderRows(summary.gainers, true);
     this.$('losersBody').innerHTML = renderRows(summary.losers, false);
+  }
+
+  renderMarketTreemap(allAssets) {
+    const ctx = this.$('marketTreemap');
+    if (!ctx) return;
+    if (this.charts.treemap) this.charts.treemap.destroy();
+
+    console.log('Rendering Treemap with assets:', allAssets.length);
+
+    // Sizing: Use absolute daily variation. If 0, use a small constant so it's visible.
+    const data = allAssets.map(a => ({
+      ticker: a.ticker.replace('.SA', ''),
+      name: a.name,
+      value: Math.max(Math.abs(a.daily_delta * 100), 0.5),
+      daily: (a.daily_delta * 100).toFixed(2) + '%',
+      monthly: (a.monthly_delta * 100).toFixed(2) + '%',
+      delta: a.daily_delta
+    }));
+
+    this.charts.treemap = new Chart(ctx, {
+      type: 'treemap',
+      data: {
+        datasets: [{
+          label: 'Mercado B3',
+          tree: data,
+          key: 'value',
+          spacing: 1,
+          borderWidth: 0,
+          borderRadius: 2,
+          backgroundColor: (context) => {
+            if (!context || !context.raw || !context.raw._data) return '#333';
+            const item = context.raw._data;
+            const delta = item.delta;
+            if (delta > 0.02) return '#166534'; // Dark Green
+            if (delta > 0) return '#22c55e';    // Green
+            if (delta > -0.02) return '#f97316'; // Orange
+            return '#ef4444';                   // Red
+          },
+          labels: {
+            display: true,
+            formatter: (context) => {
+              if (!context || !context.raw || !context.raw._data) return '';
+              const item = context.raw._data;
+              // Only show full info if there's some space
+              if (context.raw.w < 40 || context.raw.h < 30) return [item.ticker];
+              return [item.ticker, `D: ${item.daily}`, `M: ${item.monthly}`];
+            },
+            font: (context) => {
+              if (!context || !context.raw) return { size: 10 };
+              const item = context.raw;
+              const size = Math.min(Math.max((item.w || 0) / 6, 8), 12);
+              return { size: size, weight: 'bold', family: 'Inter' };
+            },
+            color: '#fff'
+          }
+        }]
+      },
+      options: {
+        animation: false,
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            callbacks: {
+              title: (items) => (items && items[0] && items[0].raw && items[0].raw._data) ? items[0].raw._data.ticker : '',
+              label: (item) => {
+                if (!item || !item.raw || !item.raw._data) return '';
+                const d = item.raw._data;
+                return [
+                  `Nome: ${d.name}`,
+                  `Variação Dia: ${d.daily}`,
+                  `Variação Mês: ${d.monthly}`
+                ];
+              }
+            }
+          }
+        }
+      }
+    });
   }
 
   /* ------------------------------------------------------------------

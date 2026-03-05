@@ -1,6 +1,6 @@
 ## Resumo de Mercado - 2026-03-03
 
-### 📈 Maiores Altas
+### 📈 Maiores Altas (Dia)
 
 | Ativo | Nome | Fechamento | Anterior | Variação |
 | :--- | :--- | :--- | :--- | :--- |
@@ -10,7 +10,7 @@
 | BGIP3.SA | Banco do Estado de Sergipe S.A. | R$ 65.00 | R$ 60.77 | **+6.96%** 🚀 |
 | RAIZ4.SA | Raízen S.A. | R$ 0.69 | R$ 0.65 | **+6.15%** 🚀 |
 
-### 📉 Maiores Baixas
+### 📉 Maiores Baixas (Dia)
 
 | Ativo | Nome | Fechamento | Anterior | Variação |
 | :--- | :--- | :--- | :--- | :--- |

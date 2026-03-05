@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 """
-Market Summary - Gera resumo diário de ganhos e perdas
+Market Summary - Gera resumo diário de ganhos e perdas, incluindo dados para Treemap
 """
 
 import json
 import os
+from datetime import datetime, timedelta
 
 # Configurações
 DATA_DIR = os.path.join(os.path.dirname(__file__), '..', 'data')
@@ -12,7 +13,7 @@ MARKET_DATA_FILE = os.path.join(DATA_DIR, 'market_data.json')
 SUMMARY_JSON = os.path.join(DATA_DIR, 'market_summary.json')
 SUMMARY_MD = os.path.join(DATA_DIR, 'market_summary.md')
 
-def calculate_deltas():
+def calculate_variations():
     if not os.path.exists(MARKET_DATA_FILE):
         print(f"❌ Arquivo {MARKET_DATA_FILE} não encontrado.")
         return None
@@ -21,68 +22,98 @@ def calculate_deltas():
         data = json.load(f)
 
     assets_data = data.get('assets', {})
-    summary_list = []
+    all_assets_summary = []
 
     for ticker, info in assets_data.items():
         history = info.get('history', {})
         dates = history.get('dates', [])
         closes = history.get('closes', [])
 
-        if len(dates) >= 2 and len(closes) >= 2:
-            last_close = closes[-1]
+        if not dates or not closes:
+            continue
+
+        asset_summary = {
+            'ticker': ticker,
+            'name': info.get('name', ticker),
+            'last_close': closes[-1],
+            'date': dates[-1],
+            'daily_delta': 0,
+            'monthly_delta': 0
+        }
+
+        # Daily Delta
+        if len(closes) >= 2:
             prev_close = closes[-2]
-
             if prev_close and prev_close > 0:
-                delta = (last_close / prev_close) - 1
-                summary_list.append({
-                    'ticker': ticker,
-                    'name': info.get('name', ticker),
-                    'last_close': last_close,
-                    'prev_close': prev_close,
-                    'delta': delta,
-                    'date': dates[-1]
-                })
+                asset_summary['daily_delta'] = (closes[-1] / prev_close) - 1
+                asset_summary['prev_close'] = prev_close
 
-    if not summary_list:
+        # Monthly Delta (approx 30 days ago)
+        # We look for the price closest to 30 days before the last date
+        try:
+            last_date = datetime.strptime(dates[-1], '%Y-%m-%d')
+            target_date = last_date - timedelta(days=30)
+            target_date_str = target_date.strftime('%Y-%m-%d')
+
+            # Find closest date index that is <= target_date_str
+            # Since dates are sorted, we can search
+            month_idx = 0
+            for i, d in enumerate(dates):
+                if d <= target_date_str:
+                    month_idx = i
+                else:
+                    break
+
+            month_close = closes[month_idx]
+            if month_close and month_close > 0:
+                asset_summary['monthly_delta'] = (closes[-1] / month_close) - 1
+        except Exception as e:
+            print(f"⚠️ Erro ao calcular delta mensal para {ticker}: {e}")
+
+        all_assets_summary.append(asset_summary)
+
+    if not all_assets_summary:
         print("⚠️ Nenhum dado suficiente para calcular variações.")
         return None
 
-    # Ordenar por delta
-    sorted_assets = sorted(summary_list, key=lambda x: x['delta'], reverse=True)
+    # Top Gainers/Losers based on daily delta
+    valid_daily = [a for a in all_assets_summary if 'prev_close' in a]
+    sorted_daily = sorted(valid_daily, key=lambda x: x['daily_delta'], reverse=True)
 
-    top_gainers = sorted_assets[:5]
-    top_losers = sorted_assets[-5:][::-1] # 5 piores, do pior para o menos pior
+    top_gainers = sorted_daily[:5]
+    top_losers = sorted_daily[-5:][::-1]
 
     return {
         'last_update': data.get('timestamp'),
-        'date': summary_list[0]['date'] if summary_list else None,
+        'date': all_assets_summary[0]['date'] if all_assets_summary else None,
         'gainers': top_gainers,
-        'losers': top_losers
+        'losers': top_losers,
+        'all_assets': all_assets_summary
     }
 
 def format_markdown(summary):
     date_str = summary['date']
     md = f"## Resumo de Mercado - {date_str}\n\n"
 
-    md += "### 📈 Maiores Altas\n\n"
+    md += "### 📈 Maiores Altas (Dia)\n\n"
     md += "| Ativo | Nome | Fechamento | Anterior | Variação |\n"
     md += "| :--- | :--- | :--- | :--- | :--- |\n"
     for a in summary['gainers']:
-        delta_pct = a['delta'] * 100
-        md += f"| {a['ticker']} | {a['name']} | R$ {a['last_close']:.2f} | R$ {a['prev_close']:.2f} | **+{delta_pct:.2f}%** 🚀 |\n"
+        delta_pct = a['daily_delta'] * 100
+        md += f"| {a['ticker']} | {a['name']} | R$ {a['last_close']:.2f} | R$ {a.get('prev_close', 0):.2f} | **+{delta_pct:.2f}%** 🚀 |\n"
 
-    md += "\n### 📉 Maiores Baixas\n\n"
+    md += "\n### 📉 Maiores Baixas (Dia)\n\n"
     md += "| Ativo | Nome | Fechamento | Anterior | Variação |\n"
     md += "| :--- | :--- | :--- | :--- | :--- |\n"
     for a in summary['losers']:
-        delta_pct = a['delta'] * 100
-        md += f"| {a['ticker']} | {a['name']} | R$ {a['last_close']:.2f} | R$ {a['prev_close']:.2f} | **{delta_pct:.2f}%** 📉 |\n"
+        delta_pct = a['daily_delta'] * 100
+        md += f"| {a['ticker']} | {a['name']} | R$ {a['last_close']:.2f} | R$ {a.get('prev_close', 0):.2f} | **{delta_pct:.2f}%** 📉 |\n"
 
     return md
 
 def main():
-    print("Gerando resumo de mercado...")
-    summary = calculate_deltas()
+    print("Gerando resumo de mercado e dados para Treemap...")
+    summary = calculate_variations()
 
     if summary:
         # Salvar JSON

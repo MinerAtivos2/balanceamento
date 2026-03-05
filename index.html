@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-chart-treemap@3.0.0/dist/chartjs-chart-treemap.min.js"></script>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -328,8 +329,11 @@
       </div>
 
       <div class="card glass" style="margin-top: 1.5rem;">
-        <h2 class="card-title">📝 Relatório Técnico (Markdown)</h2>
-        <pre id="markdownContent" style="background: var(--bg-secondary); padding: 1.5rem; border-radius: var(--radius-sm); color: var(--text-secondary); font-family: monospace; font-size: 0.85rem; overflow-x: auto; white-space: pre-wrap; border: 1px solid var(--border-glass);"></pre>
+        <h2 class="card-title">🗺️ Mapa do Mercado (Treemap)</h2>
+        <p class="subtitle" style="margin-bottom: 1rem;">O tamanho dos blocos representa a variação absoluta do dia. Cores: Verde (Alta) e Laranja/Vermelho (Baixa).</p>
+        <div class="chart-container" style="height: 600px;">
+          <canvas id="marketTreemap"></canvas>
+        </div>
       </div>
     </section>
 
