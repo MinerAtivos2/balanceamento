@@ -31,6 +31,9 @@
       <a href="#" class="nav-link" data-section="rebalance" id="nav-rebalance">
         <span class="nav-icon">⚖️</span> Rebalanceamento
       </a>
+      <a href="#" class="nav-link" data-section="summary" id="nav-summary">
+        <span class="nav-icon">🌍</span> Resumo de Mercado
+      </a>
       <a href="https://minerativos.com.br" class="nav-link" data-section="about" id="nav-about">
         <span class="nav-icon">ℹ️</span> Página principal
       </a>
@@ -101,43 +104,6 @@
         </div>
       </div>
 
-      <div class="market-summary-section" id="marketSummarySection" style="display:none; margin-top: 2rem;">
-        <h2 class="card-title" style="margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem;">
-          🌍 Resumo do Mercado <small id="summaryDate" style="font-weight: normal; opacity: 0.7; font-size: 0.9rem;"></small>
-        </h2>
-        <div class="summary-grid">
-          <div class="card glass">
-            <h3 class="card-title" style="color: var(--success); font-size: 1.1rem;">📈 Maiores Altas</h3>
-            <div class="table-responsive">
-              <table class="summary-table">
-                <thead>
-                  <tr>
-                    <th>Ativo</th>
-                    <th>Preço</th>
-                    <th>Var.</th>
-                  </tr>
-                </thead>
-                <tbody id="gainersBody"></tbody>
-              </table>
-            </div>
-          </div>
-          <div class="card glass">
-            <h3 class="card-title" style="color: var(--danger); font-size: 1.1rem;">📉 Maiores Baixas</h3>
-            <div class="table-responsive">
-              <table class="summary-table">
-                <thead>
-                  <tr>
-                    <th>Ativo</th>
-                    <th>Preço</th>
-                    <th>Var.</th>
-                  </tr>
-                </thead>
-                <tbody id="losersBody"></tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      </div>
 
       <div class="alert alert-info glass" style="margin-top:1.5rem;">
         <strong>💡 Dica:</strong> Os dados do mercado são atualizados automaticamente uma vez por dia.
@@ -305,6 +271,65 @@
 
       <div class="card glass" id="rebalancePlaceholder">
         <p class="empty-state" style="padding:2rem;">Clique em <strong>"Otimizar Portfólio"</strong> para calcular a alocação ótima usando a Teoria de Markowitz.</p>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- RESUMO DE MERCADO -->
+    <!-- ============================================================ -->
+    <section class="page" data-page="summary" id="page-summary">
+      <div class="page-header">
+        <h1>Resumo do Mercado</h1>
+        <p class="subtitle" id="summaryDateFull">Visão diária dos ativos que mais se movimentaram</p>
+      </div>
+
+      <div class="summary-grid">
+        <div class="card glass">
+          <h2 class="card-title" style="color: var(--green); display: flex; align-items: center; gap: 0.5rem;">
+            📈 Maiores Altas
+          </h2>
+          <div class="table-responsive">
+            <table class="summary-table">
+              <thead>
+                <tr>
+                  <th>Ativo</th>
+                  <th>Preço Atual</th>
+                  <th>Anterior</th>
+                  <th>Variação</th>
+                </tr>
+              </thead>
+              <tbody id="gainersBody">
+                <tr><td colspan="4" class="empty-state">Carregando dados...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="card glass">
+          <h2 class="card-title" style="color: var(--red); display: flex; align-items: center; gap: 0.5rem;">
+            📉 Maiores Baixas
+          </h2>
+          <div class="table-responsive">
+            <table class="summary-table">
+              <thead>
+                <tr>
+                  <th>Ativo</th>
+                  <th>Preço Atual</th>
+                  <th>Anterior</th>
+                  <th>Variação</th>
+                </tr>
+              </thead>
+              <tbody id="losersBody">
+                <tr><td colspan="4" class="empty-state">Carregando dados...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="card glass" style="margin-top: 1.5rem;">
+        <h2 class="card-title">📝 Relatório Técnico (Markdown)</h2>
+        <pre id="markdownContent" style="background: var(--bg-secondary); padding: 1.5rem; border-radius: var(--radius-sm); color: var(--text-secondary); font-family: monospace; font-size: 0.85rem; overflow-x: auto; white-space: pre-wrap; border: 1px solid var(--border-glass);"></pre>
       </div>
     </section>
 

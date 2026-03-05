@@ -5,7 +5,6 @@ Market Summary - Gera resumo diário de ganhos e perdas
 
 import json
 import os
-from datetime import datetime
 
 # Configurações
 DATA_DIR = os.path.join(os.path.dirname(__file__), '..', 'data')

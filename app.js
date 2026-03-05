@@ -236,6 +236,13 @@ class B3App {
       if (!res.ok) return;
       const summary = await res.json();
       this.renderMarketSummary(summary);
+
+      // Also load raw markdown
+      const resMd = await fetch(`./data/market_summary.md?t=${new Date().getTime()}`);
+      if (resMd.ok) {
+        const mdText = await resMd.text();
+        this.$('markdownContent').textContent = mdText;
+      }
     } catch (err) {
       console.warn('Resumo de mercado não disponível');
     }
@@ -941,8 +948,7 @@ class B3App {
   renderMarketSummary(summary) {
     if (!summary || !summary.gainers || !summary.losers) return;
 
-    this.$('marketSummarySection').style.display = 'block';
-    this.$('summaryDate').textContent = `(Dados de ${summary.date})`;
+    this.$('summaryDateFull').textContent = `Dados atualizados em ${summary.date} (referente à coleta de ${summary.last_update.split('T')[0]})`;
 
     const renderRows = (data, isGainer) => {
       return data.map(item => {
@@ -953,6 +959,7 @@ class B3App {
           <tr>
             <td><strong>${item.ticker.replace('.SA', '')}</strong><br><small style="color:var(--text-muted)">${item.name}</small></td>
             <td>R$ ${item.last_close.toFixed(2)}</td>
+            <td>R$ ${item.prev_close.toFixed(2)}</td>
             <td class="${cssClass}">${isGainer ? '+' : ''}${delta}% ${icon}</td>
           </tr>
         `;
