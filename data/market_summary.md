@@ -1,21 +1,21 @@
-## Resumo de Mercado - 2026-03-03
+## Resumo de Mercado - 2026-03-05
 
 ### 📈 Maiores Altas (Dia)
 
 | Ativo | Nome | Fechamento | Anterior | Variação |
 | :--- | :--- | :--- | :--- | :--- |
-| RCSL4.SA | Recrusul S/A | R$ 1.71 | R$ 1.39 | **+23.02%** 🚀 |
+| IFCM3.SA | Infracommerce CXaaS S.A. | R$ 1.27 | R$ 1.04 | **+22.12%** 🚀 |
 | ADMF3.SA | CIABRASF - Cia. Brasileira de Serviços Financeiros S/A | R$ 13.90 | R$ 12.50 | **+11.20%** 🚀 |
-| RCSL3.SA | Recrusul S/A | R$ 0.84 | R$ 0.76 | **+10.53%** 🚀 |
-| BGIP3.SA | Banco do Estado de Sergipe S.A. | R$ 65.00 | R$ 60.77 | **+6.96%** 🚀 |
-| RAIZ4.SA | Raízen S.A. | R$ 0.69 | R$ 0.65 | **+6.15%** 🚀 |
+| VVEO3.SA | CM Hospitalar S/A | R$ 1.35 | R$ 1.22 | **+10.66%** 🚀 |
+| BRKM6.SA | Braskem S.A. | R$ 9.65 | R$ 8.80 | **+9.66%** 🚀 |
+| FIGE3.SA | Investimentos Bemge S.A. | R$ 24.11 | R$ 22.06 | **+9.29%** 🚀 |
 
 ### 📉 Maiores Baixas (Dia)
 
 | Ativo | Nome | Fechamento | Anterior | Variação |
 | :--- | :--- | :--- | :--- | :--- |
-| PCAR3.SA | Companhia Brasileira De Distribuicao | R$ 2.59 | R$ 3.15 | **-17.78%** 📉 |
-| ONCO3.SA | Oncoclínicas do Brasil Serviços Médicos S.A. | R$ 2.15 | R$ 2.57 | **-16.34%** 📉 |
-| OIBR3.SA | Oi S.A. | R$ 0.17 | R$ 0.20 | **-15.00%** 📉 |
-| KEPL3.SA | Kepler Weber S.A. | R$ 8.31 | R$ 9.63 | **-13.71%** 📉 |
-| FICT3.SA | Fictor Alimentos S.A. | R$ 0.61 | R$ 0.70 | **-12.86%** 📉 |
+| AALR3.SA | Alliança Saúde e Participações S.A. | R$ 4.69 | R$ 5.28 | **-11.17%** 📉 |
+| ARND3.SA | Arandu Investimentos S.A. | R$ 0.75 | R$ 0.84 | **-10.71%** 📉 |
+| CLSC3.SA | Centrais Elétricas de Santa Catarina S.A. | R$ 124.01 | R$ 131.00 | **-5.34%** 📉 |
+| RENT3.SA | Localiza Rent a Car S.A. | R$ 47.69 | R$ 50.36 | **-5.30%** 📉 |
+| RENT4.SA | Localiza Rent a Car S.A. | R$ 45.42 | R$ 47.95 | **-5.28%** 📉 |
