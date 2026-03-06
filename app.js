@@ -47,6 +47,10 @@ class B3App {
     // Auth buttons
     this.$('btnLogout').addEventListener('click', (e) => { e.preventDefault(); this.logout(); });
     this.$('btnLogoutFull').addEventListener('click', () => this.logout());
+
+    // Admin buttons
+    this.$('btnAdminLoadUsers').addEventListener('click', () => this.adminLoadUsers());
+    this.$('btnAdminAddUser').addEventListener('click', () => this.adminAddUser());
   }
 
   $(id) { return document.getElementById(id); }
@@ -66,9 +70,14 @@ class B3App {
   }
 
   showPage(name) {
+    console.log('Showing page:', name);
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
     const page = document.querySelector(`[data-page="${name}"]`);
-    if (page) page.classList.add('active');
+    if (page) {
+      page.classList.add('active');
+    } else {
+      console.warn('Page not found:', name);
+    }
 
     document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
     const link = document.querySelector(`.nav-link[data-section="${name}"]`);
@@ -107,11 +116,11 @@ class B3App {
       const res = await fetch('/api/auth/status');
       const data = await res.json();
       if (data.logged_in) {
-        this.user = { username: data.username };
-        this.updateAuthUI(true);
+        this.user = { username: data.username, is_admin: !!data.is_admin };
+        this.updateAuthUI(data);
       } else {
         this.user = null;
-        this.updateAuthUI(false);
+        this.updateAuthUI(null);
       }
     } catch (err) {
       console.warn('Erro ao verificar status de autenticação:', err);
@@ -130,24 +139,33 @@ class B3App {
       this.hideLoading();
 
       if (res.ok) {
-        this.user = { username: data.username };
+        this.user = { username: data.username, is_admin: !!data.is_admin };
         this.toast(`Bem-vindo, ${data.username}!`, 'success');
-        this.updateAuthUI(true);
+        this.updateAuthUI(data);
 
-        // Migration: If local portfolio has data, sync it to server on first login
-        const local = localStorage.getItem('b3_portfolio');
-        if (local) {
-          const localPortfolio = JSON.parse(local);
-          if (localPortfolio.positions.length > 0) {
-            this.toast('Sincronizando seu portfólio local...', 'info');
-            this.portfolio = localPortfolio;
-            await this.savePortfolioServer();
-            // Clear local storage after sync to avoid confusion?
-            // Better to keep it as fallback but mark it as synced.
+        // Load server portfolio first
+        const serverRes = await fetch('/api/portfolio');
+        const serverData = await serverRes.json();
+
+        // Migration logic: Only migrate if server portfolio is empty
+        if (serverData.is_new || (serverData.positions && serverData.positions.length === 0)) {
+          const local = localStorage.getItem('b3_portfolio');
+          if (local) {
+            const localPortfolio = JSON.parse(local);
+            if (localPortfolio.positions && localPortfolio.positions.length > 0) {
+              this.toast('Sincronizando seu portfólio local para a nuvem...', 'info');
+              this.portfolio = localPortfolio;
+              await this.savePortfolioServer();
+            } else {
+              this.portfolio = serverData;
+            }
+          } else {
+            this.portfolio = serverData;
           }
+        } else {
+          this.portfolio = serverData;
         }
 
-        await this.loadPortfolio();
         await this.runAnalysis();
         this.renderPositions();
         this.showPage('dashboard');
@@ -165,12 +183,19 @@ class B3App {
     try {
       await fetch('/api/auth/logout', { method: 'POST' });
       this.user = null;
-      this.portfolio = { name: 'Meu Portfólio', positions: [] };
       this.updateAuthUI(false);
+
+      // Restore local portfolio after logout
+      const local = localStorage.getItem('b3_portfolio');
+      if (local) {
+        this.portfolio = JSON.parse(local);
+      } else {
+        this.portfolio = { name: 'Meu Portfólio', positions: [] };
+      }
+
       this.hideLoading();
       this.toast('Você saiu com sucesso', 'info');
 
-      // Clear screen/data as requested
       await this.runAnalysis();
       this.renderPositions();
       this.showPage('dashboard');
@@ -202,19 +227,103 @@ class B3App {
     }
   }
 
-  updateAuthUI(loggedIn) {
+  updateAuthUI(data) {
+    console.log('Updating Auth UI:', data);
+    const loggedIn = data && (data.logged_in || data.username);
     if (loggedIn) {
       this.$('userProfile').style.display = 'flex';
       this.$('sidebarUserName').textContent = this.user.username;
-      this.$('loginArea').style.display = 'none';
+
+      this.$('loginArea').classList.add('hidden');
+      this.$('memberDashboard').classList.remove('hidden');
       this.$('memberDashboard').style.display = 'block';
+
       this.$('memberWelcomeName').textContent = this.user.username;
       this.$('nav-members').innerHTML = '<span class="nav-icon">👤</span> Perfil';
+
+      // Admin Panel
+      if (this.user.is_admin) {
+        this.$('adminPanel').classList.remove('hidden');
+        this.$('adminPanel').style.display = 'block';
+        this.adminLoadUsers();
+      } else {
+        this.$('adminPanel').classList.add('hidden');
+      }
     } else {
       this.$('userProfile').style.display = 'none';
+      this.$('loginArea').classList.remove('hidden');
       this.$('loginArea').style.display = 'block';
-      this.$('memberDashboard').style.display = 'none';
+      this.$('memberDashboard').classList.add('hidden');
+      this.$('adminPanel').classList.add('hidden');
       this.$('nav-members').innerHTML = '<span class="nav-icon">👤</span> Área de Membros';
+    }
+  }
+
+  /* ------------------------------------------------------------------
+     Admin Panel
+  ------------------------------------------------------------------ */
+  async adminLoadUsers() {
+    try {
+      const res = await fetch('/api/admin/users');
+      if (!res.ok) throw new Error('Não autorizado');
+      const users = await res.json();
+      const tbody = this.$('adminUsersBody');
+      tbody.innerHTML = users.map(u => `
+        <tr>
+          <td>${u.username}</td>
+          <td>${u.is_admin ? 'Admin' : 'Usuário'}</td>
+          <td>
+            <button class="btn-danger-sm" onclick="app.adminDeleteUser(${u.id})">Excluir</button>
+          </td>
+        </tr>
+      `).join('');
+    } catch (err) {
+      console.warn('Erro ao carregar usuários:', err);
+    }
+  }
+
+  async adminAddUser() {
+    const username = prompt('Nome de usuário:');
+    if (username === null) return;
+    if (!username.trim()) { this.toast('Nome de usuário é obrigatório', 'error'); return; }
+
+    const password = prompt('Senha:');
+    if (password === null) return;
+    if (!password.trim()) { this.toast('Senha é obrigatória', 'error'); return; }
+
+    const isAdmin = confirm('Deseja que este usuário seja administrador?');
+
+    try {
+      const res = await fetch('/api/admin/users', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, password, is_admin: isAdmin })
+      });
+      const data = await res.json();
+      if (res.ok) {
+        this.toast(data.message, 'success');
+        this.adminLoadUsers();
+      } else {
+        this.toast(data.error, 'error');
+      }
+    } catch (err) {
+      this.toast('Erro ao criar usuário', 'error');
+    }
+  }
+
+  async adminDeleteUser(userId) {
+    if (!confirm('Tem certeza que deseja excluir este usuário?')) return;
+    try {
+      const res = await fetch(`/api/admin/users/${userId}`, { method: 'DELETE' });
+      const data = await res.json();
+      if (res.ok) {
+        this.toast(data.message, 'info');
+        this.adminLoadUsers();
+      } else {
+        this.toast(data.error, 'error');
+      }
+    } catch (err) {
+      this.toast('Erro ao excluir usuário', 'error');
     }
   }
 

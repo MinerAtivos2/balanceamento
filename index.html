@@ -371,6 +371,9 @@
           <div class="form-actions">
             <button type="submit" class="btn btn-primary" style="width: 100%">Entrar</button>
           </div>
+          <p style="margin-top: 1rem; text-align: center; font-size: 0.85rem;">
+            <a href="mailto:minerativos+esquecisenha@gmail.com" style="color: var(--text-muted); text-decoration: none;">Esqueceu a senha? Entre em contato com o suporte</a>
+          </p>
         </form>
       </div>
 
@@ -382,6 +385,29 @@
         </div>
 
         <div class="grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
+          <!-- Admin Panel -->
+          <div class="card glass" id="adminPanel" style="display: none; grid-column: 1 / -1;">
+            <h2 class="card-title">🛡️ Painel de Administração</h2>
+            <div class="toolbar">
+              <button class="btn btn-primary btn-sm" id="btnAdminLoadUsers" style="width: auto">Listar Usuários</button>
+              <button class="btn btn-outline btn-sm" id="btnAdminAddUser" style="width: auto">Novo Usuário</button>
+            </div>
+            <div class="table-responsive" style="margin-top: 1rem;">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Usuário</th>
+                    <th>Tipo</th>
+                    <th>Ações</th>
+                  </tr>
+                </thead>
+                <tbody id="adminUsersBody">
+                  <tr><td colspan="3" class="empty-state">Clique em "Listar Usuários"</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
           <div class="card glass">
             <h2 class="card-title">Alterar Senha</h2>
             <form id="changePasswordForm">

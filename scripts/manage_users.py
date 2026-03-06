@@ -2,7 +2,7 @@
 """
 Script para gerenciamento manual de usuários do sistema B3 Rebalanceamento.
 Uso:
-    python scripts/manage_users.py --add <usuario> <senha>
+    python scripts/manage_users.py --add <usuario> <senha> [--admin]
     python scripts/manage_users.py --list
     python scripts/manage_users.py --delete <usuario>
 """
@@ -20,13 +20,16 @@ DB_PATH = os.path.join(BASE_DIR, "data", "app.db")
 def get_connection():
     return sqlite3.connect(DB_PATH)
 
-def add_user(username, password):
+def add_user(username, password, is_admin=False):
     conn = get_connection()
     password_hash = generate_password_hash(password)
+    admin_val = 1 if is_admin else 0
     try:
-        conn.execute("INSERT INTO users (username, password_hash) VALUES (?, ?)", (username, password_hash))
+        conn.execute("INSERT INTO users (username, password_hash, is_admin) VALUES (?, ?, ?)",
+                     (username, password_hash, admin_val))
         conn.commit()
-        print(f"Usuário '{username}' adicionado com sucesso.")
+        admin_str = " (ADMIN)" if is_admin else ""
+        print(f"Usuário '{username}'{admin_str} adicionado com sucesso.")
     except sqlite3.IntegrityError:
         print(f"Erro: Usuário '{username}' já existe.")
     finally:
@@ -34,14 +37,15 @@ def add_user(username, password):
 
 def list_users():
     conn = get_connection()
-    users = conn.execute("SELECT username FROM users").fetchall()
+    users = conn.execute("SELECT username, is_admin FROM users").fetchall()
     conn.close()
     if not users:
         print("Nenhum usuário cadastrado.")
     else:
         print("Usuários cadastrados:")
         for user in users:
-            print(f"- {user[0]}")
+            admin_str = " [ADMIN]" if user[1] else ""
+            print(f"- {user[0]}{admin_str}")
 
 def delete_user(username):
     conn = get_connection()
@@ -56,6 +60,7 @@ def delete_user(username):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Gerenciador de usuários B3 Rebalanceamento")
     parser.add_argument("--add", nargs=2, metavar=("USUARIO", "SENHA"), help="Adiciona um novo usuário")
+    parser.add_argument("--admin", action="store_true", help="Define o usuário como administrador (usar com --add)")
     parser.add_argument("--list", action="store_true", help="Lista todos os usuários")
     parser.add_argument("--delete", metavar="USUARIO", help="Exclui um usuário")
 
@@ -66,7 +71,7 @@ if __name__ == "__main__":
         sys.exit(1)
 
     if args.add:
-        add_user(args.add[0], args.add[1])
+        add_user(args.add[0], args.add[1], is_admin=args.admin)
     elif args.list:
         list_users()
     elif args.delete:

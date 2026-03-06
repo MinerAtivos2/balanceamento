@@ -39,12 +39,22 @@ def init_db():
     c.execute('''CREATE TABLE IF NOT EXISTS users
                  (id INTEGER PRIMARY KEY AUTOINCREMENT,
                   username TEXT UNIQUE NOT NULL,
-                  password_hash TEXT NOT NULL)''')
+                  password_hash TEXT NOT NULL,
+                  is_admin INTEGER DEFAULT 0)''')
     c.execute('''CREATE TABLE IF NOT EXISTS portfolios
                  (user_id INTEGER PRIMARY KEY,
                   data TEXT NOT NULL,
                   updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                   FOREIGN KEY(user_id) REFERENCES users(id))''')
+
+    # Create default admin if no users exist
+    c.execute("SELECT COUNT(*) FROM users")
+    if c.fetchone()[0] == 0:
+        admin_pass = generate_password_hash("admin123")
+        c.execute("INSERT INTO users (username, password_hash, is_admin) VALUES (?, ?, ?)",
+                  ("admin", admin_pass, 1))
+        print("Default admin user created: admin / admin123")
+
     conn.commit()
     conn.close()
 
@@ -200,7 +210,12 @@ def login():
         session.clear()
         session["user_id"] = user["id"]
         session["username"] = user["username"]
-        return jsonify({"message": "Login realizado com sucesso", "username": user["username"]})
+        session["is_admin"] = bool(user["is_admin"])
+        return jsonify({
+            "message": "Login realizado com sucesso",
+            "username": user["username"],
+            "is_admin": bool(user["is_admin"])
+        })
 
     return jsonify({"error": "Usuário ou senha inválidos"}), 401
 
@@ -214,7 +229,11 @@ def logout():
 @app.route("/api/auth/status")
 def auth_status():
     if "user_id" in session:
-        return jsonify({"logged_in": True, "username": session["username"]})
+        return jsonify({
+            "logged_in": True,
+            "username": session["username"],
+            "is_admin": session.get("is_admin", False)
+        })
     return jsonify({"logged_in": False})
 
 
@@ -245,6 +264,61 @@ def change_password():
 
 
 # ---------------------------------------------------------------------------
+# API — Admin
+# ---------------------------------------------------------------------------
+@app.route("/api/admin/users", methods=["GET"])
+def admin_list_users():
+    if not session.get("is_admin"):
+        return jsonify({"error": "Não autorizado"}), 403
+
+    conn = get_db_connection()
+    users = conn.execute("SELECT id, username, is_admin FROM users").fetchall()
+    conn.close()
+    return jsonify([dict(u) for u in users])
+
+
+@app.route("/api/admin/users", methods=["POST"])
+def admin_add_user():
+    if not session.get("is_admin"):
+        return jsonify({"error": "Não autorizado"}), 403
+
+    data = request.json
+    username = data.get("username")
+    password = data.get("password")
+    is_admin = 1 if data.get("is_admin") else 0
+
+    if not username or not password:
+        return jsonify({"error": "Usuário e senha obrigatórios"}), 400
+
+    conn = get_db_connection()
+    try:
+        conn.execute("INSERT INTO users (username, password_hash, is_admin) VALUES (?, ?, ?)",
+                     (username, generate_password_hash(password), is_admin))
+        conn.commit()
+        return jsonify({"message": f"Usuário {username} criado com sucesso"})
+    except sqlite3.IntegrityError:
+        return jsonify({"error": "Usuário já existe"}), 400
+    finally:
+        conn.close()
+
+
+@app.route("/api/admin/users/<int:user_id>", methods=["DELETE"])
+def admin_delete_user(user_id):
+    if not session.get("is_admin"):
+        return jsonify({"error": "Não autorizado"}), 403
+
+    if user_id == session["user_id"]:
+        return jsonify({"error": "Você não pode excluir a si mesmo"}), 400
+
+    conn = get_db_connection()
+    conn.execute("DELETE FROM users WHERE id = ?", (user_id,))
+    conn.execute("DELETE FROM portfolios WHERE user_id = ?", (user_id,))
+    conn.commit()
+    conn.close()
+    return jsonify({"message": "Usuário excluído"})
+
+
+# ---------------------------------------------------------------------------
 # API — Portfolio
 # ---------------------------------------------------------------------------
 @app.route("/api/portfolio", methods=["GET", "POST"])
@@ -257,6 +331,9 @@ def manage_portfolio():
 
     if request.method == "POST":
         portfolio_data = request.json
+        if not portfolio_data or not isinstance(portfolio_data, dict):
+            return jsonify({"error": "Dados do portfólio inválidos"}), 400
+
         data_str = json.dumps(portfolio_data)
 
         # Insert or Replace portfolio
@@ -276,7 +353,7 @@ def manage_portfolio():
 
         if row:
             return jsonify(json.loads(row["data"]))
-        return jsonify({"name": "Meu Portfólio", "positions": []})
+        return jsonify({"name": "Meu Portfólio", "positions": [], "is_new": True})
 
 
 # ---------------------------------------------------------------------------
