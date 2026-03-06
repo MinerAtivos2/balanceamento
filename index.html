@@ -20,6 +20,13 @@
       <span class="sidebar-title">Rebalanceamento<br><small>Portfólio</small></span>
     </div>
     <nav class="sidebar-nav">
+      <div id="userProfile" class="user-profile-sidebar" style="display: none; padding: 1rem; border-bottom: 1px solid rgba(255,255,255,0.05); margin-bottom: 0.5rem; align-items: center; gap: 1rem;">
+        <span class="user-avatar" style="font-size: 1.5rem;">👤</span>
+        <div class="user-info" style="display: flex; flex-direction: column;">
+          <span class="user-name" id="sidebarUserName" style="font-weight: 600; font-size: 0.9rem; color: var(--text-primary);">Usuário</span>
+          <a href="#" class="logout-link" id="btnLogout" style="font-size: 0.8rem; color: var(--red); text-decoration: none;">Sair</a>
+        </div>
+      </div>
       <a href="#" class="nav-link active" data-section="dashboard" id="nav-dashboard">
         <span class="nav-icon">🏠</span> Dashboard
       </a>
@@ -34,6 +41,9 @@
       </a>
       <a href="#" class="nav-link" data-section="summary" id="nav-summary">
         <span class="nav-icon">🌍</span> Resumo de Mercado
+      </a>
+      <a href="#" class="nav-link" data-section="members" id="nav-members">
+        <span class="nav-icon">👤</span> Área de Membros
       </a>
       <a href="https://minerativos.com.br" class="nav-link" data-section="about" id="nav-about">
         <span class="nav-icon">ℹ️</span> Página principal
@@ -333,6 +343,69 @@
         <p class="subtitle" style="margin-bottom: 1rem;">O tamanho dos blocos representa a variação absoluta do dia. Cores: Verde (Alta) e Laranja/Vermelho (Baixa).</p>
         <div class="chart-container" style="height: 600px;">
           <canvas id="marketTreemap"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- ÁREA DE MEMBROS -->
+    <!-- ============================================================ -->
+    <section class="page" data-page="members" id="page-members">
+      <div class="page-header">
+        <h1>Área de Membros</h1>
+        <p class="subtitle">Acesse sua conta para sincronizar seu portfólio</p>
+      </div>
+
+      <!-- Login Form -->
+      <div class="card glass auth-card" id="loginArea" style="max-width: 400px; margin: 2rem auto;">
+        <h2 class="card-title">Login</h2>
+        <form id="loginForm">
+          <div class="form-group">
+            <label for="loginUsername">Usuário</label>
+            <input type="text" id="loginUsername" required placeholder="Seu usuário">
+          </div>
+          <div class="form-group">
+            <label for="loginPassword">Senha</label>
+            <input type="password" id="loginPassword" required placeholder="Sua senha">
+          </div>
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary" style="width: 100%">Entrar</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- User Dashboard -->
+      <div id="memberDashboard" style="display: none;">
+        <div class="alert alert-success glass" style="margin-bottom: 2rem;">
+          🎉 Você está conectado como <strong id="memberWelcomeName">usuário</strong>.
+          Seu portfólio agora é sincronizado automaticamente com o servidor.
+        </div>
+
+        <div class="grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
+          <div class="card glass">
+            <h2 class="card-title">Alterar Senha</h2>
+            <form id="changePasswordForm">
+              <div class="form-group">
+                <label for="oldPassword">Senha Atual</label>
+                <input type="password" id="oldPassword" required>
+              </div>
+              <div class="form-group">
+                <label for="newPassword">Nova Senha</label>
+                <input type="password" id="newPassword" required>
+              </div>
+              <div class="form-actions">
+                <button type="submit" class="btn btn-secondary">Atualizar Senha</button>
+              </div>
+            </form>
+          </div>
+
+          <div class="card glass">
+            <h2 class="card-title">Sincronização & Conta</h2>
+            <p style="margin-bottom: 1rem; color: var(--text-muted);">Seus dados são salvos no servidor sempre que você adiciona ou remove um ativo.</p>
+            <div class="form-actions">
+               <button class="btn btn-outline" id="btnLogoutFull" style="width: 100%">Sair da Conta</button>
+            </div>
+          </div>
         </div>
       </div>
     </section>

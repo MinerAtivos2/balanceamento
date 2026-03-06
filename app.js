@@ -5,6 +5,7 @@
 class B3App {
   constructor() {
     this.portfolio = { name: 'Meu Portfólio', positions: [] };
+    this.user = null; // { username: '...' } if logged in
     this.assets = [];
     this.marketData = null;
     this.analysis = null;
@@ -19,7 +20,9 @@ class B3App {
     this.bindUI();
     this.setupNavigation();
     this.setupModal();
+    this.setupAuth();
 
+    await this.checkAuthStatus();
     await this.loadMarketData();
     await this.loadMarketSummary();
     await this.loadAssets();
@@ -40,6 +43,10 @@ class B3App {
     // Mobile
     this.$('hamburger').addEventListener('click', () => this.toggleSidebar());
     this.$('overlay').addEventListener('click', () => this.toggleSidebar(false));
+
+    // Auth buttons
+    this.$('btnLogout').addEventListener('click', (e) => { e.preventDefault(); this.logout(); });
+    this.$('btnLogoutFull').addEventListener('click', () => this.logout());
   }
 
   $(id) { return document.getElementById(id); }
@@ -74,6 +81,155 @@ class B3App {
     const open = force !== undefined ? force : !sidebar.classList.contains('open');
     sidebar.classList.toggle('open', open);
     overlay.classList.toggle('show', open);
+  }
+
+  /* ------------------------------------------------------------------
+     Authentication & Server Sync
+  ------------------------------------------------------------------ */
+  setupAuth() {
+    this.$('loginForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const username = this.$('loginUsername').value;
+      const password = this.$('loginPassword').value;
+      await this.login(username, password);
+    });
+
+    this.$('changePasswordForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const oldPassword = this.$('oldPassword').value;
+      const newPassword = this.$('newPassword').value;
+      await this.changePassword(oldPassword, newPassword);
+    });
+  }
+
+  async checkAuthStatus() {
+    try {
+      const res = await fetch('/api/auth/status');
+      const data = await res.json();
+      if (data.logged_in) {
+        this.user = { username: data.username };
+        this.updateAuthUI(true);
+      } else {
+        this.user = null;
+        this.updateAuthUI(false);
+      }
+    } catch (err) {
+      console.warn('Erro ao verificar status de autenticação:', err);
+    }
+  }
+
+  async login(username, password) {
+    this.showLoading('Entrando...');
+    try {
+      const res = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, password })
+      });
+      const data = await res.json();
+      this.hideLoading();
+
+      if (res.ok) {
+        this.user = { username: data.username };
+        this.toast(`Bem-vindo, ${data.username}!`, 'success');
+        this.updateAuthUI(true);
+
+        // Migration: If local portfolio has data, sync it to server on first login
+        const local = localStorage.getItem('b3_portfolio');
+        if (local) {
+          const localPortfolio = JSON.parse(local);
+          if (localPortfolio.positions.length > 0) {
+            this.toast('Sincronizando seu portfólio local...', 'info');
+            this.portfolio = localPortfolio;
+            await this.savePortfolioServer();
+            // Clear local storage after sync to avoid confusion?
+            // Better to keep it as fallback but mark it as synced.
+          }
+        }
+
+        await this.loadPortfolio();
+        await this.runAnalysis();
+        this.renderPositions();
+        this.showPage('dashboard');
+      } else {
+        this.toast(data.error || 'Erro no login', 'error');
+      }
+    } catch (err) {
+      this.hideLoading();
+      this.toast('Falha na comunicação com o servidor', 'error');
+    }
+  }
+
+  async logout() {
+    this.showLoading('Saindo...');
+    try {
+      await fetch('/api/auth/logout', { method: 'POST' });
+      this.user = null;
+      this.portfolio = { name: 'Meu Portfólio', positions: [] };
+      this.updateAuthUI(false);
+      this.hideLoading();
+      this.toast('Você saiu com sucesso', 'info');
+
+      // Clear screen/data as requested
+      await this.runAnalysis();
+      this.renderPositions();
+      this.showPage('dashboard');
+    } catch (err) {
+      this.hideLoading();
+    }
+  }
+
+  async changePassword(old_password, new_password) {
+    this.showLoading('Alterando senha...');
+    try {
+      const res = await fetch('/api/auth/change-password', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ old_password, new_password })
+      });
+      const data = await res.json();
+      this.hideLoading();
+
+      if (res.ok) {
+        this.toast('Senha alterada com sucesso!', 'success');
+        this.$('changePasswordForm').reset();
+      } else {
+        this.toast(data.error || 'Erro ao alterar senha', 'error');
+      }
+    } catch (err) {
+      this.hideLoading();
+      this.toast('Falha na comunicação com o servidor', 'error');
+    }
+  }
+
+  updateAuthUI(loggedIn) {
+    if (loggedIn) {
+      this.$('userProfile').style.display = 'flex';
+      this.$('sidebarUserName').textContent = this.user.username;
+      this.$('loginArea').style.display = 'none';
+      this.$('memberDashboard').style.display = 'block';
+      this.$('memberWelcomeName').textContent = this.user.username;
+      this.$('nav-members').innerHTML = '<span class="nav-icon">👤</span> Perfil';
+    } else {
+      this.$('userProfile').style.display = 'none';
+      this.$('loginArea').style.display = 'block';
+      this.$('memberDashboard').style.display = 'none';
+      this.$('nav-members').innerHTML = '<span class="nav-icon">👤</span> Área de Membros';
+    }
+  }
+
+  async savePortfolioServer() {
+    if (!this.user) return;
+    try {
+      await fetch('/api/portfolio', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(this.portfolio)
+      });
+    } catch (err) {
+      console.error('Erro ao salvar no servidor:', err);
+      this.toast('Erro ao sincronizar dados com o servidor', 'warning');
+    }
   }
 
   /* ------------------------------------------------------------------
@@ -258,6 +414,19 @@ class B3App {
   }
 
   async loadPortfolio() {
+    if (this.user) {
+      try {
+        const res = await fetch('/api/portfolio');
+        if (res.ok) {
+          this.portfolio = await res.json();
+          return;
+        }
+      } catch (err) {
+        console.warn('Falha ao carregar portfólio do servidor');
+      }
+    }
+
+    // Fallback para localStorage
     const saved = localStorage.getItem('b3_portfolio');
     if (saved) {
       try {
@@ -266,12 +435,11 @@ class B3App {
         this.portfolio = { name: 'Meu Portfólio', positions: [] };
       }
     } else {
-      // Tenta carregar sample_portfolio.json se existir (primeira vez)
       try {
         const res = await fetch('./sample_portfolio.json');
         if (res.ok) {
           this.portfolio = await res.json();
-          this.savePortfolio(); // Persiste no localStorage
+          this.savePortfolio();
         }
       } catch {
         this.portfolio = { name: 'Meu Portfólio', positions: [] };
@@ -280,7 +448,11 @@ class B3App {
   }
 
   savePortfolio() {
-    localStorage.setItem('b3_portfolio', JSON.stringify(this.portfolio));
+    if (this.user) {
+      this.savePortfolioServer();
+    } else {
+      localStorage.setItem('b3_portfolio', JSON.stringify(this.portfolio));
+    }
   }
 
   consolidatePortfolio() {
