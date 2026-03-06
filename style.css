@@ -427,6 +427,49 @@ tbody tr:hover {
   padding: 2.5rem 1rem !important;
 }
 
+/* -- User Profile Sidebar ---------------------------------------------- */
+.user-profile-sidebar {
+  display: flex;
+  align-items: center;
+  padding: 1.25rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-bottom: 1px solid var(--border-glass);
+  margin-bottom: 1rem;
+}
+.user-avatar {
+  font-size: 1.5rem;
+  background: var(--bg-glass);
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 1px solid var(--border-glass);
+}
+.user-info {
+  margin-left: 0.75rem;
+  display: flex;
+  flex-direction: column;
+}
+.user-name {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+}
+.logout-link {
+  font-size: 0.75rem;
+  color: var(--red);
+  text-decoration: none;
+  font-weight: 500;
+  margin-top: 0.15rem;
+  transition: opacity var(--transition);
+}
+.logout-link:hover {
+  opacity: 0.8;
+  text-decoration: underline;
+}
+
 /* -- Badges ------------------------------------------------------------ */
 .badge {
   display: inline-block;
@@ -722,4 +765,8 @@ input[type="number"]:focus, select:focus {
   .stats-grid {
     grid-template-columns: 1fr;
   }
+}
+
+.hidden {
+  display: none !important;
 }

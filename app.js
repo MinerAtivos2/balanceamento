@@ -5,6 +5,7 @@
 class B3App {
   constructor() {
     this.portfolio = { name: 'Meu Portfólio', positions: [] };
+    this.user = null; // { username: '...' } if logged in
     this.assets = [];
     this.marketData = null;
     this.analysis = null;
@@ -19,7 +20,9 @@ class B3App {
     this.bindUI();
     this.setupNavigation();
     this.setupModal();
+    this.setupAuth();
 
+    await this.checkAuthStatus();
     await this.loadMarketData();
     await this.loadMarketSummary();
     await this.loadAssets();
@@ -40,6 +43,14 @@ class B3App {
     // Mobile
     this.$('hamburger').addEventListener('click', () => this.toggleSidebar());
     this.$('overlay').addEventListener('click', () => this.toggleSidebar(false));
+
+    // Auth buttons
+    this.$('btnLogout').addEventListener('click', (e) => { e.preventDefault(); this.logout(); });
+    this.$('btnLogoutFull').addEventListener('click', () => this.logout());
+
+    // Admin buttons
+    this.$('btnAdminLoadUsers').addEventListener('click', () => this.adminLoadUsers());
+    this.$('btnAdminAddUser').addEventListener('click', () => this.adminAddUser());
   }
 
   $(id) { return document.getElementById(id); }
@@ -59,9 +70,14 @@ class B3App {
   }
 
   showPage(name) {
+    console.log('Showing page:', name);
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
     const page = document.querySelector(`[data-page="${name}"]`);
-    if (page) page.classList.add('active');
+    if (page) {
+      page.classList.add('active');
+    } else {
+      console.warn('Page not found:', name);
+    }
 
     document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
     const link = document.querySelector(`.nav-link[data-section="${name}"]`);
@@ -74,6 +90,255 @@ class B3App {
     const open = force !== undefined ? force : !sidebar.classList.contains('open');
     sidebar.classList.toggle('open', open);
     overlay.classList.toggle('show', open);
+  }
+
+  /* ------------------------------------------------------------------
+     Authentication & Server Sync
+  ------------------------------------------------------------------ */
+  setupAuth() {
+    this.$('loginForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const username = this.$('loginUsername').value;
+      const password = this.$('loginPassword').value;
+      await this.login(username, password);
+    });
+
+    this.$('changePasswordForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const oldPassword = this.$('oldPassword').value;
+      const newPassword = this.$('newPassword').value;
+      await this.changePassword(oldPassword, newPassword);
+    });
+  }
+
+  async checkAuthStatus() {
+    try {
+      const res = await fetch('/api/auth/status');
+      const data = await res.json();
+      if (data.logged_in) {
+        this.user = { username: data.username, is_admin: !!data.is_admin };
+        this.updateAuthUI(data);
+      } else {
+        this.user = null;
+        this.updateAuthUI(null);
+      }
+    } catch (err) {
+      console.warn('Erro ao verificar status de autenticação:', err);
+    }
+  }
+
+  async login(username, password) {
+    this.showLoading('Entrando...');
+    try {
+      const res = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, password })
+      });
+      const data = await res.json();
+      this.hideLoading();
+
+      if (res.ok) {
+        this.user = { username: data.username, is_admin: !!data.is_admin };
+        this.toast(`Bem-vindo, ${data.username}!`, 'success');
+        this.updateAuthUI(data);
+
+        // Load server portfolio first
+        const serverRes = await fetch('/api/portfolio');
+        const serverData = await serverRes.json();
+
+        // Migration logic: Only migrate if server portfolio is empty
+        if (serverData.is_new || (serverData.positions && serverData.positions.length === 0)) {
+          const local = localStorage.getItem('b3_portfolio');
+          if (local) {
+            const localPortfolio = JSON.parse(local);
+            if (localPortfolio.positions && localPortfolio.positions.length > 0) {
+              this.toast('Sincronizando seu portfólio local para a nuvem...', 'info');
+              this.portfolio = localPortfolio;
+              await this.savePortfolioServer();
+            } else {
+              this.portfolio = serverData;
+            }
+          } else {
+            this.portfolio = serverData;
+          }
+        } else {
+          this.portfolio = serverData;
+        }
+
+        await this.runAnalysis();
+        this.renderPositions();
+        this.showPage('dashboard');
+      } else {
+        this.toast(data.error || 'Erro no login', 'error');
+      }
+    } catch (err) {
+      this.hideLoading();
+      this.toast('Falha na comunicação com o servidor', 'error');
+    }
+  }
+
+  async logout() {
+    this.showLoading('Saindo...');
+    try {
+      await fetch('/api/auth/logout', { method: 'POST' });
+      this.user = null;
+      this.updateAuthUI(false);
+
+      // Restore local portfolio after logout
+      const local = localStorage.getItem('b3_portfolio');
+      if (local) {
+        this.portfolio = JSON.parse(local);
+      } else {
+        this.portfolio = { name: 'Meu Portfólio', positions: [] };
+      }
+
+      this.hideLoading();
+      this.toast('Você saiu com sucesso', 'info');
+
+      await this.runAnalysis();
+      this.renderPositions();
+      this.showPage('dashboard');
+    } catch (err) {
+      this.hideLoading();
+    }
+  }
+
+  async changePassword(old_password, new_password) {
+    this.showLoading('Alterando senha...');
+    try {
+      const res = await fetch('/api/auth/change-password', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ old_password, new_password })
+      });
+      const data = await res.json();
+      this.hideLoading();
+
+      if (res.ok) {
+        this.toast('Senha alterada com sucesso!', 'success');
+        this.$('changePasswordForm').reset();
+      } else {
+        this.toast(data.error || 'Erro ao alterar senha', 'error');
+      }
+    } catch (err) {
+      this.hideLoading();
+      this.toast('Falha na comunicação com o servidor', 'error');
+    }
+  }
+
+  updateAuthUI(data) {
+    console.log('Updating Auth UI:', data);
+    const loggedIn = data && (data.logged_in || data.username);
+    if (loggedIn) {
+      this.$('userProfile').style.display = 'flex';
+      this.$('sidebarUserName').textContent = this.user.username;
+
+      this.$('loginArea').classList.add('hidden');
+      this.$('memberDashboard').classList.remove('hidden');
+      this.$('memberDashboard').style.display = 'block';
+
+      this.$('memberWelcomeName').textContent = this.user.username;
+      this.$('nav-members').innerHTML = '<span class="nav-icon">👤</span> Perfil';
+
+      // Admin Panel
+      if (this.user.is_admin) {
+        this.$('adminPanel').classList.remove('hidden');
+        this.$('adminPanel').style.display = 'block';
+        this.adminLoadUsers();
+      } else {
+        this.$('adminPanel').classList.add('hidden');
+      }
+    } else {
+      this.$('userProfile').style.display = 'none';
+      this.$('loginArea').classList.remove('hidden');
+      this.$('loginArea').style.display = 'block';
+      this.$('memberDashboard').classList.add('hidden');
+      this.$('adminPanel').classList.add('hidden');
+      this.$('nav-members').innerHTML = '<span class="nav-icon">👤</span> Área de Membros';
+    }
+  }
+
+  /* ------------------------------------------------------------------
+     Admin Panel
+  ------------------------------------------------------------------ */
+  async adminLoadUsers() {
+    try {
+      const res = await fetch('/api/admin/users');
+      if (!res.ok) throw new Error('Não autorizado');
+      const users = await res.json();
+      const tbody = this.$('adminUsersBody');
+      tbody.innerHTML = users.map(u => `
+        <tr>
+          <td>${u.username}</td>
+          <td>${u.is_admin ? 'Admin' : 'Usuário'}</td>
+          <td>
+            <button class="btn-danger-sm" onclick="app.adminDeleteUser(${u.id})">Excluir</button>
+          </td>
+        </tr>
+      `).join('');
+    } catch (err) {
+      console.warn('Erro ao carregar usuários:', err);
+    }
+  }
+
+  async adminAddUser() {
+    const username = prompt('Nome de usuário:');
+    if (username === null) return;
+    if (!username.trim()) { this.toast('Nome de usuário é obrigatório', 'error'); return; }
+
+    const password = prompt('Senha:');
+    if (password === null) return;
+    if (!password.trim()) { this.toast('Senha é obrigatória', 'error'); return; }
+
+    const isAdmin = confirm('Deseja que este usuário seja administrador?');
+
+    try {
+      const res = await fetch('/api/admin/users', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, password, is_admin: isAdmin })
+      });
+      const data = await res.json();
+      if (res.ok) {
+        this.toast(data.message, 'success');
+        this.adminLoadUsers();
+      } else {
+        this.toast(data.error, 'error');
+      }
+    } catch (err) {
+      this.toast('Erro ao criar usuário', 'error');
+    }
+  }
+
+  async adminDeleteUser(userId) {
+    if (!confirm('Tem certeza que deseja excluir este usuário?')) return;
+    try {
+      const res = await fetch(`/api/admin/users/${userId}`, { method: 'DELETE' });
+      const data = await res.json();
+      if (res.ok) {
+        this.toast(data.message, 'info');
+        this.adminLoadUsers();
+      } else {
+        this.toast(data.error, 'error');
+      }
+    } catch (err) {
+      this.toast('Erro ao excluir usuário', 'error');
+    }
+  }
+
+  async savePortfolioServer() {
+    if (!this.user) return;
+    try {
+      await fetch('/api/portfolio', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(this.portfolio)
+      });
+    } catch (err) {
+      console.error('Erro ao salvar no servidor:', err);
+      this.toast('Erro ao sincronizar dados com o servidor', 'warning');
+    }
   }
 
   /* ------------------------------------------------------------------
@@ -258,6 +523,19 @@ class B3App {
   }
 
   async loadPortfolio() {
+    if (this.user) {
+      try {
+        const res = await fetch('/api/portfolio');
+        if (res.ok) {
+          this.portfolio = await res.json();
+          return;
+        }
+      } catch (err) {
+        console.warn('Falha ao carregar portfólio do servidor');
+      }
+    }
+
+    // Fallback para localStorage
     const saved = localStorage.getItem('b3_portfolio');
     if (saved) {
       try {
@@ -266,12 +544,11 @@ class B3App {
         this.portfolio = { name: 'Meu Portfólio', positions: [] };
       }
     } else {
-      // Tenta carregar sample_portfolio.json se existir (primeira vez)
       try {
         const res = await fetch('./sample_portfolio.json');
         if (res.ok) {
           this.portfolio = await res.json();
-          this.savePortfolio(); // Persiste no localStorage
+          this.savePortfolio();
         }
       } catch {
         this.portfolio = { name: 'Meu Portfólio', positions: [] };
@@ -280,7 +557,11 @@ class B3App {
   }
 
   savePortfolio() {
-    localStorage.setItem('b3_portfolio', JSON.stringify(this.portfolio));
+    if (this.user) {
+      this.savePortfolioServer();
+    } else {
+      localStorage.setItem('b3_portfolio', JSON.stringify(this.portfolio));
+    }
   }
 
   consolidatePortfolio() {
