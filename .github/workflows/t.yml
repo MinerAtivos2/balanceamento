@@ -25,14 +25,17 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install yfinance pandas
+
+      - name: t
+        run: python server.py 
       
       - name: t
-        run: python scripts/manage_users.py add admin teste
+        run: python scripts/manage_users.py add "admin" "teste"
       
       - name: Commit and push changes
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add data/market_data.json data/market_summary.json data/market_summary.md
-          git commit -m "Update market data and summary - $(date +'%Y-%m-%d %H:%M:%S')" || echo "No changes to commit"
+          git add data/app.db
+          git commit -m "Update app.db - $(date +'%Y-%m-%d %H:%M:%S')" || echo "No changes to commit"
           git push
