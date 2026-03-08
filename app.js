@@ -4,6 +4,13 @@
 
 class B3App {
   constructor() {
+    // --- CONFIGURAÇÃO GOOGLE SHEETS / APPS SCRIPT ---
+    // 1. Crie uma Planilha Google.
+    // 2. Extensões > Apps Script. Cole o código do arquivo 'docs/api.gs'.
+    // 3. Implantar > App da Web (Quem tem acesso: "Qualquer pessoa").
+    // 4. Copie a URL gerada e cole abaixo:
+    this.GAS_URL = "";
+
     this.portfolio = { name: 'Meu Portfólio', positions: [] };
     this.user = null; // { username: '...' } if logged in
     this.assets = [];
@@ -127,40 +134,68 @@ class B3App {
   }
 
   async checkAuthStatus() {
-    try {
-      const res = await fetch('/api/auth/status');
-      const data = await res.json();
-      if (data.logged_in) {
-        this.user = { username: data.username, is_admin: !!data.is_admin };
-        this.updateAuthUI(data);
-      } else {
-        this.user = null;
-        this.updateAuthUI(null);
+    if (!this.GAS_URL) {
+      console.log('Google Apps Script URL não configurada. Usando modo local.');
+      this.user = null;
+      this.updateAuthUI(null);
+      return;
+    }
+
+    const savedUser = localStorage.getItem('b3_user');
+    if (savedUser) {
+      const user = JSON.parse(savedUser);
+      try {
+        const res = await fetch(this.GAS_URL, {
+          method: 'POST',
+          mode: 'cors',
+          body: JSON.stringify({
+            action: 'status',
+            username: user.username,
+            session_token: user.session_token
+          })
+        });
+        const data = await res.json();
+        if (data.logged_in) {
+          this.user = { ...user, is_admin: !!data.is_admin };
+          this.updateAuthUI(data);
+        } else {
+          this.logout();
+        }
+      } catch (err) {
+        console.warn('Erro ao verificar status na Planilha:', err);
       }
-    } catch (err) {
-      console.warn('Erro ao verificar status de autenticação:', err);
     }
   }
 
   async login(username, password) {
+    if (!this.GAS_URL) {
+      this.toast('Configure a GAS_URL no app.js para habilitar o login via Planilha.', 'warning');
+      return;
+    }
+
     this.showLoading('Entrando...');
     try {
-      const res = await fetch('/api/auth/login', {
+      const res = await fetch(this.GAS_URL, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username, password })
+        mode: 'cors',
+        body: JSON.stringify({ action: 'login', username, password })
       });
       const data = await res.json();
       this.hideLoading();
 
-      if (res.ok) {
-        this.user = { username: data.username, is_admin: !!data.is_admin };
+      if (data.success) {
+        this.user = {
+          username: data.username,
+          is_admin: !!data.is_admin,
+          session_token: data.session_token
+        };
+        localStorage.setItem('b3_user', JSON.stringify(this.user));
+
         this.toast(`Bem-vindo, ${data.username}!`, 'success');
         this.updateAuthUI(data);
 
         // Load server portfolio first
-        const serverRes = await fetch('/api/portfolio');
-        const serverData = await serverRes.json();
+        const serverData = await this.loadPortfolioFromServer();
 
         // Migration logic: Only migrate if server portfolio is empty
         if (serverData.is_new || (serverData.positions && serverData.positions.length === 0)) {
@@ -189,15 +224,14 @@ class B3App {
       }
     } catch (err) {
       this.hideLoading();
-      this.toast('Falha na comunicação com o servidor', 'error');
+      this.toast('Falha na comunicação com a Planilha Google', 'error');
     }
   }
 
   async logout() {
     this.showLoading('Saindo...');
-    try {
-      await fetch('/api/auth/logout', { method: 'POST' });
-      this.user = null;
+    localStorage.removeItem('b3_user');
+    this.user = null;
       this.updateAuthUI(false);
 
       // Restore local portfolio after logout
@@ -220,26 +254,7 @@ class B3App {
   }
 
   async changePassword(old_password, new_password) {
-    this.showLoading('Alterando senha...');
-    try {
-      const res = await fetch('/api/auth/change-password', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ old_password, new_password })
-      });
-      const data = await res.json();
-      this.hideLoading();
-
-      if (res.ok) {
-        this.toast('Senha alterada com sucesso!', 'success');
-        this.$('changePasswordForm').reset();
-      } else {
-        this.toast(data.error || 'Erro ao alterar senha', 'error');
-      }
-    } catch (err) {
-      this.hideLoading();
-      this.toast('Falha na comunicação com o servidor', 'error');
-    }
+    this.toast('A alteração de senha deve ser feita diretamente na Planilha Google pelo administrador.', 'info');
   }
 
   updateAuthUI(data) {
@@ -260,7 +275,9 @@ class B3App {
       if (this.user.is_admin) {
         this.$('adminPanel').classList.remove('hidden');
         this.$('adminPanel').style.display = 'block';
-        this.adminLoadUsers();
+        // No Google Sheets, o gerenciamento de usuários é feito diretamente na planilha.
+        // Ocultamos a lista de usuários para simplificar.
+        this.$('adminUsersTableCard').style.display = 'none';
       } else {
         this.$('adminPanel').classList.add('hidden');
       }
@@ -343,16 +360,40 @@ class B3App {
   }
 
   async savePortfolioServer() {
-    if (!this.user) return;
+    if (!this.user || !this.GAS_URL) return;
     try {
-      await fetch('/api/portfolio', {
+      await fetch(this.GAS_URL, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(this.portfolio)
+        mode: 'cors',
+        body: JSON.stringify({
+          action: 'save_portfolio',
+          username: this.user.username,
+          session_token: this.user.session_token,
+          portfolio: this.portfolio
+        })
       });
     } catch (err) {
-      console.error('Erro ao salvar no servidor:', err);
-      this.toast('Erro ao sincronizar dados com o servidor', 'warning');
+      console.error('Erro ao salvar na Planilha:', err);
+      this.toast('Erro ao sincronizar dados com a Planilha', 'warning');
+    }
+  }
+
+  async loadPortfolioFromServer() {
+    if (!this.user || !this.GAS_URL) return { name: 'Meu Portfólio', positions: [], is_new: true };
+    try {
+      const res = await fetch(this.GAS_URL, {
+        method: 'POST',
+        mode: 'cors',
+        body: JSON.stringify({
+          action: 'get_portfolio',
+          username: this.user.username,
+          session_token: this.user.session_token
+        })
+      });
+      return await res.json();
+    } catch (err) {
+      console.warn('Erro ao carregar da Planilha:', err);
+      return { name: 'Meu Portfólio', positions: [], is_new: true };
     }
   }
 
@@ -442,24 +483,31 @@ class B3App {
   async handleLeadSubmit(e) {
     e.preventDefault();
     const email = this.$('leadEmail').value;
+
+    if (!this.GAS_URL) {
+      this.toast('Configure a GAS_URL no app.js para capturar leads via Planilha.', 'warning');
+      return;
+    }
+
     this.showLoading('Enviando...');
     try {
-      const res = await fetch('/api/leads', {
+      const res = await fetch(this.GAS_URL, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email })
+        mode: 'cors',
+        body: JSON.stringify({ action: 'add_lead', email })
       });
+      const data = await res.json();
       this.hideLoading();
-      if (res.ok) {
+      if (data.success) {
         this.toast('Obrigado! Entraremos em contato em breve para a realização do seu cadastro.', 'success');
         this.closeMembershipModal();
         this.$('leadForm').reset();
       } else {
-        this.toast('Erro ao enviar e-mail. Tente novamente.', 'error');
+        this.toast('Erro ao salvar lead na Planilha.', 'error');
       }
     } catch (err) {
       this.hideLoading();
-      this.toast('Falha na comunicação com o servidor', 'error');
+      this.toast('Falha na comunicação com a Planilha', 'error');
     }
   }
 
@@ -625,14 +673,10 @@ class B3App {
 
   async loadPortfolio() {
     if (this.user) {
-      try {
-        const res = await fetch('/api/portfolio');
-        if (res.ok) {
-          this.portfolio = await res.json();
-          return;
-        }
-      } catch (err) {
-        console.warn('Falha ao carregar portfólio do servidor');
+      const serverData = await this.loadPortfolioFromServer();
+      if (serverData && !serverData.error) {
+        this.portfolio = serverData;
+        return;
       }
     }
 

@@ -418,23 +418,26 @@
           <!-- Admin Panel -->
           <div class="card glass" id="adminPanel" style="display: none; grid-column: 1 / -1;">
             <h2 class="card-title">🛡️ Painel de Administração</h2>
-            <div class="toolbar">
-              <button class="btn btn-primary btn-sm" id="btnAdminLoadUsers" style="width: auto">Listar Usuários</button>
-              <button class="btn btn-outline btn-sm" id="btnAdminAddUser" style="width: auto">Novo Usuário</button>
+            <p style="margin-bottom: 1rem; color: var(--text-muted);">Como o sistema agora utiliza <strong>Google Sheets</strong>, o gerenciamento de usuários e leads deve ser feito diretamente na sua planilha Google.</p>
+
+            <div id="adminUsersTableCard" style="display: none;">
+              <div class="table-responsive" style="margin-top: 1rem;">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Usuário</th>
+                      <th>Tipo</th>
+                      <th>Ações</th>
+                    </tr>
+                  </thead>
+                  <tbody id="adminUsersBody">
+                  </tbody>
+                </table>
+              </div>
             </div>
-            <div class="table-responsive" style="margin-top: 1rem;">
-              <table>
-                <thead>
-                  <tr>
-                    <th>Usuário</th>
-                    <th>Tipo</th>
-                    <th>Ações</th>
-                  </tr>
-                </thead>
-                <tbody id="adminUsersBody">
-                  <tr><td colspan="3" class="empty-state">Clique em "Listar Usuários"</td></tr>
-                </tbody>
-              </table>
+
+            <div class="alert alert-info glass">
+              <strong>💡 Dica:</strong> Para adicionar novos membros, basta inserir uma nova linha na aba <strong>Users</strong> da sua planilha.
             </div>
           </div>
 
