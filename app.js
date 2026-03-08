@@ -9,7 +9,7 @@ class B3App {
     // 2. Extensões > Apps Script. Cole o código do arquivo 'docs/api.gs'.
     // 3. Implantar > App da Web (Quem tem acesso: "Qualquer pessoa").
     // 4. Copie a URL gerada e cole abaixo:
-    this.GAS_URL = "https://script.google.com/macros/s/AKfycbzH0LFpCCx6ziCF77Nnx6v4iUIe_ao8POcyjj4vPP3JBVYWK9e7pl1gOoQA9nvyJRXD/exec";
+    this.GAS_URL = "";
 
     this.portfolio = { name: 'Meu Portfólio', positions: [] };
     this.user = null; // { username: '...' } if logged in
@@ -55,9 +55,9 @@ class B3App {
     this.$('btnLogout').addEventListener('click', (e) => { e.preventDefault(); this.logout(); });
     this.$('btnLogoutFull').addEventListener('click', () => this.logout());
 
-    // Admin buttons
-    this.$('btnAdminLoadUsers').addEventListener('click', () => this.adminLoadUsers());
-    this.$('btnAdminAddUser').addEventListener('click', () => this.adminAddUser());
+    // Admin buttons (removed as management is now done directly in Google Sheets)
+    // this.$('btnAdminLoadUsers').addEventListener('click', () => this.adminLoadUsers());
+    // this.$('btnAdminAddUser').addEventListener('click', () => this.adminAddUser());
 
     // Sort listeners
     this.$('sortPositions').addEventListener('change', () => this.renderPositions());
@@ -230,8 +230,9 @@ class B3App {
 
   async logout() {
     this.showLoading('Saindo...');
-    localStorage.removeItem('b3_user');
-    this.user = null;
+    try {
+      localStorage.removeItem('b3_user');
+      this.user = null;
       this.updateAuthUI(false);
 
       // Restore local portfolio after logout
