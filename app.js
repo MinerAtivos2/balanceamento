@@ -54,8 +54,8 @@ class B3App {
 
     // Sort listeners
     this.$('sortPositions').addEventListener('change', () => this.renderPositions());
-    this.$('sortBarsi').addEventListener('change', () => this.runBarsi());
-    this.$('sortRebalance').addEventListener('change', () => this.runRebalance());
+    this.$('sortBarsi').addEventListener('change', () => this.renderBarsi());
+    this.$('sortRebalance').addEventListener('change', () => this.renderRebalance());
 
     // Membership modal
     this.$('membershipModalClose').addEventListener('click', () => this.closeMembershipModal());
@@ -393,15 +393,10 @@ class B3App {
     this.editIndex = editIndex;
     this.$('modalTitle').textContent = editIndex !== null ? 'Editar Registro' : 'Adicionar Ativo';
 
-    // Populate datalist
-    const datalist = this.$('assetList');
-    datalist.innerHTML = '';
-    this.assets.forEach(a => {
-      const option = document.createElement('option');
-      option.value = a.ticker;
-      option.textContent = `${a.ticker} — ${a.name}`;
-      datalist.appendChild(option);
-    });
+    // Ensure datalist is populated (fallback)
+    if (this.$('assetList').children.length === 0 && this.assets.length > 0) {
+      this.populateAssetDatalist();
+    }
 
     const tickerInput = this.$('posTicker');
     tickerInput.value = '';
@@ -609,10 +604,23 @@ class B3App {
       if (!res.ok) throw new Error();
       const data = await res.json();
       this.assets = data.assets || [];
+      this.populateAssetDatalist();
     } catch {
       console.warn('Falha ao carregar assets.json');
       this.assets = [];
     }
+  }
+
+  populateAssetDatalist() {
+    const datalist = this.$('assetList');
+    if (!datalist) return;
+    datalist.innerHTML = '';
+    this.assets.forEach(a => {
+      const option = document.createElement('option');
+      option.value = a.ticker;
+      option.textContent = `${a.ticker} — ${a.name}`;
+      datalist.appendChild(option);
+    });
   }
 
   async loadPortfolio() {
@@ -895,20 +903,14 @@ class B3App {
       });
     }
 
-    const sortBy = this.$('sortBarsi').value;
-    analyses.sort((a, b) => {
-      if (sortBy === 'margin') return b.margin_of_safety - a.margin_of_safety;
-      if (sortBy === 'yield') return b.current_yield - a.current_yield;
-      return a.ticker.localeCompare(b.ticker);
-    });
-
     const summary = {
       buy_signals: analyses.filter(a => a.recommendation.includes('COMPRAR')).length,
       hold_signals: analyses.filter(a => a.recommendation.includes('MANTER')).length,
       sell_signals: analyses.filter(a => a.recommendation.includes('VENDER')).length
     };
 
-    this.renderBarsi({ analyses, summary });
+    this.barsiResults = { analyses, summary };
+    this.renderBarsi();
     this.toast('Análise de preço-teto concluída!', 'success');
   }
 
@@ -970,7 +972,7 @@ class B3App {
       }
     });
 
-    const optResult = {
+    this.rebalanceResults = {
       optimal_allocation: {
         weights,
         expected_return: this.analysis?.summary.avg_rentability || 0,
@@ -981,7 +983,7 @@ class B3App {
     };
 
     setTimeout(() => {
-      this.renderRebalance(optResult);
+      this.renderRebalance();
       this.hideLoading();
       this.toast('Otimização concluída!', 'success');
     }, 500);
@@ -1236,15 +1238,26 @@ class B3App {
   /* ------------------------------------------------------------------
      Rendering — Barsi
   ------------------------------------------------------------------ */
-  renderBarsi(data) {
+  renderBarsi() {
+    const data = this.barsiResults;
+    if (!data) return;
+
     const tbody = this.$('barsiBody');
     if (!data.analyses || !data.analyses.length) {
       tbody.innerHTML = '<tr><td colspan="6" class="empty-state">Nenhum resultado</td></tr>';
       return;
     }
 
+    const analyses = [...data.analyses];
+    const sortBy = this.$('sortBarsi').value;
+    analyses.sort((a, b) => {
+      if (sortBy === 'margin') return b.margin_of_safety - a.margin_of_safety;
+      if (sortBy === 'yield') return b.current_yield - a.current_yield;
+      return a.ticker.localeCompare(b.ticker);
+    });
+
     let html = '';
-    data.analyses.forEach(a => {
+    analyses.forEach(a => {
       let badgeClass = 'badge-none', badgeText = 'N/A';
       if (a.recommendation.includes('COMPRAR')) { badgeClass = 'badge-buy'; badgeText = 'COMPRAR'; }
       else if (a.recommendation.includes('MANTER')) { badgeClass = 'badge-hold'; badgeText = 'MANTER'; }
@@ -1274,7 +1287,10 @@ class B3App {
   /* ------------------------------------------------------------------
      Rendering — Rebalance
   ------------------------------------------------------------------ */
-  renderRebalance(data) {
+  renderRebalance() {
+    const data = this.rebalanceResults;
+    if (!data) return;
+
     this.$('rebalancePlaceholder').style.display = 'none';
     this.$('rebalanceResults').style.display = 'block';
 
