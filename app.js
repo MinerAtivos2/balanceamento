@@ -451,7 +451,7 @@ class B3App {
       });
       this.hideLoading();
       if (res.ok) {
-        this.toast('Obrigado! Entraremos em contato em breve.', 'success');
+        this.toast('Obrigado! Entraremos em contato em breve para a realização do seu cadastro.', 'success');
         this.closeMembershipModal();
         this.$('leadForm').reset();
       } else {
