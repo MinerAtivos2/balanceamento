@@ -66,7 +66,7 @@ Se você já tinha dados no banco de dados anterior, aqui estão os dados atuais
 - `1, admin, admin123, 1`
 - `2, lucas1, senha123, 0`
 
-*(Nota: As senhas originais estavam criptografadas. Para facilitar o seu gerenciamento direto na planilha, o novo sistema utiliza comparação de texto simples. Você pode definir as senhas que desejar diretamente na coluna 'password' da aba Users).*
+*(Nota: As senhas originais estavam criptografadas. Para facilitar o seu gerenciamento direto na planilha, o novo sistema utiliza comparação de texto simples. Você pode definir as senhas que desejar diretamente na coluna 'password' da aba Users. Os usuários também podem alterar suas próprias senhas através da Área de Membros no site).*
 
 ### Dados para a aba `Portfolios`:
 Você pode copiar o conteúdo JSON dos portfólios existentes se desejar, mas recomendamos que os usuários salvem novamente seus dados após o primeiro login no novo sistema para garantir a sincronização.

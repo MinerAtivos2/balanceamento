@@ -9,7 +9,7 @@ class B3App {
     // 2. Extensões > Apps Script. Cole o código do arquivo 'docs/api.gs'.
     // 3. Implantar > App da Web (Quem tem acesso: "Qualquer pessoa").
     // 4. Copie a URL gerada e cole abaixo:
-    this.GAS_URL = "https://script.google.com/macros/s/AKfycbzH0LFpCCx6ziCF77Nnx6v4iUIe_ao8POcyjj4vPP3JBVYWK9e7pl1gOoQA9nvyJRXD/exec";
+    this.GAS_URL = "";
 
     this.portfolio = { name: 'Meu Portfólio', positions: [] };
     this.user = null; // { username: '...' } if logged in
@@ -255,7 +255,38 @@ class B3App {
   }
 
   async changePassword(old_password, new_password) {
-    this.toast('A alteração de senha deve ser feita diretamente na Planilha Google pelo administrador.', 'info');
+    if (!this.GAS_URL) {
+      this.toast('Configuração do servidor não encontrada.', 'error');
+      return;
+    }
+
+    try {
+      this.showLoading('Atualizando senha...');
+      const response = await fetch(this.GAS_URL, {
+        method: 'POST',
+        mode: 'cors',
+        body: JSON.stringify({
+          action: 'update_password',
+          username: this.user.username,
+          old_password,
+          new_password
+        })
+      });
+
+      const result = await response.json();
+      this.hideLoading();
+
+      if (result.success) {
+        this.toast(result.message || 'Senha alterada com sucesso!', 'success');
+        this.$('changePasswordForm').reset();
+      } else {
+        this.toast(result.error || 'Erro ao alterar senha.', 'error');
+      }
+    } catch (error) {
+      this.hideLoading();
+      console.error('Update password error:', error);
+      this.toast('Erro na comunicação com o servidor.', 'error');
+    }
   }
 
   updateAuthUI(data) {

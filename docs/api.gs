@@ -52,6 +52,8 @@ function processRequest(e) {
     return handleGetPortfolio(data.username, data.session_token);
   } else if (action === "save_portfolio") {
     return handleSavePortfolio(data.username, data.session_token, data.portfolio);
+  } else if (action === "update_password") {
+    return handleUpdatePassword(data.username, data.old_password, data.new_password);
   } else if (action === "status") {
     return handleStatus(data.username, data.session_token);
   }
@@ -149,4 +151,21 @@ function handleSavePortfolio(username, token, portfolio) {
   // Se não existir, adiciona novo
   sheet.appendRow([user.id, portfolioStr, now]);
   return { success: true };
+}
+
+function handleUpdatePassword(username, oldPassword, newPassword) {
+  const sheet = getSheet("Users");
+  const data = sheet.getDataRange().getValues();
+
+  for (let i = 1; i < data.length; i++) {
+    if (data[i][1] === username) {
+      if (String(data[i][2]) === String(oldPassword)) {
+        sheet.getRange(i + 1, 3).setValue(newPassword);
+        return { success: true, message: "Senha alterada com sucesso!" };
+      } else {
+        return { error: "Senha atual incorreta." };
+      }
+    }
+  }
+  return { error: "Usuário não encontrado." };
 }
