@@ -51,6 +51,21 @@ class B3App {
     // Admin buttons
     this.$('btnAdminLoadUsers').addEventListener('click', () => this.adminLoadUsers());
     this.$('btnAdminAddUser').addEventListener('click', () => this.adminAddUser());
+
+    // Sort listeners
+    this.$('sortPositions').addEventListener('change', () => this.renderPositions());
+    this.$('sortBarsi').addEventListener('change', () => this.runBarsi());
+    this.$('sortRebalance').addEventListener('change', () => this.runRebalance());
+
+    // Membership modal
+    this.$('membershipModalClose').addEventListener('click', () => this.closeMembershipModal());
+    this.$('membershipModalOverlay').addEventListener('click', e => {
+      if (e.target === this.$('membershipModalOverlay')) this.closeMembershipModal();
+    });
+    this.$('leadForm').addEventListener('submit', (e) => this.handleLeadSubmit(e));
+
+    // Ticker input validation
+    this.$('posTicker').addEventListener('input', () => this.validateTicker());
   }
 
   $(id) { return document.getElementById(id); }
@@ -366,19 +381,35 @@ class B3App {
   }
 
   openModal(editIndex = null) {
+    // Limit check for non-members
+    if (!this.user && editIndex === null) {
+      const uniqueTickers = new Set(this.portfolio.positions.map(p => p.ticker));
+      if (uniqueTickers.size >= 5) {
+        this.openMembershipModal();
+        return;
+      }
+    }
+
     this.editIndex = editIndex;
     this.$('modalTitle').textContent = editIndex !== null ? 'Editar Registro' : 'Adicionar Ativo';
 
-    // Populate ticker dropdown
-    const select = this.$('posTicker');
-    select.innerHTML = '<option value="">Selecione...</option>';
+    // Populate datalist
+    const datalist = this.$('assetList');
+    datalist.innerHTML = '';
     this.assets.forEach(a => {
-      select.innerHTML += `<option value="${a.ticker}">${a.ticker} — ${a.name}</option>`;
+      const option = document.createElement('option');
+      option.value = a.ticker;
+      option.textContent = `${a.ticker} — ${a.name}`;
+      datalist.appendChild(option);
     });
+
+    const tickerInput = this.$('posTicker');
+    tickerInput.value = '';
+    this.$('tickerWarning').style.display = 'none';
 
     if (editIndex !== null && this.portfolio.positions[editIndex]) {
       const pos = this.portfolio.positions[editIndex];
-      select.value = pos.ticker;
+      tickerInput.value = pos.ticker;
       this.$('posQty').value = pos.quantity;
       this.$('posPrice').value = pos.purchase_price;
       this.$('posDate').value = pos.purchase_date || new Date().toISOString().slice(0, 10);
@@ -389,6 +420,52 @@ class B3App {
     }
 
     this.$('modalOverlay').classList.add('show');
+  }
+
+  validateTicker() {
+    const val = this.$('posTicker').value.toUpperCase();
+    if (!val) {
+      this.$('tickerWarning').style.display = 'none';
+      return;
+    }
+    const found = this.assets.find(a => a.ticker === val || a.ticker.replace('.SA', '') === val);
+    if (!found) {
+      this.$('tickerWarning').style.display = 'block';
+    } else {
+      this.$('tickerWarning').style.display = 'none';
+    }
+  }
+
+  openMembershipModal() {
+    this.$('membershipModalOverlay').classList.add('show');
+  }
+
+  closeMembershipModal() {
+    this.$('membershipModalOverlay').classList.remove('show');
+  }
+
+  async handleLeadSubmit(e) {
+    e.preventDefault();
+    const email = this.$('leadEmail').value;
+    this.showLoading('Enviando...');
+    try {
+      const res = await fetch('/api/leads', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email })
+      });
+      this.hideLoading();
+      if (res.ok) {
+        this.toast('Obrigado! Entraremos em contato em breve.', 'success');
+        this.closeMembershipModal();
+        this.$('leadForm').reset();
+      } else {
+        this.toast('Erro ao enviar e-mail. Tente novamente.', 'error');
+      }
+    } catch (err) {
+      this.hideLoading();
+      this.toast('Falha na comunicação com o servidor', 'error');
+    }
   }
 
   closeModal() {
@@ -442,6 +519,22 @@ class B3App {
   async saveBulkPositions() {
     const rows = document.querySelectorAll('#bulkTableBody tr');
     const newPositions = [];
+
+    // Limit check for non-members
+    if (!this.user) {
+      const currentTickers = new Set(this.portfolio.positions.map(p => p.ticker));
+      const incomingTickers = new Set();
+      for (const row of rows) {
+        const t = row.querySelector('.bulk-ticker').value;
+        if (t) incomingTickers.add(t);
+      }
+      const combined = new Set([...currentTickers, ...incomingTickers]);
+      if (combined.size > 5) {
+        this.toast('Limite de 5 ativos atingido para não-membros', 'warning');
+        this.openMembershipModal();
+        return;
+      }
+    }
 
     for (const row of rows) {
       const ticker = row.querySelector('.bulk-ticker').value;
@@ -630,7 +723,11 @@ class B3App {
      CRUD — Positions
   ------------------------------------------------------------------ */
   async savePosition() {
-    const ticker = this.$('posTicker').value;
+    let ticker = this.$('posTicker').value.toUpperCase();
+    if (ticker && !ticker.endsWith('.SA')) {
+      const found = this.assets.find(a => a.ticker === ticker + '.SA');
+      if (found) ticker = ticker + '.SA';
+    }
     const qty = parseInt(this.$('posQty').value, 10);
     const price = parseFloat(this.$('posPrice').value);
     const date = this.$('posDate').value;
@@ -798,7 +895,12 @@ class B3App {
       });
     }
 
-    analyses.sort((a, b) => b.margin_of_safety - a.margin_of_safety);
+    const sortBy = this.$('sortBarsi').value;
+    analyses.sort((a, b) => {
+      if (sortBy === 'margin') return b.margin_of_safety - a.margin_of_safety;
+      if (sortBy === 'yield') return b.current_yield - a.current_yield;
+      return a.ticker.localeCompare(b.ticker);
+    });
 
     const summary = {
       buy_signals: analyses.filter(a => a.recommendation.includes('COMPRAR')).length,
@@ -1033,11 +1135,21 @@ class B3App {
       return;
     }
 
-    const consolidated = this.consolidatePortfolio();
+    let consolidated = this.consolidatePortfolio();
     const analysisMap = {};
     if (this.analysis) {
       this.analysis.positions.forEach(p => { analysisMap[p.ticker] = p; });
     }
+
+    // Sort
+    const sortBy = this.$('sortPositions').value;
+    consolidated.sort((a, b) => {
+      const an = analysisMap[a.ticker] || {};
+      const bn = analysisMap[b.ticker] || {};
+      if (sortBy === 'value') return (bn.position_value || 0) - (an.position_value || 0);
+      if (sortBy === 'rentability') return (bn.rentability_real || 0) - (an.rentability_real || 0);
+      return a.ticker.localeCompare(b.ticker);
+    });
 
     let html = '';
     consolidated.forEach(item => {
@@ -1196,13 +1308,20 @@ class B3App {
       },
     });
 
-    const suggestions = data.rebalancing_suggestions || [];
+    const suggestions = [...(data.rebalancing_suggestions || [])];
     const tbody = this.$('suggestionsBody');
     if (!suggestions.length) {
       tbody.innerHTML = '<tr><td colspan="6" class="empty-state">Portfólio já está otimizado!</td></tr>';
       this.$('suggestionsCard').style.display = 'block';
       return;
     }
+
+    const sortBy = this.$('sortRebalance').value;
+    suggestions.sort((a, b) => {
+      if (sortBy === 'allocation') return b.target_allocation - a.target_allocation;
+      if (sortBy === 'value') return b.total_value - a.total_value;
+      return a.ticker.localeCompare(b.ticker);
+    });
 
     let html = '';
     suggestions.forEach(s => {

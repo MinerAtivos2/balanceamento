@@ -357,6 +357,32 @@ def manage_portfolio():
 
 
 # ---------------------------------------------------------------------------
+# API — Leads
+# ---------------------------------------------------------------------------
+@app.route("/api/leads", methods=["POST"])
+def add_lead():
+    data = request.json
+    email = data.get("email")
+
+    if not email:
+        return jsonify({"error": "E-mail obrigatório"}), 400
+
+    # In a real app, we would send an email or save to a database.
+    # For now, we will log it and save to a JSON file.
+    lead_file = os.path.join(DATA_DIR, "leads.json")
+    leads = _load_json(lead_file, [])
+    leads.append({
+        "email": email,
+        "timestamp": datetime.now().isoformat()
+    })
+    _save_json(lead_file, leads)
+
+    print(f"Novo lead cadastrado: {email} (enviar para minerativos@gmail.com)")
+
+    return jsonify({"message": "Lead cadastrado com sucesso"})
+
+
+# ---------------------------------------------------------------------------
 # Main
 # ---------------------------------------------------------------------------
 if __name__ == "__main__":
