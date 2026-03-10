@@ -44,6 +44,8 @@ Este projeto foi adaptado para funcionar de forma 100% estática (GitHub Pages),
 7. Clique em **Implantar**.
 8. **Copie a URL do app da Web** gerada (algo como `https://script.google.com/macros/s/.../exec`).
 
+> ⚠️ **IMPORTANTE:** Toda vez que você fizer uma alteração no código do Apps Script (como adicionar a função de trocar senha), você deve clicar em **Implantar > Gerenciar implantações**, clicar no ícone de lápis (Editar) e selecionar **"Nova Versão"** na lista suspensa de versão. Caso contrário, o Google continuará executando a versão antiga do seu código e você verá erros como "Ação não reconhecida".
+
 ---
 
 ## 3. Conexão com o Site

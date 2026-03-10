@@ -58,7 +58,7 @@ function processRequest(e) {
     return handleStatus(data.username, data.session_token);
   }
 
-  return { error: "Ação não reconhecida" };
+  return { error: "Ação não reconhecida: " + action };
 }
 
 // --- Funções de Banco de Dados (Sheets) ---
