@@ -162,14 +162,14 @@ class B3App {
           this.logout();
         }
       } catch (err) {
-        console.warn('Erro ao verificar status na Planilha:', err);
+        console.warn('Erro ao verificar status no sistema:', err);
       }
     }
   }
 
   async login(username, password) {
     if (!this.GAS_URL) {
-      this.toast('Configure a GAS_URL no app.js para habilitar o login via Planilha.', 'warning');
+      this.toast('Configure a GAS_URL no app.js para habilitar o login.', 'warning');
       return;
     }
 
@@ -224,7 +224,7 @@ class B3App {
       }
     } catch (err) {
       this.hideLoading();
-      this.toast('Falha na comunicação com a Planilha Google', 'error');
+      this.toast('Falha na comunicação com o sistema.', 'error');
     }
   }
 
@@ -307,7 +307,7 @@ class B3App {
       if (this.user.is_admin) {
         this.$('adminPanel').classList.remove('hidden');
         this.$('adminPanel').style.display = 'block';
-        // No Google Sheets, o gerenciamento de usuários é feito diretamente na planilha.
+        // O gerenciamento de usuários é feito diretamente no sistema.
         // Ocultamos a lista de usuários para simplificar.
         this.$('adminUsersTableCard').style.display = 'none';
       } else {
@@ -405,8 +405,8 @@ class B3App {
         })
       });
     } catch (err) {
-      console.error('Erro ao salvar na Planilha:', err);
-      this.toast('Erro ao sincronizar dados com a Planilha', 'warning');
+      console.error('Erro ao salvar os dados:', err);
+      this.toast('Erro ao sincronizar dados com o sistema', 'warning');
     }
   }
 
@@ -424,7 +424,7 @@ class B3App {
       });
       return await res.json();
     } catch (err) {
-      console.warn('Erro ao carregar da Planilha:', err);
+      console.warn('Erro ao carregar do sistema:', err);
       return { name: 'Meu Portfólio', positions: [], is_new: true };
     }
   }
@@ -517,7 +517,7 @@ class B3App {
     const email = this.$('leadEmail').value;
 
     if (!this.GAS_URL) {
-      this.toast('Configure a GAS_URL no app.js para capturar leads via Planilha.', 'warning');
+      this.toast('Configure a GAS_URL no app.js para capturar leads.', 'warning');
       return;
     }
 
@@ -535,11 +535,11 @@ class B3App {
         this.closeMembershipModal();
         this.$('leadForm').reset();
       } else {
-        this.toast('Erro ao salvar lead na Planilha.', 'error');
+        this.toast('Erro ao salvar lead no sistema.', 'error');
       }
     } catch (err) {
       this.hideLoading();
-      this.toast('Falha na comunicação com a Planilha', 'error');
+      this.toast('Falha na comunicação com o sistema', 'error');
     }
   }
 
