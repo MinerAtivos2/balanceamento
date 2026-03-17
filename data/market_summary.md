@@ -1,21 +1,21 @@
-## Resumo de Mercado - 2026-03-13
+## Resumo de Mercado - 2026-03-17
 
 ### 📈 Maiores Altas (Dia)
 
 | Ativo | Nome | Fechamento | Anterior | Variação |
 | :--- | :--- | :--- | :--- | :--- |
 | ADMF3.SA | CIABRASF - Cia. Brasileira de Serviços Financeiros S/A | R$ 19.69 | R$ 14.90 | **+32.15%** 🚀 |
-| SOND5.SA | Sondotécnica Engenharia de Solos S.A. | R$ 69.95 | R$ 59.01 | **+18.54%** 🚀 |
-| FICT3.SA | Fictor Alimentos S.A. | R$ 0.51 | R$ 0.47 | **+8.51%** 🚀 |
-| DOTZ3.SA | Dotz S.A. | R$ 4.14 | R$ 3.82 | **+8.38%** 🚀 |
-| IFCM3.SA | Infracommerce CXaaS S.A. | R$ 0.80 | R$ 0.75 | **+6.67%** 🚀 |
+| RAIZ4.SA | Raízen S.A. | R$ 0.59 | R$ 0.50 | **+18.00%** 🚀 |
+| GPAR3.SA | Companhia CELG de Participações S/A | R$ 14.05 | R$ 12.53 | **+12.13%** 🚀 |
+| RSID3.SA | Rossi Residencial S.A. | R$ 1.68 | R$ 1.53 | **+9.80%** 🚀 |
+| NATU3.SA | Natura Cosméticos S.A. | R$ 9.31 | R$ 8.63 | **+7.88%** 🚀 |
 
 ### 📉 Maiores Baixas (Dia)
 
 | Ativo | Nome | Fechamento | Anterior | Variação |
 | :--- | :--- | :--- | :--- | :--- |
-| CEDO3.SA | Companhia de Fiação e Tecidos Cedro e Cachoeira S.A. | R$ 10.15 | R$ 13.99 | **-27.45%** 📉 |
-| CCTY3.SA | CCTY3.SA | R$ 9.55 | R$ 12.00 | **-20.42%** 📉 |
-| ESTR4.SA | Manufatura de Brinquedos Estrela S.A. | R$ 4.02 | R$ 4.80 | **-16.25%** 📉 |
-| RAPT3.SA | Randoncorp S.A. | R$ 5.03 | R$ 5.67 | **-11.29%** 📉 |
-| RSID3.SA | Rossi Residencial S.A. | R$ 1.53 | R$ 1.72 | **-11.05%** 📉 |
+| BDLL4.SA | Bardella S.A. Indústrias Mecânicas | R$ 6.02 | R$ 6.79 | **-11.34%** 📉 |
+| LUPA3.SA | Lupatech S.A. | R$ 0.80 | R$ 0.87 | **-8.05%** 📉 |
+| AZEV3.SA | Azevedo & Travassos S.A. | R$ 0.23 | R$ 0.25 | **-8.00%** 📉 |
+| MGLU3.SA | Magazine Luiza S.A. | R$ 9.25 | R$ 9.84 | **-6.00%** 📉 |
+| OIBR3.SA | Oi S.A. | R$ 0.16 | R$ 0.17 | **-5.88%** 📉 |
