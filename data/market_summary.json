@@ -1,151 +1,151 @@
 {
-  "last_update": "2026-03-17T23:30:21.356542",
-  "date": "2026-03-17",
+  "last_update": "2026-03-19T23:27:58.316241",
+  "date": "2026-03-19",
   "gainers": [
     {
-      "ticker": "ADMF3.SA",
-      "name": "CIABRASF - Cia. Brasileira de Serviços Financeiros S/A",
-      "last_close": 19.69,
-      "date": "2026-03-12",
-      "daily_delta": 0.3214765100671142,
-      "monthly_delta": 0.5752000000000002,
-      "prev_close": 14.9
-    },
-    {
-      "ticker": "RAIZ4.SA",
-      "name": "Raízen S.A.",
-      "last_close": 0.61,
-      "date": "2026-03-17",
-      "daily_delta": 0.21999999999999997,
-      "monthly_delta": -0.031746031746031744,
-      "prev_close": 0.5
-    },
-    {
-      "ticker": "GPAR3.SA",
-      "name": "Companhia CELG de Participações S/A",
-      "last_close": 14.05,
-      "date": "2026-03-16",
-      "daily_delta": 0.12130885873902653,
-      "monthly_delta": -0.015416958654519863,
-      "prev_close": 12.53
-    },
-    {
-      "ticker": "NATU3.SA",
-      "name": "Natura Cosméticos S.A.",
-      "last_close": 9.36,
-      "date": "2026-03-17",
-      "daily_delta": 0.08458864426419455,
-      "monthly_delta": 0.018498367791077275,
-      "prev_close": 8.63
-    },
-    {
-      "ticker": "REDE3.SA",
-      "name": "Rede Energia Participações S.A.",
-      "last_close": 6.9,
-      "date": "2026-03-17",
-      "daily_delta": 0.07309486780715413,
-      "monthly_delta": 0.09177215189873422,
-      "prev_close": 6.43
-    }
-  ],
-  "losers": [
-    {
-      "ticker": "BDLL4.SA",
-      "name": "Bardella S.A. Indústrias Mecânicas",
-      "last_close": 6.02,
-      "date": "2026-03-17",
-      "daily_delta": -0.11340206185567014,
-      "monthly_delta": -0.053459119496855445,
-      "prev_close": 6.79
-    },
-    {
-      "ticker": "MGLU3.SA",
-      "name": "Magazine Luiza S.A.",
-      "last_close": 9.04,
-      "date": "2026-03-17",
-      "daily_delta": -0.08130081300813019,
-      "monthly_delta": -0.11632453567937451,
-      "prev_close": 9.84
+      "ticker": "FIGE3.SA",
+      "name": "Investimentos Bemge S.A.",
+      "last_close": 33.0,
+      "date": "2026-03-19",
+      "daily_delta": 0.368726669431771,
+      "monthly_delta": 0.5662078785002373,
+      "prev_close": 24.11
     },
     {
       "ticker": "LUPA3.SA",
       "name": "Lupatech S.A.",
+      "last_close": 0.86,
+      "date": "2026-03-19",
+      "daily_delta": 0.17808219178082196,
+      "monthly_delta": -0.27118644067796605,
+      "prev_close": 0.73
+    },
+    {
+      "ticker": "ADMF3.SA",
+      "name": "CIABRASF - Cia. Brasileira de Serviços Financeiros S/A",
+      "last_close": 23.0,
+      "date": "2026-03-18",
+      "daily_delta": 0.16810563737938033,
+      "monthly_delta": 0.7692307692307692,
+      "prev_close": 19.69
+    },
+    {
+      "ticker": "HAPV3.SA",
+      "name": "Hapvida Participações e Investimentos S.A.",
+      "last_close": 9.44,
+      "date": "2026-03-19",
+      "daily_delta": 0.1498172959805113,
+      "monthly_delta": -0.09230769230769242,
+      "prev_close": 8.21
+    },
+    {
+      "ticker": "CASH3.SA",
+      "name": "Méliuz S.A.",
+      "last_close": 3.62,
+      "date": "2026-03-19",
+      "daily_delta": 0.1172839506172838,
+      "monthly_delta": 0.03428571428571425,
+      "prev_close": 3.24
+    }
+  ],
+  "losers": [
+    {
+      "ticker": "RVEE3.SA",
+      "name": "RVEE3.SA",
       "last_close": 0.8,
-      "date": "2026-03-17",
-      "daily_delta": -0.08045977011494243,
-      "monthly_delta": -0.32203389830508466,
-      "prev_close": 0.87
+      "date": "2026-03-19",
+      "daily_delta": -0.1578947368421052,
+      "monthly_delta": -0.5918367346938775,
+      "prev_close": 0.95
     },
     {
-      "ticker": "AZTE3.SA",
-      "name": "Azevedo & Travassos Energia S.A.",
-      "last_close": 0.24,
-      "date": "2026-03-17",
-      "daily_delta": -0.07692307692307698,
-      "monthly_delta": -0.11111111111111116,
-      "prev_close": 0.26
+      "ticker": "GMAT3.SA",
+      "name": "Grupo Mateus S.A.",
+      "last_close": 4.15,
+      "date": "2026-03-19",
+      "daily_delta": -0.14432989690721632,
+      "monthly_delta": -0.232902033271719,
+      "prev_close": 4.85
     },
     {
-      "ticker": "VVEO3.SA",
-      "name": "CM Hospitalar S/A",
-      "last_close": 1.32,
-      "date": "2026-03-17",
-      "daily_delta": -0.07692307692307687,
-      "monthly_delta": -0.08965517241379306,
-      "prev_close": 1.43
+      "ticker": "ONCO3.SA",
+      "name": "Oncoclínicas do Brasil Serviços Médicos S.A.",
+      "last_close": 1.21,
+      "date": "2026-03-19",
+      "daily_delta": -0.1294964028776978,
+      "monthly_delta": -0.5966666666666667,
+      "prev_close": 1.39
+    },
+    {
+      "ticker": "DOTZ3.SA",
+      "name": "Dotz S.A.",
+      "last_close": 3.3,
+      "date": "2026-03-19",
+      "daily_delta": -0.12698412698412698,
+      "monthly_delta": 0.12244897959183665,
+      "prev_close": 3.78
+    },
+    {
+      "ticker": "RCSL4.SA",
+      "name": "Recrusul S/A",
+      "last_close": 1.21,
+      "date": "2026-03-19",
+      "daily_delta": -0.11678832116788329,
+      "monthly_delta": -0.32777777777777783,
+      "prev_close": 1.37
     }
   ],
   "all_assets": [
     {
       "ticker": "AALR3.SA",
       "name": "Alliança Saúde e Participações S.A.",
-      "last_close": 3.88,
-      "date": "2026-03-17",
-      "daily_delta": -0.058252427184466105,
-      "monthly_delta": -0.08056872037914686,
-      "prev_close": 4.12
+      "last_close": 3.77,
+      "date": "2026-03-19",
+      "daily_delta": -0.023316062176165775,
+      "monthly_delta": -0.10663507109004733,
+      "prev_close": 3.86
     },
     {
       "ticker": "ABCB4.SA",
       "name": "Banco ABC Brasil S.A.",
-      "last_close": 26.01,
-      "date": "2026-03-17",
-      "daily_delta": -0.007251908396946449,
-      "monthly_delta": -0.03416264389157064,
-      "prev_close": 26.2
+      "last_close": 25.63,
+      "date": "2026-03-19",
+      "daily_delta": -0.007358636715724343,
+      "monthly_delta": -0.0482733011511326,
+      "prev_close": 25.82
     },
     {
       "ticker": "ABEV3.SA",
       "name": "Ambev S.A.",
-      "last_close": 15.02,
-      "date": "2026-03-17",
-      "daily_delta": -0.005298013245033095,
-      "monthly_delta": -0.08134556574923557,
-      "prev_close": 15.1
+      "last_close": 14.77,
+      "date": "2026-03-19",
+      "daily_delta": 0.002035278154681075,
+      "monthly_delta": -0.0966360856269114,
+      "prev_close": 14.74
     },
     {
       "ticker": "ADMF3.SA",
       "name": "CIABRASF - Cia. Brasileira de Serviços Financeiros S/A",
-      "last_close": 19.69,
-      "date": "2026-03-12",
-      "daily_delta": 0.3214765100671142,
-      "monthly_delta": 0.5752000000000002,
-      "prev_close": 14.9
+      "last_close": 23.0,
+      "date": "2026-03-18",
+      "daily_delta": 0.16810563737938033,
+      "monthly_delta": 0.7692307692307692,
+      "prev_close": 19.69
     },
     {
       "ticker": "AERI3.SA",
       "name": "Aeris Indústria e Comércio de Equipamentos para Geração de Energia S.A.",
-      "last_close": 2.82,
-      "date": "2026-03-17",
-      "daily_delta": -0.010526315789473717,
-      "monthly_delta": -0.05685618729096997,
-      "prev_close": 2.85
+      "last_close": 2.62,
+      "date": "2026-03-19",
+      "daily_delta": -0.05755395683453224,
+      "monthly_delta": -0.12374581939799334,
+      "prev_close": 2.78
     },
     {
       "ticker": "AFLT3.SA",
       "name": "Afluente Transmissão de Energia Elétrica S.A.",
       "last_close": 7.32,
-      "date": "2026-03-16",
+      "date": "2026-03-18",
       "daily_delta": 0.0,
       "monthly_delta": -0.010810810810810811,
       "prev_close": 7.32
@@ -153,35 +153,35 @@
     {
       "ticker": "AGRO3.SA",
       "name": "BrasilAgro - Companhia Brasileira de Propriedades Agrícolas",
-      "last_close": 22.26,
-      "date": "2026-03-17",
-      "daily_delta": -0.009786476868327343,
-      "monthly_delta": 0.09332023575638515,
-      "prev_close": 22.48
+      "last_close": 21.7,
+      "date": "2026-03-19",
+      "daily_delta": 0.05288694808345462,
+      "monthly_delta": 0.06581532416502944,
+      "prev_close": 20.61
     },
     {
       "ticker": "AGXY3.SA",
       "name": "AgroGalaxy Participações S.A.",
-      "last_close": 2.35,
-      "date": "2026-03-17",
-      "daily_delta": 0.05381165919282527,
-      "monthly_delta": -0.04471544715447151,
-      "prev_close": 2.23
+      "last_close": 2.2,
+      "date": "2026-03-19",
+      "daily_delta": -0.022222222222222143,
+      "monthly_delta": -0.10569105691056901,
+      "prev_close": 2.25
     },
     {
       "ticker": "AHEB3.SA",
       "name": "São Paulo Turismo S.A.",
-      "last_close": 23.25,
-      "date": "2026-03-16",
-      "daily_delta": 0.0,
-      "monthly_delta": -0.06999999999999995,
+      "last_close": 25.0,
+      "date": "2026-03-18",
+      "daily_delta": 0.07526881720430101,
+      "monthly_delta": 0.0,
       "prev_close": 23.25
     },
     {
       "ticker": "AHEB5.SA",
       "name": "São Paulo Turismo S.A.",
       "last_close": 58.0,
-      "date": "2026-03-16",
+      "date": "2026-03-18",
       "daily_delta": 0.0,
       "monthly_delta": 0.0,
       "prev_close": 58.0
@@ -190,7 +190,7 @@
       "ticker": "AHEB6.SA",
       "name": "São Paulo Turismo S.A.",
       "last_close": 55.0,
-      "date": "2026-03-16",
+      "date": "2026-03-18",
       "daily_delta": 0.0,
       "monthly_delta": 0.0,
       "prev_close": 55.0
@@ -198,125 +198,125 @@
     {
       "ticker": "ALLD3.SA",
       "name": "Allied Tecnologia S.A.",
-      "last_close": 7.42,
-      "date": "2026-03-17",
-      "daily_delta": -0.004026845637583931,
-      "monthly_delta": -0.00669344042838016,
-      "prev_close": 7.45
+      "last_close": 7.23,
+      "date": "2026-03-19",
+      "daily_delta": -0.006868131868131844,
+      "monthly_delta": -0.032128514056224855,
+      "prev_close": 7.28
     },
     {
       "ticker": "ALOS3.SA",
       "name": "Allos S.A.",
-      "last_close": 29.55,
-      "date": "2026-03-17",
-      "daily_delta": 0.0016949152542373724,
-      "monthly_delta": -0.02764067127344516,
-      "prev_close": 29.5
+      "last_close": 29.75,
+      "date": "2026-03-19",
+      "daily_delta": 0.0006727211570802805,
+      "monthly_delta": -0.02105955906548207,
+      "prev_close": 29.73
     },
     {
       "ticker": "ALPA3.SA",
       "name": "Alpargatas S.A.",
-      "last_close": 11.39,
-      "date": "2026-03-17",
-      "daily_delta": 0.040182648401826615,
-      "monthly_delta": -0.1129283489096573,
-      "prev_close": 10.95
+      "last_close": 11.46,
+      "date": "2026-03-19",
+      "daily_delta": 0.03150315031503159,
+      "monthly_delta": -0.10747663551401865,
+      "prev_close": 11.11
     },
     {
       "ticker": "ALPA4.SA",
       "name": "Alpargatas S.A.",
-      "last_close": 11.71,
-      "date": "2026-03-17",
-      "daily_delta": 0.024496937882764858,
-      "monthly_delta": -0.22089155023286755,
-      "prev_close": 11.43
+      "last_close": 11.81,
+      "date": "2026-03-19",
+      "daily_delta": 0.010265183917878673,
+      "monthly_delta": -0.21423819028609437,
+      "prev_close": 11.69
     },
     {
       "ticker": "ALPK3.SA",
       "name": "Allpark Empreendimentos, Participações e Serviços S.A.",
-      "last_close": 4.4,
-      "date": "2026-03-17",
-      "daily_delta": 0.01616628175519641,
-      "monthly_delta": -0.08333333333333326,
-      "prev_close": 4.33
+      "last_close": 4.51,
+      "date": "2026-03-19",
+      "daily_delta": 0.0022222222222221255,
+      "monthly_delta": -0.060416666666666674,
+      "prev_close": 4.5
     },
     {
       "ticker": "ALUP3.SA",
       "name": "Alupar Investimento S.A.",
-      "last_close": 12.56,
-      "date": "2026-03-17",
-      "daily_delta": 0.0007968127490038945,
-      "monthly_delta": -0.06058339566192961,
-      "prev_close": 12.55
+      "last_close": 12.28,
+      "date": "2026-03-19",
+      "daily_delta": -0.007275666936135794,
+      "monthly_delta": -0.08152580403889309,
+      "prev_close": 12.37
     },
     {
       "ticker": "ALUP4.SA",
       "name": "Alupar Investimento S.A.",
-      "last_close": 10.89,
-      "date": "2026-03-17",
-      "daily_delta": -0.011796733212341093,
-      "monthly_delta": -0.036283185840708,
-      "prev_close": 11.02
+      "last_close": 10.9,
+      "date": "2026-03-19",
+      "daily_delta": 0.013011152416356975,
+      "monthly_delta": -0.03539823008849563,
+      "prev_close": 10.76
     },
     {
       "ticker": "ALUP11.SA",
       "name": "Alupar Investimento S.A.",
-      "last_close": 34.27,
-      "date": "2026-03-17",
-      "daily_delta": -0.016078093597473253,
-      "monthly_delta": -0.04273743016759757,
-      "prev_close": 34.83
+      "last_close": 34.04,
+      "date": "2026-03-19",
+      "daily_delta": 0.007995262066923248,
+      "monthly_delta": -0.049162011173184306,
+      "prev_close": 33.77
     },
     {
       "ticker": "AMAR3.SA",
       "name": "Marisa Lojas S.A.",
-      "last_close": 0.86,
-      "date": "2026-03-17",
-      "daily_delta": 0.0,
-      "monthly_delta": -0.09473684210526312,
-      "prev_close": 0.86
+      "last_close": 0.84,
+      "date": "2026-03-19",
+      "daily_delta": -0.0117647058823529,
+      "monthly_delta": -0.11578947368421055,
+      "prev_close": 0.85
     },
     {
       "ticker": "AMBP3.SA",
       "name": "Ambipar Participações e Empreendimentos S.A.",
-      "last_close": 0.22,
-      "date": "2026-03-17",
-      "daily_delta": -0.0434782608695653,
-      "monthly_delta": -0.18518518518518523,
-      "prev_close": 0.23
+      "last_close": 0.21,
+      "date": "2026-03-19",
+      "daily_delta": 0.04999999999999982,
+      "monthly_delta": -0.22222222222222232,
+      "prev_close": 0.2
     },
     {
       "ticker": "AMER3.SA",
       "name": "Americanas S.A.",
-      "last_close": 4.95,
-      "date": "2026-03-17",
-      "daily_delta": -0.010000000000000009,
-      "monthly_delta": -0.10649819494584833,
-      "prev_close": 5.0
+      "last_close": 5.05,
+      "date": "2026-03-19",
+      "daily_delta": 0.024340770791074995,
+      "monthly_delta": -0.08844765342960292,
+      "prev_close": 4.93
     },
     {
       "ticker": "AMOB3.SA",
       "name": "Automob Participações S.A.",
-      "last_close": 10.91,
-      "date": "2026-03-17",
-      "daily_delta": -0.0643224699828473,
-      "monthly_delta": -0.16205837173579107,
-      "prev_close": 11.66
+      "last_close": 11.25,
+      "date": "2026-03-19",
+      "daily_delta": 0.0,
+      "monthly_delta": -0.13594470046082952,
+      "prev_close": 11.25
     },
     {
       "ticker": "ANIM3.SA",
       "name": "Ânima Holding S.A.",
-      "last_close": 4.03,
-      "date": "2026-03-17",
-      "daily_delta": -0.009828009828009798,
-      "monthly_delta": -0.14072494669509594,
-      "prev_close": 4.07
+      "last_close": 3.89,
+      "date": "2026-03-19",
+      "daily_delta": -0.010178117048346036,
+      "monthly_delta": -0.17057569296375275,
+      "prev_close": 3.93
     },
     {
       "ticker": "APTI4.SA",
       "name": "APTI4.SA",
       "last_close": 3500.0,
-      "date": "2026-03-16",
+      "date": "2026-03-18",
       "daily_delta": 0.0,
       "monthly_delta": 0.0,
       "prev_close": 3500.0
@@ -324,80 +324,80 @@
     {
       "ticker": "ARML3.SA",
       "name": "Armac Locação, Logística e Serviços S.A.",
-      "last_close": 4.86,
-      "date": "2026-03-17",
-      "daily_delta": -0.020161290322580627,
-      "monthly_delta": -0.09999999999999998,
-      "prev_close": 4.96
+      "last_close": 4.79,
+      "date": "2026-03-19",
+      "daily_delta": -0.002083333333333326,
+      "monthly_delta": -0.11296296296296304,
+      "prev_close": 4.8
     },
     {
       "ticker": "ARND3.SA",
       "name": "Arandu Investimentos S.A.",
-      "last_close": 0.69,
-      "date": "2026-03-17",
+      "last_close": 0.8,
+      "date": "2026-03-19",
       "daily_delta": 0.0,
-      "monthly_delta": -0.11538461538461553,
-      "prev_close": 0.69
+      "monthly_delta": 0.025641025641025772,
+      "prev_close": 0.8
     },
     {
       "ticker": "ASAI3.SA",
       "name": "Sendas Distribuidora S.A.",
-      "last_close": 7.95,
-      "date": "2026-03-17",
-      "daily_delta": 0.01792573623559557,
-      "monthly_delta": -0.19696969696969702,
-      "prev_close": 7.81
+      "last_close": 7.73,
+      "date": "2026-03-19",
+      "daily_delta": -0.002580645161290307,
+      "monthly_delta": -0.21919191919191916,
+      "prev_close": 7.75
     },
     {
       "ticker": "ATED3.SA",
       "name": "ATED3.SA",
-      "last_close": 2.23,
-      "date": "2026-03-17",
-      "daily_delta": 0.009049773755656076,
-      "monthly_delta": 0.05188679245283012,
-      "prev_close": 2.21
+      "last_close": 2.32,
+      "date": "2026-03-19",
+      "daily_delta": 0.04035874439461873,
+      "monthly_delta": 0.09433962264150941,
+      "prev_close": 2.23
     },
     {
       "ticker": "AUAU3.SA",
       "name": "Uniao Pet Participacoes S.A.",
-      "last_close": 2.96,
-      "date": "2026-03-17",
-      "daily_delta": -0.0033670033670034627,
-      "monthly_delta": -0.02310231023102305,
-      "prev_close": 2.97
+      "last_close": 2.92,
+      "date": "2026-03-19",
+      "daily_delta": 0.006896551724137945,
+      "monthly_delta": -0.0363036303630363,
+      "prev_close": 2.9
     },
     {
       "ticker": "AURE3.SA",
       "name": "Auren Energia S.A.",
-      "last_close": 11.78,
-      "date": "2026-03-17",
-      "daily_delta": -0.008417508417508546,
-      "monthly_delta": 0.012027491408934665,
-      "prev_close": 11.88
+      "last_close": 11.84,
+      "date": "2026-03-19",
+      "daily_delta": 0.022452504317789224,
+      "monthly_delta": 0.01718213058419238,
+      "prev_close": 11.58
     },
     {
       "ticker": "AVLL3.SA",
       "name": "Alphaville S.A.",
-      "last_close": 0.68,
-      "date": "2026-03-17",
-      "daily_delta": 0.0,
-      "monthly_delta": -0.19047619047619035,
-      "prev_close": 0.68
+      "last_close": 0.66,
+      "date": "2026-03-19",
+      "daily_delta": -0.014925373134328401,
+      "monthly_delta": -0.2142857142857142,
+      "prev_close": 0.67
     },
     {
       "ticker": "AXIA3.SA",
       "name": "AXIA Energia SA",
-      "last_close": 57.76,
-      "date": "2026-03-17",
-      "daily_delta": -0.019521303683585067,
-      "monthly_delta": -0.01146671230532259,
-      "prev_close": 58.91
+      "last_close": 57.82,
+      "date": "2026-03-19",
+      "daily_delta": 0.0038194444444443754,
+      "monthly_delta": -0.01043984254663699,
+      "prev_close": 57.6
     },
     {
       "ticker": "AXIA5.SA",
       "name": "AXIA Energia SA",
       "last_close": 64.63,
-      "date": "2026-03-16",
+      "date": "2026-03-18",
       "daily_delta": 0.0,
       "monthly_delta": -0.18189873417721525,
       "prev_close": 64.63
@@ -405,71 +405,71 @@
     {
       "ticker": "AXIA6.SA",
       "name": "AXIA Energia SA",
-      "last_close": 63.0,
-      "date": "2026-03-17",
-      "daily_delta": -0.01976038587210205,
-      "monthly_delta": 0.015801354401805856,
-      "prev_close": 64.27
+      "last_close": 63.06,
+      "date": "2026-03-19",
+      "daily_delta": 0.003820439350525451,
+      "monthly_delta": 0.01676878426314099,
+      "prev_close": 62.82
     },
     {
       "ticker": "AXIA7.SA",
       "name": "AXIA Energia SA",
-      "last_close": 55.6,
-      "date": "2026-03-17",
-      "daily_delta": -0.023018801616587536,
-      "monthly_delta": -0.0152320226709175,
-      "prev_close": 56.91
+      "last_close": 55.84,
+      "date": "2026-03-19",
+      "daily_delta": 0.006670272219217788,
+      "monthly_delta": -0.010981225646475301,
+      "prev_close": 55.47
     },
     {
       "ticker": "AZEV3.SA",
       "name": "Azevedo & Travassos S.A.",
-      "last_close": 0.24,
-      "date": "2026-03-17",
-      "daily_delta": -0.040000000000000036,
-      "monthly_delta": -0.040000000000000036,
-      "prev_close": 0.25
+      "last_close": 0.21,
+      "date": "2026-03-19",
+      "daily_delta": -0.045454545454545525,
+      "monthly_delta": -0.16000000000000003,
+      "prev_close": 0.22
     },
     {
       "ticker": "AZEV4.SA",
       "name": "Azevedo & Travassos S.A.",
-      "last_close": 0.17,
-      "date": "2026-03-17",
+      "last_close": 0.16,
+      "date": "2026-03-19",
       "daily_delta": 0.0,
-      "monthly_delta": 0.0,
-      "prev_close": 0.17
+      "monthly_delta": -0.05882352941176472,
+      "prev_close": 0.16
     },
     {
       "ticker": "AZTE3.SA",
       "name": "Azevedo & Travassos Energia S.A.",
-      "last_close": 0.24,
-      "date": "2026-03-17",
-      "daily_delta": -0.07692307692307698,
-      "monthly_delta": -0.11111111111111116,
-      "prev_close": 0.26
+      "last_close": 0.23,
+      "date": "2026-03-19",
+      "daily_delta": -0.04166666666666663,
+      "monthly_delta": -0.14814814814814814,
+      "prev_close": 0.24
     },
     {
       "ticker": "AZZA3.SA",
       "name": "Azzas 2154 S.A.",
-      "last_close": 28.0,
-      "date": "2026-03-17",
-      "daily_delta": -0.0014265335235377208,
-      "monthly_delta": 0.14379084967320255,
-      "prev_close": 28.04
+      "last_close": 27.5,
+      "date": "2026-03-19",
+      "daily_delta": 0.014385835485060783,
+      "monthly_delta": 0.12336601307189543,
+      "prev_close": 27.11
     },
     {
       "ticker": "B3SA3.SA",
       "name": "B3 S.A. - Brasil, Bolsa, Balcão",
-      "last_close": 17.6,
-      "date": "2026-03-17",
-      "daily_delta": 0.014409221902017322,
-      "monthly_delta": 0.008018327605956443,
-      "prev_close": 17.35
+      "last_close": 16.92,
+      "date": "2026-03-19",
+      "daily_delta": -0.011682242990654124,
+      "monthly_delta": -0.030927835051546393,
+      "prev_close": 17.12
     },
     {
       "ticker": "BALM3.SA",
       "name": "Baumer S.A.",
       "last_close": 26.0,
-      "date": "2026-03-16",
+      "date": "2026-03-18",
       "daily_delta": 0.0,
       "monthly_delta": 0.0,
       "prev_close": 26.0
@@ -477,17 +477,17 @@
     {
       "ticker": "BALM4.SA",
       "name": "Baumer S.A.",
-      "last_close": 19.03,
-      "date": "2026-03-17",
-      "daily_delta": 0.029761904761904878,
-      "monthly_delta": 0.003162888771744976,
-      "prev_close": 18.48
+      "last_close": 20.4,
+      "date": "2026-03-19",
+      "daily_delta": 0.09854604200323092,
+      "monthly_delta": 0.07538218239325256,
+      "prev_close": 18.57
     },
     {
       "ticker": "BAUH3.SA",
       "name": "Excelsior Alimentos SA",
       "last_close": 5.0,
-      "date": "2026-03-16",
+      "date": "2026-03-18",
       "daily_delta": 0.0,
       "monthly_delta": 0.0,
       "prev_close": 5.0
@@ -496,7 +496,7 @@
       "ticker": "BAUH4.SA",
       "name": "Excelsior Alimentos S.A.",
       "last_close": 92.99,
-      "date": "2026-03-16",
+      "date": "2026-03-18",
       "daily_delta": 0.0,
       "monthly_delta": 0.0,
       "prev_close": 92.99
@@ -504,53 +504,53 @@
     {
       "ticker": "BAZA3.SA",
       "name": "Banco da Amazônia S.A.",
-      "last_close": 84.25,
-      "date": "2026-03-17",
-      "daily_delta": 0.000712673714217793,
-      "monthly_delta": -0.027585410895660245,
-      "prev_close": 84.19
+      "last_close": 83.53,
+      "date": "2026-03-19",
+      "daily_delta": -0.0002393776181927043,
+      "monthly_delta": -0.03589566020313939,
+      "prev_close": 83.55
     },
     {
       "ticker": "BBAS3.SA",
       "name": "Banco do Brasil S.A.",
-      "last_close": 23.67,
-      "date": "2026-03-17",
-      "daily_delta": -0.009623430962342971,
-      "monthly_delta": -0.05922098569157386,
-      "prev_close": 23.9
+      "last_close": 23.51,
+      "date": "2026-03-19",
+      "daily_delta": 0.004271678769756537,
+      "monthly_delta": -0.0655802861685214,
+      "prev_close": 23.41
     },
     {
       "ticker": "BBDC3.SA",
       "name": "Banco Bradesco S.A.",
-      "last_close": 16.32,
-      "date": "2026-03-17",
-      "daily_delta": -0.006090133982947665,
-      "monthly_delta": -0.09933774834437092,
-      "prev_close": 16.42
+      "last_close": 16.11,
+      "date": "2026-03-19",
+      "daily_delta": 0.001865671641791078,
+      "monthly_delta": -0.11092715231788086,
+      "prev_close": 16.08
     },
     {
       "ticker": "BBDC4.SA",
       "name": "Banco Bradesco S.A.",
-      "last_close": 18.85,
-      "date": "2026-03-17",
-      "daily_delta": -0.007894736842105177,
-      "monthly_delta": -0.10023866348448673,
-      "prev_close": 19.0
+      "last_close": 18.64,
+      "date": "2026-03-19",
+      "daily_delta": 0.0005367686527106841,
+      "monthly_delta": -0.1102625298329355,
+      "prev_close": 18.63
     },
     {
       "ticker": "BBSE3.SA",
       "name": "BB Seguridade Participações S.A.",
-      "last_close": 34.92,
-      "date": "2026-03-17",
-      "daily_delta": 0.0011467889908256534,
-      "monthly_delta": 0.0325251330573626,
-      "prev_close": 34.88
+      "last_close": 34.66,
+      "date": "2026-03-19",
+      "daily_delta": 0.004055619930474874,
+      "monthly_delta": 0.024837374334713003,
+      "prev_close": 34.52
     },
     {
       "ticker": "BDLL3.SA",
       "name": "Bardella S.A. Indústrias Mecânicas",
       "last_close": 7.01,
-      "date": "2026-03-16",
+      "date": "2026-03-18",
       "daily_delta": 0.0,
       "monthly_delta": -0.005673758865248235,
       "prev_close": 7.01
@@ -559,43 +559,43 @@
       "ticker": "BDLL4.SA",
       "name": "Bardella S.A. Indústrias Mecânicas",
       "last_close": 6.02,
-      "date": "2026-03-17",
-      "daily_delta": -0.11340206185567014,
+      "date": "2026-03-18",
+      "daily_delta": 0.0,
       "monthly_delta": -0.053459119496855445,
-      "prev_close": 6.79
+      "prev_close": 6.02
     },
     {
       "ticker": "BEEF3.SA",
       "name": "Minerva S.A.",
-      "last_close": 4.36,
-      "date": "2026-03-17",
-      "daily_delta": -0.006833712984054552,
-      "monthly_delta": -0.2377622377622377,
-      "prev_close": 4.39
+      "last_close": 3.84,
+      "date": "2026-03-19",
+      "daily_delta": -0.10697674418604652,
+      "monthly_delta": -0.32867132867132864,
+      "prev_close": 4.3
     },
     {
       "ticker": "BEES3.SA",
       "name": "Banestes S.A - Banco do Estado do Espírito Santo",
       "last_close": 8.52,
-      "date": "2026-03-17",
-      "daily_delta": -0.010452961672473893,
+      "date": "2026-03-19",
+      "daily_delta": -0.004672897196261738,
       "monthly_delta": 0.020359281437125842,
-      "prev_close": 8.61
+      "prev_close": 8.56
     },
     {
       "ticker": "BEES4.SA",
       "name": "Banestes S.A - Banco do Estado do Espírito Santo",
-      "last_close": 8.69,
-      "date": "2026-03-17",
-      "daily_delta": -0.0011494252873562871,
-      "monthly_delta": 0.035756853396901045,
-      "prev_close": 8.7
+      "last_close": 8.65,
+      "date": "2026-03-19",
+      "daily_delta": -0.0023068050749711633,
+      "monthly_delta": 0.030989272943980906,
+      "prev_close": 8.67
     },
     {
       "ticker": "BGIP3.SA",
       "name": "Banco do Estado de Sergipe S.A.",
       "last_close": 62.24,
-      "date": "2026-03-16",
+      "date": "2026-03-18",
       "daily_delta": 0.0,
       "monthly_delta": 0.20293776575183609,
       "prev_close": 62.24
@@ -603,65 +603,65 @@
     {
       "ticker": "BGIP4.SA",
       "name": "Banco do Estado de Sergipe S.A.",
-      "last_close": 36.56,
-      "date": "2026-03-17",
-      "daily_delta": 0.007717750826901959,
-      "monthly_delta": 0.0662000583260427,
-      "prev_close": 36.28
+      "last_close": 36.51,
+      "date": "2026-03-19",
+      "daily_delta": -0.001367614879649981,
+      "monthly_delta": 0.06474190726159224,
+      "prev_close": 36.56
     },
     {
       "ticker": "BHIA3.SA",
       "name": "Grupo Casas Bahia S.A.",
-      "last_close": 2.88,
-      "date": "2026-03-17",
-      "daily_delta": -0.013698630136986356,
-      "monthly_delta": -0.017064846416382395,
-      "prev_close": 2.92
+      "last_close": 2.84,
+      "date": "2026-03-19",
+      "daily_delta": 0.007092198581560183,
+      "monthly_delta": -0.03071672354948818,
+      "prev_close": 2.82
     },
     {
       "ticker": "BIED3.SA",
       "name": "Bahema Educação S.A.",
-      "last_close": 6.77,
-      "date": "2026-03-17",
-      "daily_delta": -0.01741654571843254,
-      "monthly_delta": 0.39876033057851235,
-      "prev_close": 6.89
+      "last_close": 6.7,
+      "date": "2026-03-18",
+      "daily_delta": -0.010339734121122546,
+      "monthly_delta": 0.3842975206611572,
+      "prev_close": 6.77
     },
     {
       "ticker": "BIOM3.SA",
       "name": "Biomm S.A.",
-      "last_close": 7.56,
-      "date": "2026-03-17",
-      "daily_delta": 0.008000000000000007,
-      "monthly_delta": 0.2332789559543229,
-      "prev_close": 7.5
+      "last_close": 7.43,
+      "date": "2026-03-19",
+      "daily_delta": 0.010884353741496655,
+      "monthly_delta": 0.21207177814029365,
+      "prev_close": 7.35
     },
     {
       "ticker": "BLAU3.SA",
       "name": "Blau Farmacêutica S.A.",
-      "last_close": 10.01,
-      "date": "2026-03-17",
-      "daily_delta": -0.001994017946161497,
-      "monthly_delta": -0.04026845637583887,
-      "prev_close": 10.03
+      "last_close": 9.8,
+      "date": "2026-03-19",
+      "daily_delta": 0.013443640124095158,
+      "monthly_delta": -0.0604026845637583,
+      "prev_close": 9.67
     },
     {
       "ticker": "BMEB3.SA",
       "name": "Banco Mercantil do Brasil S.A.",
-      "last_close": 66.21,
-      "date": "2026-03-17",
-      "daily_delta": -0.062048448788780464,
-      "monthly_delta": 0.18337801608579074,
-      "prev_close": 70.59
+      "last_close": 67.0,
+      "date": "2026-03-19",
+      "daily_delta": 0.022900763358778553,
+      "monthly_delta": 0.1974977658623771,
+      "prev_close": 65.5
     },
     {
       "ticker": "BMEB4.SA",
       "name": "Banco Mercantil do Brasil S.A.",
-      "last_close": 76.6,
-      "date": "2026-03-17",
-      "daily_delta": -0.023083790332865783,
-      "monthly_delta": 0.14311296821369934,
-      "prev_close": 78.41
+      "last_close": 79.02,
+      "date": "2026-03-19",
+      "daily_delta": -0.015081640284183018,
+      "monthly_delta": 0.1792269810476046,
+      "prev_close": 80.23
     },
     {
       "ticker": "BMEB9.SA",
@@ -675,17 +675,17 @@
     {
       "ticker": "BMGB4.SA",
       "name": "Banco BMG S.A.",
-      "last_close": 5.08,
-      "date": "2026-03-17",
-      "daily_delta": 0.018036072144288484,
-      "monthly_delta": 0.05833333333333335,
-      "prev_close": 4.99
+      "last_close": 4.95,
+      "date": "2026-03-19",
+      "daily_delta": -0.013944223107569598,
+      "monthly_delta": 0.03125,
+      "prev_close": 5.02
     },
     {
       "ticker": "BMIN3.SA",
       "name": "Banco Mercantil de Investimentos S.A.",
       "last_close": 22.0,
-      "date": "2026-03-16",
+      "date": "2026-03-18",
       "daily_delta": 0.0,
       "monthly_delta": -0.04306220095693769,
       "prev_close": 22.0
@@ -693,44 +693,44 @@
     {
       "ticker": "BMIN4.SA",
       "name": "Banco Mercantil de Investimentos S.A.",
-      "last_close": 19.43,
-      "date": "2026-03-17",
-      "daily_delta": -0.0005144032921811093,
-      "monthly_delta": -0.049877750611246885,
-      "prev_close": 19.44
+      "last_close": 18.15,
+      "date": "2026-03-19",
+      "daily_delta": -0.06539649845520101,
+      "monthly_delta": -0.11246943765281181,
+      "prev_close": 19.42
     },
     {
       "ticker": "BMKS3.SA",
       "name": "Bicicletas Monark S.A.",
-      "last_close": 379.99,
-      "date": "2026-03-17",
-      "daily_delta": 0.0,
-      "monthly_delta": 0.005264550264550305,
-      "prev_close": 379.99
+      "last_close": 382.0,
+      "date": "2026-03-19",
+      "daily_delta": 0.010582010582010692,
+      "monthly_delta": 0.010582010582010692,
+      "prev_close": 378.0
     },
     {
       "ticker": "BMOB3.SA",
       "name": "Bemobi Mobile Tech S.A.",
-      "last_close": 22.99,
-      "date": "2026-03-17",
-      "daily_delta": 0.006567425569176777,
-      "monthly_delta": -0.044869131699210696,
-      "prev_close": 22.84
+      "last_close": 22.97,
+      "date": "2026-03-19",
+      "daily_delta": 0.020888888888888735,
+      "monthly_delta": -0.04570004154549234,
+      "prev_close": 22.5
     },
     {
       "ticker": "BNBR3.SA",
       "name": "Banco do Nordeste do Brasil S.A.",
-      "last_close": 122.0,
-      "date": "2026-03-17",
-      "daily_delta": 8.19739322894808e-05,
-      "monthly_delta": -0.008130081300813052,
-      "prev_close": 121.99
+      "last_close": 122.19,
+      "date": "2026-03-19",
+      "daily_delta": 0.001557377049180353,
+      "monthly_delta": -0.0065853658536585424,
+      "prev_close": 122.0
     },
     {
       "ticker": "BOBR3.SA",
       "name": "Bombril S.A.",
       "last_close": 1.0,
-      "date": "2026-03-16",
+      "date": "2026-03-18",
       "daily_delta": 0.0,
       "monthly_delta": 0.0,
       "prev_close": 1.0
@@ -738,44 +738,44 @@
     {
       "ticker": "BOBR4.SA",
       "name": "Bombril S.A.",
-      "last_close": 1.2,
-      "date": "2026-03-17",
-      "daily_delta": 0.0,
-      "monthly_delta": -0.0625,
-      "prev_close": 1.2
+      "last_close": 1.23,
+      "date": "2026-03-19",
+      "daily_delta": -0.008064516129032251,
+      "monthly_delta": -0.0390625,
+      "prev_close": 1.24
     },
     {
       "ticker": "BPAC3.SA",
       "name": "Banco BTG Pactual S.A.",
-      "last_close": 40.52,
-      "date": "2026-03-17",
-      "daily_delta": -0.0002467308166789195,
-      "monthly_delta": -0.062037037037037,
-      "prev_close": 40.53
+      "last_close": 38.52,
+      "date": "2026-03-19",
+      "daily_delta": -0.03361766181635717,
+      "monthly_delta": -0.10833333333333328,
+      "prev_close": 39.86
     },
     {
       "ticker": "BPAC5.SA",
       "name": "Banco BTG Pactual S.A.",
-      "last_close": 11.01,
-      "date": "2026-03-17",
-      "daily_delta": -0.006317689530685899,
-      "monthly_delta": 0.0009090909090909705,
-      "prev_close": 11.08
+      "last_close": 11.07,
+      "date": "2026-03-19",
+      "daily_delta": 0.0036264732547597323,
+      "monthly_delta": 0.006363636363636349,
+      "prev_close": 11.03
     },
     {
       "ticker": "BPAC11.SA",
       "name": "Banco BTG Pactual S.A.",
-      "last_close": 56.1,
-      "date": "2026-03-17",
-      "daily_delta": 0.003577817531305927,
-      "monthly_delta": -0.05856687363651625,
-      "prev_close": 55.9
+      "last_close": 55.11,
+      "date": "2026-03-19",
+      "daily_delta": -0.005593648502345783,
+      "monthly_delta": -0.07518039939587184,
+      "prev_close": 55.42
     },
     {
       "ticker": "BPAR3.SA",
       "name": "BPAR3.SA",
       "last_close": 182.07,
-      "date": "2026-03-16",
+      "date": "2026-03-18",
       "daily_delta": 0.0,
       "monthly_delta": 0.0,
       "prev_close": 182.07
@@ -783,62 +783,62 @@
     {
       "ticker": "BRAP3.SA",
       "name": "Bradespar S.A.",
-      "last_close": 19.49,
-      "date": "2026-03-17",
-      "daily_delta": 0.004639175257731942,
-      "monthly_delta": -0.04880429477794046,
-      "prev_close": 19.4
+      "last_close": 19.12,
+      "date": "2026-03-19",
+      "daily_delta": -0.004166666666666541,
+      "monthly_delta": -0.06686188384577829,
+      "prev_close": 19.2
     },
     {
       "ticker": "BRAP4.SA",
       "name": "Bradespar S.A.",
-      "last_close": 22.46,
-      "date": "2026-03-17",
-      "daily_delta": 0.00044543429844101645,
-      "monthly_delta": -0.05985768103809119,
-      "prev_close": 22.45
+      "last_close": 21.79,
+      "date": "2026-03-19",
+      "daily_delta": -0.009545454545454635,
+      "monthly_delta": -0.0879028882377565,
+      "prev_close": 22.0
     },
     {
       "ticker": "BRAV3.SA",
       "name": "Brava Energia S.A.",
-      "last_close": 18.02,
-      "date": "2026-03-17",
-      "daily_delta": -0.03326180257510736,
-      "monthly_delta": 0.018654607122668088,
-      "prev_close": 18.64
+      "last_close": 17.47,
+      "date": "2026-03-19",
+      "daily_delta": -0.04326396495071205,
+      "monthly_delta": -0.01243640474844554,
+      "prev_close": 18.26
     },
     {
       "ticker": "BRBI11.SA",
       "name": "BRBI BR Partners S.A.",
-      "last_close": 18.91,
-      "date": "2026-03-17",
-      "daily_delta": 0.008533333333333282,
-      "monthly_delta": 0.018857758620689724,
-      "prev_close": 18.75
+      "last_close": 18.6,
+      "date": "2026-03-19",
+      "daily_delta": -0.0005373455131648663,
+      "monthly_delta": 0.0021551724137931494,
+      "prev_close": 18.61
     },
     {
       "ticker": "BRKM3.SA",
       "name": "Braskem S.A.",
-      "last_close": 10.5,
-      "date": "2026-03-17",
-      "daily_delta": 0.053159478435305774,
-      "monthly_delta": 0.13024757804090425,
-      "prev_close": 9.97
+      "last_close": 9.95,
+      "date": "2026-03-19",
+      "daily_delta": -0.051477597712106804,
+      "monthly_delta": 0.07104413347685679,
+      "prev_close": 10.49
     },
     {
       "ticker": "BRKM5.SA",
       "name": "Braskem S.A.",
-      "last_close": 12.19,
-      "date": "2026-03-17",
-      "daily_delta": 0.04366438356164393,
-      "monthly_delta": 0.24514811031664974,
-      "prev_close": 11.68
+      "last_close": 11.89,
+      "date": "2026-03-19",
+      "daily_delta": 0.0,
+      "monthly_delta": 0.21450459652706866,
+      "prev_close": 11.89
     },
     {
       "ticker": "BRKM6.SA",
       "name": "Braskem S.A.",
       "last_close": 9.7,
-      "date": "2026-03-17",
+      "date": "2026-03-18",
       "daily_delta": 0.0,
       "monthly_delta": 0.15476190476190466,
       "prev_close": 9.7
@@ -846,62 +846,62 @@
     {
       "ticker": "BRSR3.SA",
       "name": "Banco do Estado do Rio Grande do Sul S.A.",
-      "last_close": 18.87,
-      "date": "2026-03-17",
-      "daily_delta": -0.0015873015873014706,
-      "monthly_delta": -0.0021152829190903555,
-      "prev_close": 18.9
+      "last_close": 18.66,
+      "date": "2026-03-19",
+      "daily_delta": -0.007446808510638281,
+      "monthly_delta": -0.013220518244315138,
+      "prev_close": 18.8
     },
     {
       "ticker": "BRSR5.SA",
       "name": "Banco do Estado do Rio Grande do Sul S.A.",
       "last_close": 18.79,
-      "date": "2026-03-16",
-      "daily_delta": 0.01184706515885825,
+      "date": "2026-03-18",
+      "daily_delta": 0.0,
       "monthly_delta": 0.01403130059363189,
-      "prev_close": 18.57
+      "prev_close": 18.79
     },
     {
       "ticker": "BRSR6.SA",
       "name": "Banco do Estado do Rio Grande do Sul S.A.",
-      "last_close": 17.16,
-      "date": "2026-03-17",
-      "daily_delta": -0.0029052876234747504,
-      "monthly_delta": -0.05766062602965405,
-      "prev_close": 17.21
+      "last_close": 17.15,
+      "date": "2026-03-19",
+      "daily_delta": 0.00763807285546414,
+      "monthly_delta": -0.05820977484898415,
+      "prev_close": 17.02
     },
     {
       "ticker": "BRST3.SA",
       "name": "BRST3.SA",
-      "last_close": 2.96,
-      "date": "2026-03-17",
-      "daily_delta": 0.003389830508474523,
-      "monthly_delta": -0.04207119741100318,
-      "prev_close": 2.95
+      "last_close": 2.8,
+      "date": "2026-03-19",
+      "daily_delta": -0.05723905723905731,
+      "monthly_delta": -0.09385113268608414,
+      "prev_close": 2.97
     },
     {
       "ticker": "BSLI3.SA",
       "name": "BRB - Banco de Brasília S.A.",
-      "last_close": 4.75,
-      "date": "2026-03-17",
-      "daily_delta": 0.004228329809724984,
-      "monthly_delta": -0.0900383141762452,
-      "prev_close": 4.73
+      "last_close": 4.55,
+      "date": "2026-03-19",
+      "daily_delta": -0.023605150214592308,
+      "monthly_delta": -0.1283524904214559,
+      "prev_close": 4.66
     },
     {
       "ticker": "BSLI4.SA",
       "name": "BRB - Banco de Brasília S.A.",
-      "last_close": 4.21,
-      "date": "2026-03-17",
-      "daily_delta": -0.06444444444444442,
-      "monthly_delta": -0.10425531914893627,
-      "prev_close": 4.5
+      "last_close": 4.25,
+      "date": "2026-03-19",
+      "daily_delta": 0.004728132387706863,
+      "monthly_delta": -0.09574468085106391,
+      "prev_close": 4.23
     },
     {
       "ticker": "CALI3.SA",
       "name": "Construtora Adolpho Lindenberg S.A.",
       "last_close": 17.25,
-      "date": "2026-03-16",
+      "date": "2026-03-18",
       "daily_delta": 0.0,
       "monthly_delta": 0.078125,
       "prev_close": 17.25
@@ -909,35 +909,35 @@
     {
       "ticker": "CAMB3.SA",
       "name": "Cambuci S.A.",
-      "last_close": 9.62,
-      "date": "2026-03-17",
-      "daily_delta": 0.022316684378320906,
-      "monthly_delta": 0.012631578947368327,
-      "prev_close": 9.41
+      "last_close": 9.41,
+      "date": "2026-03-19",
+      "daily_delta": -0.02789256198347101,
+      "monthly_delta": 0.005341880341880323,
+      "prev_close": 9.68
     },
     {
       "ticker": "CAML3.SA",
       "name": "Camil Alimentos S.A.",
-      "last_close": 6.02,
-      "date": "2026-03-17",
-      "daily_delta": -0.008237232289950658,
-      "monthly_delta": -0.07526881720430112,
-      "prev_close": 6.07
+      "last_close": 5.74,
+      "date": "2026-03-19",
+      "daily_delta": -0.015437392795883298,
+      "monthly_delta": -0.11827956989247301,
+      "prev_close": 5.83
     },
     {
       "ticker": "CASH3.SA",
       "name": "Méliuz S.A.",
-      "last_close": 3.32,
-      "date": "2026-03-17",
-      "daily_delta": -0.005988023952095856,
-      "monthly_delta": -0.05142857142857149,
-      "prev_close": 3.34
+      "last_close": 3.62,
+      "date": "2026-03-19",
+      "daily_delta": 0.1172839506172838,
+      "monthly_delta": 0.03428571428571425,
+      "prev_close": 3.24
     },
     {
       "ticker": "CASN3.SA",
       "name": "Companhia Catarinense de Águas e Saneamento - CASAN",
       "last_close": 8.51,
-      "date": "2026-03-16",
+      "date": "2026-03-18",
       "daily_delta": 0.0,
       "monthly_delta": 0.0,
       "prev_close": 8.51
@@ -946,7 +946,7 @@
       "ticker": "CASN4.SA",
       "name": "CASN4.SA",
       "last_close": 6.34,
-      "date": "2026-03-16",
+      "date": "2026-03-18",
       "daily_delta": 0.0,
       "monthly_delta": 0.0,
       "prev_close": 6.34
@@ -954,17 +954,17 @@
     {
       "ticker": "CBAV3.SA",
       "name": "Companhia Brasileira de Alumínio",
-      "last_close": 10.38,
-      "date": "2026-03-17",
-      "daily_delta": -0.004793863854266389,
-      "monthly_delta": 0.016650342801175277,
-      "prev_close": 10.43
+      "last_close": 10.34,
+      "date": "2026-03-19",
+      "daily_delta": 0.004859086491739717,
+      "monthly_delta": 0.01273261508325163,
+      "prev_close": 10.29
     },
     {
       "ticker": "CBEE3.SA",
       "name": "Ampla Energia e Serviços S.A.",
       "last_close": 9.98,
-      "date": "2026-03-16",
+      "date": "2026-03-18",
       "daily_delta": 0.0,
       "monthly_delta": -0.0664172123479887,
       "prev_close": 9.98
@@ -973,7 +973,7 @@
       "ticker": "CCTY3.SA",
       "name": "CCTY3.SA",
       "last_close": 9.55,
-      "date": "2026-03-16",
+      "date": "2026-03-18",
       "daily_delta": 0.0,
       "monthly_delta": -0.2041666666666666,
       "prev_close": 9.55
@@ -981,80 +981,80 @@
     {
       "ticker": "CEAB3.SA",
       "name": "C&A Modas S.A.",
-      "last_close": 11.61,
-      "date": "2026-03-17",
-      "daily_delta": 0.008688097306689846,
-      "monthly_delta": -0.09720062208398139,
-      "prev_close": 11.51
+      "last_close": 11.33,
+      "date": "2026-03-19",
+      "daily_delta": 0.003542958370239324,
+      "monthly_delta": -0.11897356143079307,
+      "prev_close": 11.29
     },
     {
       "ticker": "CEBR3.SA",
       "name": "Companhia Energética de Brasília - CEB",
-      "last_close": 31.12,
-      "date": "2026-03-17",
-      "daily_delta": -0.005750798722044759,
-      "monthly_delta": 0.03183023872679058,
-      "prev_close": 31.3
+      "last_close": 30.51,
+      "date": "2026-03-19",
+      "daily_delta": -0.006188925081433205,
+      "monthly_delta": 0.011604774535808993,
+      "prev_close": 30.7
     },
     {
       "ticker": "CEBR5.SA",
       "name": "Companhia Energética de Brasília - CEB",
-      "last_close": 28.61,
-      "date": "2026-03-17",
-      "daily_delta": -0.004869565217391347,
-      "monthly_delta": -0.04057679409792092,
-      "prev_close": 28.75
+      "last_close": 28.5,
+      "date": "2026-03-19",
+      "daily_delta": 0.0,
+      "monthly_delta": -0.044265593561368166,
+      "prev_close": 28.5
     },
     {
       "ticker": "CEBR6.SA",
       "name": "Companhia Energética de Brasília - CEB",
-      "last_close": 31.22,
-      "date": "2026-03-17",
-      "daily_delta": 0.01035598705501628,
-      "monthly_delta": 0.010029116790682524,
-      "prev_close": 30.9
+      "last_close": 31.2,
+      "date": "2026-03-19",
+      "daily_delta": -0.0006406149903908087,
+      "monthly_delta": 0.0093820769977353,
+      "prev_close": 31.22
     },
     {
       "ticker": "CEDO3.SA",
       "name": "Companhia de Fiação e Tecidos Cedro e Cachoeira S.A.",
-      "last_close": 10.15,
-      "date": "2026-03-16",
+      "last_close": 10.05,
+      "date": "2026-03-19",
       "daily_delta": 0.0,
-      "monthly_delta": -0.274481772694782,
-      "prev_close": 10.15
+      "monthly_delta": -0.2816297355253752,
+      "prev_close": 10.05
     },
     {
       "ticker": "CEDO4.SA",
       "name": "Companhia de Fiação e Tecidos Cedro e Cachoeira S.A.",
-      "last_close": 8.63,
-      "date": "2026-03-17",
-      "daily_delta": -0.020431328036322305,
-      "monthly_delta": -0.1193877551020408,
-      "prev_close": 8.81
+      "last_close": 8.5,
+      "date": "2026-03-19",
+      "daily_delta": 0.00591715976331364,
+      "monthly_delta": -0.13265306122448983,
+      "prev_close": 8.45
     },
     {
       "ticker": "CEEB3.SA",
       "name": "Companhia de Eletricidade do Estado da Bahia - COELBA",
       "last_close": 47.81,
-      "date": "2026-03-17",
-      "daily_delta": 0.008862629246676468,
+      "date": "2026-03-18",
+      "daily_delta": 0.0,
       "monthly_delta": 0.01723404255319161,
-      "prev_close": 47.39
+      "prev_close": 47.81
     },
     {
       "ticker": "CEEB5.SA",
       "name": "Companhia de Eletricidade do Estado da Bahia - COELBA",
       "last_close": 40.0,
-      "date": "2026-03-17",
-      "daily_delta": -0.04761904761904767,
+      "date": "2026-03-18",
+      "daily_delta": 0.0,
       "monthly_delta": 0.08108108108108114,
-      "prev_close": 42.0
+      "prev_close": 40.0
     },
     {
       "ticker": "CEED3.SA",
       "name": "Companhia Estadual de Distribuição de Energia Elétrica",
       "last_close": 9.79,
-      "date": "2026-03-16",
+      "date": "2026-03-18",
       "daily_delta": 0.0,
       "monthly_delta": 0.09263392857142838,
       "prev_close": 9.79
@@ -1063,7 +1063,7 @@
       "ticker": "CEED4.SA",
       "name": "Companhia Estadual de Distribuição de Energia Elétrica",
       "last_close": 20.0,
-      "date": "2026-03-16",
+      "date": "2026-03-18",
       "daily_delta": 0.0,
       "monthly_delta": 0.0,
       "prev_close": 20.0
@@ -1072,7 +1072,7 @@
       "ticker": "CEGR3.SA",
       "name": "Companhia Distribuidora de Gás do Rio de Janeiro - CEG",
       "last_close": 55.0,
-      "date": "2026-03-16",
+      "date": "2026-03-18",
       "daily_delta": 0.0,
       "monthly_delta": 0.0,
       "prev_close": 55.0
@@ -1081,7 +1081,7 @@
       "ticker": "CGAS3.SA",
       "name": "Companhia de Gás de São Paulo - COMGÁS",
       "last_close": 128.06,
-      "date": "2026-03-16",
+      "date": "2026-03-18",
       "daily_delta": 0.0,
       "monthly_delta": 0.008267065585386923,
       "prev_close": 128.06
@@ -1089,35 +1089,35 @@
     {
       "ticker": "CGAS5.SA",
       "name": "Companhia de Gás de São Paulo - COMGÁS",
-      "last_close": 132.3,
-      "date": "2026-03-17",
-      "daily_delta": 0.005624809972636147,
-      "monthly_delta": -0.000604320894394772,
-      "prev_close": 131.56
+      "last_close": 131.01,
+      "date": "2026-03-19",
+      "daily_delta": -0.01488833746898277,
+      "monthly_delta": -0.010348995316513121,
+      "prev_close": 132.99
     },
     {
       "ticker": "CGRA3.SA",
       "name": "Grazziotin S.A.",
-      "last_close": 27.99,
-      "date": "2026-03-17",
-      "daily_delta": 0.04245810055865906,
-      "monthly_delta": 0.036666666666666625,
-      "prev_close": 26.85
+      "last_close": 26.45,
+      "date": "2026-03-19",
+      "daily_delta": -0.04166666666666674,
+      "monthly_delta": -0.020370370370370372,
+      "prev_close": 27.6
     },
     {
       "ticker": "CGRA4.SA",
       "name": "Grazziotin S.A.",
-      "last_close": 26.65,
-      "date": "2026-03-17",
-      "daily_delta": 0.001879699248120259,
-      "monthly_delta": -0.0026197604790418882,
-      "prev_close": 26.6
+      "last_close": 26.8,
+      "date": "2026-03-19",
+      "daily_delta": -0.007407407407407418,
+      "monthly_delta": 0.0029940119760478723,
+      "prev_close": 27.0
     },
     {
       "ticker": "CLSC3.SA",
       "name": "Centrais Elétricas de Santa Catarina S.A.",
       "last_close": 124.01,
-      "date": "2026-03-16",
+      "date": "2026-03-18",
       "daily_delta": 0.0,
       "monthly_delta": -0.05335877862595417,
       "prev_close": 124.01
@@ -1125,44 +1125,44 @@
     {
       "ticker": "CLSC4.SA",
       "name": "Centrais Elétricas de Santa Catarina S.A.",
-      "last_close": 143.99,
-      "date": "2026-03-17",
-      "daily_delta": -0.002355712603062443,
-      "monthly_delta": 0.004815073272854242,
-      "prev_close": 144.33
+      "last_close": 145.3,
+      "date": "2026-03-19",
+      "daily_delta": 0.004146510020732741,
+      "monthly_delta": 0.013956734124214831,
+      "prev_close": 144.7
     },
     {
       "ticker": "CMIG3.SA",
       "name": "Companhia Energética de Minas Gerais - CEMIG",
-      "last_close": 15.62,
-      "date": "2026-03-17",
-      "daily_delta": -0.0012787723785167016,
-      "monthly_delta": 0.02426229508196709,
-      "prev_close": 15.64
+      "last_close": 15.85,
+      "date": "2026-03-19",
+      "daily_delta": 0.01602564102564097,
+      "monthly_delta": 0.03934426229508192,
+      "prev_close": 15.6
     },
     {
       "ticker": "CMIG4.SA",
       "name": "Companhia Energética de Minas Gerais - CEMIG",
-      "last_close": 11.92,
-      "date": "2026-03-17",
-      "daily_delta": -0.002510460251045954,
-      "monthly_delta": 0.013605442176870763,
-      "prev_close": 11.95
+      "last_close": 12.19,
+      "date": "2026-03-19",
+      "daily_delta": 0.03217612193056718,
+      "monthly_delta": 0.03656462585034004,
+      "prev_close": 11.81
     },
     {
       "ticker": "CMIN3.SA",
       "name": "CSN Mineração S.A.",
-      "last_close": 4.92,
-      "date": "2026-03-17",
-      "daily_delta": 0.004081632653061051,
-      "monthly_delta": -0.09890109890109888,
-      "prev_close": 4.9
+      "last_close": 4.84,
+      "date": "2026-03-19",
+      "daily_delta": 0.006237006237006293,
+      "monthly_delta": -0.1135531135531136,
+      "prev_close": 4.81
     },
     {
       "ticker": "COCE3.SA",
       "name": "Companhia Energética do Ceará - COELCE",
       "last_close": 38.0,
-      "date": "2026-03-16",
+      "date": "2026-03-18",
       "daily_delta": 0.0,
       "monthly_delta": 0.0,
       "prev_close": 38.0
@@ -1170,17 +1170,17 @@
     {
       "ticker": "COCE5.SA",
       "name": "Companhia Energética do Ceará - COELCE",
-      "last_close": 31.15,
-      "date": "2026-03-17",
-      "daily_delta": 0.00972447325769843,
-      "monthly_delta": 0.019639934533551395,
-      "prev_close": 30.85
+      "last_close": 31.53,
+      "date": "2026-03-19",
+      "daily_delta": 0.025365853658536608,
+      "monthly_delta": 0.032078559738134116,
+      "prev_close": 30.75
     },
     {
       "ticker": "COCE6.SA",
       "name": "COCE6.SA",
       "last_close": 35.0,
-      "date": "2026-03-16",
+      "date": "2026-03-18",
       "daily_delta": 0.0,
       "monthly_delta": 0.0,
       "prev_close": 35.0
@@ -1188,35 +1188,35 @@
     {
       "ticker": "COGN3.SA",
       "name": "Cogna Educação S.A.",
-      "last_close": 2.92,
-      "date": "2026-03-17",
-      "daily_delta": -0.020134228187919434,
-      "monthly_delta": -0.1560693641618497,
-      "prev_close": 2.98
+      "last_close": 2.83,
+      "date": "2026-03-19",
+      "daily_delta": -0.007017543859649145,
+      "monthly_delta": -0.18208092485549132,
+      "prev_close": 2.85
     },
     {
       "ticker": "CPFE3.SA",
       "name": "CPFL Energia S.A.",
-      "last_close": 48.71,
-      "date": "2026-03-17",
-      "daily_delta": -0.0012302645068690277,
-      "monthly_delta": -0.04000788332676386,
-      "prev_close": 48.77
+      "last_close": 47.62,
+      "date": "2026-03-19",
+      "daily_delta": -0.007503126302626062,
+      "monthly_delta": -0.0614899487583761,
+      "prev_close": 47.98
     },
     {
       "ticker": "CPLE3.SA",
       "name": "Companhia Paranaense de Energia - COPEL",
-      "last_close": 14.4,
-      "date": "2026-03-17",
-      "daily_delta": 0.0,
-      "monthly_delta": 0.03078024337866858,
-      "prev_close": 14.4
+      "last_close": 15.47,
+      "date": "2026-03-19",
+      "daily_delta": 0.017763157894737036,
+      "monthly_delta": 0.10737294201861136,
+      "prev_close": 15.2
     },
     {
       "ticker": "CRPG3.SA",
       "name": "Tronox Pigmentos do Brasil S.A.",
       "last_close": 19.61,
-      "date": "2026-03-16",
+      "date": "2026-03-18",
       "daily_delta": 0.0,
       "monthly_delta": 0.07688083470620533,
       "prev_close": 19.61
@@ -1224,17 +1224,17 @@
     {
       "ticker": "CRPG5.SA",
       "name": "Tronox Pigmentos do Brasil S.A.",
-      "last_close": 17.0,
-      "date": "2026-03-17",
-      "daily_delta": -0.020737327188940058,
-      "monthly_delta": -0.12325941206807633,
-      "prev_close": 17.36
+      "last_close": 17.49,
+      "date": "2026-03-19",
+      "daily_delta": 0.010982658959537428,
+      "monthly_delta": -0.09798865394533274,
+      "prev_close": 17.3
     },
     {
       "ticker": "CRPG6.SA",
       "name": "Tronox Pigmentos do Brasil S.A.",
       "last_close": 18.48,
-      "date": "2026-03-16",
+      "date": "2026-03-18",
       "daily_delta": 0.0,
       "monthly_delta": -0.016498137307078165,
       "prev_close": 18.48
@@ -1242,197 +1242,197 @@
     {
       "ticker": "CSAN3.SA",
       "name": "Cosan S.A.",
-      "last_close": 5.22,
-      "date": "2026-03-17",
-      "daily_delta": -0.04220183486238538,
-      "monthly_delta": -0.1470588235294118,
-      "prev_close": 5.45
+      "last_close": 5.24,
+      "date": "2026-03-19",
+      "daily_delta": 0.00963391136801528,
+      "monthly_delta": -0.14379084967320255,
+      "prev_close": 5.19
     },
     {
       "ticker": "CSED3.SA",
       "name": "Cruzeiro do Sul Educacional S.A.",
-      "last_close": 6.02,
-      "date": "2026-03-17",
-      "daily_delta": -0.01794453507340954,
-      "monthly_delta": -0.07810107197549776,
-      "prev_close": 6.13
+      "last_close": 5.83,
+      "date": "2026-03-19",
+      "daily_delta": -0.02833333333333332,
+      "monthly_delta": -0.10719754977029095,
+      "prev_close": 6.0
     },
     {
       "ticker": "CSMG3.SA",
       "name": "Companhia de Saneamento de Minas Gerais",
-      "last_close": 54.57,
-      "date": "2026-03-17",
-      "daily_delta": 0.023443360840210037,
-      "monthly_delta": -0.022218240458699245,
-      "prev_close": 53.32
+      "last_close": 55.34,
+      "date": "2026-03-19",
+      "daily_delta": 0.02103321033210337,
+      "monthly_delta": -0.008421429851281137,
+      "prev_close": 54.2
     },
     {
       "ticker": "CSNA3.SA",
       "name": "Companhia Siderúrgica Nacional",
-      "last_close": 6.34,
-      "date": "2026-03-17",
-      "daily_delta": 0.051409618573797555,
-      "monthly_delta": -0.27376861397479957,
-      "prev_close": 6.03
+      "last_close": 6.09,
+      "date": "2026-03-19",
+      "daily_delta": 0.004950495049504955,
+      "monthly_delta": -0.302405498281787,
+      "prev_close": 6.06
     },
     {
       "ticker": "CSUD3.SA",
       "name": "CSU Digital S.A.",
-      "last_close": 18.16,
-      "date": "2026-03-17",
-      "daily_delta": -0.02049622437971943,
-      "monthly_delta": -0.05219206680584554,
-      "prev_close": 18.54
+      "last_close": 18.01,
+      "date": "2026-03-19",
+      "daily_delta": -0.0038716814159289736,
+      "monthly_delta": -0.0600208768267223,
+      "prev_close": 18.08
     },
     {
       "ticker": "CTAX3.SA",
       "name": "Contax Participações S.A.",
-      "last_close": 0.8,
-      "date": "2026-03-17",
-      "daily_delta": 0.012658227848101333,
-      "monthly_delta": -0.036144578313252906,
-      "prev_close": 0.79
+      "last_close": 0.74,
+      "date": "2026-03-19",
+      "daily_delta": -0.013333333333333308,
+      "monthly_delta": -0.10843373493975905,
+      "prev_close": 0.75
     },
     {
       "ticker": "CTKA3.SA",
       "name": "Karsten S.A.",
       "last_close": 47.1,
-      "date": "2026-03-16",
-      "daily_delta": 0.0241356816699283,
+      "date": "2026-03-18",
+      "daily_delta": 0.0,
       "monthly_delta": -0.05799999999999994,
-      "prev_close": 45.99
+      "prev_close": 47.1
     },
     {
       "ticker": "CTKA4.SA",
       "name": "Karsten S.A.",
-      "last_close": 42.2,
-      "date": "2026-03-16",
-      "daily_delta": 0.039408866995073843,
-      "monthly_delta": -0.14314720812182735,
-      "prev_close": 40.6
+      "last_close": 41.99,
+      "date": "2026-03-19",
+      "daily_delta": -0.004976303317535513,
+      "monthly_delta": -0.14741116751269034,
+      "prev_close": 42.2
     },
     {
       "ticker": "CTSA3.SA",
       "name": "Companhia Tecidos Santanense Ltda.",
-      "last_close": 2.42,
-      "date": "2026-03-16",
-      "daily_delta": 0.0,
-      "monthly_delta": -0.12,
-      "prev_close": 2.42
+      "last_close": 2.2,
+      "date": "2026-03-19",
+      "daily_delta": -0.004524886877827927,
+      "monthly_delta": -0.19999999999999996,
+      "prev_close": 2.21
     },
     {
       "ticker": "CTSA4.SA",
       "name": "Companhia Tecidos Santanense Ltda.",
-      "last_close": 1.79,
-      "date": "2026-03-17",
-      "daily_delta": 0.028735632183908066,
-      "monthly_delta": -0.12254901960784315,
-      "prev_close": 1.74
+      "last_close": 1.83,
+      "date": "2026-03-19",
+      "daily_delta": 0.011049723756906049,
+      "monthly_delta": -0.1029411764705882,
+      "prev_close": 1.81
     },
     {
       "ticker": "CURY3.SA",
       "name": "Cury Construtora e Incorporadora S.A.",
-      "last_close": 36.3,
-      "date": "2026-03-17",
-      "daily_delta": -0.005206906001644418,
-      "monthly_delta": -0.11029411764705888,
-      "prev_close": 36.49
+      "last_close": 34.24,
+      "date": "2026-03-19",
+      "daily_delta": -0.028376844494892195,
+      "monthly_delta": -0.16078431372549007,
+      "prev_close": 35.24
     },
     {
       "ticker": "CVCB3.SA",
       "name": "CVC Brasil Operadora e Agência de Viagens S.A.",
-      "last_close": 1.94,
-      "date": "2026-03-17",
-      "daily_delta": -0.00512820512820511,
-      "monthly_delta": -0.19834710743801653,
-      "prev_close": 1.95
+      "last_close": 1.92,
+      "date": "2026-03-19",
+      "daily_delta": -0.005181347150259086,
+      "monthly_delta": -0.20661157024793386,
+      "prev_close": 1.93
     },
     {
       "ticker": "CXSE3.SA",
       "name": "Caixa Seguridade Participações S.A.",
-      "last_close": 18.34,
-      "date": "2026-03-17",
-      "daily_delta": -0.0005449591280655142,
-      "monthly_delta": 0.017193566278424832,
-      "prev_close": 18.35
+      "last_close": 18.1,
+      "date": "2026-03-19",
+      "daily_delta": 0.0027700831024930483,
+      "monthly_delta": 0.0038824181919023815,
+      "prev_close": 18.05
     },
     {
       "ticker": "CYRE3.SA",
       "name": "Cyrela Brazil Realty S.A. Empreendimentos e Participações",
-      "last_close": 27.4,
-      "date": "2026-03-17",
-      "daily_delta": 0.01519081141163392,
-      "monthly_delta": -0.10574412532637079,
-      "prev_close": 26.99
+      "last_close": 27.11,
+      "date": "2026-03-19",
+      "daily_delta": -0.006959706959707046,
+      "monthly_delta": -0.11520887728459539,
+      "prev_close": 27.3
     },
     {
       "ticker": "CYRE4.SA",
       "name": "Cyrela Brazil Realty S.A. Empreendimentos e Participações",
-      "last_close": 25.97,
-      "date": "2026-03-17",
-      "daily_delta": 0.02003142183817741,
-      "monthly_delta": -0.10786671246994162,
-      "prev_close": 25.46
+      "last_close": 25.53,
+      "date": "2026-03-19",
+      "daily_delta": -0.008158508158508049,
+      "monthly_delta": -0.12298179319821356,
+      "prev_close": 25.74
     },
     {
       "ticker": "DASA3.SA",
       "name": "Diagnósticos da América S.A.",
-      "last_close": 3.54,
-      "date": "2026-03-17",
-      "daily_delta": -0.005617977528089901,
-      "monthly_delta": -0.15914489311163893,
-      "prev_close": 3.56
+      "last_close": 3.36,
+      "date": "2026-03-19",
+      "daily_delta": -0.01754385964912286,
+      "monthly_delta": -0.20190023752969122,
+      "prev_close": 3.42
     },
     {
       "ticker": "DESK3.SA",
       "name": "Desktop S.A.",
-      "last_close": 13.72,
-      "date": "2026-03-17",
-      "daily_delta": -0.035839775122979645,
-      "monthly_delta": -0.16034271725826188,
-      "prev_close": 14.23
+      "last_close": 14.45,
+      "date": "2026-03-19",
+      "daily_delta": 0.03214285714285703,
+      "monthly_delta": -0.11566707466340276,
+      "prev_close": 14.0
     },
     {
       "ticker": "DEXP3.SA",
       "name": "Dexxos Participações S.A.",
-      "last_close": 7.16,
-      "date": "2026-03-17",
-      "daily_delta": -0.012413793103448256,
-      "monthly_delta": -0.059132720105124825,
-      "prev_close": 7.25
+      "last_close": 7.0,
+      "date": "2026-03-19",
+      "daily_delta": -0.005681818181818232,
+      "monthly_delta": -0.08015768725361372,
+      "prev_close": 7.04
     },
     {
       "ticker": "DEXP4.SA",
       "name": "Dexxos Participações S.A.",
-      "last_close": 7.14,
-      "date": "2026-03-17",
-      "daily_delta": -0.03382949932341006,
-      "monthly_delta": -0.06666666666666676,
-      "prev_close": 7.39
+      "last_close": 7.0,
+      "date": "2026-03-19",
+      "daily_delta": -0.018232819074333828,
+      "monthly_delta": -0.08496732026143794,
+      "prev_close": 7.13
     },
     {
       "ticker": "DIRR3.SA",
       "name": "Direcional Engenharia S.A.",
-      "last_close": 13.93,
-      "date": "2026-03-17",
-      "daily_delta": -0.0042887776983560055,
-      "monthly_delta": -0.13959234095120454,
-      "prev_close": 13.99
+      "last_close": 13.89,
+      "date": "2026-03-19",
+      "daily_delta": -0.0007194244604316058,
+      "monthly_delta": -0.1420630018529957,
+      "prev_close": 13.9
     },
     {
       "ticker": "DMVF3.SA",
       "name": "d1000 Varejo Farma Participações S.A.",
-      "last_close": 6.62,
-      "date": "2026-03-17",
-      "daily_delta": 0.0608974358974359,
-      "monthly_delta": -0.032163742690058394,
-      "prev_close": 6.24
+      "last_close": 6.63,
+      "date": "2026-03-19",
+      "daily_delta": 0.00302571860816947,
+      "monthly_delta": -0.030701754385964897,
+      "prev_close": 6.61
     },
     {
       "ticker": "DOHL3.SA",
       "name": "Döhler S.A.",
       "last_close": 6.51,
-      "date": "2026-03-16",
+      "date": "2026-03-18",
       "daily_delta": 0.0,
       "monthly_delta": 0.0,
       "prev_close": 6.51
@@ -1440,26 +1440,26 @@
     {
       "ticker": "DOHL4.SA",
       "name": "Döhler S.A.",
-      "last_close": 3.7,
-      "date": "2026-03-17",
-      "daily_delta": 0.0,
-      "monthly_delta": -0.03141361256544495,
+      "last_close": 3.59,
+      "date": "2026-03-19",
+      "daily_delta": -0.02972972972972987,
+      "monthly_delta": -0.060209424083769614,
       "prev_close": 3.7
     },
     {
       "ticker": "DOTZ3.SA",
       "name": "Dotz S.A.",
-      "last_close": 4.05,
-      "date": "2026-03-17",
-      "daily_delta": -0.03571428571428581,
-      "monthly_delta": 0.37755102040816313,
-      "prev_close": 4.2
+      "last_close": 3.3,
+      "date": "2026-03-19",
+      "daily_delta": -0.12698412698412698,
+      "monthly_delta": 0.12244897959183665,
+      "prev_close": 3.78
     },
     {
       "ticker": "DTCY3.SA",
       "name": "DTCOM - Direct to Company S.A.",
       "last_close": 2.65,
-      "date": "2026-03-17",
+      "date": "2026-03-18",
       "daily_delta": 0.0,
       "monthly_delta": 0.06000000000000005,
       "prev_close": 2.65
@@ -1467,53 +1467,53 @@
     {
       "ticker": "DXCO3.SA",
       "name": "Dexco S.A.",
-      "last_close": 4.68,
-      "date": "2026-03-17",
-      "daily_delta": 0.008620689655172376,
-      "monthly_delta": -0.16873889875666082,
-      "prev_close": 4.64
+      "last_close": 4.57,
+      "date": "2026-03-19",
+      "daily_delta": -0.010822510822510734,
+      "monthly_delta": -0.18827708703374768,
+      "prev_close": 4.62
     },
     {
       "ticker": "EALT3.SA",
       "name": "Electro Aço Altona S.A.",
-      "last_close": 14.18,
-      "date": "2026-03-17",
-      "daily_delta": 0.008534850640113723,
-      "monthly_delta": 0.005673758865248235,
-      "prev_close": 14.06
+      "last_close": 14.05,
+      "date": "2026-03-19",
+      "daily_delta": -0.009167842031029494,
+      "monthly_delta": -0.0035460992907800915,
+      "prev_close": 14.18
     },
     {
       "ticker": "EALT4.SA",
       "name": "Electro Aço Altona S.A.",
-      "last_close": 14.09,
-      "date": "2026-03-17",
-      "daily_delta": 0.004276550249465494,
-      "monthly_delta": 0.002846975088967918,
-      "prev_close": 14.03
+      "last_close": 14.02,
+      "date": "2026-03-19",
+      "daily_delta": -0.01128349788434413,
+      "monthly_delta": -0.002135231316726105,
+      "prev_close": 14.18
     },
     {
       "ticker": "ECOR3.SA",
       "name": "EcoRodovias Infraestrutura e Logística S.A.",
-      "last_close": 9.1,
-      "date": "2026-03-17",
-      "daily_delta": -0.008714596949891074,
-      "monthly_delta": -0.12415784408084707,
-      "prev_close": 9.18
+      "last_close": 8.58,
+      "date": "2026-03-19",
+      "daily_delta": -0.023890784982935065,
+      "monthly_delta": -0.17420596727622717,
+      "prev_close": 8.79
     },
     {
       "ticker": "EGIE3.SA",
       "name": "Engie Brasil Energia S.A.",
-      "last_close": 31.88,
-      "date": "2026-03-17",
-      "daily_delta": -0.0031269543464665928,
-      "monthly_delta": -0.054005934718101,
-      "prev_close": 31.98
+      "last_close": 32.09,
+      "date": "2026-03-19",
+      "daily_delta": 0.015506329113924133,
+      "monthly_delta": -0.04777448071216617,
+      "prev_close": 31.6
     },
     {
       "ticker": "EKTR3.SA",
       "name": "Elektro Redes S.A.",
       "last_close": 48.76,
-      "date": "2026-03-16",
+      "date": "2026-03-18",
       "daily_delta": 0.0,
       "monthly_delta": 0.00020512820512808005,
       "prev_close": 48.76
@@ -1521,17 +1521,17 @@
     {
       "ticker": "EKTR4.SA",
       "name": "Elektro Redes S.A.",
-      "last_close": 39.1,
-      "date": "2026-03-17",
-      "daily_delta": -0.011127971674253834,
-      "monthly_delta": -0.018327893547577134,
-      "prev_close": 39.54
+      "last_close": 38.26,
+      "date": "2026-03-19",
+      "daily_delta": 0.003409388932598789,
+      "monthly_delta": -0.039417524479035904,
+      "prev_close": 38.13
     },
     {
       "ticker": "EMAE3.SA",
       "name": "Empresa Metropolitana de Águas e Energia S.A.",
       "last_close": 150.0,
-      "date": "2026-03-16",
+      "date": "2026-03-18",
       "daily_delta": 0.0,
       "monthly_delta": 0.0,
       "prev_close": 150.0
@@ -1539,107 +1539,107 @@
     {
       "ticker": "EMAE4.SA",
       "name": "Empresa Metropolitana de Águas e Energia S.A.",
-      "last_close": 43.8,
-      "date": "2026-03-17",
-      "daily_delta": 0.0034364261168384758,
-      "monthly_delta": -0.08750000000000002,
-      "prev_close": 43.65
+      "last_close": 45.0,
+      "date": "2026-03-19",
+      "daily_delta": 0.0,
+      "monthly_delta": -0.0625,
+      "prev_close": 45.0
     },
     {
       "ticker": "EMBJ3.SA",
       "name": "Embraer S.A.",
-      "last_close": 76.5,
-      "date": "2026-03-17",
-      "daily_delta": -0.005977130977130929,
-      "monthly_delta": -0.17600172339508835,
-      "prev_close": 76.96
+      "last_close": 75.83,
+      "date": "2026-03-19",
+      "daily_delta": -0.005768978628556409,
+      "monthly_delta": -0.18321844032744516,
+      "prev_close": 76.27
     },
     {
       "ticker": "ENEV3.SA",
       "name": "Eneva S.A.",
-      "last_close": 21.16,
-      "date": "2026-03-17",
-      "daily_delta": 0.03219512195121954,
-      "monthly_delta": -0.013059701492537323,
-      "prev_close": 20.5
+      "last_close": 25.3,
+      "date": "2026-03-19",
+      "daily_delta": 0.03901437371663241,
+      "monthly_delta": 0.1800373134328357,
+      "prev_close": 24.35
     },
     {
       "ticker": "ENGI3.SA",
       "name": "Energisa S.A.",
       "last_close": 12.5,
-      "date": "2026-03-17",
-      "daily_delta": -0.019607843137254943,
+      "date": "2026-03-19",
+      "daily_delta": -0.0031897926634768536,
       "monthly_delta": -0.009508716323296307,
-      "prev_close": 12.75
+      "prev_close": 12.54
     },
     {
       "ticker": "ENGI4.SA",
       "name": "Energisa S.A.",
-      "last_close": 9.78,
-      "date": "2026-03-17",
-      "daily_delta": -0.01905717151454378,
-      "monthly_delta": 0.005138746145940232,
-      "prev_close": 9.97
+      "last_close": 9.64,
+      "date": "2026-03-19",
+      "daily_delta": 0.009424083769633551,
+      "monthly_delta": -0.009249743062692661,
+      "prev_close": 9.55
     },
     {
       "ticker": "ENGI11.SA",
       "name": "Energisa S.A.",
-      "last_close": 51.61,
-      "date": "2026-03-17",
-      "daily_delta": -0.023462630085146707,
-      "monthly_delta": 0.00019379844961231463,
-      "prev_close": 52.85
+      "last_close": 51.03,
+      "date": "2026-03-19",
+      "daily_delta": 0.010294991090873173,
+      "monthly_delta": -0.01104651162790693,
+      "prev_close": 50.51
     },
     {
       "ticker": "ENJU3.SA",
       "name": "Enjoei S.A.",
       "last_close": 1.04,
-      "date": "2026-03-17",
-      "daily_delta": 0.02970297029702973,
+      "date": "2026-03-19",
+      "daily_delta": 0.009708737864077666,
       "monthly_delta": -0.028037383177570097,
-      "prev_close": 1.01
+      "prev_close": 1.03
     },
     {
       "ticker": "ENMT3.SA",
       "name": "Energisa Mato Grosso - Distribuidora de Energia S/A",
       "last_close": 50.56,
-      "date": "2026-03-17",
-      "daily_delta": -0.027692307692307683,
-      "monthly_delta": 0.04247422680412383,
-      "prev_close": 52.0
+      "date": "2026-03-18",
+      "daily_delta": 0.015261044176706928,
+      "monthly_delta": 0.058404856604563404,
+      "prev_close": 49.8
     },
     {
       "ticker": "ENMT4.SA",
       "name": "Energisa Mato Grosso - Distribuidora de Energia S/A",
       "last_close": 52.0,
-      "date": "2026-03-16",
-      "daily_delta": 0.0,
-      "monthly_delta": 0.0001923446816696206,
-      "prev_close": 52.0
+      "date": "2026-03-18",
+      "daily_delta": 0.014832162373145996,
+      "monthly_delta": 0.015030255709545193,
+      "prev_close": 51.24
     },
     {
       "ticker": "EPAR3.SA",
       "name": "Embpar Participacoes S.A.",
-      "last_close": 3.44,
-      "date": "2026-03-16",
-      "daily_delta": 0.0117647058823529,
-      "monthly_delta": -0.060109289617486406,
+      "last_close": 3.33,
+      "date": "2026-03-19",
+      "daily_delta": -0.020588235294117574,
+      "monthly_delta": -0.0901639344262295,
       "prev_close": 3.4
     },
     {
       "ticker": "EQPA3.SA",
       "name": "Equatorial Pará Distribuidora de Energia S.A.",
-      "last_close": 6.4,
-      "date": "2026-03-17",
-      "daily_delta": 0.019108280254777066,
-      "monthly_delta": 0.020733652312599826,
-      "prev_close": 6.28
+      "last_close": 6.59,
+      "date": "2026-03-19",
+      "daily_delta": 0.02488335925349916,
+      "monthly_delta": 0.0510366826156301,
+      "prev_close": 6.43
     },
     {
       "ticker": "EQPA5.SA",
       "name": "Equatorial Pará Distribuidora de Energia S.A.",
       "last_close": 7.95,
-      "date": "2026-03-16",
+      "date": "2026-03-18",
       "daily_delta": 0.0,
       "monthly_delta": -0.2772727272727272,
       "prev_close": 7.95
@@ -1648,7 +1648,7 @@
       "ticker": "EQPA6.SA",
       "name": "Equatorial Pará Distribuidora de Energia S.A.",
       "last_close": 6.59,
-      "date": "2026-03-16",
+      "date": "2026-03-18",
       "daily_delta": 0.0,
       "monthly_delta": 0.0,
       "prev_close": 6.59
@@ -1657,7 +1657,7 @@
       "ticker": "EQPA7.SA",
       "name": "Equatorial Pará Distribuidora de Energia S.A.",
       "last_close": 10.0,
-      "date": "2026-03-16",
+      "date": "2026-03-18",
       "daily_delta": 0.0,
       "monthly_delta": 0.0,
       "prev_close": 10.0
@@ -1665,26 +1665,26 @@
     {
       "ticker": "EQTL3.SA",
       "name": "Equatorial S.A.",
-      "last_close": 40.56,
-      "date": "2026-03-17",
-      "daily_delta": 0.0004933399111988201,
-      "monthly_delta": -0.01073170731707307,
-      "prev_close": 40.54
+      "last_close": 41.3,
+      "date": "2026-03-19",
+      "daily_delta": 0.029155245452279877,
+      "monthly_delta": 0.007317073170731714,
+      "prev_close": 40.13
     },
     {
       "ticker": "ESPA3.SA",
       "name": "MPM Corpóreos S.A.",
-      "last_close": 1.17,
-      "date": "2026-03-17",
-      "daily_delta": -0.05645161290322587,
-      "monthly_delta": 0.10377358490566024,
-      "prev_close": 1.24
+      "last_close": 1.16,
+      "date": "2026-03-19",
+      "daily_delta": -0.033333333333333326,
+      "monthly_delta": 0.09433962264150941,
+      "prev_close": 1.2
     },
     {
       "ticker": "ESTR3.SA",
       "name": "Manufatura de Brinquedos Estrela S.A.",
       "last_close": 3.01,
-      "date": "2026-03-16",
+      "date": "2026-03-18",
       "daily_delta": 0.0,
       "monthly_delta": 0.0,
       "prev_close": 3.01
@@ -1693,7 +1693,7 @@
       "ticker": "ESTR4.SA",
       "name": "Manufatura de Brinquedos Estrela S.A.",
       "last_close": 4.02,
-      "date": "2026-03-16",
+      "date": "2026-03-18",
       "daily_delta": 0.0,
       "monthly_delta": -0.08636363636363653,
       "prev_close": 4.02
@@ -1701,89 +1701,89 @@
     {
       "ticker": "ETER3.SA",
       "name": "Eternit S.A.",
-      "last_close": 3.8,
-      "date": "2026-03-17",
-      "daily_delta": 0.007957559681697646,
-      "monthly_delta": -0.07090464547677267,
-      "prev_close": 3.77
+      "last_close": 3.76,
+      "date": "2026-03-19",
+      "daily_delta": -0.007915567282322011,
+      "monthly_delta": -0.0806845965770171,
+      "prev_close": 3.79
     },
     {
       "ticker": "EUCA3.SA",
       "name": "Eucatex S.A. Indústria e Comércio",
       "last_close": 20.7,
-      "date": "2026-03-16",
-      "daily_delta": 0.004854368932038833,
+      "date": "2026-03-19",
+      "daily_delta": 0.0,
       "monthly_delta": -0.07174887892376691,
-      "prev_close": 20.6
+      "prev_close": 20.7
     },
     {
       "ticker": "EUCA4.SA",
       "name": "Eucatex S.A. Indústria e Comércio",
-      "last_close": 20.59,
-      "date": "2026-03-17",
-      "daily_delta": 0.04517766497461939,
-      "monthly_delta": 0.014785608674223738,
-      "prev_close": 19.7
+      "last_close": 20.29,
+      "date": "2026-03-19",
+      "daily_delta": 0.0064484126984125645,
+      "monthly_delta": 0.0,
+      "prev_close": 20.16
     },
     {
       "ticker": "EVEN3.SA",
       "name": "Even Construtora e Incorporadora S.A.",
-      "last_close": 7.04,
-      "date": "2026-03-17",
-      "daily_delta": 0.0014224751066855834,
-      "monthly_delta": -0.14146341463414625,
-      "prev_close": 7.03
+      "last_close": 7.09,
+      "date": "2026-03-19",
+      "daily_delta": 0.014306151645207432,
+      "monthly_delta": -0.13536585365853648,
+      "prev_close": 6.99
     },
     {
       "ticker": "EZTC3.SA",
       "name": "EZTEC Empreendimentos e Participações S.A.",
-      "last_close": 13.53,
-      "date": "2026-03-17",
-      "daily_delta": -0.007336757153338369,
-      "monthly_delta": -0.11278688524590164,
-      "prev_close": 13.63
+      "last_close": 13.68,
+      "date": "2026-03-19",
+      "daily_delta": 0.012583271650629113,
+      "monthly_delta": -0.10295081967213116,
+      "prev_close": 13.51
     },
     {
       "ticker": "FESA3.SA",
       "name": "Cia de Ferro Ligas da Bahia S.A. - FERBASA",
-      "last_close": 11.58,
-      "date": "2026-03-17",
-      "daily_delta": -0.004299226139295009,
-      "monthly_delta": -0.08095238095238089,
-      "prev_close": 11.63
+      "last_close": 11.65,
+      "date": "2026-03-19",
+      "daily_delta": 0.0,
+      "monthly_delta": -0.07539682539682535,
+      "prev_close": 11.65
     },
     {
       "ticker": "FESA4.SA",
       "name": "Cia de Ferro Ligas da Bahia S.A. - FERBASA",
-      "last_close": 7.39,
-      "date": "2026-03-17",
-      "daily_delta": -0.008053691275167862,
-      "monthly_delta": -0.05377720870678615,
-      "prev_close": 7.45
+      "last_close": 7.27,
+      "date": "2026-03-19",
+      "daily_delta": 0.004143646408839796,
+      "monthly_delta": -0.06914212548015364,
+      "prev_close": 7.24
     },
     {
       "ticker": "FHER3.SA",
       "name": "Fertilizantes Heringer S.A.",
-      "last_close": 4.14,
-      "date": "2026-03-17",
-      "daily_delta": -0.018957345971563955,
-      "monthly_delta": -0.014285714285714457,
-      "prev_close": 4.22
+      "last_close": 4.0,
+      "date": "2026-03-19",
+      "daily_delta": -0.017199017199017286,
+      "monthly_delta": -0.04761904761904767,
+      "prev_close": 4.07
     },
     {
       "ticker": "FICT3.SA",
       "name": "Fictor Alimentos S.A.",
-      "last_close": 0.5,
-      "date": "2026-03-17",
-      "daily_delta": -0.019607843137254943,
-      "monthly_delta": -0.16666666666666663,
-      "prev_close": 0.51
+      "last_close": 0.46,
+      "date": "2026-03-19",
+      "daily_delta": 0.022222222222222143,
+      "monthly_delta": -0.23333333333333328,
+      "prev_close": 0.45
     },
     {
       "ticker": "FIEI3.SA",
       "name": "Fica Empreendimentos Imobiliarios S.A",
       "last_close": 12.6,
-      "date": "2026-03-16",
+      "date": "2026-03-18",
       "daily_delta": 0.0,
       "monthly_delta": 0.0,
       "prev_close": 12.6
@@ -1791,17 +1791,17 @@
     {
       "ticker": "FIGE3.SA",
       "name": "Investimentos Bemge S.A.",
-      "last_close": 24.11,
-      "date": "2026-03-16",
-      "daily_delta": 0.0,
-      "monthly_delta": 0.14428096820123404,
+      "last_close": 33.0,
+      "date": "2026-03-19",
+      "daily_delta": 0.368726669431771,
+      "monthly_delta": 0.5662078785002373,
       "prev_close": 24.11
     },
     {
       "ticker": "FIGE4.SA",
       "name": "Investimentos Bemge SA",
       "last_close": 38.01,
-      "date": "2026-03-16",
+      "date": "2026-03-18",
       "daily_delta": 0.0,
       "monthly_delta": 0.0,
       "prev_close": 38.01
@@ -1809,35 +1809,35 @@
     {
       "ticker": "FIQE3.SA",
       "name": "Unifique Telecomunicações S.A.",
-      "last_close": 5.46,
-      "date": "2026-03-17",
-      "daily_delta": -0.0072727272727273196,
-      "monthly_delta": 0.05405405405405417,
-      "prev_close": 5.5
+      "last_close": 5.76,
+      "date": "2026-03-19",
+      "daily_delta": 0.07663551401869162,
+      "monthly_delta": 0.11196911196911197,
+      "prev_close": 5.35
     },
     {
       "ticker": "FLRY3.SA",
       "name": "Fleury S.A.",
-      "last_close": 15.49,
-      "date": "2026-03-17",
-      "daily_delta": -0.0038585209003215715,
-      "monthly_delta": -0.1158675799086758,
-      "prev_close": 15.55
+      "last_close": 15.34,
+      "date": "2026-03-19",
+      "daily_delta": 0.0,
+      "monthly_delta": -0.12442922374429222,
+      "prev_close": 15.34
     },
     {
       "ticker": "FRAS3.SA",
       "name": "Frasle Mobility S.A.",
-      "last_close": 21.39,
-      "date": "2026-03-17",
-      "daily_delta": 0.008962264150943478,
-      "monthly_delta": -0.11060291060291061,
-      "prev_close": 21.2
+      "last_close": 21.08,
+      "date": "2026-03-19",
+      "daily_delta": -0.006129184347006267,
+      "monthly_delta": -0.12349272349272356,
+      "prev_close": 21.21
     },
     {
       "ticker": "FRIO3.SA",
       "name": "Metalfrio Solutions S.A.",
       "last_close": 170.18,
-      "date": "2026-03-16",
+      "date": "2026-03-18",
       "daily_delta": 0.0,
       "monthly_delta": 0.0,
       "prev_close": 170.18
@@ -1845,170 +1845,170 @@
     {
       "ticker": "GEPA3.SA",
       "name": "Rio Paranapanema Energia S.A.",
-      "last_close": 33.8,
-      "date": "2026-03-16",
-      "daily_delta": 0.0,
-      "monthly_delta": 0.024242424242424176,
+      "last_close": 33.0,
+      "date": "2026-03-18",
+      "daily_delta": -0.023668639053254337,
+      "monthly_delta": 0.0,
       "prev_close": 33.8
     },
     {
       "ticker": "GEPA4.SA",
       "name": "Rio Paranapanema Energia S.A.",
       "last_close": 35.33,
-      "date": "2026-03-17",
-      "daily_delta": 0.0,
+      "date": "2026-03-19",
+      "daily_delta": 0.009428571428571342,
       "monthly_delta": 0.010005717552887372,
-      "prev_close": 35.33
+      "prev_close": 35.0
     },
     {
       "ticker": "GFSA3.SA",
       "name": "Gafisa S.A.",
-      "last_close": 1.87,
-      "date": "2026-03-17",
-      "daily_delta": -0.036082474226803996,
-      "monthly_delta": -0.37037037037037035,
-      "prev_close": 1.94
+      "last_close": 1.78,
+      "date": "2026-03-19",
+      "daily_delta": -0.037837837837837895,
+      "monthly_delta": -0.40067340067340074,
+      "prev_close": 1.85
     },
     {
       "ticker": "GGBR3.SA",
       "name": "Gerdau S.A.",
-      "last_close": 15.78,
-      "date": "2026-03-17",
-      "daily_delta": -0.01375000000000004,
-      "monthly_delta": -0.1423913043478261,
-      "prev_close": 16.0
+      "last_close": 15.83,
+      "date": "2026-03-19",
+      "daily_delta": 0.007638446849140612,
+      "monthly_delta": -0.1396739130434782,
+      "prev_close": 15.71
     },
     {
       "ticker": "GGBR4.SA",
       "name": "Gerdau S.A.",
-      "last_close": 17.66,
-      "date": "2026-03-17",
-      "daily_delta": -0.00786516853932584,
-      "monthly_delta": -0.18012999071494884,
-      "prev_close": 17.8
+      "last_close": 17.49,
+      "date": "2026-03-19",
+      "daily_delta": 0.00575043128234598,
+      "monthly_delta": -0.18802228412256272,
+      "prev_close": 17.39
     },
     {
       "ticker": "GGPS3.SA",
       "name": "GPS Participações e Empreendimentos S.A.",
-      "last_close": 16.46,
-      "date": "2026-03-17",
-      "daily_delta": -0.034604105571847454,
-      "monthly_delta": -0.11978609625668446,
-      "prev_close": 17.05
+      "last_close": 16.48,
+      "date": "2026-03-19",
+      "daily_delta": 0.0018237082066869803,
+      "monthly_delta": -0.1187165775401069,
+      "prev_close": 16.45
     },
     {
       "ticker": "GMAT3.SA",
       "name": "Grupo Mateus S.A.",
-      "last_close": 4.96,
-      "date": "2026-03-17",
-      "daily_delta": -0.01195219123505964,
-      "monthly_delta": -0.08317929759704257,
-      "prev_close": 5.02
+      "last_close": 4.15,
+      "date": "2026-03-19",
+      "daily_delta": -0.14432989690721632,
+      "monthly_delta": -0.232902033271719,
+      "prev_close": 4.85
     },
     {
       "ticker": "GOAU3.SA",
       "name": "Metalurgica Gerdau S.A.",
-      "last_close": 7.92,
-      "date": "2026-03-17",
-      "daily_delta": 0.007633587786259444,
-      "monthly_delta": -0.14655172413793094,
-      "prev_close": 7.86
+      "last_close": 7.9,
+      "date": "2026-03-19",
+      "daily_delta": 0.0012674271229404788,
+      "monthly_delta": -0.1487068965517241,
+      "prev_close": 7.89
     },
     {
       "ticker": "GOAU4.SA",
       "name": "Metalurgica Gerdau S.A.",
-      "last_close": 7.99,
-      "date": "2026-03-17",
-      "daily_delta": -0.007453416149068359,
-      "monthly_delta": -0.17202072538860103,
-      "prev_close": 8.05
+      "last_close": 7.9,
+      "date": "2026-03-19",
+      "daily_delta": 0.0012674271229404788,
+      "monthly_delta": -0.18134715025906734,
+      "prev_close": 7.89
     },
     {
       "ticker": "GPAR3.SA",
       "name": "Companhia CELG de Participações S/A",
       "last_close": 14.05,
-      "date": "2026-03-16",
-      "daily_delta": 0.12130885873902653,
+      "date": "2026-03-18",
+      "daily_delta": 0.0,
       "monthly_delta": -0.015416958654519863,
-      "prev_close": 12.53
+      "prev_close": 14.05
     },
     {
       "ticker": "GRND3.SA",
       "name": "Grendene S.A.",
-      "last_close": 4.57,
-      "date": "2026-03-17",
-      "daily_delta": 0.0,
-      "monthly_delta": -0.043933054393305415,
+      "last_close": 4.68,
+      "date": "2026-03-19",
+      "daily_delta": 0.024070021881837933,
+      "monthly_delta": -0.02092050209205032,
       "prev_close": 4.57
     },
     {
       "ticker": "GSHP3.SA",
       "name": "General Shopping e Outlets do Brasil S.A.",
-      "last_close": 2.95,
-      "date": "2026-03-16",
-      "daily_delta": -0.0033783783783782884,
-      "monthly_delta": -0.03594771241830064,
-      "prev_close": 2.96
+      "last_close": 2.94,
+      "date": "2026-03-18",
+      "daily_delta": -0.003389830508474634,
+      "monthly_delta": -0.03921568627450989,
+      "prev_close": 2.95
     },
     {
       "ticker": "HAGA3.SA",
       "name": "HAGA S/A Indústria e Comércio",
-      "last_close": 2.26,
-      "date": "2026-03-17",
-      "daily_delta": -0.050420168067226934,
-      "monthly_delta": 0.04629629629629606,
-      "prev_close": 2.38
+      "last_close": 2.32,
+      "date": "2026-03-19",
+      "daily_delta": 0.008695652173912993,
+      "monthly_delta": 0.07407407407407396,
+      "prev_close": 2.3
     },
     {
       "ticker": "HAGA4.SA",
       "name": "HAGA S/A Indústria e Comércio",
-      "last_close": 1.43,
-      "date": "2026-03-17",
-      "daily_delta": -0.00694444444444442,
-      "monthly_delta": 0.08333333333333326,
-      "prev_close": 1.44
+      "last_close": 1.32,
+      "date": "2026-03-19",
+      "daily_delta": -0.04347826086956508,
+      "monthly_delta": 0.0,
+      "prev_close": 1.38
     },
     {
       "ticker": "HAPV3.SA",
       "name": "Hapvida Participações e Investimentos S.A.",
-      "last_close": 8.62,
-      "date": "2026-03-17",
-      "daily_delta": -0.029279279279279424,
-      "monthly_delta": -0.1711538461538462,
-      "prev_close": 8.88
+      "last_close": 9.44,
+      "date": "2026-03-19",
+      "daily_delta": 0.1498172959805113,
+      "monthly_delta": -0.09230769230769242,
+      "prev_close": 8.21
     },
     {
       "ticker": "HBOR3.SA",
       "name": "Helbor Empreendimentos S.A.",
-      "last_close": 2.75,
-      "date": "2026-03-17",
-      "daily_delta": 0.0036496350364962904,
-      "monthly_delta": -0.061433447098976135,
-      "prev_close": 2.74
+      "last_close": 2.62,
+      "date": "2026-03-19",
+      "daily_delta": -0.0038022813688212143,
+      "monthly_delta": -0.10580204778156999,
+      "prev_close": 2.63
     },
     {
       "ticker": "HBRE3.SA",
       "name": "HBR Realty Empreendimentos Imobiliários S.A.",
-      "last_close": 3.01,
-      "date": "2026-03-17",
-      "daily_delta": 0.013468013468013407,
-      "monthly_delta": -0.14,
-      "prev_close": 2.97
+      "last_close": 2.87,
+      "date": "2026-03-19",
+      "daily_delta": 0.0177304964539009,
+      "monthly_delta": -0.17999999999999994,
+      "prev_close": 2.82
     },
     {
       "ticker": "HBSA3.SA",
       "name": "Hidrovias do Brasil S.A.",
-      "last_close": 3.77,
-      "date": "2026-03-17",
-      "daily_delta": -0.023316062176165775,
-      "monthly_delta": -0.04797979797979801,
-      "prev_close": 3.86
+      "last_close": 3.79,
+      "date": "2026-03-19",
+      "daily_delta": 0.013368983957219305,
+      "monthly_delta": -0.04292929292929293,
+      "prev_close": 3.74
     },
     {
       "ticker": "HBTS5.SA",
       "name": "Companhia Habitasul de Participações",
       "last_close": 36.7,
-      "date": "2026-03-16",
+      "date": "2026-03-18",
       "daily_delta": 0.0,
       "monthly_delta": -0.007303218826075097,
       "prev_close": 36.7
@@ -2017,7 +2017,7 @@
       "ticker": "HETA3.SA",
       "name": "Hercules S.A - Fábrica de Talheres",
       "last_close": 96.0,
-      "date": "2026-03-16",
+      "date": "2026-03-18",
       "daily_delta": 0.0,
       "monthly_delta": 0.0,
       "prev_close": 96.0
@@ -2026,7 +2026,7 @@
       "ticker": "HETA4.SA",
       "name": "Hercules S.A - Fábrica de Talheres",
       "last_close": 5.0,
-      "date": "2026-03-16",
+      "date": "2026-03-18",
       "daily_delta": 0.0,
       "monthly_delta": 0.020408163265306145,
       "prev_close": 5.0
@@ -2035,7 +2035,7 @@
       "ticker": "HOOT3.SA",
       "name": "Hoteis Othon SA",
       "last_close": 3.3,
-      "date": "2026-03-16",
+      "date": "2026-03-18",
       "daily_delta": 0.0,
       "monthly_delta": 0.0,
       "prev_close": 3.3
@@ -2043,11 +2043,11 @@
     {
       "ticker": "HOOT4.SA",
       "name": "Hotéis Othon S.A.",
-      "last_close": 6.99,
-      "date": "2026-03-16",
-      "daily_delta": 0.026431718061673992,
-      "monthly_delta": -0.02237762237762242,
-      "prev_close": 6.81
+      "last_close": 6.85,
+      "date": "2026-03-19",
+      "daily_delta": -0.02002861230329045,
+      "monthly_delta": -0.04195804195804209,
+      "prev_close": 6.99
     },
     {
       "ticker": "HYPE1.SA",
@@ -2060,35 +2060,35 @@
     {
       "ticker": "HYPE3.SA",
       "name": "Hypera S.A.",
-      "last_close": 22.0,
-      "date": "2026-03-17",
-      "daily_delta": 0.006404391582799596,
-      "monthly_delta": -0.05579399141630903,
-      "prev_close": 21.86
+      "last_close": 22.31,
+      "date": "2026-03-19",
+      "daily_delta": 0.00950226244343888,
+      "monthly_delta": -0.042489270386266154,
+      "prev_close": 22.1
     },
     {
       "ticker": "IFCM3.SA",
       "name": "Infracommerce CXaaS S.A.",
-      "last_close": 0.81,
-      "date": "2026-03-17",
-      "daily_delta": -0.012195121951219412,
-      "monthly_delta": 0.5882352941176472,
-      "prev_close": 0.82
+      "last_close": 0.77,
+      "date": "2026-03-19",
+      "daily_delta": -0.012820512820512886,
+      "monthly_delta": 0.5098039215686274,
+      "prev_close": 0.78
     },
     {
       "ticker": "IGTI3.SA",
       "name": "Iguatemi S.A.",
-      "last_close": 3.12,
-      "date": "2026-03-17",
-      "daily_delta": -0.00952380952380949,
-      "monthly_delta": -0.03703703703703709,
-      "prev_close": 3.15
+      "last_close": 3.13,
+      "date": "2026-03-19",
+      "daily_delta": -0.009493670886076,
+      "monthly_delta": -0.03395061728395077,
+      "prev_close": 3.16
     },
     {
       "ticker": "IGTI4.SA",
       "name": "Iguatemi S.A.",
       "last_close": 11.88,
-      "date": "2026-03-16",
+      "date": "2026-03-18",
       "daily_delta": 0.0,
       "monthly_delta": -0.0875576036866359,
       "prev_close": 11.88
@@ -2096,134 +2096,134 @@
     {
       "ticker": "IGTI11.SA",
       "name": "Iguatemi S.A.",
-      "last_close": 26.93,
-      "date": "2026-03-17",
-      "daily_delta": -0.004804138950480374,
-      "monthly_delta": -0.0474000707463742,
-      "prev_close": 27.06
+      "last_close": 27.18,
+      "date": "2026-03-19",
+      "daily_delta": 0.00890868596881944,
+      "monthly_delta": -0.0385567739653343,
+      "prev_close": 26.94
     },
     {
       "ticker": "INEP3.SA",
       "name": "Inepar S.A. Indústria e Construções",
       "last_close": 1.26,
-      "date": "2026-03-17",
-      "daily_delta": -0.015625,
+      "date": "2026-03-19",
+      "daily_delta": 0.008000000000000007,
       "monthly_delta": -0.06666666666666676,
-      "prev_close": 1.28
+      "prev_close": 1.25
     },
     {
       "ticker": "INEP4.SA",
       "name": "Inepar S.A. Indústria e Construções",
-      "last_close": 1.16,
-      "date": "2026-03-17",
-      "daily_delta": -0.016949152542372947,
-      "monthly_delta": 0.05454545454545445,
-      "prev_close": 1.18
+      "last_close": 1.17,
+      "date": "2026-03-19",
+      "daily_delta": 0.008620689655172376,
+      "monthly_delta": 0.06363636363636349,
+      "prev_close": 1.16
     },
     {
       "ticker": "INTB3.SA",
       "name": "Intelbras S.A. - Indústria de Telecomunicação Eletrônica Brasileira",
-      "last_close": 14.82,
-      "date": "2026-03-17",
-      "daily_delta": 0.026315789473684292,
-      "monthly_delta": 0.18845228548516446,
-      "prev_close": 14.44
+      "last_close": 14.36,
+      "date": "2026-03-19",
+      "daily_delta": -0.02578018995929454,
+      "monthly_delta": 0.15156375300721714,
+      "prev_close": 14.74
     },
     {
       "ticker": "IRBR3.SA",
       "name": "IRB-Brasil Resseguros S.A.",
-      "last_close": 55.74,
-      "date": "2026-03-17",
-      "daily_delta": 0.0010775862068965747,
-      "monthly_delta": -0.06035064059339179,
-      "prev_close": 55.68
+      "last_close": 55.12,
+      "date": "2026-03-19",
+      "daily_delta": -0.0034351835111192663,
+      "monthly_delta": -0.07080242751180044,
+      "prev_close": 55.31
     },
     {
       "ticker": "ISAE3.SA",
       "name": "ISA Energía Brasil S.A.",
-      "last_close": 32.7,
-      "date": "2026-03-17",
-      "daily_delta": -0.001831501831501714,
-      "monthly_delta": -0.05545927209705359,
-      "prev_close": 32.76
+      "last_close": 32.6,
+      "date": "2026-03-19",
+      "daily_delta": -0.00030665440049060244,
+      "monthly_delta": -0.058347775852108485,
+      "prev_close": 32.61
     },
     {
       "ticker": "ISAE4.SA",
       "name": "ISA Energía Brasil S.A.",
-      "last_close": 28.22,
-      "date": "2026-03-17",
-      "daily_delta": 0.00035448422545192315,
-      "monthly_delta": -0.035213675213675244,
-      "prev_close": 28.21
+      "last_close": 28.07,
+      "date": "2026-03-19",
+      "daily_delta": 0.0010699001426532906,
+      "monthly_delta": -0.040341880341880354,
+      "prev_close": 28.04
     },
     {
       "ticker": "ITSA3.SA",
       "name": "Itaúsa S.A.",
-      "last_close": 13.36,
-      "date": "2026-03-17",
-      "daily_delta": -0.005212211466865235,
-      "monthly_delta": -0.08241758241758246,
-      "prev_close": 13.43
+      "last_close": 13.4,
+      "date": "2026-03-19",
+      "daily_delta": 0.0,
+      "monthly_delta": -0.07967032967032972,
+      "prev_close": 13.4
     },
     {
       "ticker": "ITSA4.SA",
       "name": "Itaúsa S.A.",
-      "last_close": 13.39,
-      "date": "2026-03-17",
-      "daily_delta": 0.0007473841554559435,
-      "monthly_delta": -0.08161865569272975,
-      "prev_close": 13.38
+      "last_close": 13.42,
+      "date": "2026-03-19",
+      "daily_delta": 0.0037397157816005944,
+      "monthly_delta": -0.07956104252400553,
+      "prev_close": 13.37
     },
     {
       "ticker": "ITUB3.SA",
       "name": "Itaú Unibanco Holding S.A.",
-      "last_close": 41.6,
-      "date": "2026-03-17",
-      "daily_delta": -0.0009606147934677622,
-      "monthly_delta": -0.06137184115523464,
-      "prev_close": 41.64
+      "last_close": 41.48,
+      "date": "2026-03-19",
+      "daily_delta": 0.008264462809917328,
+      "monthly_delta": -0.0640794223826715,
+      "prev_close": 41.14
     },
     {
       "ticker": "ITUB4.SA",
       "name": "Itaú Unibanco Holding S.A.",
-      "last_close": 42.71,
-      "date": "2026-03-17",
-      "daily_delta": -0.006744186046511613,
-      "monthly_delta": -0.10554973821989522,
-      "prev_close": 43.0
+      "last_close": 42.58,
+      "date": "2026-03-19",
+      "daily_delta": 0.007095553453169368,
+      "monthly_delta": -0.10827225130890061,
+      "prev_close": 42.28
     },
     {
       "ticker": "JALL3.SA",
       "name": "Jalles Machado S/A",
-      "last_close": 3.14,
-      "date": "2026-03-17",
-      "daily_delta": 0.0064102564102563875,
-      "monthly_delta": 0.03630363036303641,
-      "prev_close": 3.12
+      "last_close": 3.31,
+      "date": "2026-03-19",
+      "daily_delta": 0.050793650793650835,
+      "monthly_delta": 0.09240924092409242,
+      "prev_close": 3.15
     },
     {
       "ticker": "JFEN3.SA",
       "name": "João Fortes Engenharia S.A.",
-      "last_close": 0.8,
-      "date": "2026-03-17",
-      "daily_delta": -0.012345679012345734,
-      "monthly_delta": -0.17525773195876282,
-      "prev_close": 0.81
+      "last_close": 0.79,
+      "date": "2026-03-18",
+      "daily_delta": -0.012499999999999956,
+      "monthly_delta": -0.18556701030927825,
+      "prev_close": 0.8
     },
     {
       "ticker": "JHSF3.SA",
       "name": "JHSF Participações S.A.",
-      "last_close": 8.84,
-      "date": "2026-03-17",
-      "daily_delta": -0.008968609865470878,
-      "monthly_delta": -0.0772442588726514,
-      "prev_close": 8.92
+      "last_close": 8.8,
+      "date": "2026-03-19",
+      "daily_delta": -0.011235955056179692,
+      "monthly_delta": -0.0814196242171189,
+      "prev_close": 8.9
     },
     {
       "ticker": "JOPA3.SA",
       "name": "JOSAPAR Joaquim Oliveira S.A. Participações",
       "last_close": 22.0,
-      "date": "2026-03-16",
+      "date": "2026-03-18",
       "daily_delta": 0.0,
       "monthly_delta": 0.0,
       "prev_close": 22.0
@@ -2232,7 +2232,7 @@
       "ticker": "JOPA4.SA",
       "name": "JOSAPAR Joaquim Oliveira S.A. Participações",
       "last_close": 24.0,
-      "date": "2026-03-16",
+      "date": "2026-03-18",
       "daily_delta": 0.0,
       "monthly_delta": 0.0,
       "prev_close": 24.0
@@ -2240,143 +2240,143 @@
     {
       "ticker": "JSLG3.SA",
       "name": "JSL S.A.",
-      "last_close": 6.26,
-      "date": "2026-03-17",
-      "daily_delta": -0.05580693815987936,
-      "monthly_delta": -0.23001230012300133,
-      "prev_close": 6.63
+      "last_close": 6.02,
+      "date": "2026-03-19",
+      "daily_delta": -0.019543973941368087,
+      "monthly_delta": -0.2595325953259534,
+      "prev_close": 6.14
     },
     {
       "ticker": "KEPL3.SA",
       "name": "Kepler Weber S.A.",
-      "last_close": 7.83,
-      "date": "2026-03-17",
-      "daily_delta": 0.011627906976744207,
-      "monthly_delta": -0.1395604395604395,
-      "prev_close": 7.74
+      "last_close": 7.74,
+      "date": "2026-03-19",
+      "daily_delta": 0.002590673575129543,
+      "monthly_delta": -0.14945054945054936,
+      "prev_close": 7.72
     },
     {
       "ticker": "KLBN3.SA",
       "name": "Klabin S.A.",
-      "last_close": 3.87,
-      "date": "2026-03-17",
-      "daily_delta": 0.002590673575129543,
-      "monthly_delta": -0.04914004914004921,
-      "prev_close": 3.86
+      "last_close": 3.77,
+      "date": "2026-03-19",
+      "daily_delta": -0.015665796344647487,
+      "monthly_delta": -0.07371007371007376,
+      "prev_close": 3.83
     },
     {
       "ticker": "KLBN4.SA",
       "name": "Klabin S.A.",
-      "last_close": 3.85,
-      "date": "2026-03-17",
-      "daily_delta": 0.0,
-      "monthly_delta": -0.0493827160493826,
-      "prev_close": 3.85
+      "last_close": 3.78,
+      "date": "2026-03-19",
+      "daily_delta": -0.0052631578947368585,
+      "monthly_delta": -0.06666666666666665,
+      "prev_close": 3.8
     },
     {
       "ticker": "KLBN11.SA",
       "name": "Klabin S.A.",
-      "last_close": 19.28,
-      "date": "2026-03-17",
-      "daily_delta": 0.004689942678478332,
-      "monthly_delta": -0.05443845022069638,
-      "prev_close": 19.19
+      "last_close": 18.8,
+      "date": "2026-03-19",
+      "daily_delta": -0.010526315789473606,
+      "monthly_delta": -0.07797940166748407,
+      "prev_close": 19.0
     },
     {
       "ticker": "LAND3.SA",
       "name": "Terra Santa Propriedades Agrícolas S.A.",
-      "last_close": 8.5,
-      "date": "2026-03-17",
-      "daily_delta": -0.003516998827666984,
-      "monthly_delta": 0.011904761904761862,
-      "prev_close": 8.53
+      "last_close": 8.85,
+      "date": "2026-03-19",
+      "daily_delta": -0.007847533632287074,
+      "monthly_delta": 0.05357142857142838,
+      "prev_close": 8.92
     },
     {
       "ticker": "LAVV3.SA",
       "name": "Lavvi Empreendimentos Imobiliários S.A.",
-      "last_close": 15.02,
-      "date": "2026-03-17",
-      "daily_delta": -0.019582245430809442,
-      "monthly_delta": -0.17336268574573488,
-      "prev_close": 15.32
+      "last_close": 14.28,
+      "date": "2026-03-19",
+      "daily_delta": -0.037735849056603765,
+      "monthly_delta": -0.21408915795266936,
+      "prev_close": 14.84
     },
     {
       "ticker": "LEVE3.SA",
       "name": "MAHLE Metal Leve S.A.",
-      "last_close": 34.49,
-      "date": "2026-03-17",
-      "daily_delta": -0.012313860252004538,
-      "monthly_delta": -0.017938496583143393,
-      "prev_close": 34.92
+      "last_close": 34.81,
+      "date": "2026-03-19",
+      "daily_delta": 0.014277389277389307,
+      "monthly_delta": -0.008826879271070509,
+      "prev_close": 34.32
     },
     {
       "ticker": "LIGT3.SA",
       "name": "Light S.A.",
-      "last_close": 4.75,
-      "date": "2026-03-17",
-      "daily_delta": 0.021505376344086002,
-      "monthly_delta": -0.012474012474012364,
-      "prev_close": 4.65
+      "last_close": 4.67,
+      "date": "2026-03-19",
+      "daily_delta": -0.00638297872340432,
+      "monthly_delta": -0.029106029106028997,
+      "prev_close": 4.7
     },
     {
       "ticker": "LJQQ3.SA",
       "name": "Lojas Quero-Quero S.A.",
-      "last_close": 1.85,
-      "date": "2026-03-17",
-      "daily_delta": -0.010695187165775444,
-      "monthly_delta": -0.21276595744680848,
+      "last_close": 1.9,
+      "date": "2026-03-19",
+      "daily_delta": 0.016042780748662944,
+      "monthly_delta": -0.19148936170212771,
       "prev_close": 1.87
     },
     {
       "ticker": "LOGG3.SA",
       "name": "LOG Commercial Properties e Participações S.A.",
-      "last_close": 26.85,
-      "date": "2026-03-17",
-      "daily_delta": 0.006749156355455588,
-      "monthly_delta": -0.04685835995740151,
+      "last_close": 26.69,
+      "date": "2026-03-19",
+      "daily_delta": 0.0007499062617173369,
+      "monthly_delta": -0.052538161164359276,
       "prev_close": 26.67
     },
     {
       "ticker": "LOGN3.SA",
       "name": "Log-In Logística Intermodal S.A.",
-      "last_close": 32.1,
-      "date": "2026-03-17",
-      "daily_delta": 0.00031162355874103653,
-      "monthly_delta": 0.006269592476489061,
-      "prev_close": 32.09
+      "last_close": 32.0,
+      "date": "2026-03-19",
+      "daily_delta": 0.0,
+      "monthly_delta": 0.0031347962382446415,
+      "prev_close": 32.0
     },
     {
       "ticker": "LPSB3.SA",
       "name": "LPS Brasil - Consultoria de Imóveis S.A.",
-      "last_close": 1.75,
-      "date": "2026-03-17",
-      "daily_delta": -0.022346368715083775,
-      "monthly_delta": -0.005681818181818232,
-      "prev_close": 1.79
+      "last_close": 1.7,
+      "date": "2026-03-19",
+      "daily_delta": -0.005847953216374324,
+      "monthly_delta": -0.03409090909090917,
+      "prev_close": 1.71
     },
     {
       "ticker": "LREN3.SA",
       "name": "Lojas Renner S.A.",
-      "last_close": 15.12,
-      "date": "2026-03-17",
-      "daily_delta": -0.0052631578947368585,
-      "monthly_delta": -0.014983713355048889,
-      "prev_close": 15.2
+      "last_close": 15.15,
+      "date": "2026-03-19",
+      "daily_delta": 0.003976143141153132,
+      "monthly_delta": -0.013029315960912058,
+      "prev_close": 15.09
     },
     {
       "ticker": "LUPA3.SA",
       "name": "Lupatech S.A.",
-      "last_close": 0.8,
-      "date": "2026-03-17",
-      "daily_delta": -0.08045977011494243,
-      "monthly_delta": -0.32203389830508466,
-      "prev_close": 0.87
+      "last_close": 0.86,
+      "date": "2026-03-19",
+      "daily_delta": 0.17808219178082196,
+      "monthly_delta": -0.27118644067796605,
+      "prev_close": 0.73
     },
     {
       "ticker": "LUXM3.SA",
       "name": "LUXM3.SA",
       "last_close": 0.83,
-      "date": "2026-03-16",
+      "date": "2026-03-18",
       "daily_delta": 0.0,
       "monthly_delta": 0.0,
       "prev_close": 0.83
@@ -2384,26 +2384,26 @@
     {
       "ticker": "LUXM4.SA",
       "name": "Trevisa Investimentos S.A.",
-      "last_close": 3.98,
-      "date": "2026-03-17",
-      "daily_delta": -0.014851485148514865,
-      "monthly_delta": -0.03398058252427183,
-      "prev_close": 4.04
+      "last_close": 4.1,
+      "date": "2026-03-19",
+      "daily_delta": 0.01990049751243772,
+      "monthly_delta": -0.004854368932038944,
+      "prev_close": 4.02
     },
     {
       "ticker": "LWSA3.SA",
       "name": "Locaweb Serviços de Internet S.A.",
-      "last_close": 3.71,
-      "date": "2026-03-17",
-      "daily_delta": -0.010666666666666713,
-      "monthly_delta": 0.013661202185792254,
-      "prev_close": 3.75
+      "last_close": 3.74,
+      "date": "2026-03-19",
+      "daily_delta": 0.016304347826086918,
+      "monthly_delta": 0.021857923497267784,
+      "prev_close": 3.68
     },
     {
       "ticker": "MAPT3.SA",
       "name": "Cemepe Investimentos S.A.",
       "last_close": 3.0,
-      "date": "2026-03-16",
+      "date": "2026-03-18",
       "daily_delta": 0.0,
       "monthly_delta": 0.0,
       "prev_close": 3.0
@@ -2412,7 +2412,7 @@
       "ticker": "MAPT4.SA",
       "name": "Cemepe Investimentos S.A.",
       "last_close": 3.87,
-      "date": "2026-03-16",
+      "date": "2026-03-18",
       "daily_delta": 0.0,
       "monthly_delta": 0.0,
       "prev_close": 3.87
@@ -2421,61 +2421,61 @@
       "ticker": "MATD3.SA",
       "name": "Hospital Mater Dei S.A.",
       "last_close": 5.66,
-      "date": "2026-03-17",
-      "daily_delta": -0.008756567425569184,
+      "date": "2026-03-19",
+      "daily_delta": 0.014336917562723928,
       "monthly_delta": -0.02076124567474047,
-      "prev_close": 5.71
+      "prev_close": 5.58
     },
     {
       "ticker": "MBRF3.SA",
       "name": "MBRF Global Foods Company S.A.",
-      "last_close": 16.62,
-      "date": "2026-03-17",
-      "daily_delta": -0.012477718360071166,
-      "monthly_delta": -0.11595744680851061,
-      "prev_close": 16.83
+      "last_close": 17.06,
+      "date": "2026-03-19",
+      "daily_delta": 0.0017615971814444187,
+      "monthly_delta": -0.09255319148936181,
+      "prev_close": 17.03
     },
     {
       "ticker": "MDIA3.SA",
       "name": "M. Dias Branco S.A. Indústria e Comércio de Alimentos",
-      "last_close": 21.96,
-      "date": "2026-03-17",
-      "daily_delta": 0.00273972602739736,
-      "monthly_delta": -0.1247508967716221,
-      "prev_close": 21.9
+      "last_close": 21.53,
+      "date": "2026-03-19",
+      "daily_delta": -0.006001846722068271,
+      "monthly_delta": -0.14188919888401752,
+      "prev_close": 21.66
     },
     {
       "ticker": "MDNE3.SA",
       "name": "Moura Dubeux Engenharia S.A.",
-      "last_close": 30.48,
-      "date": "2026-03-17",
-      "daily_delta": 0.0,
-      "monthly_delta": -0.05223880597014918,
-      "prev_close": 30.48
+      "last_close": 30.9,
+      "date": "2026-03-19",
+      "daily_delta": 0.004878048780487809,
+      "monthly_delta": -0.03917910447761186,
+      "prev_close": 30.75
     },
     {
       "ticker": "MEAL3.SA",
       "name": "International Meal Company Alimentação S.A.",
-      "last_close": 1.05,
-      "date": "2026-03-17",
-      "daily_delta": -0.009433962264150941,
-      "monthly_delta": -0.09482758620689646,
-      "prev_close": 1.06
+      "last_close": 1.03,
+      "date": "2026-03-19",
+      "daily_delta": -0.009615384615384581,
+      "monthly_delta": -0.11206896551724133,
+      "prev_close": 1.04
     },
     {
       "ticker": "MELK3.SA",
       "name": "Melnick Desenvolvimento Imobiliário S.A.",
-      "last_close": 3.65,
-      "date": "2026-03-17",
-      "daily_delta": -0.013513513513513598,
-      "monthly_delta": -0.07360406091370564,
-      "prev_close": 3.7
+      "last_close": 3.59,
+      "date": "2026-03-19",
+      "daily_delta": -0.011019283746556474,
+      "monthly_delta": -0.08883248730964466,
+      "prev_close": 3.63
     },
     {
       "ticker": "MERC3.SA",
       "name": "Mercantil Financeira S.A. - Crédito, Financiamento e Investimento",
       "last_close": 15.28,
-      "date": "2026-03-16",
+      "date": "2026-03-18",
       "daily_delta": 0.0,
       "monthly_delta": 0.01192052980132452,
       "prev_close": 15.28
@@ -2484,7 +2484,7 @@
       "ticker": "MERC4.SA",
       "name": "Mercantil Financeira S.A. - Crédito, Financiamento e Investimento",
       "last_close": 16.25,
-      "date": "2026-03-16",
+      "date": "2026-03-18",
       "daily_delta": 0.0,
       "monthly_delta": 0.13477653631284925,
       "prev_close": 16.25
@@ -2493,7 +2493,7 @@
       "ticker": "MGEL3.SA",
       "name": "Mangels Industrial SA",
       "last_close": 75.0,
-      "date": "2026-03-16",
+      "date": "2026-03-18",
       "daily_delta": 0.0,
       "monthly_delta": 0.0,
       "prev_close": 75.0
@@ -2501,44 +2501,44 @@
     {
       "ticker": "MGEL4.SA",
       "name": "Mangels Industrial S.A.",
-      "last_close": 6.4,
-      "date": "2026-03-17",
-      "daily_delta": 0.04065040650406493,
-      "monthly_delta": 0.007874015748031704,
-      "prev_close": 6.15
+      "last_close": 6.08,
+      "date": "2026-03-19",
+      "daily_delta": -0.0660522273425499,
+      "monthly_delta": -0.04251968503936998,
+      "prev_close": 6.51
     },
     {
       "ticker": "MGLU3.SA",
       "name": "Magazine Luiza S.A.",
-      "last_close": 9.04,
-      "date": "2026-03-17",
-      "daily_delta": -0.08130081300813019,
-      "monthly_delta": -0.11632453567937451,
-      "prev_close": 9.84
+      "last_close": 8.77,
+      "date": "2026-03-19",
+      "daily_delta": -0.009039548022598876,
+      "monthly_delta": -0.14271749755620733,
+      "prev_close": 8.85
     },
     {
       "ticker": "MILS3.SA",
       "name": "Mills Locação, Serviços e Logística S.A.",
-      "last_close": 14.08,
-      "date": "2026-03-17",
-      "daily_delta": 0.0014224751066855834,
-      "monthly_delta": -0.06507304116865875,
-      "prev_close": 14.06
+      "last_close": 13.75,
+      "date": "2026-03-19",
+      "daily_delta": -0.00506512301013029,
+      "monthly_delta": -0.0869853917662683,
+      "prev_close": 13.82
     },
     {
       "ticker": "MLAS3.SA",
       "name": "Grupo Multi S.A.",
-      "last_close": 1.29,
-      "date": "2026-03-17",
-      "daily_delta": -0.007692307692307665,
-      "monthly_delta": -0.0851063829787233,
-      "prev_close": 1.3
+      "last_close": 1.26,
+      "date": "2026-03-19",
+      "daily_delta": -0.015625,
+      "monthly_delta": -0.10638297872340419,
+      "prev_close": 1.28
     },
     {
       "ticker": "MMAQ3.SA",
       "name": "Minasmáquinas S/A",
       "last_close": 2550.01,
-      "date": "2026-03-16",
+      "date": "2026-03-18",
       "daily_delta": 0.0,
       "monthly_delta": 0.0,
       "prev_close": 2550.01
@@ -2547,7 +2547,7 @@
       "ticker": "MMAQ4.SA",
       "name": "Minasmáquinas S/A",
       "last_close": 2550.01,
-      "date": "2026-03-16",
+      "date": "2026-03-18",
       "daily_delta": 0.0,
       "monthly_delta": 0.0,
       "prev_close": 2550.01
@@ -2555,53 +2555,53 @@
     {
       "ticker": "MNDL3.SA",
       "name": "Mundial S.A. - Produtos de Consumo",
-      "last_close": 17.0,
-      "date": "2026-03-17",
-      "daily_delta": -0.005847953216374324,
-      "monthly_delta": -0.02857142857142858,
-      "prev_close": 17.1
+      "last_close": 17.12,
+      "date": "2026-03-19",
+      "daily_delta": 0.007058823529411784,
+      "monthly_delta": -0.021714285714285686,
+      "prev_close": 17.0
     },
     {
       "ticker": "MNPR3.SA",
       "name": "Minupar Participações S.A.",
-      "last_close": 4.31,
-      "date": "2026-03-17",
-      "daily_delta": -0.07112068965517249,
-      "monthly_delta": 0.06419753086419755,
-      "prev_close": 4.64
+      "last_close": 4.2,
+      "date": "2026-03-19",
+      "daily_delta": -0.01869158878504673,
+      "monthly_delta": 0.0370370370370372,
+      "prev_close": 4.28
     },
     {
       "ticker": "MOTV3.SA",
       "name": "Motiva Infraestrutura de Mobilidade S.A.",
-      "last_close": 15.19,
-      "date": "2026-03-17",
-      "daily_delta": -0.003934426229508237,
-      "monthly_delta": -0.07208307880268794,
-      "prev_close": 15.25
+      "last_close": 15.12,
+      "date": "2026-03-19",
+      "daily_delta": -0.001980198019802093,
+      "monthly_delta": -0.07635919364691524,
+      "prev_close": 15.15
     },
     {
       "ticker": "MOVI3.SA",
       "name": "Movida Participações S.A.",
-      "last_close": 11.8,
-      "date": "2026-03-17",
-      "daily_delta": 0.010273972602739878,
-      "monthly_delta": -0.10741301059001507,
-      "prev_close": 11.68
+      "last_close": 12.22,
+      "date": "2026-03-19",
+      "daily_delta": 0.02259414225941425,
+      "monthly_delta": -0.07564296520423597,
+      "prev_close": 11.95
     },
     {
       "ticker": "MRVE3.SA",
       "name": "MRV Engenharia e Participações S.A.",
-      "last_close": 7.67,
-      "date": "2026-03-17",
-      "daily_delta": 0.002614379084967311,
-      "monthly_delta": -0.2165474974463738,
-      "prev_close": 7.65
+      "last_close": 7.57,
+      "date": "2026-03-19",
+      "daily_delta": -0.0026350461133068936,
+      "monthly_delta": -0.22676200204290087,
+      "prev_close": 7.59
     },
     {
       "ticker": "MSPA3.SA",
       "name": "Companhia Melhoramentos de São Paulo",
       "last_close": 47.0,
-      "date": "2026-03-16",
+      "date": "2026-03-18",
       "daily_delta": 0.0,
       "monthly_delta": 0.0,
       "prev_close": 47.0
@@ -2610,7 +2610,7 @@
       "ticker": "MSPA4.SA",
       "name": "Companhia Melhoramentos de São Paulo",
       "last_close": 41.0,
-      "date": "2026-03-16",
+      "date": "2026-03-18",
       "daily_delta": 0.0,
       "monthly_delta": 0.0,
       "prev_close": 41.0
@@ -2618,17 +2618,17 @@
     {
       "ticker": "MTRE3.SA",
       "name": "Mitre Realty Empreendimentos e Participações S.A.",
-      "last_close": 3.84,
-      "date": "2026-03-17",
-      "daily_delta": 0.018567639257294433,
-      "monthly_delta": -0.054187192118226535,
-      "prev_close": 3.77
+      "last_close": 3.74,
+      "date": "2026-03-19",
+      "daily_delta": -0.005319148936170137,
+      "monthly_delta": -0.07881773399014769,
+      "prev_close": 3.76
     },
     {
       "ticker": "MTSA3.SA",
       "name": "METISA Metalúrgica Timboense S.A.",
       "last_close": 76.0,
-      "date": "2026-03-16",
+      "date": "2026-03-18",
       "daily_delta": 0.0,
       "monthly_delta": 0.0,
       "prev_close": 76.0
@@ -2637,25 +2637,25 @@
       "ticker": "MTSA4.SA",
       "name": "METISA Metalúrgica Timboense S.A.",
       "last_close": 61.7,
-      "date": "2026-03-17",
-      "daily_delta": -0.00787908023798034,
+      "date": "2026-03-19",
+      "daily_delta": 0.0,
       "monthly_delta": 0.15456586826347318,
-      "prev_close": 62.19
+      "prev_close": 61.7
     },
     {
       "ticker": "MULT3.SA",
       "name": "Multiplan Empreendimentos Imobiliários S.A.",
-      "last_close": 30.85,
-      "date": "2026-03-17",
-      "daily_delta": 0.006525285481239873,
-      "monthly_delta": -0.058877364246491704,
-      "prev_close": 30.65
+      "last_close": 30.77,
+      "date": "2026-03-19",
+      "daily_delta": 0.004898758981058071,
+      "monthly_delta": -0.06131787675411837,
+      "prev_close": 30.62
     },
     {
       "ticker": "MWET3.SA",
       "name": "Wetzel S.A.",
       "last_close": 16.0,
-      "date": "2026-03-16",
+      "date": "2026-03-18",
       "daily_delta": 0.0,
       "monthly_delta": 0.0,
       "prev_close": 16.0
@@ -2663,35 +2663,35 @@
     {
       "ticker": "MWET4.SA",
       "name": "Wetzel S.A.",
-      "last_close": 18.0,
-      "date": "2026-03-17",
-      "daily_delta": 0.0,
-      "monthly_delta": 0.7543859649122808,
+      "last_close": 19.8,
+      "date": "2026-03-19",
+      "daily_delta": 0.10000000000000009,
+      "monthly_delta": 0.9298245614035088,
       "prev_close": 18.0
     },
     {
       "ticker": "MYPK3.SA",
       "name": "Iochpe-Maxion S.A.",
-      "last_close": 9.24,
-      "date": "2026-03-17",
-      "daily_delta": 0.0032573289902280145,
-      "monthly_delta": -0.12,
-      "prev_close": 9.21
+      "last_close": 9.1,
+      "date": "2026-03-19",
+      "daily_delta": 0.0022026431718060735,
+      "monthly_delta": -0.13333333333333341,
+      "prev_close": 9.08
     },
     {
       "ticker": "NATU3.SA",
       "name": "Natura Cosméticos S.A.",
-      "last_close": 9.36,
-      "date": "2026-03-17",
-      "daily_delta": 0.08458864426419455,
-      "monthly_delta": 0.018498367791077275,
-      "prev_close": 8.63
+      "last_close": 9.75,
+      "date": "2026-03-19",
+      "daily_delta": 0.04278074866310155,
+      "monthly_delta": 0.06093579978237229,
+      "prev_close": 9.35
     },
     {
       "ticker": "NEMO3.SA",
       "name": "NEMO3.SA",
       "last_close": 1.57,
-      "date": "2026-03-16",
+      "date": "2026-03-18",
       "daily_delta": 0.0,
       "monthly_delta": 0.0,
       "prev_close": 1.57
@@ -2699,35 +2699,35 @@
     {
       "ticker": "NEOE3.SA",
       "name": "Neoenergia S.A.",
-      "last_close": 33.14,
-      "date": "2026-03-17",
-      "daily_delta": 0.0012084592145014117,
-      "monthly_delta": 0.012836185819070867,
-      "prev_close": 33.1
+      "last_close": 33.22,
+      "date": "2026-03-19",
+      "daily_delta": 0.002111613876319751,
+      "monthly_delta": 0.015281173594132058,
+      "prev_close": 33.15
     },
     {
       "ticker": "NEXP3.SA",
       "name": "Nexpe Participações S.A.",
-      "last_close": 2.8,
-      "date": "2026-03-17",
-      "daily_delta": 0.0035842293906809264,
-      "monthly_delta": -0.02777777777777779,
-      "prev_close": 2.79
+      "last_close": 2.79,
+      "date": "2026-03-19",
+      "daily_delta": -0.0035714285714284477,
+      "monthly_delta": -0.03125,
+      "prev_close": 2.8
     },
     {
       "ticker": "NGRD3.SA",
       "name": "Neogrid Participações S.A.",
-      "last_close": 28.96,
-      "date": "2026-03-17",
-      "daily_delta": 0.003812824956672456,
-      "monthly_delta": 0.08059701492537319,
-      "prev_close": 28.85
+      "last_close": 28.99,
+      "date": "2026-03-19",
+      "daily_delta": 0.0003450655624568366,
+      "monthly_delta": 0.0817164179104477,
+      "prev_close": 28.98
     },
     {
       "ticker": "NORD3.SA",
       "name": "Nordon Indústrias Metalúrgicas S/A",
       "last_close": 4.1,
-      "date": "2026-03-16",
+      "date": "2026-03-18",
       "daily_delta": 0.0,
       "monthly_delta": -0.08888888888888902,
       "prev_close": 4.1
@@ -2735,26 +2735,26 @@
     {
       "ticker": "NUTR3.SA",
       "name": "Nutriplant Indústria e Comércio S/A",
-      "last_close": 2.39,
-      "date": "2026-03-17",
-      "daily_delta": -0.012396694214875992,
-      "monthly_delta": -0.028455284552845517,
-      "prev_close": 2.42
+      "last_close": 2.38,
+      "date": "2026-03-19",
+      "daily_delta": 0.00421940928270037,
+      "monthly_delta": -0.0325203252032521,
+      "prev_close": 2.37
     },
     {
       "ticker": "OBTC3.SA",
       "name": "Oranjebtc S.A. - Educação e Investimento",
-      "last_close": 7.69,
-      "date": "2026-03-17",
-      "daily_delta": 0.019893899204244114,
-      "monthly_delta": 0.1722560975609757,
-      "prev_close": 7.54
+      "last_close": 7.28,
+      "date": "2026-03-19",
+      "daily_delta": -0.004103967168262557,
+      "monthly_delta": 0.10975609756097571,
+      "prev_close": 7.31
     },
     {
       "ticker": "ODER4.SA",
       "name": "Conservas Oderich S.A.",
       "last_close": 100.0,
-      "date": "2026-03-16",
+      "date": "2026-03-18",
       "daily_delta": 0.0,
       "monthly_delta": 0.0,
       "prev_close": 100.0
@@ -2763,124 +2763,124 @@
       "ticker": "ODPV3.SA",
       "name": "Odontoprev S.A.",
       "last_close": 13.27,
-      "date": "2026-03-17",
-      "daily_delta": 0.004542013626040786,
+      "date": "2026-03-19",
+      "daily_delta": 0.012977099236641143,
       "monthly_delta": 0.11794439764111209,
-      "prev_close": 13.21
+      "prev_close": 13.1
     },
     {
       "ticker": "OFSA3.SA",
       "name": "Ouro Fino Saúde Animal Participações S.A.",
-      "last_close": 27.95,
-      "date": "2026-03-17",
-      "daily_delta": 0.016363636363636358,
-      "monthly_delta": 0.16896695943120021,
-      "prev_close": 27.5
+      "last_close": 27.25,
+      "date": "2026-03-19",
+      "daily_delta": -0.030249110320284767,
+      "monthly_delta": 0.13969050606440825,
+      "prev_close": 28.1
     },
     {
       "ticker": "OIBR3.SA",
       "name": "Oi S.A.",
       "last_close": 0.17,
-      "date": "2026-03-17",
-      "daily_delta": 0.0625,
+      "date": "2026-03-19",
+      "daily_delta": 0.0,
       "monthly_delta": -0.05555555555555547,
-      "prev_close": 0.16
+      "prev_close": 0.17
     },
     {
       "ticker": "OIBR4.SA",
       "name": "Oi S.A.",
-      "last_close": 1.46,
-      "date": "2026-03-16",
-      "daily_delta": 0.0,
-      "monthly_delta": -0.21925133689839582,
-      "prev_close": 1.46
+      "last_close": 1.25,
+      "date": "2026-03-19",
+      "daily_delta": 0.008064516129032251,
+      "monthly_delta": -0.3315508021390374,
+      "prev_close": 1.24
     },
     {
       "ticker": "ONCO3.SA",
       "name": "Oncoclínicas do Brasil Serviços Médicos S.A.",
-      "last_close": 1.78,
-      "date": "2026-03-17",
-      "daily_delta": -0.03260869565217395,
-      "monthly_delta": -0.4066666666666666,
-      "prev_close": 1.84
+      "last_close": 1.21,
+      "date": "2026-03-19",
+      "daily_delta": -0.1294964028776978,
+      "monthly_delta": -0.5966666666666667,
+      "prev_close": 1.39
     },
     {
       "ticker": "OPCT3.SA",
       "name": "OceanPact Serviços Marítimos S.A.",
-      "last_close": 8.85,
-      "date": "2026-03-17",
-      "daily_delta": -0.007847533632287074,
-      "monthly_delta": -0.04013015184381785,
-      "prev_close": 8.92
+      "last_close": 8.96,
+      "date": "2026-03-19",
+      "daily_delta": 0.0011173184357544663,
+      "monthly_delta": -0.02819956616052055,
+      "prev_close": 8.95
     },
     {
       "ticker": "ORVR3.SA",
       "name": "Orizon Valorização de Resíduos S.A.",
-      "last_close": 64.44,
-      "date": "2026-03-17",
-      "daily_delta": -0.004787644787644818,
-      "monthly_delta": -0.092266516410762,
-      "prev_close": 64.75
+      "last_close": 66.25,
+      "date": "2026-03-19",
+      "daily_delta": 0.012996941896024294,
+      "monthly_delta": -0.06676996760107046,
+      "prev_close": 65.4
     },
     {
       "ticker": "OSXB3.SA",
       "name": "OSX Brasil S.A.",
-      "last_close": 1.65,
-      "date": "2026-03-16",
-      "daily_delta": 0.0,
-      "monthly_delta": -0.05714285714285716,
+      "last_close": 1.62,
+      "date": "2026-03-19",
+      "daily_delta": -0.018181818181818077,
+      "monthly_delta": -0.07428571428571418,
       "prev_close": 1.65
     },
     {
       "ticker": "PATI3.SA",
       "name": "Panatlântica S.A.",
-      "last_close": 32.0,
-      "date": "2026-03-16",
-      "daily_delta": 0.0,
-      "monthly_delta": -0.10288758059994396,
+      "last_close": 34.0,
+      "date": "2026-03-19",
+      "daily_delta": 0.0625,
+      "monthly_delta": -0.046818054387440466,
       "prev_close": 32.0
     },
     {
       "ticker": "PATI4.SA",
       "name": "Panatlântica S.A.",
-      "last_close": 34.0,
-      "date": "2026-03-16",
-      "daily_delta": 0.0,
-      "monthly_delta": 0.0,
-      "prev_close": 34.0
+      "last_close": 34.5,
+      "date": "2026-03-19",
+      "daily_delta": -0.0014471780028942893,
+      "monthly_delta": 0.014705882352941124,
+      "prev_close": 34.55
     },
     {
       "ticker": "PCAR3.SA",
       "name": "Companhia Brasileira De Distribuicao",
-      "last_close": 2.27,
-      "date": "2026-03-17",
-      "daily_delta": -0.03813559322033888,
-      "monthly_delta": -0.35511363636363635,
-      "prev_close": 2.36
+      "last_close": 2.02,
+      "date": "2026-03-19",
+      "daily_delta": -0.01941747572815533,
+      "monthly_delta": -0.42613636363636365,
+      "prev_close": 2.06
     },
     {
       "ticker": "PDGR3.SA",
       "name": "PDG Realty S.A. Empreendimentos e Participações",
-      "last_close": 1.27,
-      "date": "2026-03-17",
-      "daily_delta": -0.052238805970149294,
-      "monthly_delta": -0.518939393939394,
-      "prev_close": 1.34
+      "last_close": 1.25,
+      "date": "2026-03-19",
+      "daily_delta": -0.007936507936507908,
+      "monthly_delta": -0.5265151515151516,
+      "prev_close": 1.26
     },
     {
       "ticker": "PDTC3.SA",
       "name": "Padtec Holding S.A.",
-      "last_close": 1.64,
-      "date": "2026-03-17",
-      "daily_delta": 0.0,
-      "monthly_delta": 0.07894736842105265,
-      "prev_close": 1.64
+      "last_close": 1.56,
+      "date": "2026-03-19",
+      "daily_delta": -0.03703703703703709,
+      "monthly_delta": 0.026315789473684292,
+      "prev_close": 1.62
     },
     {
       "ticker": "PEAB3.SA",
       "name": "Companhia de Participações Aliança da Bahia",
       "last_close": 39.3,
-      "date": "2026-03-16",
+      "date": "2026-03-18",
       "daily_delta": 0.0,
       "monthly_delta": -0.04146341463414638,
       "prev_close": 39.3
@@ -2888,142 +2888,142 @@
     {
       "ticker": "PEAB4.SA",
       "name": "Companhia de Participações Aliança da Bahia",
-      "last_close": 40.0,
-      "date": "2026-03-16",
-      "daily_delta": 0.0,
-      "monthly_delta": -0.04283321368748505,
+      "last_close": 41.96,
+      "date": "2026-03-18",
+      "daily_delta": 0.04899999999999993,
+      "monthly_delta": 0.004067958841828201,
       "prev_close": 40.0
     },
     {
       "ticker": "PETR3.SA",
       "name": "Petróleo Brasileiro S.A. - Petrobras",
-      "last_close": 50.73,
-      "date": "2026-03-17",
-      "daily_delta": 0.012170790103750884,
-      "monthly_delta": 0.27783375314861436,
-      "prev_close": 50.12
+      "last_close": 51.57,
+      "date": "2026-03-19",
+      "daily_delta": -0.0011621150493899002,
+      "monthly_delta": 0.2989924433249369,
+      "prev_close": 51.63
     },
     {
       "ticker": "PETR4.SA",
       "name": "Petróleo Brasileiro S.A. - Petrobras",
-      "last_close": 46.38,
-      "date": "2026-03-17",
-      "daily_delta": 0.011338857392062973,
-      "monthly_delta": 0.2572512876118189,
-      "prev_close": 45.86
+      "last_close": 46.78,
+      "date": "2026-03-19",
+      "daily_delta": -0.004680851063829761,
+      "monthly_delta": 0.2680943345079967,
+      "prev_close": 47.0
     },
     {
       "ticker": "PFRM3.SA",
       "name": "Profarma Distribuidora de Produtos Farmacêuticos S.A.",
-      "last_close": 8.4,
-      "date": "2026-03-17",
-      "daily_delta": -0.0011890606420926764,
-      "monthly_delta": -0.0117647058823529,
-      "prev_close": 8.41
+      "last_close": 7.5,
+      "date": "2026-03-19",
+      "daily_delta": -0.05063291139240511,
+      "monthly_delta": -0.11764705882352944,
+      "prev_close": 7.9
     },
     {
       "ticker": "PGMN3.SA",
       "name": "Empreendimentos Pague Menos S.A.",
-      "last_close": 6.17,
-      "date": "2026-03-17",
-      "daily_delta": 0.0016233766233766378,
-      "monthly_delta": -0.1406685236768802,
-      "prev_close": 6.16
+      "last_close": 6.15,
+      "date": "2026-03-19",
+      "daily_delta": 0.00819672131147553,
+      "monthly_delta": -0.14345403899721443,
+      "prev_close": 6.1
     },
     {
       "ticker": "PINE3.SA",
       "name": "Banco Pine S.A.",
-      "last_close": 11.27,
-      "date": "2026-03-17",
-      "daily_delta": -0.007922535211267623,
-      "monthly_delta": -0.1595824011931395,
-      "prev_close": 11.36
+      "last_close": 11.3,
+      "date": "2026-03-19",
+      "daily_delta": 0.008928571428571619,
+      "monthly_delta": -0.15734526472781507,
+      "prev_close": 11.2
     },
     {
       "ticker": "PINE4.SA",
       "name": "Banco Pine S.A.",
       "last_close": 11.7,
-      "date": "2026-03-17",
-      "daily_delta": -0.0034071550255537764,
+      "date": "2026-03-19",
+      "daily_delta": 0.008620689655172376,
       "monthly_delta": -0.16129032258064513,
-      "prev_close": 11.74
+      "prev_close": 11.6
     },
     {
       "ticker": "PLAS3.SA",
       "name": "Plascar Participações Industriais S.A.",
-      "last_close": 4.72,
-      "date": "2026-03-17",
-      "daily_delta": 0.01070663811563155,
-      "monthly_delta": 0.03964757709251088,
-      "prev_close": 4.67
+      "last_close": 4.1,
+      "date": "2026-03-19",
+      "daily_delta": -0.014423076923077094,
+      "monthly_delta": -0.09691629955947145,
+      "prev_close": 4.16
     },
     {
       "ticker": "PLPL3.SA",
       "name": "Plano & Plano Desenvolvimento Imobiliário S.A.",
-      "last_close": 14.48,
-      "date": "2026-03-17",
-      "daily_delta": 0.029140014214641186,
-      "monthly_delta": -0.09273182957393489,
-      "prev_close": 14.07
+      "last_close": 14.01,
+      "date": "2026-03-19",
+      "daily_delta": -0.013380281690140827,
+      "monthly_delta": -0.12218045112781961,
+      "prev_close": 14.2
     },
     {
       "ticker": "PMAM1.SA",
       "name": "PMAM1.SA",
       "last_close": 0.01,
-      "date": "2026-03-17",
+      "date": "2026-03-19",
       "daily_delta": 0,
       "monthly_delta": 0.0
     },
     {
       "ticker": "PMAM3.SA",
       "name": "Paranapanema S.A.",
-      "last_close": 0.53,
-      "date": "2026-03-17",
-      "daily_delta": -0.036363636363636376,
-      "monthly_delta": -0.26388888888888884,
-      "prev_close": 0.55
+      "last_close": 0.51,
+      "date": "2026-03-19",
+      "daily_delta": -0.019230769230769273,
+      "monthly_delta": -0.29166666666666663,
+      "prev_close": 0.52
     },
     {
       "ticker": "PNVL3.SA",
       "name": "Dimed S.A. Distribuidora de Medicamentos",
-      "last_close": 14.5,
-      "date": "2026-03-17",
-      "daily_delta": -0.012933968686181019,
-      "monthly_delta": -0.07051282051282048,
-      "prev_close": 14.69
+      "last_close": 14.23,
+      "date": "2026-03-19",
+      "daily_delta": -0.004895104895104918,
+      "monthly_delta": -0.08782051282051273,
+      "prev_close": 14.3
     },
     {
       "ticker": "POMO3.SA",
       "name": "Marcopolo S.A.",
-      "last_close": 5.63,
-      "date": "2026-03-17",
-      "daily_delta": 0.008960573476702427,
-      "monthly_delta": -0.05378151260504205,
-      "prev_close": 5.58
+      "last_close": 5.54,
+      "date": "2026-03-19",
+      "daily_delta": -0.003597122302158251,
+      "monthly_delta": -0.06890756302521006,
+      "prev_close": 5.56
     },
     {
       "ticker": "POMO4.SA",
       "name": "Marcopolo S.A.",
-      "last_close": 5.96,
-      "date": "2026-03-17",
-      "daily_delta": 0.005059021922428464,
-      "monthly_delta": -0.06289308176100639,
-      "prev_close": 5.93
+      "last_close": 5.9,
+      "date": "2026-03-19",
+      "daily_delta": 0.006825938566553003,
+      "monthly_delta": -0.07232704402515722,
+      "prev_close": 5.86
     },
     {
       "ticker": "POSI3.SA",
       "name": "Positivo Tecnologia S.A.",
-      "last_close": 4.41,
-      "date": "2026-03-17",
-      "daily_delta": -0.0328947368421052,
-      "monthly_delta": 0.0808823529411764,
-      "prev_close": 4.56
+      "last_close": 4.46,
+      "date": "2026-03-19",
+      "daily_delta": 0.020594965675057253,
+      "monthly_delta": 0.09313725490196068,
+      "prev_close": 4.37
     },
     {
       "ticker": "PPAR3.SA",
       "name": "Polpar SA",
       "last_close": 83.34,
-      "date": "2026-03-16",
+      "date": "2026-03-18",
       "daily_delta": 0.0,
       "monthly_delta": 0.07396907216494863,
       "prev_close": 83.34
@@ -3031,44 +3031,44 @@
     {
       "ticker": "PRIO3.SA",
       "name": "Prio S.A.",
-      "last_close": 62.69,
-      "date": "2026-03-17",
-      "daily_delta": 0.04832775919732435,
-      "monthly_delta": 0.19273211567732096,
-      "prev_close": 59.8
+      "last_close": 65.82,
+      "date": "2026-03-19",
+      "daily_delta": -0.003180372557928357,
+      "monthly_delta": 0.2522831050228309,
+      "prev_close": 66.03
     },
     {
       "ticker": "PRNR3.SA",
       "name": "Priner Serviços Industriais S.A.",
-      "last_close": 20.1,
-      "date": "2026-03-17",
-      "daily_delta": -0.012770137524557912,
-      "monthly_delta": -0.023797960174842037,
-      "prev_close": 20.36
+      "last_close": 19.6,
+      "date": "2026-03-19",
+      "daily_delta": -0.015075376884421954,
+      "monthly_delta": -0.04808159300631365,
+      "prev_close": 19.9
     },
     {
       "ticker": "PSSA3.SA",
       "name": "Porto Seguro S.A.",
-      "last_close": 48.0,
-      "date": "2026-03-17",
-      "daily_delta": 0.0139416983523446,
-      "monthly_delta": -0.05882352941176472,
-      "prev_close": 47.34
+      "last_close": 48.5,
+      "date": "2026-03-19",
+      "daily_delta": 0.01783840503672618,
+      "monthly_delta": -0.0490196078431373,
+      "prev_close": 47.65
     },
     {
       "ticker": "PTBL3.SA",
       "name": "PBG S.A.",
-      "last_close": 3.17,
-      "date": "2026-03-17",
-      "daily_delta": -0.009375000000000022,
-      "monthly_delta": -0.030581039755351758,
-      "prev_close": 3.2
+      "last_close": 3.04,
+      "date": "2026-03-19",
+      "daily_delta": -0.04100946372239744,
+      "monthly_delta": -0.07033639143730885,
+      "prev_close": 3.17
     },
     {
       "ticker": "PTNT3.SA",
       "name": "Pettenati S.A. Industria Têxtil",
       "last_close": 8.69,
-      "date": "2026-03-16",
+      "date": "2026-03-18",
       "daily_delta": 0.0,
       "monthly_delta": 0.012820512820512775,
       "prev_close": 8.69
@@ -3076,152 +3076,152 @@
     {
       "ticker": "PTNT4.SA",
       "name": "Pettenati S.A. Industria Têxtil",
-      "last_close": 8.57,
-      "date": "2026-03-17",
-      "daily_delta": 0.002339181286549641,
-      "monthly_delta": 0.03128760529482544,
-      "prev_close": 8.55
+      "last_close": 8.65,
+      "date": "2026-03-19",
+      "daily_delta": 0.009334889148191472,
+      "monthly_delta": 0.04091456077015643,
+      "prev_close": 8.57
     },
     {
       "ticker": "QUAL3.SA",
       "name": "Qualicorp Consultoria e Corretora de Seguros S.A.",
       "last_close": 1.84,
-      "date": "2026-03-17",
-      "daily_delta": 0.03370786516853941,
+      "date": "2026-03-19",
+      "daily_delta": 0.0,
       "monthly_delta": -0.20346320346320346,
-      "prev_close": 1.78
+      "prev_close": 1.84
     },
     {
       "ticker": "RADL3.SA",
       "name": "Raia Drogasil S.A.",
-      "last_close": 23.42,
-      "date": "2026-03-17",
-      "daily_delta": 0.0025684931506850806,
-      "monthly_delta": -0.09749518304431593,
-      "prev_close": 23.36
+      "last_close": 23.11,
+      "date": "2026-03-19",
+      "daily_delta": -0.0030198446937015344,
+      "monthly_delta": -0.10944123314065513,
+      "prev_close": 23.18
     },
     {
       "ticker": "RAIL3.SA",
       "name": "Rumo S.A.",
-      "last_close": 16.31,
-      "date": "2026-03-17",
-      "daily_delta": -0.005487804878048785,
-      "monthly_delta": 0.004310344827586299,
-      "prev_close": 16.4
+      "last_close": 16.19,
+      "date": "2026-03-19",
+      "daily_delta": 0.006840796019900619,
+      "monthly_delta": -0.0030788177339899914,
+      "prev_close": 16.08
     },
     {
       "ticker": "RAIZ4.SA",
       "name": "Raízen S.A.",
-      "last_close": 0.61,
-      "date": "2026-03-17",
-      "daily_delta": 0.21999999999999997,
-      "monthly_delta": -0.031746031746031744,
-      "prev_close": 0.5
+      "last_close": 0.56,
+      "date": "2026-03-19",
+      "daily_delta": 0.0181818181818183,
+      "monthly_delta": -0.11111111111111105,
+      "prev_close": 0.55
     },
     {
       "ticker": "RANI3.SA",
       "name": "Irani Papel e Embalagem S.A.",
-      "last_close": 9.33,
-      "date": "2026-03-17",
-      "daily_delta": 0.017448200654307522,
-      "monthly_delta": 0.013029315960912058,
-      "prev_close": 9.17
+      "last_close": 9.17,
+      "date": "2026-03-19",
+      "daily_delta": -0.00650054171180936,
+      "monthly_delta": -0.00434310532030413,
+      "prev_close": 9.23
     },
     {
       "ticker": "RAPT3.SA",
       "name": "Randoncorp S.A.",
-      "last_close": 5.0,
-      "date": "2026-03-17",
-      "daily_delta": 0.00401606425702794,
-      "monthly_delta": -0.20760697305863707,
-      "prev_close": 4.98
+      "last_close": 4.75,
+      "date": "2026-03-19",
+      "daily_delta": -0.026639344262295084,
+      "monthly_delta": -0.2472266244057052,
+      "prev_close": 4.88
     },
     {
       "ticker": "RAPT4.SA",
       "name": "Randoncorp S.A.",
-      "last_close": 4.86,
-      "date": "2026-03-17",
-      "daily_delta": 0.012500000000000178,
-      "monthly_delta": -0.23464566929133845,
-      "prev_close": 4.8
+      "last_close": 4.83,
+      "date": "2026-03-19",
+      "daily_delta": 0.02330508474576276,
+      "monthly_delta": -0.23937007874015748,
+      "prev_close": 4.72
     },
     {
       "ticker": "RCSL3.SA",
       "name": "Recrusul S/A",
-      "last_close": 0.7,
-      "date": "2026-03-17",
-      "daily_delta": -0.02777777777777779,
-      "monthly_delta": -0.07894736842105265,
-      "prev_close": 0.72
+      "last_close": 0.68,
+      "date": "2026-03-19",
+      "daily_delta": -0.042253521126760396,
+      "monthly_delta": -0.10526315789473684,
+      "prev_close": 0.71
     },
     {
       "ticker": "RCSL4.SA",
       "name": "Recrusul S/A",
-      "last_close": 1.25,
-      "date": "2026-03-17",
-      "daily_delta": -0.015748031496062964,
-      "monthly_delta": -0.3055555555555556,
-      "prev_close": 1.27
+      "last_close": 1.21,
+      "date": "2026-03-19",
+      "daily_delta": -0.11678832116788329,
+      "monthly_delta": -0.32777777777777783,
+      "prev_close": 1.37
     },
     {
       "ticker": "RDOR3.SA",
       "name": "Rede D'Or São Luiz S.A.",
       "last_close": 37.17,
-      "date": "2026-03-17",
-      "daily_delta": 0.0035097192224622376,
+      "date": "2026-03-19",
+      "daily_delta": 0.004051863857374327,
       "monthly_delta": -0.12869198312236274,
-      "prev_close": 37.04
+      "prev_close": 37.02
     },
     {
       "ticker": "RECV3.SA",
       "name": "Petroreconcavo S.A.",
-      "last_close": 13.65,
-      "date": "2026-03-17",
-      "daily_delta": 0.03960396039603964,
-      "monthly_delta": 0.25806451612903225,
-      "prev_close": 13.13
+      "last_close": 13.43,
+      "date": "2026-03-19",
+      "daily_delta": -0.022561863173216956,
+      "monthly_delta": 0.23778801843317976,
+      "prev_close": 13.74
     },
     {
       "ticker": "REDE3.SA",
       "name": "Rede Energia Participações S.A.",
-      "last_close": 6.9,
-      "date": "2026-03-17",
-      "daily_delta": 0.07309486780715413,
-      "monthly_delta": 0.09177215189873422,
-      "prev_close": 6.43
+      "last_close": 6.39,
+      "date": "2026-03-19",
+      "daily_delta": -0.02591463414634143,
+      "monthly_delta": 0.02568218298555358,
+      "prev_close": 6.56
     },
     {
       "ticker": "RENT3.SA",
       "name": "Localiza Rent a Car S.A.",
-      "last_close": 44.62,
-      "date": "2026-03-17",
-      "daily_delta": -0.003795490064746665,
-      "monthly_delta": -0.1325816485225506,
-      "prev_close": 44.79
+      "last_close": 44.42,
+      "date": "2026-03-19",
+      "daily_delta": 0.007027884833371134,
+      "monthly_delta": -0.13646967340590976,
+      "prev_close": 44.11
     },
     {
       "ticker": "RENT4.SA",
       "name": "Localiza Rent a Car S.A.",
-      "last_close": 42.68,
-      "date": "2026-03-17",
-      "daily_delta": -0.004664179104477695,
-      "monthly_delta": -0.13951612903225807,
-      "prev_close": 42.88
+      "last_close": 42.4,
+      "date": "2026-03-19",
+      "daily_delta": 0.00569259962049351,
+      "monthly_delta": -0.14516129032258074,
+      "prev_close": 42.16
     },
     {
       "ticker": "RIAA3.SA",
       "name": "Guararapes Confecções S.A.",
-      "last_close": 8.73,
-      "date": "2026-03-17",
-      "daily_delta": 0.008083140877598094,
-      "monthly_delta": -0.1581485053037608,
-      "prev_close": 8.66
+      "last_close": 8.56,
+      "date": "2026-03-19",
+      "daily_delta": -0.0092592592592593,
+      "monthly_delta": -0.17454194792671152,
+      "prev_close": 8.64
     },
     {
       "ticker": "RIOS3.SA",
       "name": "RIOS3.SA",
       "last_close": 30.5,
-      "date": "2026-03-16",
+      "date": "2026-03-18",
       "daily_delta": 0.0,
       "monthly_delta": 0.044520547945205546,
       "prev_close": 30.5
@@ -3229,35 +3229,35 @@
     {
       "ticker": "RNEW3.SA",
       "name": "Renova Energia S.A.",
-      "last_close": 1.22,
-      "date": "2026-03-17",
-      "daily_delta": -0.008130081300813052,
-      "monthly_delta": -0.03937007874015752,
-      "prev_close": 1.23
+      "last_close": 1.27,
+      "date": "2026-03-19",
+      "daily_delta": 0.04958677685950419,
+      "monthly_delta": 0.0,
+      "prev_close": 1.21
     },
     {
       "ticker": "RNEW4.SA",
       "name": "Renova Energia S.A.",
-      "last_close": 1.2,
-      "date": "2026-03-17",
-      "daily_delta": -0.024390243902439046,
-      "monthly_delta": 0.15384615384615374,
-      "prev_close": 1.23
+      "last_close": 1.17,
+      "date": "2026-03-19",
+      "daily_delta": -0.008474576271186418,
+      "monthly_delta": 0.125,
+      "prev_close": 1.18
     },
     {
       "ticker": "ROMI3.SA",
       "name": "Romi S.A.",
-      "last_close": 7.77,
-      "date": "2026-03-17",
-      "daily_delta": -0.0025673940949936247,
-      "monthly_delta": -0.047794117647058876,
-      "prev_close": 7.79
+      "last_close": 7.33,
+      "date": "2026-03-19",
+      "daily_delta": -0.02785145888594165,
+      "monthly_delta": -0.10171568627450978,
+      "prev_close": 7.54
     },
     {
       "ticker": "RPAD3.SA",
       "name": "Alfa Holdings S.A.",
       "last_close": 5.4,
-      "date": "2026-03-16",
+      "date": "2026-03-18",
       "daily_delta": 0.0,
       "monthly_delta": 0.015037593984962516,
       "prev_close": 5.4
@@ -3265,44 +3265,44 @@
     {
       "ticker": "RPAD5.SA",
       "name": "Alfa Holdings S.A.",
-      "last_close": 6.2,
-      "date": "2026-03-16",
-      "daily_delta": 0.0,
-      "monthly_delta": 0.0,
+      "last_close": 6.15,
+      "date": "2026-03-19",
+      "daily_delta": -0.008064516129032251,
+      "monthly_delta": -0.008064516129032251,
       "prev_close": 6.2
     },
     {
       "ticker": "RPAD6.SA",
       "name": "Alfa Holdings S.A.",
-      "last_close": 4.7,
-      "date": "2026-03-16",
-      "daily_delta": 0.0,
-      "monthly_delta": 0.05617977528089879,
+      "last_close": 5.0,
+      "date": "2026-03-19",
+      "daily_delta": 0.06382978723404253,
+      "monthly_delta": 0.12359550561797739,
       "prev_close": 4.7
     },
     {
       "ticker": "RPMG3.SA",
       "name": "Refinaria de Petróleos de Manguinhos S.A.",
-      "last_close": 2.24,
-      "date": "2026-03-17",
-      "daily_delta": -0.030303030303030276,
-      "monthly_delta": -0.01754385964912264,
-      "prev_close": 2.31
+      "last_close": 2.21,
+      "date": "2026-03-19",
+      "daily_delta": 0.0,
+      "monthly_delta": -0.030701754385964897,
+      "prev_close": 2.21
     },
     {
       "ticker": "RSID3.SA",
       "name": "Rossi Residencial S.A.",
       "last_close": 1.63,
-      "date": "2026-03-17",
-      "daily_delta": -0.029761904761904767,
+      "date": "2026-03-19",
+      "daily_delta": 0.065359477124183,
       "monthly_delta": -0.012121212121212088,
-      "prev_close": 1.68
+      "prev_close": 1.53
     },
     {
       "ticker": "RSUL3.SA",
       "name": "RSUL3.SA",
       "last_close": 0.1,
-      "date": "2026-03-16",
+      "date": "2026-03-18",
       "daily_delta": 0.0,
       "monthly_delta": 0.0,
       "prev_close": 0.1
@@ -3310,134 +3310,134 @@
     {
       "ticker": "RSUL4.SA",
       "name": "Metalúrgica Riosulense S.A.",
-      "last_close": 62.29,
-      "date": "2026-03-17",
-      "daily_delta": -0.0033600000000000296,
-      "monthly_delta": -0.10374100719424462,
-      "prev_close": 62.5
+      "last_close": 60.97,
+      "date": "2026-03-19",
+      "daily_delta": 0.0019720624486441185,
+      "monthly_delta": -0.12273381294964025,
+      "prev_close": 60.85
     },
     {
       "ticker": "RVEE3.SA",
       "name": "RVEE3.SA",
-      "last_close": 1.18,
-      "date": "2026-03-17",
-      "daily_delta": -0.01666666666666672,
-      "monthly_delta": -0.3979591836734694,
-      "prev_close": 1.2
+      "last_close": 0.8,
+      "date": "2026-03-19",
+      "daily_delta": -0.1578947368421052,
+      "monthly_delta": -0.5918367346938775,
+      "prev_close": 0.95
     },
     {
       "ticker": "SANB3.SA",
       "name": "Banco Santander (Brasil) S.A.",
-      "last_close": 15.05,
-      "date": "2026-03-17",
-      "daily_delta": 0.0013306719893546592,
-      "monthly_delta": -0.11104548139397519,
-      "prev_close": 15.03
+      "last_close": 14.92,
+      "date": "2026-03-19",
+      "daily_delta": 0.016348773841961872,
+      "monthly_delta": -0.11872415829887772,
+      "prev_close": 14.68
     },
     {
       "ticker": "SANB4.SA",
       "name": "Banco Santander (Brasil) S.A.",
-      "last_close": 15.31,
-      "date": "2026-03-17",
-      "daily_delta": -0.008419689119170903,
-      "monthly_delta": -0.11808755760368661,
-      "prev_close": 15.44
+      "last_close": 15.11,
+      "date": "2026-03-19",
+      "daily_delta": 0.001325381047051044,
+      "monthly_delta": -0.12960829493087556,
+      "prev_close": 15.09
     },
     {
       "ticker": "SANB11.SA",
       "name": "Banco Santander (Brasil) S.A.",
-      "last_close": 30.1,
-      "date": "2026-03-17",
-      "daily_delta": -0.011818778726198298,
-      "monthly_delta": -0.12753623188405794,
-      "prev_close": 30.46
+      "last_close": 29.99,
+      "date": "2026-03-19",
+      "daily_delta": 0.011467116357504192,
+      "monthly_delta": -0.1307246376811595,
+      "prev_close": 29.65
     },
     {
       "ticker": "SAPR3.SA",
       "name": "Companhia de Saneamento do Paraná - SANEPAR",
-      "last_close": 9.28,
-      "date": "2026-03-17",
-      "daily_delta": 0.01642935377875121,
-      "monthly_delta": -0.17730496453900713,
-      "prev_close": 9.13
+      "last_close": 9.48,
+      "date": "2026-03-19",
+      "daily_delta": 0.012820512820512997,
+      "monthly_delta": -0.15957446808510634,
+      "prev_close": 9.36
     },
     {
       "ticker": "SAPR4.SA",
       "name": "Companhia de Saneamento do Paraná - SANEPAR",
-      "last_close": 8.0,
-      "date": "2026-03-17",
-      "daily_delta": 0.008827238335435084,
-      "monthly_delta": -0.08361970217640324,
-      "prev_close": 7.93
+      "last_close": 8.11,
+      "date": "2026-03-19",
+      "daily_delta": 0.015018773466833446,
+      "monthly_delta": -0.07101947308132883,
+      "prev_close": 7.99
     },
     {
       "ticker": "SAPR11.SA",
       "name": "Companhia de Saneamento do Paraná - SANEPAR",
-      "last_close": 41.54,
-      "date": "2026-03-17",
-      "daily_delta": 0.019887061134299167,
-      "monthly_delta": -0.10028156811782551,
-      "prev_close": 40.73
+      "last_close": 42.09,
+      "date": "2026-03-19",
+      "daily_delta": 0.016175760502172842,
+      "monthly_delta": -0.08836907082521117,
+      "prev_close": 41.42
     },
     {
       "ticker": "SBFG3.SA",
       "name": "Grupo SBF S.A.",
-      "last_close": 11.35,
-      "date": "2026-03-17",
-      "daily_delta": -0.01475694444444442,
-      "monthly_delta": -0.07648494711147269,
-      "prev_close": 11.52
+      "last_close": 11.42,
+      "date": "2026-03-19",
+      "daily_delta": 0.011514614703277415,
+      "monthly_delta": -0.07078925956061832,
+      "prev_close": 11.29
     },
     {
       "ticker": "SBSP3.SA",
       "name": "Companhia de Saneamento Básico do Estado de São Paulo - SABESP",
-      "last_close": 149.5,
-      "date": "2026-03-17",
-      "daily_delta": 0.026644691663233022,
-      "monthly_delta": -0.01967213114754096,
-      "prev_close": 145.62
+      "last_close": 152.82,
+      "date": "2026-03-19",
+      "daily_delta": 0.06725329981143924,
+      "monthly_delta": 0.03047875927174637,
+      "prev_close": 143.19
     },
     {
       "ticker": "SCAR3.SA",
       "name": "São Carlos Empreendimentos e Participações S.A.",
-      "last_close": 13.98,
-      "date": "2026-03-17",
-      "daily_delta": 0.0028694404591105283,
-      "monthly_delta": -0.06048387096774199,
-      "prev_close": 13.94
+      "last_close": 13.83,
+      "date": "2026-03-19",
+      "daily_delta": 0.016164584864070575,
+      "monthly_delta": -0.07056451612903225,
+      "prev_close": 13.61
     },
     {
       "ticker": "SEER3.SA",
       "name": "Ser Educacional S.A.",
-      "last_close": 10.46,
-      "date": "2026-03-17",
-      "daily_delta": 0.008678881388621162,
-      "monthly_delta": -0.14820846905537444,
-      "prev_close": 10.37
+      "last_close": 10.23,
+      "date": "2026-03-19",
+      "daily_delta": -0.004863813229571856,
+      "monthly_delta": -0.16693811074918563,
+      "prev_close": 10.28
     },
     {
       "ticker": "SEQL3.SA",
       "name": "Sequoia Logística e Transportes S.A.",
-      "last_close": 0.3,
-      "date": "2026-03-17",
-      "daily_delta": 0.034482758620689724,
-      "monthly_delta": -0.4642857142857143,
+      "last_close": 0.29,
+      "date": "2026-03-19",
+      "daily_delta": 0.0,
+      "monthly_delta": -0.4821428571428572,
       "prev_close": 0.29
     },
     {
       "ticker": "SHOW3.SA",
       "name": "T4F Entretenimento S.A.",
-      "last_close": 5.26,
-      "date": "2026-03-17",
-      "daily_delta": 0.02935420743639905,
-      "monthly_delta": 0.056224899598393385,
-      "prev_close": 5.11
+      "last_close": 5.4,
+      "date": "2026-03-19",
+      "daily_delta": 0.0609037328094304,
+      "monthly_delta": 0.0843373493975903,
+      "prev_close": 5.09
     },
     {
       "ticker": "SHUL3.SA",
       "name": "Schulz S.A.",
       "last_close": 27.94,
-      "date": "2026-03-16",
+      "date": "2026-03-18",
       "daily_delta": 0.0,
       "monthly_delta": 0.0,
       "prev_close": 27.94
@@ -3445,53 +3445,53 @@
     {
       "ticker": "SHUL4.SA",
       "name": "Schulz S.A.",
-      "last_close": 5.26,
-      "date": "2026-03-17",
-      "daily_delta": -0.007547169811320753,
-      "monthly_delta": -0.052252252252252274,
-      "prev_close": 5.3
+      "last_close": 5.22,
+      "date": "2026-03-19",
+      "daily_delta": 0.0019193857965451588,
+      "monthly_delta": -0.05945945945945952,
+      "prev_close": 5.21
     },
     {
       "ticker": "SIMH3.SA",
       "name": "SIMPAR S.A.",
-      "last_close": 10.93,
-      "date": "2026-03-17",
-      "daily_delta": -0.00906618313689933,
-      "monthly_delta": -0.16692073170731703,
-      "prev_close": 11.03
+      "last_close": 10.74,
+      "date": "2026-03-19",
+      "daily_delta": -0.012867647058823595,
+      "monthly_delta": -0.18140243902439013,
+      "prev_close": 10.88
     },
     {
       "ticker": "SLCE3.SA",
       "name": "SLC Agrícola S.A.",
-      "last_close": 18.32,
-      "date": "2026-03-17",
-      "daily_delta": 0.012714206744057543,
-      "monthly_delta": 0.15292636878539967,
-      "prev_close": 18.09
+      "last_close": 18.21,
+      "date": "2026-03-19",
+      "daily_delta": 0.01110494169905607,
+      "monthly_delta": 0.14600377595972303,
+      "prev_close": 18.01
     },
     {
       "ticker": "SMFT3.SA",
       "name": "Smartfit Escola de Ginástica e Dança S.A.",
-      "last_close": 18.74,
-      "date": "2026-03-17",
-      "daily_delta": 0.011332973556394954,
-      "monthly_delta": -0.0938104448742747,
-      "prev_close": 18.53
+      "last_close": 18.65,
+      "date": "2026-03-19",
+      "daily_delta": 0.008653326122228133,
+      "monthly_delta": -0.0981624758220504,
+      "prev_close": 18.49
     },
     {
       "ticker": "SMTO3.SA",
       "name": "São Martinho S.A.",
-      "last_close": 18.06,
-      "date": "2026-03-17",
-      "daily_delta": 0.023809523809523725,
-      "monthly_delta": 0.1712062256809337,
-      "prev_close": 17.64
+      "last_close": 19.0,
+      "date": "2026-03-19",
+      "daily_delta": 0.04510451045104502,
+      "monthly_delta": 0.23216601815823612,
+      "prev_close": 18.18
     },
     {
       "ticker": "SNSY3.SA",
       "name": "Sansuy S.A.",
       "last_close": 10.9,
-      "date": "2026-03-16",
+      "date": "2026-03-18",
       "daily_delta": 0.0,
       "monthly_delta": 0.06862745098039236,
       "prev_close": 10.9
@@ -3499,17 +3499,17 @@
     {
       "ticker": "SNSY5.SA",
       "name": "Sansuy S.A.",
-      "last_close": 2.45,
-      "date": "2026-03-17",
-      "daily_delta": -0.05769230769230771,
-      "monthly_delta": -0.061302681992337016,
-      "prev_close": 2.6
+      "last_close": 2.44,
+      "date": "2026-03-18",
+      "daily_delta": -0.004081632653061273,
+      "monthly_delta": -0.06513409961685823,
+      "prev_close": 2.45
     },
     {
       "ticker": "SNSY6.SA",
       "name": "Sansuy S.A.",
       "last_close": 11.51,
-      "date": "2026-03-16",
+      "date": "2026-03-18",
       "daily_delta": 0.0,
       "monthly_delta": 0.0,
       "prev_close": 11.51
@@ -3517,17 +3517,17 @@
     {
       "ticker": "SOJA3.SA",
       "name": "Boa Safra Sementes S.A.",
-      "last_close": 8.16,
-      "date": "2026-03-17",
-      "daily_delta": 0.008652657601977864,
-      "monthly_delta": -0.0024449877750610804,
-      "prev_close": 8.09
+      "last_close": 8.13,
+      "date": "2026-03-19",
+      "daily_delta": 0.0012315270935963074,
+      "monthly_delta": -0.006112469437652646,
+      "prev_close": 8.12
     },
     {
       "ticker": "SOND3.SA",
       "name": "Sondotécnica Engenharia de Solos S.A.",
       "last_close": 38.66,
-      "date": "2026-03-16",
+      "date": "2026-03-18",
       "daily_delta": 0.0,
       "monthly_delta": 0.0,
       "prev_close": 38.66
@@ -3536,160 +3536,160 @@
       "ticker": "SOND5.SA",
       "name": "Sondotécnica Engenharia de Solos S.A.",
       "last_close": 75.0,
-      "date": "2026-03-16",
-      "daily_delta": 0.07219442458899206,
+      "date": "2026-03-18",
+      "daily_delta": 0.0,
       "monthly_delta": 0.0714285714285714,
-      "prev_close": 69.95
+      "prev_close": 75.0
     },
     {
       "ticker": "SOND6.SA",
       "name": "Sondotécnica Engenharia de Solos S.A.",
-      "last_close": 55.46,
-      "date": "2026-03-16",
-      "daily_delta": 0.0,
-      "monthly_delta": -0.18441176470588239,
-      "prev_close": 55.46
+      "last_close": 55.01,
+      "date": "2026-03-19",
+      "daily_delta": 0.07862745098039214,
+      "monthly_delta": -0.1910294117647059,
+      "prev_close": 51.0
     },
     {
       "ticker": "SUZB3.SA",
       "name": "Suzano S.A.",
-      "last_close": 53.11,
-      "date": "2026-03-17",
-      "daily_delta": -0.0007525870178739513,
-      "monthly_delta": -0.08964689749742893,
-      "prev_close": 53.15
+      "last_close": 51.12,
+      "date": "2026-03-19",
+      "daily_delta": -0.027397260273972712,
+      "monthly_delta": -0.12375728488172788,
+      "prev_close": 52.56
     },
     {
       "ticker": "SYNE3.SA",
       "name": "Syn Prop & Tech S.A.",
-      "last_close": 4.66,
-      "date": "2026-03-17",
-      "daily_delta": -0.0021413276231262435,
-      "monthly_delta": -0.006396588486140775,
-      "prev_close": 4.67
+      "last_close": 4.65,
+      "date": "2026-03-19",
+      "daily_delta": 0.006493506493506551,
+      "monthly_delta": -0.008528784648187626,
+      "prev_close": 4.62
     },
     {
       "ticker": "TAEE3.SA",
       "name": "Transmissora Aliança de Energia Elétrica S.A.",
-      "last_close": 13.97,
-      "date": "2026-03-17",
-      "daily_delta": -0.002855103497501732,
-      "monthly_delta": -0.027158774373258976,
-      "prev_close": 14.01
+      "last_close": 13.86,
+      "date": "2026-03-19",
+      "daily_delta": 0.008733624454148492,
+      "monthly_delta": -0.0348189415041783,
+      "prev_close": 13.74
     },
     {
       "ticker": "TAEE4.SA",
       "name": "Transmissora Aliança de Energia Elétrica S.A.",
-      "last_close": 14.35,
-      "date": "2026-03-17",
-      "daily_delta": 0.0,
-      "monthly_delta": -0.019808743169398957,
-      "prev_close": 14.35
+      "last_close": 14.09,
+      "date": "2026-03-19",
+      "daily_delta": 0.002133712660028486,
+      "monthly_delta": -0.037568306010928976,
+      "prev_close": 14.06
     },
     {
       "ticker": "TAEE11.SA",
       "name": "Transmissora Aliança de Energia Elétrica S.A.",
-      "last_close": 42.32,
-      "date": "2026-03-17",
-      "daily_delta": -0.007271874266948197,
-      "monthly_delta": -0.029357798165137616,
-      "prev_close": 42.63
+      "last_close": 42.13,
+      "date": "2026-03-19",
+      "daily_delta": 0.006690561529271166,
+      "monthly_delta": -0.03371559633027521,
+      "prev_close": 41.85
     },
     {
       "ticker": "TASA3.SA",
       "name": "Taurus Armas S.A.",
-      "last_close": 5.45,
-      "date": "2026-03-17",
-      "daily_delta": -0.003656307129798808,
-      "monthly_delta": 0.06653620352250478,
-      "prev_close": 5.47
+      "last_close": 5.44,
+      "date": "2026-03-19",
+      "daily_delta": 0.013035381750465591,
+      "monthly_delta": 0.06457925636007822,
+      "prev_close": 5.37
     },
     {
       "ticker": "TASA4.SA",
       "name": "Taurus Armas S.A.",
-      "last_close": 5.38,
-      "date": "2026-03-17",
-      "daily_delta": 0.0,
-      "monthly_delta": 0.061143984220907166,
-      "prev_close": 5.38
+      "last_close": 5.35,
+      "date": "2026-03-19",
+      "daily_delta": 0.01325757575757569,
+      "monthly_delta": 0.055226824457593526,
+      "prev_close": 5.28
     },
     {
       "ticker": "TCSA3.SA",
       "name": "Tecnisa S.A.",
-      "last_close": 1.36,
-      "date": "2026-03-17",
-      "daily_delta": -0.014492753623188248,
-      "monthly_delta": -0.09933774834437081,
-      "prev_close": 1.38
+      "last_close": 1.3,
+      "date": "2026-03-19",
+      "daily_delta": -0.015151515151515138,
+      "monthly_delta": -0.13907284768211914,
+      "prev_close": 1.32
     },
     {
       "ticker": "TECN3.SA",
       "name": "Technos S.A.",
-      "last_close": 8.51,
-      "date": "2026-03-17",
-      "daily_delta": 0.01189060642092743,
-      "monthly_delta": -0.03624009060022648,
-      "prev_close": 8.41
+      "last_close": 8.48,
+      "date": "2026-03-19",
+      "daily_delta": -0.008187134502923965,
+      "monthly_delta": -0.039637599093997666,
+      "prev_close": 8.55
     },
     {
       "ticker": "TELB3.SA",
       "name": "Telecomunicações Brasileiras S.A. - Telebras",
-      "last_close": 13.04,
-      "date": "2026-03-16",
-      "daily_delta": -0.04117647058823537,
-      "monthly_delta": -0.07452093683463457,
-      "prev_close": 13.6
+      "last_close": 13.4,
+      "date": "2026-03-19",
+      "daily_delta": 0.009036144578313365,
+      "monthly_delta": -0.04897090134847404,
+      "prev_close": 13.28
     },
     {
       "ticker": "TELB4.SA",
       "name": "Telecomunicações Brasileiras S.A. - Telebras",
-      "last_close": 8.28,
-      "date": "2026-03-17",
-      "daily_delta": 0.020961775585696563,
-      "monthly_delta": -0.014285714285714457,
-      "prev_close": 8.11
+      "last_close": 8.5,
+      "date": "2026-03-19",
+      "daily_delta": -0.009324009324009341,
+      "monthly_delta": 0.011904761904761862,
+      "prev_close": 8.58
     },
     {
       "ticker": "TEND3.SA",
       "name": "Construtora Tenda S.A.",
-      "last_close": 30.05,
-      "date": "2026-03-17",
-      "daily_delta": 0.025597269624573427,
-      "monthly_delta": -0.07935049019607843,
-      "prev_close": 29.3
+      "last_close": 30.23,
+      "date": "2026-03-19",
+      "daily_delta": -0.007224958949096805,
+      "monthly_delta": -0.0738357843137255,
+      "prev_close": 30.45
     },
     {
       "ticker": "TFCO4.SA",
       "name": "Track & Field Co S.A.",
-      "last_close": 16.44,
-      "date": "2026-03-17",
-      "daily_delta": -0.0024271844660194164,
-      "monthly_delta": -0.019093078758949944,
-      "prev_close": 16.48
+      "last_close": 16.31,
+      "date": "2026-03-19",
+      "daily_delta": -0.007907542579075555,
+      "monthly_delta": -0.026849642004773466,
+      "prev_close": 16.44
     },
     {
       "ticker": "TGMA3.SA",
       "name": "Tegma Gestão Logística S.A.",
-      "last_close": 29.88,
-      "date": "2026-03-17",
-      "daily_delta": -0.05142857142857149,
-      "monthly_delta": -0.253,
-      "prev_close": 31.5
+      "last_close": 27.56,
+      "date": "2026-03-19",
+      "daily_delta": -0.024769992922859307,
+      "monthly_delta": -0.31100000000000005,
+      "prev_close": 28.26
     },
     {
       "ticker": "TIMS3.SA",
       "name": "TIM S.A.",
-      "last_close": 26.68,
-      "date": "2026-03-17",
-      "daily_delta": 0.007552870090634434,
-      "monthly_delta": -0.02235251007695127,
-      "prev_close": 26.48
+      "last_close": 26.67,
+      "date": "2026-03-19",
+      "daily_delta": 0.01252847380410027,
+      "monthly_delta": -0.02271894466837665,
+      "prev_close": 26.34
     },
     {
       "ticker": "TKNO3.SA",
       "name": "Tekno S.A. Indústria e Comércio",
       "last_close": 214.99,
-      "date": "2026-03-16",
+      "date": "2026-03-18",
       "daily_delta": 0.0,
       "monthly_delta": 0.023761904761904873,
       "prev_close": 214.99
@@ -3697,80 +3697,80 @@
     {
       "ticker": "TKNO4.SA",
       "name": "Tekno S.A. Indústria e Comércio",
-      "last_close": 222.06,
-      "date": "2026-03-17",
-      "daily_delta": -0.000720007200072037,
-      "monthly_delta": 0.062488038277511926,
-      "prev_close": 222.22
+      "last_close": 222.05,
+      "date": "2026-03-19",
+      "daily_delta": 0.0024378131912781154,
+      "monthly_delta": 0.06244019138755985,
+      "prev_close": 221.51
     },
     {
       "ticker": "TOKY3.SA",
       "name": "TOKY3.SA",
-      "last_close": 0.44,
-      "date": "2026-03-17",
-      "daily_delta": 0.0,
-      "monthly_delta": -0.22807017543859642,
-      "prev_close": 0.44
+      "last_close": 0.4,
+      "date": "2026-03-19",
+      "daily_delta": -0.06976744186046502,
+      "monthly_delta": -0.29824561403508765,
+      "prev_close": 0.43
     },
     {
       "ticker": "TOTS3.SA",
       "name": "TOTVS S.A.",
-      "last_close": 34.68,
-      "date": "2026-03-17",
-      "daily_delta": -0.01252847380410016,
-      "monthly_delta": -0.08808835130160408,
-      "prev_close": 35.12
+      "last_close": 34.15,
+      "date": "2026-03-19",
+      "daily_delta": 0.010953226761397206,
+      "monthly_delta": -0.102024717328425,
+      "prev_close": 33.78
     },
     {
       "ticker": "TPIS3.SA",
       "name": "Triunfo Participações e Investimentos S.A.",
-      "last_close": 6.96,
-      "date": "2026-03-17",
-      "daily_delta": -0.0042918454935623185,
-      "monthly_delta": 0.09606299212598435,
-      "prev_close": 6.99
+      "last_close": 6.85,
+      "date": "2026-03-19",
+      "daily_delta": 0.037878787878787845,
+      "monthly_delta": 0.07874015748031504,
+      "prev_close": 6.6
     },
     {
       "ticker": "TRAD3.SA",
       "name": "TC S.A.",
       "last_close": 2.23,
-      "date": "2026-03-17",
-      "daily_delta": -0.008888888888888946,
+      "date": "2026-03-19",
+      "daily_delta": -0.0044642857142858094,
       "monthly_delta": -0.24149659863945583,
-      "prev_close": 2.25
+      "prev_close": 2.24
     },
     {
       "ticker": "TRIS3.SA",
       "name": "Trisul S.A.",
-      "last_close": 5.63,
-      "date": "2026-03-17",
-      "daily_delta": -0.040885860306643984,
-      "monthly_delta": -0.23609226594301225,
-      "prev_close": 5.87
+      "last_close": 5.62,
+      "date": "2026-03-19",
+      "daily_delta": -0.01748251748251739,
+      "monthly_delta": -0.237449118046133,
+      "prev_close": 5.72
     },
     {
       "ticker": "TTEN3.SA",
       "name": "Três Tentos Agroindustrial S/A",
-      "last_close": 14.96,
-      "date": "2026-03-17",
-      "daily_delta": -0.003994673768308865,
-      "monthly_delta": -0.05971087366436201,
-      "prev_close": 15.02
+      "last_close": 15.28,
+      "date": "2026-03-19",
+      "daily_delta": 0.031039136302294157,
+      "monthly_delta": -0.039597737272155875,
+      "prev_close": 14.82
     },
     {
       "ticker": "TUPY3.SA",
       "name": "Tupy S.A.",
-      "last_close": 11.94,
-      "date": "2026-03-17",
-      "daily_delta": -0.0050000000000000044,
-      "monthly_delta": -0.015663643858202958,
-      "prev_close": 12.0
+      "last_close": 11.5,
+      "date": "2026-03-19",
+      "daily_delta": -0.03523489932885904,
+      "monthly_delta": -0.051937345424567294,
+      "prev_close": 11.92
     },
     {
       "ticker": "TXRX3.SA",
       "name": "Têxtil Renauxview S.A.",
       "last_close": 9.97,
-      "date": "2026-03-16",
+      "date": "2026-03-18",
       "daily_delta": 0.0,
       "monthly_delta": 0.0,
       "prev_close": 9.97
@@ -3779,7 +3779,7 @@
       "ticker": "TXRX4.SA",
       "name": "Têxtil Renauxview S.A.",
       "last_close": 1.57,
-      "date": "2026-03-16",
+      "date": "2026-03-18",
       "daily_delta": 0.0,
       "monthly_delta": 0.0,
       "prev_close": 1.57
@@ -3787,35 +3787,35 @@
     {
       "ticker": "UCAS3.SA",
       "name": "Unicasa Indústria de Móveis S.A.",
-      "last_close": 1.48,
-      "date": "2026-03-17",
-      "daily_delta": -0.013333333333333308,
-      "monthly_delta": 0.07246376811594213,
-      "prev_close": 1.5
+      "last_close": 1.47,
+      "date": "2026-03-19",
+      "daily_delta": -0.026490066225165587,
+      "monthly_delta": 0.0652173913043479,
+      "prev_close": 1.51
     },
     {
       "ticker": "UGPA3.SA",
       "name": "Ultrapar Participações S.A.",
-      "last_close": 26.43,
-      "date": "2026-03-17",
-      "daily_delta": 0.018889745566692318,
-      "monthly_delta": -0.02038547071905117,
-      "prev_close": 25.94
+      "last_close": 26.78,
+      "date": "2026-03-19",
+      "daily_delta": 0.021357742181540962,
+      "monthly_delta": -0.007412898443291294,
+      "prev_close": 26.22
     },
     {
       "ticker": "UNIP3.SA",
       "name": "Unipar Carbocloro S.A.",
-      "last_close": 63.0,
-      "date": "2026-03-17",
-      "daily_delta": 0.0020677588675044323,
-      "monthly_delta": 0.03960396039603964,
-      "prev_close": 62.87
+      "last_close": 60.93,
+      "date": "2026-03-19",
+      "daily_delta": -0.0011475409836065875,
+      "monthly_delta": 0.00544554455445545,
+      "prev_close": 61.0
     },
     {
       "ticker": "UNIP5.SA",
       "name": "Unipar Carbocloro S.A.",
       "last_close": 68.98,
-      "date": "2026-03-16",
+      "date": "2026-03-18",
       "daily_delta": 0.0,
       "monthly_delta": 0.07278382581648524,
       "prev_close": 68.98
@@ -3823,35 +3823,35 @@
     {
       "ticker": "UNIP6.SA",
       "name": "Unipar Carbocloro S.A.",
-      "last_close": 66.83,
-      "date": "2026-03-17",
-      "daily_delta": 0.004811306570440488,
-      "monthly_delta": 0.0028511404561823994,
-      "prev_close": 66.51
+      "last_close": 63.6,
+      "date": "2026-03-19",
+      "daily_delta": 0.0071258907363420665,
+      "monthly_delta": -0.0456182472989195,
+      "prev_close": 63.15
     },
     {
       "ticker": "USIM3.SA",
       "name": "Usinas Siderúrgicas de Minas Gerais S.A.",
-      "last_close": 6.58,
-      "date": "2026-03-17",
-      "daily_delta": 0.03134796238244508,
-      "monthly_delta": 0.024922118380062308,
-      "prev_close": 6.38
+      "last_close": 6.41,
+      "date": "2026-03-19",
+      "daily_delta": -0.013846153846153841,
+      "monthly_delta": -0.0015576323987538387,
+      "prev_close": 6.5
     },
     {
       "ticker": "USIM5.SA",
       "name": "Usinas Siderúrgicas de Minas Gerais S.A.",
-      "last_close": 6.62,
-      "date": "2026-03-17",
-      "daily_delta": 0.02003081664098616,
-      "monthly_delta": 0.04746835443037978,
-      "prev_close": 6.49
+      "last_close": 6.37,
+      "date": "2026-03-19",
+      "daily_delta": -0.015455950540958163,
+      "monthly_delta": 0.007911392405063333,
+      "prev_close": 6.47
     },
     {
       "ticker": "USIM6.SA",
       "name": "Usinas Siderúrgicas de Minas Gerais S.A.",
       "last_close": 8.0,
-      "date": "2026-03-16",
+      "date": "2026-03-18",
       "daily_delta": 0.0,
       "monthly_delta": 0.0,
       "prev_close": 8.0
@@ -3859,80 +3859,80 @@
     {
       "ticker": "VALE3.SA",
       "name": "Vale S.A.",
-      "last_close": 78.96,
-      "date": "2026-03-17",
-      "daily_delta": 0.0015220700152205335,
-      "monthly_delta": -0.09272664598414349,
-      "prev_close": 78.84
+      "last_close": 76.63,
+      "date": "2026-03-19",
+      "daily_delta": -0.006482561908466189,
+      "monthly_delta": -0.11949902332529017,
+      "prev_close": 77.13
     },
     {
       "ticker": "VAMO3.SA",
       "name": "Vamos Locação de Caminhões, Máquinas e Equipamentos S.A.",
-      "last_close": 3.54,
-      "date": "2026-03-17",
-      "daily_delta": -0.01939058171745145,
-      "monthly_delta": -0.18993135011441653,
-      "prev_close": 3.61
+      "last_close": 3.38,
+      "date": "2026-03-19",
+      "daily_delta": -0.028735632183908066,
+      "monthly_delta": -0.22654462242562934,
+      "prev_close": 3.48
     },
     {
       "ticker": "VBBR3.SA",
       "name": "Vibra Energia S.A.",
-      "last_close": 30.55,
-      "date": "2026-03-17",
-      "daily_delta": 0.02413677505866585,
-      "monthly_delta": -0.037188780334068694,
-      "prev_close": 29.83
+      "last_close": 30.13,
+      "date": "2026-03-19",
+      "daily_delta": 0.011073825503355561,
+      "monthly_delta": -0.05042546485975419,
+      "prev_close": 29.8
     },
     {
       "ticker": "VITT3.SA",
       "name": "Vittia S.A.",
-      "last_close": 4.14,
-      "date": "2026-03-17",
-      "daily_delta": -0.034965034965035,
-      "monthly_delta": -0.032710280373831946,
-      "prev_close": 4.29
+      "last_close": 4.22,
+      "date": "2026-03-19",
+      "daily_delta": 0.0,
+      "monthly_delta": -0.014018691588785215,
+      "prev_close": 4.22
     },
     {
       "ticker": "VIVA3.SA",
       "name": "Vivara Participações S.A.",
-      "last_close": 25.08,
-      "date": "2026-03-17",
-      "daily_delta": -0.008695652173913104,
-      "monthly_delta": -0.15838926174496648,
-      "prev_close": 25.3
+      "last_close": 25.04,
+      "date": "2026-03-19",
+      "daily_delta": 0.014175779667881638,
+      "monthly_delta": -0.1597315436241611,
+      "prev_close": 24.69
     },
     {
       "ticker": "VIVR3.SA",
       "name": "Viver Incorporadora e Construtora S.A.",
       "last_close": 0.41,
-      "date": "2026-03-17",
-      "daily_delta": -0.023809523809523836,
+      "date": "2026-03-19",
+      "daily_delta": -0.04651162790697683,
       "monthly_delta": -0.3492063492063493,
-      "prev_close": 0.42
+      "prev_close": 0.43
     },
     {
       "ticker": "VIVT3.SA",
       "name": "Telefônica Brasil S.A.",
-      "last_close": 40.99,
-      "date": "2026-03-17",
-      "daily_delta": 0.009854644000985457,
-      "monthly_delta": 0.0024455857177794194,
-      "prev_close": 40.59
+      "last_close": 40.83,
+      "date": "2026-03-19",
+      "daily_delta": 0.004922471080482271,
+      "monthly_delta": -0.0014673514306676738,
+      "prev_close": 40.63
     },
     {
       "ticker": "VLID3.SA",
       "name": "Valid Soluções S.A.",
-      "last_close": 20.17,
-      "date": "2026-03-17",
-      "daily_delta": 0.0009925558312655625,
-      "monthly_delta": -0.097942754919499,
-      "prev_close": 20.15
+      "last_close": 19.72,
+      "date": "2026-03-19",
+      "daily_delta": -0.006549118387909503,
+      "monthly_delta": -0.11806797853309481,
+      "prev_close": 19.85
     },
     {
       "ticker": "VSPT3.SA",
       "name": "Ferrovia Centro-Atlantica SA",
       "last_close": 1.5,
-      "date": "2026-03-16",
+      "date": "2026-03-18",
       "daily_delta": 0.0,
       "monthly_delta": 0.0,
       "prev_close": 1.5
@@ -3940,119 +3940,119 @@
     {
       "ticker": "VSTE3.SA",
       "name": "Veste S.A. Estilo",
-      "last_close": 3.57,
-      "date": "2026-03-17",
-      "daily_delta": -0.008333333333333415,
-      "monthly_delta": 0.02881844380403442,
-      "prev_close": 3.6
+      "last_close": 3.52,
+      "date": "2026-03-19",
+      "daily_delta": -0.005649717514124353,
+      "monthly_delta": 0.014409221902017322,
+      "prev_close": 3.54
     },
     {
       "ticker": "VTRU3.SA",
       "name": "Vitru Educação S.A.",
-      "last_close": 13.45,
-      "date": "2026-03-17",
-      "daily_delta": 0.0,
-      "monthly_delta": -0.10868124585818428,
-      "prev_close": 13.45
+      "last_close": 14.57,
+      "date": "2026-03-19",
+      "daily_delta": 0.02605633802816909,
+      "monthly_delta": -0.0344599072233267,
+      "prev_close": 14.2
     },
     {
       "ticker": "VULC3.SA",
       "name": "Vulcabras S.A.",
-      "last_close": 16.5,
-      "date": "2026-03-17",
-      "daily_delta": -0.008413461538461564,
-      "monthly_delta": -0.07924107142857151,
-      "prev_close": 16.64
+      "last_close": 16.32,
+      "date": "2026-03-19",
+      "daily_delta": -0.0006123698714022296,
+      "monthly_delta": -0.0892857142857143,
+      "prev_close": 16.33
     },
     {
       "ticker": "VVEO3.SA",
       "name": "CM Hospitalar S/A",
-      "last_close": 1.32,
-      "date": "2026-03-17",
-      "daily_delta": -0.07692307692307687,
-      "monthly_delta": -0.08965517241379306,
-      "prev_close": 1.43
+      "last_close": 1.31,
+      "date": "2026-03-19",
+      "daily_delta": -0.015037593984962405,
+      "monthly_delta": -0.096551724137931,
+      "prev_close": 1.33
     },
     {
       "ticker": "WDCN3.SA",
       "name": "WDCN3.SA",
-      "last_close": 2.56,
-      "date": "2026-03-17",
-      "daily_delta": 0.0039215686274509665,
-      "monthly_delta": -0.041198501872659166,
-      "prev_close": 2.55
+      "last_close": 2.49,
+      "date": "2026-03-19",
+      "daily_delta": -0.011904761904761862,
+      "monthly_delta": -0.0674157303370786,
+      "prev_close": 2.52
     },
     {
       "ticker": "WEGE3.SA",
       "name": "WEG S.A.",
-      "last_close": 46.2,
-      "date": "2026-03-17",
-      "daily_delta": 0.005003262997607116,
-      "monthly_delta": -0.141263940520446,
-      "prev_close": 45.97
+      "last_close": 46.59,
+      "date": "2026-03-19",
+      "daily_delta": 0.009315424610052192,
+      "monthly_delta": -0.13401486988847577,
+      "prev_close": 46.16
     },
     {
       "ticker": "WEST3.SA",
       "name": "Westwing Comércio Varejista S.A.",
-      "last_close": 6.02,
-      "date": "2026-03-17",
-      "daily_delta": -0.016339869281045805,
-      "monthly_delta": -0.0049586776859504855,
-      "prev_close": 6.12
+      "last_close": 6.73,
+      "date": "2026-03-19",
+      "daily_delta": 0.022796352583586588,
+      "monthly_delta": 0.11239669421487619,
+      "prev_close": 6.58
     },
     {
       "ticker": "WHRL3.SA",
       "name": "Whirlpool S.A.",
-      "last_close": 4.2,
-      "date": "2026-03-17",
-      "daily_delta": -0.002375296912113911,
-      "monthly_delta": -0.041095890410958846,
-      "prev_close": 4.21
+      "last_close": 4.13,
+      "date": "2026-03-19",
+      "daily_delta": -0.011961722488038284,
+      "monthly_delta": -0.057077625570776225,
+      "prev_close": 4.18
     },
     {
       "ticker": "WHRL4.SA",
       "name": "Whirlpool S.A.",
-      "last_close": 4.55,
-      "date": "2026-03-17",
-      "daily_delta": 0.011111111111111072,
-      "monthly_delta": -0.025695931477516032,
-      "prev_close": 4.5
+      "last_close": 4.45,
+      "date": "2026-03-19",
+      "daily_delta": -0.017660044150110354,
+      "monthly_delta": -0.047109207708779355,
+      "prev_close": 4.53
     },
     {
       "ticker": "WIZC3.SA",
       "name": "Wiz Co Participações e Corretagem de Seguros S.A.",
-      "last_close": 9.0,
-      "date": "2026-03-17",
-      "daily_delta": -0.0033222591362125353,
-      "monthly_delta": -0.008810572687224627,
-      "prev_close": 9.03
+      "last_close": 8.88,
+      "date": "2026-03-19",
+      "daily_delta": -0.0011248593925758943,
+      "monthly_delta": -0.022026431718061623,
+      "prev_close": 8.89
     },
     {
       "ticker": "WLMM3.SA",
       "name": "WLM Participações e Comércio de Máquinas e Veículos S.A.",
       "last_close": 23.39,
-      "date": "2026-03-17",
-      "daily_delta": -0.027038269550748728,
+      "date": "2026-03-18",
+      "daily_delta": 0.0,
       "monthly_delta": 0.0427998216674097,
-      "prev_close": 24.04
+      "prev_close": 23.39
     },
     {
       "ticker": "WLMM4.SA",
       "name": "WLM Participações e Comércio de Máquinas e Veículos S.A.",
-      "last_close": 22.14,
-      "date": "2026-03-17",
-      "daily_delta": -0.037391304347826115,
-      "monthly_delta": -0.11439999999999995,
-      "prev_close": 23.0
+      "last_close": 21.92,
+      "date": "2026-03-19",
+      "daily_delta": -0.018800358102059045,
+      "monthly_delta": -0.12319999999999998,
+      "prev_close": 22.34
     },
     {
       "ticker": "YDUQ3.SA",
       "name": "Yduqs Participações S.A.",
-      "last_close": 10.38,
-      "date": "2026-03-17",
-      "daily_delta": -0.0019230769230769162,
-      "monthly_delta": -0.19409937888198758,
-      "prev_close": 10.4
+      "last_close": 10.13,
+      "date": "2026-03-19",
+      "daily_delta": 0.02323232323232327,
+      "monthly_delta": -0.21350931677018636,
+      "prev_close": 9.9
     }
   ]
 }
