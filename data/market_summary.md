@@ -6,9 +6,9 @@
 | :--- | :--- | :--- | :--- | :--- |
 | FIGE3.SA | Investimentos Bemge S.A. | R$ 33.00 | R$ 24.11 | **+36.87%** 🚀 |
 | LUPA3.SA | Lupatech S.A. | R$ 0.86 | R$ 0.73 | **+17.81%** 🚀 |
-| ADMF3.SA | CIABRASF - Cia. Brasileira de Serviços Financeiros S/A | R$ 23.00 | R$ 19.69 | **+16.81%** 🚀 |
 | HAPV3.SA | Hapvida Participações e Investimentos S.A. | R$ 9.44 | R$ 8.21 | **+14.98%** 🚀 |
 | CASH3.SA | Méliuz S.A. | R$ 3.62 | R$ 3.24 | **+11.73%** 🚀 |
+| MWET4.SA | Wetzel S.A. | R$ 19.80 | R$ 18.00 | **+10.00%** 🚀 |
 
 ### 📉 Maiores Baixas (Dia)
 
