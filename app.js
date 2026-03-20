@@ -1447,7 +1447,8 @@ class B3App {
         const cssClass = isGainer ? 'var-up' : 'var-down';
         return `
           <tr>
-            <td><strong>${item.ticker.replace('.SA', '')}</strong><br><small style="color:var(--text-muted)">${item.name}</small></td>
+            /*<td><strong>${item.ticker.replace('.SA', '')}</strong><br><small style="color:var(--text-muted)">${item.name}</small></td>*/
+            <td><strong>${item.ticker.replace('.SA', '')}</strong><br></td>
             <td>R$ ${item.last_close.toFixed(2)}</td>
             <td>R$ ${item.prev_close.toFixed(2)}</td>
             <td class="${cssClass}">${(deltaVal > 0 && isGainer) ? '+' : ''}${delta}% ${icon}</td>
