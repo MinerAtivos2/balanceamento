@@ -9,6 +9,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.368726669431771,
       "monthly_delta": 0.5662078785002373,
+      "delta_volume": -1.0,
       "prev_close": 24.11
     },
     {
@@ -18,6 +19,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.17808219178082196,
       "monthly_delta": -0.27118644067796605,
+      "delta_volume": 0.6371508743240482,
       "prev_close": 0.73
     },
     {
@@ -27,6 +29,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.1498172959805113,
       "monthly_delta": -0.09230769230769242,
+      "delta_volume": -1.0,
       "prev_close": 8.21
     },
     {
@@ -36,6 +39,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.1172839506172838,
       "monthly_delta": 0.03428571428571425,
+      "delta_volume": -1.0,
       "prev_close": 3.24
     },
     {
@@ -45,6 +49,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.10000000000000009,
       "monthly_delta": 0.9298245614035088,
+      "delta_volume": 0.46118721461187207,
       "prev_close": 18.0
     }
   ],
@@ -56,6 +61,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.1578947368421052,
       "monthly_delta": -0.5918367346938775,
+      "delta_volume": 1.1386138613861387,
       "prev_close": 0.95
     },
     {
@@ -65,6 +71,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.14432989690721632,
       "monthly_delta": -0.232902033271719,
+      "delta_volume": -1.0,
       "prev_close": 4.85
     },
     {
@@ -74,6 +81,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.1294964028776978,
       "monthly_delta": -0.5966666666666667,
+      "delta_volume": 1.721175758789394,
       "prev_close": 1.39
     },
     {
@@ -83,6 +91,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.12698412698412698,
       "monthly_delta": 0.12244897959183665,
+      "delta_volume": -1.0,
       "prev_close": 3.78
     },
     {
@@ -92,6 +101,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.11678832116788329,
       "monthly_delta": -0.32777777777777783,
+      "delta_volume": -0.45276942856796776,
       "prev_close": 1.37
     }
   ],
@@ -103,6 +113,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.023316062176165775,
       "monthly_delta": -0.10663507109004733,
+      "delta_volume": -1.0,
       "prev_close": 3.86
     },
     {
@@ -112,6 +123,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.007358636715724343,
       "monthly_delta": -0.0482733011511326,
+      "delta_volume": -1.0,
       "prev_close": 25.82
     },
     {
@@ -121,6 +133,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.002035278154681075,
       "monthly_delta": -0.0966360856269114,
+      "delta_volume": -1.0,
       "prev_close": 14.74
     },
     {
@@ -130,6 +143,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.05755395683453224,
       "monthly_delta": -0.12374581939799334,
+      "delta_volume": -1.0,
       "prev_close": 2.78
     },
     {
@@ -139,6 +153,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0,
       "monthly_delta": -0.010810810810810811,
+      "delta_volume": -1.0,
       "prev_close": 7.32
     },
     {
@@ -148,6 +163,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.05288694808345462,
       "monthly_delta": 0.06581532416502944,
+      "delta_volume": -1.0,
       "prev_close": 20.61
     },
     {
@@ -157,6 +173,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.022222222222222143,
       "monthly_delta": -0.10569105691056901,
+      "delta_volume": -1.0,
       "prev_close": 2.25
     },
     {
@@ -166,6 +183,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0,
       "monthly_delta": 0.0,
+      "delta_volume": -1.0,
       "prev_close": 25.0
     },
     {
@@ -175,6 +193,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0,
       "monthly_delta": 0.0,
+      "delta_volume": 0,
       "prev_close": 58.0
     },
     {
@@ -184,6 +203,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0,
       "monthly_delta": 0.0,
+      "delta_volume": 0,
       "prev_close": 55.0
     },
     {
@@ -193,6 +213,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.006868131868131844,
       "monthly_delta": -0.032128514056224855,
+      "delta_volume": -1.0,
       "prev_close": 7.28
     },
     {
@@ -202,6 +223,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0006727211570802805,
       "monthly_delta": -0.02105955906548207,
+      "delta_volume": -1.0,
       "prev_close": 29.73
     },
     {
@@ -211,6 +233,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.03150315031503159,
       "monthly_delta": -0.10747663551401865,
+      "delta_volume": -1.0,
       "prev_close": 11.11
     },
     {
@@ -220,6 +243,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.010265183917878673,
       "monthly_delta": -0.21423819028609437,
+      "delta_volume": -1.0,
       "prev_close": 11.69
     },
     {
@@ -229,6 +253,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0022222222222221255,
       "monthly_delta": -0.060416666666666674,
+      "delta_volume": -1.0,
       "prev_close": 4.5
     },
     {
@@ -238,6 +263,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.007275666936135794,
       "monthly_delta": -0.08152580403889309,
+      "delta_volume": -1.0,
       "prev_close": 12.37
     },
     {
@@ -247,6 +273,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.013011152416356975,
       "monthly_delta": -0.03539823008849563,
+      "delta_volume": -1.0,
       "prev_close": 10.76
     },
     {
@@ -256,6 +283,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.007995262066923248,
       "monthly_delta": -0.049162011173184306,
+      "delta_volume": -1.0,
       "prev_close": 33.77
     },
     {
@@ -265,6 +293,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.0117647058823529,
       "monthly_delta": -0.11578947368421055,
+      "delta_volume": -1.0,
       "prev_close": 0.85
     },
     {
@@ -274,6 +303,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.04999999999999982,
       "monthly_delta": -0.22222222222222232,
+      "delta_volume": -1.0,
       "prev_close": 0.2
     },
     {
@@ -283,6 +313,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.024340770791074995,
       "monthly_delta": -0.08844765342960292,
+      "delta_volume": -1.0,
       "prev_close": 4.93
     },
     {
@@ -292,6 +323,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0,
       "monthly_delta": -0.13594470046082952,
+      "delta_volume": -1.0,
       "prev_close": 11.25
     },
     {
@@ -301,6 +333,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.010178117048346036,
       "monthly_delta": -0.17057569296375275,
+      "delta_volume": -1.0,
       "prev_close": 3.93
     },
     {
@@ -310,6 +343,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0,
       "monthly_delta": 0.0,
+      "delta_volume": 0,
       "prev_close": 3500.0
     },
     {
@@ -319,6 +353,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.002083333333333326,
       "monthly_delta": -0.11296296296296304,
+      "delta_volume": -1.0,
       "prev_close": 4.8
     },
     {
@@ -328,6 +363,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0,
       "monthly_delta": 0.025641025641025772,
+      "delta_volume": -1.0,
       "prev_close": 0.8
     },
     {
@@ -337,6 +373,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.002580645161290307,
       "monthly_delta": -0.21919191919191916,
+      "delta_volume": -1.0,
       "prev_close": 7.75
     },
     {
@@ -346,6 +383,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.04035874439461873,
       "monthly_delta": 0.09433962264150941,
+      "delta_volume": -1.0,
       "prev_close": 2.23
     },
     {
@@ -355,6 +393,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.006896551724137945,
       "monthly_delta": -0.0363036303630363,
+      "delta_volume": -1.0,
       "prev_close": 2.9
     },
     {
@@ -364,6 +403,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.022452504317789224,
       "monthly_delta": 0.01718213058419238,
+      "delta_volume": -1.0,
       "prev_close": 11.58
     },
     {
@@ -373,6 +413,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.014925373134328401,
       "monthly_delta": -0.2142857142857142,
+      "delta_volume": -1.0,
       "prev_close": 0.67
     },
     {
@@ -382,6 +423,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0038194444444443754,
       "monthly_delta": -0.01043984254663699,
+      "delta_volume": -1.0,
       "prev_close": 57.6
     },
     {
@@ -391,6 +433,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0,
       "monthly_delta": -0.18189873417721525,
+      "delta_volume": -1.0,
       "prev_close": 64.63
     },
     {
@@ -400,6 +443,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.003820439350525451,
       "monthly_delta": 0.01676878426314099,
+      "delta_volume": -1.0,
       "prev_close": 62.82
     },
     {
@@ -409,6 +453,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.006670272219217788,
       "monthly_delta": -0.010981225646475301,
+      "delta_volume": -1.0,
       "prev_close": 55.47
     },
     {
@@ -418,6 +463,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.045454545454545525,
       "monthly_delta": -0.16000000000000003,
+      "delta_volume": -1.0,
       "prev_close": 0.22
     },
     {
@@ -427,6 +473,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0,
       "monthly_delta": -0.05882352941176472,
+      "delta_volume": -1.0,
       "prev_close": 0.16
     },
     {
@@ -436,6 +483,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.04166666666666663,
       "monthly_delta": -0.14814814814814814,
+      "delta_volume": -1.0,
       "prev_close": 0.24
     },
     {
@@ -445,6 +493,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.014385835485060783,
       "monthly_delta": 0.12336601307189543,
+      "delta_volume": -1.0,
       "prev_close": 27.11
     },
     {
@@ -454,6 +503,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.011682242990654124,
       "monthly_delta": -0.030927835051546393,
+      "delta_volume": -1.0,
       "prev_close": 17.12
     },
     {
@@ -463,6 +513,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0,
       "monthly_delta": 0.0,
+      "delta_volume": 0,
       "prev_close": 26.0
     },
     {
@@ -472,6 +523,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.09854604200323092,
       "monthly_delta": 0.07538218239325256,
+      "delta_volume": -1.0,
       "prev_close": 18.57
     },
     {
@@ -481,6 +533,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0,
       "monthly_delta": 0.0,
+      "delta_volume": 0,
       "prev_close": 5.0
     },
     {
@@ -490,6 +543,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0,
       "monthly_delta": 0.0,
+      "delta_volume": -1.0,
       "prev_close": 92.99
     },
     {
@@ -499,6 +553,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.0002393776181927043,
       "monthly_delta": -0.03589566020313939,
+      "delta_volume": -1.0,
       "prev_close": 83.55
     },
     {
@@ -508,6 +563,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.004271678769756537,
       "monthly_delta": -0.0655802861685214,
+      "delta_volume": -1.0,
       "prev_close": 23.41
     },
     {
@@ -517,6 +573,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.001865671641791078,
       "monthly_delta": -0.11092715231788086,
+      "delta_volume": -1.0,
       "prev_close": 16.08
     },
     {
@@ -526,6 +583,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0005367686527106841,
       "monthly_delta": -0.1102625298329355,
+      "delta_volume": -1.0,
       "prev_close": 18.63
     },
     {
@@ -535,6 +593,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.004055619930474874,
       "monthly_delta": 0.024837374334713003,
+      "delta_volume": -1.0,
       "prev_close": 34.52
     },
     {
@@ -544,6 +603,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0,
       "monthly_delta": -0.005673758865248235,
+      "delta_volume": -1.0,
       "prev_close": 7.01
     },
     {
@@ -553,6 +613,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0,
       "monthly_delta": -0.053459119496855445,
+      "delta_volume": -1.0,
       "prev_close": 6.02
     },
     {
@@ -562,6 +623,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.10697674418604652,
       "monthly_delta": -0.32867132867132864,
+      "delta_volume": -1.0,
       "prev_close": 4.3
     },
     {
@@ -571,6 +633,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.004672897196261738,
       "monthly_delta": 0.020359281437125842,
+      "delta_volume": -1.0,
       "prev_close": 8.56
     },
     {
@@ -580,6 +643,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.0023068050749711633,
       "monthly_delta": 0.030989272943980906,
+      "delta_volume": -1.0,
       "prev_close": 8.67
     },
     {
@@ -589,6 +653,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.014942159383033449,
       "monthly_delta": 0.18496327792810208,
+      "delta_volume": -0.5454545454545454,
       "prev_close": 62.24
     },
     {
@@ -598,6 +663,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.001367614879649981,
       "monthly_delta": 0.06474190726159224,
+      "delta_volume": -1.0,
       "prev_close": 36.56
     },
     {
@@ -607,6 +673,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.007092198581560183,
       "monthly_delta": -0.03071672354948818,
+      "delta_volume": -1.0,
       "prev_close": 2.82
     },
     {
@@ -616,6 +683,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.010884353741496655,
       "monthly_delta": 0.21207177814029365,
+      "delta_volume": -1.0,
       "prev_close": 7.35
     },
     {
@@ -625,6 +693,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.013443640124095158,
       "monthly_delta": -0.0604026845637583,
+      "delta_volume": -1.0,
       "prev_close": 9.67
     },
     {
@@ -634,6 +703,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.022900763358778553,
       "monthly_delta": 0.1974977658623771,
+      "delta_volume": -1.0,
       "prev_close": 65.5
     },
     {
@@ -643,6 +713,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.015081640284183018,
       "monthly_delta": 0.1792269810476046,
+      "delta_volume": -1.0,
       "prev_close": 80.23
     },
     {
@@ -652,6 +723,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.013944223107569598,
       "monthly_delta": 0.03125,
+      "delta_volume": -1.0,
       "prev_close": 5.02
     },
     {
@@ -661,6 +733,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0,
       "monthly_delta": -0.04306220095693769,
+      "delta_volume": -1.0,
       "prev_close": 22.0
     },
     {
@@ -670,6 +743,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.06539649845520101,
       "monthly_delta": -0.11246943765281181,
+      "delta_volume": -1.0,
       "prev_close": 19.42
     },
     {
@@ -679,6 +753,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.010582010582010692,
       "monthly_delta": 0.010582010582010692,
+      "delta_volume": -1.0,
       "prev_close": 378.0
     },
     {
@@ -688,6 +763,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.020888888888888735,
       "monthly_delta": -0.04570004154549234,
+      "delta_volume": -1.0,
       "prev_close": 22.5
     },
     {
@@ -697,6 +773,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.001557377049180353,
       "monthly_delta": -0.0065853658536585424,
+      "delta_volume": -1.0,
       "prev_close": 122.0
     },
     {
@@ -706,6 +783,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0,
       "monthly_delta": 0.0,
+      "delta_volume": 0,
       "prev_close": 1.0
     },
     {
@@ -715,6 +793,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.008064516129032251,
       "monthly_delta": -0.0390625,
+      "delta_volume": -1.0,
       "prev_close": 1.24
     },
     {
@@ -724,6 +803,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.03361766181635717,
       "monthly_delta": -0.10833333333333328,
+      "delta_volume": -1.0,
       "prev_close": 39.86
     },
     {
@@ -733,6 +813,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0036264732547597323,
       "monthly_delta": 0.006363636363636349,
+      "delta_volume": -1.0,
       "prev_close": 11.03
     },
     {
@@ -742,6 +823,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.005593648502345783,
       "monthly_delta": -0.07518039939587184,
+      "delta_volume": -1.0,
       "prev_close": 55.42
     },
     {
@@ -751,6 +833,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0,
       "monthly_delta": 0.0,
+      "delta_volume": 0,
       "prev_close": 182.07
     },
     {
@@ -760,6 +843,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.004166666666666541,
       "monthly_delta": -0.06686188384577829,
+      "delta_volume": -1.0,
       "prev_close": 19.2
     },
     {
@@ -769,6 +853,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.009545454545454635,
       "monthly_delta": -0.0879028882377565,
+      "delta_volume": -1.0,
       "prev_close": 22.0
     },
     {
@@ -778,6 +863,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.04326396495071205,
       "monthly_delta": -0.01243640474844554,
+      "delta_volume": -1.0,
       "prev_close": 18.26
     },
     {
@@ -787,6 +873,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.0005373455131648663,
       "monthly_delta": 0.0021551724137931494,
+      "delta_volume": -1.0,
       "prev_close": 18.61
     },
     {
@@ -796,6 +883,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.051477597712106804,
       "monthly_delta": 0.07104413347685679,
+      "delta_volume": -1.0,
       "prev_close": 10.49
     },
     {
@@ -805,6 +893,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0,
       "monthly_delta": 0.21450459652706866,
+      "delta_volume": -1.0,
       "prev_close": 11.89
     },
     {
@@ -814,6 +903,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0,
       "monthly_delta": 0.15476190476190466,
+      "delta_volume": -1.0,
       "prev_close": 9.7
     },
     {
@@ -823,6 +913,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.007446808510638281,
       "monthly_delta": -0.013220518244315138,
+      "delta_volume": -1.0,
       "prev_close": 18.8
     },
     {
@@ -832,6 +923,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0,
       "monthly_delta": 0.01403130059363189,
+      "delta_volume": -1.0,
       "prev_close": 18.79
     },
     {
@@ -841,6 +933,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.00763807285546414,
       "monthly_delta": -0.05820977484898415,
+      "delta_volume": -1.0,
       "prev_close": 17.02
     },
     {
@@ -850,6 +943,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.05723905723905731,
       "monthly_delta": -0.09385113268608414,
+      "delta_volume": -1.0,
       "prev_close": 2.97
     },
     {
@@ -859,6 +953,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.023605150214592308,
       "monthly_delta": -0.1283524904214559,
+      "delta_volume": -1.0,
       "prev_close": 4.66
     },
     {
@@ -868,6 +963,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.004728132387706863,
       "monthly_delta": -0.09574468085106391,
+      "delta_volume": -1.0,
       "prev_close": 4.23
     },
     {
@@ -877,6 +973,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0,
       "monthly_delta": 0.078125,
+      "delta_volume": -1.0,
       "prev_close": 17.25
     },
     {
@@ -886,6 +983,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.02789256198347101,
       "monthly_delta": 0.005341880341880323,
+      "delta_volume": -1.0,
       "prev_close": 9.68
     },
     {
@@ -895,6 +993,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.015437392795883298,
       "monthly_delta": -0.11827956989247301,
+      "delta_volume": -1.0,
       "prev_close": 5.83
     },
     {
@@ -904,6 +1003,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.1172839506172838,
       "monthly_delta": 0.03428571428571425,
+      "delta_volume": -1.0,
       "prev_close": 3.24
     },
     {
@@ -913,6 +1013,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0,
       "monthly_delta": 0.0,
+      "delta_volume": 0,
       "prev_close": 8.51
     },
     {
@@ -922,6 +1023,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0,
       "monthly_delta": 0.0,
+      "delta_volume": 0,
       "prev_close": 6.34
     },
     {
@@ -931,6 +1033,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.004859086491739717,
       "monthly_delta": 0.01273261508325163,
+      "delta_volume": -1.0,
       "prev_close": 10.29
     },
     {
@@ -940,6 +1043,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0,
       "monthly_delta": -0.0664172123479887,
+      "delta_volume": -1.0,
       "prev_close": 9.98
     },
     {
@@ -949,6 +1053,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0,
       "monthly_delta": -0.2041666666666666,
+      "delta_volume": -1.0,
       "prev_close": 9.55
     },
     {
@@ -958,6 +1063,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.003542958370239324,
       "monthly_delta": -0.11897356143079307,
+      "delta_volume": -1.0,
       "prev_close": 11.29
     },
     {
@@ -967,6 +1073,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.006188925081433205,
       "monthly_delta": 0.011604774535808993,
+      "delta_volume": -1.0,
       "prev_close": 30.7
     },
     {
@@ -976,6 +1083,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0,
       "monthly_delta": -0.044265593561368166,
+      "delta_volume": -1.0,
       "prev_close": 28.5
     },
     {
@@ -985,6 +1093,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.0006406149903908087,
       "monthly_delta": 0.0093820769977353,
+      "delta_volume": -1.0,
       "prev_close": 31.22
     },
     {
@@ -994,6 +1103,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0,
       "monthly_delta": -0.2816297355253752,
+      "delta_volume": -1.0,
       "prev_close": 10.05
     },
     {
@@ -1003,6 +1113,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.00591715976331364,
       "monthly_delta": -0.13265306122448983,
+      "delta_volume": -1.0,
       "prev_close": 8.45
     },
     {
@@ -1012,6 +1123,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0,
       "monthly_delta": 0.01723404255319161,
+      "delta_volume": -1.0,
       "prev_close": 47.81
     },
     {
@@ -1021,6 +1133,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0,
       "monthly_delta": 0.08108108108108114,
+      "delta_volume": -1.0,
       "prev_close": 40.0
     },
     {
@@ -1030,6 +1143,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0,
       "monthly_delta": 0.09263392857142838,
+      "delta_volume": 0,
       "prev_close": 9.79
     },
     {
@@ -1039,6 +1153,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0,
       "monthly_delta": 0.0,
+      "delta_volume": 0,
       "prev_close": 20.0
     },
     {
@@ -1048,6 +1163,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0,
       "monthly_delta": 0.0,
+      "delta_volume": 0,
       "prev_close": 55.0
     },
     {
@@ -1057,6 +1173,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0,
       "monthly_delta": 0.008267065585386923,
+      "delta_volume": -1.0,
       "prev_close": 128.06
     },
     {
@@ -1066,6 +1183,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.01488833746898277,
       "monthly_delta": -0.010348995316513121,
+      "delta_volume": -1.0,
       "prev_close": 132.99
     },
     {
@@ -1075,6 +1193,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.04166666666666674,
       "monthly_delta": -0.020370370370370372,
+      "delta_volume": -1.0,
       "prev_close": 27.6
     },
     {
@@ -1084,6 +1203,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.007407407407407418,
       "monthly_delta": 0.0029940119760478723,
+      "delta_volume": -1.0,
       "prev_close": 27.0
     },
     {
@@ -1093,6 +1213,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0,
       "monthly_delta": -0.05335877862595417,
+      "delta_volume": -1.0,
       "prev_close": 124.01
     },
     {
@@ -1102,6 +1223,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.004146510020732741,
       "monthly_delta": 0.013956734124214831,
+      "delta_volume": -1.0,
       "prev_close": 144.7
     },
     {
@@ -1111,6 +1233,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.01602564102564097,
       "monthly_delta": 0.03934426229508192,
+      "delta_volume": -1.0,
       "prev_close": 15.6
     },
     {
@@ -1120,6 +1243,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.03217612193056718,
       "monthly_delta": 0.03656462585034004,
+      "delta_volume": -1.0,
       "prev_close": 11.81
     },
     {
@@ -1129,6 +1253,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.006237006237006293,
       "monthly_delta": -0.1135531135531136,
+      "delta_volume": -1.0,
       "prev_close": 4.81
     },
     {
@@ -1138,6 +1263,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0,
       "monthly_delta": 0.0,
+      "delta_volume": -1.0,
       "prev_close": 38.0
     },
     {
@@ -1147,6 +1273,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.025365853658536608,
       "monthly_delta": 0.032078559738134116,
+      "delta_volume": -1.0,
       "prev_close": 30.75
     },
     {
@@ -1156,6 +1283,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0,
       "monthly_delta": 0.0,
+      "delta_volume": 0,
       "prev_close": 35.0
     },
     {
@@ -1165,6 +1293,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.007017543859649145,
       "monthly_delta": -0.18208092485549132,
+      "delta_volume": -1.0,
       "prev_close": 2.85
     },
     {
@@ -1174,6 +1303,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.007503126302626062,
       "monthly_delta": -0.0614899487583761,
+      "delta_volume": -1.0,
       "prev_close": 47.98
     },
     {
@@ -1183,6 +1313,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.017763157894737036,
       "monthly_delta": 0.10737294201861136,
+      "delta_volume": -1.0,
       "prev_close": 15.2
     },
     {
@@ -1192,6 +1323,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0,
       "monthly_delta": 0.07688083470620533,
+      "delta_volume": -1.0,
       "prev_close": 19.61
     },
     {
@@ -1201,6 +1333,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.010982658959537428,
       "monthly_delta": -0.09798865394533274,
+      "delta_volume": -1.0,
       "prev_close": 17.3
     },
     {
@@ -1210,6 +1343,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0,
       "monthly_delta": -0.016498137307078165,
+      "delta_volume": -1.0,
       "prev_close": 18.48
     },
     {
@@ -1219,6 +1353,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.00963391136801528,
       "monthly_delta": -0.14379084967320255,
+      "delta_volume": -1.0,
       "prev_close": 5.19
     },
     {
@@ -1228,6 +1363,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.02833333333333332,
       "monthly_delta": -0.10719754977029095,
+      "delta_volume": -1.0,
       "prev_close": 6.0
     },
     {
@@ -1237,6 +1373,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.02103321033210337,
       "monthly_delta": -0.008421429851281137,
+      "delta_volume": -1.0,
       "prev_close": 54.2
     },
     {
@@ -1246,6 +1383,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.004950495049504955,
       "monthly_delta": -0.302405498281787,
+      "delta_volume": -1.0,
       "prev_close": 6.06
     },
     {
@@ -1255,6 +1393,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.0038716814159289736,
       "monthly_delta": -0.0600208768267223,
+      "delta_volume": -1.0,
       "prev_close": 18.08
     },
     {
@@ -1264,6 +1403,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.013333333333333308,
       "monthly_delta": -0.10843373493975905,
+      "delta_volume": -1.0,
       "prev_close": 0.75
     },
     {
@@ -1273,6 +1413,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0,
       "monthly_delta": -0.05799999999999994,
+      "delta_volume": -1.0,
       "prev_close": 47.1
     },
     {
@@ -1282,6 +1423,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.004976303317535513,
       "monthly_delta": -0.14741116751269034,
+      "delta_volume": -1.0,
       "prev_close": 42.2
     },
     {
@@ -1291,6 +1433,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.004524886877827927,
       "monthly_delta": -0.19999999999999996,
+      "delta_volume": -1.0,
       "prev_close": 2.21
     },
     {
@@ -1300,6 +1443,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.011049723756906049,
       "monthly_delta": -0.1029411764705882,
+      "delta_volume": -1.0,
       "prev_close": 1.81
     },
     {
@@ -1309,6 +1453,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.028376844494892195,
       "monthly_delta": -0.16078431372549007,
+      "delta_volume": -1.0,
       "prev_close": 35.24
     },
     {
@@ -1318,6 +1463,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.005181347150259086,
       "monthly_delta": -0.20661157024793386,
+      "delta_volume": -1.0,
       "prev_close": 1.93
     },
     {
@@ -1327,6 +1473,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0027700831024930483,
       "monthly_delta": 0.0038824181919023815,
+      "delta_volume": -1.0,
       "prev_close": 18.05
     },
     {
@@ -1336,6 +1483,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.006959706959707046,
       "monthly_delta": -0.11520887728459539,
+      "delta_volume": -1.0,
       "prev_close": 27.3
     },
     {
@@ -1345,6 +1493,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.008158508158508049,
       "monthly_delta": -0.12298179319821356,
+      "delta_volume": -1.0,
       "prev_close": 25.74
     },
     {
@@ -1354,6 +1503,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.01754385964912286,
       "monthly_delta": -0.20190023752969122,
+      "delta_volume": -1.0,
       "prev_close": 3.42
     },
     {
@@ -1363,6 +1513,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.03214285714285703,
       "monthly_delta": -0.11566707466340276,
+      "delta_volume": -1.0,
       "prev_close": 14.0
     },
     {
@@ -1372,6 +1523,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.005681818181818232,
       "monthly_delta": -0.08015768725361372,
+      "delta_volume": -1.0,
       "prev_close": 7.04
     },
     {
@@ -1381,6 +1533,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.018232819074333828,
       "monthly_delta": -0.08496732026143794,
+      "delta_volume": -1.0,
       "prev_close": 7.13
     },
     {
@@ -1390,6 +1543,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.0007194244604316058,
       "monthly_delta": -0.1420630018529957,
+      "delta_volume": -1.0,
       "prev_close": 13.9
     },
     {
@@ -1399,6 +1553,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.00302571860816947,
       "monthly_delta": -0.030701754385964897,
+      "delta_volume": -1.0,
       "prev_close": 6.61
     },
     {
@@ -1408,6 +1563,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0,
       "monthly_delta": 0.0,
+      "delta_volume": -1.0,
       "prev_close": 6.51
     },
     {
@@ -1417,6 +1573,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.02972972972972987,
       "monthly_delta": -0.060209424083769614,
+      "delta_volume": -1.0,
       "prev_close": 3.7
     },
     {
@@ -1426,6 +1583,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.12698412698412698,
       "monthly_delta": 0.12244897959183665,
+      "delta_volume": -1.0,
       "prev_close": 3.78
     },
     {
@@ -1435,6 +1593,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0,
       "monthly_delta": 0.06000000000000005,
+      "delta_volume": 1.5,
       "prev_close": 2.65
     },
     {
@@ -1444,6 +1603,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.010822510822510734,
       "monthly_delta": -0.18827708703374768,
+      "delta_volume": -1.0,
       "prev_close": 4.62
     },
     {
@@ -1453,6 +1613,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.009167842031029494,
       "monthly_delta": -0.0035460992907800915,
+      "delta_volume": -1.0,
       "prev_close": 14.18
     },
     {
@@ -1462,6 +1623,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.01128349788434413,
       "monthly_delta": -0.002135231316726105,
+      "delta_volume": -1.0,
       "prev_close": 14.18
     },
     {
@@ -1471,6 +1633,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.023890784982935065,
       "monthly_delta": -0.17420596727622717,
+      "delta_volume": -1.0,
       "prev_close": 8.79
     },
     {
@@ -1480,6 +1643,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.015506329113924133,
       "monthly_delta": -0.04777448071216617,
+      "delta_volume": -1.0,
       "prev_close": 31.6
     },
     {
@@ -1489,6 +1653,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0,
       "monthly_delta": 0.00020512820512808005,
+      "delta_volume": -1.0,
       "prev_close": 48.76
     },
     {
@@ -1498,6 +1663,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.003409388932598789,
       "monthly_delta": -0.039417524479035904,
+      "delta_volume": -1.0,
       "prev_close": 38.13
     },
     {
@@ -1507,6 +1673,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0,
       "monthly_delta": 0.0,
+      "delta_volume": 0,
       "prev_close": 150.0
     },
     {
@@ -1516,6 +1683,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0,
       "monthly_delta": -0.0625,
+      "delta_volume": -1.0,
       "prev_close": 45.0
     },
     {
@@ -1525,6 +1693,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.005768978628556409,
       "monthly_delta": -0.18321844032744516,
+      "delta_volume": -1.0,
       "prev_close": 76.27
     },
     {
@@ -1534,6 +1703,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.03901437371663241,
       "monthly_delta": 0.1800373134328357,
+      "delta_volume": -1.0,
       "prev_close": 24.35
     },
     {
@@ -1543,6 +1713,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.0031897926634768536,
       "monthly_delta": -0.009508716323296307,
+      "delta_volume": -1.0,
       "prev_close": 12.54
     },
     {
@@ -1552,6 +1723,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.009424083769633551,
       "monthly_delta": -0.009249743062692661,
+      "delta_volume": -1.0,
       "prev_close": 9.55
     },
     {
@@ -1561,6 +1733,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.010294991090873173,
       "monthly_delta": -0.01104651162790693,
+      "delta_volume": -1.0,
       "prev_close": 50.51
     },
     {
@@ -1570,6 +1743,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.009708737864077666,
       "monthly_delta": -0.028037383177570097,
+      "delta_volume": -1.0,
       "prev_close": 1.03
     },
     {
@@ -1579,6 +1753,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0,
       "monthly_delta": 0.058404856604563404,
+      "delta_volume": -1.0,
       "prev_close": 50.56
     },
     {
@@ -1588,6 +1763,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0,
       "monthly_delta": 0.015030255709545193,
+      "delta_volume": -1.0,
       "prev_close": 52.0
     },
     {
@@ -1597,6 +1773,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.020588235294117574,
       "monthly_delta": -0.0901639344262295,
+      "delta_volume": -1.0,
       "prev_close": 3.4
     },
     {
@@ -1606,6 +1783,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.02488335925349916,
       "monthly_delta": 0.0510366826156301,
+      "delta_volume": -1.0,
       "prev_close": 6.43
     },
     {
@@ -1615,6 +1793,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0,
       "monthly_delta": -0.2772727272727272,
+      "delta_volume": -1.0,
       "prev_close": 7.95
     },
     {
@@ -1624,6 +1803,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0,
       "monthly_delta": 0.0,
+      "delta_volume": 0,
       "prev_close": 6.59
     },
     {
@@ -1633,6 +1813,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0,
       "monthly_delta": 0.0,
+      "delta_volume": 0,
       "prev_close": 10.0
     },
     {
@@ -1642,6 +1823,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.029155245452279877,
       "monthly_delta": 0.007317073170731714,
+      "delta_volume": -1.0,
       "prev_close": 40.13
     },
     {
@@ -1651,6 +1833,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.033333333333333326,
       "monthly_delta": 0.09433962264150941,
+      "delta_volume": -1.0,
       "prev_close": 1.2
     },
     {
@@ -1660,6 +1843,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0,
       "monthly_delta": 0.0,
+      "delta_volume": 0,
       "prev_close": 3.01
     },
     {
@@ -1669,6 +1853,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0,
       "monthly_delta": -0.08636363636363653,
+      "delta_volume": -1.0,
       "prev_close": 4.02
     },
     {
@@ -1678,6 +1863,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.007915567282322011,
       "monthly_delta": -0.0806845965770171,
+      "delta_volume": -1.0,
       "prev_close": 3.79
     },
     {
@@ -1687,6 +1873,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0,
       "monthly_delta": -0.07174887892376691,
+      "delta_volume": -1.0,
       "prev_close": 20.7
     },
     {
@@ -1696,6 +1883,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0064484126984125645,
       "monthly_delta": 0.0,
+      "delta_volume": -1.0,
       "prev_close": 20.16
     },
     {
@@ -1705,6 +1893,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.014306151645207432,
       "monthly_delta": -0.13536585365853648,
+      "delta_volume": -1.0,
       "prev_close": 6.99
     },
     {
@@ -1714,6 +1903,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.012583271650629113,
       "monthly_delta": -0.10295081967213116,
+      "delta_volume": -1.0,
       "prev_close": 13.51
     },
     {
@@ -1723,6 +1913,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0,
       "monthly_delta": -0.07539682539682535,
+      "delta_volume": -1.0,
       "prev_close": 11.65
     },
     {
@@ -1732,6 +1923,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.004143646408839796,
       "monthly_delta": -0.06914212548015364,
+      "delta_volume": -1.0,
       "prev_close": 7.24
     },
     {
@@ -1741,6 +1933,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.017199017199017286,
       "monthly_delta": -0.04761904761904767,
+      "delta_volume": -1.0,
       "prev_close": 4.07
     },
     {
@@ -1750,6 +1943,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.022222222222222143,
       "monthly_delta": -0.23333333333333328,
+      "delta_volume": -1.0,
       "prev_close": 0.45
     },
     {
@@ -1759,6 +1953,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0,
       "monthly_delta": 0.0,
+      "delta_volume": 0,
       "prev_close": 12.6
     },
     {
@@ -1768,6 +1963,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.368726669431771,
       "monthly_delta": 0.5662078785002373,
+      "delta_volume": -1.0,
       "prev_close": 24.11
     },
     {
@@ -1777,6 +1973,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0,
       "monthly_delta": 0.0,
+      "delta_volume": 0,
       "prev_close": 38.01
     },
     {
@@ -1786,6 +1983,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.07663551401869162,
       "monthly_delta": 0.11196911196911197,
+      "delta_volume": -1.0,
       "prev_close": 5.35
     },
     {
@@ -1795,6 +1993,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0,
       "monthly_delta": -0.12442922374429222,
+      "delta_volume": -1.0,
       "prev_close": 15.34
     },
     {
@@ -1804,6 +2003,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.006129184347006267,
       "monthly_delta": -0.12349272349272356,
+      "delta_volume": -1.0,
       "prev_close": 21.21
     },
     {
@@ -1813,6 +2013,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0,
       "monthly_delta": 0.0,
+      "delta_volume": 0,
       "prev_close": 170.18
     },
     {
@@ -1822,6 +2023,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0,
       "monthly_delta": 0.0,
+      "delta_volume": -1.0,
       "prev_close": 33.0
     },
     {
@@ -1831,6 +2033,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.009428571428571342,
       "monthly_delta": 0.010005717552887372,
+      "delta_volume": -1.0,
       "prev_close": 35.0
     },
     {
@@ -1840,6 +2043,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.037837837837837895,
       "monthly_delta": -0.40067340067340074,
+      "delta_volume": -1.0,
       "prev_close": 1.85
     },
     {
@@ -1849,6 +2053,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.007638446849140612,
       "monthly_delta": -0.1396739130434782,
+      "delta_volume": -1.0,
       "prev_close": 15.71
     },
     {
@@ -1858,6 +2063,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.00575043128234598,
       "monthly_delta": -0.18802228412256272,
+      "delta_volume": -1.0,
       "prev_close": 17.39
     },
     {
@@ -1867,6 +2073,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0018237082066869803,
       "monthly_delta": -0.1187165775401069,
+      "delta_volume": -1.0,
       "prev_close": 16.45
     },
     {
@@ -1876,6 +2083,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.14432989690721632,
       "monthly_delta": -0.232902033271719,
+      "delta_volume": -1.0,
       "prev_close": 4.85
     },
     {
@@ -1885,6 +2093,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0012674271229404788,
       "monthly_delta": -0.1487068965517241,
+      "delta_volume": -1.0,
       "prev_close": 7.89
     },
     {
@@ -1894,6 +2103,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0012674271229404788,
       "monthly_delta": -0.18134715025906734,
+      "delta_volume": -1.0,
       "prev_close": 7.89
     },
     {
@@ -1903,6 +2113,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0,
       "monthly_delta": -0.015416958654519863,
+      "delta_volume": -1.0,
       "prev_close": 14.05
     },
     {
@@ -1912,6 +2123,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.024070021881837933,
       "monthly_delta": -0.02092050209205032,
+      "delta_volume": -1.0,
       "prev_close": 4.57
     },
     {
@@ -1921,6 +2133,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0,
       "monthly_delta": -0.03921568627450989,
+      "delta_volume": -1.0,
       "prev_close": 2.94
     },
     {
@@ -1930,6 +2143,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.008695652173912993,
       "monthly_delta": 0.07407407407407396,
+      "delta_volume": -1.0,
       "prev_close": 2.3
     },
     {
@@ -1939,6 +2153,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.04347826086956508,
       "monthly_delta": 0.0,
+      "delta_volume": -1.0,
       "prev_close": 1.38
     },
     {
@@ -1948,6 +2163,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.1498172959805113,
       "monthly_delta": -0.09230769230769242,
+      "delta_volume": -1.0,
       "prev_close": 8.21
     },
     {
@@ -1957,6 +2173,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.0038022813688212143,
       "monthly_delta": -0.10580204778156999,
+      "delta_volume": -1.0,
       "prev_close": 2.63
     },
     {
@@ -1966,6 +2183,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0177304964539009,
       "monthly_delta": -0.17999999999999994,
+      "delta_volume": -1.0,
       "prev_close": 2.82
     },
     {
@@ -1975,6 +2193,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.013368983957219305,
       "monthly_delta": -0.04292929292929293,
+      "delta_volume": -0.029086815049426562,
       "prev_close": 3.74
     },
     {
@@ -1984,6 +2203,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0,
       "monthly_delta": -0.007303218826075097,
+      "delta_volume": -1.0,
       "prev_close": 36.7
     },
     {
@@ -1993,6 +2213,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0,
       "monthly_delta": 0.0,
+      "delta_volume": 0,
       "prev_close": 96.0
     },
     {
@@ -2002,6 +2223,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0,
       "monthly_delta": 0.020408163265306145,
+      "delta_volume": -1.0,
       "prev_close": 5.0
     },
     {
@@ -2011,6 +2233,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0,
       "monthly_delta": 0.0,
+      "delta_volume": 0,
       "prev_close": 3.3
     },
     {
@@ -2020,6 +2243,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.02002861230329045,
       "monthly_delta": -0.04195804195804209,
+      "delta_volume": 0.040462427745664664,
       "prev_close": 6.99
     },
     {
@@ -2029,6 +2253,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.00950226244343888,
       "monthly_delta": -0.042489270386266154,
+      "delta_volume": -0.26217836509246584,
       "prev_close": 22.1
     },
     {
@@ -2038,6 +2263,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.012820512820512886,
       "monthly_delta": 0.5098039215686274,
+      "delta_volume": -0.6121010548298833,
       "prev_close": 0.78
     },
     {
@@ -2047,6 +2273,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.009493670886076,
       "monthly_delta": -0.03395061728395077,
+      "delta_volume": -0.19715808170515092,
       "prev_close": 3.16
     },
     {
@@ -2056,6 +2283,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0,
       "monthly_delta": -0.0875576036866359,
+      "delta_volume": -1.0,
       "prev_close": 11.88
     },
     {
@@ -2065,6 +2293,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.00890868596881944,
       "monthly_delta": -0.0385567739653343,
+      "delta_volume": -0.226926821514435,
       "prev_close": 26.94
     },
     {
@@ -2074,6 +2303,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.008000000000000007,
       "monthly_delta": -0.06666666666666676,
+      "delta_volume": -0.7061018311233569,
       "prev_close": 1.25
     },
     {
@@ -2083,6 +2313,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.008620689655172376,
       "monthly_delta": 0.06363636363636349,
+      "delta_volume": -0.9081803005008348,
       "prev_close": 1.16
     },
     {
@@ -2092,6 +2323,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.02578018995929454,
       "monthly_delta": 0.15156375300721714,
+      "delta_volume": -0.3162503334425414,
       "prev_close": 14.74
     },
     {
@@ -2101,6 +2333,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.0034351835111192663,
       "monthly_delta": -0.07080242751180044,
+      "delta_volume": -0.49007575246701285,
       "prev_close": 55.31
     },
     {
@@ -2110,6 +2343,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.00030665440049060244,
       "monthly_delta": -0.058347775852108485,
+      "delta_volume": -0.633587786259542,
       "prev_close": 32.61
     },
     {
@@ -2119,6 +2353,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0010699001426532906,
       "monthly_delta": -0.040341880341880354,
+      "delta_volume": 0.1864790566853365,
       "prev_close": 28.04
     },
     {
@@ -2128,6 +2363,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.050793650793650835,
       "monthly_delta": 0.09240924092409242,
+      "delta_volume": 0.7632230183940312,
       "prev_close": 3.15
     },
     {
@@ -2137,6 +2373,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0,
       "monthly_delta": -0.18556701030927825,
+      "delta_volume": -1.0,
       "prev_close": 0.79
     },
     {
@@ -2146,6 +2383,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.011235955056179692,
       "monthly_delta": -0.0814196242171189,
+      "delta_volume": -0.0727615347948306,
       "prev_close": 8.9
     },
     {
@@ -2155,6 +2393,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0,
       "monthly_delta": 0.0,
+      "delta_volume": 0,
       "prev_close": 22.0
     },
     {
@@ -2164,6 +2403,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0,
       "monthly_delta": 0.0,
+      "delta_volume": 0,
       "prev_close": 24.0
     },
     {
@@ -2173,6 +2413,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.019543973941368087,
       "monthly_delta": -0.2595325953259534,
+      "delta_volume": -0.2582809260992399,
       "prev_close": 6.14
     },
     {
@@ -2182,6 +2423,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.002590673575129543,
       "monthly_delta": -0.14945054945054936,
+      "delta_volume": -0.5061345516709278,
       "prev_close": 7.72
     },
     {
@@ -2191,6 +2433,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.015665796344647487,
       "monthly_delta": -0.07371007371007376,
+      "delta_volume": 0.3540951565616999,
       "prev_close": 3.83
     },
     {
@@ -2200,6 +2443,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.0052631578947368585,
       "monthly_delta": -0.06666666666666665,
+      "delta_volume": 0.4838956531245302,
       "prev_close": 3.8
     },
     {
@@ -2209,6 +2453,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.010526315789473606,
       "monthly_delta": -0.07797940166748407,
+      "delta_volume": -0.07421061603899781,
       "prev_close": 19.0
     },
     {
@@ -2218,6 +2463,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.007847533632287074,
       "monthly_delta": 0.05357142857142838,
+      "delta_volume": -0.19191919191919193,
       "prev_close": 8.92
     },
     {
@@ -2227,6 +2473,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.037735849056603765,
       "monthly_delta": -0.21408915795266936,
+      "delta_volume": -0.11823511087196625,
       "prev_close": 14.84
     },
     {
@@ -2236,6 +2483,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.014277389277389307,
       "monthly_delta": -0.008826879271070509,
+      "delta_volume": -0.3180430801430191,
       "prev_close": 34.32
     },
     {
@@ -2245,6 +2493,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.00638297872340432,
       "monthly_delta": -0.029106029106028997,
+      "delta_volume": -0.15179636026681387,
       "prev_close": 4.7
     },
     {
@@ -2254,6 +2503,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.016042780748662944,
       "monthly_delta": -0.19148936170212771,
+      "delta_volume": -0.34575808493803617,
       "prev_close": 1.87
     },
     {
@@ -2263,6 +2513,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0007499062617173369,
       "monthly_delta": -0.052538161164359276,
+      "delta_volume": -0.44992626755475496,
       "prev_close": 26.67
     },
     {
@@ -2272,6 +2523,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0,
       "monthly_delta": 0.0031347962382446415,
+      "delta_volume": -0.6780509027626713,
       "prev_close": 32.0
     },
     {
@@ -2281,6 +2533,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.005847953216374324,
       "monthly_delta": -0.03409090909090917,
+      "delta_volume": 0.27306121330080324,
       "prev_close": 1.71
     },
     {
@@ -2290,6 +2543,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.003976143141153132,
       "monthly_delta": -0.013029315960912058,
+      "delta_volume": -0.07408042245134805,
       "prev_close": 15.09
     },
     {
@@ -2299,6 +2553,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.17808219178082196,
       "monthly_delta": -0.27118644067796605,
+      "delta_volume": 0.6371508743240482,
       "prev_close": 0.73
     },
     {
@@ -2308,6 +2563,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0,
       "monthly_delta": 0.0,
+      "delta_volume": 0,
       "prev_close": 0.83
     },
     {
@@ -2317,6 +2573,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.01990049751243772,
       "monthly_delta": -0.004854368932038944,
+      "delta_volume": 0.5899581589958158,
       "prev_close": 4.02
     },
     {
@@ -2326,6 +2583,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.016304347826086918,
       "monthly_delta": 0.021857923497267784,
+      "delta_volume": -0.37645494084725495,
       "prev_close": 3.68
     },
     {
@@ -2335,6 +2593,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0,
       "monthly_delta": 0.0,
+      "delta_volume": 0,
       "prev_close": 3.0
     },
     {
@@ -2344,6 +2603,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0,
       "monthly_delta": 0.0,
+      "delta_volume": 0,
       "prev_close": 3.87
     },
     {
@@ -2353,6 +2613,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.014336917562723928,
       "monthly_delta": -0.02076124567474047,
+      "delta_volume": -0.3015387094175461,
       "prev_close": 5.58
     },
     {
@@ -2362,6 +2623,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0017615971814444187,
       "monthly_delta": -0.09255319148936181,
+      "delta_volume": 1.8822908218046273,
       "prev_close": 17.03
     },
     {
@@ -2371,6 +2633,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.006001846722068271,
       "monthly_delta": -0.14188919888401752,
+      "delta_volume": 0.033569080585715616,
       "prev_close": 21.66
     },
     {
@@ -2380,6 +2643,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.004878048780487809,
       "monthly_delta": -0.03917910447761186,
+      "delta_volume": 0.012233953410424103,
       "prev_close": 30.75
     },
     {
@@ -2389,6 +2653,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.009615384615384581,
       "monthly_delta": -0.11206896551724133,
+      "delta_volume": 0.09783248458172333,
       "prev_close": 1.04
     },
     {
@@ -2398,6 +2663,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.011019283746556474,
       "monthly_delta": -0.08883248730964466,
+      "delta_volume": 2.510541644377648,
       "prev_close": 3.63
     },
     {
@@ -2407,6 +2673,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0,
       "monthly_delta": 0.01192052980132452,
+      "delta_volume": 0,
       "prev_close": 15.28
     },
     {
@@ -2416,6 +2683,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0,
       "monthly_delta": 0.13477653631284925,
+      "delta_volume": -1.0,
       "prev_close": 16.25
     },
     {
@@ -2425,6 +2693,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0,
       "monthly_delta": 0.0,
+      "delta_volume": 0,
       "prev_close": 75.0
     },
     {
@@ -2434,6 +2703,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.0660522273425499,
       "monthly_delta": -0.04251968503936998,
+      "delta_volume": 0.4208389715832206,
       "prev_close": 6.51
     },
     {
@@ -2443,6 +2713,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.009039548022598876,
       "monthly_delta": -0.14271749755620733,
+      "delta_volume": 0.1924189313052742,
       "prev_close": 8.85
     },
     {
@@ -2452,6 +2723,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.00506512301013029,
       "monthly_delta": -0.0869853917662683,
+      "delta_volume": 0.06761044666829386,
       "prev_close": 13.82
     },
     {
@@ -2461,6 +2733,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.015625,
       "monthly_delta": -0.10638297872340419,
+      "delta_volume": -0.2790636802153834,
       "prev_close": 1.28
     },
     {
@@ -2470,6 +2743,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0,
       "monthly_delta": 0.0,
+      "delta_volume": 0,
       "prev_close": 2550.01
     },
     {
@@ -2479,6 +2753,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0,
       "monthly_delta": 0.0,
+      "delta_volume": 0,
       "prev_close": 2550.01
     },
     {
@@ -2488,6 +2763,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.007058823529411784,
       "monthly_delta": -0.021714285714285686,
+      "delta_volume": -0.35064935064935066,
       "prev_close": 17.0
     },
     {
@@ -2497,6 +2773,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.01869158878504673,
       "monthly_delta": 0.0370370370370372,
+      "delta_volume": 0.8136020151133501,
       "prev_close": 4.28
     },
     {
@@ -2506,6 +2783,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.001980198019802093,
       "monthly_delta": -0.07635919364691524,
+      "delta_volume": -0.15869663700068914,
       "prev_close": 15.15
     },
     {
@@ -2515,6 +2793,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.02259414225941425,
       "monthly_delta": -0.07564296520423597,
+      "delta_volume": 0.3117607220340748,
       "prev_close": 11.95
     },
     {
@@ -2524,6 +2803,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.0026350461133068936,
       "monthly_delta": -0.22676200204290087,
+      "delta_volume": 0.14542673264091155,
       "prev_close": 7.59
     },
     {
@@ -2533,6 +2813,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0,
       "monthly_delta": 0.0,
+      "delta_volume": 0,
       "prev_close": 47.0
     },
     {
@@ -2542,6 +2823,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0,
       "monthly_delta": 0.0,
+      "delta_volume": 0,
       "prev_close": 41.0
     },
     {
@@ -2551,6 +2833,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.005319148936170137,
       "monthly_delta": -0.07881773399014769,
+      "delta_volume": 0.016446296582119935,
       "prev_close": 3.76
     },
     {
@@ -2560,6 +2843,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0,
       "monthly_delta": 0.0,
+      "delta_volume": 0,
       "prev_close": 76.0
     },
     {
@@ -2569,6 +2853,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0,
       "monthly_delta": 0.15456586826347318,
+      "delta_volume": -0.7356828193832599,
       "prev_close": 61.7
     },
     {
@@ -2578,6 +2863,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.004898758981058071,
       "monthly_delta": -0.06131787675411837,
+      "delta_volume": -0.529309241255233,
       "prev_close": 30.62
     },
     {
@@ -2587,6 +2873,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0,
       "monthly_delta": 0.0,
+      "delta_volume": -1.0,
       "prev_close": 16.0
     },
     {
@@ -2596,6 +2883,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.10000000000000009,
       "monthly_delta": 0.9298245614035088,
+      "delta_volume": 0.46118721461187207,
       "prev_close": 18.0
     },
     {
@@ -2605,6 +2893,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0022026431718060735,
       "monthly_delta": -0.13333333333333341,
+      "delta_volume": -0.03549393318950711,
       "prev_close": 9.08
     },
     {
@@ -2614,6 +2903,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.04278074866310155,
       "monthly_delta": 0.06093579978237229,
+      "delta_volume": 0.7098391165196547,
       "prev_close": 9.35
     },
     {
@@ -2623,6 +2913,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0,
       "monthly_delta": 0.0,
+      "delta_volume": 0,
       "prev_close": 1.57
     },
     {
@@ -2632,6 +2923,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.002111613876319751,
       "monthly_delta": 0.015281173594132058,
+      "delta_volume": -0.09678952666874441,
       "prev_close": 33.15
     },
     {
@@ -2641,6 +2933,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.0035714285714284477,
       "monthly_delta": -0.03125,
+      "delta_volume": 0.5384615384615385,
       "prev_close": 2.8
     },
     {
@@ -2650,6 +2943,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0003450655624568366,
       "monthly_delta": 0.0817164179104477,
+      "delta_volume": 0.15404699738903394,
       "prev_close": 28.98
     },
     {
@@ -2659,6 +2953,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0,
       "monthly_delta": -0.08888888888888902,
+      "delta_volume": -1.0,
       "prev_close": 4.1
     },
     {
@@ -2668,6 +2963,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.00421940928270037,
       "monthly_delta": -0.0325203252032521,
+      "delta_volume": -0.18674698795180722,
       "prev_close": 2.37
     },
     {
@@ -2677,6 +2973,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.004103967168262557,
       "monthly_delta": 0.10975609756097571,
+      "delta_volume": -0.6358299316607806,
       "prev_close": 7.31
     },
     {
@@ -2686,6 +2983,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0,
       "monthly_delta": 0.0,
+      "delta_volume": 0,
       "prev_close": 100.0
     },
     {
@@ -2695,6 +2993,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.012977099236641143,
       "monthly_delta": 0.11794439764111209,
+      "delta_volume": -0.5544919254266185,
       "prev_close": 13.1
     },
     {
@@ -2704,6 +3003,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.030249110320284767,
       "monthly_delta": 0.13969050606440825,
+      "delta_volume": -0.67834577828834,
       "prev_close": 28.1
     },
     {
@@ -2713,6 +3013,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0,
       "monthly_delta": -0.05555555555555547,
+      "delta_volume": -0.5254084394106444,
       "prev_close": 0.17
     },
     {
@@ -2722,6 +3023,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.008064516129032251,
       "monthly_delta": -0.3315508021390374,
+      "delta_volume": 1.1238938053097347,
       "prev_close": 1.24
     },
     {
@@ -2731,6 +3033,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.1294964028776978,
       "monthly_delta": -0.5966666666666667,
+      "delta_volume": 1.721175758789394,
       "prev_close": 1.39
     },
     {
@@ -2740,6 +3043,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0011173184357544663,
       "monthly_delta": -0.02819956616052055,
+      "delta_volume": -0.04024565529857571,
       "prev_close": 8.95
     },
     {
@@ -2749,6 +3053,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.012996941896024294,
       "monthly_delta": -0.06676996760107046,
+      "delta_volume": 0.07517017946197813,
       "prev_close": 65.4
     },
     {
@@ -2758,6 +3063,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.018181818181818077,
       "monthly_delta": -0.07428571428571418,
+      "delta_volume": 0.30177514792899407,
       "prev_close": 1.65
     },
     {
@@ -2767,6 +3073,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0625,
       "monthly_delta": -0.046818054387440466,
+      "delta_volume": 3.3478260869565215,
       "prev_close": 32.0
     },
     {
@@ -2776,6 +3083,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.0014471780028942893,
       "monthly_delta": 0.014705882352941124,
+      "delta_volume": 2.3333333333333335,
       "prev_close": 34.55
     },
     {
@@ -2785,6 +3093,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.01941747572815533,
       "monthly_delta": -0.42613636363636365,
+      "delta_volume": -0.3620044234359975,
       "prev_close": 2.06
     },
     {
@@ -2794,6 +3103,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.007936507936507908,
       "monthly_delta": -0.5265151515151516,
+      "delta_volume": 0.2235945977144176,
       "prev_close": 1.26
     },
     {
@@ -2803,6 +3113,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.03703703703703709,
       "monthly_delta": 0.026315789473684292,
+      "delta_volume": -0.6147495872317006,
       "prev_close": 1.62
     },
     {
@@ -2812,6 +3123,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0,
       "monthly_delta": -0.04146341463414638,
+      "delta_volume": -1.0,
       "prev_close": 39.3
     },
     {
@@ -2821,6 +3133,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0,
       "monthly_delta": 0.004067958841828201,
+      "delta_volume": -1.0,
       "prev_close": 41.96
     },
     {
@@ -2830,6 +3143,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.0011621150493899002,
       "monthly_delta": 0.2989924433249369,
+      "delta_volume": 0.21436094210141476,
       "prev_close": 51.63
     },
     {
@@ -2839,6 +3153,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.004680851063829761,
       "monthly_delta": 0.2680943345079967,
+      "delta_volume": 0.44499468077136317,
       "prev_close": 47.0
     },
     {
@@ -2848,6 +3163,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.05063291139240511,
       "monthly_delta": -0.11764705882352944,
+      "delta_volume": 2.2120337935297756,
       "prev_close": 7.9
     },
     {
@@ -2857,6 +3173,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.00819672131147553,
       "monthly_delta": -0.14345403899721443,
+      "delta_volume": -0.22442197836015998,
       "prev_close": 6.1
     },
     {
@@ -2866,6 +3183,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.008928571428571619,
       "monthly_delta": -0.15734526472781507,
+      "delta_volume": -0.40663176265270506,
       "prev_close": 11.2
     },
     {
@@ -2875,6 +3193,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.008620689655172376,
       "monthly_delta": -0.16129032258064513,
+      "delta_volume": -0.6015166387589738,
       "prev_close": 11.6
     },
     {
@@ -2884,6 +3203,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.014423076923077094,
       "monthly_delta": -0.09691629955947145,
+      "delta_volume": 5.206896551724138,
       "prev_close": 4.16
     },
     {
@@ -2893,6 +3213,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.013380281690140827,
       "monthly_delta": -0.12218045112781961,
+      "delta_volume": 0.47896934124444623,
       "prev_close": 14.2
     },
     {
@@ -2902,6 +3223,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.019230769230769273,
       "monthly_delta": -0.29166666666666663,
+      "delta_volume": -0.2726259043337782,
       "prev_close": 0.52
     },
     {
@@ -2911,6 +3233,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.004895104895104918,
       "monthly_delta": -0.08782051282051273,
+      "delta_volume": -0.4722469329912903,
       "prev_close": 14.3
     },
     {
@@ -2920,6 +3243,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.003597122302158251,
       "monthly_delta": -0.06890756302521006,
+      "delta_volume": 0.6850197139724237,
       "prev_close": 5.56
     },
     {
@@ -2929,6 +3253,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.006825938566553003,
       "monthly_delta": -0.07232704402515722,
+      "delta_volume": -0.12929898474478652,
       "prev_close": 5.86
     },
     {
@@ -2938,6 +3263,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.020594965675057253,
       "monthly_delta": 0.09313725490196068,
+      "delta_volume": 0.29875938241356503,
       "prev_close": 4.37
     },
     {
@@ -2947,6 +3273,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0,
       "monthly_delta": 0.07396907216494863,
+      "delta_volume": 0,
       "prev_close": 83.34
     },
     {
@@ -2956,6 +3283,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.003180372557928357,
       "monthly_delta": 0.2522831050228309,
+      "delta_volume": 0.21028537273440095,
       "prev_close": 66.03
     },
     {
@@ -2965,6 +3293,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.015075376884421954,
       "monthly_delta": -0.04808159300631365,
+      "delta_volume": 0.22976758020672383,
       "prev_close": 19.9
     },
     {
@@ -2974,6 +3303,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.01783840503672618,
       "monthly_delta": -0.0490196078431373,
+      "delta_volume": 0.22026585660472886,
       "prev_close": 47.65
     },
     {
@@ -2983,6 +3313,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.04100946372239744,
       "monthly_delta": -0.07033639143730885,
+      "delta_volume": 0.11807555480264265,
       "prev_close": 3.17
     },
     {
@@ -2992,6 +3323,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0,
       "monthly_delta": 0.012820512820512775,
+      "delta_volume": -1.0,
       "prev_close": 8.69
     },
     {
@@ -3001,6 +3333,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.009334889148191472,
       "monthly_delta": 0.04091456077015643,
+      "delta_volume": 1.137488542621448,
       "prev_close": 8.57
     },
     {
@@ -3010,6 +3343,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0,
       "monthly_delta": -0.20346320346320346,
+      "delta_volume": -0.3816834797194977,
       "prev_close": 1.84
     },
     {
@@ -3019,6 +3353,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.0030198446937015344,
       "monthly_delta": -0.10944123314065513,
+      "delta_volume": 0.4270840790779018,
       "prev_close": 23.18
     },
     {
@@ -3028,6 +3363,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.006840796019900619,
       "monthly_delta": -0.0030788177339899914,
+      "delta_volume": -0.17610872481402695,
       "prev_close": 16.08
     },
     {
@@ -3037,6 +3373,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0181818181818183,
       "monthly_delta": -0.11111111111111105,
+      "delta_volume": -0.2515326035894868,
       "prev_close": 0.55
     },
     {
@@ -3046,6 +3383,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.00650054171180936,
       "monthly_delta": -0.00434310532030413,
+      "delta_volume": -0.27391054680022975,
       "prev_close": 9.23
     },
     {
@@ -3055,6 +3393,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.026639344262295084,
       "monthly_delta": -0.2472266244057052,
+      "delta_volume": 2.803863298662704,
       "prev_close": 4.88
     },
     {
@@ -3064,6 +3403,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.02330508474576276,
       "monthly_delta": -0.23937007874015748,
+      "delta_volume": 0.33519281548957913,
       "prev_close": 4.72
     },
     {
@@ -3073,6 +3413,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.042253521126760396,
       "monthly_delta": -0.10526315789473684,
+      "delta_volume": -0.6183263751793477,
       "prev_close": 0.71
     },
     {
@@ -3082,6 +3423,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.11678832116788329,
       "monthly_delta": -0.32777777777777783,
+      "delta_volume": -0.45276942856796776,
       "prev_close": 1.37
     },
     {
@@ -3091,6 +3433,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.004051863857374327,
       "monthly_delta": -0.12869198312236274,
+      "delta_volume": 0.14795732367407344,
       "prev_close": 37.02
     },
     {
@@ -3100,6 +3443,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.022561863173216956,
       "monthly_delta": 0.23778801843317976,
+      "delta_volume": 0.3785650210343974,
       "prev_close": 13.74
     },
     {
@@ -3109,6 +3453,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.02591463414634143,
       "monthly_delta": 0.02568218298555358,
+      "delta_volume": -0.24080664294187426,
       "prev_close": 6.56
     },
     {
@@ -3118,6 +3463,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.007027884833371134,
       "monthly_delta": -0.13646967340590976,
+      "delta_volume": 0.5497830003614361,
       "prev_close": 44.11
     },
     {
@@ -3127,6 +3473,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.00569259962049351,
       "monthly_delta": -0.14516129032258074,
+      "delta_volume": 0.5245326222864977,
       "prev_close": 42.16
     },
     {
@@ -3136,6 +3483,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.0092592592592593,
       "monthly_delta": -0.17454194792671152,
+      "delta_volume": 0.08089982848973554,
       "prev_close": 8.64
     },
     {
@@ -3145,6 +3493,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0,
       "monthly_delta": 0.044520547945205546,
+      "delta_volume": -1.0,
       "prev_close": 30.5
     },
     {
@@ -3154,6 +3503,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.04958677685950419,
       "monthly_delta": 0.0,
+      "delta_volume": -0.4494500714596409,
       "prev_close": 1.21
     },
     {
@@ -3163,6 +3513,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.008474576271186418,
       "monthly_delta": 0.125,
+      "delta_volume": -0.6147803316846087,
       "prev_close": 1.18
     },
     {
@@ -3172,6 +3523,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.02785145888594165,
       "monthly_delta": -0.10171568627450978,
+      "delta_volume": 1.5798395021290532,
       "prev_close": 7.54
     },
     {
@@ -3181,6 +3533,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0,
       "monthly_delta": 0.015037593984962516,
+      "delta_volume": -1.0,
       "prev_close": 5.4
     },
     {
@@ -3190,6 +3543,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.008064516129032251,
       "monthly_delta": -0.008064516129032251,
+      "delta_volume": -0.2857142857142857,
       "prev_close": 6.2
     },
     {
@@ -3199,6 +3553,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.06382978723404253,
       "monthly_delta": 0.12359550561797739,
+      "delta_volume": 13.782608695652174,
       "prev_close": 4.7
     },
     {
@@ -3208,6 +3563,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0,
       "monthly_delta": -0.030701754385964897,
+      "delta_volume": -0.5839112343966713,
       "prev_close": 2.21
     },
     {
@@ -3217,6 +3573,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.065359477124183,
       "monthly_delta": -0.012121212121212088,
+      "delta_volume": 6.280453257790368,
       "prev_close": 1.53
     },
     {
@@ -3226,6 +3583,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0,
       "monthly_delta": 0.0,
+      "delta_volume": 0,
       "prev_close": 0.1
     },
     {
@@ -3235,6 +3593,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0019720624486441185,
       "monthly_delta": -0.12273381294964025,
+      "delta_volume": 0.532258064516129,
       "prev_close": 60.85
     },
     {
@@ -3244,6 +3603,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.1578947368421052,
       "monthly_delta": -0.5918367346938775,
+      "delta_volume": 1.1386138613861387,
       "prev_close": 0.95
     },
     {
@@ -3253,6 +3613,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.016348773841961872,
       "monthly_delta": -0.11872415829887772,
+      "delta_volume": 0.22441407457794815,
       "prev_close": 14.68
     },
     {
@@ -3262,6 +3623,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.001325381047051044,
       "monthly_delta": -0.12960829493087556,
+      "delta_volume": 0.5937547523698485,
       "prev_close": 15.09
     },
     {
@@ -3271,6 +3633,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.011467116357504192,
       "monthly_delta": -0.1307246376811595,
+      "delta_volume": -0.3456120861412858,
       "prev_close": 29.65
     },
     {
@@ -3280,6 +3643,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.012820512820512997,
       "monthly_delta": -0.15957446808510634,
+      "delta_volume": -0.6194310140897679,
       "prev_close": 9.36
     },
     {
@@ -3289,6 +3653,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.015018773466833446,
       "monthly_delta": -0.07101947308132883,
+      "delta_volume": -0.3728767448187341,
       "prev_close": 7.99
     },
     {
@@ -3298,6 +3663,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.016175760502172842,
       "monthly_delta": -0.08836907082521117,
+      "delta_volume": -0.26172762182163134,
       "prev_close": 41.42
     },
     {
@@ -3307,6 +3673,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.011514614703277415,
       "monthly_delta": -0.07078925956061832,
+      "delta_volume": -0.1536991643129152,
       "prev_close": 11.29
     },
     {
@@ -3316,6 +3683,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.016164584864070575,
       "monthly_delta": -0.07056451612903225,
+      "delta_volume": -0.5384813716643032,
       "prev_close": 13.61
     },
     {
@@ -3325,6 +3693,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.004863813229571856,
       "monthly_delta": -0.16693811074918563,
+      "delta_volume": 1.0762782494609549,
       "prev_close": 10.28
     },
     {
@@ -3334,6 +3703,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0,
       "monthly_delta": -0.4821428571428572,
+      "delta_volume": -0.6237673621290877,
       "prev_close": 0.29
     },
     {
@@ -3343,6 +3713,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0609037328094304,
       "monthly_delta": 0.0843373493975903,
+      "delta_volume": 0.6083718299236354,
       "prev_close": 5.09
     },
     {
@@ -3352,6 +3723,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0,
       "monthly_delta": 0.0,
+      "delta_volume": 0,
       "prev_close": 27.94
     },
     {
@@ -3361,6 +3733,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0019193857965451588,
       "monthly_delta": -0.05945945945945952,
+      "delta_volume": -0.10655630009197214,
       "prev_close": 5.21
     },
     {
@@ -3370,6 +3743,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.012867647058823595,
       "monthly_delta": -0.18140243902439013,
+      "delta_volume": -0.1332696082138468,
       "prev_close": 10.88
     },
     {
@@ -3379,6 +3753,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.01110494169905607,
       "monthly_delta": 0.14600377595972303,
+      "delta_volume": 0.02317449595335841,
       "prev_close": 18.01
     },
     {
@@ -3388,6 +3763,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.008653326122228133,
       "monthly_delta": -0.0981624758220504,
+      "delta_volume": -0.2994987405919969,
       "prev_close": 18.49
     },
     {
@@ -3397,6 +3773,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.04510451045104502,
       "monthly_delta": 0.23216601815823612,
+      "delta_volume": -0.038688967731035695,
       "prev_close": 18.18
     },
     {
@@ -3406,6 +3783,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0,
       "monthly_delta": 0.06862745098039236,
+      "delta_volume": -1.0,
       "prev_close": 10.9
     },
     {
@@ -3415,6 +3793,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0,
       "monthly_delta": -0.06513409961685823,
+      "delta_volume": -1.0,
       "prev_close": 2.44
     },
     {
@@ -3424,6 +3803,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0,
       "monthly_delta": 0.0,
+      "delta_volume": 0,
       "prev_close": 11.51
     },
     {
@@ -3433,6 +3813,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0012315270935963074,
       "monthly_delta": -0.006112469437652646,
+      "delta_volume": -0.05372855284568934,
       "prev_close": 8.12
     },
     {
@@ -3442,6 +3823,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0,
       "monthly_delta": 0.0,
+      "delta_volume": 0,
       "prev_close": 38.66
     },
     {
@@ -3451,6 +3833,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0,
       "monthly_delta": 0.0714285714285714,
+      "delta_volume": -1.0,
       "prev_close": 75.0
     },
     {
@@ -3460,6 +3843,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.07862745098039214,
       "monthly_delta": -0.1910294117647059,
+      "delta_volume": 1.608695652173913,
       "prev_close": 51.0
     },
     {
@@ -3469,6 +3853,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.027397260273972712,
       "monthly_delta": -0.12375728488172788,
+      "delta_volume": 0.5366442516906285,
       "prev_close": 52.56
     },
     {
@@ -3478,6 +3863,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.006493506493506551,
       "monthly_delta": -0.008528784648187626,
+      "delta_volume": 0.29846153846153856,
       "prev_close": 4.62
     },
     {
@@ -3487,6 +3873,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.008733624454148492,
       "monthly_delta": -0.0348189415041783,
+      "delta_volume": 0.35927022292031663,
       "prev_close": 13.74
     },
     {
@@ -3496,6 +3883,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.002133712660028486,
       "monthly_delta": -0.037568306010928976,
+      "delta_volume": 0.5519528848331876,
       "prev_close": 14.06
     },
     {
@@ -3505,6 +3893,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.006690561529271166,
       "monthly_delta": -0.03371559633027521,
+      "delta_volume": -0.03863267245525537,
       "prev_close": 41.85
     },
     {
@@ -3514,6 +3903,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.013035381750465591,
       "monthly_delta": 0.06457925636007822,
+      "delta_volume": -0.7150041911148366,
       "prev_close": 5.37
     },
     {
@@ -3523,6 +3913,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.01325757575757569,
       "monthly_delta": 0.055226824457593526,
+      "delta_volume": -0.4488270805974661,
       "prev_close": 5.28
     },
     {
@@ -3532,6 +3923,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.015151515151515138,
       "monthly_delta": -0.13907284768211914,
+      "delta_volume": -0.7424332989186546,
       "prev_close": 1.32
     },
     {
@@ -3541,6 +3933,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.008187134502923965,
       "monthly_delta": -0.039637599093997666,
+      "delta_volume": -0.6244784422809457,
       "prev_close": 8.55
     },
     {
@@ -3550,6 +3943,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.009036144578313365,
       "monthly_delta": -0.04897090134847404,
+      "delta_volume": -0.6197718631178708,
       "prev_close": 13.28
     },
     {
@@ -3559,6 +3953,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.009324009324009341,
       "monthly_delta": 0.011904761904761862,
+      "delta_volume": 0.09311740890688269,
       "prev_close": 8.58
     },
     {
@@ -3568,6 +3963,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.007224958949096805,
       "monthly_delta": -0.0738357843137255,
+      "delta_volume": -0.0991289568727427,
       "prev_close": 30.45
     },
     {
@@ -3577,6 +3973,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.007907542579075555,
       "monthly_delta": -0.026849642004773466,
+      "delta_volume": -0.26749071424222126,
       "prev_close": 16.44
     },
     {
@@ -3586,6 +3983,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.024769992922859307,
       "monthly_delta": -0.31100000000000005,
+      "delta_volume": 0.18743926141885336,
       "prev_close": 28.26
     },
     {
@@ -3595,6 +3993,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.01252847380410027,
       "monthly_delta": -0.02271894466837665,
+      "delta_volume": -0.4176232330584123,
       "prev_close": 26.34
     },
     {
@@ -3604,6 +4003,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0,
       "monthly_delta": 0.023761904761904873,
+      "delta_volume": -1.0,
       "prev_close": 214.99
     },
     {
@@ -3613,6 +4013,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0024378131912781154,
       "monthly_delta": 0.06244019138755985,
+      "delta_volume": -0.8467432950191571,
       "prev_close": 221.51
     },
     {
@@ -3622,6 +4023,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.06976744186046502,
       "monthly_delta": -0.29824561403508765,
+      "delta_volume": -0.19217587204646647,
       "prev_close": 0.43
     },
     {
@@ -3631,6 +4033,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.010953226761397206,
       "monthly_delta": -0.102024717328425,
+      "delta_volume": 0.22421185674631428,
       "prev_close": 33.78
     },
     {
@@ -3640,6 +4043,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.037878787878787845,
       "monthly_delta": 0.07874015748031504,
+      "delta_volume": 0.9441210710128056,
       "prev_close": 6.6
     },
     {
@@ -3649,6 +4053,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.0044642857142858094,
       "monthly_delta": -0.24149659863945583,
+      "delta_volume": -0.7516752069373276,
       "prev_close": 2.24
     },
     {
@@ -3658,6 +4063,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.01748251748251739,
       "monthly_delta": -0.237449118046133,
+      "delta_volume": -0.10239651416122009,
       "prev_close": 5.72
     },
     {
@@ -3667,6 +4073,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.031039136302294157,
       "monthly_delta": -0.039597737272155875,
+      "delta_volume": -0.3234087510118958,
       "prev_close": 14.82
     },
     {
@@ -3676,6 +4083,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.03523489932885904,
       "monthly_delta": -0.051937345424567294,
+      "delta_volume": 0.3547540327391834,
       "prev_close": 11.92
     },
     {
@@ -3685,6 +4093,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0,
       "monthly_delta": 0.0,
+      "delta_volume": 0,
       "prev_close": 9.97
     },
     {
@@ -3694,6 +4103,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0,
       "monthly_delta": 0.0,
+      "delta_volume": -1.0,
       "prev_close": 1.57
     },
     {
@@ -3703,6 +4113,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.026490066225165587,
       "monthly_delta": 0.0652173913043479,
+      "delta_volume": -0.06948640483383683,
       "prev_close": 1.51
     },
     {
@@ -3712,6 +4123,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.021357742181540962,
       "monthly_delta": -0.007412898443291294,
+      "delta_volume": 0.21710543778899694,
       "prev_close": 26.22
     },
     {
@@ -3721,6 +4133,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.0011475409836065875,
       "monthly_delta": 0.00544554455445545,
+      "delta_volume": 0.07526881720430101,
       "prev_close": 61.0
     },
     {
@@ -3730,6 +4143,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0,
       "monthly_delta": 0.07278382581648524,
+      "delta_volume": -1.0,
       "prev_close": 68.98
     },
     {
@@ -3739,6 +4153,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0071258907363420665,
       "monthly_delta": -0.0456182472989195,
+      "delta_volume": -0.26660416816903443,
       "prev_close": 63.15
     },
     {
@@ -3748,6 +4163,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.013846153846153841,
       "monthly_delta": -0.0015576323987538387,
+      "delta_volume": 0.25076420364709606,
       "prev_close": 6.5
     },
     {
@@ -3757,6 +4173,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.015455950540958163,
       "monthly_delta": 0.007911392405063333,
+      "delta_volume": 0.10609185488877504,
       "prev_close": 6.47
     },
     {
@@ -3766,6 +4183,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0,
       "monthly_delta": 0.0,
+      "delta_volume": -1.0,
       "prev_close": 8.0
     },
     {
@@ -3775,6 +4193,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.006482561908466189,
       "monthly_delta": -0.11949902332529017,
+      "delta_volume": 0.1481564384151821,
       "prev_close": 77.13
     },
     {
@@ -3784,6 +4203,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.028735632183908066,
       "monthly_delta": -0.22654462242562934,
+      "delta_volume": 0.9698212027364665,
       "prev_close": 3.48
     },
     {
@@ -3793,6 +4213,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.011073825503355561,
       "monthly_delta": -0.05042546485975419,
+      "delta_volume": 0.28838898146101943,
       "prev_close": 29.8
     },
     {
@@ -3802,6 +4223,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0,
       "monthly_delta": -0.014018691588785215,
+      "delta_volume": 0.6056388507257631,
       "prev_close": 4.22
     },
     {
@@ -3811,6 +4233,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.014175779667881638,
       "monthly_delta": -0.1597315436241611,
+      "delta_volume": 1.1031599754253811,
       "prev_close": 24.69
     },
     {
@@ -3820,6 +4243,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.04651162790697683,
       "monthly_delta": -0.3492063492063493,
+      "delta_volume": -0.7898275159581692,
       "prev_close": 0.43
     },
     {
@@ -3829,6 +4253,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.004922471080482271,
       "monthly_delta": -0.0014673514306676738,
+      "delta_volume": 0.018732314657611715,
       "prev_close": 40.63
     },
     {
@@ -3838,6 +4263,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.006549118387909503,
       "monthly_delta": -0.11806797853309481,
+      "delta_volume": 0.8628863983479251,
       "prev_close": 19.85
     },
     {
@@ -3847,6 +4273,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0,
       "monthly_delta": 0.0,
+      "delta_volume": 0,
       "prev_close": 1.5
     },
     {
@@ -3856,6 +4283,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.005649717514124353,
       "monthly_delta": 0.014409221902017322,
+      "delta_volume": -0.9503448275862069,
       "prev_close": 3.54
     },
     {
@@ -3865,6 +4293,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.02605633802816909,
       "monthly_delta": -0.0344599072233267,
+      "delta_volume": 0.31487800497729435,
       "prev_close": 14.2
     },
     {
@@ -3874,6 +4303,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.0006123698714022296,
       "monthly_delta": -0.0892857142857143,
+      "delta_volume": -0.21022127945659608,
       "prev_close": 16.33
     },
     {
@@ -3883,6 +4313,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.015037593984962405,
       "monthly_delta": -0.096551724137931,
+      "delta_volume": -0.27331429879407765,
       "prev_close": 1.33
     },
     {
@@ -3892,6 +4323,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.011904761904761862,
       "monthly_delta": -0.0674157303370786,
+      "delta_volume": -0.6941800592916212,
       "prev_close": 2.52
     },
     {
@@ -3901,6 +4333,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.009315424610052192,
       "monthly_delta": -0.13401486988847577,
+      "delta_volume": -0.31312086521910454,
       "prev_close": 46.16
     },
     {
@@ -3910,6 +4343,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.022796352583586588,
       "monthly_delta": 0.11239669421487619,
+      "delta_volume": -0.34018851756640955,
       "prev_close": 6.58
     },
     {
@@ -3919,6 +4353,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.011961722488038284,
       "monthly_delta": -0.057077625570776225,
+      "delta_volume": -0.4201183431952663,
       "prev_close": 4.18
     },
     {
@@ -3928,6 +4363,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.017660044150110354,
       "monthly_delta": -0.047109207708779355,
+      "delta_volume": -0.4330299089726918,
       "prev_close": 4.53
     },
     {
@@ -3937,6 +4373,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.0011248593925758943,
       "monthly_delta": -0.022026431718061623,
+      "delta_volume": -0.10167624480176252,
       "prev_close": 8.89
     },
     {
@@ -3946,6 +4383,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.0,
       "monthly_delta": 0.0427998216674097,
+      "delta_volume": -1.0,
       "prev_close": 23.39
     },
     {
@@ -3955,6 +4393,7 @@
       "date": "2026-03-19",
       "daily_delta": -0.018800358102059045,
       "monthly_delta": -0.12319999999999998,
+      "delta_volume": 0.19999999999999996,
       "prev_close": 22.34
     },
     {
@@ -3964,6 +4403,7 @@
       "date": "2026-03-19",
       "daily_delta": 0.02323232323232327,
       "monthly_delta": -0.21350931677018636,
+      "delta_volume": 0.774366960391311,
       "prev_close": 9.9
     }
   ]

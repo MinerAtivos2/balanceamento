@@ -61,8 +61,20 @@ def calculate_variations():
             'last_close': closes[-1],
             'date': dates[-1],
             'daily_delta': 0,
-            'monthly_delta': 0
+            'monthly_delta': 0,
+            'delta_volume': 0
         }
+
+        # Volume Delta (Current vs 20d moving average prior to current)
+        volumes = history.get('volumes', [])
+        if len(volumes) >= 2:
+            current_vol = volumes[-1]
+            # Média dos últimos 20 dias anteriores ao atual
+            prior_volumes = volumes[-21:-1]
+            if prior_volumes:
+                avg_vol = sum(prior_volumes) / len(prior_volumes)
+                if avg_vol > 0:
+                    asset_summary['delta_volume'] = (current_vol / avg_vol) - 1
 
         # Daily Delta
         prev_close = closes[-2]
@@ -118,18 +130,22 @@ def format_markdown(summary):
     md = f"## Resumo de Mercado - {date_str}\n\n"
 
     md += "### 📈 Maiores Altas (Dia)\n\n"
-    md += "| Ativo | Nome | Fechamento | Anterior | Variação |\n"
-    md += "| :--- | :--- | :--- | :--- | :--- |\n"
+    md += "| Ativo | Nome | Fechamento | Anterior | Variação | DeltaVolume |\n"
+    md += "| :--- | :--- | :--- | :--- | :--- | :--- |\n"
     for a in summary['gainers']:
         delta_pct = a['daily_delta'] * 100
-        md += f"| {a['ticker']} | {a['name']} | R$ {a['last_close']:.2f} | R$ {a.get('prev_close', 0):.2f} | **+{delta_pct:.2f}%** 🚀 |\n"
+        vol_pct = a.get('delta_volume', 0) * 100
+        vol_icon = "⬆️" if vol_pct > 0 else "⬇️"
+        md += f"| {a['ticker']} | {a['name']} | R$ {a['last_close']:.2f} | R$ {a.get('prev_close', 0):.2f} | **+{delta_pct:.2f}%** 🚀 | {vol_pct:+.2f}% {vol_icon} |\n"
 
     md += "\n### 📉 Maiores Baixas (Dia)\n\n"
-    md += "| Ativo | Nome | Fechamento | Anterior | Variação |\n"
-    md += "| :--- | :--- | :--- | :--- | :--- |\n"
+    md += "| Ativo | Nome | Fechamento | Anterior | Variação | DeltaVolume |\n"
+    md += "| :--- | :--- | :--- | :--- | :--- | :--- |\n"
     for a in summary['losers']:
         delta_pct = a['daily_delta'] * 100
-        md += f"| {a['ticker']} | {a['name']} | R$ {a['last_close']:.2f} | R$ {a.get('prev_close', 0):.2f} | **{delta_pct:.2f}%** 📉 |\n"
+        vol_pct = a.get('delta_volume', 0) * 100
+        vol_icon = "⬆️" if vol_pct > 0 else "⬇️"
+        md += f"| {a['ticker']} | {a['name']} | R$ {a['last_close']:.2f} | R$ {a.get('prev_close', 0):.2f} | **{delta_pct:.2f}%** 📉 | {vol_pct:+.2f}% {vol_icon} |\n"
 
     return md
 
