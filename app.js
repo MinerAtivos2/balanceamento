@@ -1433,6 +1433,7 @@ class B3App {
 
   /* ------------------------------------------------------------------
      Rendering — Market Summary
+     original com o nome do ativo na linha 1451: <td><strong>${item.ticker.replace('.SA', '')}</strong><br><small style="color:var(--text-muted)">${item.name}</small></td>
   ------------------------------------------------------------------ */
   renderMarketSummary(summary) {
     if (!summary || !summary.gainers || !summary.losers) return;
@@ -1448,8 +1449,8 @@ class B3App {
         return `
           <tr>
             <td><strong>${item.ticker.replace('.SA', '')}</strong></td>            
-            <td>R$ ${item.last_close.toFixed(2)}</td>
-            <td>R$ ${item.prev_close.toFixed(2)}</td>
+            <td>R$${item.last_close.toFixed(2)}</td>
+            <td>R$${item.prev_close.toFixed(2)}</td>
             <td class="${cssClass}">${(deltaVal > 0 && isGainer) ? '+' : ''}${delta}% ${icon}</td>
           </tr>
         `;
