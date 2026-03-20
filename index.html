@@ -625,5 +625,32 @@
   <div class="toast-container" id="toastContainer"></div>
 
   <script src="app.js"></script>
+
+
+    <!-- script para abrir mercado oriundo da página minerativos.com -->
+      <script>
+      window.addEventListener('DOMContentLoaded', function() {
+        // 1. Tenta capturar o parâmetro 'section' da URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const targetSection = urlParams.get('section');
+    
+        // 2. Só executa se o parâmetro existir (ex: vindo da Página A)
+        if (targetSection === 'summary') {
+          // 3. Busca o botão pelo ID que você informou
+          const btn = document.getElementById('nav-summary');
+          
+          if (btn) {
+            // Pequeno atraso para garantir que os outros scripts da página carregaram
+            setTimeout(() => {
+              btn.click(); 
+              // Opcional: rolar a tela caso o clique não o faça automaticamente
+              btn.scrollIntoView({ behavior: 'smooth' });
+            }, 300);
+          }
+        }
+      });
+    </script>
+    <!-- script para abrir mercado oriundo da página minerativos.com -->
+  
 </body>
 </html>
