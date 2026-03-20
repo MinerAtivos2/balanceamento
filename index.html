@@ -629,27 +629,35 @@
 
     <!-- script para abrir mercado oriundo da página minerativos.com -->
       <script>
-      window.addEventListener('DOMContentLoaded', function() {
-        // 1. Tenta capturar o parâmetro 'section' da URL
-        const urlParams = new URLSearchParams(window.location.search);
-        const targetSection = urlParams.get('section');
-    
-        // 2. Só executa se o parâmetro existir (ex: vindo da Página A)
-        if (targetSection === 'summary') {
-          // 3. Busca o botão pelo ID que você informou
-          const btn = document.getElementById('nav-summary');
-          
-          if (btn) {
-            // Pequeno atraso para garantir que os outros scripts da página carregaram
-            setTimeout(() => {
-              btn.click(); 
-              // Opcional: rolar a tela caso o clique não o faça automaticamente
-              btn.scrollIntoView({ behavior: 'smooth' });
-            }, 300);
+        window.addEventListener('load', function() {
+          const urlParams = new URLSearchParams(window.location.search);
+          const targetSection = urlParams.get('section');
+      
+          if (targetSection === 'summary') {
+            const btn = document.getElementById('nav-summary');
+            // Tenta encontrar a seção real que o botão ativa (geralmente tem o ID do data-section)
+            const section = document.getElementById('summary') || document.querySelector('[data-section="summary"]');
+      
+            if (btn) {
+              setTimeout(() => {
+                btn.click(); // Ativa a lógica do site
+      
+                if (section) {
+                  // Ajustar aqui: 80 é a altura estimada do menu fixo na parte superior da página. 
+                  // Se o menu for maior, aumentar esse número.
+                  const menuHeight = 80; 
+                  const sectionTop = section.getBoundingClientRect().top + window.pageYOffset - menuHeight;
+      
+                  window.scrollTo({
+                    top: sectionTop,
+                    behavior: 'smooth'
+                  });
+                }
+              }, 500); // Aumentamos o tempo para garantir que o layout estabilizou
+            }
           }
-        }
-      });
-    </script>
+        });
+      </script>
     <!-- script para abrir mercado oriundo da página minerativos.com -->
   
 </body>
