@@ -1450,13 +1450,14 @@ class B3App {
         const volVal = item.delta_volume !== undefined ? item.delta_volume : 0;
         const volPct = (volVal * 100).toFixed(2);
         const volClass = volVal > 0 ? 'var-up' : 'var-down';
+        const volIcon = volVal > 0 ? '⬆️' : '⬇️';
 
         return `
           <tr>
             <td><strong>${item.ticker.replace('.SA', '')}</strong></td>            
             <td>R$${item.last_close.toFixed(2)}</td>
             <td class="${cssClass}">${(deltaVal > 0 && isGainer) ? '+' : ''}${delta}% ${icon}</td>
-            <td class="${volClass}">${volVal > 0 ? '+' : ''}${volPct}%</td>
+            <td class="${volClass}">${volVal > 0 ? '+' : ''}${volPct}% ${volIcon}</td>
           </tr>
         `;
       }).join('');
