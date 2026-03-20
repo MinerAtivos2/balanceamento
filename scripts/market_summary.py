@@ -22,6 +22,25 @@ def calculate_variations():
         data = json.load(f)
 
     assets_data = data.get('assets', {})
+
+    # Definir data atual e anterior de referência (baseado em VALE3 e PETR4)
+    ref_tickers = ['VALE3.SA', 'PETR4.SA']
+    ref_dates = []
+    for t in ref_tickers:
+        if t in assets_data:
+            dates = assets_data[t].get('history', {}).get('dates', [])
+            if len(dates) >= 2:
+                ref_dates.append((dates[-1], dates[-2]))
+
+    if not ref_dates:
+        print("❌ Não foi possível determinar as datas de referência de mercado.")
+        return None
+
+    # Usar a data mais comum entre os ativos de referência
+    from collections import Counter
+    market_current_date, market_prev_date = Counter(ref_dates).most_common(1)[0][0]
+    print(f"📅 Datas de referência: Atual={market_current_date}, Anterior={market_prev_date}")
+
     all_assets_summary = []
 
     for ticker, info in assets_data.items():
@@ -29,7 +48,11 @@ def calculate_variations():
         dates = history.get('dates', [])
         closes = history.get('closes', [])
 
-        if not dates or not closes:
+        if not dates or not closes or len(dates) < 2:
+            continue
+
+        # FILTRO: Apenas ativos que negociaram exatamente nas datas de referência
+        if dates[-1] != market_current_date or dates[-2] != market_prev_date:
             continue
 
         asset_summary = {
@@ -42,11 +65,10 @@ def calculate_variations():
         }
 
         # Daily Delta
-        if len(closes) >= 2:
-            prev_close = closes[-2]
-            if prev_close and prev_close > 0:
-                asset_summary['daily_delta'] = (closes[-1] / prev_close) - 1
-                asset_summary['prev_close'] = prev_close
+        prev_close = closes[-2]
+        if prev_close and prev_close > 0:
+            asset_summary['daily_delta'] = (closes[-1] / prev_close) - 1
+            asset_summary['prev_close'] = prev_close
 
         # Monthly Delta (approx 30 days ago)
         # We look for the price closest to 30 days before the last date
