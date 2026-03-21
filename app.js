@@ -1448,9 +1448,9 @@ class B3App {
         const cssClass = isGainer ? 'var-up' : 'var-down';
 
         const volVal = item.delta_volume !== undefined ? item.delta_volume : 0;
-        const volPct = (volVal * 100).toFixed(2);
+        const volPct = (volVal * 100).toFixed(0);
         const volClass = volVal > 0 ? 'var-up' : 'var-down';
-        const volIcon = volVal > 0 ? '⬆️' : '⬇️';
+        const volIcon = volVal > 1 ? '⬆️' : '';
 
         return `
           <tr>
