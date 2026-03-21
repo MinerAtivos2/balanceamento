@@ -1448,16 +1448,16 @@ class B3App {
         const cssClass = isGainer ? 'var-up' : 'var-down';
 
         const volVal = item.delta_volume !== undefined ? item.delta_volume : 0;
-        const volPct = (volVal * 100).toFixed(0);
+        const volPct = (volVal * 100).toFixed(2);
         const volClass = volVal > 0 ? 'var-up' : 'var-down';
-        const volIcon = volVal > 100 ? '⬆️' : '';
+        const volIcon = volVal > 0 ? '⬆️' : '⬇️';
 
         return `
           <tr>
             <td><strong>${item.ticker.replace('.SA', '')}</strong></td>            
-            <td>R$ ${item.last_close.toFixed(2)}</td>
+            <td>R$${item.last_close.toFixed(2)}</td>
             <td class="${cssClass}">${(deltaVal > 0 && isGainer) ? '+' : ''}${delta}% ${icon}</td>
-            <td class="${volClass}">${volVal > 0 ? '+' : ''}${volPct}%</td> 
+            <td class="${volClass}">${volVal > 0 ? '+' : ''}${volPct}% ${volIcon}</td>
           </tr>
         `;
       }).join('');
@@ -1474,15 +1474,80 @@ class B3App {
 
     console.log('Rendering Treemap with assets:', allAssets.length);
 
-    // Sizing: Use absolute daily variation. If 0, use a small constant so it's visible.
-    const data = allAssets.map(a => ({
-      ticker: a.ticker.replace('.SA', ''),
-      name: a.name,
-      value: Math.max(Math.abs(a.daily_delta * 100), 0.5),
-      daily: (a.daily_delta * 100).toFixed(2) + '%',
-      monthly: (a.monthly_delta * 100).toFixed(2) + '%',
-      delta: a.daily_delta
-    }));
+    // Filter and prepare data
+    const validAssets = allAssets.filter(a => a.daily_delta !== undefined);
+
+    const posPriceAssets = validAssets.filter(a => a.daily_delta > 0);
+    const negPriceAssets = validAssets.filter(a => a.daily_delta < 0);
+
+    const getQuartiles = (values) => {
+      if (values.length === 0) return [0, 0, 0, 0, 0];
+      const sorted = [...values].sort((a, b) => a - b);
+      const q = (p) => {
+        const pos = (sorted.length - 1) * p;
+        const base = Math.floor(pos);
+        const rest = pos - base;
+        if (sorted[base + 1] !== undefined) {
+          return sorted[base] + rest * (sorted[base + 1] - sorted[base]);
+        } else {
+          return sorted[base];
+        }
+      };
+      return [sorted[0], q(0.25), q(0.5), q(0.75), sorted[sorted.length - 1]];
+    };
+
+    const getCategory = (val, quartiles) => {
+      if (val <= quartiles[1]) return 0;
+      if (val <= quartiles[2]) return 1;
+      if (val <= quartiles[3]) return 2;
+      return 3;
+    };
+
+    const posVolAbs = posPriceAssets.map(a => Math.abs(a.delta_volume || 0));
+    const negVolAbs = negPriceAssets.map(a => Math.abs(a.delta_volume || 0));
+
+    const posQuartiles = getQuartiles(posVolAbs);
+    const negQuartiles = getQuartiles(negVolAbs);
+
+    const cores_negativas = ["#FFE600", "#FF9800", "#FF5722", "#D50000"]; // Amarelo a Vermelho
+    const cores_positivas = ["#C6FF00", "#76FF03", "#00E676", "#00C853"]; // Lima a Verde
+
+    const data = validAssets.map(a => {
+      const volAbs = Math.abs(a.delta_volume || 0);
+      let category = 0;
+      let color = "#D3D3D3";
+
+      if (a.daily_delta > 0) {
+        category = getCategory(volAbs, posQuartiles);
+        color = cores_positivas[category];
+      } else if (a.daily_delta < 0) {
+        category = getCategory(volAbs, negQuartiles);
+        color = cores_negativas[category];
+      }
+
+      return {
+        ticker: a.ticker.replace('.SA', ''),
+        name: a.name,
+        value: Math.max(Math.abs(a.daily_delta * 100), 0.5),
+        daily: (a.daily_delta * 100).toFixed(2) + '%',
+        monthly: (a.monthly_delta * 100).toFixed(2) + '%',
+        delta_volume: (a.delta_volume * 100).toFixed(2) + '%',
+        delta: a.daily_delta,
+        color: color
+      };
+    });
+
+    // Helper for text color contrast (Luminance)
+    const getTextColor = (hex) => {
+      if (!hex || hex === 'transparent') return '#ffffff';
+      if (hex.startsWith('#')) hex = hex.slice(1);
+      if (hex.length === 3) hex = hex.split('').map(s => s + s).join('');
+      const r = parseInt(hex.slice(0, 2), 16) / 255;
+      const g = parseInt(hex.slice(2, 4), 16) / 255;
+      const b = parseInt(hex.slice(4, 6), 16) / 255;
+      const L = 0.2126 * r + 0.7152 * g + 0.0722 * b;
+      return L > 0.6 ? "#333333" : "#FFFFFF";
+    };
 
     this.charts.treemap = new Chart(ctx, {
       type: 'treemap',
@@ -1496,19 +1561,13 @@ class B3App {
           borderRadius: 2,
           backgroundColor: (context) => {
             if (!context || !context.raw || !context.raw._data) return '#333';
-            const item = context.raw._data;
-            const delta = item.delta;
-            if (delta > 0.02) return '#166534'; // Dark Green
-            if (delta > 0) return '#22c55e';    // Green
-            if (delta > -0.02) return '#f97316'; // Orange
-            return '#ef4444';                   // Red
+            return context.raw._data.color;
           },
           labels: {
             display: true,
             formatter: (context) => {
               if (!context || !context.raw || !context.raw._data) return '';
               const item = context.raw._data;
-              // Only show full info if there's some space
               if (context.raw.w < 40 || context.raw.h < 30) return [item.ticker];
               return [item.ticker, `D: ${item.daily}`, `M: ${item.monthly}`];
             },
@@ -1518,7 +1577,10 @@ class B3App {
               const size = Math.min(Math.max((item.w || 0) / 6, 8), 12);
               return { size: size, weight: 'bold', family: 'Inter' };
             },
-            color: '#fff'
+            color: (context) => {
+              if (!context || !context.raw || !context.raw._data) return '#fff';
+              return getTextColor(context.raw._data.color);
+            }
           }
         }]
       },
@@ -1537,7 +1599,8 @@ class B3App {
                 return [
                   `Nome: ${d.name}`,
                   `Variação Dia: ${d.daily}`,
-                  `Variação Mês: ${d.monthly}`
+                  `Variação Mês: ${d.monthly}`,
+                  `Delta Volume: ${d.delta_volume}`
                 ];
               }
             }
