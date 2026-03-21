@@ -784,8 +784,8 @@ input[type="number"]:focus, select:focus {
 }
 .summary-table th, .summary-table td {
   padding: 0.75rem 0.5rem;
-  font-size: 0.85rem;
-  white-space: normal;
+  font-size: 0.75rem;
+  white-space: nowrap; /*----- nowrap é para não quebrar a linha, normal deixa quebrar a linha-----*/
 }
 .summary-table td:last-child {
   text-align: right;
