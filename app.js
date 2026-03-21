@@ -1455,7 +1455,7 @@ class B3App {
         return `
           <tr>
             <td><strong>${item.ticker.replace('.SA', '')}</strong></td>            
-            <td>R$${item.last_close.toFixed(2)}</td>
+            <td>R$ ${item.last_close.toFixed(2)}</td>
             <td class="${cssClass}">${(deltaVal > 0 && isGainer) ? '+' : ''}${delta}% ${icon}</td>
             <td class="${volClass}">${volVal > 0 ? '+' : ''}${volPct}% ${volIcon}</td>
           </tr>
