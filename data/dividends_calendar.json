@@ -6,7 +6,7 @@
     "data_com": "2026-03-11",
     "data_pagamento": "2026-03-19",
     "valor": 2.73,
-    "last_update": "2026-03-22T17:24:53.686699"
+    "last_update": "2026-03-22T17:40:37.533696"
   },
   {
     "ticker": "PETR4.SA",
@@ -15,24 +15,6 @@
     "data_com": "2026-02-23",
     "data_pagamento": "2026-05-20",
     "valor": 0.52,
-    "last_update": "2026-03-22T17:24:53.686683"
-  },
-  {
-    "ticker": "BBAS3.SA",
-    "nome": "BANCO DO BRASIL S.A.",
-    "tipo": "DIVIDENDO",
-    "data_com": "2025-11-21",
-    "data_pagamento": "2025-11-28",
-    "valor": 0.48,
-    "last_update": "2026-03-22T17:24:53.686703"
-  },
-  {
-    "ticker": "ITUB4.SA",
-    "nome": "ITAU UNIBANCO HOLDING S.A.",
-    "tipo": "JCP",
-    "data_com": "2025-06-20",
-    "data_pagamento": "2025-07-01",
-    "valor": 0.017,
-    "last_update": "2026-03-22T17:24:53.686701"
+    "last_update": "2026-03-22T17:40:37.533670"
   }
 ]
