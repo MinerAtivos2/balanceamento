@@ -1064,19 +1064,119 @@ class B3App {
     const ctx = this.$('marketTreemap');
     if (!ctx) return;
     if (this.charts.treemap) this.charts.treemap.destroy();
-    const valid = allAssets.filter(a => a.daily_delta !== undefined);
-    const getQuartiles = (v) => { if (!v.length) return [0,0,0,0,0]; const s = [...v].sort((a,b)=>a-b); const q=(p)=>s[Math.floor((s.length-1)*p)]; return [s[0], q(0.25), q(0.5), q(0.75), s[s.length-1]]; };
-    const posQuart = getQuartiles(valid.filter(a=>a.daily_delta>0).map(a=>Math.abs(a.delta_volume||0)));
-    const negQuart = getQuartiles(valid.filter(a=>a.daily_delta<0).map(a=>Math.abs(a.delta_volume||0)));
-    const data = valid.map(a => {
-      const vol = Math.abs(a.delta_volume||0), q = a.daily_delta > 0 ? posQuart : negQuart;
-      const cat = vol <= q[1] ? 0 : vol <= q[2] ? 1 : vol <= q[3] ? 2 : 3;
-      return { ticker: a.ticker.replace('.SA', ''), name: a.name, value: Math.max(Math.abs(a.daily_delta*100), 0.5), daily: (a.daily_delta*100).toFixed(2)+'%', monthly: (a.monthly_delta*100).toFixed(2)+'%', delta_volume: (a.delta_volume*100).toFixed(2)+'%', color: a.daily_delta > 0 ? ["#C6FF00", "#76FF03", "#00E676", "#00C853"][cat] : ["#FFE600", "#FF9800", "#FF5722", "#D50000"][cat] };
+
+    const validAssets = allAssets.filter(a => a.daily_delta !== undefined);
+    const posPriceAssets = validAssets.filter(a => a.daily_delta > 0);
+    const negPriceAssets = validAssets.filter(a => a.daily_delta < 0);
+
+    const getQuartiles = (values) => {
+      if (values.length === 0) return [0, 0, 0, 0, 0];
+      const sorted = [...values].sort((a, b) => a - b);
+      const q = (p) => {
+        const pos = (sorted.length - 1) * p;
+        const base = Math.floor(pos);
+        const rest = pos - base;
+        if (sorted[base + 1] !== undefined) return sorted[base] + rest * (sorted[base + 1] - sorted[base]);
+        return sorted[base];
+      };
+      return [sorted[0], q(0.25), q(0.5), q(0.75), sorted[sorted.length - 1]];
+    };
+
+    const getCategory = (val, quartiles) => {
+      if (val <= quartiles[1]) return 0;
+      if (val <= quartiles[2]) return 1;
+      if (val <= quartiles[3]) return 2;
+      return 3;
+    };
+
+    const posVolAbs = posPriceAssets.map(a => Math.abs(a.delta_volume || 0));
+    const negVolAbs = negPriceAssets.map(a => Math.abs(a.delta_volume || 0));
+    const posQuartiles = getQuartiles(posVolAbs);
+    const negQuartiles = getQuartiles(negVolAbs);
+
+    const cores_negativas = ["#FFE600", "#FF9800", "#FF5722", "#D50000"];
+    const cores_positivas = ["#C6FF00", "#76FF03", "#00E676", "#00C853"];
+
+    const data = validAssets.map(a => {
+      const volAbs = Math.abs(a.delta_volume || 0);
+      let category = 0;
+      let color = "#D3D3D3";
+      if (a.daily_delta > 0) {
+        category = getCategory(volAbs, posQuartiles);
+        color = cores_positivas[category];
+      } else if (a.daily_delta < 0) {
+        category = getCategory(volAbs, negQuartiles);
+        color = cores_negativas[category];
+      }
+      return {
+        ticker: a.ticker.replace('.SA', ''),
+        name: a.name,
+        value: Math.max(Math.abs(a.daily_delta * 100), 0.5),
+        daily: (a.daily_delta * 100).toFixed(2) + '%',
+        monthly: (a.monthly_delta * 100).toFixed(2) + '%',
+        delta_volume: (a.delta_volume * 100).toFixed(2) + '%',
+        delta: a.daily_delta,
+        color: color
+      };
     });
+
+    const getTextColor = (hex) => {
+      if (!hex || hex === 'transparent') return '#ffffff';
+      if (hex.startsWith('#')) hex = hex.slice(1);
+      if (hex.length === 3) hex = hex.split('').map(s => s + s).join('');
+      const r = parseInt(hex.slice(0, 2), 16) / 255;
+      const g = parseInt(hex.slice(2, 4), 16) / 255;
+      const b = parseInt(hex.slice(4, 6), 16) / 255;
+      const L = 0.2126 * r + 0.7152 * g + 0.0722 * b;
+      return L > 0.6 ? "#333333" : "#FFFFFF";
+    };
+
     this.charts.treemap = new Chart(ctx, {
       type: 'treemap',
-      data: { datasets: [{ tree: data, key: 'value', backgroundColor: (c) => c.raw?._data?.color || '#333', labels: { display: true, formatter: (c) => c.raw?._data ? (c.raw.w < 40 ? [c.raw._data.ticker] : [c.raw._data.ticker, `D: ${c.raw._data.daily}`]) : '', color: '#fff' } }] },
-      options: { animation: false, responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false }, tooltip: { callbacks: { label: (i) => { const d = i.raw._data; return [`Nome: ${d.name}`, `D: ${d.daily}`, `M: ${d.monthly}`, `Vol: ${d.delta_volume}`]; } } } } }
+      data: {
+        datasets: [{
+          label: 'Mercado B3',
+          tree: data,
+          key: 'value',
+          spacing: 1,
+          borderWidth: 0,
+          borderRadius: 2,
+          backgroundColor: (context) => (context?.raw?._data?.color || '#333'),
+          labels: {
+            display: true,
+            formatter: (context) => {
+              if (!context?.raw?._data) return '';
+              const item = context.raw._data;
+              if (context.raw.w < 40 || context.raw.h < 30) return [item.ticker];
+              return [item.ticker, `D: ${item.daily}`, `M: ${item.monthly}`];
+            },
+            font: (context) => {
+              if (!context?.raw) return { size: 10 };
+              const size = Math.min(Math.max((context.raw.w || 0) / 6, 8), 12);
+              return { size: size, weight: 'bold', family: 'Inter' };
+            },
+            color: (context) => (context?.raw?._data ? getTextColor(context.raw._data.color) : '#fff')
+          }
+        }]
+      },
+      options: {
+        animation: false,
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            callbacks: {
+              title: (items) => (items?.[0]?.raw?._data?.ticker || ''),
+              label: (item) => {
+                if (!item?.raw?._data) return '';
+                const d = item.raw._data;
+                return [`Nome: ${d.name}`, `Variação Dia: ${d.daily}`, `Variação Mês: ${d.monthly}`, `Delta Volume: ${d.delta_volume}`];
+              }
+            }
+          }
+        }
+      }
     });
   }
 

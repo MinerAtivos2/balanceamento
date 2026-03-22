@@ -3,18 +3,18 @@
     "ticker": "VALE3.SA",
     "nome": "VALE S.A.",
     "tipo": "JCP",
-    "data_com": "2026-03-11",
-    "data_pagamento": "2026-03-19",
+    "data_com": "2025-03-11",
+    "data_pagamento": "2025-03-19",
     "valor": 2.73,
-    "last_update": "2026-03-22T17:40:37.533696"
+    "last_update": "2026-03-22T18:25:04.395150"
   },
   {
     "ticker": "PETR4.SA",
     "nome": "PETROLEO BRASILEIRO S.A. PETROBRAS",
     "tipo": "DIVIDENDO",
-    "data_com": "2026-02-23",
-    "data_pagamento": "2026-05-20",
+    "data_com": "2024-12-23",
+    "data_pagamento": "2025-05-20",
     "valor": 0.52,
-    "last_update": "2026-03-22T17:40:37.533670"
+    "last_update": "2026-03-22T18:25:04.395123"
   }
 ]
