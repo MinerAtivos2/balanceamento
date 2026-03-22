@@ -390,9 +390,19 @@
       </div>
 
       <div class="card glass">
-        <div class="tabs-container" style="margin-bottom: 1.5rem; display: flex; gap: 0.5rem;">
-          <button class="btn btn-primary" id="btnFilterMyDividends">Meus Ativos</button>
-          <button class="btn btn-outline" id="btnFilterAllDividends">Mercado Geral</button>
+        <div class="toolbar">
+          <div class="tabs-container" style="display: flex; gap: 0.5rem;">
+            <button class="btn btn-primary" id="btnFilterMyDividends">Meus Ativos</button>
+            <button class="btn btn-outline" id="btnFilterAllDividends">Mercado Geral</button>
+          </div>
+          <div class="form-inline">
+            <label for="sortDividends">Ordenar por:</label>
+            <select id="sortDividends" class="input-sm" style="width: 150px;">
+              <option value="data_com">Data COM (Recente)</option>
+              <option value="data_pagamento">Data Pagamento</option>
+              <option value="ticker">Ativo (A-Z)</option>
+            </select>
+          </div>
         </div>
 
         <div class="table-responsive">

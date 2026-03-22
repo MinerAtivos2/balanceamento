@@ -6,7 +6,7 @@
     "data_com": "2026-03-11",
     "data_pagamento": "2026-03-19",
     "valor": 2.73,
-    "last_update": "2026-03-22T16:44:12.639250"
+    "last_update": "2026-03-22T17:02:01.287580"
   },
   {
     "ticker": "PETR4.SA",
@@ -15,7 +15,7 @@
     "data_com": "2026-02-23",
     "data_pagamento": "2026-05-20",
     "valor": 0.52,
-    "last_update": "2026-03-22T16:44:12.639224"
+    "last_update": "2026-03-22T17:02:01.287555"
   },
   {
     "ticker": "BBAS3.SA",
@@ -24,7 +24,7 @@
     "data_com": "2025-11-21",
     "data_pagamento": "2025-11-28",
     "valor": 0.48,
-    "last_update": "2026-03-22T16:44:12.639257"
+    "last_update": "2026-03-22T17:02:01.287587"
   },
   {
     "ticker": "ITUB4.SA",
@@ -33,6 +33,6 @@
     "data_com": "2025-06-20",
     "data_pagamento": "2025-07-01",
     "valor": 0.017,
-    "last_update": "2026-03-22T16:44:12.639254"
+    "last_update": "2026-03-22T17:02:01.287584"
   }
 ]

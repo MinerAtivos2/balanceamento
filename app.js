@@ -13,7 +13,8 @@ class B3App {
     this.marketData = null;
     this.analysis = null;
     this.charts = {};
-    this.dividends = []; // <--- NOVO
+    this.dividends = [];
+    this.dividendFilterOnlyMine = true;
     this.init();
   }
 
@@ -57,6 +58,7 @@ class B3App {
     this.$('sortPositions').addEventListener('change', () => this.renderPositions());
     this.$('sortBarsi').addEventListener('change', () => this.renderBarsi());
     this.$('sortRebalance').addEventListener('change', () => this.renderRebalance());
+    this.$('sortDividends').addEventListener('change', () => this.renderDividends());
 
     // Membership modal
     this.$('membershipModalClose').addEventListener('click', () => this.closeMembershipModal());
@@ -665,6 +667,18 @@ class B3App {
     return closes[closes.length - 1];
   }
 
+  getDividendsSince(asset, purchaseDateStr) {
+    if (!asset || !asset.dividends || !asset.dividends.dates.length) return 0;
+    let sum = 0;
+    const { dates, values } = asset.dividends;
+    for (let i = 0; i < dates.length; i++) {
+      if (dates[i] > purchaseDateStr) {
+        sum += values[i];
+      }
+    }
+    return sum;
+  }
+
   /* ------------------------------------------------------------------
      CRUD — Positions
   ------------------------------------------------------------------ */
@@ -704,21 +718,37 @@ class B3App {
     const consolidated = this.consolidatePortfolio();
     const positions = [];
     let totalValue = 0, totalInvestedValue = 0;
+    let totalDividendsReceived = 0;
+
     consolidated.forEach(item => {
       const asset = this.marketData.assets[item.ticker];
       if (!asset) return;
       const currentPrice = asset.last_price;
       const value = currentPrice * item.totalQty;
-      const rentInvestor = ((currentPrice - item.avgPrice) / item.avgPrice * 100);
+
       let weightedMarketRentSum = 0;
+      let tickerDividends = 0;
+
       item.transactions.forEach(t => {
         const histPrice = this.findCloseForDate(asset, t.purchase_date);
-        weightedMarketRentSum += (histPrice ? ((currentPrice - histPrice) / histPrice * 100) : rentInvestor) * t.quantity;
+        const lotDividends = this.getDividendsSince(asset, t.purchase_date) * t.quantity;
+        tickerDividends += lotDividends;
+
+        if (histPrice) {
+          const lotRent = ((currentPrice + (lotDividends / t.quantity) - histPrice) / histPrice * 100);
+          weightedMarketRentSum += (lotRent * t.quantity);
+        }
       });
+
+      const rentInvestor = ((value + tickerDividends - item.totalInvested) / item.totalInvested * 100);
+      totalDividendsReceived += tickerDividends;
+
       positions.push({
         ticker: item.ticker, name: asset.name, sector: asset.sector || 'N/A', quantity: item.totalQty,
         avgPrice: item.avgPrice, avgDate: item.avgDate, totalInvested: item.totalInvested,
-        current_price: currentPrice, position_value: value, rentability_market: weightedMarketRentSum / item.totalQty,
+        current_price: currentPrice, position_value: value,
+        total_dividends: tickerDividends,
+        rentability_market: weightedMarketRentSum / item.totalQty,
         rentability_real: rentInvestor, volatility: asset.stats.volatility || 0
       });
       totalValue += value;
@@ -732,9 +762,12 @@ class B3App {
     this.analysis = {
       timestamp: new Date().toISOString(), positions, allocation, allocationInvested,
       summary: {
-        total_value: totalValue, total_invested: totalInvestedValue, num_positions: positions.length,
+        total_value: totalValue,
+        total_invested: totalInvestedValue,
+        total_dividends: totalDividendsReceived,
+        num_positions: positions.length,
         avg_rentability: positions.reduce((a, b) => a + (b.rentability_market || 0), 0) / (positions.length || 1),
-        portfolio_rentability_real: totalInvestedValue > 0 ? ((totalValue - totalInvestedValue) / totalInvestedValue * 100) : 0,
+        portfolio_rentability_real: totalInvestedValue > 0 ? ((totalValue + totalDividendsReceived - totalInvestedValue) / totalInvestedValue * 100) : 0,
         portfolio_volatility: positions.reduce((a, b) => a + (b.volatility || 0), 0) / (positions.length || 1)
       }
     };
@@ -877,26 +910,48 @@ class B3App {
     }).join('');
   }
 
-  renderDividends(onlyMine = true) {
+  renderDividends(onlyMine) {
+    if (onlyMine !== undefined) this.dividendFilterOnlyMine = onlyMine;
+    const isOnlyMine = this.dividendFilterOnlyMine;
+
     const tbody = this.$('dividendsBody');
     if (!this.dividends || this.dividends.length === 0) {
       tbody.innerHTML = '<tr><td colspan="5" class="empty-state">Nenhum provento encontrado.</td></tr>';
       return;
     }
-    let data = this.dividends;
-    if (onlyMine) {
+
+    let data = [...this.dividends];
+    if (isOnlyMine) {
       const myTickers = new Set(this.portfolio.positions.map(p => p.ticker));
-      data = this.dividends.filter(d => myTickers.has(d.ticker));
+      data = data.filter(d => myTickers.has(d.ticker));
       this.$('btnFilterMyDividends').classList.replace('btn-outline', 'btn-primary');
       this.$('btnFilterAllDividends').classList.replace('btn-primary', 'btn-outline');
     } else {
       this.$('btnFilterAllDividends').classList.replace('btn-outline', 'btn-primary');
       this.$('btnFilterMyDividends').classList.replace('btn-primary', 'btn-outline');
     }
+
+    const sortBy = this.$('sortDividends').value;
+    data.sort((a, b) => {
+      if (sortBy === 'data_com') {
+        return (b.data_com || '').localeCompare(a.data_com || '');
+      }
+      if (sortBy === 'data_pagamento') {
+        const dA = a.data_pagamento || '9999-12-31';
+        const dB = b.data_pagamento || '9999-12-31';
+        return dA.localeCompare(dB);
+      }
+      if (sortBy === 'ticker') {
+        return a.ticker.localeCompare(b.ticker);
+      }
+      return 0;
+    });
+
     if (data.length === 0) {
-      tbody.innerHTML = `<tr><td colspan="5" class="empty-state">${onlyMine ? 'Nenhum provento futuro encontrado para seus ativos.' : 'Nenhum provento encontrado no mercado.'}</td></tr>`;
+      tbody.innerHTML = `<tr><td colspan="5" class="empty-state">${isOnlyMine ? 'Nenhum provento futuro encontrado para seus ativos.' : 'Nenhum provento encontrado no mercado.'}</td></tr>`;
       return;
     }
+
     tbody.innerHTML = data.map(d => `
       <tr>
         <td><strong>${d.ticker.replace('.SA', '')}</strong><br><small style="color:var(--text-muted)">${d.nome}</small></td>
