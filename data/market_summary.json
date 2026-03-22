@@ -1,5 +1,5 @@
 {
-  "last_update": "2026-03-21T19:40:59.519813",
+  "last_update": "2026-03-22T17:20:17.447895",
   "date": "2026-03-20",
   "gainers": [
     {
@@ -9,7 +9,7 @@
       "date": "2026-03-20",
       "daily_delta": 0.2892561983471076,
       "monthly_delta": -0.4545454545454545,
-      "delta_volume": 3.8462308304111046,
+      "delta_volume": -1.0,
       "prev_close": 1.21
     },
     {
@@ -19,7 +19,7 @@
       "date": "2026-03-20",
       "daily_delta": 0.1382113821138211,
       "monthly_delta": 0.11111111111111094,
-      "delta_volume": 0.6375087473757872,
+      "delta_volume": -1.0,
       "prev_close": 1.23
     },
     {
@@ -29,7 +29,7 @@
       "date": "2026-03-20",
       "daily_delta": 0.13636363636363624,
       "monthly_delta": 0.13636363636363624,
-      "delta_volume": 2.3333333333333335,
+      "delta_volume": -1.0,
       "prev_close": 1.32
     },
     {
@@ -39,7 +39,7 @@
       "date": "2026-03-20",
       "daily_delta": 0.13636363636363624,
       "monthly_delta": 1.0661157024793386,
-      "delta_volume": 1.0128479657387581,
+      "delta_volume": -1.0,
       "prev_close": 19.8
     },
     {
@@ -49,7 +49,7 @@
       "date": "2026-03-20",
       "daily_delta": 0.0625,
       "monthly_delta": 0.0,
-      "delta_volume": -0.24959284967852013,
+      "delta_volume": -1.0,
       "prev_close": 0.16
     }
   ],
@@ -61,7 +61,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.15000000000000002,
       "monthly_delta": -0.6530612244897959,
-      "delta_volume": 4.4774774774774775,
+      "delta_volume": -1.0,
       "prev_close": 0.8
     },
     {
@@ -71,7 +71,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.14213624894869648,
       "monthly_delta": 0.048304213771839466,
-      "delta_volume": 0.4582519266034222,
+      "delta_volume": -1.0,
       "prev_close": 11.89
     },
     {
@@ -81,7 +81,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.13030303030303025,
       "monthly_delta": -0.020477815699658675,
-      "delta_volume": 0.48712559117183396,
+      "delta_volume": -1.0,
       "prev_close": 3.3
     },
     {
@@ -91,7 +91,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.08974358974358976,
       "monthly_delta": -0.25263157894736843,
-      "delta_volume": 1.8630078873454647,
+      "delta_volume": -1.0,
       "prev_close": 8.58
     },
     {
@@ -101,7 +101,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.08930669800235025,
       "monthly_delta": -0.22110552763819102,
-      "delta_volume": 3.520260401048569,
+      "delta_volume": -1.0,
       "prev_close": 25.53
     }
   ],
@@ -113,7 +113,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.021220159151193685,
       "monthly_delta": -0.1193317422434369,
-      "delta_volume": -0.737620103473762,
+      "delta_volume": -1.0,
       "prev_close": 3.77
     },
     {
@@ -123,7 +123,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.01716738197424883,
       "monthly_delta": -0.06530612244897949,
-      "delta_volume": 2.8809363188585264,
+      "delta_volume": -1.0,
       "prev_close": 25.63
     },
     {
@@ -133,7 +133,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.020311442112389888,
       "monthly_delta": -0.10291382517048964,
-      "delta_volume": 1.4293948526805833,
+      "delta_volume": -1.0,
       "prev_close": 14.77
     },
     {
@@ -143,7 +143,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.038167938931297773,
       "monthly_delta": -0.11888111888111885,
-      "delta_volume": 0.6409990940856736,
+      "delta_volume": -1.0,
       "prev_close": 2.62
     },
     {
@@ -163,7 +163,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.032258064516129004,
       "monthly_delta": 0.030927835051546282,
-      "delta_volume": 0.28857083688073826,
+      "delta_volume": -1.0,
       "prev_close": 21.7
     },
     {
@@ -173,7 +173,7 @@
       "date": "2026-03-20",
       "daily_delta": 0.009090909090909038,
       "monthly_delta": -0.10483870967741926,
-      "delta_volume": -0.3706293706293706,
+      "delta_volume": -1.0,
       "prev_close": 2.2
     },
     {
@@ -213,7 +213,7 @@
       "date": "2026-03-20",
       "daily_delta": 0.0,
       "monthly_delta": -0.04868421052631566,
-      "delta_volume": -0.36236052998605295,
+      "delta_volume": -1.0,
       "prev_close": 7.23
     },
     {
@@ -223,7 +223,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.031932773109243695,
       "monthly_delta": -0.06005221932114879,
-      "delta_volume": -0.15620492166188216,
+      "delta_volume": -1.0,
       "prev_close": 29.75
     },
     {
@@ -233,7 +233,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.009598603839441666,
       "monthly_delta": -0.069672131147541,
-      "delta_volume": -0.35739785799285995,
+      "delta_volume": -1.0,
       "prev_close": 11.46
     },
     {
@@ -243,7 +243,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.0016934801016089684,
       "monthly_delta": -0.19904891304347838,
-      "delta_volume": 1.8517615557223577,
+      "delta_volume": -1.0,
       "prev_close": 11.81
     },
     {
@@ -253,7 +253,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.04656319290465627,
       "monthly_delta": -0.15187376725838275,
-      "delta_volume": -0.6413302731650241,
+      "delta_volume": -1.0,
       "prev_close": 4.51
     },
     {
@@ -263,7 +263,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.017184942716857665,
       "monthly_delta": -0.08946171341925702,
-      "delta_volume": 1.235225277940316,
+      "delta_volume": -1.0,
       "prev_close": 12.22
     },
     {
@@ -273,7 +273,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.04220183486238538,
       "monthly_delta": -0.06702412868632712,
-      "delta_volume": 1.4056813138038171,
+      "delta_volume": -1.0,
       "prev_close": 10.9
     },
     {
@@ -283,7 +283,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.014982373678025795,
       "monthly_delta": -0.05575894114333979,
-      "delta_volume": 8.382349286674422,
+      "delta_volume": -1.0,
       "prev_close": 34.04
     },
     {
@@ -293,7 +293,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.011904761904761862,
       "monthly_delta": -0.11702127659574468,
-      "delta_volume": -0.780347139821739,
+      "delta_volume": -1.0,
       "prev_close": 0.84
     },
     {
@@ -303,7 +303,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.04761904761904756,
       "monthly_delta": -0.23076923076923073,
-      "delta_volume": -0.5598230102050133,
+      "delta_volume": -1.0,
       "prev_close": 0.21
     },
     {
@@ -313,7 +313,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.023762376237623783,
       "monthly_delta": -0.11648745519713266,
-      "delta_volume": -0.5362195936621211,
+      "delta_volume": -1.0,
       "prev_close": 5.05
     },
     {
@@ -323,7 +323,7 @@
       "date": "2026-03-20",
       "daily_delta": 0.002666666666666595,
       "monthly_delta": -0.1518796992481204,
-      "delta_volume": -0.4449262792714658,
+      "delta_volume": -1.0,
       "prev_close": 11.25
     },
     {
@@ -333,7 +333,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.02313624678663251,
       "monthly_delta": -0.22764227642276424,
-      "delta_volume": -0.2559261839207385,
+      "delta_volume": -1.0,
       "prev_close": 3.89
     },
     {
@@ -353,7 +353,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.07306889352818369,
       "monthly_delta": -0.18532110091743115,
-      "delta_volume": 0.09769589175159021,
+      "delta_volume": -1.0,
       "prev_close": 4.79
     },
     {
@@ -363,7 +363,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.08750000000000002,
       "monthly_delta": -0.051948051948051965,
-      "delta_volume": -0.869281045751634,
+      "delta_volume": -1.0,
       "prev_close": 0.8
     },
     {
@@ -373,7 +373,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.047865459249676556,
       "monthly_delta": -0.2365145228215768,
-      "delta_volume": -0.037857175900939066,
+      "delta_volume": -1.0,
       "prev_close": 7.73
     },
     {
@@ -383,7 +383,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.030172413793103425,
       "monthly_delta": 0.0869565217391306,
-      "delta_volume": -0.9984764226403595,
+      "delta_volume": -1.0,
       "prev_close": 2.32
     },
     {
@@ -393,7 +393,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.03082191780821908,
       "monthly_delta": -0.05666666666666664,
-      "delta_volume": 2.556207413819128,
+      "delta_volume": -1.0,
       "prev_close": 2.92
     },
     {
@@ -403,7 +403,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.045608108108108,
       "monthly_delta": -0.02753872633390697,
-      "delta_volume": -0.22764403283290602,
+      "delta_volume": -1.0,
       "prev_close": 11.84
     },
     {
@@ -413,7 +413,7 @@
       "date": "2026-03-20",
       "daily_delta": 0.0,
       "monthly_delta": -0.20481927710843362,
-      "delta_volume": -0.778894472361809,
+      "delta_volume": -1.0,
       "prev_close": 0.66
     },
     {
@@ -423,7 +423,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.037530266343825724,
       "monthly_delta": -0.05001707067258454,
-      "delta_volume": 0.2364276315258369,
+      "delta_volume": -1.0,
       "prev_close": 57.82
     },
     {
@@ -443,7 +443,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.032350142721217834,
       "monthly_delta": -0.01928640308582441,
-      "delta_volume": 0.46291713321874584,
+      "delta_volume": -1.0,
       "prev_close": 63.06
     },
     {
@@ -453,7 +453,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.04548710601719208,
       "monthly_delta": -0.05362215909090917,
-      "delta_volume": 1.4999496834530124,
+      "delta_volume": -1.0,
       "prev_close": 55.84
     },
     {
@@ -463,7 +463,7 @@
       "date": "2026-03-20",
       "daily_delta": 0.04761904761904767,
       "monthly_delta": -0.12,
-      "delta_volume": -0.5107661061291933,
+      "delta_volume": -1.0,
       "prev_close": 0.21
     },
     {
@@ -473,7 +473,7 @@
       "date": "2026-03-20",
       "daily_delta": 0.0625,
       "monthly_delta": 0.0,
-      "delta_volume": -0.24959284967852013,
+      "delta_volume": -1.0,
       "prev_close": 0.16
     },
     {
@@ -483,7 +483,7 @@
       "date": "2026-03-20",
       "daily_delta": 0.04347826086956519,
       "monthly_delta": -0.07692307692307698,
-      "delta_volume": -0.7142912664123175,
+      "delta_volume": -1.0,
       "prev_close": 0.23
     },
     {
@@ -493,7 +493,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.03199999999999992,
       "monthly_delta": 0.07599029911075195,
-      "delta_volume": 0.47556990305131364,
+      "delta_volume": -1.0,
       "prev_close": 27.5
     },
     {
@@ -503,7 +503,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.04314420803782504,
       "monthly_delta": -0.08063600227143664,
-      "delta_volume": 0.2195446985556062,
+      "delta_volume": -1.0,
       "prev_close": 16.92
     },
     {
@@ -553,7 +553,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.0025140668023465595,
       "monthly_delta": -0.0310501221072218,
-      "delta_volume": 1.2742474916387958,
+      "delta_volume": -1.0,
       "prev_close": 83.53
     },
     {
@@ -563,7 +563,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.010208421948107227,
       "monthly_delta": -0.08888018794048547,
-      "delta_volume": 0.2770082435643879,
+      "delta_volume": -1.0,
       "prev_close": 23.51
     },
     {
@@ -573,7 +573,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.01862197392923648,
       "monthly_delta": -0.12215435868961688,
-      "delta_volume": 0.6777237508029057,
+      "delta_volume": -1.0,
       "prev_close": 16.11
     },
     {
@@ -583,7 +583,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.016630901287553734,
       "monthly_delta": -0.122546673049306,
-      "delta_volume": 0.37411920498164863,
+      "delta_volume": -1.0,
       "prev_close": 18.64
     },
     {
@@ -593,7 +593,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.016445470282746455,
       "monthly_delta": 0.0179157957599283,
-      "delta_volume": 0.11624170913642451,
+      "delta_volume": -1.0,
       "prev_close": 34.66
     },
     {
@@ -623,7 +623,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.05208333333333326,
       "monthly_delta": -0.35115864527629237,
-      "delta_volume": 0.7041695387606597,
+      "delta_volume": -1.0,
       "prev_close": 3.84
     },
     {
@@ -633,7 +633,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.0035211267605632646,
       "monthly_delta": 0.019207683073229287,
-      "delta_volume": -0.33720930232558144,
+      "delta_volume": -1.0,
       "prev_close": 8.52
     },
     {
@@ -643,7 +643,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.003468208092485714,
       "monthly_delta": 0.020118343195266286,
-      "delta_volume": -0.6866840731070496,
+      "delta_volume": -1.0,
       "prev_close": 8.65
     },
     {
@@ -663,7 +663,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.048753766091481854,
       "monthly_delta": -0.00487106017191985,
-      "delta_volume": 0.7647058823529411,
+      "delta_volume": -1.0,
       "prev_close": 36.51
     },
     {
@@ -673,7 +673,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.028169014084507116,
       "monthly_delta": -0.07382550335570481,
-      "delta_volume": -0.5244393985811513,
+      "delta_volume": -1.0,
       "prev_close": 2.84
     },
     {
@@ -683,7 +683,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.024226110363391617,
       "monthly_delta": 0.1693548387096775,
-      "delta_volume": -0.3079536786630608,
+      "delta_volume": -1.0,
       "prev_close": 7.43
     },
     {
@@ -693,7 +693,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.01836734693877562,
       "monthly_delta": -0.10925925925925939,
-      "delta_volume": -0.3470441318817892,
+      "delta_volume": -1.0,
       "prev_close": 9.8
     },
     {
@@ -703,7 +703,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.015074626865671736,
       "monthly_delta": 0.20025463805019994,
-      "delta_volume": -0.44099378881987583,
+      "delta_volume": -1.0,
       "prev_close": 67.0
     },
     {
@@ -713,7 +713,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.05593520627689197,
       "monthly_delta": 0.10502147829951092,
-      "delta_volume": -0.20438957475994513,
+      "delta_volume": -1.0,
       "prev_close": 79.02
     },
     {
@@ -723,7 +723,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.020202020202020332,
       "monthly_delta": -0.004106776180698213,
-      "delta_volume": -0.6253586123107395,
+      "delta_volume": -1.0,
       "prev_close": 4.95
     },
     {
@@ -743,7 +743,7 @@
       "date": "2026-03-20",
       "daily_delta": 0.0027548209366392573,
       "monthly_delta": -0.11002444987775062,
-      "delta_volume": -0.6236559139784946,
+      "delta_volume": -1.0,
       "prev_close": 18.15
     },
     {
@@ -753,7 +753,7 @@
       "date": "2026-03-20",
       "daily_delta": 0.009712041884816669,
       "monthly_delta": 0.032635467980295596,
-      "delta_volume": -0.961139896373057,
+      "delta_volume": -1.0,
       "prev_close": 382.0
     },
     {
@@ -763,7 +763,7 @@
       "date": "2026-03-20",
       "daily_delta": 0.04048759251197209,
       "monthly_delta": -0.005409904286308942,
-      "delta_volume": 0.3782897674359269,
+      "delta_volume": -1.0,
       "prev_close": 22.97
     },
     {
@@ -773,7 +773,7 @@
       "date": "2026-03-20",
       "daily_delta": 0.006629020378099648,
       "monthly_delta": 0.0,
-      "delta_volume": 4.384615384615385,
+      "delta_volume": -1.0,
       "prev_close": 122.19
     },
     {
@@ -793,7 +793,7 @@
       "date": "2026-03-20",
       "daily_delta": 0.1382113821138211,
       "monthly_delta": 0.11111111111111094,
-      "delta_volume": 0.6375087473757872,
+      "delta_volume": -1.0,
       "prev_close": 1.23
     },
     {
@@ -803,7 +803,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.07658359293873318,
       "monthly_delta": -0.16658856607310213,
-      "delta_volume": 4.099394987035437,
+      "delta_volume": -1.0,
       "prev_close": 38.52
     },
     {
@@ -813,7 +813,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.009936766034326916,
       "monthly_delta": -0.04279475982532732,
-      "delta_volume": 2.4264276781992495,
+      "delta_volume": -1.0,
       "prev_close": 11.07
     },
     {
@@ -823,7 +823,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.04300489929232443,
       "monthly_delta": -0.12566312997347473,
-      "delta_volume": 0.8320871240799026,
+      "delta_volume": -1.0,
       "prev_close": 55.11
     },
     {
@@ -843,7 +843,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.016213389121339072,
       "monthly_delta": -0.06742687159147265,
-      "delta_volume": -0.5435053257711993,
+      "delta_volume": -1.0,
       "prev_close": 19.12
     },
     {
@@ -853,7 +853,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.01973382285452041,
       "monthly_delta": -0.08600770218228504,
-      "delta_volume": 0.08931981320544247,
+      "delta_volume": -1.0,
       "prev_close": 21.79
     },
     {
@@ -863,7 +863,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.033199771036061754,
       "monthly_delta": -0.06890848952590956,
-      "delta_volume": 1.0666483736240302,
+      "delta_volume": -1.0,
       "prev_close": 17.47
     },
     {
@@ -873,7 +873,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.005376344086021612,
       "monthly_delta": -0.04293843766166572,
-      "delta_volume": 0.2001275534129916,
+      "delta_volume": -1.0,
       "prev_close": 18.6
     },
     {
@@ -883,7 +883,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.08542713567839189,
       "monthly_delta": -0.0193965517241379,
-      "delta_volume": -0.3372781065088757,
+      "delta_volume": -1.0,
       "prev_close": 9.95
     },
     {
@@ -893,7 +893,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.14213624894869648,
       "monthly_delta": 0.048304213771839466,
-      "delta_volume": 0.4582519266034222,
+      "delta_volume": -1.0,
       "prev_close": 11.89
     },
     {
@@ -913,7 +913,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.002143622722400762,
       "monthly_delta": -0.015335801163405605,
-      "delta_volume": -0.12462908011869434,
+      "delta_volume": -1.0,
       "prev_close": 18.66
     },
     {
@@ -923,7 +923,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.010111761575305911,
       "monthly_delta": 0.0037776578521317994,
-      "delta_volume": 1.2222222222222223,
+      "delta_volume": -1.0,
       "prev_close": 18.79
     },
     {
@@ -933,7 +933,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.024489795918367196,
       "monthly_delta": -0.08278508771929816,
-      "delta_volume": 1.9496444964449644,
+      "delta_volume": -1.0,
       "prev_close": 17.15
     },
     {
@@ -943,7 +943,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.017857142857142794,
       "monthly_delta": -0.08940397350993379,
-      "delta_volume": 1.293277744155291,
+      "delta_volume": -1.0,
       "prev_close": 2.8
     },
     {
@@ -953,7 +953,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.004395604395604269,
       "monthly_delta": -0.23993288590604023,
-      "delta_volume": -0.9106749701201484,
+      "delta_volume": -1.0,
       "prev_close": 4.55
     },
     {
@@ -963,7 +963,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.018823529411764683,
       "monthly_delta": -0.1127659574468085,
-      "delta_volume": -0.4487289345901171,
+      "delta_volume": -1.0,
       "prev_close": 4.25
     },
     {
@@ -983,7 +983,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.019128586609989395,
       "monthly_delta": -0.02120890774125128,
-      "delta_volume": -0.17836868837765163,
+      "delta_volume": -1.0,
       "prev_close": 9.41
     },
     {
@@ -993,7 +993,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.04703832752613246,
       "monthly_delta": -0.15586419753086433,
-      "delta_volume": -0.05159180785318507,
+      "delta_volume": -1.0,
       "prev_close": 5.74
     },
     {
@@ -1003,7 +1003,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.019337016574585753,
       "monthly_delta": 0.02011494252873569,
-      "delta_volume": 0.96599155204159,
+      "delta_volume": -1.0,
       "prev_close": 3.62
     },
     {
@@ -1033,7 +1033,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.0019342359767891004,
       "monthly_delta": 0.011764705882353121,
-      "delta_volume": -0.5088622351754288,
+      "delta_volume": -1.0,
       "prev_close": 10.34
     },
     {
@@ -1063,7 +1063,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.008826125330979706,
       "monthly_delta": -0.13415574402467234,
-      "delta_volume": -0.36439603446382396,
+      "delta_volume": -1.0,
       "prev_close": 11.33
     },
     {
@@ -1073,7 +1073,7 @@
       "date": "2026-03-20",
       "daily_delta": 0.006227466404457482,
       "monthly_delta": 0.008210180623973828,
-      "delta_volume": -0.6160558464223386,
+      "delta_volume": -1.0,
       "prev_close": 30.51
     },
     {
@@ -1083,7 +1083,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.00666666666666671,
       "monthly_delta": -0.0237931034482759,
-      "delta_volume": -0.8322147651006712,
+      "delta_volume": -1.0,
       "prev_close": 28.5
     },
     {
@@ -1093,7 +1093,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.012820512820512775,
       "monthly_delta": 0.023255813953488413,
-      "delta_volume": -0.7409326424870466,
+      "delta_volume": -1.0,
       "prev_close": 31.2
     },
     {
@@ -1103,7 +1103,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.004975124378109541,
       "monthly_delta": -0.2852037169406719,
-      "delta_volume": 4.0,
+      "delta_volume": -1.0,
       "prev_close": 10.05
     },
     {
@@ -1113,7 +1113,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.05882352941176472,
       "monthly_delta": -0.1836734693877552,
-      "delta_volume": 15.0,
+      "delta_volume": -1.0,
       "prev_close": 8.5
     },
     {
@@ -1123,7 +1123,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.002509935160008414,
       "monthly_delta": 0.014680851063829659,
-      "delta_volume": -0.007092198581560294,
+      "delta_volume": -1.0,
       "prev_close": 47.81
     },
     {
@@ -1133,7 +1133,7 @@
       "date": "2026-03-20",
       "daily_delta": 0.050000000000000044,
       "monthly_delta": 0.1351351351351351,
-      "delta_volume": 5.666666666666667,
+      "delta_volume": -1.0,
       "prev_close": 40.0
     },
     {
@@ -1183,7 +1183,7 @@
       "date": "2026-03-20",
       "daily_delta": 0.010609877108617827,
       "monthly_delta": -0.0036122817579770095,
-      "delta_volume": 0.007194244604316502,
+      "delta_volume": -1.0,
       "prev_close": 131.01
     },
     {
@@ -1193,7 +1193,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.005671077504725841,
       "monthly_delta": -0.039795545819642175,
-      "delta_volume": 1.1538461538461537,
+      "delta_volume": -1.0,
       "prev_close": 26.45
     },
     {
@@ -1203,7 +1203,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.0014925373134327957,
       "monthly_delta": 0.0014970059880241582,
-      "delta_volume": 1.2552947910704062,
+      "delta_volume": -1.0,
       "prev_close": 26.8
     },
     {
@@ -1213,7 +1213,7 @@
       "date": "2026-03-20",
       "daily_delta": 0.024110958793645665,
       "monthly_delta": -0.03053435114503822,
-      "delta_volume": 39.0,
+      "delta_volume": -1.0,
       "prev_close": 124.01
     },
     {
@@ -1223,7 +1223,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.0044046799724708485,
       "monthly_delta": 0.003607603718607022,
-      "delta_volume": -0.34426229508196726,
+      "delta_volume": -1.0,
       "prev_close": 145.3
     },
     {
@@ -1233,7 +1233,7 @@
       "date": "2026-03-20",
       "daily_delta": 0.00883280757097804,
       "monthly_delta": 0.047151277013752546,
-      "delta_volume": 8.647635198794045,
+      "delta_volume": -1.0,
       "prev_close": 15.85
     },
     {
@@ -1243,7 +1243,7 @@
       "date": "2026-03-20",
       "daily_delta": 0.004101722723544032,
       "monthly_delta": 0.0497427101200687,
-      "delta_volume": 3.2244817792963376,
+      "delta_volume": -1.0,
       "prev_close": 12.19
     },
     {
@@ -1253,7 +1253,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.018595041322314043,
       "monthly_delta": -0.10881801125703561,
-      "delta_volume": 0.7877332159942396,
+      "delta_volume": -1.0,
       "prev_close": 4.84
     },
     {
@@ -1273,7 +1273,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.0034887408816999255,
       "monthly_delta": 0.03936486933509764,
-      "delta_volume": -0.6569250317662008,
+      "delta_volume": -1.0,
       "prev_close": 31.53
     },
     {
@@ -1293,7 +1293,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.007067137809187329,
       "monthly_delta": -0.20621468926553677,
-      "delta_volume": -0.18316566361131303,
+      "delta_volume": -1.0,
       "prev_close": 2.83
     },
     {
@@ -1303,7 +1303,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.04115917681646364,
       "monthly_delta": -0.07887835384305031,
-      "delta_volume": 1.1209535061505318,
+      "delta_volume": -1.0,
       "prev_close": 47.62
     },
     {
@@ -1313,7 +1313,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.04137039431157086,
       "monthly_delta": 0.053267045454545414,
-      "delta_volume": 0.33285292411245804,
+      "delta_volume": -1.0,
       "prev_close": 15.47
     },
     {
@@ -1333,7 +1333,7 @@
       "date": "2026-03-20",
       "daily_delta": 0.017724413950829243,
       "monthly_delta": -0.10552763819095468,
-      "delta_volume": -0.41002949852507375,
+      "delta_volume": -1.0,
       "prev_close": 17.49
     },
     {
@@ -1353,7 +1353,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.026717557251908497,
       "monthly_delta": -0.19047619047619047,
-      "delta_volume": 0.8588761666950282,
+      "delta_volume": -1.0,
       "prev_close": 5.24
     },
     {
@@ -1363,7 +1363,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.013722126929674117,
       "monthly_delta": -0.13403614457831325,
-      "delta_volume": -0.09012968986023984,
+      "delta_volume": -1.0,
       "prev_close": 5.83
     },
     {
@@ -1373,7 +1373,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.03415251174557288,
       "monthly_delta": -0.061622191011235894,
-      "delta_volume": 1.4388541140666886,
+      "delta_volume": -1.0,
       "prev_close": 55.34
     },
     {
@@ -1383,7 +1383,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.016420361247947435,
       "monthly_delta": -0.30267753201396974,
-      "delta_volume": 1.0043024784909949,
+      "delta_volume": -1.0,
       "prev_close": 6.09
     },
     {
@@ -1393,7 +1393,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.014991671293725917,
       "monthly_delta": -0.05888594164456251,
-      "delta_volume": -0.4308068459657701,
+      "delta_volume": -1.0,
       "prev_close": 18.01
     },
     {
@@ -1403,7 +1403,7 @@
       "date": "2026-03-20",
       "daily_delta": 0.0,
       "monthly_delta": -0.09756097560975607,
-      "delta_volume": -0.2669584245076586,
+      "delta_volume": -1.0,
       "prev_close": 0.74
     },
     {
@@ -1423,7 +1423,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.00047630388187669404,
       "monthly_delta": -0.15705965053223536,
-      "delta_volume": -0.8148148148148149,
+      "delta_volume": -1.0,
       "prev_close": 41.99
     },
     {
@@ -1433,7 +1433,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.022727272727272818,
       "monthly_delta": -0.2095588235294119,
-      "delta_volume": 0.6666666666666667,
+      "delta_volume": -1.0,
       "prev_close": 2.2
     },
     {
@@ -1453,7 +1453,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.0344626168224299,
       "monthly_delta": -0.1938551572787124,
-      "delta_volume": 1.0836617834112174,
+      "delta_volume": -1.0,
       "prev_close": 34.24
     },
     {
@@ -1463,7 +1463,7 @@
       "date": "2026-03-20",
       "daily_delta": 0.03125,
       "monthly_delta": -0.15021459227467815,
-      "delta_volume": 0.6343110423921696,
+      "delta_volume": -1.0,
       "prev_close": 1.92
     },
     {
@@ -1473,7 +1473,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.04143646408839774,
       "monthly_delta": -0.01921989824759751,
-      "delta_volume": 0.6071910254986275,
+      "delta_volume": -1.0,
       "prev_close": 18.1
     },
     {
@@ -1483,7 +1483,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.07598672076724455,
       "monthly_delta": -0.20526649746192893,
-      "delta_volume": 2.357301899619788,
+      "delta_volume": -1.0,
       "prev_close": 27.11
     },
     {
@@ -1493,7 +1493,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.08930669800235025,
       "monthly_delta": -0.22110552763819102,
-      "delta_volume": 3.520260401048569,
+      "delta_volume": -1.0,
       "prev_close": 25.53
     },
     {
@@ -1503,7 +1503,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.0714285714285714,
       "monthly_delta": -0.2571428571428571,
-      "delta_volume": 0.4291673748126632,
+      "delta_volume": -1.0,
       "prev_close": 3.36
     },
     {
@@ -1513,7 +1513,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.0034602076124566894,
       "monthly_delta": -0.06249999999999989,
-      "delta_volume": -0.19037852851882953,
+      "delta_volume": -1.0,
       "prev_close": 14.45
     },
     {
@@ -1523,7 +1523,7 @@
       "date": "2026-03-20",
       "daily_delta": 0.014285714285714235,
       "monthly_delta": -0.08268733850129206,
-      "delta_volume": 0.17723208867672646,
+      "delta_volume": -1.0,
       "prev_close": 7.0
     },
     {
@@ -1533,7 +1533,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.018571428571428572,
       "monthly_delta": -0.10196078431372557,
-      "delta_volume": 0.4372294372294372,
+      "delta_volume": -1.0,
       "prev_close": 7.0
     },
     {
@@ -1543,7 +1543,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.03455723542116629,
       "monthly_delta": -0.1916817359855334,
-      "delta_volume": 1.0394760275192407,
+      "delta_volume": -1.0,
       "prev_close": 13.89
     },
     {
@@ -1553,7 +1553,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.019607843137254832,
       "monthly_delta": -0.06069364161849711,
-      "delta_volume": -0.20353133096631804,
+      "delta_volume": -1.0,
       "prev_close": 6.63
     },
     {
@@ -1573,7 +1573,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.04456824512534807,
       "monthly_delta": -0.1136950904392765,
-      "delta_volume": 6.764705882352941,
+      "delta_volume": -1.0,
       "prev_close": 3.59
     },
     {
@@ -1583,7 +1583,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.13030303030303025,
       "monthly_delta": -0.020477815699658675,
-      "delta_volume": 0.48712559117183396,
+      "delta_volume": -1.0,
       "prev_close": 3.3
     },
     {
@@ -1593,7 +1593,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.0037735849056602655,
       "monthly_delta": 0.05600000000000005,
-      "delta_volume": 90.11111111111111,
+      "delta_volume": -1.0,
       "prev_close": 2.65
     },
     {
@@ -1603,7 +1603,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.024070021881838155,
       "monthly_delta": -0.19784172661870503,
-      "delta_volume": -0.4853422173398215,
+      "delta_volume": -1.0,
       "prev_close": 4.57
     },
     {
@@ -1613,7 +1613,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.012811387900355964,
       "monthly_delta": -0.01631205673758873,
-      "delta_volume": -0.6168582375478927,
+      "delta_volume": -1.0,
       "prev_close": 14.05
     },
     {
@@ -1623,7 +1623,7 @@
       "date": "2026-03-20",
       "daily_delta": 0.010699001426533572,
       "monthly_delta": -0.0021126760563380254,
-      "delta_volume": -0.5681511470985154,
+      "delta_volume": -1.0,
       "prev_close": 14.02
     },
     {
@@ -1633,7 +1633,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.08974358974358976,
       "monthly_delta": -0.25263157894736843,
-      "delta_volume": 1.8630078873454647,
+      "delta_volume": -1.0,
       "prev_close": 8.58
     },
     {
@@ -1643,7 +1643,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.024306637581801294,
       "monthly_delta": -0.05891193267207706,
-      "delta_volume": 3.1929317418873557,
+      "delta_volume": -1.0,
       "prev_close": 32.09
     },
     {
@@ -1663,7 +1663,7 @@
       "date": "2026-03-20",
       "daily_delta": 0.008886565603763774,
       "monthly_delta": -0.030637870416875934,
-      "delta_volume": -0.786096256684492,
+      "delta_volume": -1.0,
       "prev_close": 38.26
     },
     {
@@ -1683,7 +1683,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.039555555555555566,
       "monthly_delta": -0.09958333333333336,
-      "delta_volume": -0.5640326975476839,
+      "delta_volume": -1.0,
       "prev_close": 45.0
     },
     {
@@ -1693,7 +1693,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.04615587498351581,
       "monthly_delta": -0.23322378882646033,
-      "delta_volume": 0.4783095268045754,
+      "delta_volume": -1.0,
       "prev_close": 75.83
     },
     {
@@ -1703,7 +1703,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.01225296442687751,
       "monthly_delta": 0.1737905119774541,
-      "delta_volume": 2.2812887466693272,
+      "delta_volume": -1.0,
       "prev_close": 25.3
     },
     {
@@ -1713,7 +1713,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.0031999999999999806,
       "monthly_delta": -0.014240506329113889,
-      "delta_volume": -0.5116988809766022,
+      "delta_volume": -1.0,
       "prev_close": 12.5
     },
     {
@@ -1723,7 +1723,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.045643153526971125,
       "monthly_delta": -0.05056759545923639,
-      "delta_volume": 0.036653091447611974,
+      "delta_volume": -1.0,
       "prev_close": 9.64
     },
     {
@@ -1733,7 +1733,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.04291593180482067,
       "monthly_delta": -0.04869497467861317,
-      "delta_volume": 1.4643250620274877,
+      "delta_volume": -1.0,
       "prev_close": 51.03
     },
     {
@@ -1743,7 +1743,7 @@
       "date": "2026-03-20",
       "daily_delta": 0.019230769230769162,
       "monthly_delta": 0.00952380952380949,
-      "delta_volume": -0.19243812684897899,
+      "delta_volume": -1.0,
       "prev_close": 1.04
     },
     {
@@ -1753,7 +1753,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.015031645569620333,
       "monthly_delta": 0.04249528993091878,
-      "delta_volume": -0.8214285714285714,
+      "delta_volume": -1.0,
       "prev_close": 50.56
     },
     {
@@ -1773,7 +1773,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.024024024024024038,
       "monthly_delta": -0.10220994475138123,
-      "delta_volume": 2.0921985815602837,
+      "delta_volume": -1.0,
       "prev_close": 3.33
     },
     {
@@ -1783,7 +1783,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.015174506828528056,
       "monthly_delta": 0.0030911901081918103,
-      "delta_volume": -0.17808219178082196,
+      "delta_volume": -1.0,
       "prev_close": 6.59
     },
     {
@@ -1823,7 +1823,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.031961259079903104,
       "monthly_delta": -0.021297429620563135,
-      "delta_volume": 0.8166052060814428,
+      "delta_volume": -1.0,
       "prev_close": 41.3
     },
     {
@@ -1833,7 +1833,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.008620689655172376,
       "monthly_delta": 0.08490566037735836,
-      "delta_volume": -0.6539183695790874,
+      "delta_volume": -1.0,
       "prev_close": 1.16
     },
     {
@@ -1863,7 +1863,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.005319148936170137,
       "monthly_delta": -0.08780487804878034,
-      "delta_volume": -0.5832838656060786,
+      "delta_volume": -1.0,
       "prev_close": 3.76
     },
     {
@@ -1873,7 +1873,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.004830917874396046,
       "monthly_delta": -0.07623318385650224,
-      "delta_volume": -0.6407185628742516,
+      "delta_volume": -1.0,
       "prev_close": 20.7
     },
     {
@@ -1883,7 +1883,7 @@
       "date": "2026-03-20",
       "daily_delta": 0.020699852143913233,
       "monthly_delta": -0.050435580009170033,
-      "delta_volume": -0.2329785436729177,
+      "delta_volume": -1.0,
       "prev_close": 20.29
     },
     {
@@ -1893,7 +1893,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.026798307475317307,
       "monthly_delta": -0.1766109785202864,
-      "delta_volume": 0.5854953145405806,
+      "delta_volume": -1.0,
       "prev_close": 7.09
     },
     {
@@ -1903,7 +1903,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.0343567251461987,
       "monthly_delta": -0.14993564993564978,
-      "delta_volume": 2.7399266485367133,
+      "delta_volume": -1.0,
       "prev_close": 13.68
     },
     {
@@ -1923,7 +1923,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.0013755158184318717,
       "monthly_delta": -0.08217446270543616,
-      "delta_volume": 0.12321006633074272,
+      "delta_volume": -1.0,
       "prev_close": 7.27
     },
     {
@@ -1933,7 +1933,7 @@
       "date": "2026-03-20",
       "daily_delta": 0.0,
       "monthly_delta": -0.03614457831325313,
-      "delta_volume": -0.8902305159165752,
+      "delta_volume": -1.0,
       "prev_close": 4.0
     },
     {
@@ -1943,7 +1943,7 @@
       "date": "2026-03-20",
       "daily_delta": 0.0,
       "monthly_delta": -0.23333333333333328,
-      "delta_volume": -0.49479861296345695,
+      "delta_volume": -1.0,
       "prev_close": 0.46
     },
     {
@@ -1983,7 +1983,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.01736111111111105,
       "monthly_delta": 0.07809523809523822,
-      "delta_volume": 1.2421443448338314,
+      "delta_volume": -1.0,
       "prev_close": 5.76
     },
     {
@@ -1993,7 +1993,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.028031290743155135,
       "monthly_delta": -0.16000000000000003,
-      "delta_volume": 1.2001059709400814,
+      "delta_volume": -1.0,
       "prev_close": 15.34
     },
     {
@@ -2003,7 +2003,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.010910815939278784,
       "monthly_delta": -0.14338537387017247,
-      "delta_volume": 0.38916885513521193,
+      "delta_volume": -1.0,
       "prev_close": 21.08
     },
     {
@@ -2033,7 +2033,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.009340503821115176,
       "monthly_delta": 0.0,
-      "delta_volume": -0.7674418604651163,
+      "delta_volume": -1.0,
       "prev_close": 35.33
     },
     {
@@ -2043,7 +2043,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.016853932584269704,
       "monthly_delta": -0.4067796610169492,
-      "delta_volume": -0.813480262291467,
+      "delta_volume": -1.0,
       "prev_close": 1.78
     },
     {
@@ -2053,7 +2053,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.005685407454200875,
       "monthly_delta": -0.1473456121343446,
-      "delta_volume": -0.6952085754875371,
+      "delta_volume": -1.0,
       "prev_close": 15.83
     },
     {
@@ -2063,7 +2063,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.002287021154945612,
       "monthly_delta": -0.188749418874942,
-      "delta_volume": 0.5544906889582231,
+      "delta_volume": -1.0,
       "prev_close": 17.49
     },
     {
@@ -2073,7 +2073,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.03458737864077677,
       "monthly_delta": -0.16832200731834812,
-      "delta_volume": 1.0246130474470792,
+      "delta_volume": -1.0,
       "prev_close": 16.48
     },
     {
@@ -2083,7 +2083,7 @@
       "date": "2026-03-20",
       "daily_delta": 0.0,
       "monthly_delta": -0.2509025270758122,
-      "delta_volume": 0.9880896468574194,
+      "delta_volume": -1.0,
       "prev_close": 4.15
     },
     {
@@ -2093,7 +2093,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.017721518987341867,
       "monthly_delta": -0.15468409586056642,
-      "delta_volume": -0.27232635060639476,
+      "delta_volume": -1.0,
       "prev_close": 7.9
     },
     {
@@ -2103,7 +2103,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.010126582278481067,
       "monthly_delta": -0.1887966804979253,
-      "delta_volume": 0.8064400988990261,
+      "delta_volume": -1.0,
       "prev_close": 7.9
     },
     {
@@ -2123,7 +2123,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.012820512820512775,
       "monthly_delta": -0.035490605427974886,
-      "delta_volume": 1.4905641195084445,
+      "delta_volume": -1.0,
       "prev_close": 4.68
     },
     {
@@ -2143,7 +2143,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.012931034482758563,
       "monthly_delta": -0.025531914893617058,
-      "delta_volume": 0.3781223083548666,
+      "delta_volume": -1.0,
       "prev_close": 2.32
     },
     {
@@ -2153,7 +2153,7 @@
       "date": "2026-03-20",
       "daily_delta": 0.13636363636363624,
       "monthly_delta": 0.13636363636363624,
-      "delta_volume": 2.3333333333333335,
+      "delta_volume": -1.0,
       "prev_close": 1.32
     },
     {
@@ -2163,7 +2163,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.05084745762711851,
       "monthly_delta": -0.11462450592885365,
-      "delta_volume": 0.8175411358998868,
+      "delta_volume": -1.0,
       "prev_close": 9.44
     },
     {
@@ -2173,7 +2173,7 @@
       "date": "2026-03-20",
       "daily_delta": 0.01526717557251911,
       "monthly_delta": -0.15822784810126578,
-      "delta_volume": 0.9405106242032328,
+      "delta_volume": -1.0,
       "prev_close": 2.62
     },
     {
@@ -2183,7 +2183,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.03484320557491294,
       "monthly_delta": -0.21082621082621078,
-      "delta_volume": -0.845367843975852,
+      "delta_volume": -1.0,
       "prev_close": 2.87
     },
     {
@@ -2193,7 +2193,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.0158311345646438,
       "monthly_delta": -0.06045340050377834,
-      "delta_volume": -0.3126531967461256,
+      "delta_volume": -1.0,
       "prev_close": 3.79
     },
     {
@@ -2243,7 +2243,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.04963503649635037,
       "monthly_delta": -0.09205020920502094,
-      "delta_volume": -0.9426934097421203,
+      "delta_volume": -1.0,
       "prev_close": 6.85
     },
     {
@@ -2253,7 +2253,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.007619901389511297,
       "monthly_delta": -0.04856037816931669,
-      "delta_volume": 0.3618531047669362,
+      "delta_volume": -1.0,
       "prev_close": 22.31
     },
     {
@@ -2263,7 +2263,7 @@
       "date": "2026-03-20",
       "daily_delta": 0.012987012987013102,
       "monthly_delta": 0.278688524590164,
-      "delta_volume": -0.7405256382967941,
+      "delta_volume": -1.0,
       "prev_close": 0.77
     },
     {
@@ -2273,7 +2273,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.03514376996805113,
       "monthly_delta": -0.0707692307692308,
-      "delta_volume": 0.13207547169811318,
+      "delta_volume": -1.0,
       "prev_close": 3.13
     },
     {
@@ -2293,7 +2293,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.05003679175864606,
       "monthly_delta": -0.09403508771929825,
-      "delta_volume": 0.040313952172713385,
+      "delta_volume": -1.0,
       "prev_close": 27.18
     },
     {
@@ -2303,7 +2303,7 @@
       "date": "2026-03-20",
       "daily_delta": 0.0,
       "monthly_delta": -0.045454545454545525,
-      "delta_volume": -0.6627724918704083,
+      "delta_volume": -1.0,
       "prev_close": 1.26
     },
     {
@@ -2313,7 +2313,7 @@
       "date": "2026-03-20",
       "daily_delta": 0.017094017094017033,
       "monthly_delta": 0.06249999999999978,
-      "delta_volume": 0.8913095523102705,
+      "delta_volume": -1.0,
       "prev_close": 1.17
     },
     {
@@ -2323,7 +2323,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.028551532033426197,
       "monthly_delta": 0.10978520286396165,
-      "delta_volume": -0.04050471923920573,
+      "delta_volume": -1.0,
       "prev_close": 14.36
     },
     {
@@ -2333,7 +2333,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.02576197387518131,
       "monthly_delta": -0.06641168289290678,
-      "delta_volume": -0.4268370316478719,
+      "delta_volume": -1.0,
       "prev_close": 55.12
     },
     {
@@ -2343,7 +2343,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.0030674846625767804,
       "monthly_delta": -0.06743185078909619,
-      "delta_volume": 0.16352201257861632,
+      "delta_volume": -1.0,
       "prev_close": 32.6
     },
     {
@@ -2353,7 +2353,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.02956893480584255,
       "monthly_delta": -0.06391752577319598,
-      "delta_volume": 1.2798494175103015,
+      "delta_volume": -1.0,
       "prev_close": 28.07
     },
     {
@@ -2363,7 +2363,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.012801204819277157,
       "monthly_delta": -0.07870695713281806,
-      "delta_volume": 1.2458851192475646,
+      "delta_volume": -1.0,
       "prev_close": 13.28
     },
     {
@@ -2373,7 +2373,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.015037593984962516,
       "monthly_delta": -0.09279778393351801,
-      "delta_volume": 1.0942851693574247,
+      "delta_volume": -1.0,
       "prev_close": 13.3
     },
     {
@@ -2383,7 +2383,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.015560418186238767,
       "monthly_delta": -0.09011235955056174,
-      "delta_volume": 2.5148073419518626,
+      "delta_volume": -1.0,
       "prev_close": 41.13
     },
     {
@@ -2393,7 +2393,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.01610229694529952,
       "monthly_delta": -0.12673392181588905,
-      "delta_volume": 0.14760268923016628,
+      "delta_volume": -1.0,
       "prev_close": 42.23
     },
     {
@@ -2403,7 +2403,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.024169184290030232,
       "monthly_delta": 0.06600660066006614,
-      "delta_volume": 0.27982446516730675,
+      "delta_volume": -1.0,
       "prev_close": 3.31
     },
     {
@@ -2413,7 +2413,7 @@
       "date": "2026-03-20",
       "daily_delta": 0.0,
       "monthly_delta": -0.17708333333333326,
-      "delta_volume": -0.42521227955584584,
+      "delta_volume": -1.0,
       "prev_close": 0.79
     },
     {
@@ -2423,7 +2423,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.05227272727272736,
       "monthly_delta": -0.12943632567849694,
-      "delta_volume": 1.216786054163316,
+      "delta_volume": -1.0,
       "prev_close": 8.8
     },
     {
@@ -2453,7 +2453,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.054817275747508165,
       "monthly_delta": -0.3026960784313725,
-      "delta_volume": -0.42586855562363635,
+      "delta_volume": -1.0,
       "prev_close": 6.02
     },
     {
@@ -2463,7 +2463,7 @@
       "date": "2026-03-20",
       "daily_delta": 0.003875968992248069,
       "monthly_delta": -0.2071428571428573,
-      "delta_volume": 0.8999093400053686,
+      "delta_volume": -1.0,
       "prev_close": 7.74
     },
     {
@@ -2473,7 +2473,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.01591511936339529,
       "monthly_delta": -0.07940446650124078,
-      "delta_volume": 0.7012849227867499,
+      "delta_volume": -1.0,
       "prev_close": 3.77
     },
     {
@@ -2483,7 +2483,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.021164021164021052,
       "monthly_delta": -0.08188585607940446,
-      "delta_volume": 0.9697198213353442,
+      "delta_volume": -1.0,
       "prev_close": 3.78
     },
     {
@@ -2493,7 +2493,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.021276595744680993,
       "monthly_delta": -0.08955962394854045,
-      "delta_volume": 1.604681263247541,
+      "delta_volume": -1.0,
       "prev_close": 18.8
     },
     {
@@ -2503,7 +2503,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.03841807909604522,
       "monthly_delta": 0.007100591715976323,
-      "delta_volume": 0.17102357717786165,
+      "delta_volume": -1.0,
       "prev_close": 8.85
     },
     {
@@ -2513,7 +2513,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.04131652661064422,
       "monthly_delta": -0.24656026417171173,
-      "delta_volume": -0.11741448068313054,
+      "delta_volume": -1.0,
       "prev_close": 14.28
     },
     {
@@ -2523,7 +2523,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.006607296753806446,
       "monthly_delta": -0.013409415121255264,
-      "delta_volume": -0.2920266356412605,
+      "delta_volume": -1.0,
       "prev_close": 34.81
     },
     {
@@ -2533,7 +2533,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.04068522483940029,
       "monthly_delta": -0.056842105263157805,
-      "delta_volume": -0.3852467207162795,
+      "delta_volume": -1.0,
       "prev_close": 4.67
     },
     {
@@ -2543,7 +2543,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.03684210526315779,
       "monthly_delta": -0.20779220779220775,
-      "delta_volume": -0.62656698950464,
+      "delta_volume": -1.0,
       "prev_close": 1.9
     },
     {
@@ -2553,7 +2553,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.017984263769201925,
       "monthly_delta": -0.039926739926739896,
-      "delta_volume": -0.331123652542626,
+      "delta_volume": -1.0,
       "prev_close": 26.69
     },
     {
@@ -2563,7 +2563,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.00031250000000004885,
       "monthly_delta": -0.012349490583513534,
-      "delta_volume": -0.06025179856115104,
+      "delta_volume": -1.0,
       "prev_close": 32.0
     },
     {
@@ -2573,7 +2573,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.05294117647058816,
       "monthly_delta": -0.09039548022598864,
-      "delta_volume": 0.17994752106062695,
+      "delta_volume": -1.0,
       "prev_close": 1.7
     },
     {
@@ -2583,7 +2583,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.020462046204620443,
       "monthly_delta": -0.04258064516129034,
-      "delta_volume": 0.4176743623064392,
+      "delta_volume": -1.0,
       "prev_close": 15.15
     },
     {
@@ -2593,7 +2593,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.05813953488372081,
       "monthly_delta": -0.3076923076923076,
-      "delta_volume": -0.4799687146954028,
+      "delta_volume": -1.0,
       "prev_close": 0.86
     },
     {
@@ -2613,7 +2613,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.024390243902438935,
       "monthly_delta": -0.04761904761904767,
-      "delta_volume": 0.6342412451361867,
+      "delta_volume": -1.0,
       "prev_close": 4.1
     },
     {
@@ -2623,7 +2623,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.02941176470588247,
       "monthly_delta": 0.0,
-      "delta_volume": -0.48577642397557463,
+      "delta_volume": -1.0,
       "prev_close": 3.74
     },
     {
@@ -2653,7 +2653,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.030035335689045928,
       "monthly_delta": -0.03514938488576458,
-      "delta_volume": 0.046026766212620585,
+      "delta_volume": -1.0,
       "prev_close": 5.66
     },
     {
@@ -2663,7 +2663,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.026963657678780617,
       "monthly_delta": -0.10415542363734487,
-      "delta_volume": 1.529253902829781,
+      "delta_volume": -1.0,
       "prev_close": 17.06
     },
     {
@@ -2673,7 +2673,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.013005109150023286,
       "monthly_delta": -0.1486378205128206,
-      "delta_volume": -0.27961045459794454,
+      "delta_volume": -1.0,
       "prev_close": 21.53
     },
     {
@@ -2683,7 +2683,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.06375404530744333,
       "monthly_delta": -0.1084745762711865,
-      "delta_volume": 1.3446120955474243,
+      "delta_volume": -1.0,
       "prev_close": 30.9
     },
     {
@@ -2693,7 +2693,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.01941747572815533,
       "monthly_delta": -0.15833333333333333,
-      "delta_volume": -0.6903047091412742,
+      "delta_volume": -1.0,
       "prev_close": 1.03
     },
     {
@@ -2703,7 +2703,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.04456824512534807,
       "monthly_delta": -0.1316455696202532,
-      "delta_volume": 0.2884178652535958,
+      "delta_volume": -1.0,
       "prev_close": 3.59
     },
     {
@@ -2743,7 +2743,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.02960526315789469,
       "monthly_delta": -0.09370199692780334,
-      "delta_volume": -0.228486646884273,
+      "delta_volume": -1.0,
       "prev_close": 6.08
     },
     {
@@ -2753,7 +2753,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.04903078677309003,
       "monthly_delta": -0.188715953307393,
-      "delta_volume": 0.4221050801882944,
+      "delta_volume": -1.0,
       "prev_close": 8.77
     },
     {
@@ -2763,7 +2763,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.033454545454545515,
       "monthly_delta": -0.12277227722772288,
-      "delta_volume": 4.016346992153443,
+      "delta_volume": -1.0,
       "prev_close": 13.75
     },
     {
@@ -2773,7 +2773,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.039682539682539764,
       "monthly_delta": -0.10370370370370374,
-      "delta_volume": -0.09613740069327037,
+      "delta_volume": -1.0,
       "prev_close": 1.26
     },
     {
@@ -2803,7 +2803,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.03621495327102808,
       "monthly_delta": -0.06779661016949146,
-      "delta_volume": -0.6178343949044586,
+      "delta_volume": -1.0,
       "prev_close": 17.12
     },
     {
@@ -2813,7 +2813,7 @@
       "date": "2026-03-20",
       "daily_delta": 0.004761904761904745,
       "monthly_delta": 0.024271844660194164,
-      "delta_volume": -0.7977073499662846,
+      "delta_volume": -1.0,
       "prev_close": 4.2
     },
     {
@@ -2823,7 +2823,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.02314814814814814,
       "monthly_delta": -0.08827160493827158,
-      "delta_volume": 0.03634565514135857,
+      "delta_volume": -1.0,
       "prev_close": 15.12
     },
     {
@@ -2833,7 +2833,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.03436988543371522,
       "monthly_delta": -0.0985485103132161,
-      "delta_volume": 0.2198000880669917,
+      "delta_volume": -1.0,
       "prev_close": 12.22
     },
     {
@@ -2843,7 +2843,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.05416116248348746,
       "monthly_delta": -0.27235772357723576,
-      "delta_volume": -0.13137619513588372,
+      "delta_volume": -1.0,
       "prev_close": 7.57
     },
     {
@@ -2873,7 +2873,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.0267379679144385,
       "monthly_delta": -0.13744075829383873,
-      "delta_volume": 0.10748792270531404,
+      "delta_volume": -1.0,
       "prev_close": 3.74
     },
     {
@@ -2893,7 +2893,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.0032414910858995505,
       "monthly_delta": 0.11919927206551395,
-      "delta_volume": -0.9111111111111111,
+      "delta_volume": -1.0,
       "prev_close": 61.7
     },
     {
@@ -2903,7 +2903,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.027624309392265123,
       "monthly_delta": -0.09716354858177423,
-      "delta_volume": -0.2343652860344564,
+      "delta_volume": -1.0,
       "prev_close": 30.77
     },
     {
@@ -2923,7 +2923,7 @@
       "date": "2026-03-20",
       "daily_delta": 0.13636363636363624,
       "monthly_delta": 1.0661157024793386,
-      "delta_volume": 1.0128479657387581,
+      "delta_volume": -1.0,
       "prev_close": 19.8
     },
     {
@@ -2933,7 +2933,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.025274725274725296,
       "monthly_delta": -0.15844402277039848,
-      "delta_volume": -0.2197531872326961,
+      "delta_volume": -1.0,
       "prev_close": 9.1
     },
     {
@@ -2943,7 +2943,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.055384615384615254,
       "monthly_delta": -0.00754310344827569,
-      "delta_volume": 0.4784302358104362,
+      "delta_volume": -1.0,
       "prev_close": 9.75
     },
     {
@@ -2963,7 +2963,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.0006020469596627054,
       "monthly_delta": 0.014050091631032435,
-      "delta_volume": 0.5026960326391574,
+      "delta_volume": -1.0,
       "prev_close": 33.22
     },
     {
@@ -2973,7 +2973,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.014336917562724039,
       "monthly_delta": -0.03508771929824561,
-      "delta_volume": 0.7475728155339805,
+      "delta_volume": -1.0,
       "prev_close": 2.79
     },
     {
@@ -2983,7 +2983,7 @@
       "date": "2026-03-20",
       "daily_delta": 0.008968609865470878,
       "monthly_delta": 0.09386686611817519,
-      "delta_volume": -0.19523099850968706,
+      "delta_volume": -1.0,
       "prev_close": 28.99
     },
     {
@@ -2993,7 +2993,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.04878048780487798,
       "monthly_delta": -0.09302325581395343,
-      "delta_volume": 1.5,
+      "delta_volume": -1.0,
       "prev_close": 4.1
     },
     {
@@ -3003,7 +3003,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.021008403361344463,
       "monthly_delta": -0.06799999999999995,
-      "delta_volume": -0.08823529411764708,
+      "delta_volume": -1.0,
       "prev_close": 2.38
     },
     {
@@ -3013,7 +3013,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.005494505494505475,
       "monthly_delta": 0.09696969696969715,
-      "delta_volume": -0.4437384840205858,
+      "delta_volume": -1.0,
       "prev_close": 7.28
     },
     {
@@ -3033,7 +3033,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.02034664657121321,
       "monthly_delta": 0.07615894039735105,
-      "delta_volume": -0.7566941425631133,
+      "delta_volume": -1.0,
       "prev_close": 13.27
     },
     {
@@ -3043,7 +3043,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.015045871559632995,
       "monthly_delta": 0.16695652173913045,
-      "delta_volume": -0.9309551208285386,
+      "delta_volume": -1.0,
       "prev_close": 27.25
     },
     {
@@ -3053,7 +3053,7 @@
       "date": "2026-03-20",
       "daily_delta": 0.0,
       "monthly_delta": 0.0,
-      "delta_volume": -0.6264479753972322,
+      "delta_volume": -1.0,
       "prev_close": 0.17
     },
     {
@@ -3063,7 +3063,7 @@
       "date": "2026-03-20",
       "daily_delta": 0.05600000000000005,
       "monthly_delta": -0.18012422360248448,
-      "delta_volume": -0.11764705882352944,
+      "delta_volume": -1.0,
       "prev_close": 1.25
     },
     {
@@ -3073,7 +3073,7 @@
       "date": "2026-03-20",
       "daily_delta": 0.2892561983471076,
       "monthly_delta": -0.4545454545454545,
-      "delta_volume": 3.8462308304111046,
+      "delta_volume": -1.0,
       "prev_close": 1.21
     },
     {
@@ -3083,7 +3083,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.014508928571428603,
       "monthly_delta": -0.06063829787234043,
-      "delta_volume": -0.7071961496052219,
+      "delta_volume": -1.0,
       "prev_close": 8.96
     },
     {
@@ -3093,7 +3093,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.015094339622641506,
       "monthly_delta": -0.08395339042538263,
-      "delta_volume": 2.7308947278035376,
+      "delta_volume": -1.0,
       "prev_close": 66.25
     },
     {
@@ -3103,7 +3103,7 @@
       "date": "2026-03-20",
       "daily_delta": 0.0,
       "monthly_delta": -0.07428571428571418,
-      "delta_volume": 0.8181818181818181,
+      "delta_volume": -1.0,
       "prev_close": 1.62
     },
     {
@@ -3113,7 +3113,7 @@
       "date": "2026-03-20",
       "daily_delta": 0.0,
       "monthly_delta": -0.046818054387440466,
-      "delta_volume": 2.5714285714285716,
+      "delta_volume": -1.0,
       "prev_close": 34.0
     },
     {
@@ -3133,7 +3133,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.024752475247524774,
       "monthly_delta": -0.41369047619047616,
-      "delta_volume": -0.7569037596582247,
+      "delta_volume": -1.0,
       "prev_close": 2.02
     },
     {
@@ -3143,7 +3143,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.040000000000000036,
       "monthly_delta": -0.5121951219512195,
-      "delta_volume": 0.201697053090242,
+      "delta_volume": -1.0,
       "prev_close": 1.25
     },
     {
@@ -3153,7 +3153,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.012820512820512886,
       "monthly_delta": 0.013157894736842035,
-      "delta_volume": -0.4787102572744636,
+      "delta_volume": -1.0,
       "prev_close": 1.56
     },
     {
@@ -3183,7 +3183,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.023851076207097144,
       "monthly_delta": 0.25411061285500747,
-      "delta_volume": 0.5431371133411655,
+      "delta_volume": -1.0,
       "prev_close": 51.57
     },
     {
@@ -3193,7 +3193,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.02372808892689182,
       "monthly_delta": 0.22801828448507666,
-      "delta_volume": 0.28355292686978717,
+      "delta_volume": -1.0,
       "prev_close": 46.78
     },
     {
@@ -3203,7 +3203,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.014666666666666717,
       "monthly_delta": -0.16022727272727288,
-      "delta_volume": 0.20760328687727592,
+      "delta_volume": -1.0,
       "prev_close": 7.5
     },
     {
@@ -3213,7 +3213,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.026016260162601612,
       "monthly_delta": -0.1737931034482758,
-      "delta_volume": 1.1294616996083433,
+      "delta_volume": -1.0,
       "prev_close": 6.15
     },
     {
@@ -3223,7 +3223,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.0008849557522124796,
       "monthly_delta": -0.1315384615384616,
-      "delta_volume": -0.5343554798409995,
+      "delta_volume": -1.0,
       "prev_close": 11.3
     },
     {
@@ -3233,7 +3233,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.03418803418803407,
       "monthly_delta": -0.15671641791044777,
-      "delta_volume": -0.3201995758438062,
+      "delta_volume": -1.0,
       "prev_close": 11.7
     },
     {
@@ -3243,7 +3243,7 @@
       "date": "2026-03-20",
       "daily_delta": 0.021951219512195363,
       "monthly_delta": -0.07709251101321579,
-      "delta_volume": 0.5789473684210527,
+      "delta_volume": -1.0,
       "prev_close": 4.1
     },
     {
@@ -3253,7 +3253,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.07637401855817272,
       "monthly_delta": -0.17421825143586478,
-      "delta_volume": 0.18299153705120275,
+      "delta_volume": -1.0,
       "prev_close": 14.01
     },
     {
@@ -3263,7 +3263,7 @@
       "date": "2026-03-20",
       "daily_delta": 0.0,
       "monthly_delta": -0.26086956521739124,
-      "delta_volume": -0.7232521014583666,
+      "delta_volume": -1.0,
       "prev_close": 0.51
     },
     {
@@ -3273,7 +3273,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.026001405481377415,
       "monthly_delta": -0.12444725205306384,
-      "delta_volume": 1.2079928729520177,
+      "delta_volume": -1.0,
       "prev_close": 14.23
     },
     {
@@ -3283,7 +3283,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.016245487364620947,
       "monthly_delta": -0.12096774193548387,
-      "delta_volume": 0.2987924427412887,
+      "delta_volume": -1.0,
       "prev_close": 5.54
     },
     {
@@ -3293,7 +3293,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.022033898305084842,
       "monthly_delta": -0.11367127496159757,
-      "delta_volume": 1.5748462305363042,
+      "delta_volume": -1.0,
       "prev_close": 5.9
     },
     {
@@ -3303,7 +3303,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.058295964125560484,
       "monthly_delta": 0.034482758620689724,
-      "delta_volume": 0.062061351628420525,
+      "delta_volume": -1.0,
       "prev_close": 4.46
     },
     {
@@ -3323,7 +3323,7 @@
       "date": "2026-03-20",
       "daily_delta": 0.031449407474931856,
       "monthly_delta": 0.26236519152101145,
-      "delta_volume": 0.06991135576449703,
+      "delta_volume": -1.0,
       "prev_close": 65.82
     },
     {
@@ -3333,7 +3333,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.03571428571428581,
       "monthly_delta": -0.10000000000000009,
-      "delta_volume": -0.21847452716963955,
+      "delta_volume": -1.0,
       "prev_close": 19.6
     },
     {
@@ -3343,7 +3343,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.021649484536082397,
       "monthly_delta": -0.07378489166503988,
-      "delta_volume": -0.09671449888486572,
+      "delta_volume": -1.0,
       "prev_close": 48.5
     },
     {
@@ -3353,7 +3353,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.006578947368421018,
       "monthly_delta": -0.07645259938837923,
-      "delta_volume": -0.5540700281253821,
+      "delta_volume": -1.0,
       "prev_close": 3.04
     },
     {
@@ -3363,7 +3363,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.00460299194476399,
       "monthly_delta": 0.02366863905325456,
-      "delta_volume": 2.669724770642202,
+      "delta_volume": -1.0,
       "prev_close": 8.69
     },
     {
@@ -3373,7 +3373,7 @@
       "date": "2026-03-20",
       "daily_delta": 0.0,
       "monthly_delta": 0.04091456077015643,
-      "delta_volume": -0.734690168998728,
+      "delta_volume": -1.0,
       "prev_close": 8.65
     },
     {
@@ -3383,7 +3383,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.021739130434782594,
       "monthly_delta": -0.25,
-      "delta_volume": -0.5554522551538369,
+      "delta_volume": -1.0,
       "prev_close": 1.84
     },
     {
@@ -3393,7 +3393,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.027260926006057895,
       "monthly_delta": -0.13271604938271608,
-      "delta_volume": 0.21881607599330954,
+      "delta_volume": -1.0,
       "prev_close": 23.11
     },
     {
@@ -3403,7 +3403,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.004323656578134716,
       "monthly_delta": 0.001242236024844745,
-      "delta_volume": 0.03462974342944225,
+      "delta_volume": -1.0,
       "prev_close": 16.19
     },
     {
@@ -3413,7 +3413,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.017857142857142905,
       "monthly_delta": -0.17910447761194026,
-      "delta_volume": -0.2749457525740018,
+      "delta_volume": -1.0,
       "prev_close": 0.56
     },
     {
@@ -3423,7 +3423,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.021810250817884347,
       "monthly_delta": -0.030270270270270183,
-      "delta_volume": -0.3968946081037966,
+      "delta_volume": -1.0,
       "prev_close": 9.17
     },
     {
@@ -3433,7 +3433,7 @@
       "date": "2026-03-20",
       "daily_delta": 0.008421052631578885,
       "monthly_delta": -0.24566929133858262,
-      "delta_volume": -0.22386330726904147,
+      "delta_volume": -1.0,
       "prev_close": 4.75
     },
     {
@@ -3443,7 +3443,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.026915113871635588,
       "monthly_delta": -0.2679127725856697,
-      "delta_volume": 0.1689577214815441,
+      "delta_volume": -1.0,
       "prev_close": 4.83
     },
     {
@@ -3453,7 +3453,7 @@
       "date": "2026-03-20",
       "daily_delta": 0.0,
       "monthly_delta": -0.10526315789473684,
-      "delta_volume": -0.8450469193593828,
+      "delta_volume": -1.0,
       "prev_close": 0.68
     },
     {
@@ -3463,7 +3463,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.03305785123966942,
       "monthly_delta": -0.2909090909090909,
-      "delta_volume": -0.6402680440193971,
+      "delta_volume": -1.0,
       "prev_close": 1.21
     },
     {
@@ -3473,7 +3473,7 @@
       "date": "2026-03-20",
       "daily_delta": 0.0016142050040353073,
       "monthly_delta": -0.13074947466728937,
-      "delta_volume": 0.3991047655339588,
+      "delta_volume": -1.0,
       "prev_close": 37.17
     },
     {
@@ -3483,7 +3483,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.05286671630677586,
       "monthly_delta": 0.13167259786476881,
-      "delta_volume": 0.37860788670547274,
+      "delta_volume": -1.0,
       "prev_close": 13.43
     },
     {
@@ -3493,7 +3493,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.037558685446009266,
       "monthly_delta": -0.0032414910858994395,
-      "delta_volume": 0.7848970251716247,
+      "delta_volume": -1.0,
       "prev_close": 6.39
     },
     {
@@ -3503,7 +3503,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.027239981990094586,
       "monthly_delta": -0.157699805068226,
-      "delta_volume": 0.8172575532914861,
+      "delta_volume": -1.0,
       "prev_close": 44.42
     },
     {
@@ -3513,7 +3513,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.03891509433962259,
       "monthly_delta": -0.1827115924588849,
-      "delta_volume": 1.003310555579135,
+      "delta_volume": -1.0,
       "prev_close": 42.4
     },
     {
@@ -3523,7 +3523,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.004672897196261738,
       "monthly_delta": -0.1962264150943397,
-      "delta_volume": 0.37582754305919663,
+      "delta_volume": -1.0,
       "prev_close": 8.56
     },
     {
@@ -3543,7 +3543,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.07874015748031504,
       "monthly_delta": -0.09302325581395354,
-      "delta_volume": -0.019011406844106515,
+      "delta_volume": -1.0,
       "prev_close": 1.27
     },
     {
@@ -3553,7 +3553,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.0512820512820511,
       "monthly_delta": 0.0277777777777779,
-      "delta_volume": 0.1678659204643036,
+      "delta_volume": -1.0,
       "prev_close": 1.17
     },
     {
@@ -3563,7 +3563,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.023192360163710735,
       "monthly_delta": -0.13734939759036147,
-      "delta_volume": 0.4498958799602981,
+      "delta_volume": -1.0,
       "prev_close": 7.33
     },
     {
@@ -3583,7 +3583,7 @@
       "date": "2026-03-20",
       "daily_delta": 0.0,
       "monthly_delta": -0.008064516129032251,
-      "delta_volume": -0.31034482758620685,
+      "delta_volume": -1.0,
       "prev_close": 6.15
     },
     {
@@ -3593,7 +3593,7 @@
       "date": "2026-03-20",
       "daily_delta": 0.040000000000000036,
       "monthly_delta": 0.1685393258426966,
-      "delta_volume": 1.5,
+      "delta_volume": -1.0,
       "prev_close": 5.0
     },
     {
@@ -3603,7 +3603,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.004524886877827927,
       "monthly_delta": -0.0350877192982455,
-      "delta_volume": -0.727891156462585,
+      "delta_volume": -1.0,
       "prev_close": 2.21
     },
     {
@@ -3613,7 +3613,7 @@
       "date": "2026-03-20",
       "daily_delta": 0.012269938650306678,
       "monthly_delta": 0.0,
-      "delta_volume": -0.8310454065469906,
+      "delta_volume": -1.0,
       "prev_close": 1.63
     },
     {
@@ -3633,7 +3633,7 @@
       "date": "2026-03-20",
       "daily_delta": 0.011809086435952132,
       "monthly_delta": -0.1056828066106118,
-      "delta_volume": 0.4007782101167314,
+      "delta_volume": -1.0,
       "prev_close": 60.97
     },
     {
@@ -3643,7 +3643,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.15000000000000002,
       "monthly_delta": -0.6530612244897959,
-      "delta_volume": 4.4774774774774775,
+      "delta_volume": -1.0,
       "prev_close": 0.8
     },
     {
@@ -3653,7 +3653,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.0315013404825738,
       "monthly_delta": -0.16473988439306364,
-      "delta_volume": 0.5459112644513044,
+      "delta_volume": -1.0,
       "prev_close": 14.92
     },
     {
@@ -3663,7 +3663,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.018530774321641297,
       "monthly_delta": -0.16309255079006768,
-      "delta_volume": 0.2985228443833734,
+      "delta_volume": -1.0,
       "prev_close": 15.11
     },
     {
@@ -3673,7 +3673,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.024674891630543483,
       "monthly_delta": -0.16761525327262383,
-      "delta_volume": 0.5544698167850417,
+      "delta_volume": -1.0,
       "prev_close": 29.99
     },
     {
@@ -3683,7 +3683,7 @@
       "date": "2026-03-20",
       "daily_delta": 0.053797468354430444,
       "monthly_delta": -0.11514614703277226,
-      "delta_volume": 0.6125053168864314,
+      "delta_volume": -1.0,
       "prev_close": 9.48
     },
     {
@@ -3693,7 +3693,7 @@
       "date": "2026-03-20",
       "daily_delta": 0.0036991368680643344,
       "monthly_delta": -0.06329113924050622,
-      "delta_volume": 0.43527161465409847,
+      "delta_volume": -1.0,
       "prev_close": 8.11
     },
     {
@@ -3703,7 +3703,7 @@
       "date": "2026-03-20",
       "daily_delta": 0.013779995248277555,
       "monthly_delta": -0.0762069712058886,
-      "delta_volume": 6.5575285322655725,
+      "delta_volume": -1.0,
       "prev_close": 42.09
     },
     {
@@ -3713,7 +3713,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.03677758318739055,
       "monthly_delta": -0.13043478260869568,
-      "delta_volume": -0.24125793454820033,
+      "delta_volume": -1.0,
       "prev_close": 11.42
     },
     {
@@ -3723,7 +3723,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.02135231316725983,
       "monthly_delta": -0.016946908513173597,
-      "delta_volume": 0.9232615617706519,
+      "delta_volume": -1.0,
       "prev_close": 151.74
     },
     {
@@ -3733,7 +3733,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.04338394793926248,
       "monthly_delta": -0.12903225806451613,
-      "delta_volume": -0.14849157633537935,
+      "delta_volume": -1.0,
       "prev_close": 13.83
     },
     {
@@ -3743,7 +3743,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.006842619745845546,
       "monthly_delta": -0.2202609363008442,
-      "delta_volume": 0.004184523328212286,
+      "delta_volume": -1.0,
       "prev_close": 10.23
     },
     {
@@ -3753,7 +3753,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.0344827586206895,
       "monthly_delta": -0.29999999999999993,
-      "delta_volume": 2.257743197634479,
+      "delta_volume": -1.0,
       "prev_close": 0.29
     },
     {
@@ -3763,7 +3763,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.0537037037037037,
       "monthly_delta": 0.03861788617886197,
-      "delta_volume": -0.4581673306772909,
+      "delta_volume": -1.0,
       "prev_close": 5.4
     },
     {
@@ -3783,7 +3783,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.01532567049808431,
       "monthly_delta": -0.06545454545454554,
-      "delta_volume": 1.1384495354280446,
+      "delta_volume": -1.0,
       "prev_close": 5.22
     },
     {
@@ -3793,7 +3793,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.04003724394785846,
       "monthly_delta": -0.21596958174904946,
-      "delta_volume": -0.5129304160954727,
+      "delta_volume": -1.0,
       "prev_close": 10.74
     },
     {
@@ -3803,7 +3803,7 @@
       "date": "2026-03-20",
       "daily_delta": 0.0,
       "monthly_delta": 0.14962121212121215,
-      "delta_volume": 1.0697205518217192,
+      "delta_volume": -1.0,
       "prev_close": 18.21
     },
     {
@@ -3813,7 +3813,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.027345844504021333,
       "monthly_delta": -0.13122605363984663,
-      "delta_volume": -0.42167357446004905,
+      "delta_volume": -1.0,
       "prev_close": 18.65
     },
     {
@@ -3823,7 +3823,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.011578947368421022,
       "monthly_delta": 0.20461834509300836,
-      "delta_volume": -0.36280527521705475,
+      "delta_volume": -1.0,
       "prev_close": 19.0
     },
     {
@@ -3843,7 +3843,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.016393442622950838,
       "monthly_delta": -0.08045977011494254,
-      "delta_volume": -0.75093399750934,
+      "delta_volume": -1.0,
       "prev_close": 2.44
     },
     {
@@ -3863,7 +3863,7 @@
       "date": "2026-03-20",
       "daily_delta": 0.002460024600245969,
       "monthly_delta": 0.008663366336633782,
-      "delta_volume": 0.25893531274820303,
+      "delta_volume": -1.0,
       "prev_close": 8.13
     },
     {
@@ -3903,7 +3903,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.018388106416275418,
       "monthly_delta": -0.1227272727272728,
-      "delta_volume": 1.0775328396648973,
+      "delta_volume": -1.0,
       "prev_close": 51.12
     },
     {
@@ -3913,7 +3913,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.027956989247312047,
       "monthly_delta": -0.050420168067226934,
-      "delta_volume": 1.317249832850457,
+      "delta_volume": -1.0,
       "prev_close": 4.65
     },
     {
@@ -3923,7 +3923,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.02669552669552666,
       "monthly_delta": -0.05532212885154053,
-      "delta_volume": 1.0024868257445676,
+      "delta_volume": -1.0,
       "prev_close": 13.86
     },
     {
@@ -3933,7 +3933,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.022001419446415982,
       "monthly_delta": -0.04899930986887513,
-      "delta_volume": 1.1963873943120675,
+      "delta_volume": -1.0,
       "prev_close": 14.09
     },
     {
@@ -3943,7 +3943,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.030856871587942147,
       "monthly_delta": -0.06524725274725274,
-      "delta_volume": 0.6578477608805817,
+      "delta_volume": -1.0,
       "prev_close": 42.13
     },
     {
@@ -3953,7 +3953,7 @@
       "date": "2026-03-20",
       "daily_delta": 0.0018382352941175295,
       "monthly_delta": 0.06237816764132553,
-      "delta_volume": -0.6081820800921924,
+      "delta_volume": -1.0,
       "prev_close": 5.44
     },
     {
@@ -3963,7 +3963,7 @@
       "date": "2026-03-20",
       "daily_delta": 0.0037383177570093906,
       "monthly_delta": 0.048828125,
-      "delta_volume": -0.45523537588759067,
+      "delta_volume": -1.0,
       "prev_close": 5.35
     },
     {
@@ -3973,7 +3973,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.03076923076923077,
       "monthly_delta": -0.16556291390728473,
-      "delta_volume": -0.6232135123430056,
+      "delta_volume": -1.0,
       "prev_close": 1.3
     },
     {
@@ -3983,7 +3983,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.005896226415094463,
       "monthly_delta": -0.05915178571428581,
-      "delta_volume": 0.3090246125797629,
+      "delta_volume": -1.0,
       "prev_close": 8.48
     },
     {
@@ -3993,7 +3993,7 @@
       "date": "2026-03-20",
       "daily_delta": 0.02238805970149249,
       "monthly_delta": -0.0276792051100071,
-      "delta_volume": 1.3469387755102042,
+      "delta_volume": -1.0,
       "prev_close": 13.4
     },
     {
@@ -4003,7 +4003,7 @@
       "date": "2026-03-20",
       "daily_delta": 0.05882352941176472,
       "monthly_delta": 0.09756097560975618,
-      "delta_volume": 4.130434782608695,
+      "delta_volume": -1.0,
       "prev_close": 8.5
     },
     {
@@ -4013,7 +4013,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.03638769434336753,
       "monthly_delta": -0.10148056755089463,
-      "delta_volume": -0.09750892732673477,
+      "delta_volume": -1.0,
       "prev_close": 30.23
     },
     {
@@ -4023,7 +4023,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.04414469650521147,
       "monthly_delta": -0.07532621589561084,
-      "delta_volume": -0.163330423527287,
+      "delta_volume": -1.0,
       "prev_close": 16.31
     },
     {
@@ -4033,7 +4033,7 @@
       "date": "2026-03-20",
       "daily_delta": 0.0159651669085632,
       "monthly_delta": -0.3062438057482656,
-      "delta_volume": 0.17008252797741652,
+      "delta_volume": -1.0,
       "prev_close": 27.56
     },
     {
@@ -4043,7 +4043,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.020247469066366763,
       "monthly_delta": -0.03186365320489071,
-      "delta_volume": 0.6655991234559933,
+      "delta_volume": -1.0,
       "prev_close": 26.67
     },
     {
@@ -4063,7 +4063,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.009142085115964926,
       "monthly_delta": 0.052727272727272734,
-      "delta_volume": 0.44486692015209117,
+      "delta_volume": -1.0,
       "prev_close": 222.05
     },
     {
@@ -4073,7 +4073,7 @@
       "date": "2026-03-20",
       "daily_delta": 0.04999999999999982,
       "monthly_delta": -0.26315789473684204,
-      "delta_volume": -0.13270019201826766,
+      "delta_volume": -1.0,
       "prev_close": 0.4
     },
     {
@@ -4083,7 +4083,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.005563689604685118,
       "monthly_delta": -0.11562499999999998,
-      "delta_volume": 0.0574347216312896,
+      "delta_volume": -1.0,
       "prev_close": 34.15
     },
     {
@@ -4093,7 +4093,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.014598540145985384,
       "monthly_delta": 0.0714285714285714,
-      "delta_volume": 0.5620280474649406,
+      "delta_volume": -1.0,
       "prev_close": 6.85
     },
     {
@@ -4103,7 +4103,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.004484304932735328,
       "monthly_delta": -0.24232081911262793,
-      "delta_volume": -0.6986518636003172,
+      "delta_volume": -1.0,
       "prev_close": 2.23
     },
     {
@@ -4113,7 +4113,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.039145907473309594,
       "monthly_delta": -0.26027397260273966,
-      "delta_volume": 0.8379753117052291,
+      "delta_volume": -1.0,
       "prev_close": 5.62
     },
     {
@@ -4123,7 +4123,7 @@
       "date": "2026-03-20",
       "daily_delta": 0.008507853403141308,
       "monthly_delta": -0.034461152882205526,
-      "delta_volume": -0.05916551455209329,
+      "delta_volume": -1.0,
       "prev_close": 15.28
     },
     {
@@ -4133,7 +4133,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.006956521739130417,
       "monthly_delta": -0.05930807248764425,
-      "delta_volume": 2.2962594501142024,
+      "delta_volume": -1.0,
       "prev_close": 11.5
     },
     {
@@ -4163,7 +4163,7 @@
       "date": "2026-03-20",
       "daily_delta": 0.0,
       "monthly_delta": 0.10526315789473673,
-      "delta_volume": -0.24379376193507318,
+      "delta_volume": -1.0,
       "prev_close": 1.47
     },
     {
@@ -4173,7 +4173,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.023151605675877596,
       "monthly_delta": -0.03681885125184092,
-      "delta_volume": -0.07956744755438605,
+      "delta_volume": -1.0,
       "prev_close": 26.78
     },
     {
@@ -4183,7 +4183,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.05054981125882152,
       "monthly_delta": -0.0810166799046863,
-      "delta_volume": 1.2743682310469313,
+      "delta_volume": -1.0,
       "prev_close": 60.93
     },
     {
@@ -4193,7 +4193,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.07364453464772402,
       "monthly_delta": -0.03181818181818186,
-      "delta_volume": -0.4285714285714286,
+      "delta_volume": -1.0,
       "prev_close": 68.98
     },
     {
@@ -4203,7 +4203,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.07861635220125784,
       "monthly_delta": -0.14452554744525548,
-      "delta_volume": 4.070132605677629,
+      "delta_volume": -1.0,
       "prev_close": 63.6
     },
     {
@@ -4213,7 +4213,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.032761310452418035,
       "monthly_delta": -0.01898734177215189,
-      "delta_volume": 1.30794460255827,
+      "delta_volume": -1.0,
       "prev_close": 6.41
     },
     {
@@ -4223,7 +4223,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.009419152276295195,
       "monthly_delta": -0.0015822784810127777,
-      "delta_volume": -0.17799189180126485,
+      "delta_volume": -1.0,
       "prev_close": 6.37
     },
     {
@@ -4243,7 +4243,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.01409369698551477,
       "monthly_delta": -0.09973784556720688,
-      "delta_volume": 0.860493293202522,
+      "delta_volume": -1.0,
       "prev_close": 76.63
     },
     {
@@ -4253,7 +4253,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.056213017751479244,
       "monthly_delta": -0.27334851936218674,
-      "delta_volume": -0.13134390186904177,
+      "delta_volume": -1.0,
       "prev_close": 3.38
     },
     {
@@ -4263,7 +4263,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.03451709259873881,
       "monthly_delta": -0.07650793650793652,
-      "delta_volume": 0.5623840122028951,
+      "delta_volume": -1.0,
       "prev_close": 30.13
     },
     {
@@ -4273,7 +4273,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.007109004739336289,
       "monthly_delta": -0.004750593824227933,
-      "delta_volume": -0.24915352685338665,
+      "delta_volume": -1.0,
       "prev_close": 4.22
     },
     {
@@ -4283,7 +4283,7 @@
       "date": "2026-03-20",
       "daily_delta": 0.02196485623003208,
       "monthly_delta": -0.15822368421052624,
-      "delta_volume": -0.08419854722549813,
+      "delta_volume": -1.0,
       "prev_close": 25.04
     },
     {
@@ -4293,7 +4293,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.024390243902438935,
       "monthly_delta": -0.35483870967741926,
-      "delta_volume": -0.87105944464186,
+      "delta_volume": -1.0,
       "prev_close": 0.41
     },
     {
@@ -4303,7 +4303,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.013715405339211229,
       "monthly_delta": -0.005187747035573009,
-      "delta_volume": 0.7138457140485883,
+      "delta_volume": -1.0,
       "prev_close": 40.83
     },
     {
@@ -4313,7 +4313,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.0025354969574035158,
       "monthly_delta": -0.12616614837849838,
-      "delta_volume": 1.151845987165597,
+      "delta_volume": -1.0,
       "prev_close": 19.72
     },
     {
@@ -4333,7 +4333,7 @@
       "date": "2026-03-20",
       "daily_delta": 0.0028409090909089496,
       "monthly_delta": 0.011461318051575908,
-      "delta_volume": 0.018922852983988436,
+      "delta_volume": -1.0,
       "prev_close": 3.52
     },
     {
@@ -4343,7 +4343,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.028140013726835944,
       "monthly_delta": -0.07692307692307687,
-      "delta_volume": -0.19491849697711794,
+      "delta_volume": -1.0,
       "prev_close": 14.57
     },
     {
@@ -4353,7 +4353,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.005514705882352922,
       "monthly_delta": -0.10676940011007163,
-      "delta_volume": 3.942476084650143,
+      "delta_volume": -1.0,
       "prev_close": 16.32
     },
     {
@@ -4363,7 +4363,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.05343511450381688,
       "monthly_delta": -0.17880794701986757,
-      "delta_volume": -0.46777216417710377,
+      "delta_volume": -1.0,
       "prev_close": 1.31
     },
     {
@@ -4373,7 +4373,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.016064257028112428,
       "monthly_delta": -0.08582089552238803,
-      "delta_volume": 0.6657027183342972,
+      "delta_volume": -1.0,
       "prev_close": 2.49
     },
     {
@@ -4383,7 +4383,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.013522215067611087,
       "monthly_delta": -0.13916463757257913,
-      "delta_volume": 0.37928703304964384,
+      "delta_volume": -1.0,
       "prev_close": 46.59
     },
     {
@@ -4393,7 +4393,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.0014858841010402246,
       "monthly_delta": 0.11999999999999988,
-      "delta_volume": 0.34615384615384626,
+      "delta_volume": -1.0,
       "prev_close": 6.73
     },
     {
@@ -4403,7 +4403,7 @@
       "date": "2026-03-20",
       "daily_delta": 0.0,
       "monthly_delta": -0.06981981981981988,
-      "delta_volume": 0.24921135646687698,
+      "delta_volume": -1.0,
       "prev_close": 4.13
     },
     {
@@ -4413,7 +4413,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.011235955056179692,
       "monthly_delta": -0.05579399141630892,
-      "delta_volume": -0.1868647380766224,
+      "delta_volume": -1.0,
       "prev_close": 4.45
     },
     {
@@ -4423,7 +4423,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.05067567567567577,
       "monthly_delta": -0.07565789473684204,
-      "delta_volume": 1.7056498330266474,
+      "delta_volume": -1.0,
       "prev_close": 8.88
     },
     {
@@ -4443,7 +4443,7 @@
       "date": "2026-03-20",
       "daily_delta": -0.010948905109489093,
       "monthly_delta": -0.11798209926769732,
-      "delta_volume": -0.7858672376873661,
+      "delta_volume": -1.0,
       "prev_close": 21.92
     },
     {
@@ -4453,7 +4453,7 @@
       "date": "2026-03-20",
       "daily_delta": 0.01382033563672258,
       "monthly_delta": -0.2087827426810478,
-      "delta_volume": 0.6607428984493813,
+      "delta_volume": -1.0,
       "prev_close": 10.13
     }
   ]
