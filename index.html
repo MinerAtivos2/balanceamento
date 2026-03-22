@@ -42,6 +42,9 @@
       <a href="#" class="nav-link" data-section="summary" id="nav-summary">
         <span class="nav-icon">🌍</span> Resumo de Mercado
       </a>
+      <a href="#" class="nav-link" data-section="dividends" id="nav-dividends" style="display: none;">
+        <span class="nav-icon">📅</span> Calendário de Dividendos
+      </a>
       <a href="#" class="nav-link" data-section="members" id="nav-members">
         <span class="nav-icon">👤</span> Área de Membros
       </a>
@@ -373,6 +376,40 @@
         <p class="subtitle" style="margin-bottom: 1rem;">O tamanho dos blocos representa a variação absoluta do dia. Cores: Verde (Alta) e Laranja/Vermelho (Baixa).</p>
         <div class="chart-container" style="height: 600px;">
           <canvas id="marketTreemap"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- CALENDÁRIO DE DIVIDENDOS (EXCLUSIVO MEMBROS) -->
+    <!-- ============================================================ -->
+    <section class="page" data-page="dividends" id="page-dividends">
+      <div class="page-header">
+        <h1>Calendário de Dividendos</h1>
+        <p class="subtitle">Próximos proventos anunciados na CVM</p>
+      </div>
+
+      <div class="card glass">
+        <div class="tabs-container" style="margin-bottom: 1.5rem; display: flex; gap: 0.5rem;">
+          <button class="btn btn-primary" id="btnFilterMyDividends">Meus Ativos</button>
+          <button class="btn btn-outline" id="btnFilterAllDividends">Mercado Geral</button>
+        </div>
+
+        <div class="table-responsive">
+          <table id="dividendsTable">
+            <thead>
+              <tr>
+                <th>Ativo</th>
+                <th>Tipo</th>
+                <th>Data COM</th>
+                <th>Data Pagamento</th>
+                <th>Valor (R$)</th>
+              </tr>
+            </thead>
+            <tbody id="dividendsBody">
+              <tr><td colspan="5" class="empty-state">Carregando dados...</td></tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </section>
