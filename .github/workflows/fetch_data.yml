@@ -28,11 +28,11 @@ jobs:
           python -m pip install --upgrade pip
           pip install yfinance pandas requests
       
-      - name: Fetch market data
-        run: python scripts/data_fetcher.py
+      #- name: Fetch market data
+      #  run: python scripts/data_fetcher.py
 
-      - name: Generate market summary
-        run: python scripts/market_summary.py
+      #- name: Generate market summary
+      #  run: python scripts/market_summary.py
 
       - name: Fetch CVM Dividends
         run: python scripts/cvm_dividends_fetcher.py
