@@ -684,20 +684,123 @@ class B3App {
   ------------------------------------------------------------------ */
   async loadMarketData() {
     try {
-      // Use cache-buster to ensure we always get the latest data from GitHub Actions
-      const url = `./data/market_data.json?t=${new Date().getTime()}`;
-      const res = await fetch(url);
+      // 1. Carregar manifest para saber quais arquivos existem
+      const manifestUrl = `./data/manifest.json?t=${new Date().getTime()}`;
+      const manifestRes = await fetch(manifestUrl);
 
-      if (!res.ok) {
-        throw new Error(`Falha ao carregar arquivo (Status: ${res.status})`);
+      let files = ['market_data.json']; // Fallback
+      if (manifestRes.ok) {
+        const manifest = await manifestRes.json();
+        files = manifest.market_data_files || files;
       }
 
-      this.marketData = await res.json();
-      console.log('Dados de mercado carregados com sucesso');
+      console.log('Arquivos de mercado detectados:', files);
+
+      // 2. Carregar todos os arquivos em paralelo
+      const loadPromises = files.map(async (file) => {
+        try {
+          const res = await fetch(`./data/${file}?t=${new Date().getTime()}`);
+          if (res.ok) return await res.json();
+        } catch (e) {
+          console.warn(`Erro ao carregar ${file}:`, e);
+        }
+        return null;
+      });
+
+      const dataList = (await Promise.all(loadPromises)).filter(d => d !== null);
+
+      if (dataList.length === 0) {
+        throw new Error('Nenhum dado de mercado pôde ser carregado.');
+      }
+
+      // 3. Mesclar dados (Merge)
+      this.marketData = this.mergeMarketData(dataList);
+      console.log('Dados de mercado carregados e mesclados com sucesso');
     } catch (err) {
       console.error('Erro ao carregar dados de mercado:', err);
       this.toast('Erro ao carregar dados históricos: ' + err.message, 'error');
     }
+  }
+
+  mergeMarketData(dataList) {
+    // Usamos o primeiro arquivo como base (geralmente market_data.json, o mais recente)
+    const base = dataList[0];
+    const mergedAssets = { ...base.assets };
+
+    // Percorrer os outros arquivos para mesclar histórico e dividendos
+    for (let i = 1; i < dataList.length; i++) {
+      const current = dataList[i];
+
+      Object.keys(current.assets).forEach(ticker => {
+        if (!mergedAssets[ticker]) {
+          // Se o ativo não existe na base, adicionamos (caso raro, mas possível)
+          mergedAssets[ticker] = current.assets[ticker];
+          return;
+        }
+
+        const baseAsset = mergedAssets[ticker];
+        const extraAsset = current.assets[ticker];
+
+        // Mesclar Histórico
+        if (extraAsset.history && extraAsset.history.dates) {
+          this.mergeAssetHistory(baseAsset.history, extraAsset.history);
+        }
+
+        // Mesclar Dividendos
+        if (extraAsset.dividends && extraAsset.dividends.dates) {
+          this.mergeAssetDividends(baseAsset.dividends, extraAsset.dividends);
+        }
+      });
+    }
+
+    return { ...base, assets: mergedAssets };
+  }
+
+  mergeAssetHistory(baseHist, extraHist) {
+    const combined = [];
+    // Adicionar base
+    baseHist.dates.forEach((date, i) => {
+      combined.push({ date, close: baseHist.closes[i], vol: baseHist.volumes[i] });
+    });
+    // Adicionar extras (evitando duplicatas por data)
+    const existingDates = new Set(baseHist.dates);
+    extraHist.dates.forEach((date, i) => {
+      if (!existingDates.has(date)) {
+        combined.push({ date, close: extraHist.closes[i], vol: extraHist.volumes[i] });
+        existingDates.add(date);
+      }
+    });
+
+    // Ordenar por data
+    combined.sort((a, b) => a.date.localeCompare(b.date));
+
+    // Atualizar objeto base
+    baseHist.dates = combined.map(c => c.date);
+    baseHist.closes = combined.map(c => c.close);
+    baseHist.volumes = combined.map(c => c.vol);
+  }
+
+  mergeAssetDividends(baseDivs, extraDivs) {
+    const combined = [];
+    // Adicionar base
+    baseDivs.dates.forEach((date, i) => {
+      combined.push({ date, value: baseDivs.values[i] });
+    });
+    // Adicionar extras (evitando duplicatas por data)
+    const existingDates = new Set(baseDivs.dates);
+    extraDivs.dates.forEach((date, i) => {
+      if (!existingDates.has(date)) {
+        combined.push({ date, value: extraDivs.values[i] });
+        existingDates.add(date);
+      }
+    });
+
+    // Ordenar por data
+    combined.sort((a, b) => a.date.localeCompare(b.date));
+
+    // Atualizar objeto base
+    baseDivs.dates = combined.map(c => c.date);
+    baseDivs.values = combined.map(c => c.value);
   }
 
   async loadMarketSummary() {
