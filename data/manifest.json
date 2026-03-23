@@ -1,6 +1,7 @@
 {
-  "last_update": "2026-03-23T19:30:54.595869",
+  "last_update": "2026-03-23T20:02:24.133324",
   "market_data_files": [
-    "market_data.json"
+    "market_data.json",
+    "market_data_historical.json"
   ]
 }
