@@ -70,8 +70,8 @@ def calculate_variations():
         if len(volumes) >= 2:
             current_vol = volumes[-1]
             # Média dos últimos 20 dias anteriores ao atual
-            prior_volumes = [v for v in volumes[-21:-1] if v is not None]
-            if prior_volumes and current_vol is not None:
+            prior_volumes = [v for v in volumes[-21:-1] if v is not None and v > 0]
+            if prior_volumes and current_vol is not None and current_vol > 0:
                 avg_vol = sum(prior_volumes) / len(prior_volumes)
                 if avg_vol > 0:
                     asset_summary['delta_volume'] = (current_vol / avg_vol) - 1
