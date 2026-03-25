@@ -17,6 +17,8 @@ class B3App {
     this.marketData = null;
     this.analysis = null;
     this.charts = {};
+    this.isDiscoveryMode = false;
+    this.currentPage = 'dashboard';
     this.init();
   }
 
@@ -64,6 +66,15 @@ class B3App {
     this.$('sortBarsi').addEventListener('change', () => this.renderBarsi());
     this.$('sortRebalance').addEventListener('change', () => this.renderRebalance());
 
+    // Proventos listeners
+    this.$('btnFilterDividends').addEventListener('click', () => this.renderDividendsPage());
+    this.$('btnToggleDiscovery').addEventListener('click', () => {
+      this.isDiscoveryMode = !this.isDiscoveryMode;
+      this.$('btnToggleDiscovery').textContent = this.isDiscoveryMode ? '💼 Minha Carteira' : '🌐 Descoberta de Ativos';
+      this.$('divTableTitle').textContent = this.isDiscoveryMode ? 'Ativos com Proventos no Período (Mercado)' : 'Meus Proventos no Período';
+      this.renderDividendsPage();
+    });
+
     // Membership modal
     this.$('membershipModalClose').addEventListener('click', () => this.closeMembershipModal());
     this.$('membershipModalOverlay').addEventListener('click', e => {
@@ -93,6 +104,15 @@ class B3App {
 
   showPage(name) {
     console.log('Showing page:', name);
+
+    // Protection for dividends page
+    if (name === 'dividends' && !this.user) {
+      this.toast('Acesse sua conta para ver os proventos', 'warning');
+      this.showPage('members');
+      return;
+    }
+
+    this.currentPage = name;
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
     const page = document.querySelector(`[data-page="${name}"]`);
     if (page) {
@@ -104,6 +124,15 @@ class B3App {
     document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
     const link = document.querySelector(`.nav-link[data-section="${name}"]`);
     if (link) link.classList.add('active');
+
+    if (name === 'dividends') {
+      const today = new Date();
+      const firstDay = new Date(today.getFullYear(), today.getMonth(), 1).toISOString().slice(0, 10);
+      const lastDay = new Date(today.getFullYear(), today.getMonth() + 1, 0).toISOString().slice(0, 10);
+      if (!this.$('divStartDate').value) this.$('divStartDate').value = firstDay;
+      if (!this.$('divEndDate').value) this.$('divEndDate').value = lastDay;
+      this.renderDividendsPage();
+    }
   }
 
   toggleSidebar(force) {
@@ -303,6 +332,10 @@ class B3App {
       this.$('memberWelcomeName').textContent = this.user.username;
       this.$('nav-members').innerHTML = '<span class="nav-icon">👤</span> Perfil';
 
+      // Proventos area
+      if (this.$('dividendsGuestAlert')) this.$('dividendsGuestAlert').classList.add('hidden');
+      if (this.$('dividendsContent')) this.$('dividendsContent').classList.remove('hidden');
+
       // Admin Panel
       if (this.user.is_admin) {
         this.$('adminPanel').classList.remove('hidden');
@@ -320,6 +353,11 @@ class B3App {
       this.$('memberDashboard').classList.add('hidden');
       this.$('adminPanel').classList.add('hidden');
       this.$('nav-members').innerHTML = '<span class="nav-icon">👤</span> Área de Membros';
+
+      // Proventos area
+      if (this.$('dividendsGuestAlert')) this.$('dividendsGuestAlert').classList.remove('hidden');
+      if (this.$('dividendsContent')) this.$('dividendsContent').classList.add('hidden');
+      if (this.currentPage === 'dividends') this.showPage('dashboard');
     }
   }
 
@@ -646,20 +684,123 @@ class B3App {
   ------------------------------------------------------------------ */
   async loadMarketData() {
     try {
-      // Use cache-buster to ensure we always get the latest data from GitHub Actions
-      const url = `./data/market_data.json?t=${new Date().getTime()}`;
-      const res = await fetch(url);
+      // 1. Carregar manifest para saber quais arquivos existem
+      const manifestUrl = `./data/manifest.json?t=${new Date().getTime()}`;
+      const manifestRes = await fetch(manifestUrl);
 
-      if (!res.ok) {
-        throw new Error(`Falha ao carregar arquivo (Status: ${res.status})`);
+      let files = ['market_data.json']; // Fallback
+      if (manifestRes.ok) {
+        const manifest = await manifestRes.json();
+        files = manifest.market_data_files || files;
       }
 
-      this.marketData = await res.json();
-      console.log('Dados de mercado carregados com sucesso');
+      console.log('Arquivos de mercado detectados:', files);
+
+      // 2. Carregar todos os arquivos em paralelo
+      const loadPromises = files.map(async (file) => {
+        try {
+          const res = await fetch(`./data/${file}?t=${new Date().getTime()}`);
+          if (res.ok) return await res.json();
+        } catch (e) {
+          console.warn(`Erro ao carregar ${file}:`, e);
+        }
+        return null;
+      });
+
+      const dataList = (await Promise.all(loadPromises)).filter(d => d !== null);
+
+      if (dataList.length === 0) {
+        throw new Error('Nenhum dado de mercado pôde ser carregado.');
+      }
+
+      // 3. Mesclar dados (Merge)
+      this.marketData = this.mergeMarketData(dataList);
+      console.log('Dados de mercado carregados e mesclados com sucesso');
     } catch (err) {
       console.error('Erro ao carregar dados de mercado:', err);
       this.toast('Erro ao carregar dados históricos: ' + err.message, 'error');
     }
+  }
+
+  mergeMarketData(dataList) {
+    // Usamos o primeiro arquivo como base (geralmente market_data.json, o mais recente)
+    const base = dataList[0];
+    const mergedAssets = { ...base.assets };
+
+    // Percorrer os outros arquivos para mesclar histórico e dividendos
+    for (let i = 1; i < dataList.length; i++) {
+      const current = dataList[i];
+
+      Object.keys(current.assets).forEach(ticker => {
+        if (!mergedAssets[ticker]) {
+          // Se o ativo não existe na base, adicionamos (caso raro, mas possível)
+          mergedAssets[ticker] = current.assets[ticker];
+          return;
+        }
+
+        const baseAsset = mergedAssets[ticker];
+        const extraAsset = current.assets[ticker];
+
+        // Mesclar Histórico
+        if (extraAsset.history && extraAsset.history.dates) {
+          this.mergeAssetHistory(baseAsset.history, extraAsset.history);
+        }
+
+        // Mesclar Dividendos
+        if (extraAsset.dividends && extraAsset.dividends.dates) {
+          this.mergeAssetDividends(baseAsset.dividends, extraAsset.dividends);
+        }
+      });
+    }
+
+    return { ...base, assets: mergedAssets };
+  }
+
+  mergeAssetHistory(baseHist, extraHist) {
+    const combined = [];
+    // Adicionar base
+    baseHist.dates.forEach((date, i) => {
+      combined.push({ date, close: baseHist.closes[i], vol: baseHist.volumes[i] });
+    });
+    // Adicionar extras (evitando duplicatas por data)
+    const existingDates = new Set(baseHist.dates);
+    extraHist.dates.forEach((date, i) => {
+      if (!existingDates.has(date)) {
+        combined.push({ date, close: extraHist.closes[i], vol: extraHist.volumes[i] });
+        existingDates.add(date);
+      }
+    });
+
+    // Ordenar por data
+    combined.sort((a, b) => a.date.localeCompare(b.date));
+
+    // Atualizar objeto base
+    baseHist.dates = combined.map(c => c.date);
+    baseHist.closes = combined.map(c => c.close);
+    baseHist.volumes = combined.map(c => c.vol);
+  }
+
+  mergeAssetDividends(baseDivs, extraDivs) {
+    const combined = [];
+    // Adicionar base
+    baseDivs.dates.forEach((date, i) => {
+      combined.push({ date, value: baseDivs.values[i] });
+    });
+    // Adicionar extras (evitando duplicatas por data)
+    const existingDates = new Set(baseDivs.dates);
+    extraDivs.dates.forEach((date, i) => {
+      if (!existingDates.has(date)) {
+        combined.push({ date, value: extraDivs.values[i] });
+        existingDates.add(date);
+      }
+    });
+
+    // Ordenar por data
+    combined.sort((a, b) => a.date.localeCompare(b.date));
+
+    // Atualizar objeto base
+    baseDivs.dates = combined.map(c => c.date);
+    baseDivs.values = combined.map(c => c.value);
   }
 
   async loadMarketSummary() {
@@ -848,6 +989,31 @@ class B3App {
   /* ------------------------------------------------------------------
      Logic — 100% Client-Side
   ------------------------------------------------------------------ */
+  getDividendsForTicker(ticker, transactions, startDate = null, endDate = null) {
+    const asset = this.marketData.assets[ticker];
+    if (!asset || !asset.dividends || !asset.dividends.dates) return 0;
+
+    let total = 0;
+    asset.dividends.dates.forEach((date, idx) => {
+      // Filter by date range if provided (for discovery tool)
+      if (startDate && date < startDate) return;
+      if (endDate && date > endDate) return;
+
+      const value = asset.dividends.values[idx];
+
+      // Calculate quantity owned on this dividend date
+      let qtyOnDate = 0;
+      transactions.forEach(t => {
+        if (t.purchase_date <= date) {
+          qtyOnDate += t.quantity;
+        }
+      });
+
+      total += (qtyOnDate * value);
+    });
+    return total;
+  }
+
   async runAnalysis() {
     if (!this.portfolio.positions.length || !this.marketData) {
       this.analysis = null;
@@ -857,29 +1023,37 @@ class B3App {
 
     const consolidated = this.consolidatePortfolio();
     const positions = [];
-    let totalValue = 0;
+    let totalMarketValue = 0;
     let totalInvestedValue = 0;
+    let totalDividendsValue = 0;
 
     consolidated.forEach(item => {
       const asset = this.marketData.assets[item.ticker];
       if (!asset) return;
 
       const currentPrice = asset.last_price;
-      const value = currentPrice * item.totalQty;
+      const marketValue = currentPrice * item.totalQty;
+      const investedValue = item.totalInvested;
+      const totalProventos = this.getDividendsForTicker(item.ticker, item.transactions);
+      const totalEquity = marketValue + totalProventos;
 
-      // Rentabilidade Real (Minha Rentabilidade): (Preço Atual / Preço Médio) - 1
-      const rentInvestor = ((currentPrice - item.avgPrice) / item.avgPrice * 100);
+      // Nova Rentabilidade Real: (Valor Mercado + Total Proventos - Valor Investido) / Valor Investido
+      const rentReal = investedValue > 0 ? ((totalEquity - investedValue) / investedValue * 100) : 0;
 
       // Rentabilidade do Ativo (Mercado): Ponderada pelas datas de compra
-      // Para cada lote: (Preço Atual / Preço na Data da Compra) - 1
+      // Para cada lote: (Preço Atual + Proventos do Lote / Preço na Data da Compra) - 1
       let weightedMarketRentSum = 0;
       item.transactions.forEach(t => {
         const histPrice = this.findCloseForDate(asset, t.purchase_date);
+        const lotProventos = this.getDividendsForTicker(item.ticker, [t]);
         if (histPrice) {
-          const lotRent = ((currentPrice - histPrice) / histPrice * 100);
+          const lotInvested = histPrice * t.quantity;
+          const lotMarketValue = currentPrice * t.quantity;
+          const lotEquity = lotMarketValue + lotProventos;
+          const lotRent = ((lotEquity - lotInvested) / lotInvested * 100);
           weightedMarketRentSum += (lotRent * t.quantity);
         } else {
-          weightedMarketRentSum += (rentInvestor * t.quantity); // Fallback caso bizarro
+          weightedMarketRentSum += (rentReal * t.quantity);
         }
       });
       const rentMarket = weightedMarketRentSum / item.totalQty;
@@ -891,27 +1065,34 @@ class B3App {
         quantity: item.totalQty,
         avgPrice: item.avgPrice,
         avgDate: item.avgDate,
-        totalInvested: item.totalInvested,
+        totalInvested: investedValue,
         current_price: currentPrice,
-        position_value: value,
+        position_value: marketValue,
+        market_value: marketValue,
+        total_proventos: totalProventos,
+        total_equity: totalEquity,
         rentability_market: rentMarket,
-        rentability_real: rentInvestor,
+        rentability_real: rentReal,
         volatility: asset.stats.volatility || 0
       });
-      totalValue += value;
-      totalInvestedValue += item.totalInvested;
+      totalMarketValue += marketValue;
+      totalInvestedValue += investedValue;
+      totalDividendsValue += totalProventos;
     });
+
+    const totalEquityValue = totalMarketValue + totalDividendsValue;
 
     const allocation = {};
     const allocationInvested = {};
     positions.forEach(p => {
-      allocation[p.ticker] = (p.position_value / totalValue * 100);
-      allocationInvested[p.ticker] = (p.totalInvested / totalInvestedValue * 100);
+      // Allocation based on Total Equity (Market + Dividends)
+      allocation[p.ticker] = (p.total_equity / (totalEquityValue || 1) * 100);
+      allocationInvested[p.ticker] = (p.totalInvested / (totalInvestedValue || 1) * 100);
     });
 
     const avgRent = positions.reduce((a, b) => a + (b.rentability_market || 0), 0) / (positions.length || 1);
     const avgVol = positions.reduce((a, b) => a + (b.volatility || 0), 0) / (positions.length || 1);
-    const portfolioRentReal = totalInvestedValue > 0 ? ((totalValue - totalInvestedValue) / totalInvestedValue * 100) : 0;
+    const portfolioRentReal = totalInvestedValue > 0 ? ((totalEquityValue - totalInvestedValue) / totalInvestedValue * 100) : 0;
 
     this.analysis = {
       timestamp: new Date().toISOString(),
@@ -919,8 +1100,10 @@ class B3App {
       allocation,
       allocationInvested,
       summary: {
-        total_value: totalValue,
+        total_value: totalEquityValue,
+        total_market_value: totalMarketValue,
         total_invested: totalInvestedValue,
+        total_proventos: totalDividendsValue,
         num_positions: positions.length,
         avg_rentability: avgRent,
         portfolio_rentability_real: portfolioRentReal,
@@ -1072,6 +1255,7 @@ class B3App {
     if (!this.analysis) {
       this.$('statTotalValue').textContent = 'R$ 0,00';
       this.$('statTotalInvested').textContent = 'R$ 0,00';
+      this.$('statTotalProventos').textContent = 'R$ 0,00';
       this.$('statRentabilityReal').textContent = '0%';
       this.$('statPositions').textContent = '0';
       this.$('statVolatility').textContent = '—';
@@ -1081,6 +1265,7 @@ class B3App {
     const s = this.analysis.summary;
     this.$('statTotalValue').textContent = this.formatCurrency(s.total_value);
     this.$('statTotalInvested').textContent = this.formatCurrency(s.total_invested);
+    this.$('statTotalProventos').textContent = this.formatCurrency(s.total_proventos);
     this.$('statPositions').textContent = s.num_positions;
 
     const rentRealEl = this.$('statRentabilityReal');
@@ -1099,7 +1284,7 @@ class B3App {
     if (this.charts.allocation) this.charts.allocation.destroy();
 
     const labels = this.analysis.positions.map(p => p.ticker.replace('.SA', ''));
-    const currentValues = this.analysis.positions.map(p => p.position_value);
+    const currentValues = this.analysis.positions.map(p => p.total_equity);
     const investedValues = this.analysis.positions.map(p => p.totalInvested);
     const colors = this.palette(labels.length);
 
@@ -1109,7 +1294,7 @@ class B3App {
         labels,
         datasets: [
           {
-            label: 'Valor Atual',
+            label: 'Patrimônio Total',
             data: currentValues,
             backgroundColor: colors,
             borderWidth: 2,
@@ -1209,7 +1394,7 @@ class B3App {
   renderPositions() {
     const tbody = this.$('positionsBody');
     if (!this.portfolio.positions.length) {
-      tbody.innerHTML = '<tr><td colspan="8" class="empty-state">Nenhum ativo no portfólio. Clique em "Adicionar Ativo".</td></tr>';
+      tbody.innerHTML = '<tr><td colspan="10" class="empty-state">Nenhum ativo no portfólio. Clique em "Adicionar Ativo".</td></tr>';
       return;
     }
 
@@ -1224,7 +1409,9 @@ class B3App {
     consolidated.sort((a, b) => {
       const an = analysisMap[a.ticker] || {};
       const bn = analysisMap[b.ticker] || {};
-      if (sortBy === 'value') return (bn.position_value || 0) - (an.position_value || 0);
+      if (sortBy === 'market_value') return (bn.market_value || 0) - (an.market_value || 0);
+      if (sortBy === 'dividends') return (bn.total_proventos || 0) - (an.total_proventos || 0);
+      if (sortBy === 'equity') return (bn.total_equity || 0) - (an.total_equity || 0);
       if (sortBy === 'rentability') return (bn.rentability_real || 0) - (an.rentability_real || 0);
       return a.ticker.localeCompare(b.ticker);
     });
@@ -1240,9 +1427,11 @@ class B3App {
         <td><strong>${item.ticker.replace('.SA', '')}</strong><br><small style="color:var(--text-muted)">${a.name || item.ticker}</small></td>
         <td>${item.totalQty}</td>
         <td>R$ ${item.avgPrice.toFixed(2)}</td>
-        <td>${item.avgDate}</td>
+        <td>${this.formatCurrency(item.totalInvested)}</td>
         <td>${a.current_price ? 'R$ ' + a.current_price.toFixed(2) : '—'}</td>
-        <td>${a.position_value ? this.formatCurrency(a.position_value) : '—'}</td>
+        <td>${a.market_value ? this.formatCurrency(a.market_value) : '—'}</td>
+        <td class="positive">${a.total_proventos ? this.formatCurrency(a.total_proventos) : 'R$ 0,00'}</td>
+        <td style="font-weight:700">${a.total_equity ? this.formatCurrency(a.total_equity) : '—'}</td>
         <td class="${rentClass}">${rentText}</td>
         <td>
           <button class="btn-primary-sm" onclick="app.manageTransactions('${item.ticker}')" title="Gerenciar registros">⚙️</button>
@@ -1250,6 +1439,88 @@ class B3App {
       </tr>`;
     });
     tbody.innerHTML = html;
+  }
+
+  renderDividendsPage() {
+    if (!this.marketData) return;
+    const startDate = this.$('divStartDate').value;
+    const endDate = this.$('divEndDate').value;
+
+    let totalProventos = 0;
+    let tableData = [];
+
+    if (this.isDiscoveryMode) {
+      // Discovery Mode: Look at all market data
+      Object.keys(this.marketData.assets).forEach(ticker => {
+        const asset = this.marketData.assets[ticker];
+        const dummyTransactions = [{ quantity: 1, purchase_date: '1900-01-01' }]; // Assume holding 1 share
+        const proventosPerShare = this.getDividendsForTicker(ticker, dummyTransactions, startDate, endDate);
+
+        if (proventosPerShare > 0) {
+          const yieldPeriod = (proventosPerShare / (asset.last_price || 1)) * 100;
+          tableData.push({
+            ticker,
+            name: asset.name,
+            total_proventos: proventosPerShare,
+            yield_period: yieldPeriod,
+            isDiscovery: true
+          });
+        }
+      });
+      // Sort discovery by yield
+      tableData.sort((a, b) => b.yield_period - a.yield_period);
+    } else {
+      // Portfolio Mode
+      if (!this.analysis) {
+        this.$('dividendsBody').innerHTML = '<tr><td colspan="4" class="empty-state">Adicione ativos ao seu portfólio primeiro.</td></tr>';
+        return;
+      }
+      this.analysis.positions.forEach(p => {
+        const consolidatedTicker = this.consolidatePortfolio().find(c => c.ticker === p.ticker);
+        if (!consolidatedTicker) return;
+
+        const proventos = this.getDividendsForTicker(p.ticker, consolidatedTicker.transactions, startDate, endDate);
+        if (proventos > 0) {
+          totalProventos += proventos;
+          const yieldPeriod = (proventos / (p.totalInvested || 1)) * 100;
+          tableData.push({
+            ticker: p.ticker,
+            name: p.name,
+            total_proventos: proventos,
+            yield_period: yieldPeriod
+          });
+        }
+      });
+      tableData.sort((a, b) => b.total_proventos - a.total_proventos);
+    }
+
+    // Stats
+    this.$('divStatTotal').textContent = this.isDiscoveryMode ? 'N/A' : this.formatCurrency(totalProventos);
+    const topPayer = tableData[0];
+    this.$('divStatTopPayer').textContent = topPayer ? topPayer.ticker.replace('.SA','') : '—';
+
+    if (!this.isDiscoveryMode) {
+      const avgYield = tableData.reduce((acc, val) => acc + val.yield_period, 0) / (tableData.length || 1);
+      this.$('divStatYield').textContent = avgYield.toFixed(2) + '%';
+    } else {
+      this.$('divStatYield').textContent = '—';
+    }
+
+    // Table
+    const tbody = this.$('dividendsBody');
+    if (!tableData.length) {
+      tbody.innerHTML = `<tr><td colspan="4" class="empty-state">Nenhum provento encontrado no período de ${startDate} a ${endDate}</td></tr>`;
+      return;
+    }
+
+    tbody.innerHTML = tableData.map(item => `
+      <tr>
+        <td><strong>${item.ticker.replace('.SA', '')}</strong><br><small style="color:var(--text-muted)">${item.name}</small></td>
+        <td class="positive">${this.formatCurrency(item.total_proventos)}${item.isDiscovery ? ' /ação' : ''}</td>
+        <td>${item.yield_period.toFixed(2)}%</td>
+        <td>${this.isDiscoveryMode ? '—' : ((item.total_proventos / (totalProventos || 1)) * 100).toFixed(1) + '%'}</td>
+      </tr>
+    `).join('');
   }
 
   manageTransactions(ticker) {

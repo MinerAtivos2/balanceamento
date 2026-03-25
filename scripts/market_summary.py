@@ -70,16 +70,17 @@ def calculate_variations():
         if len(volumes) >= 2:
             current_vol = volumes[-1]
             # Média dos últimos 20 dias anteriores ao atual
-            prior_volumes = volumes[-21:-1]
-            if prior_volumes:
+            prior_volumes = [v for v in volumes[-21:-1] if v is not None]
+            if prior_volumes and current_vol is not None:
                 avg_vol = sum(prior_volumes) / len(prior_volumes)
                 if avg_vol > 0:
                     asset_summary['delta_volume'] = (current_vol / avg_vol) - 1
 
         # Daily Delta
         prev_close = closes[-2]
-        if prev_close and prev_close > 0:
-            asset_summary['daily_delta'] = (closes[-1] / prev_close) - 1
+        last_close = closes[-1]
+        if prev_close and prev_close > 0 and last_close is not None:
+            asset_summary['daily_delta'] = (last_close / prev_close) - 1
             asset_summary['prev_close'] = prev_close
 
         # Monthly Delta (approx 30 days ago)
@@ -99,8 +100,8 @@ def calculate_variations():
                     break
 
             month_close = closes[month_idx]
-            if month_close and month_close > 0:
-                asset_summary['monthly_delta'] = (closes[-1] / month_close) - 1
+            if month_close and month_close > 0 and last_close is not None:
+                asset_summary['monthly_delta'] = (last_close / month_close) - 1
         except Exception as e:
             print(f"⚠️ Erro ao calcular delta mensal para {ticker}: {e}")
 

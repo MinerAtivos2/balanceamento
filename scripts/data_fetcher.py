@@ -7,6 +7,8 @@ Executa coleta de histórico de preços e informações de dividendos
 import json
 import os
 import math
+import argparse
+import glob
 from datetime import datetime, timedelta
 import yfinance as yf
 import pandas as pd
@@ -15,6 +17,7 @@ import pandas as pd
 DATA_DIR = os.path.join(os.path.dirname(__file__), '..', 'data')
 ASSETS_FILE = os.path.join(os.path.dirname(__file__), '..', 'assets.json')
 OUTPUT_FILE = os.path.join(DATA_DIR, 'market_data.json')
+MANIFEST_FILE = os.path.join(DATA_DIR, 'manifest.json')
 CACHE_DIR = os.path.join(DATA_DIR, 'cache')
 
 # Ativos B3 populares para fallback
@@ -36,23 +39,30 @@ def load_tickers():
             print(f"⚠️ Erro ao ler {ASSETS_FILE}: {e}")
     return DEFAULT_ASSETS
 
-def fetch_asset_data(ticker, period='2y'):
+def fetch_asset_data(ticker, period=None, start=None):
     """
     Coleta dados históricos de um ativo
     
     Args:
         ticker: Código do ativo (ex: PETR4.SA)
-        period: Período de dados (default: 5 anos)
+        period: Período de dados (ex: '2y', '5y', 'max')
+        start: Data de início (YYYY-MM-DD)
     
     Returns:
         dict: Dados do ativo ou None se erro
     """
     try:
-        print(f"Coletando dados de {ticker}...")
+        if start:
+            print(f"Coletando dados de {ticker} (desde: {start})...")
+        else:
+            print(f"Coletando dados de {ticker} (período: {period or '2y'})...")
         
         # Coleta dados históricos
         asset = yf.Ticker(ticker)
-        hist = asset.history(period=period)
+        if start:
+            hist = asset.history(start=start)
+        else:
+            hist = asset.history(period=period or '2y')
         
         if hist.empty:
             print(f"  ⚠️  Nenhum dado encontrado para {ticker}")
@@ -96,12 +106,14 @@ def fetch_asset_data(ticker, period='2y'):
         print(f"  ✗ Erro ao coletar {ticker}: {str(e)}")
         return None
 
-def fetch_all_assets(assets=None):
+def fetch_all_assets(assets=None, period=None, start=None):
     """
     Coleta dados de múltiplos ativos
     
     Args:
         assets: Lista de tickers (usa DEFAULT_ASSETS se None)
+        period: Período de dados
+        start: Data de início
     
     Returns:
         dict: Dados de todos os ativos
@@ -111,10 +123,16 @@ def fetch_all_assets(assets=None):
     
     print(f"\n{'='*60}")
     print(f"Iniciando coleta de dados - {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+    if start:
+        print(f"Início solicitado: {start}")
+    else:
+        print(f"Período solicitado: {period or '2y'}")
     print(f"{'='*60}\n")
     
     all_data = {
         'timestamp': datetime.now().isoformat(),
+        'period': period,
+        'start': start,
         'assets': {},
         'summary': {
             'total_assets': len(assets),
@@ -124,7 +142,7 @@ def fetch_all_assets(assets=None):
     }
     
     for ticker in assets:
-        data = fetch_asset_data(ticker)
+        data = fetch_asset_data(ticker, period=period, start=start)
         if data:
             all_data['assets'][ticker] = data
             all_data['summary']['successful'] += 1
@@ -161,16 +179,43 @@ def save_data(data, output_file=OUTPUT_FILE):
         json.dump(clean_data, f, indent=2, ensure_ascii=False, allow_nan=False)
     print(f"✓ Dados salvos em: {output_file}")
 
+def update_manifest():
+    """Escaneia a pasta data/ e atualiza o manifest.json com a lista de arquivos de mercado"""
+    pattern = os.path.join(DATA_DIR, 'market_data*.json')
+    files = glob.glob(pattern)
+    # Extrai apenas o nome do arquivo relativo à pasta data/
+    file_names = [os.path.basename(f) for f in files]
+
+    manifest = {
+        'last_update': datetime.now().isoformat(),
+        'market_data_files': sorted(file_names)
+    }
+
+    with open(MANIFEST_FILE, 'w', encoding='utf-8') as f:
+        json.dump(manifest, f, indent=2, ensure_ascii=False)
+    print(f"✓ Manifest atualizado em: {MANIFEST_FILE}")
+    print(f"  Arquivos detectados: {file_names}")
+
 def main():
     """Função principal"""
+    parser = argparse.ArgumentParser(description='Coleta dados de ativos B3 via yfinance')
+    parser.add_argument('--period', type=str, default=None, help='Período de dados (ex: 2y, 5y, max)')
+    parser.add_argument('--start', type=str, default=None, help='Data de início (YYYY-MM-DD)')
+    parser.add_argument('--output', type=str, default='market_data.json', help='Nome do arquivo de saída (na pasta data/)')
+    args = parser.parse_args()
+
     # Carrega tickers do arquivo de configuração
     tickers = load_tickers()
 
     # Coleta dados
-    data = fetch_all_assets(tickers)
+    data = fetch_all_assets(tickers, period=args.period, start=args.start)
     
     # Salva dados
-    save_data(data)
+    output_path = os.path.join(DATA_DIR, args.output)
+    save_data(data, output_file=output_path)
+
+    # Atualiza manifest
+    update_manifest()
     
     return data
 

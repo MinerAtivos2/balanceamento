@@ -39,6 +39,9 @@
       <a href="#" class="nav-link" data-section="rebalance" id="nav-rebalance">
         <span class="nav-icon">⚖️</span> Rebalanceamento
       </a>
+      <a href="#" class="nav-link" data-section="dividends" id="nav-dividends">
+        <span class="nav-icon">💰</span> Proventos
+      </a>
       <a href="#" class="nav-link" data-section="summary" id="nav-summary">
         <span class="nav-icon">🌍</span> Resumo de Mercado
       </a>
@@ -75,13 +78,18 @@
       <div class="stats-grid" id="statsGrid">
         <div class="stat-card glass">
           <div class="stat-icon">💰</div>
-          <div class="stat-label">Valor Atual</div>
+          <div class="stat-label">Patrimônio Total</div>
           <div class="stat-value" id="statTotalValue">R$ 0,00</div>
         </div>
         <div class="stat-card glass">
           <div class="stat-icon">💵</div>
-          <div class="stat-label">Investido</div>
+          <div class="stat-label">Valor Investido</div>
           <div class="stat-value" id="statTotalInvested">R$ 0,00</div>
+        </div>
+        <div class="stat-card glass">
+          <div class="stat-icon">🤑</div>
+          <div class="stat-label">Total Proventos</div>
+          <div class="stat-value positive" id="statTotalProventos">R$ 0,00</div>
         </div>
         <div class="stat-card glass">
           <div class="stat-icon">📊</div>
@@ -144,9 +152,11 @@
         </div>
         <div class="form-inline">
           <label for="sortPositions">Ordenar por:</label>
-          <select id="sortPositions" class="input-sm">
+          <select id="sortPositions" class="input-sm" style="width: 140px;">
             <option value="ticker">Ativo (A-Z)</option>
-            <option value="value">Valor Atual</option>
+            <option value="market_value">Valor Mercado</option>
+            <option value="dividends">Total Proventos</option>
+            <option value="equity">Patrimônio Total</option>
             <option value="rentability">Rentabilidade</option>
           </select>
         </div>
@@ -160,17 +170,90 @@
                 <th>Ativo</th>
                 <th>Qtd Total</th>
                 <th>Preço Médio</th>
-                <th>Data Média</th>
+                <th>Investido</th>
                 <th>Preço Atual</th>
-                <th>Valor Atual</th>
+                <th>Valor Mercado</th>
+                <th>Total Proventos</th>
+                <th>Patrimônio Total</th>
                 <th>Rentab. Real</th>
                 <th>Ações</th>
               </tr>
             </thead>
             <tbody id="positionsBody">
-              <tr><td colspan="8" class="empty-state">Carregando...</td></tr>
+              <tr><td colspan="10" class="empty-state">Carregando...</td></tr>
             </tbody>
           </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- PROVENTOS -->
+    <!-- ============================================================ -->
+    <section class="page" data-page="dividends" id="page-dividends">
+      <div class="page-header">
+        <h1>Carteira de Proventos</h1>
+        <p class="subtitle">Análise de dividendos recebidos e descoberta de ativos</p>
+      </div>
+
+      <div class="alert alert-info glass" id="dividendsGuestAlert">
+        <strong>🔒 Área Exclusiva:</strong> Faça login para acessar o detalhamento de proventos da sua carteira e o filtro de descoberta.
+      </div>
+
+      <div id="dividendsContent" class="hidden">
+        <div class="toolbar">
+          <div class="toolbar-group">
+            <div class="form-inline">
+              <label for="divStartDate">De:</label>
+              <input type="date" id="divStartDate" class="input-sm" style="width: 150px;">
+            </div>
+            <div class="form-inline">
+              <label for="divEndDate">Até:</label>
+              <input type="date" id="divEndDate" class="input-sm" style="width: 150px;">
+            </div>
+            <button class="btn btn-primary" id="btnFilterDividends">
+              🔍 Filtrar
+            </button>
+          </div>
+          <div class="toolbar-group">
+            <button class="btn btn-outline" id="btnToggleDiscovery">
+              🌐 Descoberta de Ativos
+            </button>
+          </div>
+        </div>
+
+        <div class="stats-grid stats-grid-3">
+          <div class="stat-card glass">
+            <div class="stat-label">Total Recebido (Período)</div>
+            <div class="stat-value accent" id="divStatTotal">R$ 0,00</div>
+          </div>
+          <div class="stat-card glass">
+            <div class="stat-label">Maior Pagador</div>
+            <div class="stat-value" id="divStatTopPayer">—</div>
+          </div>
+          <div class="stat-card glass">
+            <div class="stat-label">Yield da Carteira (Mês)</div>
+            <div class="stat-value accent" id="divStatYield">—</div>
+          </div>
+        </div>
+
+        <div class="card glass">
+          <h2 class="card-title" id="divTableTitle">Meus Proventos no Período</h2>
+          <div class="table-responsive">
+            <table id="dividendsTable">
+              <thead>
+                <tr>
+                  <th>Ativo</th>
+                  <th>Proventos Acumulados</th>
+                  <th>Yield no Período</th>
+                  <th>% da Renda Total</th>
+                </tr>
+              </thead>
+              <tbody id="dividendsBody">
+                <tr><td colspan="4" class="empty-state">Clique em Filtrar para carregar os dados</td></tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </section>
