@@ -1,5 +1,5 @@
 {
-  "last_update": "2026-03-27T23:22:30.835014",
+  "last_update": "2026-03-27T23:30:20.536941",
   "date": "2026-03-27",
   "gainers": [
     {
@@ -521,20 +521,20 @@
       "name": "Banestes S.A - Banco do Estado do Espírito Santo",
       "last_close": 8.71,
       "date": "2026-03-27",
-      "daily_delta": 0.016336056009334854,
-      "monthly_delta": 0.01396973224679865,
+      "daily_delta": 0.00810185185185186,
+      "monthly_delta": 0.005773672055427337,
       "delta_volume": 0.11883882673117618,
-      "prev_close": 8.57
+      "prev_close": 8.64
     },
     {
       "ticker": "BEES4.SA",
       "name": "Banestes S.A - Banco do Estado do Espírito Santo",
       "last_close": 8.74,
       "date": "2026-03-27",
-      "daily_delta": 0.005753739930955293,
-      "monthly_delta": 0.0045977011494253706,
+      "daily_delta": -0.0022831050228310223,
+      "monthly_delta": -0.0034207525655644,
       "delta_volume": 0.15586690017513138,
-      "prev_close": 8.69
+      "prev_close": 8.76
     },
     {
       "ticker": "BGIP4.SA",
@@ -942,7 +942,7 @@
       "last_close": 16.62,
       "date": "2026-03-27",
       "daily_delta": 0.00120481927710836,
-      "monthly_delta": 0.06470211402946835,
+      "monthly_delta": 0.05590851334180447,
       "delta_volume": -0.5552111062438926,
       "prev_close": 16.6
     },
@@ -952,7 +952,7 @@
       "last_close": 12.32,
       "date": "2026-03-27",
       "daily_delta": 0.001626016260162677,
-      "monthly_delta": 0.017341040462427904,
+      "monthly_delta": 0.0181818181818183,
       "delta_volume": -0.4919207121521939,
       "prev_close": 12.3
     },
@@ -2481,10 +2481,10 @@
       "name": "Dimed S.A. Distribuidora de Medicamentos",
       "last_close": 14.27,
       "date": "2026-03-27",
-      "daily_delta": -0.010402219140083213,
-      "monthly_delta": -0.09108280254777068,
+      "daily_delta": -0.016540317022742945,
+      "monthly_delta": -0.09626345788473711,
       "delta_volume": 0.06596208981310658,
-      "prev_close": 14.42
+      "prev_close": 14.51
     },
     {
       "ticker": "POMO3.SA",
@@ -2671,10 +2671,10 @@
       "name": "Rede D'Or São Luiz S.A.",
       "last_close": 37.71,
       "date": "2026-03-27",
-      "daily_delta": -0.013343799058084693,
-      "monthly_delta": -0.12990309183202586,
+      "daily_delta": -0.017457008858780654,
+      "monthly_delta": -0.13350183823529416,
       "delta_volume": -0.5852408117799238,
-      "prev_close": 38.22
+      "prev_close": 38.38
     },
     {
       "ticker": "RECV3.SA",
@@ -2917,23 +2917,14 @@
       "prev_close": 4.54
     },
     {
-      "ticker": "SHUL3.SA",
-      "name": "Schulz S.A.",
-      "last_close": null,
-      "date": "2026-03-27",
-      "daily_delta": 0,
-      "monthly_delta": 0,
-      "delta_volume": 0
-    },
-    {
       "ticker": "SHUL4.SA",
       "name": "Schulz S.A.",
       "last_close": 5.15,
       "date": "2026-03-27",
-      "daily_delta": -0.009615384615384581,
-      "monthly_delta": -0.07871198568872984,
+      "daily_delta": -0.024621212121212155,
+      "monthly_delta": -0.09171075837742493,
       "delta_volume": 0.04879434088914136,
-      "prev_close": 5.2
+      "prev_close": 5.28
     },
     {
       "ticker": "SIMH3.SA",
@@ -3171,7 +3162,7 @@
       "last_close": 34.25,
       "date": "2026-03-27",
       "daily_delta": -0.010973144672249524,
-      "monthly_delta": -0.09127089413637568,
+      "monthly_delta": -0.09582893347412891,
       "delta_volume": -0.15197278256262503,
       "prev_close": 34.63
     },
