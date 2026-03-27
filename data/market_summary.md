@@ -1,21 +1,21 @@
-## Resumo de Mercado - 2026-03-26
+## Resumo de Mercado - 2026-03-27
 
 ### 📈 Maiores Altas (Dia)
 
 | Ativo | Nome | Fechamento | Anterior | Variação | DeltaVolume |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| SEER3.SA | Ser Educacional S.A. | R$ 12.38 | R$ 10.75 | **+15.16%** 🚀 | +400.17% ⬆️ |
-| BRSR5.SA | Banco do Estado do Rio Grande do Sul S.A. | R$ 19.42 | R$ 17.00 | **+14.24%** 🚀 | +133.33% ⬆️ |
-| AMER3.SA | Americanas S.A. | R$ 5.80 | R$ 5.15 | **+12.62%** 🚀 | +755.68% ⬆️ |
-| TXRX4.SA | Têxtil Renauxview S.A. | R$ 1.75 | R$ 1.57 | **+11.46%** 🚀 | -77.78% ⬇️ |
-| AMAR3.SA | Marisa Lojas S.A. | R$ 0.94 | R$ 0.88 | **+6.82%** 🚀 | +310.55% ⬆️ |
+| AZTE3.SA | Azevedo & Travassos Energia S.A. | R$ 0.37 | R$ 0.30 | **+23.33%** 🚀 | +532.84% ⬆️ |
+| AZEV4.SA | Azevedo & Travassos S.A. | R$ 0.20 | R$ 0.18 | **+11.11%** 🚀 | +17.85% ⬆️ |
+| RCSL4.SA | Recrusul S/A | R$ 1.01 | R$ 0.91 | **+10.99%** 🚀 | +1.24% ⬆️ |
+| DOTZ3.SA | Dotz S.A. | R$ 2.95 | R$ 2.66 | **+10.90%** 🚀 | +141.96% ⬆️ |
+| INEP3.SA | Inepar S.A. Indústria e Construções | R$ 1.40 | R$ 1.28 | **+9.38%** 🚀 | +517.30% ⬆️ |
 
 ### 📉 Maiores Baixas (Dia)
 
 | Ativo | Nome | Fechamento | Anterior | Variação | DeltaVolume |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| ONCO3.SA | Oncoclínicas do Brasil Serviços Médicos S.A. | R$ 1.64 | R$ 1.91 | **-14.14%** 📉 | -31.35% ⬇️ |
-| RCSL4.SA | Recrusul S/A | R$ 0.91 | R$ 1.03 | **-11.65%** 📉 | -35.55% ⬇️ |
-| CCTY3.SA | CCTY3.SA | R$ 8.50 | R$ 9.55 | **-10.99%** 📉 | 0.00% — |
-| BOBR4.SA | Bombril S.A. | R$ 1.22 | R$ 1.36 | **-10.29%** 📉 | -90.54% ⬇️ |
-| CSED3.SA | Cruzeiro do Sul Educacional S.A. | R$ 5.51 | R$ 6.14 | **-10.26%** 📉 | +868.29% ⬆️ |
+| DASA3.SA | Diagnósticos da América S.A. | R$ 2.78 | R$ 3.41 | **-18.48%** 📉 | +375.90% ⬆️ |
+| IFCM3.SA | Infracommerce CXaaS S.A. | R$ 0.80 | R$ 0.95 | **-15.79%** 📉 | -57.13% ⬇️ |
+| NORD3.SA | Nordon Indústrias Metalúrgicas S/A | R$ 2.30 | R$ 2.70 | **-14.81%** 📉 | +121.32% ⬆️ |
+| SYNE3.SA | Syn Prop & Tech S.A. | R$ 4.13 | R$ 4.70 | **-12.13%** 📉 | +531.83% ⬆️ |
+| BRKM5.SA | Braskem S.A. | R$ 9.05 | R$ 10.15 | **-10.84%** 📉 | +65.00% ⬆️ |
