@@ -1,21 +1,21 @@
-## Resumo de Mercado - 2026-03-27
+## Resumo de Mercado - 2026-03-30
 
 ### 📈 Maiores Altas (Dia)
 
 | Ativo | Nome | Fechamento | Anterior | Variação | DeltaVolume |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| AZTE3.SA | Azevedo & Travassos Energia S.A. | R$ 0.37 | R$ 0.30 | **+23.33%** 🚀 | +532.84% ⬆️ |
-| AZEV4.SA | Azevedo & Travassos S.A. | R$ 0.20 | R$ 0.18 | **+11.11%** 🚀 | +17.85% ⬆️ |
-| RCSL4.SA | Recrusul S/A | R$ 1.01 | R$ 0.91 | **+10.99%** 🚀 | +1.24% ⬆️ |
-| DOTZ3.SA | Dotz S.A. | R$ 2.95 | R$ 2.66 | **+10.90%** 🚀 | +141.96% ⬆️ |
-| INEP3.SA | Inepar S.A. Indústria e Construções | R$ 1.40 | R$ 1.28 | **+9.38%** 🚀 | +517.30% ⬆️ |
+| ARND3.SA | Arandu Investimentos S.A. | R$ 0.80 | R$ 0.66 | **+21.21%** 🚀 | -89.42% ⬇️ |
+| AZTE3.SA | Azevedo & Travassos Energia S.A. | R$ 0.43 | R$ 0.37 | **+16.22%** 🚀 | +309.83% ⬆️ |
+| INEP4.SA | Inepar S.A. Indústria e Construções | R$ 1.43 | R$ 1.28 | **+11.72%** 🚀 | +456.61% ⬆️ |
+| BIOM3.SA | Biomm S.A. | R$ 8.00 | R$ 7.30 | **+9.59%** 🚀 | +469.86% ⬆️ |
+| TXRX4.SA | Têxtil Renauxview S.A. | R$ 1.80 | R$ 1.65 | **+9.09%** 🚀 | -77.36% ⬇️ |
 
 ### 📉 Maiores Baixas (Dia)
 
 | Ativo | Nome | Fechamento | Anterior | Variação | DeltaVolume |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| DASA3.SA | Diagnósticos da América S.A. | R$ 2.78 | R$ 3.41 | **-18.48%** 📉 | +375.90% ⬆️ |
-| IFCM3.SA | Infracommerce CXaaS S.A. | R$ 0.80 | R$ 0.95 | **-15.79%** 📉 | -57.13% ⬇️ |
-| NORD3.SA | Nordon Indústrias Metalúrgicas S/A | R$ 2.30 | R$ 2.70 | **-14.81%** 📉 | +121.32% ⬆️ |
-| SYNE3.SA | Syn Prop & Tech S.A. | R$ 4.13 | R$ 4.70 | **-12.13%** 📉 | +531.83% ⬆️ |
-| BRKM5.SA | Braskem S.A. | R$ 9.05 | R$ 10.15 | **-10.84%** 📉 | +65.00% ⬆️ |
+| OIBR3.SA | Oi S.A. | R$ 0.17 | R$ 0.19 | **-10.53%** 📉 | -29.75% ⬇️ |
+| PDGR3.SA | PDG Realty S.A. Empreendimentos e Participações | R$ 1.91 | R$ 2.13 | **-10.33%** 📉 | +14.93% ⬆️ |
+| NORD3.SA | Nordon Indústrias Metalúrgicas S/A | R$ 2.10 | R$ 2.30 | **-8.70%** 📉 | +51.96% ⬆️ |
+| ONCO3.SA | Oncoclínicas do Brasil Serviços Médicos S.A. | R$ 1.51 | R$ 1.63 | **-7.36%** 📉 | -37.65% ⬇️ |
+| SYNE3.SA | Syn Prop & Tech S.A. | R$ 3.83 | R$ 4.13 | **-7.26%** 📉 | +252.19% ⬆️ |
