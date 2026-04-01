@@ -1,21 +1,21 @@
-## Resumo de Mercado - 2026-03-31
+## Resumo de Mercado - 2026-04-01
 
 ### 📈 Maiores Altas (Dia)
 
 | Ativo | Nome | Fechamento | Anterior | Variação | DeltaVolume |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| SNSY3.SA | Sansuy S.A. | R$ 11.46 | R$ 10.00 | **+14.60%** 🚀 | -75.00% ⬇️ |
-| DOTZ3.SA | Dotz S.A. | R$ 3.43 | R$ 3.02 | **+13.58%** 🚀 | +42.96% ⬆️ |
-| NATU3.SA | Natura Cosméticos S.A. | R$ 10.44 | R$ 9.24 | **+12.99%** 🚀 | +191.26% ⬆️ |
-| QUAL3.SA | Qualicorp Consultoria e Corretora de Seguros S.A. | R$ 2.12 | R$ 1.88 | **+12.77%** 🚀 | +49.28% ⬆️ |
-| JSLG3.SA | JSL S.A. | R$ 7.64 | R$ 6.79 | **+12.52%** 🚀 | +16.86% ⬆️ |
+| BIED3.SA | Bahema Educação S.A. | R$ 8.62 | R$ 6.38 | **+35.11%** 🚀 | +912.22% ⬆️ |
+| BPAC5.SA | Banco BTG Pactual S.A. | R$ 14.35 | R$ 11.29 | **+27.10%** 🚀 | +1376.07% ⬆️ |
+| SHOW3.SA | T4F Entretenimento S.A. | R$ 5.61 | R$ 4.44 | **+26.35%** 🚀 | +722.03% ⬆️ |
+| RVEE3.SA | RVEE3.SA | R$ 1.19 | R$ 1.06 | **+12.26%** 🚀 | -92.45% ⬇️ |
+| ARML3.SA | Armac Locação, Logística e Serviços S.A. | R$ 5.48 | R$ 4.92 | **+11.38%** 🚀 | +59.23% ⬆️ |
 
 ### 📉 Maiores Baixas (Dia)
 
 | Ativo | Nome | Fechamento | Anterior | Variação | DeltaVolume |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| OIBR4.SA | Oi S.A. | R$ 1.25 | R$ 1.48 | **-15.54%** 📉 | +153.33% ⬆️ |
-| PDGR3.SA | PDG Realty S.A. Empreendimentos e Participações | R$ 1.70 | R$ 1.91 | **-10.99%** 📉 | +104.24% ⬆️ |
-| PRIO3.SA | Prio S.A. | R$ 66.21 | R$ 72.10 | **-8.17%** 📉 | +29.99% ⬆️ |
-| CRPG6.SA | Tronox Pigmentos do Brasil S.A. | R$ 17.01 | R$ 18.48 | **-7.95%** 📉 | +242.86% ⬆️ |
-| NEXP3.SA | Nexpe Participações S.A. | R$ 2.70 | R$ 2.89 | **-6.57%** 📉 | +1160.39% ⬆️ |
+| AZEV4.SA | Azevedo & Travassos S.A. | R$ 0.17 | R$ 0.21 | **-19.05%** 📉 | +353.47% ⬆️ |
+| JOPA4.SA | JOSAPAR Joaquim Oliveira S.A. Participações | R$ 19.80 | R$ 24.00 | **-17.50%** 📉 | 0.00% — |
+| TXRX4.SA | Têxtil Renauxview S.A. | R$ 1.58 | R$ 1.86 | **-15.05%** 📉 | +169.23% ⬆️ |
+| BPAC3.SA | Banco BTG Pactual S.A. | R$ 29.52 | R$ 33.92 | **-12.97%** 📉 | +1084.87% ⬆️ |
+| NORD3.SA | Nordon Indústrias Metalúrgicas S/A | R$ 1.80 | R$ 2.02 | **-10.89%** 📉 | +73.82% ⬆️ |
