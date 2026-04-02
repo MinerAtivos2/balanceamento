@@ -1,21 +1,21 @@
-## Resumo de Mercado - 2026-04-01
+## Resumo de Mercado - 2026-04-02
 
 ### 📈 Maiores Altas (Dia)
 
 | Ativo | Nome | Fechamento | Anterior | Variação | DeltaVolume |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| BIED3.SA | Bahema Educação S.A. | R$ 8.62 | R$ 6.38 | **+35.11%** 🚀 | +912.22% ⬆️ |
-| BPAC5.SA | Banco BTG Pactual S.A. | R$ 14.35 | R$ 11.29 | **+27.10%** 🚀 | +1376.07% ⬆️ |
-| SHOW3.SA | T4F Entretenimento S.A. | R$ 5.61 | R$ 4.44 | **+26.35%** 🚀 | +722.03% ⬆️ |
-| RVEE3.SA | RVEE3.SA | R$ 1.19 | R$ 1.06 | **+12.26%** 🚀 | -92.45% ⬇️ |
-| ARML3.SA | Armac Locação, Logística e Serviços S.A. | R$ 5.48 | R$ 4.92 | **+11.38%** 🚀 | +59.23% ⬆️ |
+| BIED3.SA | Bahema Educação S.A. | R$ 10.04 | R$ 8.62 | **+16.47%** 🚀 | +307.41% ⬆️ |
+| AZTE3.SA | Azevedo & Travassos Energia S.A. | R$ 0.51 | R$ 0.44 | **+15.91%** 🚀 | +146.72% ⬆️ |
+| ARND3.SA | Arandu Investimentos S.A. | R$ 0.80 | R$ 0.72 | **+11.11%** 🚀 | +3.45% ⬆️ |
+| RCSL4.SA | Recrusul S/A | R$ 0.98 | R$ 0.90 | **+8.89%** 🚀 | -26.25% ⬇️ |
+| JALL3.SA | Jalles Machado S/A | R$ 3.70 | R$ 3.40 | **+8.82%** 🚀 | +157.44% ⬆️ |
 
 ### 📉 Maiores Baixas (Dia)
 
 | Ativo | Nome | Fechamento | Anterior | Variação | DeltaVolume |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| AZEV4.SA | Azevedo & Travassos S.A. | R$ 0.17 | R$ 0.21 | **-19.05%** 📉 | +353.47% ⬆️ |
-| JOPA4.SA | JOSAPAR Joaquim Oliveira S.A. Participações | R$ 19.80 | R$ 24.00 | **-17.50%** 📉 | 0.00% — |
-| TXRX4.SA | Têxtil Renauxview S.A. | R$ 1.58 | R$ 1.86 | **-15.05%** 📉 | +169.23% ⬆️ |
-| BPAC3.SA | Banco BTG Pactual S.A. | R$ 29.52 | R$ 33.92 | **-12.97%** 📉 | +1084.87% ⬆️ |
-| NORD3.SA | Nordon Indústrias Metalúrgicas S/A | R$ 1.80 | R$ 2.02 | **-10.89%** 📉 | +73.82% ⬆️ |
+| MWET4.SA | Wetzel S.A. | R$ 21.00 | R$ 25.17 | **-16.57%** 📉 | +8.27% ⬆️ |
+| JOPA3.SA | JOSAPAR Joaquim Oliveira S.A. Participações | R$ 18.70 | R$ 21.51 | **-13.06%** 📉 | +508.33% ⬆️ |
+| OIBR3.SA | Oi S.A. | R$ 0.15 | R$ 0.17 | **-11.76%** 📉 | +18.37% ⬆️ |
+| AZEV4.SA | Azevedo & Travassos S.A. | R$ 0.15 | R$ 0.17 | **-11.76%** 📉 | +224.33% ⬆️ |
+| PTBL3.SA | PBG S.A. | R$ 2.43 | R$ 2.73 | **-10.99%** 📉 | +606.99% ⬆️ |
