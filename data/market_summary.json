@@ -1,5 +1,5 @@
 {
-  "last_update": "2026-04-06T23:26:22.154442",
+  "last_update": "2026-04-06T23:33:35.776867",
   "date": "2026-04-06",
   "gainers": [
     {
@@ -625,16 +625,6 @@
       "monthly_delta": 0.007572840456937513,
       "delta_volume": -0.35992855016373926,
       "prev_close": 76.77
-    },
-    {
-      "ticker": "BMGB4.SA",
-      "name": "Banco BMG S.A.",
-      "last_close": 5.3,
-      "date": "2026-04-06",
-      "daily_delta": 0.0,
-      "monthly_delta": 0.11344537815126055,
-      "delta_volume": -0.06820734540642837,
-      "prev_close": 5.3
     },
     {
       "ticker": "BMIN4.SA",
