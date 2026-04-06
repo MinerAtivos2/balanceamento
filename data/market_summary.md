@@ -1,21 +1,21 @@
-## Resumo de Mercado - 2026-04-02
+## Resumo de Mercado - 2026-04-06
 
 ### 📈 Maiores Altas (Dia)
 
 | Ativo | Nome | Fechamento | Anterior | Variação | DeltaVolume |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| BIED3.SA | Bahema Educação S.A. | R$ 10.04 | R$ 8.62 | **+16.47%** 🚀 | +307.41% ⬆️ |
-| AZTE3.SA | Azevedo & Travassos Energia S.A. | R$ 0.51 | R$ 0.44 | **+15.91%** 🚀 | +146.72% ⬆️ |
-| ARND3.SA | Arandu Investimentos S.A. | R$ 0.80 | R$ 0.72 | **+11.11%** 🚀 | +3.45% ⬆️ |
-| RCSL4.SA | Recrusul S/A | R$ 0.98 | R$ 0.90 | **+8.89%** 🚀 | -22.29% ⬇️ |
-| JALL3.SA | Jalles Machado S/A | R$ 3.70 | R$ 3.40 | **+8.82%** 🚀 | +157.86% ⬆️ |
+| LPSB3.SA | LPS Brasil - Consultoria de Imóveis S.A. | R$ 1.80 | R$ 1.64 | **+9.76%** 🚀 | +153.76% ⬆️ |
+| BMIN4.SA | Banco Mercantil de Investimentos S.A. | R$ 19.50 | R$ 18.00 | **+8.33%** 🚀 | -48.57% ⬇️ |
+| JHSF3.SA | JHSF Participações S.A. | R$ 10.75 | R$ 9.94 | **+8.15%** 🚀 | +68.22% ⬆️ |
+| NGRD3.SA | Neogrid Participações S.A. | R$ 31.81 | R$ 29.70 | **+7.10%** 🚀 | +851.65% ⬆️ |
+| BPAC5.SA | Banco BTG Pactual S.A. | R$ 16.38 | R$ 15.30 | **+7.06%** 🚀 | +50.42% ⬆️ |
 
 ### 📉 Maiores Baixas (Dia)
 
 | Ativo | Nome | Fechamento | Anterior | Variação | DeltaVolume |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| MWET4.SA | Wetzel S.A. | R$ 21.00 | R$ 25.17 | **-16.57%** 📉 | +8.27% ⬆️ |
-| JOPA3.SA | JOSAPAR Joaquim Oliveira S.A. Participações | R$ 18.70 | R$ 21.51 | **-13.06%** 📉 | +508.33% ⬆️ |
-| OIBR3.SA | Oi S.A. | R$ 0.15 | R$ 0.17 | **-11.76%** 📉 | +18.37% ⬆️ |
-| AZEV4.SA | Azevedo & Travassos S.A. | R$ 0.15 | R$ 0.17 | **-11.76%** 📉 | +224.38% ⬆️ |
-| PTBL3.SA | PBG S.A. | R$ 2.43 | R$ 2.73 | **-10.99%** 📉 | +607.45% ⬆️ |
+| JOPA4.SA | JOSAPAR Joaquim Oliveira S.A. Participações | R$ 15.00 | R$ 19.80 | **-24.24%** 📉 | -76.00% ⬇️ |
+| SOND5.SA | Sondotécnica Engenharia de Solos S.A. | R$ 56.70 | R$ 74.00 | **-23.38%** 📉 | +157.14% ⬆️ |
+| RVEE3.SA | RVEE3.SA | R$ 0.98 | R$ 1.18 | **-16.95%** 📉 | +15.42% ⬆️ |
+| AZTE3.SA | Azevedo & Travassos Energia S.A. | R$ 0.46 | R$ 0.51 | **-9.80%** 📉 | +146.14% ⬆️ |
+| RSID3.SA | Rossi Residencial S.A. | R$ 1.60 | R$ 1.75 | **-8.57%** 📉 | -36.82% ⬇️ |
