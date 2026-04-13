@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-04-13T23:34:13.639930",
+  "timestamp": "2026-04-13T23:39:56.840988",
   "period": null,
   "start": null,
   "assets": {
@@ -9,7 +9,7 @@
       "sector": "Financial Services",
       "currency": "BRL",
       "last_price": 22.0,
-      "last_update": "2026-04-13T23:34:16.053089",
+      "last_update": "2026-04-13T23:39:59.608354",
       "history": {
         "dates": [
           "2025-03-06",
@@ -236,7 +236,7 @@
       "sector": "Consumer Cyclical",
       "currency": "BRL",
       "last_price": 25.0,
-      "last_update": "2026-04-13T23:34:18.526569",
+      "last_update": "2026-04-13T23:40:02.681937",
       "history": {
         "dates": [
           "2024-04-15",
@@ -1756,7 +1756,7 @@
       "sector": "Consumer Cyclical",
       "currency": "BRL",
       "last_price": 58.0,
-      "last_update": "2026-04-13T23:34:18.990153",
+      "last_update": "2026-04-13T23:40:03.212526",
       "history": {
         "dates": [
           "2024-04-15",
@@ -3276,7 +3276,7 @@
       "sector": "Consumer Cyclical",
       "currency": "BRL",
       "last_price": 55.0,
-      "last_update": "2026-04-13T23:34:19.328661",
+      "last_update": "2026-04-13T23:40:03.586930",
       "history": {
         "dates": [
           "2024-04-15",
@@ -4796,7 +4796,7 @@
       "sector": "Industrials",
       "currency": "BRL",
       "last_price": 4.670000076293945,
-      "last_update": "2026-04-13T23:34:21.303295",
+      "last_update": "2026-04-13T23:40:05.946933",
       "history": {
         "dates": [
           "2024-04-15",
@@ -6319,7 +6319,7 @@
       "sector": "Consumer Cyclical",
       "currency": "BRL",
       "last_price": 14.199999809265137,
-      "last_update": "2026-04-13T23:34:24.194875",
+      "last_update": "2026-04-13T23:40:10.094685",
       "history": {
         "dates": [
           "2024-12-16",
@@ -7329,7 +7329,7 @@
       "sector": "Financial Services",
       "currency": "BRL",
       "last_price": 0.7099999785423279,
-      "last_update": "2026-04-13T23:34:25.887545",
+      "last_update": "2026-04-13T23:40:12.166561",
       "history": {
         "dates": [
           "2025-11-25",
@@ -7625,7 +7625,7 @@
       "sector": "Communication Services",
       "currency": "BRL",
       "last_price": 2.4800000190734863,
-      "last_update": "2026-04-13T23:34:26.571644",
+      "last_update": "2026-04-13T23:40:13.044532",
       "history": {
         "dates": [
           "2024-12-11",
@@ -8644,7 +8644,7 @@
       "sector": "Consumer Cyclical",
       "currency": "BRL",
       "last_price": 3.75,
-      "last_update": "2026-04-13T23:34:26.825936",
+      "last_update": "2026-04-13T23:40:13.318200",
       "history": {
         "dates": [
           "2026-01-05",
@@ -8874,7 +8874,7 @@
       "sector": "Real Estate",
       "currency": "BRL",
       "last_price": 0.8799999952316284,
-      "last_update": "2026-04-13T23:34:27.684988",
+      "last_update": "2026-04-13T23:40:14.094443",
       "history": {
         "dates": [
           "2024-04-15",
@@ -10397,7 +10397,7 @@
       "sector": "Utilities",
       "currency": "BRL",
       "last_price": 63.33000183105469,
-      "last_update": "2026-04-13T23:34:29.403774",
+      "last_update": "2026-04-13T23:40:15.946555",
       "history": {
         "dates": [
           "2025-12-22",
@@ -10645,7 +10645,7 @@
       "sector": "Energy",
       "currency": "BRL",
       "last_price": 0.4000000059604645,
-      "last_update": "2026-04-13T23:34:30.591640",
+      "last_update": "2026-04-13T23:40:17.507152",
       "history": {
         "dates": [
           "2025-02-14",
@@ -11535,7 +11535,7 @@
       "sector": "Consumer Defensive",
       "currency": "BRL",
       "last_price": 8.75,
-      "last_update": "2026-04-13T23:34:40.741261",
+      "last_update": "2026-04-13T23:40:30.825739",
       "history": {
         "dates": [
           "2024-11-18",
@@ -12470,7 +12470,7 @@
       "sector": "Healthcare",
       "currency": "BRL",
       "last_price": 7.820000171661377,
-      "last_update": "2026-04-13T23:34:41.185109",
+      "last_update": "2026-04-13T23:40:31.445808",
       "history": {
         "dates": [
           "2024-04-15",
@@ -13993,7 +13993,7 @@
       "sector": "",
       "currency": "BRL",
       "last_price": 72.0,
-      "last_update": "2026-04-13T23:34:42.779072",
+      "last_update": "2026-04-13T23:40:33.373144",
       "history": {
         "dates": [
           "2026-02-03",
@@ -14085,7 +14085,7 @@
       "sector": "N/A",
       "currency": "BRL",
       "last_price": 1.0,
-      "last_update": "2026-04-13T23:34:46.054864",
+      "last_update": "2026-04-13T23:40:37.156930",
       "history": {
         "dates": [
           "2024-04-15",
@@ -15605,7 +15605,7 @@
       "sector": "Consumer Defensive",
       "currency": "BRL",
       "last_price": 1.1799999475479126,
-      "last_update": "2026-04-13T23:34:46.459831",
+      "last_update": "2026-04-13T23:40:37.553461",
       "history": {
         "dates": [
           "2024-04-15",
@@ -17128,7 +17128,7 @@
       "sector": "Energy",
       "currency": "BRL",
       "last_price": 21.25,
-      "last_update": "2026-04-13T23:34:50.138460",
+      "last_update": "2026-04-13T23:40:41.934754",
       "history": {
         "dates": [
           "2024-04-15",
@@ -18648,7 +18648,7 @@
       "sector": "Real Estate",
       "currency": "BRL",
       "last_price": 8.0,
-      "last_update": "2026-04-13T23:34:59.667056",
+      "last_update": "2026-04-13T23:40:53.399690",
       "history": {
         "dates": [
           "2025-04-29",
@@ -19391,7 +19391,7 @@
       "sector": "Utilities",
       "currency": "BRL",
       "last_price": 9.789999961853027,
-      "last_update": "2026-04-13T23:35:03.999512",
+      "last_update": "2026-04-13T23:40:58.866989",
       "history": {
         "dates": [
           "2024-04-15",
@@ -20911,7 +20911,7 @@
       "sector": "Utilities",
       "currency": "BRL",
       "last_price": 20.0,
-      "last_update": "2026-04-13T23:35:04.406176",
+      "last_update": "2026-04-13T23:40:59.315494",
       "history": {
         "dates": [
           "2024-04-15",
@@ -22431,7 +22431,7 @@
       "sector": "Industrials",
       "currency": "BRL",
       "last_price": 0.7400000095367432,
-      "last_update": "2026-04-13T23:35:17.391993",
+      "last_update": "2026-04-13T23:41:15.051873",
       "history": {
         "dates": [
           "2025-06-02",
@@ -23075,7 +23075,7 @@
       "sector": "Consumer Cyclical",
       "currency": "BRL",
       "last_price": 25.15999984741211,
-      "last_update": "2026-04-13T23:35:21.379391",
+      "last_update": "2026-04-13T23:41:20.501429",
       "history": {
         "dates": [
           "2026-01-02",
@@ -23308,7 +23308,7 @@
       "sector": "Healthcare",
       "currency": "BRL",
       "last_price": 6.789999961853027,
-      "last_update": "2026-04-13T23:35:23.916393",
+      "last_update": "2026-04-13T23:41:23.467167",
       "history": {
         "dates": [
           "2024-04-15",
@@ -24831,7 +24831,7 @@
       "sector": "Communication Services",
       "currency": "BRL",
       "last_price": 3.930000066757202,
-      "last_update": "2026-04-13T23:35:25.212764",
+      "last_update": "2026-04-13T23:41:24.867180",
       "history": {
         "dates": [
           "2024-04-15",
@@ -26354,7 +26354,7 @@
       "sector": "Communication Services",
       "currency": "BRL",
       "last_price": 2.640000104904175,
-      "last_update": "2026-04-13T23:35:25.658389",
+      "last_update": "2026-04-13T23:41:25.466170",
       "history": {
         "dates": [
           "2024-04-15",
@@ -27874,7 +27874,7 @@
       "sector": "N/A",
       "currency": "BRL",
       "last_price": 0.17000000178813934,
-      "last_update": "2026-04-13T23:35:28.254861",
+      "last_update": "2026-04-13T23:41:29.017631",
       "history": {
         "dates": [
           "2026-04-08"
@@ -27903,7 +27903,7 @@
       "sector": "Consumer Cyclical",
       "currency": "BRL",
       "last_price": 1.090000033378601,
-      "last_update": "2026-04-13T23:35:33.419775",
+      "last_update": "2026-04-13T23:41:35.052134",
       "history": {
         "dates": [
           "2024-04-15",
@@ -29426,7 +29426,7 @@
       "sector": "Consumer Cyclical",
       "currency": "BRL",
       "last_price": 3.009999990463257,
-      "last_update": "2026-04-13T23:35:38.105835",
+      "last_update": "2026-04-13T23:41:40.631370",
       "history": {
         "dates": [
           "2024-04-15",
@@ -30946,7 +30946,7 @@
       "sector": "Consumer Cyclical",
       "currency": "BRL",
       "last_price": 4.510000228881836,
-      "last_update": "2026-04-13T23:35:38.498177",
+      "last_update": "2026-04-13T23:41:41.156558",
       "history": {
         "dates": [
           "2024-04-15",
@@ -32466,7 +32466,7 @@
       "sector": "Industrials",
       "currency": "BRL",
       "last_price": 2.940000057220459,
-      "last_update": "2026-04-13T23:35:52.325339",
+      "last_update": "2026-04-13T23:41:59.197149",
       "history": {
         "dates": [
           "2024-04-15",
@@ -33989,7 +33989,7 @@
       "sector": "Industrials",
       "currency": "BRL",
       "last_price": 1.6299999952316284,
-      "last_update": "2026-04-13T23:35:52.727714",
+      "last_update": "2026-04-13T23:41:59.689599",
       "history": {
         "dates": [
           "2024-04-15",
@@ -35512,7 +35512,7 @@
       "sector": "Industrials",
       "currency": "BRL",
       "last_price": 4.059999942779541,
-      "last_update": "2026-04-13T23:35:54.331609",
+      "last_update": "2026-04-13T23:42:01.936427",
       "history": {
         "dates": [
           "2024-04-15",
@@ -37035,7 +37035,7 @@
       "sector": "N/A",
       "currency": "BRL",
       "last_price": 96.0,
-      "last_update": "2026-04-13T23:35:55.382123",
+      "last_update": "2026-04-13T23:42:03.233402",
       "history": {
         "dates": [
           "2024-04-15",
@@ -38555,7 +38555,7 @@
       "sector": "Consumer Defensive",
       "currency": "BRL",
       "last_price": 5.800000190734863,
-      "last_update": "2026-04-13T23:35:55.774904",
+      "last_update": "2026-04-13T23:42:03.809531",
       "history": {
         "dates": [
           "2024-04-15",
@@ -40078,7 +40078,7 @@
       "sector": "N/A",
       "currency": "BRL",
       "last_price": 3.299999952316284,
-      "last_update": "2026-04-13T23:35:56.482674",
+      "last_update": "2026-04-13T23:42:04.641368",
       "history": {
         "dates": [
           "2024-04-15",
@@ -41598,7 +41598,7 @@
       "sector": "Consumer Cyclical",
       "currency": "BRL",
       "last_price": 8.100000381469727,
-      "last_update": "2026-04-13T23:35:56.881302",
+      "last_update": "2026-04-13T23:42:05.210068",
       "history": {
         "dates": [
           "2024-04-15",
@@ -43118,7 +43118,7 @@
       "sector": "N/A",
       "currency": "BRL",
       "last_price": 0.15000000596046448,
-      "last_update": "2026-04-13T23:35:57.145063",
+      "last_update": "2026-04-13T23:42:05.608857",
       "history": {
         "dates": [
           "2026-03-12"
@@ -43147,7 +43147,7 @@
       "sector": "Industrials",
       "currency": "BRL",
       "last_price": 0.9100000262260437,
-      "last_update": "2026-04-13T23:35:57.977113",
+      "last_update": "2026-04-13T23:42:06.666293",
       "history": {
         "dates": [
           "2024-04-15",
@@ -44670,7 +44670,7 @@
       "sector": "Industrials",
       "currency": "BRL",
       "last_price": 1.7999999523162842,
-      "last_update": "2026-04-13T23:36:00.123380",
+      "last_update": "2026-04-13T23:42:09.192115",
       "history": {
         "dates": [
           "2024-04-15",
@@ -46190,7 +46190,7 @@
       "sector": "Energy",
       "currency": "BRL",
       "last_price": 0.8100000023841858,
-      "last_update": "2026-04-13T23:36:14.528638",
+      "last_update": "2026-04-13T23:42:26.977531",
       "history": {
         "dates": [
           "2024-04-15",
@@ -47713,7 +47713,7 @@
       "sector": "Financial Services",
       "currency": "BRL",
       "last_price": 3.0,
-      "last_update": "2026-04-13T23:36:16.331291",
+      "last_update": "2026-04-13T23:42:29.269011",
       "history": {
         "dates": [
           "2024-04-15",
@@ -49233,7 +49233,7 @@
       "sector": "Financial Services",
       "currency": "BRL",
       "last_price": 3.869999885559082,
-      "last_update": "2026-04-13T23:36:16.794312",
+      "last_update": "2026-04-13T23:42:29.770852",
       "history": {
         "dates": [
           "2024-04-15",
@@ -50753,7 +50753,7 @@
       "sector": "Consumer Defensive",
       "currency": "BRL",
       "last_price": 4.21999979019165,
-      "last_update": "2026-04-13T23:36:23.859363",
+      "last_update": "2026-04-13T23:42:39.260738",
       "history": {
         "dates": [
           "2024-04-15",
@@ -52276,7 +52276,7 @@
       "sector": "Consumer Cyclical",
       "currency": "BRL",
       "last_price": 16.0,
-      "last_update": "2026-04-13T23:36:28.416660",
+      "last_update": "2026-04-13T23:42:44.841187",
       "history": {
         "dates": [
           "2024-04-15",
@@ -53796,7 +53796,7 @@
       "sector": "Consumer Cyclical",
       "currency": "BRL",
       "last_price": 19.93000030517578,
-      "last_update": "2026-04-13T23:36:28.852426",
+      "last_update": "2026-04-13T23:42:45.586566",
       "history": {
         "dates": [
           "2024-04-15",
@@ -55316,7 +55316,7 @@
       "sector": "Financial Services",
       "currency": "BRL",
       "last_price": 1.7999999523162842,
-      "last_update": "2026-04-13T23:36:32.432527",
+      "last_update": "2026-04-13T23:42:50.498057",
       "history": {
         "dates": [
           "2024-04-15",
@@ -56839,7 +56839,7 @@
       "sector": "Basic Materials",
       "currency": "BRL",
       "last_price": 2.259999990463257,
-      "last_update": "2026-04-13T23:36:32.822137",
+      "last_update": "2026-04-13T23:42:50.910999",
       "history": {
         "dates": [
           "2024-04-15",
@@ -58362,7 +58362,7 @@
       "sector": "Consumer Defensive",
       "currency": "BRL",
       "last_price": 7.349999904632568,
-      "last_update": "2026-04-13T23:36:33.120072",
+      "last_update": "2026-04-13T23:42:51.323672",
       "history": {
         "dates": [
           "2025-10-07",
@@ -58769,7 +58769,7 @@
       "sector": "Healthcare",
       "currency": "BRL",
       "last_price": 1.2300000190734863,
-      "last_update": "2026-04-13T23:36:36.165170",
+      "last_update": "2026-04-13T23:42:55.391176",
       "history": {
         "dates": [
           "2024-04-15",
@@ -60292,7 +60292,7 @@
       "sector": "Industrials",
       "currency": "BRL",
       "last_price": 10.670000076293945,
-      "last_update": "2026-04-13T23:36:36.451906",
+      "last_update": "2026-04-13T23:42:55.871364",
       "history": {
         "dates": [
           "2024-04-15",
@@ -61815,7 +61815,7 @@
       "sector": "Industrials",
       "currency": "BRL",
       "last_price": 82.05000305175781,
-      "last_update": "2026-04-13T23:36:37.420101",
+      "last_update": "2026-04-13T23:42:57.609837",
       "history": {
         "dates": [
           "2024-04-15",
@@ -63338,7 +63338,7 @@
       "sector": "Energy",
       "currency": "BRL",
       "last_price": 1.4500000476837158,
-      "last_update": "2026-04-13T23:36:37.779495",
+      "last_update": "2026-04-13T23:42:58.104617",
       "history": {
         "dates": [
           "2024-04-15",
@@ -64858,7 +64858,7 @@
       "sector": "N/A",
       "currency": "BRL",
       "last_price": 0.009999999776482582,
-      "last_update": "2026-04-13T23:36:45.448715",
+      "last_update": "2026-04-13T23:43:07.916731",
       "history": {
         "dates": [
           "2026-03-19"
@@ -64887,7 +64887,7 @@
       "sector": "Industrials",
       "currency": "BRL",
       "last_price": 0.6499999761581421,
-      "last_update": "2026-04-13T23:36:57.369173",
+      "last_update": "2026-04-13T23:43:22.915411",
       "history": {
         "dates": [
           "2024-04-15",
@@ -66410,7 +66410,7 @@
       "sector": "Industrials",
       "currency": "BRL",
       "last_price": 0.7200000286102295,
-      "last_update": "2026-04-13T23:36:57.769724",
+      "last_update": "2026-04-13T23:43:23.343123",
       "history": {
         "dates": [
           "2024-04-15",
@@ -67933,7 +67933,7 @@
       "sector": "Technology",
       "currency": "BRL",
       "last_price": 30.5,
-      "last_update": "2026-04-13T23:37:00.505334",
+      "last_update": "2026-04-13T23:43:27.022066",
       "history": {
         "dates": [
           "2025-11-28",
@@ -68226,7 +68226,7 @@
       "sector": "Utilities",
       "currency": "BRL",
       "last_price": 1.0499999523162842,
-      "last_update": "2026-04-13T23:37:01.248010",
+      "last_update": "2026-04-13T23:43:28.127182",
       "history": {
         "dates": [
           "2024-04-15",
@@ -69749,7 +69749,7 @@
       "sector": "Energy",
       "currency": "BRL",
       "last_price": 2.2300000190734863,
-      "last_update": "2026-04-13T23:37:03.518043",
+      "last_update": "2026-04-13T23:43:31.036114",
       "history": {
         "dates": [
           "2024-04-15",
@@ -71272,7 +71272,7 @@
       "sector": "Industrials",
       "currency": "BRL",
       "last_price": 1.0299999713897705,
-      "last_update": "2026-04-13T23:37:05.191358",
+      "last_update": "2026-04-13T23:43:33.081448",
       "history": {
         "dates": [
           "2025-05-12",
@@ -71994,7 +71994,7 @@
       "sector": "Industrials",
       "currency": "BRL",
       "last_price": 0.1599999964237213,
-      "last_update": "2026-04-13T23:37:11.205303",
+      "last_update": "2026-04-13T23:43:40.731735",
       "history": {
         "dates": [
           "2024-04-15",
@@ -73517,7 +73517,7 @@
       "sector": "Consumer Cyclical",
       "currency": "BRL",
       "last_price": 11.460000038146973,
-      "last_update": "2026-04-13T23:37:14.777404",
+      "last_update": "2026-04-13T23:43:45.216723",
       "history": {
         "dates": [
           "2024-04-15",
@@ -75037,7 +75037,7 @@
       "sector": "Consumer Cyclical",
       "currency": "BRL",
       "last_price": 2.2200000286102295,
-      "last_update": "2026-04-13T23:37:15.178618",
+      "last_update": "2026-04-13T23:43:45.756424",
       "history": {
         "dates": [
           "2024-04-15",
@@ -76560,7 +76560,7 @@
       "sector": "N/A",
       "currency": "BRL",
       "last_price": 11.510000228881836,
-      "last_update": "2026-04-13T23:37:15.522142",
+      "last_update": "2026-04-13T23:43:46.302555",
       "history": {
         "dates": [
           "2024-04-15",
@@ -78080,7 +78080,7 @@
       "sector": "Communication Services",
       "currency": "BRL",
       "last_price": 13.760000228881836,
-      "last_update": "2026-04-13T23:37:22.273824",
+      "last_update": "2026-04-13T23:43:55.419214",
       "history": {
         "dates": [
           "2024-04-15",
@@ -79600,7 +79600,7 @@
       "sector": "Communication Services",
       "currency": "BRL",
       "last_price": 8.960000038146973,
-      "last_update": "2026-04-13T23:37:22.683027",
+      "last_update": "2026-04-13T23:43:56.086628",
       "history": {
         "dates": [
           "2024-04-15",
@@ -81120,7 +81120,7 @@
       "sector": "Consumer Cyclical",
       "currency": "BRL",
       "last_price": 0.36000001430511475,
-      "last_update": "2026-04-13T23:37:25.984354",
+      "last_update": "2026-04-13T23:44:00.740258",
       "history": {
         "dates": [
           "2025-05-19",
@@ -81827,7 +81827,7 @@
       "sector": "Consumer Cyclical",
       "currency": "BRL",
       "last_price": 9.979999542236328,
-      "last_update": "2026-04-13T23:37:29.152138",
+      "last_update": "2026-04-13T23:44:04.526260",
       "history": {
         "dates": [
           "2024-04-15",
@@ -83347,7 +83347,7 @@
       "sector": "Consumer Cyclical",
       "currency": "BRL",
       "last_price": 1.7000000476837158,
-      "last_update": "2026-04-13T23:37:29.529042",
+      "last_update": "2026-04-13T23:44:04.991730",
       "history": {
         "dates": [
           "2024-04-15",
@@ -84867,7 +84867,7 @@
       "sector": "Real Estate",
       "currency": "BRL",
       "last_price": 0.4000000059604645,
-      "last_update": "2026-04-13T23:37:35.726034",
+      "last_update": "2026-04-13T23:44:13.575260",
       "history": {
         "dates": [
           "2024-04-15",
@@ -86390,7 +86390,7 @@
       "sector": "N/A",
       "currency": "BRL",
       "last_price": 1.5,
-      "last_update": "2026-04-13T23:37:37.130702",
+      "last_update": "2026-04-13T23:44:15.082676",
       "history": {
         "dates": [
           "2024-04-15",
@@ -87910,7 +87910,7 @@
       "sector": "Communication Services",
       "currency": "BRL",
       "last_price": 2.509999990463257,
-      "last_update": "2026-04-13T23:37:39.091373",
+      "last_update": "2026-04-13T23:44:17.468552",
       "history": {
         "dates": [
           "2025-09-22",
@@ -88350,7 +88350,7 @@
       "sector": "Consumer Cyclical",
       "currency": "BRL",
       "last_price": 7.769999980926514,
-      "last_update": "2026-04-13T23:37:39.957738",
+      "last_update": "2026-04-13T23:44:18.615187",
       "history": {
         "dates": [
           "2024-04-15",
