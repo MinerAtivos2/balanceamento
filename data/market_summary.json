@@ -1,5 +1,5 @@
 {
-  "last_update": "2026-04-14T23:40:01.290464",
+  "last_update": "2026-04-15T23:33:27.874729",
   "date": "2026-03-24",
   "gainers": [
     {
@@ -2407,6 +2407,16 @@
       "prev_close": 17.5
     },
     {
+      "ticker": "MNPR3.SA",
+      "name": "Minupar Participações S.A.",
+      "last_close": 4.2,
+      "date": "2026-03-24",
+      "daily_delta": -0.016393442622950727,
+      "monthly_delta": 0.03194103194103182,
+      "delta_volume": 0,
+      "prev_close": 4.27
+    },
+    {
       "ticker": "MOTV3.SA",
       "name": "Motiva Infraestrutura de Mobilidade S.A.",
       "last_close": 15.36,
@@ -2605,6 +2615,16 @@
       "monthly_delta": -0.09493670886075956,
       "delta_volume": 0,
       "prev_close": 1.49
+    },
+    {
+      "ticker": "OPCT3.SA",
+      "name": "OceanPact Serviços Marítimos S.A.",
+      "last_close": 9.22,
+      "date": "2026-03-24",
+      "daily_delta": 0.0065502183406114245,
+      "monthly_delta": -0.026399155227032733,
+      "delta_volume": 0,
+      "prev_close": 9.16
     },
     {
       "ticker": "PATI3.SA",
