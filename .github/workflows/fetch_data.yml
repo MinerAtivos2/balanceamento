@@ -1,4 +1,4 @@
-name: Fetch Market Data
+name: Fetch Market Data2
 
 on:
   schedule:
