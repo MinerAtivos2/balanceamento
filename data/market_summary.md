@@ -1,21 +1,21 @@
-## Resumo de Mercado - 2026-03-24
+## Resumo de Mercado - 2026-04-16
 
 ### 📈 Maiores Altas (Dia)
 
 | Ativo | Nome | Fechamento | Anterior | Variação | DeltaVolume |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| PDGR3.SA | PDG Realty S.A. Empreendimentos e Participações | R$ 1.66 | R$ 1.25 | **+32.80%** 🚀 | 0.00% — |
-| AMBP3.SA | Ambipar Participações e Empreendimentos S.A. | R$ 0.23 | R$ 0.21 | **+9.52%** 🚀 | 0.00% — |
-| FIQE3.SA | Unifique Telecomunicações S.A. | R$ 6.48 | R$ 6.09 | **+6.40%** 🚀 | 0.00% — |
-| KEPL3.SA | Kepler Weber S.A. | R$ 8.63 | R$ 8.14 | **+6.02%** 🚀 | 0.00% — |
-| JALL3.SA | Jalles Machado S/A | R$ 3.39 | R$ 3.23 | **+4.95%** 🚀 | 0.00% — |
+| RSID3.SA | Rossi Residencial S.A. | R$ 1.77 | R$ 1.60 | **+10.62%** 🚀 | -98.25% ⬇️ |
+| EQPA5.SA | Equatorial Pará Distribuidora de Energia S.A. | R$ 13.65 | R$ 12.50 | **+9.20%** 🚀 | +100.00% ⬆️ |
+| AZEV4.SA | Azevedo & Travassos S.A. | R$ 0.14 | R$ 0.13 | **+7.69%** 🚀 | -58.23% ⬇️ |
+| TPIS3.SA | Triunfo Participações e Investimentos S.A. | R$ 10.83 | R$ 10.10 | **+7.23%** 🚀 | +56.73% ⬆️ |
+| TCSA3.SA | Tecnisa S.A. | R$ 1.45 | R$ 1.37 | **+5.84%** 🚀 | +21.51% ⬆️ |
 
 ### 📉 Maiores Baixas (Dia)
 
 | Ativo | Nome | Fechamento | Anterior | Variação | DeltaVolume |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| BRKM6.SA | Braskem S.A. | R$ 8.11 | R$ 9.70 | **-16.39%** 📉 | 0.00% — |
-| BRSR5.SA | Banco do Estado do Rio Grande do Sul S.A. | R$ 17.00 | R$ 18.60 | **-8.60%** 📉 | 0.00% — |
-| HBOR3.SA | Helbor Empreendimentos S.A. | R$ 2.72 | R$ 2.92 | **-6.85%** 📉 | 0.00% — |
-| SAPR3.SA | Companhia de Saneamento do Paraná - SANEPAR | R$ 9.80 | R$ 10.52 | **-6.84%** 📉 | 0.00% — |
-| SAPR11.SA | Companhia de Saneamento do Paraná - SANEPAR | R$ 41.91 | R$ 44.85 | **-6.56%** 📉 | 0.00% — |
+| GPAR3.SA | Companhia CELG de Participações S/A | R$ 10.00 | R$ 14.05 | **-28.83%** 📉 | 0.00% — |
+| JSLG3.SA | JSL S.A. | R$ 7.63 | R$ 8.45 | **-9.70%** 📉 | -15.38% ⬇️ |
+| ASAI3.SA | Sendas Distribuidora S.A. | R$ 9.26 | R$ 10.16 | **-8.86%** 📉 | +131.42% ⬆️ |
+| SOND5.SA | Sondotécnica Engenharia de Solos S.A. | R$ 71.20 | R$ 78.00 | **-8.72%** 📉 | -43.75% ⬇️ |
+| BHIA3.SA | Grupo Casas Bahia S.A. | R$ 2.65 | R$ 2.90 | **-8.62%** 📉 | +452.28% ⬆️ |
