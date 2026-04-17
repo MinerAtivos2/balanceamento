@@ -1,21 +1,21 @@
-## Resumo de Mercado - 2026-04-16
+## Resumo de Mercado - 2026-04-17
 
 ### 📈 Maiores Altas (Dia)
 
 | Ativo | Nome | Fechamento | Anterior | Variação | DeltaVolume |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| RSID3.SA | Rossi Residencial S.A. | R$ 1.77 | R$ 1.60 | **+10.62%** 🚀 | -98.25% ⬇️ |
-| EQPA5.SA | Equatorial Pará Distribuidora de Energia S.A. | R$ 13.65 | R$ 12.50 | **+9.20%** 🚀 | +100.00% ⬆️ |
-| AZEV4.SA | Azevedo & Travassos S.A. | R$ 0.14 | R$ 0.13 | **+7.69%** 🚀 | -58.23% ⬇️ |
-| TPIS3.SA | Triunfo Participações e Investimentos S.A. | R$ 10.83 | R$ 10.10 | **+7.23%** 🚀 | +56.73% ⬆️ |
-| TCSA3.SA | Tecnisa S.A. | R$ 1.45 | R$ 1.37 | **+5.84%** 🚀 | +21.51% ⬆️ |
+| ONCO3.SA | Oncoclínicas do Brasil Serviços Médicos S.A. | R$ 1.58 | R$ 1.37 | **+15.33%** 🚀 | +8.90% ⬆️ |
+| AVLL3.SA | Alphaville S.A. | R$ 1.08 | R$ 0.96 | **+12.50%** 🚀 | +557.79% ⬆️ |
+| SIMH3.SA | SIMPAR S.A. | R$ 12.36 | R$ 11.19 | **+10.46%** 🚀 | +174.95% ⬆️ |
+| AERI3.SA | Aeris Indústria e Comércio de Equipamentos para Geração de Energia S.A. | R$ 2.75 | R$ 2.49 | **+10.44%** 🚀 | +118.56% ⬆️ |
+| CVCB3.SA | CVC Brasil Operadora e Agência de Viagens S.A. | R$ 2.13 | R$ 1.96 | **+8.67%** 🚀 | +117.07% ⬆️ |
 
 ### 📉 Maiores Baixas (Dia)
 
 | Ativo | Nome | Fechamento | Anterior | Variação | DeltaVolume |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| GPAR3.SA | Companhia CELG de Participações S/A | R$ 10.00 | R$ 14.05 | **-28.83%** 📉 | 0.00% — |
-| JSLG3.SA | JSL S.A. | R$ 7.63 | R$ 8.45 | **-9.70%** 📉 | -15.38% ⬇️ |
-| ASAI3.SA | Sendas Distribuidora S.A. | R$ 9.26 | R$ 10.16 | **-8.86%** 📉 | +131.42% ⬆️ |
-| SOND5.SA | Sondotécnica Engenharia de Solos S.A. | R$ 71.20 | R$ 78.00 | **-8.72%** 📉 | -43.75% ⬇️ |
-| BHIA3.SA | Grupo Casas Bahia S.A. | R$ 2.65 | R$ 2.90 | **-8.62%** 📉 | +452.28% ⬆️ |
+| OSXB3.SA | OSX Brasil S.A. | R$ 1.41 | R$ 1.64 | **-14.02%** 📉 | +162.50% ⬆️ |
+| FICT3.SA | Fictor Alimentos S.A. | R$ 0.36 | R$ 0.40 | **-10.00%** 📉 | +2162.76% ⬆️ |
+| BOBR4.SA | Bombril S.A. | R$ 1.26 | R$ 1.38 | **-8.70%** 📉 | -98.82% ⬇️ |
+| GSHP3.SA | General Shopping e Outlets do Brasil S.A. | R$ 2.95 | R$ 3.22 | **-8.39%** 📉 | -53.85% ⬇️ |
+| AMER3.SA | Americanas S.A. | R$ 6.98 | R$ 7.61 | **-8.28%** 📉 | +30.22% ⬆️ |
