@@ -4,30 +4,59 @@ import json
 import os
 from datetime import datetime
 import time
+import requests
 
 # Configurações
 DATA_DIR = os.path.join(os.path.dirname(__file__), '..', 'data')
 ASSETS_JSON = os.path.join(os.path.dirname(__file__), '..', 'assets.json')
 MARKET_SUMMARY_JSON = os.path.join(DATA_DIR, 'market_summary.json')
 OUTPUT_JSON = os.path.join(DATA_DIR, 'market_news.json')
+GAS_URL = os.environ.get('GAS_URL')
+
+def load_tickers_from_sheets():
+    if not GAS_URL:
+        print("⚠️ GAS_URL não configurada. Buscando apenas ativos locais.")
+        return []
+    try:
+        response = requests.post(GAS_URL, json={"action": "get_all_tickers"}, timeout=30)
+        data = response.json()
+        if data.get('success'):
+            return data.get('tickers', [])
+    except Exception as e:
+        print(f"❌ Erro ao buscar tickers da Planilha: {e}")
+    return []
 
 def load_tickers():
-    if not os.path.exists(ASSETS_JSON):
-        return []
-    with open(ASSETS_JSON, 'r', encoding='utf-8') as f:
-        data = json.load(f)
-    return [a['ticker'] for a in data.get('assets', [])]
+    tickers = set()
+    # 1. Ativos dos portfólios (Planilha)
+    tickers.update(load_tickers_from_sheets())
 
-def load_priority_tickers():
-    priority = ["PETR4.SA", "VALE3.SA", "ITUB4.SA", "BBDC4.SA", "BBAS3.SA", "MGLU3.SA", "ABEV3.SA", "WEGE3.SA"]
+    # 2. Ativos do resumo de mercado (Altas/Baixas)
     if os.path.exists(MARKET_SUMMARY_JSON):
         try:
             with open(MARKET_SUMMARY_JSON, 'r', encoding='utf-8') as f:
                 summary = json.load(f)
-            priority.extend([a['ticker'] for a in summary.get('gainers', [])])
-            priority.extend([a['ticker'] for a in summary.get('losers', [])])
+            tickers.update([a['ticker'] for a in summary.get('gainers', [])])
+            tickers.update([a['ticker'] for a in summary.get('losers', [])])
         except: pass
-    return list(dict.fromkeys(priority))
+
+    # 3. Fallback/Priority básicos
+    priority = ["PETR4.SA", "VALE3.SA", "ITUB4.SA", "BBDC4.SA", "BBAS3.SA", "MGLU3.SA", "ABEV3.SA", "WEGE3.SA"]
+    tickers.update(priority)
+
+    return list(tickers)
+
+def get_market_movers():
+    """Retorna lista de tickers que estão no resumo de mercado (altas/baixas)"""
+    movers = []
+    if os.path.exists(MARKET_SUMMARY_JSON):
+        try:
+            with open(MARKET_SUMMARY_JSON, 'r', encoding='utf-8') as f:
+                summary = json.load(f)
+            movers.extend([a['ticker'] for a in summary.get('gainers', [])])
+            movers.extend([a['ticker'] for a in summary.get('losers', [])])
+        except: pass
+    return movers
 
 def get_ai_summary(ticker, context, is_priority=False):
     if not context or context.strip() == "":
@@ -64,23 +93,20 @@ def get_ai_summary(ticker, context, is_priority=False):
 def main():
     print("🚀 Iniciando News Fetcher...")
     all_tickers = load_tickers()
-    priority = load_priority_tickers()
-
-    # Selecionamos os ativos para processar.
-    # No GitHub Actions, o tempo é limitado. Processaremos todos os de assets.json
-    # mas só usaremos IA real para os top 30. Para o resto, síntese rápida.
+    movers = get_market_movers()
 
     news_output = {
         "last_update": datetime.now().isoformat(),
         "market_summary": "O mercado brasileiro segue atento ao cenário fiscal e movimentações de commodities.",
-        "assets": {}
+        "assets": {},
+        "market_movers": movers # Lista para facilitar filtro no frontend
     }
 
     processed_count = 0
     total = len(all_tickers)
 
-    # Ordena para processar prioridades primeiro
-    sorted_tickers = priority + [t for t in all_tickers if t not in priority]
+    # Ordena para processar movers primeiro (prioridade de exibição)
+    sorted_tickers = movers + [t for t in all_tickers if t not in movers]
 
     for ticker in sorted_tickers:
         processed_count += 1
@@ -99,7 +125,7 @@ def main():
                 title = item.get('title') or item.get('content', {}).get('title', '')
                 if title: context += f"{title}. "
 
-            is_prio = ticker in priority or processed_count <= 25
+            is_prio = ticker in movers or processed_count <= 25
             summary = get_ai_summary(ticker, context, is_priority=is_prio)
 
             news_output["assets"][ticker] = {

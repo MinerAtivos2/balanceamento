@@ -410,11 +410,11 @@
         <p class="subtitle">Notícias e sentimentos gerados via Inteligência Generativa</p>
       </div>
 
-      <div class="alert alert-info glass" id="newsGuestAlert">
-        <strong>🔒 Área Exclusiva:</strong> Faça login como membro para acessar os resumos de IA e insights profundos do mercado.
+      <div class="alert alert-info glass hidden" id="newsGuestTip">
+        <strong>💡 Dica:</strong> Você está vendo os insights dos principais ativos do mercado. <a href="#" onclick="app.showPage('members')" style="color: var(--accent); text-decoration: underline;">Acesse sua conta</a> para ver os resumos dos ativos da sua carteira.
       </div>
 
-      <div id="newsContent" class="hidden">
+      <div id="newsContent">
         <div class="card glass news-insight-card" style="margin-bottom: 2rem; border-left: 4px solid var(--accent);">
           <h2 class="card-title">🌍 Panorama Geral do Mercado</h2>
           <p id="marketInsightText" style="font-size: 1.1rem; line-height: 1.6; color: var(--text-primary);">Carregando insights...</p>

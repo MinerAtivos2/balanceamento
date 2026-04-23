@@ -56,6 +56,8 @@ function processRequest(e) {
     return handleUpdatePassword(data.username, data.old_password, data.new_password);
   } else if (action === "status") {
     return handleStatus(data.username, data.session_token);
+  } else if (action === "get_all_tickers") {
+    return handleGetAllTickers();
   }
 
   return { error: "Ação não reconhecida: " + action };
@@ -151,6 +153,23 @@ function handleSavePortfolio(username, token, portfolio) {
   // Se não existir, adiciona novo
   sheet.appendRow([user.id, portfolioStr, now]);
   return { success: true };
+}
+
+function handleGetAllTickers() {
+  const sheet = getSheet("Portfolios");
+  const data = sheet.getDataRange().getValues();
+  const tickers = new Set();
+  for (let i = 1; i < data.length; i++) {
+    try {
+      const portfolio = JSON.parse(data[i][1]);
+      if (portfolio.positions) {
+        portfolio.positions.forEach(p => {
+          if (p.ticker) tickers.add(p.ticker);
+        });
+      }
+    } catch (e) {}
+  }
+  return { success: true, tickers: Array.from(tickers) };
 }
 
 function handleUpdatePassword(username, oldPassword, newPassword) {

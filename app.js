@@ -114,8 +114,8 @@ class B3App {
   showPage(name) {
     console.log('Showing page:', name);
 
-    // Protection for dividends and news page
-    if ((name === 'dividends' || name === 'news') && !this.user) {
+    // Protection for dividends page
+    if (name === 'dividends' && !this.user) {
       this.toast('Acesse sua conta para ver esta seção exclusiva', 'warning');
       this.showPage('members');
       return;
@@ -349,8 +349,8 @@ class B3App {
       if (this.$('dividendsGuestAlert')) this.$('dividendsGuestAlert').classList.add('hidden');
       if (this.$('dividendsContent')) this.$('dividendsContent').classList.remove('hidden');
 
-      if (this.$('newsGuestAlert')) this.$('newsGuestAlert').classList.add('hidden');
-      if (this.$('newsContent')) this.$('newsContent').classList.remove('hidden');
+      // News area
+      if (this.$('newsGuestTip')) this.$('newsGuestTip').classList.add('hidden');
 
       // Admin Panel
       if (this.user.is_admin) {
@@ -373,9 +373,11 @@ class B3App {
       // Proventos area
       if (this.$('dividendsGuestAlert')) this.$('dividendsGuestAlert').classList.remove('hidden');
       if (this.$('dividendsContent')) this.$('dividendsContent').classList.add('hidden');
-      if (this.$('newsGuestAlert')) this.$('newsGuestAlert').classList.remove('hidden');
-      if (this.$('newsContent')) this.$('newsContent').classList.add('hidden');
-      if (this.currentPage === 'dividends' || this.currentPage === 'news') this.showPage('dashboard');
+
+      // News area
+      if (this.$('newsGuestTip')) this.$('newsGuestTip').classList.remove('hidden');
+
+      if (this.currentPage === 'dividends') this.showPage('dashboard');
     }
   }
 
@@ -853,7 +855,13 @@ class B3App {
     };
 
     const assets = Object.keys(this.marketNews.assets);
+    const movers = this.marketNews.market_movers || [];
+
     assets.forEach(ticker => {
+      // Logic: If guest, only show market movers. If member, show all processed (which includes their portfolio)
+      const isMover = movers.includes(ticker);
+      if (!this.user && !isMover) return;
+
       const data = this.marketNews.assets[ticker];
       const card = document.createElement('div');
       card.className = 'card glass news-card';
