@@ -26,18 +26,21 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install yfinance pandas
+          pip install yfinance pandas g4f
       
       - name: Fetch market data
         run: python scripts/data_fetcher.py
 
       - name: Generate market summary
         run: python scripts/market_summary.py
+
+      - name: Generate AI News and Insights
+        run: python scripts/news_fetcher.py
       
       - name: Commit and push changes
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add data/market_data.json data/market_summary.json data/market_summary.md
-          git commit -m "Update market data and summary - $(date +'%Y-%m-%d %H:%M:%S')" || echo "No changes to commit"
+          git add data/market_data.json data/market_summary.json data/market_summary.md data/market_news.json
+          git commit -m "Update market data, summary and AI insights - $(date +'%Y-%m-%d %H:%M:%S')" || echo "No changes to commit"
           git push
