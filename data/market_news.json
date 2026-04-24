@@ -1,90 +1,90 @@
 {
-  "last_update": "2026-04-23T23:04:09.965201",
-  "market_summary": "No dia de hoje, a maioria das ações listadas apresenta notícias neutras ou inexistentes, refletindo estabilidade no mercado B3. A Hapvida (HAPV3) reportou resultados do 3.º trimestre com foco em crescimento sem tom de otimismo excessivo, enquanto a Avell (AVLL3) afirma que todas as mega‑negociações serão canalizadas para Washington numa estratégia geopolítica, mantendo o mesmo tom neutro. A falta de notícias negativas ou positivas em outros títulos indica um cenário geral de tranquilidade e previsibilidade para os investidores.",
+  "last_update": "2026-04-24T22:48:47.805553",
+  "market_summary": "O mercado brasileiro segue atento ao cenário fiscal e movimentações de commodities.",
   "assets": {
-    "OSXB3.SA": {
+    "ENJU3.SA": {
+      "summary": "**Q4 2025 Earnings Call** – Enjoei SA reporta a primeira linha de lucro operacional já em quatro trimestres consecutivos, impulsionada pela consolidação de novos fluxos de receita e pela melhoria significativa nos custos de aquisição de clientes. **Sentimento:** positivo.  \n\n**Q3 2025 Earnings Call** – O grupo anuncia receita recorde, fruto de um aumento de 48 % no ticket médio e de novas iniciativas de crescimento em marketplaces, além de reforçar parcerias estratégicas para expandir a base de usuários ativos. **Sentimento:** positivo.",
+      "updated_at": "2026-04-24T22:48:52.820099"
+    },
+    "GMAT3.SA": {
       "summary": "Sem notícias recentes de impacto encontradas nos principais canais financeiros.",
-      "updated_at": "2026-04-23T23:04:10.558976"
+      "updated_at": "2026-04-24T22:48:53.430565"
     },
-    "RPAD6.SA": {
+    "CEBR3.SA": {
       "summary": "Sem notícias recentes de impacto encontradas nos principais canais financeiros.",
-      "updated_at": "2026-04-23T23:04:11.149489"
+      "updated_at": "2026-04-24T22:48:54.038049"
     },
-    "HAPV3.SA": {
-      "summary": "Hapvida Participações celebrou sua chamada de resultados do 3.º trimestre de 2025, destacando iniciativas estratégicas e perspectivas de crescimento, e manteve o mesmo foco em sua chamada de resultados do 1.º trimestre de 2025. O tom geral das comunicações é neutro, sem sinalizações explícitas de otimismo ou pessimismo.",
-      "updated_at": "2026-04-23T23:04:16.113688"
-    },
-    "PATI4.SA": {
+    "HETA4.SA": {
       "summary": "Sem notícias recentes de impacto encontradas nos principais canais financeiros.",
-      "updated_at": "2026-04-23T23:04:16.721253"
+      "updated_at": "2026-04-24T22:48:54.732240"
     },
-    "NORD3.SA": {
+    "RSID3.SA": {
       "summary": "Sem notícias recentes de impacto encontradas nos principais canais financeiros.",
-      "updated_at": "2026-04-23T23:04:17.303252"
+      "updated_at": "2026-04-24T22:48:55.352291"
     },
-    "CTSA4.SA": {
+    "ONCO3.SA": {
       "summary": "Sem notícias recentes de impacto encontradas nos principais canais financeiros.",
-      "updated_at": "2026-04-23T23:04:17.886556"
+      "updated_at": "2026-04-24T22:48:55.995207"
     },
-    "MWET4.SA": {
+    "PLPL3.SA": {
       "summary": "Sem notícias recentes de impacto encontradas nos principais canais financeiros.",
-      "updated_at": "2026-04-23T23:04:18.520767"
+      "updated_at": "2026-04-24T22:48:56.598723"
     },
-    "VVEO3.SA": {
+    "POSI3.SA": {
+      "summary": "A análise aponta que a Positivo Tecnologia SA está preparando projeções preliminares para o triengo Q4 2025, com foco em potencial de crescimento de receita e expansão de produtos. O sentimento geral permanece neutro, pois ainda não há indicações claras de tendência positiva ou negativa.",
+      "updated_at": "2026-04-24T22:49:22.224245"
+    },
+    "RCSL3.SA": {
       "summary": "Sem notícias recentes de impacto encontradas nos principais canais financeiros.",
-      "updated_at": "2026-04-23T23:04:19.150666"
+      "updated_at": "2026-04-24T22:49:22.850637"
     },
-    "SEQL3.SA": {
+    "ATED3.SA": {
       "summary": "Sem notícias recentes de impacto encontradas nos principais canais financeiros.",
-      "updated_at": "2026-04-23T23:04:19.763928"
-    },
-    "AVLL3.SA": {
-      "summary": "AVLL3.SA announced that all megadeals are being funneled toward Washington, underscoring a focused geopolitical strategy aimed at securing large‑scale partnerships. Sentiment: neutral.",
-      "updated_at": "2026-04-23T23:04:48.209145"
-    },
-    "ITUB4.SA": {
-      "summary": "**1. “What Makes Banco Itaú (ITUB) a New Buy Stock”**  \nBanco Itaú apresenta forte adesão a aplicações de longo prazo, impulsionada por lucros estáveis e crescimento de receita de juros, o que torna o título atraente para investidores de valor. **Sentimento:** positivo.\n\n**2. “SHG or ITUB: Which Is the Better Value Stock Right Now?”**  \nComparação evidencia que, apesar de SHG ter múltiplos mais baixos, ITUB mantém maior geração de caixa e perfil de risco mais controlado, favorecendo sua escolha em cenários de expansão de crédito. **Sentimento:** positivo.",
-      "updated_at": "2026-04-23T23:04:49.425145"
+      "updated_at": "2026-04-24T22:49:23.454584"
     },
     "ABEV3.SA": {
       "summary": "A UBS reduziu a classificação da Ambev (ABEV3.SA) citando preocupações com risco e retorno, indicando um sentimento negativo.  \nO comparativo entre Ambev e Samco mantém uma postura neutra, apresentando as opções sem recomendação explícita, refletindo um sentimento neutro.",
-      "updated_at": "2026-04-23T23:04:50.595807"
+      "updated_at": "2026-04-24T22:49:24.741760"
     },
     "PETR4.SA": {
-      "summary": "Petrobras recebe apoio crescente de Wall Street, que ajustou seu consenso para uma expectativa de valorização, alimentado por cenário macro‑econômico e resultados operacionais que parecem superar pressões de curto prazo (sentimento: positivo).  \nPor outro lado, o portfólio de renda de NDIV, que almeja 10 % de rendimento anual em ações de energia, apresenta risco palpável em três participações, sinalizando cautela na avaliação de PETR4 e potencial exposição a eventos adversos (sentimento: negativo).",
-      "updated_at": "2026-04-23T23:04:51.639181"
-    },
-    "VALE3.SA": {
-      "summary": "1. Barclays downgraded Vale (VALE3.SA) citing looming seasonality headwinds, signaling a **negativo** outlook.  \n2. Vale is poised to disclose its Q1 earnings, with expectations for a steady but uncertain performance, reflecting a **neutro** stance.",
-      "updated_at": "2026-04-23T23:04:52.709520"
+      "summary": "The two stories you cited – a commodity‑bet hidden in DVYE’s 5.1% yield and Chris Ong’s turnaround of Seatrium – do not involve PETR4.SA, so there’s no direct price‑moving sentiment to attach. Thus, from the information provided, the sentiment for PETR4.SA is neutral / not influenced.",
+      "updated_at": "2026-04-24T22:49:54.261757"
     },
     "BBDC4.SA": {
       "summary": "- **Article 1:** Finance stocks, including BBDC4, have lagged behind the broader market this year, suggesting a cautious outlook for equity holders. **Sentimento:** negativo.  \n\n- **Article 2:** The “Buy” upgrade for Banco Bradesco reflects renewed analyst confidence in the bank’s fundamentals and potential upside, signaling a bullish tone for investors. **Sentimento:** positivo.",
-      "updated_at": "2026-04-23T23:04:53.947720"
+      "updated_at": "2026-04-24T22:49:55.320613"
     },
     "BBAS3.SA": {
       "summary": "BBAS3’s recent news stem solely from peer comparisons—Prologis is cited as outpacing most finance stocks, while BDORY versus BMA is framed as a value‑stock contest—offering no direct catalysts for BBAS3 itself. In light of this, the market sentiment toward BBAS3 remains neutral.",
-      "updated_at": "2026-04-23T23:04:55.107770"
+      "updated_at": "2026-04-24T22:49:56.464422"
     },
     "MGLU3.SA": {
       "summary": "Sem notícias recentes de impacto encontradas nos principais canais financeiros.",
-      "updated_at": "2026-04-23T23:04:55.683511"
+      "updated_at": "2026-04-24T22:49:57.082374"
+    },
+    "VALE3.SA": {
+      "summary": "Vale S.A. recebeu um downgrade da Barclays, que apontou headwinds de sazonalidade que podem diminuir a demanda por minério de ferro, gerando um sentimento negativo para a ação.  \nO yield de 5,1 % do DVYE, que escuta um “commodity bet” nas sombras, atrai investidores mas expõe volatilidade, mantendo o sentimento neutro quanto ao retorno imediato.",
+      "updated_at": "2026-04-24T22:50:29.861310"
+    },
+    "ITUB4.SA": {
+      "summary": "**1. “What Makes Banco Itaú (ITUB) a New Buy Stock”**  \nBanco Itaú apresenta forte adesão a aplicações de longo prazo, impulsionada por lucros estáveis e crescimento de receita de juros, o que torna o título atraente para investidores de valor. **Sentimento:** positivo.\n\n**2. “SHG or ITUB: Which Is the Better Value Stock Right Now?”**  \nComparação evidencia que, apesar de SHG ter múltiplos mais baixos, ITUB mantém maior geração de caixa e perfil de risco mais controlado, favorecendo sua escolha em cenários de expansão de crédito. **Sentimento:** positivo.",
+      "updated_at": "2026-04-24T22:50:31.046903"
     },
     "WEGE3.SA": {
       "summary": "JPMorgan reduziu o preço-alvo da WEG, redefinindo o cenário de investimento sobre a companhia e sinalizando que expectativas de crescimento foram ajustadas ao limite atual do mercado. Essa mudança indica preocupação com a margem e a rentabilidade em meio a pressões regulatórias e de concorrência, impactando a percepção de atratividade do ativo. **Sentimento: Negativo.**",
-      "updated_at": "2026-04-23T23:04:56.991205"
+      "updated_at": "2026-04-24T22:50:32.245853"
     }
   },
   "market_movers": [
-    "OSXB3.SA",
-    "RPAD6.SA",
-    "HAPV3.SA",
-    "PATI4.SA",
-    "NORD3.SA",
-    "CTSA4.SA",
-    "MWET4.SA",
-    "VVEO3.SA",
-    "SEQL3.SA",
-    "AVLL3.SA"
+    "ENJU3.SA",
+    "GMAT3.SA",
+    "CEBR3.SA",
+    "HETA4.SA",
+    "RSID3.SA",
+    "ONCO3.SA",
+    "PLPL3.SA",
+    "POSI3.SA",
+    "RCSL3.SA",
+    "ATED3.SA"
   ]
 }
