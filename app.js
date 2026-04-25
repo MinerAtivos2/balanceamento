@@ -15,6 +15,7 @@ class B3App {
     this.user = null; // { username: '...' } if logged in
     this.assets = [];
     this.marketData = null;
+    this.marketNews = null;
     this.analysis = null;
     this.charts = {};
     this.isDiscoveryMode = false;
@@ -33,6 +34,7 @@ class B3App {
 
     await this.checkAuthStatus();
     await this.loadMarketData();
+    await this.loadMarketNews();
     await this.loadMarketSummary();
     await this.loadAssets();
     await this.loadPortfolio();
@@ -80,6 +82,13 @@ class B3App {
     this.$('membershipModalOverlay').addEventListener('click', e => {
       if (e.target === this.$('membershipModalOverlay')) this.closeMembershipModal();
     });
+
+    // News modal
+    this.$('newsModalClose').addEventListener('click', () => this.closeNewsModal());
+    this.$('newsModalOk').addEventListener('click', () => this.closeNewsModal());
+    this.$('newsModalOverlay').addEventListener('click', e => {
+      if (e.target === this.$('newsModalOverlay')) this.closeNewsModal();
+    });
     this.$('leadForm').addEventListener('submit', (e) => this.handleLeadSubmit(e));
 
     // Ticker input validation
@@ -107,7 +116,7 @@ class B3App {
 
     // Protection for dividends page
     if (name === 'dividends' && !this.user) {
-      this.toast('Acesse sua conta para ver os proventos', 'warning');
+      this.toast('Acesse sua conta para ver esta seção exclusiva', 'warning');
       this.showPage('members');
       return;
     }
@@ -132,6 +141,10 @@ class B3App {
       if (!this.$('divStartDate').value) this.$('divStartDate').value = firstDay;
       if (!this.$('divEndDate').value) this.$('divEndDate').value = lastDay;
       this.renderDividendsPage();
+    }
+
+    if (name === 'news') {
+      this.renderMarketNews();
     }
   }
 
@@ -336,6 +349,9 @@ class B3App {
       if (this.$('dividendsGuestAlert')) this.$('dividendsGuestAlert').classList.add('hidden');
       if (this.$('dividendsContent')) this.$('dividendsContent').classList.remove('hidden');
 
+      // News area
+      if (this.$('newsGuestTip')) this.$('newsGuestTip').classList.add('hidden');
+
       // Admin Panel
       if (this.user.is_admin) {
         this.$('adminPanel').classList.remove('hidden');
@@ -357,6 +373,10 @@ class B3App {
       // Proventos area
       if (this.$('dividendsGuestAlert')) this.$('dividendsGuestAlert').classList.remove('hidden');
       if (this.$('dividendsContent')) this.$('dividendsContent').classList.add('hidden');
+
+      // News area
+      if (this.$('newsGuestTip')) this.$('newsGuestTip').classList.remove('hidden');
+
       if (this.currentPage === 'dividends') this.showPage('dashboard');
     }
   }
@@ -801,6 +821,113 @@ class B3App {
     // Atualizar objeto base
     baseDivs.dates = combined.map(c => c.date);
     baseDivs.values = combined.map(c => c.value);
+  }
+
+  async loadMarketNews() {
+    try {
+      const res = await fetch(`./data/market_news.json?t=${new Date().getTime()}`);
+      if (res.ok) {
+        this.marketNews = await res.json();
+      }
+    } catch (e) {
+      console.warn('Market news not available yet.');
+    }
+  }
+
+  renderMarketNews() {
+    if (!this.marketNews) {
+      this.$('marketInsightText').textContent = 'Insights indisponíveis no momento.';
+      return;
+    }
+
+    this.$('marketInsightText').textContent = this.marketNews.market_summary || 'Sem resumo geral.';
+    this.$('newsLastUpdate').textContent = `Última atualização: ${new Date(this.marketNews.last_update).toLocaleString('pt-BR')}`;
+
+    const grid = this.$('newsAssetsGrid');
+    grid.innerHTML = '';
+
+    // Sanitization helper
+    const escapeHTML = (str) => {
+      if (!str) return '';
+      return str.replace(/[&<>"']/g, m => ({
+        '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+      }[m]));
+    };
+
+    const assets = Object.keys(this.marketNews.assets);
+    const movers = this.marketNews.market_movers || [];
+
+    assets.forEach(ticker => {
+      // Logic: If guest, only show market movers. If member, show all processed (which includes their portfolio)
+      const isMover = movers.includes(ticker);
+      if (!this.user && !isMover) return;
+
+      const data = this.marketNews.assets[ticker];
+      const card = document.createElement('div');
+      card.className = 'card glass news-card';
+      card.innerHTML = `
+        <div class="news-card-header">
+          <span class="news-card-ticker">${escapeHTML(ticker.replace('.SA', ''))}</span>
+          <span style="font-size: 0.7rem; color: var(--text-muted);">${new Date(data.updated_at).toLocaleDateString('pt-BR')}</span>
+        </div>
+        <div class="news-card-summary">${escapeHTML(data.summary)}</div>
+        <button class="btn btn-outline btn-sm" onclick="app.showAssetNews('${escapeHTML(ticker)}')" style="margin-top:auto">Ver Mais</button>
+      `;
+      grid.appendChild(card);
+    });
+  }
+
+  showAssetNews(ticker) {
+    if (!this.marketNews || !this.marketNews.assets[ticker]) {
+      this.toast('Notícias não encontradas para este ativo.', 'warning');
+      return;
+    }
+
+    const data = this.marketNews.assets[ticker];
+    this.$('newsModalTitle').textContent = `Resumo IA: ${ticker.replace('.SA', '')}`;
+    this.$('newsModalTickerName').textContent = ticker; // Fallback to ticker since full name isn't in news.json
+
+    let dateStr = `Atualizado em ${new Date(data.updated_at).toLocaleString('pt-BR')}`;
+    if (data.period) {
+      dateStr += ` | Notícias: ${data.period}`;
+    }
+    this.$('newsModalUpdateDate').textContent = dateStr;
+
+    this.$('newsModalText').textContent = data.summary;
+
+    const sourcesDiv = this.$('newsModalSources');
+    sourcesDiv.innerHTML = '';
+    if (data.sources && data.sources.length > 0) {
+      const title = document.createElement('div');
+      title.style.fontWeight = '600';
+      title.style.marginBottom = '0.5rem';
+      title.style.color = 'var(--text-muted)';
+      title.textContent = 'Fontes consultadas:';
+      sourcesDiv.appendChild(title);
+
+      data.sources.forEach((link, idx) => {
+        const a = document.createElement('a');
+        a.href = link;
+        a.target = '_blank';
+        a.style.display = 'block';
+        a.style.color = 'var(--accent-primary)';
+        a.style.textDecoration = 'none';
+        a.style.marginBottom = '0.25rem';
+        try {
+          const domain = new URL(link).hostname.replace('www.', '');
+          a.textContent = `[${idx + 1}] ${domain}`;
+        } catch {
+          a.textContent = `[${idx + 1}] Fonte externa`;
+        }
+        sourcesDiv.appendChild(a);
+      });
+    }
+
+    this.$('newsModalOverlay').classList.add('show');
+  }
+
+  closeNewsModal() {
+    this.$('newsModalOverlay').classList.remove('show');
   }
 
   async loadMarketSummary() {
@@ -1423,6 +1550,10 @@ class B3App {
       const rentClass = rent !== undefined ? (rent >= 0 ? 'positive' : 'negative') : '';
       const rentText = rent !== undefined ? ((rent > 0 ? '+' : '') + rent.toFixed(2) + '%') : '—';
 
+      const aiButton = this.user ? `
+        <button class="btn-ai-icon" onclick="app.showAssetNews('${item.ticker}')" title="Ver resumo IA">🤖</button>
+      ` : '';
+
       html += `<tr>
         <td><strong>${item.ticker.replace('.SA', '')}</strong><br><small style="color:var(--text-muted)">${a.name || item.ticker}</small></td>
         <td>${item.totalQty}</td>
@@ -1434,7 +1565,10 @@ class B3App {
         <td style="font-weight:700">${a.total_equity ? this.formatCurrency(a.total_equity) : '—'}</td>
         <td class="${rentClass}">${rentText}</td>
         <td>
-          <button class="btn-primary-sm" onclick="app.manageTransactions('${item.ticker}')" title="Gerenciar registros">⚙️</button>
+          <div style="display:flex; gap:0.25rem">
+            <button class="btn-primary-sm" onclick="app.manageTransactions('${item.ticker}')" title="Gerenciar registros">⚙️</button>
+            ${aiButton}
+          </div>
         </td>
       </tr>`;
     });
