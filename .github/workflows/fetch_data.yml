@@ -28,11 +28,11 @@ jobs:
           python -m pip install --upgrade pip
           pip install yfinance pandas g4f feedparser
       
-      - name: Fetch market data
-        run: python scripts/data_fetcher.py
+      #- name: Fetch market data
+      #  run: python scripts/data_fetcher.py
 
-      - name: Generate market summary
-        run: python scripts/market_summary.py
+      #- name: Generate market summary
+      #  run: python scripts/market_summary.py
 
       - name: Generate AI News and Insights
         run: python scripts/news_fetcher.py
