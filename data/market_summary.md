@@ -1,21 +1,21 @@
-## Resumo de Mercado - 2026-04-24
+## Resumo de Mercado - 2026-04-27
 
 ### 📈 Maiores Altas (Dia)
 
 | Ativo | Nome | Fechamento | Anterior | Variação | DeltaVolume |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| ENJU3.SA | Enjoei S.A. | R$ 1.26 | R$ 1.16 | **+8.62%** 🚀 | +101.74% ⬆️ |
-| GMAT3.SA | Grupo Mateus S.A. | R$ 4.85 | R$ 4.52 | **+7.30%** 🚀 | -2.37% ⬇️ |
-| CEBR3.SA | Companhia Energética de Brasília - CEB | R$ 34.90 | R$ 32.60 | **+7.06%** 🚀 | -29.78% ⬇️ |
-| HETA4.SA | Hercules S.A - Fábrica de Talheres | R$ 5.78 | R$ 5.40 | **+7.04%** 🚀 | -78.57% ⬇️ |
-| RSID3.SA | Rossi Residencial S.A. | R$ 1.70 | R$ 1.60 | **+6.25%** 🚀 | +755.01% ⬆️ |
+| RCSL4.SA | Recrusul S/A | R$ 0.71 | R$ 0.58 | **+22.41%** 🚀 | +57.95% ⬆️ |
+| EMAE4.SA | Empresa Metropolitana de Águas e Energia S.A. | R$ 46.30 | R$ 38.98 | **+18.78%** 🚀 | +1817.94% ⬆️ |
+| AZEV4.SA | Azevedo & Travassos S.A. | R$ 0.14 | R$ 0.13 | **+7.69%** 🚀 | -54.37% ⬇️ |
+| RCSL3.SA | Recrusul S/A | R$ 0.57 | R$ 0.53 | **+7.55%** 🚀 | +208.96% ⬆️ |
+| USIM5.SA | Usinas Siderúrgicas de Minas Gerais S.A. | R$ 8.14 | R$ 7.61 | **+6.96%** 🚀 | +118.49% ⬆️ |
 
 ### 📉 Maiores Baixas (Dia)
 
 | Ativo | Nome | Fechamento | Anterior | Variação | DeltaVolume |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| ONCO3.SA | Oncoclínicas do Brasil Serviços Médicos S.A. | R$ 1.57 | R$ 1.88 | **-16.49%** 📉 | -24.72% ⬇️ |
-| PLPL3.SA | Plano & Plano Desenvolvimento Imobiliário S.A. | R$ 11.74 | R$ 12.94 | **-9.27%** 📉 | +138.48% ⬆️ |
-| POSI3.SA | Positivo Tecnologia S.A. | R$ 4.30 | R$ 4.71 | **-8.70%** 📉 | +16.72% ⬆️ |
-| RCSL3.SA | Recrusul S/A | R$ 0.53 | R$ 0.57 | **-7.02%** 📉 | +1.96% ⬆️ |
-| ATED3.SA | ATED3.SA | R$ 2.26 | R$ 2.40 | **-5.83%** 📉 | -89.54% ⬇️ |
+| CTAX3.SA | Contax Participações S.A. | R$ 0.57 | R$ 0.70 | **-18.57%** 📉 | +284.68% ⬆️ |
+| AZTE3.SA | Azevedo & Travassos Energia S.A. | R$ 0.32 | R$ 0.36 | **-11.11%** 📉 | -62.62% ⬇️ |
+| RNEW4.SA | Renova Energia S.A. | R$ 0.97 | R$ 1.09 | **-11.01%** 📉 | +476.38% ⬆️ |
+| GFSA3.SA | Gafisa S.A. | R$ 1.34 | R$ 1.49 | **-10.07%** 📉 | +74.08% ⬆️ |
+| VVEO3.SA | CM Hospitalar S/A | R$ 1.45 | R$ 1.60 | **-9.38%** 📉 | +111.52% ⬆️ |
