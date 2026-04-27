@@ -5,6 +5,8 @@ import os
 from datetime import datetime, timedelta
 import time
 import requests
+import feedparser
+import urllib.parse
 
 # Configurações
 DATA_DIR = os.path.join(os.path.dirname(__file__), '..', 'data')
@@ -13,13 +15,11 @@ OUTPUT_JSON = os.path.join(DATA_DIR, 'market_news.json')
 GAS_URL = os.environ.get('GAS_URL')
 
 def load_tickers_from_sheets():
-    if not GAS_URL:
-        return []
+    if not GAS_URL: return []
     try:
         response = requests.post(GAS_URL, json={"action": "get_all_tickers"}, timeout=30)
         data = response.json()
-        if data.get('success'):
-            return data.get('tickers', [])
+        if data.get('success'): return data.get('tickers', [])
     except Exception as e:
         print(f"❌ Erro ao buscar tickers da Planilha: {e}")
     return []
@@ -27,7 +27,6 @@ def load_tickers_from_sheets():
 def load_tickers():
     tickers = set()
     tickers.update(load_tickers_from_sheets())
-
     if os.path.exists(MARKET_SUMMARY_JSON):
         try:
             with open(MARKET_SUMMARY_JSON, 'r', encoding='utf-8') as f:
@@ -35,7 +34,6 @@ def load_tickers():
             tickers.update([a['ticker'] for a in summary.get('gainers', [])])
             tickers.update([a['ticker'] for a in summary.get('losers', [])])
         except: pass
-
     priority = ["PETR4.SA", "VALE3.SA", "ITUB4.SA", "BBDC4.SA", "BBAS3.SA", "MGLU3.SA", "ABEV3.SA", "WEGE3.SA"]
     tickers.update(priority)
     return list(tickers)
@@ -51,6 +49,68 @@ def get_market_movers():
         except: pass
     return movers
 
+def fetch_google_news(ticker):
+    """Busca notícias via Google News RSS para o ticker"""
+    # Remove .SA para melhor busca no Google News
+    clean_ticker = ticker.replace('.SA', '')
+    query = urllib.parse.quote(f"{clean_ticker} ações notícias")
+    url = f"https://news.google.com/rss/search?q={query}&hl=pt-BR&gl=BR&ceid=BR:pt-419"
+
+    news_items = []
+    try:
+        feed = feedparser.parse(url)
+        for entry in feed.entries[:5]: # Pega as 5 mais recentes
+            # Google News RSS date format: "Fri, 24 Apr 2026 17:27:01 GMT"
+            dt = None
+            if hasattr(entry, 'published_parsed'):
+                dt = datetime(*entry.published_parsed[:6])
+
+            news_items.append({
+                'title': entry.title,
+                'link': entry.link,
+                'date': dt,
+                'source': 'Google News'
+            })
+    except Exception as e:
+        print(f"⚠️ Erro no Google News para {ticker}: {e}")
+    return news_items
+
+def fetch_yahoo_news(ticker):
+    """Busca notícias via Yahoo Finance"""
+    news_items = []
+    try:
+        t_obj = yf.Ticker(ticker)
+        news = t_obj.news
+        if not news: return []
+
+        for item in news:
+            content = item.get('content', {})
+            title = item.get('title') or content.get('title', '')
+            link = item.get('link') or content.get('canonicalUrl', {}).get('url') or content.get('clickThroughUrl', {}).get('url')
+
+            # Date parsing logic from previous version
+            dt = None
+            ts = item.get('providerPublishTime')
+            if ts:
+                dt = datetime.fromtimestamp(ts)
+            else:
+                pub_date = content.get('pubDate') or content.get('pubdate')
+                if pub_date:
+                    try: dt = datetime.strptime(pub_date, '%Y-%m-%dT%H:%M:%SZ')
+                    except:
+                        try: dt = datetime.fromisoformat(pub_date.replace('Z', '+00:00'))
+                        except: pass
+
+            news_items.append({
+                'title': title,
+                'link': link,
+                'date': dt,
+                'source': 'Yahoo Finance'
+            })
+    except Exception as e:
+        print(f"⚠️ Erro no Yahoo Finance para {ticker}: {e}")
+    return news_items
+
 def get_ai_summary(ticker, context, is_priority=False):
     if not context or context.strip() == "":
         return "Sem notícias recentes de impacto encontradas nos principais canais financeiros."
@@ -63,7 +123,7 @@ def get_ai_summary(ticker, context, is_priority=False):
 
     prompt = (
         f"Aja como um analista B3. Resuma em 2 frases objetivas as notícias de {ticker}. "
-        f"Seja direto sobre o sentimento (positivo/negativo/neutro).\nNotícias: {context}"
+        f"Seja direto sobre o sentimento (positivo/negativo/neutro).\nNotícias de múltiplas fontes:\n{context}"
     )
 
     for provider in [g4f.Provider.PollinationsAI, g4f.Provider.PuterJS]:
@@ -75,30 +135,11 @@ def get_ai_summary(ticker, context, is_priority=False):
             )
             if response and len(response) > 15:
                 return response.strip()
-        except:
-            continue
+        except: continue
     return f"Resumo: {context[:200]}..."
 
-def parse_date(item):
-    # Tenta vários formatos conhecidos do yfinance
-    ts = item.get('providerPublishTime')
-    if ts: return datetime.fromtimestamp(ts)
-
-    content = item.get('content', {})
-    pub_date = content.get('pubDate') or content.get('pubdate')
-    if pub_date:
-        try:
-            # Formato ISO: 2026-04-24T17:27:01Z
-            return datetime.strptime(pub_date, '%Y-%m-%dT%H:%M:%SZ')
-        except:
-            try:
-                # Outro formato comum
-                return datetime.fromisoformat(pub_date.replace('Z', '+00:00'))
-            except: pass
-    return None
-
 def main():
-    print("🚀 Iniciando News Fetcher...")
+    print("🚀 Iniciando Multi-Source News Fetcher...")
     all_tickers = load_tickers()
     movers = get_market_movers()
 
@@ -118,40 +159,42 @@ def main():
 
     for ticker in sorted_tickers:
         processed_count += 1
-        if processed_count % 10 == 0:
-            print(f"Progresso: {processed_count}/{total}")
+        if processed_count % 10 == 0: print(f"Progresso: {processed_count}/{total}")
         if processed_count > 350: break
 
         try:
-            t_obj = yf.Ticker(ticker)
-            news = t_obj.news
-            if not news: continue
+            # Busca de múltiplas fontes
+            yahoo_news = fetch_yahoo_news(ticker)
+            google_news = fetch_google_news(ticker)
 
+            combined_news = yahoo_news + google_news
+
+            # Filtra por data e remove duplicatas (baseado no título)
+            seen_titles = set()
             valid_news = []
-            for item in news:
-                dt = parse_date(item)
-                if dt and dt >= one_week_ago:
-                    valid_news.append(item)
+            for item in combined_news:
+                title_norm = item['title'].lower().strip()
+                if title_norm in seen_titles: continue
 
-            if not valid_news:
-                valid_news = news[:2]
+                if item['date'] and item['date'] >= one_week_ago:
+                    valid_news.append(item)
+                    seen_titles.add(title_norm)
+
+            # Fallback se nada na última semana
+            if not valid_news and combined_news:
+                valid_news = sorted(combined_news, key=lambda x: x['date'] if x['date'] else datetime.min, reverse=True)[:2]
 
             context = ""
             sources = []
             dates = []
 
-            for item in valid_news[:3]:
-                content = item.get('content', {})
-                title = item.get('title') or content.get('title', '')
+            # Ordena por data (mais recente primeiro)
+            valid_news.sort(key=lambda x: x['date'] if x['date'] else datetime.min, reverse=True)
 
-                # Link handling
-                link = item.get('link') or content.get('canonicalUrl', {}).get('url') or content.get('clickThroughUrl', {}).get('url')
-
-                dt = parse_date(item)
-
-                if title: context += f"{title}. "
-                if link: sources.append(link)
-                if dt: dates.append(dt)
+            for item in valid_news[:4]: # Pega até 4 notícias das fontes combinadas
+                if item['title']: context += f"[{item['source']}] {item['title']}. "
+                if item['link']: sources.append(item['link'])
+                if item['date']: dates.append(item['date'])
 
             period_str = ""
             if dates:
@@ -165,7 +208,7 @@ def main():
             news_output["assets"][ticker] = {
                 "summary": summary,
                 "period": period_str,
-                "sources": list(set(sources)), # Deduplicate
+                "sources": list(dict.fromkeys(sources)), # Deduplicate keeping order
                 "updated_at": datetime.now().isoformat()
             }
             if is_prio: time.sleep(0.5)
