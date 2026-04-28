@@ -1,90 +1,90 @@
 {
-  "last_update": "2026-04-27T23:01:36.338994",
-  "market_summary": "Hoje o mercado B3 reflete um cenário de **mistura de otimismo e cautela**: empresas com perspectiva de crescimento, como **USIM5** e **RNEW4**, apontaram resultados sólidos e tendências favoráveis, gerando sentimento positivo;  \nalguns nomes, como **AZEV4**, também exibem perspectivas otimistas graças a movimentos estratégicos de transferência de ativos.  \nAo mesmo tempo, a maioria dos ativos – de **RCSL4** a **VVEO3** – não gerou notícias de impacto, e a **GFSA3** mantém uma postura neutra, destacando avanços de expansão equilibrados por desafios de fluxo de caixa e custos, sinalizando uma **relação de alta volatilidade com oportunidade limitada** no curto prazo.",
+  "last_update": "2026-04-28T23:03:32.015380",
+  "market_summary": "- O pregão da B3 manteve-se silencioso, com poucas novidades que possam acelerar movimentos bruscos; as negociações remontam bastante aos níveis de suporte e resistência já consolidados.\n- A única mensagem positiva clara veio da EQPA5, que antecipa crescimento de receita e EBITDA para 2025, contrastando com a postura mais cautelosa do Oi, que enfrenta mais incerteza política do que financeira.\n- Em conjunto, o clima reflete um mercado em estado “normal”: estável, sem grandes impulsos de compra ou venda, mas com atenção às projeções que prometem ou ameaçam alterar a trajetória de algumas empresas.",
   "assets": {
-    "RCSL4.SA": {
+    "BOBR4.SA": {
       "summary": "Sem notícias recentes de impacto encontradas nos principais canais financeiros.",
-      "updated_at": "2026-04-27T23:01:36.544725"
-    },
-    "EMAE4.SA": {
-      "summary": "Sem notícias recentes de impacto encontradas nos principais canais financeiros.",
-      "updated_at": "2026-04-27T23:01:37.197167"
-    },
-    "AZEV4.SA": {
-      "summary": "Petro‑Victory reflete no balanço do AZEV4.SA a transferência de ativos da bacia do Potiguar para a ATE, enquanto concede 10,25 % das cotas da Azevedo & Travassos Energia em troca de ativos brasileiros. Sentimento: positivo.",
-      "updated_at": "2026-04-27T23:01:38.760308"
-    },
-    "RCSL3.SA": {
-      "summary": "Sem notícias recentes de impacto encontradas nos principais canais financeiros.",
-      "updated_at": "2026-04-27T23:01:39.341009"
-    },
-    "USIM5.SA": {
-      "summary": "USIM5.SA apresentou EBITDA forte no primeiro trimestre de 2026, superando expectativas; a empresa foi listada entre as melhores opções de valor para compra em 14 de abril, refletindo otimismo dos analistas.  \nSentimento: positivo.",
-      "updated_at": "2026-04-27T23:01:46.761485"
+      "updated_at": "2026-04-28T23:03:32.191125"
     },
     "CTAX3.SA": {
       "summary": "Sem notícias recentes de impacto encontradas nos principais canais financeiros.",
-      "updated_at": "2026-04-27T23:01:47.345522"
+      "updated_at": "2026-04-28T23:03:32.761236"
+    },
+    "RPAD3.SA": {
+      "summary": "Sem notícias recentes de impacto encontradas nos principais canais financeiros.",
+      "updated_at": "2026-04-28T23:03:33.342084"
+    },
+    "EQPA5.SA": {
+      "summary": "EQPA5.SA colocou  Q4 2025 com receita +10 % e EBITDA +12 % versus 2024, impulsionada pela expansão de rede e eficiência operacional.  \nApesar do aumento de CAPEX para crescimento de 2026, o management afirma que o impacto líquido será pequeno e que os fluxos de caixa permanecerão sólidos.  \n\n**Sentimento:** Positivo.",
+      "updated_at": "2026-04-28T23:03:42.613416"
     },
     "AZTE3.SA": {
       "summary": "Sem notícias recentes de impacto encontradas nos principais canais financeiros.",
-      "updated_at": "2026-04-27T23:01:47.942230"
+      "updated_at": "2026-04-28T23:03:43.205487"
     },
-    "RNEW4.SA": {
-      "summary": "RNEW4.SA se beneficia do fato de o excedente de energia limpa no Brasil atrair mineradores de criptomoedas, impulsionando a demanda por instalações e serviços de conexão elétrica. Isso potencializa receitas vindas de contratos de fornecimento e operação de data centers, refletindo um cenário de crescimento financeiro para a empresa. \n\nSentimento: positivo.",
-      "updated_at": "2026-04-27T23:02:13.181204"
-    },
-    "GFSA3.SA": {
-      "summary": "Gafisa SA revelou em sua chamada de resultados do terceiro trimestre de 2025 que continua investindo em projetos de expansão e consolidação de ativos, mas destaca desafios de fluxo de caixa e de custos de construção. O sentimento geral sobre a performance é neutro, refletindo esforços de crescimento mitigados pelos riscos de mercado.",
-      "updated_at": "2026-04-27T23:02:47.911214"
-    },
-    "VVEO3.SA": {
+    "CTSA4.SA": {
       "summary": "Sem notícias recentes de impacto encontradas nos principais canais financeiros.",
-      "updated_at": "2026-04-27T23:02:48.495374"
+      "updated_at": "2026-04-28T23:03:43.780432"
     },
-    "BBDC4.SA": {
-      "summary": "- **Article 1:** Finance stocks, including BBDC4, have lagged behind the broader market this year, suggesting a cautious outlook for equity holders. **Sentimento:** negativo.  \n\n- **Article 2:** The “Buy” upgrade for Banco Bradesco reflects renewed analyst confidence in the bank’s fundamentals and potential upside, signaling a bullish tone for investors. **Sentimento:** positivo.",
-      "updated_at": "2026-04-27T23:02:49.626930"
+    "AALR3.SA": {
+      "summary": "Sem notícias recentes de impacto encontradas nos principais canais financeiros.",
+      "updated_at": "2026-04-28T23:03:44.351668"
+    },
+    "HAPV3.SA": {
+      "summary": "Hapvida Participações celebrou sua chamada de resultados do 3.º trimestre de 2025, destacando iniciativas estratégicas e perspectivas de crescimento, e manteve o mesmo foco em sua chamada de resultados do 1.º trimestre de 2025. O tom geral das comunicações é neutro, sem sinalizações explícitas de otimismo ou pessimismo.",
+      "updated_at": "2026-04-28T23:03:45.382777"
+    },
+    "SEQL3.SA": {
+      "summary": "Sem notícias recentes de impacto encontradas nos principais canais financeiros.",
+      "updated_at": "2026-04-28T23:03:46.061757"
+    },
+    "OIBR3.SA": {
+      "summary": "PIMCO’s endorsement of Oi has moved from a “market savior” pitch into a high‑stakes political arena, amplifying uncertainty for the company’s prospects. The latest earnings call shows revenue slipping in Q1 2025 but indicates new strategic realignments aimed at mitigating the downturn.  \n**Sentimento: negativo**",
+      "updated_at": "2026-04-28T23:04:09.461955"
     },
     "PETR4.SA": {
-      "summary": "**Noble Q1 Earnings Call Highlights**  \nA call report details Petrobras’ first‑quarter fiscal results, showing a modest revenue uptick driven by higher oil prices, but noting margin pressure due to elevated operating costs and capital expenditures. Sentiment: **neutro** – gains are offset by cost concerns, leaving the outlook understated.\n\n**Petrobras Stock Outperforms Industry in the Past Year: Time to Buy?**  \nAn analysis of the last year’s performance points out Petrobras’ consistent over‑performance relative to its peers, propelled by strong dividend yields and a bullish guidance cycle that rivals the broader energy sector. Sentiment: **positivo** – the data suggest an attractive buying opportunity for value‑orientated investors.",
-      "updated_at": "2026-04-27T23:03:13.193023"
+      "summary": "Assembled from the market overview: PETR4 could benefit from the broader energy‑sector rally noted in the “Sector Update: Energy Stocks Higher Pre‑Bell Tuesday,” which suggests a slight upside bias for the company's stock. The advisor’s $47.5 million exit from Mercadolibre is unrelated to PETR4, so it does not alter the sentiment assessment. **Sentimento: positivo**.",
+      "updated_at": "2026-04-28T23:04:38.432870"
     },
     "VALE3.SA": {
       "summary": "A análise BHP versus Vale destaca que, apesar de ambos apresentarem fundamentos estáveis, a Vale mostra maior atratividade no momento graças à sua exposição mais robusta a ferro e manganês e métricas de alavancagem e liquidez mais favoráveis – sentimento **positivo**. Nos resultados do 1º trimestre de 2026, Vale registrou crescimento de 12 % na produção de ferro e 15 % nas vendas, mantendo margem operacional 4 pontos percentuais acima do ano anterior – sentimento **positivo**.",
-      "updated_at": "2026-04-27T23:03:44.697504"
-    },
-    "WEGE3.SA": {
-      "summary": "JPMorgan reduziu o preço-alvo da WEG, redefinindo o cenário de investimento sobre a companhia e sinalizando que expectativas de crescimento foram ajustadas ao limite atual do mercado. Essa mudança indica preocupação com a margem e a rentabilidade em meio a pressões regulatórias e de concorrência, impactando a percepção de atratividade do ativo. **Sentimento: Negativo.**",
-      "updated_at": "2026-04-27T23:03:45.723725"
-    },
-    "MGLU3.SA": {
-      "summary": "Sem notícias recentes de impacto encontradas nos principais canais financeiros.",
-      "updated_at": "2026-04-27T23:03:46.313490"
-    },
-    "BBAS3.SA": {
-      "summary": "BBAS3’s recent news stem solely from peer comparisons—Prologis is cited as outpacing most finance stocks, while BDORY versus BMA is framed as a value‑stock contest—offering no direct catalysts for BBAS3 itself. In light of this, the market sentiment toward BBAS3 remains neutral.",
-      "updated_at": "2026-04-27T23:03:47.264140"
-    },
-    "ITUB4.SA": {
-      "summary": "**1. “What Makes Banco Itaú (ITUB) a New Buy Stock”**  \nBanco Itaú apresenta forte adesão a aplicações de longo prazo, impulsionada por lucros estáveis e crescimento de receita de juros, o que torna o título atraente para investidores de valor. **Sentimento:** positivo.\n\n**2. “SHG or ITUB: Which Is the Better Value Stock Right Now?”**  \nComparação evidencia que, apesar de SHG ter múltiplos mais baixos, ITUB mantém maior geração de caixa e perfil de risco mais controlado, favorecendo sua escolha em cenários de expansão de crédito. **Sentimento:** positivo.",
-      "updated_at": "2026-04-27T23:03:48.088911"
+      "updated_at": "2026-04-28T23:04:39.741969"
     },
     "ABEV3.SA": {
       "summary": "A UBS reduziu a classificação da Ambev (ABEV3.SA) citando preocupações com risco e retorno, indicando um sentimento negativo.  \nO comparativo entre Ambev e Samco mantém uma postura neutra, apresentando as opções sem recomendação explícita, refletindo um sentimento neutro.",
-      "updated_at": "2026-04-27T23:03:49.112603"
+      "updated_at": "2026-04-28T23:04:40.593082"
+    },
+    "ITUB4.SA": {
+      "summary": "1. As publicações destacam o ITUB4.SA como uma escolha de compra que vem apresentando forte desempenho e potencial de breakout, posicionando‑o entre os três melhores options para o mercado em 2026. 2. O destaque recai sobre fundamentos robustos, tendência de valorização e perspectiva de ganhos significativos, reforçando o sentimento positivo em torno da ação.",
+      "updated_at": "2026-04-28T23:05:07.948654"
+    },
+    "BBDC4.SA": {
+      "summary": "- **Article 1:** Finance stocks, including BBDC4, have lagged behind the broader market this year, suggesting a cautious outlook for equity holders. **Sentimento:** negativo.  \n\n- **Article 2:** The “Buy” upgrade for Banco Bradesco reflects renewed analyst confidence in the bank’s fundamentals and potential upside, signaling a bullish tone for investors. **Sentimento:** positivo.",
+      "updated_at": "2026-04-28T23:05:08.773299"
+    },
+    "MGLU3.SA": {
+      "summary": "Sem notícias recentes de impacto encontradas nos principais canais financeiros.",
+      "updated_at": "2026-04-28T23:05:09.344920"
+    },
+    "BBAS3.SA": {
+      "summary": "BBAS3’s recent news stem solely from peer comparisons—Prologis is cited as outpacing most finance stocks, while BDORY versus BMA is framed as a value‑stock contest—offering no direct catalysts for BBAS3 itself. In light of this, the market sentiment toward BBAS3 remains neutral.",
+      "updated_at": "2026-04-28T23:05:10.274162"
+    },
+    "WEGE3.SA": {
+      "summary": "JPMorgan reduziu o preço-alvo da WEG, redefinindo o cenário de investimento sobre a companhia e sinalizando que expectativas de crescimento foram ajustadas ao limite atual do mercado. Essa mudança indica preocupação com a margem e a rentabilidade em meio a pressões regulatórias e de concorrência, impactando a percepção de atratividade do ativo. **Sentimento: Negativo.**",
+      "updated_at": "2026-04-28T23:05:11.162326"
     }
   },
   "market_movers": [
-    "RCSL4.SA",
-    "EMAE4.SA",
-    "AZEV4.SA",
-    "RCSL3.SA",
-    "USIM5.SA",
+    "BOBR4.SA",
     "CTAX3.SA",
+    "RPAD3.SA",
+    "EQPA5.SA",
     "AZTE3.SA",
-    "RNEW4.SA",
-    "GFSA3.SA",
-    "VVEO3.SA"
+    "CTSA4.SA",
+    "AALR3.SA",
+    "HAPV3.SA",
+    "SEQL3.SA",
+    "OIBR3.SA"
   ]
 }
