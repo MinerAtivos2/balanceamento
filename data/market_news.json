@@ -1,90 +1,90 @@
 {
-  "last_update": "2026-04-28T23:03:32.015380",
-  "market_summary": "- O pregão da B3 manteve-se silencioso, com poucas novidades que possam acelerar movimentos bruscos; as negociações remontam bastante aos níveis de suporte e resistência já consolidados.\n- A única mensagem positiva clara veio da EQPA5, que antecipa crescimento de receita e EBITDA para 2025, contrastando com a postura mais cautelosa do Oi, que enfrenta mais incerteza política do que financeira.\n- Em conjunto, o clima reflete um mercado em estado “normal”: estável, sem grandes impulsos de compra ou venda, mas com atenção às projeções que prometem ou ameaçam alterar a trajetória de algumas empresas.",
+  "last_update": "2026-04-29T23:05:40.835421",
+  "market_summary": "O mercado brasileiro segue atento ao cenário fiscal e movimentações de commodities.",
   "assets": {
-    "BOBR4.SA": {
-      "summary": "Sem notícias recentes de impacto encontradas nos principais canais financeiros.",
-      "updated_at": "2026-04-28T23:03:32.191125"
-    },
-    "CTAX3.SA": {
-      "summary": "Sem notícias recentes de impacto encontradas nos principais canais financeiros.",
-      "updated_at": "2026-04-28T23:03:32.761236"
-    },
-    "RPAD3.SA": {
-      "summary": "Sem notícias recentes de impacto encontradas nos principais canais financeiros.",
-      "updated_at": "2026-04-28T23:03:33.342084"
-    },
-    "EQPA5.SA": {
-      "summary": "EQPA5.SA colocou  Q4 2025 com receita +10 % e EBITDA +12 % versus 2024, impulsionada pela expansão de rede e eficiência operacional.  \nApesar do aumento de CAPEX para crescimento de 2026, o management afirma que o impacto líquido será pequeno e que os fluxos de caixa permanecerão sólidos.  \n\n**Sentimento:** Positivo.",
-      "updated_at": "2026-04-28T23:03:42.613416"
-    },
-    "AZTE3.SA": {
-      "summary": "Sem notícias recentes de impacto encontradas nos principais canais financeiros.",
-      "updated_at": "2026-04-28T23:03:43.205487"
-    },
-    "CTSA4.SA": {
-      "summary": "Sem notícias recentes de impacto encontradas nos principais canais financeiros.",
-      "updated_at": "2026-04-28T23:03:43.780432"
-    },
     "AALR3.SA": {
       "summary": "Sem notícias recentes de impacto encontradas nos principais canais financeiros.",
-      "updated_at": "2026-04-28T23:03:44.351668"
+      "updated_at": "2026-04-29T23:05:41.186505"
     },
-    "HAPV3.SA": {
-      "summary": "Hapvida Participações celebrou sua chamada de resultados do 3.º trimestre de 2025, destacando iniciativas estratégicas e perspectivas de crescimento, e manteve o mesmo foco em sua chamada de resultados do 1.º trimestre de 2025. O tom geral das comunicações é neutro, sem sinalizações explícitas de otimismo ou pessimismo.",
-      "updated_at": "2026-04-28T23:03:45.382777"
+    "TTEN3.SA": {
+      "summary": "Sem notícias recentes de impacto encontradas nos principais canais financeiros.",
+      "updated_at": "2026-04-29T23:05:41.793390"
+    },
+    "BRKM5.SA": {
+      "summary": "Resumo: Is Braskem (BAK) Outperforming Other Basic Materials Stocks This Year?. Braskem SA (BAK) Q4 2025 Earnings Call Highlights: Navigating Challenges with Strategic Initiatives. ...",
+      "updated_at": "2026-04-29T23:05:42.939687"
+    },
+    "VSTE3.SA": {
+      "summary": "Resumo: Veste SA Estilo (BSP:VSTE3) Q4 2025 Earnings Call Highlights: Strong Revenue Growth and .... Veste SA Estilo (BSP:VSTE3) Q3 2025 Earnings Call Highlights: Strong Digital Sales and .... ...",
+      "updated_at": "2026-04-29T23:05:43.741911"
+    },
+    "HYPE3.SA": {
+      "summary": "Resumo: Hypera SA (HYPMY) Q4 2025 Earnings Call Highlights: Record Cash Flow and Strategic Market Expansion. ...",
+      "updated_at": "2026-04-29T23:05:44.494764"
+    },
+    "OIBR3.SA": {
+      "summary": "Resumo: From Market Savior to Power Struggle: PIMCO’s Bet on Brazil’s Oi Enters a New Political Era. Oi SA (OIBZQ) Q1 2025 Earnings Call Highlights: Strategic Shifts Amid Revenue Challenges. ...",
+      "updated_at": "2026-04-29T23:05:45.269213"
+    },
+    "RCSL4.SA": {
+      "summary": "Sem notícias recentes de impacto encontradas nos principais canais financeiros.",
+      "updated_at": "2026-04-29T23:05:45.948136"
+    },
+    "NORD3.SA": {
+      "summary": "Sem notícias recentes de impacto encontradas nos principais canais financeiros.",
+      "updated_at": "2026-04-29T23:05:46.595582"
+    },
+    "OSXB3.SA": {
+      "summary": "Sem notícias recentes de impacto encontradas nos principais canais financeiros.",
+      "updated_at": "2026-04-29T23:05:47.202674"
     },
     "SEQL3.SA": {
       "summary": "Sem notícias recentes de impacto encontradas nos principais canais financeiros.",
-      "updated_at": "2026-04-28T23:03:46.061757"
+      "updated_at": "2026-04-29T23:05:47.807580"
     },
-    "OIBR3.SA": {
-      "summary": "PIMCO’s endorsement of Oi has moved from a “market savior” pitch into a high‑stakes political arena, amplifying uncertainty for the company’s prospects. The latest earnings call shows revenue slipping in Q1 2025 but indicates new strategic realignments aimed at mitigating the downturn.  \n**Sentimento: negativo**",
-      "updated_at": "2026-04-28T23:04:09.461955"
-    },
-    "PETR4.SA": {
-      "summary": "Assembled from the market overview: PETR4 could benefit from the broader energy‑sector rally noted in the “Sector Update: Energy Stocks Higher Pre‑Bell Tuesday,” which suggests a slight upside bias for the company's stock. The advisor’s $47.5 million exit from Mercadolibre is unrelated to PETR4, so it does not alter the sentiment assessment. **Sentimento: positivo**.",
-      "updated_at": "2026-04-28T23:04:38.432870"
-    },
-    "VALE3.SA": {
-      "summary": "A análise BHP versus Vale destaca que, apesar de ambos apresentarem fundamentos estáveis, a Vale mostra maior atratividade no momento graças à sua exposição mais robusta a ferro e manganês e métricas de alavancagem e liquidez mais favoráveis – sentimento **positivo**. Nos resultados do 1º trimestre de 2026, Vale registrou crescimento de 12 % na produção de ferro e 15 % nas vendas, mantendo margem operacional 4 pontos percentuais acima do ano anterior – sentimento **positivo**.",
-      "updated_at": "2026-04-28T23:04:39.741969"
-    },
-    "ABEV3.SA": {
-      "summary": "A UBS reduziu a classificação da Ambev (ABEV3.SA) citando preocupações com risco e retorno, indicando um sentimento negativo.  \nO comparativo entre Ambev e Samco mantém uma postura neutra, apresentando as opções sem recomendação explícita, refletindo um sentimento neutro.",
-      "updated_at": "2026-04-28T23:04:40.593082"
+    "WEGE3.SA": {
+      "summary": "Resumo: How The WEG (BOVESPA:WEGE3) Investment Story Is Resetting After JPMorgan’s Target Cut. How The WEG (BOVESPA:WEGE3) Investment Story Is Shifting After JPMorgan’s Target Cut. ...",
+      "updated_at": "2026-04-29T23:05:48.552460"
     },
     "ITUB4.SA": {
-      "summary": "1. As publicações destacam o ITUB4.SA como uma escolha de compra que vem apresentando forte desempenho e potencial de breakout, posicionando‑o entre os três melhores options para o mercado em 2026. 2. O destaque recai sobre fundamentos robustos, tendência de valorização e perspectiva de ganhos significativos, reforçando o sentimento positivo em torno da ação.",
-      "updated_at": "2026-04-28T23:05:07.948654"
-    },
-    "BBDC4.SA": {
-      "summary": "- **Article 1:** Finance stocks, including BBDC4, have lagged behind the broader market this year, suggesting a cautious outlook for equity holders. **Sentimento:** negativo.  \n\n- **Article 2:** The “Buy” upgrade for Banco Bradesco reflects renewed analyst confidence in the bank’s fundamentals and potential upside, signaling a bullish tone for investors. **Sentimento:** positivo.",
-      "updated_at": "2026-04-28T23:05:08.773299"
+      "summary": "Resumo: Zacks.com featured highlights include Seanergy Maritime, Itau Unibanco and Chatham Lodging Trust. 2026 Stock Market Winners: 3 Breakout Picks With Big Upside. ...",
+      "updated_at": "2026-04-29T23:05:49.358473"
     },
     "MGLU3.SA": {
       "summary": "Sem notícias recentes de impacto encontradas nos principais canais financeiros.",
-      "updated_at": "2026-04-28T23:05:09.344920"
+      "updated_at": "2026-04-29T23:05:50.029021"
     },
     "BBAS3.SA": {
-      "summary": "BBAS3’s recent news stem solely from peer comparisons—Prologis is cited as outpacing most finance stocks, while BDORY versus BMA is framed as a value‑stock contest—offering no direct catalysts for BBAS3 itself. In light of this, the market sentiment toward BBAS3 remains neutral.",
-      "updated_at": "2026-04-28T23:05:10.274162"
+      "summary": "Resumo: Is Prologis (PLD) Outperforming Other Finance Stocks This Year?. BDORY or BMA: Which Is the Better Value Stock Right Now?. ...",
+      "updated_at": "2026-04-29T23:05:50.826387"
     },
-    "WEGE3.SA": {
-      "summary": "JPMorgan reduziu o preço-alvo da WEG, redefinindo o cenário de investimento sobre a companhia e sinalizando que expectativas de crescimento foram ajustadas ao limite atual do mercado. Essa mudança indica preocupação com a margem e a rentabilidade em meio a pressões regulatórias e de concorrência, impactando a percepção de atratividade do ativo. **Sentimento: Negativo.**",
-      "updated_at": "2026-04-28T23:05:11.162326"
+    "PETR4.SA": {
+      "summary": "Resumo: Petrobras Inks a Deal to Buy Argonauta Field Stake in Campos Basin. Petrobras (PBR) Advances While Market Declines: Some Information for Investors. ...",
+      "updated_at": "2026-04-29T23:05:51.572041"
+    },
+    "VALE3.SA": {
+      "summary": "Resumo: Compared to Estimates, VALE (VALE) Q1 Earnings: A Look at Key Metrics. BHP vs. VALE: Which Mining Stock is the Better Buy Now?. ...",
+      "updated_at": "2026-04-29T23:05:52.344111"
+    },
+    "ABEV3.SA": {
+      "summary": "Resumo: Ambev S.A. (ABEV) Downgraded by UBS on Risk/Reward Concerns. ABEV vs. SAM: Which Stock Should Value Investors Buy Now?. ...",
+      "updated_at": "2026-04-29T23:05:53.176138"
+    },
+    "BBDC4.SA": {
+      "summary": "Resumo: Are Finance Stocks Lagging  ANZ Group Holdings Limited - Sponsored ADR (ANZGY) This Year?. Banco Bradesco (BBD) Upgraded to Buy: What Does It Mean for the Stock?. ...",
+      "updated_at": "2026-04-29T23:05:53.999506"
     }
   },
   "market_movers": [
-    "BOBR4.SA",
-    "CTAX3.SA",
-    "RPAD3.SA",
-    "EQPA5.SA",
-    "AZTE3.SA",
-    "CTSA4.SA",
     "AALR3.SA",
-    "HAPV3.SA",
-    "SEQL3.SA",
-    "OIBR3.SA"
+    "TTEN3.SA",
+    "BRKM5.SA",
+    "VSTE3.SA",
+    "HYPE3.SA",
+    "OIBR3.SA",
+    "RCSL4.SA",
+    "NORD3.SA",
+    "OSXB3.SA",
+    "SEQL3.SA"
   ]
 }
