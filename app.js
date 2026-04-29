@@ -33,6 +33,9 @@ class B3App {
     this.setupAuth();
 
     await this.checkAuthStatus();
+    if (this.user) {
+      this.currentPage = 'memberDashboard';
+    }
     await this.loadMarketData();
     await this.loadMarketNews();
     await this.loadMarketSummary();
@@ -145,6 +148,10 @@ class B3App {
 
     if (name === 'news') {
       this.renderMarketNews();
+    }
+
+    if (name === 'memberDashboard') {
+      this.renderMemberDashboard();
     }
   }
 
@@ -260,7 +267,7 @@ class B3App {
 
         await this.runAnalysis();
         this.renderPositions();
-        this.showPage('dashboard');
+        this.showPage('memberDashboard');
       } else {
         this.toast(data.error || 'Erro no login', 'error');
       }
@@ -334,15 +341,17 @@ class B3App {
   updateAuthUI(data) {
     console.log('Updating Auth UI:', data);
     const loggedIn = data && (data.logged_in || data.username);
+
+    // Member-only navigation items
+    document.querySelectorAll('.nav-link.member-only').forEach(el => {
+      el.style.display = loggedIn ? 'flex' : 'none';
+    });
+
     if (loggedIn) {
       this.$('userProfile').style.display = 'flex';
       this.$('sidebarUserName').textContent = this.user.username;
 
       this.$('loginArea').classList.add('hidden');
-      this.$('memberDashboard').classList.remove('hidden');
-      this.$('memberDashboard').style.display = 'block';
-
-      this.$('memberWelcomeName').textContent = this.user.username;
       this.$('nav-members').innerHTML = '<span class="nav-icon">👤</span> Perfil';
 
       // Proventos area
@@ -377,7 +386,7 @@ class B3App {
       // News area
       if (this.$('newsGuestTip')) this.$('newsGuestTip').classList.remove('hidden');
 
-      if (this.currentPage === 'dividends') this.showPage('dashboard');
+      if (this.currentPage === 'dividends' || this.currentPage === 'memberDashboard') this.showPage('dashboard');
     }
   }
 
@@ -875,6 +884,104 @@ class B3App {
       `;
       grid.appendChild(card);
     });
+  }
+
+  renderMemberDashboard() {
+    if (!this.user || !this.analysis) return;
+
+    // Metrics
+    this.$('dashTotalEquity').textContent = this.formatCurrency(this.analysis.total_equity);
+    this.$('dashTotalProfit').textContent = this.formatCurrency(this.analysis.total_profit);
+    this.$('dashTotalProfit').className = 'stat-value ' + (this.analysis.total_profit >= 0 ? 'positive' : 'negative');
+    this.$('dashTotalDividends').textContent = this.formatCurrency(this.analysis.total_dividends);
+
+    // Asset Cards
+    const cardsContainer = this.$('memberAssetCards');
+    cardsContainer.innerHTML = '';
+
+    const consolidated = this.consolidatePortfolio();
+    const analysisMap = {};
+    this.analysis.positions.forEach(p => { analysisMap[p.ticker] = p; });
+
+    consolidated.forEach(item => {
+      const a = analysisMap[item.ticker] || {};
+      const profitPct = a.profit_pct || 0;
+      const profitClass = profitPct >= 0 ? 'positive' : 'negative';
+
+      const card = document.createElement('div');
+      card.className = 'card glass asset-perf-card';
+      card.onclick = () => this.manageTransactions(item.ticker);
+      card.innerHTML = `
+        <div class="asset-perf-header">
+          <span class="asset-perf-ticker">${item.ticker.replace('.SA', '')}</span>
+          <span class="asset-perf-weight">${a.weight_actual ? a.weight_actual.toFixed(1) + '%' : '—'}</span>
+        </div>
+        <div class="asset-perf-body">
+          <div class="asset-perf-item">
+            <span class="asset-perf-label">Preço Médio</span>
+            <span class="asset-perf-value">R$ ${item.avgPrice.toFixed(2)}</span>
+          </div>
+          <div class="asset-perf-item">
+            <span class="asset-perf-label">Preço Atual</span>
+            <span class="asset-perf-value">R$ ${a.current_price ? a.current_price.toFixed(2) : '—'}</span>
+          </div>
+          <div class="asset-perf-item">
+            <span class="asset-perf-label">Qtd</span>
+            <span class="asset-perf-value">${item.totalQty}</span>
+          </div>
+          <div class="asset-perf-item">
+            <span class="asset-perf-label">Posição</span>
+            <span class="asset-perf-value">${a.market_value ? this.formatCurrency(a.market_value) : '—'}</span>
+          </div>
+        </div>
+        <div class="asset-perf-footer">
+          <span class="asset-perf-profit ${profitClass}">${profitPct >= 0 ? '+' : ''}${profitPct.toFixed(2)}%</span>
+          <button class="btn-ai-icon" onclick="event.stopPropagation(); app.showAssetNews('${item.ticker}')">🤖</button>
+        </div>
+      `;
+      cardsContainer.appendChild(card);
+    });
+
+    // Integrated News Feed
+    const newsGrid = this.$('memberDashboardNews');
+    newsGrid.innerHTML = '';
+
+    if (!this.marketNews) {
+      newsGrid.innerHTML = '<div class="alert alert-info glass">Carregando notícias...</div>';
+      return;
+    }
+
+    const portfolioTickers = consolidated.map(p => p.ticker);
+    let newsFound = 0;
+
+    const escapeHTML = (str) => {
+      if (!str) return '';
+      return str.replace(/[&<>"']/g, m => ({
+        '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+      }[m]));
+    };
+
+    portfolioTickers.forEach(ticker => {
+      const data = this.marketNews.assets[ticker];
+      if (!data) return;
+
+      newsFound++;
+      const card = document.createElement('div');
+      card.className = 'card glass news-card';
+      card.innerHTML = `
+        <div class="news-card-header">
+          <span class="news-card-ticker">${escapeHTML(ticker.replace('.SA', ''))}</span>
+          <span style="font-size: 0.7rem; color: var(--text-muted);">${new Date(data.updated_at).toLocaleDateString('pt-BR')}</span>
+        </div>
+        <div class="news-card-summary">${escapeHTML(data.summary)}</div>
+        <button class="btn btn-outline btn-sm" onclick="app.showAssetNews('${escapeHTML(ticker)}')" style="margin-top:auto">Ver Mais</button>
+      `;
+      newsGrid.appendChild(card);
+    });
+
+    if (newsFound === 0) {
+      newsGrid.innerHTML = '<div class="alert alert-info glass">Nenhuma notícia recente encontrada para os ativos da sua carteira.</div>';
+    }
   }
 
   showAssetNews(ticker) {
@@ -2019,6 +2126,7 @@ class B3App {
      Utilities
   ------------------------------------------------------------------ */
   formatCurrency(v) {
+    if (v === undefined || v === null) return 'R$ 0,00';
     return 'R$ ' + v.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
   }
 

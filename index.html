@@ -45,6 +45,9 @@
       <a href="#" class="nav-link" data-section="summary" id="nav-summary">
         <span class="nav-icon">🌍</span> Resumo de Mercado
       </a>
+      <a href="#" class="nav-link member-only" data-section="memberDashboard" id="nav-memberDashboard" style="display:none">
+        <span class="nav-icon">🏠</span> Meu Dashboard
+      </a>
       <a href="#" class="nav-link" data-section="news" id="nav-news">
         <span class="nav-icon">🤖</span> Insights do Mercado (IA)
       </a>
@@ -398,6 +401,42 @@
 
       <div class="card glass" id="rebalancePlaceholder">
         <p class="empty-state" style="padding:2rem;">Clique em <strong>"Otimizar Portfólio"</strong> para calcular a alocação ótima usando a Teoria de Markowitz.</p>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- MEU DASHBOARD (UNIFICADO) -->
+    <!-- ============================================================ -->
+    <section class="page" data-page="memberDashboard" id="page-memberDashboard">
+      <div class="page-header">
+        <h1>Meu Dashboard</h1>
+        <p class="subtitle">Visão unificada da sua carteira e notícias do mercado</p>
+      </div>
+
+      <!-- Métricas Rápidas -->
+      <div class="stats-grid" style="margin-bottom: 2rem;">
+        <div class="stat-card glass">
+          <span class="stat-label">Patrimônio Total</span>
+          <span class="stat-value" id="dashTotalEquity">R$ 0,00</span>
+        </div>
+        <div class="stat-card glass">
+          <span class="stat-label">Lucro/Prejuízo</span>
+          <span class="stat-value" id="dashTotalProfit">R$ 0,00</span>
+        </div>
+        <div class="stat-card glass">
+          <span class="stat-label">Proventos Recebidos</span>
+          <span class="stat-value positive" id="dashTotalDividends">R$ 0,00</span>
+        </div>
+      </div>
+
+      <div class="section-title" style="margin-bottom: 1.5rem;">Meus Ativos</div>
+      <div id="memberAssetCards" class="asset-cards-grid">
+        <!-- Cards via JS -->
+      </div>
+
+      <div class="section-title" style="margin-top: 3rem; margin-bottom: 1.5rem;">Notícias da Minha Carteira</div>
+      <div id="memberDashboardNews" class="news-assets-grid">
+        <!-- Notícias via JS -->
       </div>
     </section>
 
