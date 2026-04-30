@@ -1,21 +1,21 @@
-## Resumo de Mercado - 2026-04-29
+## Resumo de Mercado - 2026-04-30
 
 ### 📈 Maiores Altas (Dia)
 
 | Ativo | Nome | Fechamento | Anterior | Variação | DeltaVolume |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| AALR3.SA | Alliança Saúde e Participações S.A. | R$ 2.80 | R$ 2.56 | **+9.38%** 🚀 | +392.01% ⬆️ |
-| TTEN3.SA | Três Tentos Agroindustrial S/A | R$ 16.29 | R$ 15.20 | **+7.17%** 🚀 | +115.97% ⬆️ |
-| BRKM5.SA | Braskem S.A. | R$ 8.94 | R$ 8.47 | **+5.55%** 🚀 | -11.81% ⬇️ |
-| VSTE3.SA | Veste S.A. Estilo | R$ 3.53 | R$ 3.40 | **+3.82%** 🚀 | -73.58% ⬇️ |
-| HYPE3.SA | Hypera S.A. | R$ 22.73 | R$ 22.01 | **+3.27%** 🚀 | +135.48% ⬆️ |
+| TPIS3.SA | Triunfo Participações e Investimentos S.A. | R$ 11.32 | R$ 9.90 | **+14.34%** 🚀 | +203.25% ⬆️ |
+| DASA3.SA | Diagnósticos da América S.A. | R$ 3.38 | R$ 2.97 | **+13.80%** 🚀 | +233.49% ⬆️ |
+| HBOR3.SA | Helbor Empreendimentos S.A. | R$ 2.35 | R$ 2.12 | **+10.85%** 🚀 | +56.62% ⬆️ |
+| INEP4.SA | Inepar S.A. Indústria e Construções | R$ 1.92 | R$ 1.74 | **+10.34%** 🚀 | +49.63% ⬆️ |
+| GEPA3.SA | Rio Paranapanema Energia S.A. | R$ 38.00 | R$ 34.50 | **+10.14%** 🚀 | +130.77% ⬆️ |
 
 ### 📉 Maiores Baixas (Dia)
 
 | Ativo | Nome | Fechamento | Anterior | Variação | DeltaVolume |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| OIBR3.SA | Oi S.A. | R$ 0.11 | R$ 0.13 | **-15.38%** 📉 | +78.02% ⬆️ |
-| RCSL4.SA | Recrusul S/A | R$ 0.63 | R$ 0.71 | **-11.27%** 📉 | -55.25% ⬇️ |
-| NORD3.SA | Nordon Indústrias Metalúrgicas S/A | R$ 2.07 | R$ 2.26 | **-8.41%** 📉 | -47.83% ⬇️ |
-| OSXB3.SA | OSX Brasil S.A. | R$ 1.42 | R$ 1.55 | **-8.39%** 📉 | -50.00% ⬇️ |
-| SEQL3.SA | Sequoia Logística e Transportes S.A. | R$ 0.11 | R$ 0.12 | **-8.33%** 📉 | +0.50% ⬆️ |
+| BOBR4.SA | Bombril S.A. | R$ 1.28 | R$ 1.45 | **-11.72%** 📉 | -50.94% ⬇️ |
+| OIBR3.SA | Oi S.A. | R$ 0.10 | R$ 0.11 | **-9.09%** 📉 | +232.21% ⬆️ |
+| AVLL3.SA | Alphaville S.A. | R$ 0.89 | R$ 0.97 | **-8.25%** 📉 | -5.87% ⬇️ |
+| RCSL3.SA | Recrusul S/A | R$ 0.46 | R$ 0.50 | **-8.00%** 📉 | +65.67% ⬆️ |
+| LUPA3.SA | Lupatech S.A. | R$ 0.75 | R$ 0.79 | **-5.06%** 📉 | +136.89% ⬆️ |
