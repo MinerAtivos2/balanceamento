@@ -1,0 +1,182 @@
+{
+  "last_update": "2026-04-30T11:20:18.288054",
+  "market_summary": "O mercado B3 hoje apresenta um panorama híbrido: enquanto ações de combustível e commodities mantêm pressões de queda, surtiram ganhos inesperados no setor de varejo e em algumas empresas “sporadicamente” boas. Os principais gatilhos de desânimo foram a queda de ratings de crédito de empresas como AALR3 e BRKM5, e as adversidades na governança e no controle acionário, que têm espelhado a cautela dos investidores sobre liquidez e risco regulatório. Em contraste, os relatórios de lucros recordes de alguns players (por exemplo, TTEN3 e o segmento Nord) e a aprovação de dividendos em Veste Estilo sinalizam que, ainda que o sentimento geral seja fraco, existe espaço para ganhos em nichos de alta expectativa.",
+  "assets": {
+    "AALR3.SA": {
+      "summary": "AALR3.SA enfrenta deterioração de crédito, com Fitch rebaixando o rating para pré‑calote, refletindo pressão crescente de credores; a empresa, em resposta, busca proteger sua posição jurídica ao entrar com ação cautelar e solicitar arbitragem para renegociar dívidas. Sentimento geral negativo.",
+      "period": "De 19/03/2026 a 23/03/2026",
+      "sources": [
+        "https://news.google.com/rss/articles/CBMiggJBVV95cUxPY0g2UTlKQ0g1ektqWDRkVGhxYnZvLWVOM2dGQmhSc0lKRFNNZ3ZUeWFObU1Ca21ST2dDQjJmYVlhNlNVOEozcjdyQk41Um1yMEdfQ2ZmMEpKMXh0dmJzVDIzSXFfcHVoUWJmMmJrZnB0elNEb1czMXo1c1R6b0NUNjdhTHNqemdXR1NWdlJNeHFsSDVmdVRSY3UyNDFOc1JYNU9rS1g3NllOOW5fY24yQ0tBejJvVHl6YUktZ0FSdm5DMU9ENllZZ3UzeHVNamVTTzdOMVctanJEY3pMaDlXQVB6LXM1N2tqNm1pd2tuTTNVWGYtUHFQRElVN1BHSW5qUkE?oc=5",
+        "https://news.google.com/rss/articles/CBMiugFBVV95cUxNYlJSTkJSdmNVbHdCc3JIQXp5b0hXYzY1ZlpWcVpTb3dET2h2Vk5yVGhabjJ6Y21nM3JrX2t4aFRCZXZPNk1DTVdubTBTdTJhaXhnam9aRzVEekxlb3B3LVM1c0VmVUFaZHFSZEg1aVVwVmVOMVItalpkaVdtMzU2RjZ4SDBHSjZDQm1SZktZejF6djNOR1pUQkVHVjdoOW54R1lyNVp6NUJvdGlIWEJBUDVTa2FUUmtSaVHSAb8BQVVfeXFMT0o3MmZ1aGFrT2h6Uk00NlU2VmlQc0Y4M19OUWpOb3h2QVh4T0JZajVNbWtUT0xpUWc2U1BfSzhNd3lNZFJVMEtzVzVhZW1oeUotRzVjYXIyX0o1YVJmTFhKRXNvT21ZWlNHQjlvV21xZ3QtOE1hVFh1LWhwT1hVNmJmZmtEVEtJYUI3azR6dENtLWxDSlprWlFLTDBjWWR4b2Y5cGd1YmFlVHJScUI5ajkxYkVBNWRha1RCUWZRZTA?oc=5"
+      ],
+      "updated_at": "2026-04-30T11:20:24.097576"
+    },
+    "TTEN3.SA": {
+      "summary": "A InvesTalk destaca que, embora haja pressão a curto prazo no 4T25, as perspectivas de 3Tentos permanecem positivas, refletindo uma tendência de crescimento (sentimento positivo).  \nA Nord Investimentos relata que a empresa registrou lucro recorde em 2025, reforçando a atratividade para investidores e sugerindo uma recomendação de compra (sentimento positivo).",
+      "period": "Em 06/03/2026",
+      "sources": [
+        "https://news.google.com/rss/articles/CBMigAFBVV95cUxPX3pXdHN0alA1WWNPZUtocHZuZkpNc2gtQzNGQjhnRjRZOHdBTml6UlZlelNaanFOWWtmZnM0YWtnSUdjankyVkFFSk91ek9Yd2lONVo2LXlWQmRudnY2WDQ0MWdaZlNFVmtuM0drdDB6aEw3WmpBakF4NHhPZ3hiNw?oc=5",
+        "https://news.google.com/rss/articles/CBMifEFVX3lxTE1iRVdGTFdoVDNtc3I2bEVqaVNGVFpjZmN6ajIxUU5VTWVOMEJIUkJOQVFhVDBMUklLWGtLdHphZmxLbU16Y1FkWmx3bEs0ZlNxeVk2LVZMalpaMU5CQklzU21HdkxNWG4xRXRNWU5Ud0RJcERiS3dJZENHamTSAYIBQVVfeXFMT1RpVU4tUGxTS18wbTk2TVh6OFdEWUpaQXVvVFAtQmxudWNnOWp2b2VETmxRNDZpR2Y1UUZabnhoNXVla3FIRjNqblBKM2t0LW1faHd3ZXQ0MVkzZmI0WVR5OEtfUUtaLU5kdmx2NjZKdGQ3REdUeFZtODhid3VWV0RqUQ?oc=5"
+      ],
+      "updated_at": "2026-04-30T11:20:59.352949"
+    },
+    "BRKM5.SA": {
+      "summary": "**Resumo:**  \n1. Bradesco BBI alerta que o preço da Braskem (BRKM5) pode cair pela metade, citando “situação insustentável” nos fundamentos financeiros e operacionais da empresa.  \n2. O controle da Novonor, banco de investimentos da Braskem, foi transferido para a IG4, levando a questionamentos sobre o impacto dessa mudança na liquidez e na governança corporativa da Braskem.\n\n**Sentimento:** Negativo.",
+      "period": "De 20/04/2026 a 22/04/2026",
+      "sources": [
+        "https://news.google.com/rss/articles/CBMi4wFBVV95cUxQaVVHd1F5MU9IWm4wbzRZSDY3RXNFY19Vai1hM3ZaQjlkbHI4WURxT3cwcUlrYkh0ZURQdldIWjBFc1lDMFJSMy1OUGJqN1Z0MG9ZZUpodG1nQnBScU9jdU9Tb1BmMWZhSThvQ1pTeVZiOElGWFgwaVljV1FEMEdSYnpPOVpQNkx5RUVLYmFnTUxsZW5UNGFLSzl4UWJ6dXNWV3o2YmtkUVl5amVVS3JyX3ZDampHOVpZRnRxVVpjZFRkaHFXb0dLd2dfUnhQNzRfMFFkUXRlNVBGeVRscU1YbDZzNA?oc=5",
+        "https://news.google.com/rss/articles/CBMiywFBVV95cUxOX1pGdFJEZTlpZzlaQWxSbU9WSE16d092d1JuZjNKUFdadTBfVThNdmYyMDU3a0NHMUlHZlhHUi1YX2tweXQ1S3ZUaUF1QXFPMjZCZE4tNVRNMEI2ZEVfNGdJbzBKZUxWRnJxS0dFbFlFT2Z5dXd4dDBiOThmdW5EdEk2djg3OHoycEtsWl8yeTVkR2NaMjhaX0hNZEZkcjB3dnBkWjZScWt6bllWUXQzZERHSHRpVEJ5aXBBSXdxUTJZOERhcXZXbXRVcw?oc=5"
+      ],
+      "updated_at": "2026-04-30T11:21:24.238954"
+    },
+    "PATI4.SA": {
+      "summary": "Resumo: [Google News] PATI4 (Panatlântica): Cotação, Dividendos e Resultado - EuQueroInvestir. [Google News] As 10 ações que mais subiram em 2021 na B3 são de empresas problemáticas - Mais Retorno. ...",
+      "period": "De 24/06/2021 a 25/08/2023",
+      "sources": [
+        "https://news.google.com/rss/articles/CBMiXEFVX3lxTE51SmtzMW4wMVNJNlBBTWtHVDhycTRKbHlBYm1xY0JtY3VKLWw1TkRNc3d2a0ZxMUxxS1JrNlFTbm5UOHlpa3hLQUlGRzB5dHhYeVhlNEJ5UzV3d2ht?oc=5",
+        "https://news.google.com/rss/articles/CBMipgFBVV95cUxPRkpGOVVsVUJwR3c1Yk5WYU1JaENUdGpGVWlmbURoTVZBVVVoek9WbW1ZWmtOcG9IbVIzWWoyd1g4X0hNckhmSW43ZGJHUVZYbDdXWDlJU2Y3Z1I4dml3VHNHd3BYUHNuaHJJQTRGTDlKa0R1WW9oQzFHOTdKcjlQbkc3Q05OMFkzU2V2OUlLRDdnTDE1aDNiQjZGSkcxZXptdE1tOHdB?oc=5"
+      ],
+      "updated_at": "2026-04-30T11:21:32.029097"
+    },
+    "VSTE3.SA": {
+      "summary": "Resumo: [Google News] Veste Estilo (VSTE3): assembleia aprova dividendo - financenews.com.br. ...",
+      "period": "Em 28/04/2026",
+      "sources": [
+        "https://news.google.com/rss/articles/CBMiigFBVV95cUxQVHE5TG51TmZxNU1oZFMwWVNYT09CTmNMc1E1a0ZHeG5SN3BWdXhLRVVBczZrNWdZNWZhTjBuQUlsNWFwcDdpTVYxQW05NHZ2cmY2a0M5SFB0b1dmeFdqOHNrWlVwNm9CZFduOVhlSHlXMEJyMjVZN2ZUNVdmZkd6UUVJa3g3czdQVEE?oc=5"
+      ],
+      "updated_at": "2026-04-30T11:21:34.470351"
+    },
+    "OIBR3.SA": {
+      "summary": "Resumo: [Yahoo Finance] From Market Savior to Power Struggle: PIMCO’s Bet on Brazil’s Oi Enters a New Political Era. [Google News] Oi (OIBR3) deixa de ser negociada na B3 nesta segunda; entenda - suno.com.br....",
+      "period": "De 12/01/2026 a 02/03/2026",
+      "sources": [
+        "https://finance.yahoo.com/news/market-savior-power-struggle-pimco-231808414.html",
+        "https://news.google.com/rss/articles/CBMijwFBVV95cUxOMktjekgzZG1BRDVOblh3RF8zV0tRTXVaZFZSWWVzbkxzaXJoaUI0RHl3UDFvRVE3YnRlNkFnOWNZcWdFZ1U0MVk3ZU1wR0dxQmlKN2RDaWNYeWZfZ1FsajJYdHUyT0ZLWjhCUm92cTdDMW9MY094VHY3YzVDSDdoYngzN3B5TVhRSzdUX3BmZ9IBlAFBVV95cUxQcDBOR3JkLWotajA1V25hanNNc1ZoYTFHVG9pT3RGYlVZdkYycldxNVNpUDJwWGFKUl95c3VfUmZ1aWtBRkxrZUJzQTVfeFhvVFlwb2pLMnNQcTd0c3hLLTFZR3pvdDZQeU8zRFk2anBGXzA3ZEVkb1hzS3dFQVpxSVMzY2wtT1Rub2Vwd1ZibEFiOWkz?oc=5"
+      ],
+      "updated_at": "2026-04-30T11:21:37.210610"
+    },
+    "RCSL4.SA": {
+      "summary": "Resumo: [Google News] Cotação Recrusul (RCSL4) hoje: veja preços, gráficos e notícias em Tempo Real - Money Times. [Google News] Recrusul (RCSL3, RCSL4) anuncia plano para elevar ações acima de R$ 1 - Visno I...",
+      "period": "De 28/04/2026 a 30/04/2026",
+      "sources": [
+        "https://news.google.com/rss/articles/CBMihwFBVV95cUxNNjVNbWZ1d1Q4RXRmejcxYlRVVm1UMjRHOHBiRVZMeUR5ZlpVTWFJb3Q4M0xYUWp5ZDdlRDVSUzRwTENlUnFvNE1LQ3NCbmlsdWZqQmxBY05IT0NBZ1k3MjRRWkx4SHJNVlZUSzZhNG44X1NsaURWRzhrLTN4eHJ3VWdhX1JSdlU?oc=5",
+        "https://news.google.com/rss/articles/CBMipgFBVV95cUxPWXBQeDBHbG8yV1dQNXlweVNkRWd4cUo5b0Q5YURjbUt6SEZpWkowbnJ0d2ZGUVdrRnI2alNOY3YzVUhBYUVjWmIxeGppRW1ZWXJVeWYtcGJBbzdZcXVFZEJSeFlwdk16NlAtdzNrcUE5MmNEbWN3STFQOXNEbHlVOVpPWEdveXJZRXpBWGc0TWd5TmhDQk1Pa3hyc2k1bEJueUhuZnNB?oc=5",
+        "https://news.google.com/rss/articles/CBMingFBVV95cUxQMzFFcmNwckloaW14b2VuRnRVVjBna0Y0Rkh0dFp1V2hDeGhhV3FUM2E0WHYzLXktU2pUZlVaYnVvYnpPWVNLVzBUd2VFYWVHZ1pRMlpiWGJrcFhtdW9tZWNuanlacVllTkNZVGRERkY5TmNCSHRndWs3ei0zeDhQSldUem01SmE1bHdlMS1oYzdHalMweU0wZng5NmFYQQ?oc=5"
+      ],
+      "updated_at": "2026-04-30T11:21:41.109893"
+    },
+    "NORD3.SA": {
+      "summary": "Resumo: [Google News] Projeto De Olho nos Rios e Espaço Amigo vão trabalhar juntos pela preservação da biodiversidade no bairro Falcão, em Monte Alegre do Sul - Circuito de Notícias. [Google News] MTE apresen...",
+      "period": "De 24/03/2026 a 20/04/2026",
+      "sources": [
+        "https://news.google.com/rss/articles/CBMihgJBVV95cUxNb1NvVlVWU0pvcjZoQWF6QXY1bkl3MzNIVVdPZVkzZUdwNWNYcG85a3diQWp1eUFGN2hFTjBSRi0yUGo2eHZJOXhDVEZGRHc3bnpMQTFlWEN3V0dLQXo2ZmhHdi1kZno0bVI4UTQ4NVd5aFYxN1ZSMUdvMzd1NnBnalY3OFpQWjdSamZjQzVCOGowWkpNVzVINEh2am5PeE1DZ0p1QzRza25UR2RGWHVYeHBnSU9fb0szTC0zVzIyblhfcWp4Vm9kYjBZRVJwejc5RFpBRjE4Yzc2bjI1ajdXbzZWcExFRzM0bzI4U2d0OUpNQ2tRTHJRTEMzTGlHU1RUVnhxOXV3?oc=5",
+        "https://news.google.com/rss/articles/CBMi6wFBVV95cUxPdkl2RFF2WjNtSjZxSWN4RERCRldDQ1ZIUWpfeGZaZFZFV3B3a1lpVGE4clRyc2licV90NGlCYXJGbzZNalQwdXc3REhiaTBQUlpyc19hbUFvaE5BSFNGejA0ekp6MHoxR1RNUV91eXpfMTlSYWU5TUZSd1JDUmlRRnVCcU43Mmx2UUlIVVZSM3V4Q0ZReXJ4cVF3dFdTOHV5WlVJMWVCYjJjVmlKcngybG9ZWmVLaDZTMFN1SkF0RC1VM3B3RmdXVzNUMXZ4b2g5OUNobVV5Tzh4Q3dJVHFqb3ZNck9oamIyekQ0?oc=5"
+      ],
+      "updated_at": "2026-04-30T11:21:43.183177"
+    },
+    "OSXB3.SA": {
+      "summary": "Resumo: [Google News] Análise Fundamentalista de OSXB3 — Visno Score 0,0/10 | Visno - Visno Invest. [Google News] OSX (OSXB3) aprova termos de novo plano de recuperação judicial - Investidor10. ...",
+      "period": "De 20/03/2024 a 20/04/2026",
+      "sources": [
+        "https://news.google.com/rss/articles/CBMiUEFVX3lxTE1ZTmQ4OGtkRnA3Q2xtb3VSd1EtV2V6dTc3ZUhocEdQTE9aNFhhTW1qaGRfTVFXLS1NRko2R04xQklSTGhTRlVDdkIzOTl2RUxn?oc=5",
+        "https://news.google.com/rss/articles/CBMiqgFBVV95cUxPbGlmcFlHaU8wQ2k0LXpTTEd6bzNWQ0VHU0d1U1hGaWRjQkNyTFVSdFFaUnZLQnh4alJWNGpmaTNhT3B6Q01leGFCaHJlR0lJcm52M2MtT3pCZGFIN0hRcmZ2ZWgxd3cycy10Wlp5OUNKS2l5aHFpOXpITElCbE1WRTFLanhOM1QtWjJ1ZG5aVzJsVmlkcWdYMXRGc2ZuajM1aWF0UkE1UkowQdIBrwFBVV95cUxQSlhZbXlUcGFXbDJZV2xfMGQ3d2VidWNTUFRTNFRQR1JYM2tCaUxEYkFrR1RHMWFHcUQ4ZTcyemhoOFRGRlVJdDNPd1hYZGRMLU9tQmJCZE14TU5JcUtGU2pVV2M2SGd0cS00c1gwb1E2bUJWbFN6OVFuc1k5MUNCX3NsaEtqZDhSS291UEVqcmVVak1PcS1oQVM4X05mMTFxUkVoWDJ5NG5ORlVuaHZR?oc=5"
+      ],
+      "updated_at": "2026-04-30T11:21:45.396300"
+    },
+    "SEQL3.SA": {
+      "summary": "SEQL3 subiu 21,4 % em meio à alta do Ibovespa, sinalizando otimismo (sentimento: positivo). Em contrapartida, a ação derreteu mais de 23 % na segunda‑feira, refletindo preocupação (sentimento: negativo).",
+      "period": "De 09/02/2026 a 20/04/2026",
+      "sources": [
+        "https://news.google.com/rss/articles/CBMiogFBVV95cUxPRm1ZeDZHTmZPMDBOVHdVLXEwRjNHWnpQYzUwaVJPT2VlMkdVRVBtNnZIWjB3ampJd2lqS29wMFZpT2Vsbl90d28ycjI0UkdobmFvS2gxbW9BVkZrYVlkUjNwYXZpTHRVVUxjSnlKUWVmMWhFbFZ0OTI0STdra2MxTEl3NXo4aWFYbzRyd1czQ0Z1ZmJ3TDF3WktLSGUzVFUzbUE?oc=5",
+        "https://news.google.com/rss/articles/CBMisgFBVV95cUxQMV9sUzI1N0laX2FhajF0OHpKUHRRMTczNHNtaWFZY3lIUmJIWk1ZMjZUYUdMTzFFVWZVLVNMaUZEbF82VTFSRm1VUkFLbzJKM1dBSi0xWTNySVlnNWgwYTlNUUZaMk15cnJuU2VFRDN3NVdNNEs3ZzRpaWRJajFSdmdRODJ5cDlBcjI3VzZyR1d4d2ZTemlfRE5FWmtCQTA4bHkwa1V3UFppOWZKcWduaktR0gG3AUFVX3lxTE43ZzI2TVMtcU9sMHgyVmNBbEREb2E0cFprWlVJbzY4U2VuSGtmUEctQUR2bFlLVWZWQUw1Z1RVMm94cnFHWmNmclZwQTFWNHBaRHR5NnVadlhSYklqTUlJTXZsd2FKN084TlBVekVldWJMeGY2Q3hDWndtaEtFVEdGbGF5MHJMS1pQN19DRUd1c3N2TUU0cElJSUpjblJIU2t6ay1RQnBNZFNmempjaXBNSWZ1SGFNUQ?oc=5"
+      ],
+      "updated_at": "2026-04-30T11:21:53.719221"
+    },
+    "VALE3.SA": {
+      "summary": "**Resumo objetivo:** o balanço do 1T de 2026 da Vale revelou queda nos resultados em relação às projeções, afetando a linha de caixa e levantando dúvidas sobre a capacidade de manter metas de produção; em paralelo, a queda do dólar e os ares de política monetária mais restritiva condizentes com o clima de Copom continuaram pressionando o IBOV e, consequentemente, suas ações, colocando a VALE em fase de correção do preço abaixo de R$ 80. **Sentimento:** negativo.",
+      "period": "Em 29/04/2026",
+      "sources": [
+        "https://news.google.com/rss/articles/CBMiuAFBVV95cUxOWlkxUGJZeGJkM21OUWRGYW1KNnVIbkk4OG42M0NPTXRVVzgtbFNFWkNVMDdSOEM3Q2N2UEpnOGpybXhQWHBrREVpQWt6N2k1NG1nbzVwZzJ5OThoazFVcGxGV0QzQjZDMVh5d0dqenBzUGMzVjZ6NjlVQjBEdldCSk5faU9RN3pYMTlDOVhabl9pM3ZKdnl6VEZ5YW85dHZtbFZzam9od0ZzVWdZbG53eWNoUlBWS1dK0gG4AUFVX3lxTE5aWTFQYll4YmQzbU5RZEZhbUo2dUhuSTg4bjYzQ09NdFVXOC1sU0VaQ1UwN1I4QzdDY3ZQSmc4anJteFBYcGtERWlBa3o3aTU0bWdvNXBnMnk5OGhrMVVwbEZXRDNCNkMxWHl3R2p6cHNQYzNWNno2OVVCMER2V0JKTl9pT1E3elgxOUM5WFpuX2kzdkp2eXpURnlhbzl0dm1sVnNqb2h3RnNVZ1lsbnd5Y2hSUFZLV0o?oc=5",
+        "https://news.google.com/rss/articles/CBMirwFBVV95cUxNMUQ2N0tjZS1yRXNyUlREcm5iZm9yS0ZHa2xDcWEyWU5RNVEzVng0VDJUSWpHbnFqb3l3WE1yZmEyanFiX3ZuWFY2MEQxNmVJbkxFMzdPMC15UElWRklqcElWV3lJUk5rT0paWVNrX0gzZWhRM3V5ZDhhVTROVkZ2dnZpTFV5S2FpQlExYVJFQWpXTmtRdkVLdTMyV1FhSzljRVF6UjFXVEY1OFBmM2M00gG0AUFVX3lxTFBmM1FKWm5oeUZJTndZa1JDbUV3UjUwT1BzaS1jby1fdVNodk1PYmo5V2RrYzNkMFgwdlhYZ1BrRHFGc21pVGJIX0FFYTN2Wl9WeWctWGVNWUNLQ0gtUVFhSVc1RjV2MVNINUQwRFdrbENVbkN5ME11VHl4bWdZWkoyTUtwSThRbzU2Ukw2cGlZd2JMMzNoNnB0S2hsVzREUFFZM3NsSC04V1RlQXVmOHA1WlBKUg?oc=5",
+        "https://news.google.com/rss/articles/CBMisgFBVV95cUxPalBEY0VGU3p3ZlNXdzJ2YVQ2QkpWYzZNY1UyU3dUNDNrakw5eHJ6TGN6dW5jTV9Vb2pGVXhXbXJOcTRGNE52YTlnNjBfMGJ0cDZfMjRONmVVRmtIMng3dlRWcjJ1ZUlsbEZYQlZTbVBWM3NSR3pBeHFDZi11Vi1oUTZOc01iNEYydE1yNThlLUx0RHZwYWgycVdaTkIxWDhteUU1Zkx5ZHZoN0ZYLTNZOWRR0gG3AUFVX3lxTE5mVEpNU2lwRkRLamZGdlA4YjRvSHZhaU5OQmhYYmh4UHdpSm5mSFl2SFFqMm1BVVc5RThfX0Z5YThvZG11X0FHdC1MTmltX0ZVblFrendzYm5MdC1kcmdzZC03ZWVsNlZqVVlDWGNmblc4YjZoM0d2LWs3RjR0QVNwWFJsbDdFdDN6UjNNdVhRMDZOcVp1ckVsbUJLN1JsbkV3R3AtT1d1VDFka2VsQVpvTW1FZ25Gaw?oc=5",
+        "https://finance.yahoo.com/markets/stocks/articles/compared-estimates-vale-vale-q1-133009324.html"
+      ],
+      "updated_at": "2026-04-30T11:22:20.577946"
+    },
+    "ITUB4.SA": {
+      "summary": "ITUB4.SA foi destacado como parte de um mix de apostas de breakout 2026 e mencionado em um destaque padrão da Zacks, mas nenhuma informação específica sobre novos lançamentos ou dívidas foi citada.  \nSentimento: neutro.",
+      "period": "De 28/04/2026 a 29/04/2026",
+      "sources": [
+        "https://finance.yahoo.com/markets/stocks/articles/zacks-com-featured-highlights-seanergy-140300835.html",
+        "https://finance.yahoo.com/markets/stocks/articles/2026-stock-market-winners-3-190000563.html"
+      ],
+      "updated_at": "2026-04-30T11:22:49.921963"
+    },
+    "BBAS3.SA": {
+      "summary": "Banco do Brasil (BBAS3) anunciou que espera resultados mais apertados no primeiro semestre de 2026 em comparação ao período anterior. O comunicado sugere um sentimento negativo, indicando cautela sobre a rentabilidade futura da ação.",
+      "period": "Em 23/04/2026",
+      "sources": [
+        "https://news.google.com/rss/articles/CBMivAFBVV95cUxNNG96UlRza2RqTzJZb1oxcGZJNG5oSHdTX3RYU1NsX0RxM1hhTHpDVnVPX1hoeWNIcGg2U19GbFdvQXBFbkVVLUprOVQ0LURscHB2UjZ0YUhmaHNHd0JVQUNmUGU1OHR6UE9zbzh0LUZubTFKOWkwRnItT0JXX000cXBLOGxDUnFVSFluTnRXX3JsRnFuLTN3ME5zeFk2N1JnME9uanpWODZGU2l1UlZMVzkyWjBzODhqMlI4M9IBwgFBVV95cUxNTnFfaDJXTXZTR1ZFRS1rc0pZSUwzakFfTk5PclZCWHcxdGhiTVhEUGJzZjdXZEtiejg0Ylc3V2RVTWxJclYyNmtyRVl3cmlwRXFieE5tNjIzVGdNTFJYazYtaGc2ZTUydlg3UVBHTGdvY3l0VVlEWUFodTJyUk5KYkFZQnphYndoaGZ0TE1fQkdFT0ZOanB0TmdpNnIwRE9hNEFSX2xlcDFMWnZNdHVsRlZTVDNfbFZfT0FWeEFuWjlyUQ?oc=5"
+      ],
+      "updated_at": "2026-04-30T11:23:21.934469"
+    },
+    "ABEV3.SA": {
+      "summary": "A UBS rebaixou a nota de ABEV devido a preocupações com risco e retorno, sinalizando um sentimento negativo para a ação. Já em “ABEV vs. SAM”, a análise não recomenda uma escolha decisiva, mantendo um tom neutro sobre qual título atrairia mais investidores de valor.",
+      "period": "De 17/04/2026 a 22/04/2026",
+      "sources": [
+        "https://finance.yahoo.com/markets/stocks/articles/ambev-abev-downgraded-ubs-risk-194506274.html",
+        "https://finance.yahoo.com/markets/stocks/articles/abev-vs-sam-stock-value-154003804.html"
+      ],
+      "updated_at": "2026-04-30T11:23:52.331808"
+    },
+    "WEGE3.SA": {
+      "summary": "WEGE3 divulgou resultados do 4º trimestre com receita +16 % em relação ao mesmo período do ano‑anteriores, fechamento de lucro líquido ajustado que superou as expectativas do mercado, e dividendos que mantêm a política de retorno aos acionistas. A ação cotada subiu em torno de 1,3 %, refletindo confiança dos investidores no desempenho operacional e na perspectiva de crescimento. **Sentimento: positivo.**",
+      "period": "Em 30/04/2026",
+      "sources": [
+        "https://news.google.com/rss/articles/CBMiUkFVX3lxTE5rZjNUeTBEMEl1OXp2bVFRdVhDRFVwUHFMdHRRYjVwSWtnV2c3X1FBR1BhSkFkcndMYlJ4QmVlS2VIQUZZa1hGY3d4T20zVHRCV0E?oc=5"
+      ],
+      "updated_at": "2026-04-30T11:24:22.376892"
+    },
+    "PETR4.SA": {
+      "summary": "Resumo: [Yahoo Finance] Petrobras (PBR) Rises As Market Takes a Dip: Key Facts. [Yahoo Finance] Petrobras Inks a Deal to Buy Argonauta Field Stake in Campos Basin. [Yahoo Finance] Petrobras (PBR) Advances Whi...",
+      "period": "De 28/04/2026 a 29/04/2026",
+      "sources": [
+        "https://finance.yahoo.com/markets/stocks/articles/petrobras-pbr-rises-market-takes-214505631.html",
+        "https://finance.yahoo.com/sectors/energy/articles/petrobras-inks-deal-buy-argonauta-135200621.html",
+        "https://finance.yahoo.com/markets/stocks/articles/petrobras-pbr-advances-while-market-215004543.html",
+        "https://finance.yahoo.com/sectors/energy/articles/sector-energy-stocks-higher-pre-132550352.html"
+      ],
+      "updated_at": "2026-04-30T11:24:41.266714"
+    },
+    "MGLU3.SA": {
+      "summary": "Resumo: [Google News] Magazine Luiza vende ações em leilão, após bonificação e define pagamento de frações aos investidores - ADVFN. [Google News] Depois de disparar, ações da Magalu (MGLU3) fecham em queda a...",
+      "period": "De 13/03/2026 a 19/03/2026",
+      "sources": [
+        "https://news.google.com/rss/articles/CBMiakFVX3lxTE1oTkNaSmJUcHc4dFVNX1ppX0hxcnQyX0xBYU1tOXZWcG1JaTlUakFqbDlsSk9IY3FlVTk0dXd3STFlT183MWhoTFJTQV9TR0l5dXBuSTlpVVI5Skk1REx6cEZ6bVRLN0tTbHc?oc=5",
+        "https://news.google.com/rss/articles/CBMi0wFBVV95cUxOdHFuVm4xMUt1dkJwbG1Fd2FnVUFmaG5UTWIxVTVDVGpFZXZoQWFoeWpmaDZJUllBMnhmSk9vQkxVQ3pIbEV3WDlJUXlFUGdrMDlWaVN1VUhhZVJZdVRzTTItaG9jNEtQT1lMbU9vZkJCQ1lxdFQyZnZJVlh3OGEyREtLc3lLeGRkd1NSX1hJNmg0VXRjZGpleEdmeUVNSTRVWDFwSk5wZGd1TDdOWFlxVmJ6RW5pYjNPUEhfTWJMSkJET1UzVWtSZ0lWTVJ2ZlpKOW800gHiAUFVX3lxTE9SX0ttMlFTTXZFbDFWTWc2MVBVSE5HZ0xkaTlzTVR6eXVQQjdTRFNJR094SWIzRjFlTk1iNzJPX1VjR0NQWHZ1MlI3MHlkenJoRExNTmFWQm1DZm03MW1sSDZ6Qm5WRjhQUHdSTG5yTkJienM5Sm5lcEFreERyVkIyWlJZQ3RJekNPWFJvWlI5UDFraG1uaDlGZ3JhYTVYWWd6cDZSRXNYQ0tiSGlrVnQyMlpoOERaRlh0S0lRb1YwZkRIU21TS3dtYWxvSWtJZnhadFFVaEhURVQxQzgta0xVREE?oc=5"
+      ],
+      "updated_at": "2026-04-30T11:24:43.758617"
+    },
+    "BBDC4.SA": {
+      "summary": "Banco Bradesco (BBDC4) foi upgradeado para “Buy” por analistas, sinalizando confiança e um sentimento positivo em relação à ação.  \nRelatos de atraso geral nos setores financeiros, como o da ANZ, não mudam a perspectiva favorável que permeia a avaliação de BBDC4.",
+      "period": "De 14/04/2026 a 17/04/2026",
+      "sources": [
+        "https://finance.yahoo.com/markets/stocks/articles/finance-stocks-lagging-anz-group-134003844.html",
+        "https://finance.yahoo.com/markets/stocks/articles/banco-bradesco-bbd-upgraded-buy-160004099.html"
+      ],
+      "updated_at": "2026-04-30T11:24:45.426974"
+    }
+  },
+  "market_movers": [
+    "AALR3.SA",
+    "TTEN3.SA",
+    "BRKM5.SA",
+    "PATI4.SA",
+    "VSTE3.SA",
+    "OIBR3.SA",
+    "RCSL4.SA",
+    "NORD3.SA",
+    "OSXB3.SA",
+    "SEQL3.SA"
+  ]
+}
