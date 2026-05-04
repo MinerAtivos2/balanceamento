@@ -1,21 +1,21 @@
-## Resumo de Mercado - 2026-04-30
+## Resumo de Mercado - 2026-05-04
 
 ### 📈 Maiores Altas (Dia)
 
 | Ativo | Nome | Fechamento | Anterior | Variação | DeltaVolume |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| LUXM3.SA | Trevisa Investimentos SA | R$ 0.83 | R$ 0.71 | **+16.90%** 🚀 | 0.00% — |
-| TPIS3.SA | Triunfo Participações e Investimentos S.A. | R$ 11.32 | R$ 9.90 | **+14.34%** 🚀 | +204.59% ⬆️ |
-| DASA3.SA | Diagnósticos da América S.A. | R$ 3.38 | R$ 2.97 | **+13.80%** 🚀 | +234.74% ⬆️ |
-| HBOR3.SA | Helbor Empreendimentos S.A. | R$ 2.35 | R$ 2.12 | **+10.85%** 🚀 | +56.73% ⬆️ |
-| INEP4.SA | Inepar S.A. Indústria e Construções | R$ 1.92 | R$ 1.74 | **+10.34%** 🚀 | +49.63% ⬆️ |
+| CVCB3.SA | CVC Brasil Operadora e Agência de Viagens S.A. | R$ 2.38 | R$ 1.93 | **+23.32%** 🚀 | +466.30% ⬆️ |
+| SEQL3.SA | Sequoia Logística e Transportes S.A. | R$ 0.13 | R$ 0.11 | **+18.18%** 🚀 | +99.18% ⬆️ |
+| SOND5.SA | Sondotécnica Engenharia de Solos S.A. | R$ 70.99 | R$ 63.96 | **+10.99%** 🚀 | -37.50% ⬇️ |
+| OIBR3.SA | Oi S.A. | R$ 0.11 | R$ 0.10 | **+10.00%** 🚀 | -39.34% ⬇️ |
+| PMAM3.SA | Paranapanema S.A. | R$ 0.61 | R$ 0.56 | **+8.93%** 🚀 | +175.84% ⬆️ |
 
 ### 📉 Maiores Baixas (Dia)
 
 | Ativo | Nome | Fechamento | Anterior | Variação | DeltaVolume |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| BOBR4.SA | Bombril S.A. | R$ 1.28 | R$ 1.45 | **-11.72%** 📉 | -50.94% ⬇️ |
-| OIBR3.SA | Oi S.A. | R$ 0.10 | R$ 0.11 | **-9.09%** 📉 | +232.21% ⬆️ |
-| AVLL3.SA | Alphaville S.A. | R$ 0.89 | R$ 0.97 | **-8.25%** 📉 | -4.65% ⬇️ |
-| RCSL3.SA | Recrusul S/A | R$ 0.46 | R$ 0.50 | **-8.00%** 📉 | +65.67% ⬆️ |
-| LUPA3.SA | Lupatech S.A. | R$ 0.75 | R$ 0.79 | **-5.06%** 📉 | +137.68% ⬆️ |
+| TRAD3.SA | TC S.A. | R$ 1.64 | R$ 1.85 | **-11.35%** 📉 | +444.91% ⬆️ |
+| NUTR3.SA | Nutriplant Indústria e Comércio S/A | R$ 2.18 | R$ 2.41 | **-9.54%** 📉 | -38.05% ⬇️ |
+| AZTE3.SA | Azevedo & Travassos Energia S.A. | R$ 0.32 | R$ 0.35 | **-8.57%** 📉 | -79.55% ⬇️ |
+| MNDL3.SA | Mundial S.A. - Produtos de Consumo | R$ 17.51 | R$ 19.00 | **-7.84%** 📉 | -13.71% ⬇️ |
+| HAPV3.SA | Hapvida Participações e Investimentos S.A. | R$ 11.50 | R$ 12.39 | **-7.18%** 📉 | -0.52% ⬇️ |

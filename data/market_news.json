@@ -1,90 +1,90 @@
 {
-  "last_update": "2026-05-01T23:00:38.085929",
-  "market_summary": "Hoje o mercado B3 apresenta tranquilidade geral: a maior parte das principais ações não registrou notícias de impacto, mantendo o cenário estável. A única forte nuance negativa vem da Oi (OIBR3.SA), onde a queda de receita no primeiro trimestre e a mudança de foco estratégico aumentam a incerteza. Enquanto a AVLL3.SA traz uma postura neutra em meio à geopolítica, o panorama permanece equilibrado, com leve inclinação para cautela.",
+  "last_update": "2026-05-04T23:03:31.676078",
+  "market_summary": "O mercado da B3 está apresentando volatilidade moderada, com preços se movendo em faixa estreita em meio a polêmicas políticas que estão impactando a percepção de risco nos setores mais sensíveis. Empresas de comunicação como a Oi enfrentam pressões de investidores e de gestores de crédito, refletindo em quedas de receita e críticas à governança; enquanto a Hapvida mantém um tom neutro nas últimas divulgações, não gerando impulsões positivas significativas. Em conjunto, esses fatores criam um clima cauteloso que favorece rebalanceamento de portfólios ao invés de manobras de alto risco.",
   "assets": {
-    "LUXM3.SA": {
-      "summary": "Sem notícias recentes de impacto encontradas nos principais canais financeiros.",
-      "updated_at": "2026-05-01T23:00:38.467784"
+    "CVCB3.SA": {
+      "summary": "Desculpe, não recebi informações específicas sobre as chamadas de resultados de Q3/Q4 de 2025 da CVCB3. Poderia me enviar os destaques principais para que eu possa elaborar a síntese solicitada?",
+      "updated_at": "2026-05-04T23:03:38.365727"
     },
-    "TPIS3.SA": {
+    "SEQL3.SA": {
       "summary": "Sem notícias recentes de impacto encontradas nos principais canais financeiros.",
-      "updated_at": "2026-05-01T23:00:39.074770"
+      "updated_at": "2026-05-04T23:03:38.945354"
     },
-    "DASA3.SA": {
+    "SOND5.SA": {
       "summary": "Sem notícias recentes de impacto encontradas nos principais canais financeiros.",
-      "updated_at": "2026-05-01T23:00:39.741285"
-    },
-    "HBOR3.SA": {
-      "summary": "Sem notícias recentes de impacto encontradas nos principais canais financeiros.",
-      "updated_at": "2026-05-01T23:00:40.358649"
-    },
-    "INEP4.SA": {
-      "summary": "Sem notícias recentes de impacto encontradas nos principais canais financeiros.",
-      "updated_at": "2026-05-01T23:00:40.984359"
-    },
-    "BOBR4.SA": {
-      "summary": "Sem notícias recentes de impacto encontradas nos principais canais financeiros.",
-      "updated_at": "2026-05-01T23:00:41.592857"
+      "updated_at": "2026-05-04T23:03:39.576265"
     },
     "OIBR3.SA": {
       "summary": "PIMCO’s endorsement of Oi has moved from a “market savior” pitch into a high‑stakes political arena, amplifying uncertainty for the company’s prospects. The latest earnings call shows revenue slipping in Q1 2025 but indicates new strategic realignments aimed at mitigating the downturn.  \n**Sentimento: negativo**",
-      "updated_at": "2026-05-01T23:00:43.883434"
+      "updated_at": "2026-05-04T23:03:40.510162"
     },
-    "AVLL3.SA": {
-      "summary": "AVLL3.SA announced that all megadeals are being funneled toward Washington, underscoring a focused geopolitical strategy aimed at securing large‑scale partnerships. Sentiment: neutral.",
-      "updated_at": "2026-05-01T23:00:45.212732"
-    },
-    "RCSL3.SA": {
+    "PMAM3.SA": {
       "summary": "Sem notícias recentes de impacto encontradas nos principais canais financeiros.",
-      "updated_at": "2026-05-01T23:00:45.842057"
+      "updated_at": "2026-05-04T23:03:41.191815"
     },
-    "LUPA3.SA": {
+    "TRAD3.SA": {
       "summary": "Sem notícias recentes de impacto encontradas nos principais canais financeiros.",
-      "updated_at": "2026-05-01T23:00:46.448845"
+      "updated_at": "2026-05-04T23:03:41.770148"
     },
-    "ABEV3.SA": {
-      "summary": "Molson Coors’ Q1 earnings surpassed estimates thanks to stronger pricing and a favorable sales‑mix shift, signaling positive momentum for the broader beer segment and reinforcing the upside narrative for peers like Ambev. The article urging investors to buy ABEV now presents a bullish stance on the company, underscoring optimistic expectations for its growth prospects.",
-      "updated_at": "2026-05-01T23:00:52.264072"
-    },
-    "VALE3.SA": {
-      "summary": "Vale (VALE3.SA) unveiled a plan to more than double its fleet of sail‑equipped iron‑ore carriers, a bold logistic expansion that should strengthen its market position and potentially raise margin expectations (positive). In Q1, the company’s key metrics matched consensus estimates, indicating a steady, if not striking, earnings performance (neutral).",
-      "updated_at": "2026-05-01T23:00:53.621484"
-    },
-    "MGLU3.SA": {
+    "NUTR3.SA": {
       "summary": "Sem notícias recentes de impacto encontradas nos principais canais financeiros.",
-      "updated_at": "2026-05-01T23:00:54.227521"
+      "updated_at": "2026-05-04T23:03:42.344512"
     },
-    "WEGE3.SA": {
-      "summary": "JPMorgan reduziu o preço-alvo da WEG, redefinindo o cenário de investimento sobre a companhia e sinalizando que expectativas de crescimento foram ajustadas ao limite atual do mercado. Essa mudança indica preocupação com a margem e a rentabilidade em meio a pressões regulatórias e de concorrência, impactando a percepção de atratividade do ativo. **Sentimento: Negativo.**",
-      "updated_at": "2026-05-01T23:00:55.514392"
+    "AZTE3.SA": {
+      "summary": "Sem notícias recentes de impacto encontradas nos principais canais financeiros.",
+      "updated_at": "2026-05-04T23:03:42.917581"
     },
-    "BBDC4.SA": {
-      "summary": "- **Article 1:** Finance stocks, including BBDC4, have lagged behind the broader market this year, suggesting a cautious outlook for equity holders. **Sentimento:** negativo.  \n\n- **Article 2:** The “Buy” upgrade for Banco Bradesco reflects renewed analyst confidence in the bank’s fundamentals and potential upside, signaling a bullish tone for investors. **Sentimento:** positivo.",
-      "updated_at": "2026-05-01T23:00:56.812210"
+    "MNDL3.SA": {
+      "summary": "Sem notícias recentes de impacto encontradas nos principais canais financeiros.",
+      "updated_at": "2026-05-04T23:03:43.506431"
     },
-    "BBAS3.SA": {
-      "summary": "BBAS3’s recent news stem solely from peer comparisons—Prologis is cited as outpacing most finance stocks, while BDORY versus BMA is framed as a value‑stock contest—offering no direct catalysts for BBAS3 itself. In light of this, the market sentiment toward BBAS3 remains neutral.",
-      "updated_at": "2026-05-01T23:00:58.083152"
-    },
-    "PETR4.SA": {
-      "summary": "**Petrobras (PETR4.SA) – Resumos diretos**\n\n1. **Investidores estão focados em Petrobras.** A companhia atrai atenção de fundos institucionais graças a perspectivas de valorização das reservas e de queda nos preços de óleo, sinalizando expectativa de ganhos futuros. **Sentimento:** positivo.  \n\n2. **Produção recorde à vista.** O aumento da capacidade de refino reduziu a necessidade de importação de produtos petrolíferos, elevando a margem de lucro da empresa. **Sentimento:** positivo.",
-      "updated_at": "2026-05-01T23:01:24.875649"
+    "HAPV3.SA": {
+      "summary": "Hapvida Participações celebrou sua chamada de resultados do 3.º trimestre de 2025, destacando iniciativas estratégicas e perspectivas de crescimento, e manteve o mesmo foco em sua chamada de resultados do 1.º trimestre de 2025. O tom geral das comunicações é neutro, sem sinalizações explícitas de otimismo ou pessimismo.",
+      "updated_at": "2026-05-04T23:03:44.606349"
     },
     "ITUB4.SA": {
       "summary": "ITUB4.SA teve destaque positivo após o site Zacks.com publicar o “Highlights” que o listou entre os principais players do mercado, evidenciando seu forte desempenho financeiro e perspectivas de crescimento.  \nA análise sugere tendência otimista, com o banco considerado um dos 3 picks de breakout para 2026, corroborando a perspectiva de valorização.",
-      "updated_at": "2026-05-01T23:01:26.494600"
+      "updated_at": "2026-05-04T23:03:45.484215"
+    },
+    "PETR4.SA": {
+      "summary": "Petrobras launched oil production at the Búzios 8 block through the P‑79 FPSO, adding fresh output capacity and sealing a key phase of the project. The corresponding surge in investor interest—reflected in increased trading volume and analyst coverage—reinforces a bullish outlook for PETR4. **Sentimento: positivo.**",
+      "updated_at": "2026-05-04T23:04:05.960018"
+    },
+    "VALE3.SA": {
+      "summary": "**Vale (VALE3.SA)**  \n- Na apresentação de resultados do 1.º trimestre, a empresa registrou queda nos custos operacionais e aumento de margem de lucro, indicando desempenho sólido.  \n- Enquanto isso, a Vale planeja mais que dobrar sua frota de navios de minério de ferro equipados com aríete, reforçando a capacidade de transporte e potencial de receita futura.  \n\n**Sentimento geral:** positivo.",
+      "updated_at": "2026-05-04T23:04:38.119626"
+    },
+    "BBDC4.SA": {
+      "summary": "Banco Bradesco está revisando seu alvo para R$22,46, sinalizando menor expectativa ao incerto cenário de crédito, enquanto o setor financeiro global apresenta desaceleração em relação ao ANZ. Sentimento: Negativo.",
+      "updated_at": "2026-05-04T23:04:39.245811"
+    },
+    "BBAS3.SA": {
+      "summary": "BBAS3’s recent news stem solely from peer comparisons—Prologis is cited as outpacing most finance stocks, while BDORY versus BMA is framed as a value‑stock contest—offering no direct catalysts for BBAS3 itself. In light of this, the market sentiment toward BBAS3 remains neutral.",
+      "updated_at": "2026-05-04T23:04:40.199562"
+    },
+    "MGLU3.SA": {
+      "summary": "Sem notícias recentes de impacto encontradas nos principais canais financeiros.",
+      "updated_at": "2026-05-04T23:04:40.793605"
+    },
+    "ABEV3.SA": {
+      "summary": "1. A ABEV3.SA continua superando seus pares de commodities de consumo, evidenciando forte momentum de crescimento e curta performance acima da média do setor – **sentimento: positivo**.  \n2. O relatório de resultados do Molson Coors Q1, que superou estimativas graças a melhor mix de preço e vendas, reforça a pressão competitiva sobre a Ambev e indica que o mercado pode reajustar precificações e estratégias de praça – **sentimento: neutro**.",
+      "updated_at": "2026-05-04T23:05:07.118762"
+    },
+    "WEGE3.SA": {
+      "summary": "JPMorgan reduziu o preço-alvo da WEG, redefinindo o cenário de investimento sobre a companhia e sinalizando que expectativas de crescimento foram ajustadas ao limite atual do mercado. Essa mudança indica preocupação com a margem e a rentabilidade em meio a pressões regulatórias e de concorrência, impactando a percepção de atratividade do ativo. **Sentimento: Negativo.**",
+      "updated_at": "2026-05-04T23:05:08.055401"
     }
   },
   "market_movers": [
-    "LUXM3.SA",
-    "TPIS3.SA",
-    "DASA3.SA",
-    "HBOR3.SA",
-    "INEP4.SA",
-    "BOBR4.SA",
+    "CVCB3.SA",
+    "SEQL3.SA",
+    "SOND5.SA",
     "OIBR3.SA",
-    "AVLL3.SA",
-    "RCSL3.SA",
-    "LUPA3.SA"
+    "PMAM3.SA",
+    "TRAD3.SA",
+    "NUTR3.SA",
+    "AZTE3.SA",
+    "MNDL3.SA",
+    "HAPV3.SA"
   ]
 }
