@@ -1,21 +1,21 @@
-## Resumo de Mercado - 2026-05-04
+## Resumo de Mercado - 2026-05-05
 
 ### 📈 Maiores Altas (Dia)
 
 | Ativo | Nome | Fechamento | Anterior | Variação | DeltaVolume |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| CVCB3.SA | CVC Brasil Operadora e Agência de Viagens S.A. | R$ 2.38 | R$ 1.93 | **+23.32%** 🚀 | +466.30% ⬆️ |
-| SEQL3.SA | Sequoia Logística e Transportes S.A. | R$ 0.13 | R$ 0.11 | **+18.18%** 🚀 | +99.18% ⬆️ |
-| SOND5.SA | Sondotécnica Engenharia de Solos S.A. | R$ 70.99 | R$ 63.96 | **+10.99%** 🚀 | -37.50% ⬇️ |
-| OIBR3.SA | Oi S.A. | R$ 0.11 | R$ 0.10 | **+10.00%** 🚀 | -39.34% ⬇️ |
-| PMAM3.SA | Paranapanema S.A. | R$ 0.61 | R$ 0.56 | **+8.93%** 🚀 | +175.84% ⬆️ |
+| OIBR3.SA | Oi S.A. | R$ 0.13 | R$ 0.11 | **+18.18%** 🚀 | -6.91% ⬇️ |
+| RVEE3.SA | RVEE3.SA | R$ 1.10 | R$ 0.95 | **+15.79%** 🚀 | -64.71% ⬇️ |
+| ABEV3.SA | Ambev S.A. | R$ 16.65 | R$ 14.44 | **+15.30%** 🚀 | +340.89% ⬆️ |
+| UNIP5.SA | Unipar Carbocloro S.A. | R$ 65.88 | R$ 60.31 | **+9.24%** 🚀 | +333.33% ⬆️ |
+| BOBR4.SA | Bombril S.A. | R$ 1.36 | R$ 1.25 | **+8.80%** 🚀 | -87.53% ⬇️ |
 
 ### 📉 Maiores Baixas (Dia)
 
 | Ativo | Nome | Fechamento | Anterior | Variação | DeltaVolume |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| TRAD3.SA | TC S.A. | R$ 1.64 | R$ 1.85 | **-11.35%** 📉 | +444.91% ⬆️ |
-| NUTR3.SA | Nutriplant Indústria e Comércio S/A | R$ 2.18 | R$ 2.41 | **-9.54%** 📉 | -38.05% ⬇️ |
-| AZTE3.SA | Azevedo & Travassos Energia S.A. | R$ 0.32 | R$ 0.35 | **-8.57%** 📉 | -79.55% ⬇️ |
-| MNDL3.SA | Mundial S.A. - Produtos de Consumo | R$ 17.51 | R$ 19.00 | **-7.84%** 📉 | -13.71% ⬇️ |
-| HAPV3.SA | Hapvida Participações e Investimentos S.A. | R$ 11.50 | R$ 12.39 | **-7.18%** 📉 | -0.52% ⬇️ |
+| SEQL3.SA | Sequoia Logística e Transportes S.A. | R$ 0.12 | R$ 0.13 | **-7.69%** 📉 | -37.71% ⬇️ |
+| RCSL3.SA | Recrusul S/A | R$ 0.40 | R$ 0.43 | **-6.98%** 📉 | +86.02% ⬆️ |
+| DOTZ3.SA | Dotz S.A. | R$ 3.18 | R$ 3.38 | **-5.92%** 📉 | +113.45% ⬆️ |
+| AZEV3.SA | Azevedo & Travassos S.A. | R$ 0.19 | R$ 0.20 | **-5.00%** 📉 | +43.89% ⬆️ |
+| PMAM3.SA | Paranapanema S.A. | R$ 0.58 | R$ 0.61 | **-4.92%** 📉 | +31.87% ⬆️ |
