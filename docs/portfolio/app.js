@@ -32,14 +32,22 @@ class B3App {
     this.setupModal();
     this.setupAuth();
 
+    // 1. Carregar status de autenticação primeiro (rápido)
+    // Mantemos o await aqui pois o portfólio depende do usuário logado
     await this.checkAuthStatus();
-    await this.loadMarketData();
-    await this.loadMarketNews();
-    await this.loadMarketSummary();
-    await this.loadAssets();
-    await this.loadPortfolio();
-    await this.runAnalysis();
 
+    // 2. Carregar todos os recursos em paralelo (Progressivo)
+    // loadMarketData agora é interno e não bloqueante para os históricos
+    await Promise.all([
+      this.loadAssets(),
+      this.loadMarketNews(),
+      this.loadMarketSummary(),
+      this.loadPortfolio(),
+      this.loadMarketData() // O loadMarketData agora faz o await apenas do necessário
+    ]);
+
+    // 3. Análise final do boot (garante que tudo que foi carregado até agora seja processado)
+    await this.runAnalysis();
     this.renderPositions();
   }
 
@@ -630,41 +638,79 @@ class B3App {
   ------------------------------------------------------------------ */
   async loadMarketData() {
     try {
-      // 1. Carregar manifest para saber quais arquivos existem
-      const manifestUrl = `./data/manifest.json?t=${new Date().getTime()}`;
-      const manifestRes = await fetch(manifestUrl);
+      // 1. Carregar manifest para saber o timestamp da última atualização
+      const manifestRes = await fetch(`./data/manifest.json?t=${new Date().getTime()}`);
+      let files = ['market_data.json'];
+      let cacheKey = new Date().getTime();
 
-      let files = ['market_data.json']; // Fallback
       if (manifestRes.ok) {
         const manifest = await manifestRes.json();
         files = manifest.market_data_files || files;
+        // Usamos o timestamp do manifest para cache eficiente
+        cacheKey = manifest.last_update ? encodeURIComponent(manifest.last_update) : cacheKey;
       }
 
       console.log('Arquivos de mercado detectados:', files);
 
-      // 2. Carregar todos os arquivos em paralelo
+      // 2. Carregar o arquivo PRINCIPAL primeiro (market_data.json)
+      // Ele contém os preços atuais e é pequeno, permitindo renderizar o dashboard rápido.
+      const primaryFile = files.find(f => f === 'market_data.json') || files[0];
+      const primaryRes = await fetch(`./data/${primaryFile}?v=${cacheKey}`);
+      if (primaryRes.ok) {
+        this.marketData = await primaryRes.json();
+        console.log('Dados primários carregados. Renderizando UI...');
+
+        // Renderização inicial rápida
+        await this.runAnalysis();
+        this.renderPositions();
+      }
+
+      // 3. Carregar arquivos HISTÓRICOS em segundo plano
+      const historicalFiles = files.filter(f => f !== primaryFile);
+      if (historicalFiles.length > 0) {
+        console.log('Carregando dados históricos em segundo plano...', historicalFiles);
+
+        // Carregamos em paralelo, mas sem dar 'await' no processo principal de boot
+        this.loadHistoricalDataBackground(historicalFiles, cacheKey);
+      }
+
+    } catch (err) {
+      console.error('Erro ao carregar dados de mercado:', err);
+      this.toast('Erro ao carregar dados: ' + err.message, 'error');
+    }
+  }
+
+  async loadHistoricalDataBackground(files, cacheKey) {
+    try {
       const loadPromises = files.map(async (file) => {
         try {
-          const res = await fetch(`./data/${file}?t=${new Date().getTime()}`);
+          const res = await fetch(`./data/${file}?v=${cacheKey}`);
           if (res.ok) return await res.json();
         } catch (e) {
-          console.warn(`Erro ao carregar ${file}:`, e);
+          console.warn(`Erro ao carregar histórico ${file}:`, e);
         }
         return null;
       });
 
-      const dataList = (await Promise.all(loadPromises)).filter(d => d !== null);
+      const historicalDataList = (await Promise.all(loadPromises)).filter(d => d !== null);
 
-      if (dataList.length === 0) {
-        throw new Error('Nenhum dado de mercado pôde ser carregado.');
+      if (historicalDataList.length > 0 && this.marketData) {
+        // Mesclar o histórico com o que já temos
+        const fullDataList = [this.marketData, ...historicalDataList];
+        this.marketData = this.mergeMarketData(fullDataList);
+
+        console.log('Histórico mesclado com sucesso. Atualizando análises...');
+
+        // Re-analisar com dados completos (dividendos históricos, etc)
+        await this.runAnalysis();
+        this.renderPositions();
+
+        // Se estiver na página de proventos ou barsi, atualiza elas também
+        if (this.currentPage === 'dividends') this.renderDividendsPage();
+        if (this.currentPage === 'barsi') this.renderBarsi();
       }
-
-      // 3. Mesclar dados (Merge)
-      this.marketData = this.mergeMarketData(dataList);
-      console.log('Dados de mercado carregados e mesclados com sucesso');
     } catch (err) {
-      console.error('Erro ao carregar dados de mercado:', err);
-      this.toast('Erro ao carregar dados históricos: ' + err.message, 'error');
+      console.error('Erro no processamento de histórico em segundo plano:', err);
     }
   }
 
@@ -751,7 +797,9 @@ class B3App {
 
   async loadMarketNews() {
     try {
-      const res = await fetch(`./data/market_news.json?t=${new Date().getTime()}`);
+      // Usamos um cache-buster de 1 hora para notícias para não carregar a cada refresh se não mudar
+      const hourKey = new Date().getHours();
+      const res = await fetch(`./data/market_news.json?h=${hourKey}`);
       if (res.ok) {
         this.marketNews = await res.json();
       }
@@ -826,7 +874,8 @@ class B3App {
 
   async loadMarketSummary() {
     try {
-      const url = `./data/market_summary.json?t=${new Date().getTime()}`;
+      const hourKey = new Date().getHours();
+      const url = `./data/market_summary.json?h=${hourKey}`;
       const res = await fetch(url);
       if (!res.ok) return;
       const summary = await res.json();
@@ -842,7 +891,8 @@ class B3App {
 
   async loadAssets() {
     try {
-      const res = await fetch('./assets.json');
+      const hourKey = new Date().getHours();
+      const res = await fetch(`./assets.json?h=${hourKey}`);
       if (!res.ok) throw new Error();
       const data = await res.json();
       this.assets = data.assets || [];
@@ -884,7 +934,8 @@ class B3App {
       }
     } else {
       try {
-        const res = await fetch('./sample_portfolio.json');
+        const hourKey = new Date().getHours();
+        const res = await fetch(`./sample_portfolio.json?h=${hourKey}`);
         if (res.ok) {
           this.portfolio = await res.json();
           this.savePortfolio();
@@ -1012,7 +1063,7 @@ class B3App {
   ------------------------------------------------------------------ */
   getDividendsForTicker(ticker, transactions, startDate = null, endDate = null) {
     const asset = this.marketData.assets[ticker];
-    if (!asset || !asset.dividends || !asset.dividends.dates) return 0;
+    if (!asset || !asset.dividends || !asset.dividends.dates || asset.dividends.dates.length === 0) return 0;
 
     let total = 0;
     asset.dividends.dates.forEach((date, idx) => {

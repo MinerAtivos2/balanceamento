@@ -1,0 +1,10 @@
+127.0.0.1 - - [07/May/2026 13:46:49] "GET /docs/portfolio/index.html HTTP/1.1" 200 -
+127.0.0.1 - - [07/May/2026 13:46:49] "GET /docs/portfolio/style.css HTTP/1.1" 200 -
+127.0.0.1 - - [07/May/2026 13:46:49] "GET /docs/portfolio/app.js HTTP/1.1" 200 -
+127.0.0.1 - - [07/May/2026 13:46:50] "GET /docs/portfolio/assets.json?h=13 HTTP/1.1" 200 -
+127.0.0.1 - - [07/May/2026 13:46:50] "GET /docs/portfolio/data/market_news.json?h=13 HTTP/1.1" 200 -
+127.0.0.1 - - [07/May/2026 13:46:50] "GET /docs/portfolio/data/market_summary.json?h=13 HTTP/1.1" 200 -
+127.0.0.1 - - [07/May/2026 13:46:50] "GET /docs/portfolio/data/manifest.json?t=1778161610088 HTTP/1.1" 200 -
+127.0.0.1 - - [07/May/2026 13:46:50] "GET /docs/portfolio/sample_portfolio.json?h=13 HTTP/1.1" 200 -
+127.0.0.1 - - [07/May/2026 13:46:50] "GET /docs/portfolio/data/market_data.json?v=2026-05-01T22%3A20%3A37.733971 HTTP/1.1" 200 -
+127.0.0.1 - - [07/May/2026 13:46:50] "GET /docs/portfolio/data/market_data_historical.json?v=2026-05-01T22%3A20%3A37.733971 HTTP/1.1" 200 -
