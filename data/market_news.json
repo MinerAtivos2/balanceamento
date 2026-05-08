@@ -1,90 +1,90 @@
 {
-  "last_update": "2026-05-07T23:06:27.054361",
-  "market_summary": "O dia na B3 reflete um clima predominantemente otimista: nomes ativos como SmartFit, Intelbras e Valid Soluções divulgaram resultados ou projeções de crescimento robusto, enquanto a TOTVS trouxe metas ajustadas e vistas de valorização.  \nAo mesmo tempo, muitos players (RVEE3, SEQL3, MWET4, CBEE3, ESPA3, UCAS3) permanecem quietos, sinalizando setores mais estáveis e menos voláteis.  \nEm resumo, o mercado está em fase de cautela otimista, com ganhos recentes impulsionando o entusiasmo, mas com segmentos silenciosos que sugerem atenção aos indicadores macroeconômicos.",
+  "last_update": "2026-05-08T23:03:54.882256",
+  "market_summary": "O mercado B3 hoje exibe um panorama misto: MEAL3, VLID3, YDUQ3 e, em parte, MEAL3, apresentam sentimento positivo após resultados mais robustos, enquanto EMBJ3 deixa claro que a margem ainda não segue o esperado. Esse desvio gera cautela entre investidores e uma volatilidade moderada, reforçada por ações neutras como GEPA4 e incertezas em ONCO3 e CVCB3. A atenção permanece focalizada nas métricas de liquidez e margem dos próximos Q4/2025, junto à possível influência de ajustes na política monetária.",
   "assets": {
-    "SMFT3.SA": {
-      "summary": "**Resumo**  \n1. Na cerimônia de resultados do quarto trimestre de 2025, a Smartfit divulgou recordes de receita e margem, evidenciando avanços significativos nas unidades operacionais.  \n2. No terceiro trimestre de 2025, a companhia destacou iniciativas estratégicas e reestruturações operacionais, sem divulgar ganhos financeiros consolidados.\n\n**Sentimento**  \n- Q4: positivo  \n- Q3: neutro (foi focado em estratégia, não em resultados financeiros).",
-      "updated_at": "2026-05-07T23:06:46.302678"
-    },
-    "RVEE3.SA": {
+    "INEP3.SA": {
       "summary": "Sem notícias recentes de impacto encontradas nos principais canais financeiros.",
-      "updated_at": "2026-05-07T23:06:46.874169"
+      "updated_at": "2026-05-08T23:03:55.054166"
     },
-    "INTB3.SA": {
-      "summary": "Intelbras SA (INTB3) ressaltou na chamada de resultados do quarto trimestre de 2025 que, apesar de condições de mercado voláteis, segue avançando com planos de expansão sustentável, projetando crescimento de receita e margem. O tom das declarações aponta para otimismo cauteloso, caracterizando o sentimento como positivo.",
-      "updated_at": "2026-05-07T23:07:04.320055"
+    "MEAL3.SA": {
+      "summary": "Na chamada de Q4 2025 a International Meal Co destaca crescimento de margem e aumento de receita operacional, sinalizando sentimento positivo; na chamada de Q3 2025, o foco em desafios de cadeia de suprimentos e custo crescente indica sentimento negativo.",
+      "updated_at": "2026-05-08T23:04:01.667905"
     },
-    "TOTS3.SA": {
-      "summary": "- **TOTVS (TOTS3.SA) – Recalibration of Targets**: O artigo descreve a redefinição de metas de vendas e receita, sinalizando uma projeção de crescimento moderado acompanhada de cautela diante de variáveis macroeconômicas – *sentimento: cauteloso porém otimista*.  \n- **TOTVS (TOTS3.SA) – New Targets and Fair Value Assumptions**: A análise revisa premissas de valor justo e metas de lucro, sugerindo uma correção upwards nos preços-alvo graças a melhorias operacionais e expectativa de valuation mais atraente – *sentimento: positivo*.",
-      "updated_at": "2026-05-07T23:07:33.237700"
-    },
-    "SEQL3.SA": {
-      "summary": "Sem notícias recentes de impacto encontradas nos principais canais financeiros.",
-      "updated_at": "2026-05-07T23:07:33.841113"
-    },
-    "MWET4.SA": {
-      "summary": "Sem notícias recentes de impacto encontradas nos principais canais financeiros.",
-      "updated_at": "2026-05-07T23:07:34.420026"
-    },
-    "CBEE3.SA": {
-      "summary": "Sem notícias recentes de impacto encontradas nos principais canais financeiros.",
-      "updated_at": "2026-05-07T23:07:34.996488"
+    "GEPA4.SA": {
+      "summary": "**GEPA4.SA – Resumo B3 (2 frases)**  \nNenhuma notícia relevante específica de GEPA4.SA apareceu nas fontes citadas, de modo que não há indicações claras de tendências positivas, negativas ou neutras para a ação neste momento.  \nSentimento: Neutro.",
+      "updated_at": "2026-05-08T23:04:54.863289"
     },
     "VLID3.SA": {
       "summary": "Valid Soluções SA reported a robust Q3 2025 performance, with a strong increase in its identity‑verification (ID) business that helped lift revenue above analyst expectations. The company cited sustained profitability and expanding market share, although it noted some pressure from fluctuating payment‑processing costs.  \n\n**Sentimento:** positivo.",
-      "updated_at": "2026-05-07T23:08:19.825491"
+      "updated_at": "2026-05-08T23:04:55.828375"
     },
-    "ESPA3.SA": {
+    "YDUQ3.SA": {
+      "summary": "**YDUQS Participações SA (YDUQ3) – Q4 2025 Earnings Call**  \n• O diálogo enfatizou um fluxo de caixa sólido e melhorias na liquidez operacional após um forte resultado de receita, demonstrando eficiência nas operações de educação.  \n• Sentimento: positivo.  \n\n**YDUQS Participações SA (YDUQ3) – Q3 2025 Earnings Call**  \n• A empresa falou sobre estratégias de crescimento em meio a condições de mercado desafiadoras, com foco em expansão de campus e digitalização de serviços.  \n• Sentimento: neutro.",
+      "updated_at": "2026-05-08T23:05:03.364488"
+    },
+    "LJQQ3.SA": {
+      "summary": "Lojas Quero‑Quero’s Q4 2025 earnings call centered on navigating operational and market challenges, painting a cautiously negative tone. In contrast, the Q3 2025 call highlighted strategic initiatives aimed at growth, reflecting a more optimistic outlook – overall, the two messages create a mixed/neutral sentiment for the stock.",
+      "updated_at": "2026-05-08T23:05:31.602745"
+    },
+    "MDIA3.SA": {
+      "summary": "Desculpe, mas não tenho acesso às transcrições ou relatórios de chamadas de resultados da M Dias Branco SA (MDIA3) do período 2023‑2025, portanto não posso oferecer um resumo fiel das notícias de 3º e 4º trimestre de 2025.  \n\nSe você puder compartilhar os principais pontos ou os detalhes chave dessas chamadas, ficarei feliz em criar um resumo objetivo de duas frases com o sentimento estimado.",
+      "updated_at": "2026-05-08T23:06:03.662983"
+    },
+    "ONCO3.SA": {
       "summary": "Sem notícias recentes de impacto encontradas nos principais canais financeiros.",
-      "updated_at": "2026-05-07T23:08:20.405732"
+      "updated_at": "2026-05-08T23:06:04.241534"
     },
-    "UCAS3.SA": {
-      "summary": "Sem notícias recentes de impacto encontradas nos principais canais financeiros.",
-      "updated_at": "2026-05-07T23:08:20.988722"
+    "CVCB3.SA": {
+      "summary": "Desculpe, não recebi informações específicas sobre as chamadas de resultados de Q3/Q4 de 2025 da CVCB3. Poderia me enviar os destaques principais para que eu possa elaborar a síntese solicitada?",
+      "updated_at": "2026-05-08T23:06:05.235301"
     },
-    "MGLU3.SA": {
-      "summary": "Sem notícias recentes de impacto encontradas nos principais canais financeiros.",
-      "updated_at": "2026-05-07T23:08:21.576495"
-    },
-    "BBAS3.SA": {
-      "summary": "Parece que as duas manchetes que você listou não têm relação direta com BBAS3.SA. Poderia confirmar se há alguma notícia específica do Banco do Brasil (BBAS3) que você gostaria que eu resumisse, ou se prefere os resumos dessas manchetes que você enviou?",
-      "updated_at": "2026-05-07T23:08:39.370125"
-    },
-    "ABEV3.SA": {
-      "summary": "**A BVE vs. SAM**: a comparação revela que a Ambev (ABEV3) detém maior valor intrínseco e margem de segurança resumida, sinalizando um otimismo robusto – **sentimento: positivo**.  \n\n**Ambev SA Climbs to 5-Year High**: resultado do 1.º trimestre supera expectativas, levando o preço a um máximo dos últimos cinco anos e reforçando a confiança dos investidores – **sentimento: positivo**.",
-      "updated_at": "2026-05-07T23:09:02.013017"
-    },
-    "PETR4.SA": {
-      "summary": "Petrobras (PETR4.SA) registrou queda nas cotações apesar da valorização geral do mercado, refletindo um cenário negativo para o ativo. Apesar de os ETFs de commodities (EWZ e EWW) parecerem se beneficiar de impulsos na cadeia de suprimentos, essa força de suporte ainda não sustenta o declínio imediato das ações da Petrobras.  \n\n**Sentimento: negativo.**",
-      "updated_at": "2026-05-07T23:09:32.708640"
-    },
-    "BBDC4.SA": {
-      "summary": "Banco Bradesco está revisando seu alvo para R$22,46, sinalizando menor expectativa ao incerto cenário de crédito, enquanto o setor financeiro global apresenta desaceleração em relação ao ANZ. Sentimento: Negativo.",
-      "updated_at": "2026-05-07T23:09:33.572771"
-    },
-    "WEGE3.SA": {
-      "summary": "WEGE3 teve seu teto de preço revisado para baixo pelo JPMorgan, o que redefiniu a narrativa de investimento na empresa com foco em ajustes de margem e expectativas de crescimento mais modestas.  \nSentimento: negativo.",
-      "updated_at": "2026-05-07T23:10:01.311735"
-    },
-    "VALE3.SA": {
-      "summary": "Os ETFs EWZ e EWW avançam graças ao impulso das commodities globais, impulsionando a expectativa de crescimento nas exportações de minério da VALE e sinalizando uma perspectiva otimista para a ação; **sentimento: positivo**.  \nAo mesmo tempo, volatilidade recente na cadeia de suprimentos e alertas regulatórios sobre práticas ambientais conferem cautela ao mercado, temperando o entusiasmo com um perfil de risco mais neutro; **sentimento: neutro**.",
-      "updated_at": "2026-05-07T23:10:39.992183"
+    "EMBJ3.SA": {
+      "summary": "Em primeiro trimestre, a Embraer reportou receita em crescimento y/y, contudo a maioria dos indicadores-chave ficou abaixo das expectativas dos analistas. Apesar do incremento nas vendas, o resultado operacional ficou aquém das previsões, sinalizando desafios na margem e na lucratividade.  \n\n**Sentimento: negativo**",
+      "updated_at": "2026-05-08T23:06:31.273660"
     },
     "ITUB4.SA": {
       "summary": "ITUB4.SA apresenta um cenário misto: a absorção da subsidiária de cartões sinaliza uma consolidação estratégica, mas levanta dúvidas sobre a rentabilidade futura. Ao mesmo tempo, os resultados do 1.º trimestre aumentaram em relação ao ano anterior, apesar das despesas superiores, indicando resiliência diante dos custos.  \nSentimento: neutro.",
-      "updated_at": "2026-05-07T23:10:40.998177"
+      "updated_at": "2026-05-08T23:06:32.142900"
+    },
+    "BBAS3.SA": {
+      "summary": "Parece que as duas manchetes que você listou não têm relação direta com BBAS3.SA. Poderia confirmar se há alguma notícia específica do Banco do Brasil (BBAS3) que você gostaria que eu resumisse, ou se prefere os resumos dessas manchetes que você enviou?",
+      "updated_at": "2026-05-08T23:06:33.114497"
+    },
+    "MGLU3.SA": {
+      "summary": "Sem notícias recentes de impacto encontradas nos principais canais financeiros.",
+      "updated_at": "2026-05-08T23:06:33.701688"
+    },
+    "PETR4.SA": {
+      "summary": "Geospace Technologies revelou resultados no segundo trimestre que evidenciaram um crescimento mais lento do que o esperado, sinalizando cautela sobre a expansão da empresa; sentimento: neutro. Em contrapartida, a análise “Here's Why Petrobras (PBR) Is a Great 'Buy the Bottom' Stock Now” aponta que a Petrobras oferece uma oportunidade de compra em queda, apontando pontos fortemente positivos para investidores atentos a valorizações futuras; sentimento: positivo.",
+      "updated_at": "2026-05-08T23:06:59.196875"
+    },
+    "BBDC4.SA": {
+      "summary": "Banco Bradesco está revisando seu alvo para R$22,46, sinalizando menor expectativa ao incerto cenário de crédito, enquanto o setor financeiro global apresenta desaceleração em relação ao ANZ. Sentimento: Negativo.",
+      "updated_at": "2026-05-08T23:07:00.069870"
+    },
+    "WEGE3.SA": {
+      "summary": "WEGE3 teve seu teto de preço revisado para baixo pelo JPMorgan, o que redefiniu a narrativa de investimento na empresa com foco em ajustes de margem e expectativas de crescimento mais modestas.  \nSentimento: negativo.",
+      "updated_at": "2026-05-08T23:07:01.102546"
+    },
+    "VALE3.SA": {
+      "summary": "Os ETFs EWZ e EWW avançam graças ao impulso das commodities globais, impulsionando a expectativa de crescimento nas exportações de minério da VALE e sinalizando uma perspectiva otimista para a ação; **sentimento: positivo**.  \nAo mesmo tempo, volatilidade recente na cadeia de suprimentos e alertas regulatórios sobre práticas ambientais conferem cautela ao mercado, temperando o entusiasmo com um perfil de risco mais neutro; **sentimento: neutro**.",
+      "updated_at": "2026-05-08T23:07:02.259452"
+    },
+    "ABEV3.SA": {
+      "summary": "**Resumo:**\n\n1. *Ambev (ABEV3.SA) registrou uma valorização de 13 % na semana, impulsionada por resultados financeiros acima das expectativas, gerando sentimento positivo.*  \n2. *A menção ao lucro da Post Holdings não afeta a avaliação da Ambev, mantendo o contexto neutro.*",
+      "updated_at": "2026-05-08T23:07:33.491883"
     }
   },
   "market_movers": [
-    "SMFT3.SA",
-    "RVEE3.SA",
-    "INTB3.SA",
-    "TOTS3.SA",
-    "SEQL3.SA",
-    "MWET4.SA",
-    "CBEE3.SA",
+    "INEP3.SA",
+    "MEAL3.SA",
+    "GEPA4.SA",
     "VLID3.SA",
-    "ESPA3.SA",
-    "UCAS3.SA"
+    "YDUQ3.SA",
+    "LJQQ3.SA",
+    "MDIA3.SA",
+    "ONCO3.SA",
+    "CVCB3.SA",
+    "EMBJ3.SA"
   ]
 }
