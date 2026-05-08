@@ -44,7 +44,21 @@
     },
     "PETR4.SA": {
       "summary": "PETR4 registrou alta no dia, impulsionada por um rebote geral no mercado que favoreceu a ação de Petrobras, mantendo a tendência de valorização recente. Sentimento: positivo.",
-      "updated_at": "2026-04-30T23:01:34.401757"
+      "updated_at": "2026-04-30T23:01:34.401757",
+      "news_items": [
+        {
+          "title": "Petrobras anuncia novos investimentos em refino",
+          "link": "https://finance.yahoo.com/quote/PETR4.SA",
+          "pubDate": "2026-05-08T14:12:36.308071",
+          "source": "Yahoo Finance"
+        },
+        {
+          "title": "Produção de petróleo bate recorde no pré-sal",
+          "link": "https://news.google.com/search?q=PETR4",
+          "pubDate": "2026-05-08T14:12:36.308084",
+          "source": "Google News"
+        }
+      ]
     },
     "BBDC4.SA": {
       "summary": "- **Article 1:** Finance stocks, including BBDC4, have lagged behind the broader market this year, suggesting a cautious outlook for equity holders. **Sentimento:** negativo.  \n\n- **Article 2:** The “Buy” upgrade for Banco Bradesco reflects renewed analyst confidence in the bank’s fundamentals and potential upside, signaling a bullish tone for investors. **Sentimento:** positivo.",
@@ -85,6 +99,8 @@
     "OIBR3.SA",
     "AVLL3.SA",
     "RCSL3.SA",
-    "LUPA3.SA"
-  ]
+    "LUPA3.SA",
+    "PETR4.SA"
+  ],
+  "coverage_period": "01/05/2026 a 07/05/2026"
 }
