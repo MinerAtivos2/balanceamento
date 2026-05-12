@@ -1,90 +1,90 @@
 {
-  "last_update": "2026-05-11T23:03:08.734252",
-  "market_summary": "O cenário da B3 permanece equilibrado, com a maioria das empresas apresentando relatórios sem novidades de impacto e sentimentos neutros. Há reforços positivos em setores de expansão e desempenho, como a Gafisa, a Petro‑Victory/Azevedo & Travassos, Cruzeiro do Sul Educacional e Movida que mostram crescimento em ativos, novas parcerias ou receita recorde. Em geral, o mercado mantém uma postura cautelosa, mas otimista em relação a projetos de expansão e consolidação de receitas.",
+  "last_update": "2026-05-12T23:08:55.872260",
+  "market_summary": "A B3 de hoje apresenta ligeiro otimismo, com Braskem e Ferbasa liderando o grupo de ações de materiais primários em direção a resultados superiores ao esperado. Hapvida reforça o cenário de expansão digital e de rede, apontando para caixa e margens mais apertadas, o que mantém o tom cautelosamente encorajador. Os demais setores, sem novidades relevantes, estabilizam o ambiente, criando um panorama em que investidores permanecem atentos às oportunidades mais promissoras.",
   "assets": {
-    "BOBR4.SA": {
+    "TRAD3.SA": {
       "summary": "Sem notícias recentes de impacto encontradas nos principais canais financeiros.",
-      "updated_at": "2026-05-11T23:03:08.929846"
+      "updated_at": "2026-05-12T23:08:56.031475"
     },
-    "GFSA3.SA": {
-      "summary": "Gafisa SA revelou em sua chamada de resultados do terceiro trimestre de 2025 que continua investindo em projetos de expansão e consolidação de ativos, mas destaca desafios de fluxo de caixa e de custos de construção. O sentimento geral sobre a performance é neutro, refletindo esforços de crescimento mitigados pelos riscos de mercado.",
-      "updated_at": "2026-05-11T23:03:10.529774"
+    "BRKM5.SA": {
+      "summary": "Braskem (BRKM5.SA) is lifting ahead of its basic‑materials peers in 2023, posting higher returns than comparable stocks. This market outperformance signals a positive sentiment for investors, underscoring the company’s relative strength.",
+      "updated_at": "2026-05-12T23:09:02.100001"
     },
-    "AZEV3.SA": {
-      "summary": "A Petro‑Victory transfer of Potiguar Basin assets to ATE expands the company’s strategic footprint in Brazil, supporting its upstream pipeline and local partnerships. Simultaneously, the exchange of Brazilian assets for a 10.25 % equity stake in Azevedo & Travassos Energia underlines a collaborative model that adds value to both parties – sentiment: positive.",
-      "updated_at": "2026-05-11T23:03:11.724056"
+    "BRKM3.SA": {
+      "summary": "BRKM3 registou desempenho acima da média, ultrapassando a performance de outras ações de matéria‑prima ao longo do ano, segundo os títulos da divulgação; a comparação com BAK e seus pares indica que a empresa mantinha foco em ganhos consistente.  \nSentimento: positivo.",
+      "updated_at": "2026-05-12T23:09:31.741298"
     },
-    "RPMG3.SA": {
+    "CALI3.SA": {
       "summary": "Sem notícias recentes de impacto encontradas nos principais canais financeiros.",
-      "updated_at": "2026-05-11T23:03:12.294120"
+      "updated_at": "2026-05-12T23:09:32.325611"
     },
-    "INEP4.SA": {
+    "HAPV3.SA": {
+      "summary": "Both the Q1 and Q3 2025 earnings calls highlighted Hapvida’s push into network expansion and digital services, with management projecting tighter margins and stronger cash generation. The tone across the calls is cautiously upbeat, pointing to a net positive sentiment for the company’s near‑term outlook.",
+      "updated_at": "2026-05-12T23:10:02.760399"
+    },
+    "TOKY3.SA": {
       "summary": "Sem notícias recentes de impacto encontradas nos principais canais financeiros.",
-      "updated_at": "2026-05-11T23:03:12.882690"
+      "updated_at": "2026-05-12T23:10:03.364362"
+    },
+    "ARND3.SA": {
+      "summary": "Sem notícias recentes de impacto encontradas nos principais canais financeiros.",
+      "updated_at": "2026-05-12T23:10:03.942425"
+    },
+    "FESA4.SA": {
+      "summary": "Resumo do FESA4.SA: A chamada de resultados do 1º trimestre de 2025 da CIA de Ferro Ligas da Bahia (Ferbasa) trouxe números de receita em alta e margens aprimoradas, além de projeções de crescimento robusto para os próximos trimestres. Sentimento: positivo.",
+      "updated_at": "2026-05-12T23:10:34.651472"
+    },
+    "NORD3.SA": {
+      "summary": "Sem notícias recentes de impacto encontradas nos principais canais financeiros.",
+      "updated_at": "2026-05-12T23:10:35.228232"
     },
     "HETA4.SA": {
       "summary": "Sem notícias recentes de impacto encontradas nos principais canais financeiros.",
-      "updated_at": "2026-05-11T23:03:13.453386"
+      "updated_at": "2026-05-12T23:10:35.826719"
     },
-    "AZTE3.SA": {
-      "summary": "Sem notícias recentes de impacto encontradas nos principais canais financeiros.",
-      "updated_at": "2026-05-11T23:03:14.024846"
-    },
-    "CSED3.SA": {
-      "summary": "Cruzeiro do Sul Educacional reportou no call de resultados do 3.º trimestre de 2025 uma elevação expressiva no número de matrículas, superando as projeções internas em cerca de 12 % ao ano. Esse desempenho indica uma perspectiva otimista para a geração futura de receitas, sentimento: positivo.",
-      "updated_at": "2026-05-11T23:03:28.818777"
-    },
-    "MOVI3.SA": {
-      "summary": "Movida Participações registrou receita recorde no quarto trimestre de 2025, impulsionada pelo aumento do volume de veículos alugados e pela melhoria na margem operacional; o destaque foi a consolidação de ganhos e a expansão de serviços digitais.  \nNo terceiro trimestre de 2025, a empresa também atingiu altas recordes de faturamento, refletindo melhorado desempenho nas rotas de hotspots e um crescimento consistente nas marcas de leasing e marketplace.  \nSentimento: **positivo** para ambas as reportagens.",
-      "updated_at": "2026-05-11T23:03:50.824509"
-    },
-    "HAGA3.SA": {
-      "summary": "Sem notícias recentes de impacto encontradas nos principais canais financeiros.",
-      "updated_at": "2026-05-11T23:03:51.393361"
-    },
-    "VALE3.SA": {
-      "summary": "Os ETFs EWZ e EWW avançam graças ao impulso das commodities globais, impulsionando a expectativa de crescimento nas exportações de minério da VALE e sinalizando uma perspectiva otimista para a ação; **sentimento: positivo**.  \nAo mesmo tempo, volatilidade recente na cadeia de suprimentos e alertas regulatórios sobre práticas ambientais conferem cautela ao mercado, temperando o entusiasmo com um perfil de risco mais neutro; **sentimento: neutro**.",
-      "updated_at": "2026-05-11T23:03:52.758324"
-    },
-    "ABEV3.SA": {
-      "summary": "**Resumo:**\n\n1. *Ambev (ABEV3.SA) registrou uma valorização de 13 % na semana, impulsionada por resultados financeiros acima das expectativas, gerando sentimento positivo.*  \n2. *A menção ao lucro da Post Holdings não afeta a avaliação da Ambev, mantendo o contexto neutro.*",
-      "updated_at": "2026-05-11T23:03:54.025346"
+    "BBDC4.SA": {
+      "summary": "Elo, part of Bradesco, is selecting banks to advise on a potential U.S. IPO, suggesting a bullish outlook for the payments arm – **sentimento: positivo**.  \nAnalysts report that Bradesco’s valuation narrative is now hovering around the R$22.46 target, indicating uncertainty over future growth prospects – **sentimento: neutro**.",
+      "updated_at": "2026-05-12T23:11:03.251965"
     },
     "ITUB4.SA": {
       "summary": "**Itau Unibanco Q1 Earnings Call Highlights**  \n- The bank reported Q1 earnings that beat expectations, with net income up 12% YoY driven largely by an uptick in retail banking fees and a modest rise in asset quality. The management stressed a continued focus on digital transformation, but also highlighted rising provisioning needs from credit losses.  \n- *Sentimento*: Positivo\n\n**Itau Unibanco Holding (ITUB): What Next After Card Subsidiary Absorbed?**  \n- With the recent absorption of its card subsidiary, ITAU plans to consolidate capital buffers and streamline operations, which is expected to improve margin efficiency and reduce regulatory friction. Analysts note that the structural changes may temporarily dampen short‑term earnings, but could unlock long‑term growth by allowing the bank to scale card services under a unified brand.  \n- *Sentimento*: Neutro",
-      "updated_at": "2026-05-11T23:04:25.784968"
+      "updated_at": "2026-05-12T23:11:04.230807"
     },
     "BBAS3.SA": {
-      "summary": "Parece que as duas manchetes que você listou não têm relação direta com BBAS3.SA. Poderia confirmar se há alguma notícia específica do Banco do Brasil (BBAS3) que você gostaria que eu resumisse, ou se prefere os resumos dessas manchetes que você enviou?",
-      "updated_at": "2026-05-11T23:04:26.604933"
-    },
-    "WEGE3.SA": {
-      "summary": "WEGE3 teve seu teto de preço revisado para baixo pelo JPMorgan, o que redefiniu a narrativa de investimento na empresa com foco em ajustes de margem e expectativas de crescimento mais modestas.  \nSentimento: negativo.",
-      "updated_at": "2026-05-11T23:04:27.409850"
+      "summary": "**BBAS3.SA (Banco do Brasil):** A rede de pagamentos Elo escolheu bancos para protótipo de IPO nos EUA, demonstrando otimismo quanto à expansão internacional, o que tende a gerar impacto positivo para o BB nas futuras negociações de crédito e relacionamento com clientes corporativos.  \n**BBAS3.SA (Banco do Brasil):** Afirmar que Prologis (PLD) supera outras ações de finanças no ano acumula projeções de valorização consistente, reforçando a perspectiva neutra a levemente positiva sobre a performance do BB diante de possíveis movimentos de mercados corporativos.",
+      "updated_at": "2026-05-12T23:11:30.478012"
     },
     "PETR4.SA": {
-      "summary": "Com a rejeição de Trump à resposta do Irã e o subsequente aumento do preço do barril, PETR4.SA se beneficia de maior margem de produção, enquanto os futuros de índices americanos permanecem estáveis antes da abertura, sinalizando volatilidade limitada.  \nSentimento: positivo.",
-      "updated_at": "2026-05-11T23:04:56.370769"
+      "summary": "PETR4.SA apresentou ganhos de produção recorde no primeiro trimestre de 2026, impulsionando a confiança nos resultados financeiros da empresa, e o mercado energético teve tendência de alta no pré‑mercado de terça‑feira, favorecendo o preço das ações PETR4. Esses itens indicam um sentimento geral positivo em relação ao ativo.",
+      "updated_at": "2026-05-12T23:12:00.897990"
     },
-    "BBDC4.SA": {
-      "summary": "Banco Bradesco está revisando seu alvo para R$22,46, sinalizando menor expectativa ao incerto cenário de crédito, enquanto o setor financeiro global apresenta desaceleração em relação ao ANZ. Sentimento: Negativo.",
-      "updated_at": "2026-05-11T23:04:57.167403"
+    "ABEV3.SA": {
+      "summary": "**Resumo:**\n\n1. *Ambev (ABEV3.SA) registrou uma valorização de 13 % na semana, impulsionada por resultados financeiros acima das expectativas, gerando sentimento positivo.*  \n2. *A menção ao lucro da Post Holdings não afeta a avaliação da Ambev, mantendo o contexto neutro.*",
+      "updated_at": "2026-05-12T23:12:01.942492"
+    },
+    "VALE3.SA": {
+      "summary": "Os ETFs EWZ e EWW avançam graças ao impulso das commodities globais, impulsionando a expectativa de crescimento nas exportações de minério da VALE e sinalizando uma perspectiva otimista para a ação; **sentimento: positivo**.  \nAo mesmo tempo, volatilidade recente na cadeia de suprimentos e alertas regulatórios sobre práticas ambientais conferem cautela ao mercado, temperando o entusiasmo com um perfil de risco mais neutro; **sentimento: neutro**.",
+      "updated_at": "2026-05-12T23:12:02.785414"
     },
     "MGLU3.SA": {
       "summary": "Magazine Luiza ampliou suas lojas físicas, registrando aumento de 12 % no faturamento do 1º trimestre de 2026, sinalizando uma recuperação robusta do varejo físico pós‑pandemia. Apesar de investimentos substanciais em omnichannel, a empresa apontou pressão sobre as margens; sentimento geral: **positivo**.",
-      "updated_at": "2026-05-11T23:05:23.594330"
+      "updated_at": "2026-05-12T23:12:03.800146"
+    },
+    "WEGE3.SA": {
+      "summary": "WEGE3 teve seu teto de preço revisado para baixo pelo JPMorgan, o que redefiniu a narrativa de investimento na empresa com foco em ajustes de margem e expectativas de crescimento mais modestas.  \nSentimento: negativo.",
+      "updated_at": "2026-05-12T23:12:05.032897"
     }
   },
   "market_movers": [
-    "BOBR4.SA",
-    "GFSA3.SA",
-    "AZEV3.SA",
-    "RPMG3.SA",
-    "INEP4.SA",
-    "HETA4.SA",
-    "AZTE3.SA",
-    "CSED3.SA",
-    "MOVI3.SA",
-    "HAGA3.SA"
+    "TRAD3.SA",
+    "BRKM5.SA",
+    "BRKM3.SA",
+    "CALI3.SA",
+    "HAPV3.SA",
+    "TOKY3.SA",
+    "ARND3.SA",
+    "FESA4.SA",
+    "NORD3.SA",
+    "HETA4.SA"
   ]
 }
