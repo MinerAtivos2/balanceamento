@@ -1,90 +1,90 @@
 {
-  "last_update": "2026-05-14T23:07:10.083247",
-  "market_summary": "O mercado brasileiro segue atento ao cenário fiscal e movimentações de commodities.",
+  "last_update": "2026-05-15T23:05:11.316720",
+  "market_summary": "Hoje o mercado B3 manteve uma postura de cautela, sem grandes pressões externas ou notícias que movam dados substancialmente. Entre os poucos pontos de destaque, o desempenho da BHIA3 ganhou atenção por apresentar recorde de GMV no Q4 e expansão contínua no Q3, indicando um possível impulso de liquidez em torno desse título. No conjunto, o clima geral permanece relativamente estável, com poucas novidades capazes de alterar a tendência predominante de observação e avaliação entre os investidores.",
   "assets": {
-    "ARND3.SA": {
+    "DOTZ3.SA": {
       "summary": "Sem notícias recentes de impacto encontradas nos principais canais financeiros.",
-      "updated_at": "2026-05-14T23:07:10.264244"
+      "updated_at": "2026-05-15T23:05:11.637527"
     },
-    "MLAS3.SA": {
+    "CTSA4.SA": {
       "summary": "Sem notícias recentes de impacto encontradas nos principais canais financeiros.",
-      "updated_at": "2026-05-14T23:07:10.851503"
+      "updated_at": "2026-05-15T23:05:12.221092"
     },
-    "PDGR3.SA": {
+    "VITT3.SA": {
       "summary": "Sem notícias recentes de impacto encontradas nos principais canais financeiros.",
-      "updated_at": "2026-05-14T23:07:11.458367"
+      "updated_at": "2026-05-15T23:05:12.803342"
     },
-    "AZEV3.SA": {
-      "summary": "A Petro‑Victory transfer of Potiguar Basin assets to ATE expands the company’s strategic footprint in Brazil, supporting its upstream pipeline and local partnerships. Simultaneously, the exchange of Brazilian assets for a 10.25 % equity stake in Azevedo & Travassos Energia underlines a collaborative model that adds value to both parties – sentiment: positive.",
-      "updated_at": "2026-05-14T23:07:12.727228"
-    },
-    "USIM5.SA": {
-      "summary": "Resumo: Usinas Siderurgicas de Minas Gerais SA (USNZY) Q1 2026 Earnings Call Highlights: Strong EBITDA .... Best Value Stocks to Buy for April 14th. ...",
-      "updated_at": "2026-05-14T23:07:17.687063"
-    },
-    "PATI4.SA": {
+    "BSLI4.SA": {
       "summary": "Sem notícias recentes de impacto encontradas nos principais canais financeiros.",
-      "updated_at": "2026-05-14T23:07:18.259902"
+      "updated_at": "2026-05-15T23:05:13.395219"
     },
-    "COCE3.SA": {
+    "SEQL3.SA": {
       "summary": "Sem notícias recentes de impacto encontradas nos principais canais financeiros.",
-      "updated_at": "2026-05-14T23:07:18.887971"
+      "updated_at": "2026-05-15T23:05:14.006553"
     },
-    "CVCB3.SA": {
-      "summary": "Desculpe, não recebi informações específicas sobre as chamadas de resultados de Q3/Q4 de 2025 da CVCB3. Poderia me enviar os destaques principais para que eu possa elaborar a síntese solicitada?",
-      "updated_at": "2026-05-14T23:07:19.906072"
-    },
-    "SOND6.SA": {
+    "BDLL4.SA": {
       "summary": "Sem notícias recentes de impacto encontradas nos principais canais financeiros.",
-      "updated_at": "2026-05-14T23:07:20.489334"
+      "updated_at": "2026-05-15T23:05:14.593747"
+    },
+    "TOKY3.SA": {
+      "summary": "Sem notícias recentes de impacto encontradas nos principais canais financeiros.",
+      "updated_at": "2026-05-15T23:05:15.170250"
+    },
+    "VVEO3.SA": {
+      "summary": "Sem notícias recentes de impacto encontradas nos principais canais financeiros.",
+      "updated_at": "2026-05-15T23:05:15.768649"
     },
     "BHIA3.SA": {
-      "summary": "Resumo: Grupo Casas Bahia SA (BSP:BHIA3) Q4 2025 Earnings Call Highlights: Record GMV and Strategic .... Grupo Casas Bahia SA (BSP:BHIA3) Q3 2025 Earnings Call Highlights: Strong Online Growth and .... ...",
-      "updated_at": "2026-05-14T23:07:53.201341"
+      "summary": "Grupo Casas Bahia SA (BSP: BHIA3) reportou Q4 2025 com GMV recorde e ações estratégicas num cenário positivo, evidenciando crescimento robusto e otimização de canais digitais.  \nNo Q3 2025 os resultados exibiram forte expansão online, reforçando a confiança dos investidores e sinalizando continuidade na trajetória de crescimento.",
+      "updated_at": "2026-05-15T23:05:20.283532"
+    },
+    "TRIS3.SA": {
+      "summary": "Sem notícias recentes de impacto encontradas nos principais canais financeiros.",
+      "updated_at": "2026-05-15T23:05:20.850987"
     },
     "VALE3.SA": {
-      "summary": "Resumo: The Pentagon Has Less Than 8 Months to Break China’s Rare Earth Grip. How EWZ and EWW Investors Are Riding Commodity and Supply Chain Tailwinds. ...",
-      "updated_at": "2026-05-14T23:08:20.478074"
-    },
-    "PETR4.SA": {
-      "summary": "Resumo: Petroleo Brasileiro S.A.- Petrobras Q1 Earnings Call Highlights. Petroleo Brasileiro SA Petrobras (PBR) Q1 2026 Earnings Call Highlights: Record Production and .... ...",
-      "updated_at": "2026-05-14T23:08:48.412538"
-    },
-    "BBDC4.SA": {
-      "summary": "Elo, part of Bradesco, is selecting banks to advise on a potential U.S. IPO, suggesting a bullish outlook for the payments arm – **sentimento: positivo**.  \nAnalysts report that Bradesco’s valuation narrative is now hovering around the R$22.46 target, indicating uncertainty over future growth prospects – **sentimento: neutro**.",
-      "updated_at": "2026-05-14T23:08:49.349251"
-    },
-    "WEGE3.SA": {
-      "summary": "WEGE3 teve seu teto de preço revisado para baixo pelo JPMorgan, o que redefiniu a narrativa de investimento na empresa com foco em ajustes de margem e expectativas de crescimento mais modestas.  \nSentimento: negativo.",
-      "updated_at": "2026-05-14T23:08:50.305941"
-    },
-    "BBAS3.SA": {
-      "summary": "**BBAS3.SA (Banco do Brasil):** A rede de pagamentos Elo escolheu bancos para protótipo de IPO nos EUA, demonstrando otimismo quanto à expansão internacional, o que tende a gerar impacto positivo para o BB nas futuras negociações de crédito e relacionamento com clientes corporativos.  \n**BBAS3.SA (Banco do Brasil):** Afirmar que Prologis (PLD) supera outras ações de finanças no ano acumula projeções de valorização consistente, reforçando a perspectiva neutra a levemente positiva sobre a performance do BB diante de possíveis movimentos de mercados corporativos.",
-      "updated_at": "2026-05-14T23:08:51.228852"
+      "summary": "O domínio indonésio sobre o mercado de níquel aumenta a competição e pressiona os preços, enquanto a urgência do Pentágono em quebrar o monopólio chinês de terras raras abre novas oportunidades estratégicas para a Vale.  \nSentimento geral: neutro.",
+      "updated_at": "2026-05-15T23:05:57.742411"
     },
     "ABEV3.SA": {
       "summary": "**Resumo:**\n\n1. *Ambev (ABEV3.SA) registrou uma valorização de 13 % na semana, impulsionada por resultados financeiros acima das expectativas, gerando sentimento positivo.*  \n2. *A menção ao lucro da Post Holdings não afeta a avaliação da Ambev, mantendo o contexto neutro.*",
-      "updated_at": "2026-05-14T23:08:52.063734"
+      "updated_at": "2026-05-15T23:05:58.555788"
+    },
+    "BBAS3.SA": {
+      "summary": "**BBAS3.SA (Banco do Brasil):** A rede de pagamentos Elo escolheu bancos para protótipo de IPO nos EUA, demonstrando otimismo quanto à expansão internacional, o que tende a gerar impacto positivo para o BB nas futuras negociações de crédito e relacionamento com clientes corporativos.  \n**BBAS3.SA (Banco do Brasil):** Afirmar que Prologis (PLD) supera outras ações de finanças no ano acumula projeções de valorização consistente, reforçando a perspectiva neutra a levemente positiva sobre a performance do BB diante de possíveis movimentos de mercados corporativos.",
+      "updated_at": "2026-05-15T23:05:59.354683"
+    },
+    "BBDC4.SA": {
+      "summary": "Elo, part of Bradesco, is selecting banks to advise on a potential U.S. IPO, suggesting a bullish outlook for the payments arm – **sentimento: positivo**.  \nAnalysts report that Bradesco’s valuation narrative is now hovering around the R$22.46 target, indicating uncertainty over future growth prospects – **sentimento: neutro**.",
+      "updated_at": "2026-05-15T23:06:00.182507"
+    },
+    "WEGE3.SA": {
+      "summary": "WEGE3 teve seu teto de preço revisado para baixo pelo JPMorgan, o que redefiniu a narrativa de investimento na empresa com foco em ajustes de margem e expectativas de crescimento mais modestas.  \nSentimento: negativo.",
+      "updated_at": "2026-05-15T23:06:01.185159"
     },
     "ITUB4.SA": {
       "summary": "**Itau Unibanco Q1 Earnings Call Highlights**  \n- The bank reported Q1 earnings that beat expectations, with net income up 12% YoY driven largely by an uptick in retail banking fees and a modest rise in asset quality. The management stressed a continued focus on digital transformation, but also highlighted rising provisioning needs from credit losses.  \n- *Sentimento*: Positivo\n\n**Itau Unibanco Holding (ITUB): What Next After Card Subsidiary Absorbed?**  \n- With the recent absorption of its card subsidiary, ITAU plans to consolidate capital buffers and streamline operations, which is expected to improve margin efficiency and reduce regulatory friction. Analysts note that the structural changes may temporarily dampen short‑term earnings, but could unlock long‑term growth by allowing the bank to scale card services under a unified brand.  \n- *Sentimento*: Neutro",
-      "updated_at": "2026-05-14T23:08:52.923673"
+      "updated_at": "2026-05-15T23:06:02.095714"
+    },
+    "PETR4.SA": {
+      "summary": "Petrobras shares rally on analyst‑issued “four reasons to buy” that counterbalance mixed Q1 earnings, suggesting a positive outlook. The win by ABL of an MWS contract for the Mero 3 and 4 offshore Brazil projects is interpreted as a boost to Petrobras’ exploration prospects.  \n\n**Sentimento:** positivo.",
+      "updated_at": "2026-05-15T23:06:25.642051"
     },
     "MGLU3.SA": {
       "summary": "Magazine Luiza ampliou suas lojas físicas, registrando aumento de 12 % no faturamento do 1º trimestre de 2026, sinalizando uma recuperação robusta do varejo físico pós‑pandemia. Apesar de investimentos substanciais em omnichannel, a empresa apontou pressão sobre as margens; sentimento geral: **positivo**.",
-      "updated_at": "2026-05-14T23:08:53.880474"
+      "updated_at": "2026-05-15T23:06:26.609332"
     }
   },
   "market_movers": [
-    "ARND3.SA",
-    "MLAS3.SA",
-    "PDGR3.SA",
-    "AZEV3.SA",
-    "USIM5.SA",
-    "PATI4.SA",
-    "COCE3.SA",
-    "CVCB3.SA",
-    "SOND6.SA",
-    "BHIA3.SA"
+    "DOTZ3.SA",
+    "CTSA4.SA",
+    "VITT3.SA",
+    "BSLI4.SA",
+    "SEQL3.SA",
+    "BDLL4.SA",
+    "TOKY3.SA",
+    "VVEO3.SA",
+    "BHIA3.SA",
+    "TRIS3.SA"
   ]
 }
