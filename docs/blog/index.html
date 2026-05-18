@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <link rel="icon" type="image/png" href="../favicon.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MinerAtivos | Blog</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../style.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2563eb',
+                        secondary: '#1e40af',
+                        accent: '#3b82f6',
+                        dark: '#0b0f19', // Darker navy for portfolio bridge
+                        light: '#f9fafb'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+
+		<script src="../cookie-consent.js"></script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 1rem;
+        }
+
+        .dark-glass-card {
+            background: rgba(11, 15, 25, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+
+        .blog-gradient {
+            background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+        }
+
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            transition: all 0.3s ease;
+        }
+
+        #mobile-menu {
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            width: 75%;
+            max-width: 300px;
+            background-color: white;
+            z-index: 100;
+            box-shadow: -2px 0 5px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <i class="fas fa-chart-line text-primary text-2xl"></i>
+                <h1 class="text-xl font-bold text-dark">Miner<span class="text-primary">Ativos</span></h1>
+            </div>
+            <nav class="hidden md:flex space-x-8">
+                <a href="../index.html" class="text-dark hover:text-primary font-medium">Início</a>
+                <a href="../monitor.html" class="text-dark hover:text-primary font-medium">Monitor</a>
+                <a href="../balanceamento.html" class="text-dark hover:text-primary font-medium">Carteira</a>
+                <a href="index.html" class="text-primary font-bold">Blog</a>
+            </nav>
+            <div class="flex items-center space-x-4">
+                <button id="hamburger-button" class="md:hidden text-dark">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden">
+            <div class="px-4 pt-4 pb-3 space-y-1">
+                <div class="flex justify-end mb-4">
+                    <button id="close-button" class="text-dark">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+                <nav class="flex flex-col space-y-4">
+                    <a href="../index.html" class="text-dark hover:text-primary text-lg font-medium">Início</a>
+                    <a href="../monitor.html" class="text-dark hover:text-primary text-lg font-medium">Monitor</a>
+                    <a href="../balanceamento.html" class="text-dark hover:text-primary text-lg font-medium">Carteira</a>
+                    <a href="index.html" class="text-primary text-lg font-bold">Blog</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Blog -->
+    <section class="blog-gradient text-white py-16">
+        <div class="container mx-auto px-4">
+            <div class="max-w-3xl">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">Insights & Análises</h2>
+                <p class="text-xl opacity-90">Acompanhe as últimas movimentações do mercado, estratégias e fundamentos para investidores.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-12">
+
+        <!-- Filters & Search -->
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-12">
+            <div class="flex flex-wrap gap-2" id="tags-filter">
+                <button class="tag-btn active bg-primary text-white px-4 py-2 rounded-full text-sm font-medium transition" data-tag="all">Todos</button>
+                <!-- Tags will be injected here -->
+            </div>
+            <div class="relative w-full md:w-64">
+                <input type="text" id="search-input" placeholder="Buscar posts..." class="w-full pl-10 pr-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-transparent outline-none">
+                <i class="fas fa-search absolute left-3 top-3 text-gray-400"></i>
+            </div>
+        </div>
+
+        <!-- Featured Post -->
+        <div id="featured-post-container" class="mb-16">
+            <!-- Featured post will be injected here -->
+        </div>
+
+        <!-- Posts Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="posts-grid">
+            <!-- Post cards will be injected here -->
+        </div>
+
+        <!-- Empty State -->
+        <div id="empty-state" class="hidden text-center py-20">
+            <i class="fas fa-search text-5xl text-gray-300 mb-4"></i>
+            <h3 class="text-xl font-medium text-gray-500">Nenhum post encontrado</h3>
+            <p class="text-gray-400">Tente ajustar seus filtros ou busca.</p>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-[#0b0f19] text-white pt-12 pb-6">
+        <div class="container mx-auto px-4 text-center">
+            <div class="flex items-center justify-center space-x-2 mb-6">
+                <i class="fas fa-chart-line text-primary text-2xl"></i>
+                <h3 class="text-xl font-bold">Miner<span class="text-primary">Ativos</span></h3>
+            </div>
+            <p class="text-gray-400 mb-8 max-w-md mx-auto">Educação financeira e análise de dados para o investidor moderno.</p>
+            <div class="border-t border-gray-800 pt-6">
+                <p class="text-gray-500 text-sm">© 2025 MinerAtivos. Todos os direitos reservados.</p>
+                <div class="flex justify-center space-x-6 mt-4">
+                    <a href="../politica-privacidade.html" class="text-gray-500 hover:text-white text-sm">Política de Privacidade</a>
+                    <a href="../termos-uso.html" class="text-gray-500 hover:text-white text-sm">Termos de Uso</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const hamburgerButton = document.getElementById('hamburger-button');
+            const closeButton = document.getElementById('close-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            hamburgerButton.addEventListener('click', () => mobileMenu.classList.remove('hidden'));
+            closeButton.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+        });
+    </script>
+</body>
+</html>
