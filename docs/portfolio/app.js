@@ -648,9 +648,16 @@ class B3App {
         files = manifest.market_data_files || files;
       }
 
+      // Performance Optimization: Guests only load the main market_data.json
+      // Members load everything including large historical files
+      if (!this.user) {
+        console.log('Modo Visitante: Carregando apenas dados recentes para performance.');
+        files = ['market_data.json'];
+      }
+
       console.log('Arquivos de mercado detectados:', files);
 
-      // 2. Carregar todos os arquivos em paralelo
+      // 2. Carregar arquivos permitidos
       const loadPromises = files.map(async (file) => {
         try {
           const res = await fetch(`./data/${file}?t=${new Date().getTime()}`);
@@ -669,11 +676,36 @@ class B3App {
 
       // 3. Mesclar dados (Merge)
       this.marketData = this.mergeMarketData(dataList);
+
+      // 4. Se for visitante, garantir restrição de 2 anos no histórico para economia de memória
+      if (!this.user) {
+        this.restrictHistoricalData(2);
+      }
+
       console.log('Dados de mercado carregados e mesclados com sucesso');
     } catch (err) {
       console.error('Erro ao carregar dados de mercado:', err);
       this.toast('Erro ao carregar dados históricos: ' + err.message, 'error');
     }
+  }
+
+  restrictHistoricalData(years) {
+    if (!this.marketData) return;
+    const cutoffDate = new Date();
+    cutoffDate.setFullYear(cutoffDate.getFullYear() - years);
+    const cutoffStr = cutoffDate.toISOString().split('T')[0];
+
+    Object.keys(this.marketData.assets).forEach(ticker => {
+      const asset = this.marketData.assets[ticker];
+      if (asset.history && asset.history.dates) {
+        const startIndex = asset.history.dates.findIndex(d => d >= cutoffStr);
+        if (startIndex > 0) {
+          asset.history.dates = asset.history.dates.slice(startIndex);
+          asset.history.closes = asset.history.closes.slice(startIndex);
+          asset.history.volumes = asset.history.volumes.slice(startIndex);
+        }
+      }
+    });
   }
 
   mergeMarketData(dataList) {
