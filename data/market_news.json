@@ -1,90 +1,90 @@
 {
-  "last_update": "2026-05-19T23:12:02.871102",
-  "market_summary": "O mercado da B3 mantém um clima de estabilidade, com a maioria dos emissores não apresentando notícias de impacto nas principais mídias financeiras.  \n\nPor outro lado, ações como Azevedo & Travassos Energia e o Grupo Casas Bahia se destacam por movimentos estratégicos positivos: a expansão de ativos na Bacia Potiguar e um recorde de GMV acompanhados de aprimoramento do canal digital.  \n\nNo geral, o cenário permanece neutro a levemente positivo, aguardando lançamentos de resultados e possíveis novas movimentações nos setores de energia e varejo.",
+  "last_update": "2026-05-20T23:22:13.807097",
+  "market_summary": "O mercado brasileiro segue atento ao cenário fiscal e movimentações de commodities.",
   "assets": {
-    "DOHL4.SA": {
+    "BHIA3.SA": {
+      "summary": "Grupo Casas Bahia SA (BSP: BHIA3) reportou Q4 2025 com GMV recorde e ações estratégicas num cenário positivo, evidenciando crescimento robusto e otimização de canais digitais.  \nNo Q3 2025 os resultados exibiram forte expansão online, reforçando a confiança dos investidores e sinalizando continuidade na trajetória de crescimento.",
+      "updated_at": "2026-05-20T23:22:14.815695"
+    },
+    "ONCO3.SA": {
       "summary": "Sem notícias recentes de impacto encontradas nos principais canais financeiros.",
-      "updated_at": "2026-05-19T23:12:03.210300"
+      "updated_at": "2026-05-20T23:22:15.418492"
     },
-    "ALPK3.SA": {
+    "HAGA3.SA": {
       "summary": "Sem notícias recentes de impacto encontradas nos principais canais financeiros.",
-      "updated_at": "2026-05-19T23:12:03.890340"
+      "updated_at": "2026-05-20T23:22:15.991363"
     },
-    "CTAX3.SA": {
+    "CMIN3.SA": {
+      "summary": "Resumo: CSN Mineracao SA (BSP:CMIN3) Q4 2025 Earnings Call Highlights: Record Net Income and ESG .... Update: Market Chatter: Vale Probes Water Overflow Incident at Brazil Mine. ...",
+      "updated_at": "2026-05-20T23:22:54.040958"
+    },
+    "ANIM3.SA": {
+      "summary": "Resumo: Anima Holding SA (BSP:ANIM3) Q4 2025 Earnings Call Highlights: Record Revenue and Strategic .... ...",
+      "updated_at": "2026-05-20T23:23:00.438563"
+    },
+    "ESTR4.SA": {
       "summary": "Sem notícias recentes de impacto encontradas nos principais canais financeiros.",
-      "updated_at": "2026-05-19T23:12:04.523767"
+      "updated_at": "2026-05-20T23:23:01.027563"
     },
-    "AZEV3.SA": {
-      "summary": "A Petro‑Victory transfer of Potiguar Basin assets to ATE expands the company’s strategic footprint in Brazil, supporting its upstream pipeline and local partnerships. Simultaneously, the exchange of Brazilian assets for a 10.25 % equity stake in Azevedo & Travassos Energia underlines a collaborative model that adds value to both parties – sentiment: positive.",
-      "updated_at": "2026-05-19T23:12:06.245903"
+    "LIGT3.SA": {
+      "summary": "Resumo: Light SA (LGSXY) Q1 2026 Earnings Call Highlights: Navigating Challenges with Strategic .... Light SA (LGSXY) Q4 2025 Earnings Call Highlights: Strong Operational Gains Amid Market Challenges. ...",
+      "updated_at": "2026-05-20T23:23:31.471330"
     },
-    "EQPA5.SA": {
-      "summary": "Para poder gerar o resumo preciso ter acesso aos dados concretos da chamada de resultados do Q1 2026 e do Q4 2025 da Equatorial Para Distribuidora de Energia (EQPA5.SA). Por favor, compartilhe os destaques da chamada (receita, lucro, margens, pontos de risco/portunidade, projeções) ou algum sumário das informações relevantes. Assim poderei elaborar o resumo objetivo e indicar o sentimento (positivo, negativo ou neutro).",
-      "updated_at": "2026-05-19T23:12:12.856455"
+    "RVEE3.SA": {
+      "summary": "Sem notícias recentes de impacto encontradas nos principais canais financeiros.",
+      "updated_at": "2026-05-20T23:23:32.040826"
     },
     "FICT3.SA": {
       "summary": "Sem notícias recentes de impacto encontradas nos principais canais financeiros.",
-      "updated_at": "2026-05-19T23:12:13.496590"
+      "updated_at": "2026-05-20T23:23:32.607732"
     },
-    "BHIA3.SA": {
-      "summary": "Grupo Casas Bahia SA (BSP: BHIA3) reportou Q4 2025 com GMV recorde e ações estratégicas num cenário positivo, evidenciando crescimento robusto e otimização de canais digitais.  \nNo Q3 2025 os resultados exibiram forte expansão online, reforçando a confiança dos investidores e sinalizando continuidade na trajetória de crescimento.",
-      "updated_at": "2026-05-19T23:12:14.573294"
-    },
-    "TRAD3.SA": {
-      "summary": "Sem notícias recentes de impacto encontradas nos principais canais financeiros.",
-      "updated_at": "2026-05-19T23:12:15.456112"
-    },
-    "TOKY3.SA": {
-      "summary": "Sem notícias recentes de impacto encontradas nos principais canais financeiros.",
-      "updated_at": "2026-05-19T23:12:16.061943"
-    },
-    "PTNT4.SA": {
-      "summary": "Sem notícias recentes de impacto encontradas nos principais canais financeiros.",
-      "updated_at": "2026-05-19T23:12:16.698297"
-    },
-    "ABEV3.SA": {
-      "summary": "Ambev destaca forte crescimento, cash‑flow sólido e política de dividendos atrativa, gerando expectativas positivas em meio ao mercado de crescimento; a sexta-feira de 8 de maio evidenciou o retorno de 13 % graças a resultados acima do esperado, reforçando ainda mais o sentimento otimista. Sentimento geral: positivo.",
-      "updated_at": "2026-05-19T23:12:41.975487"
+    "RNEW4.SA": {
+      "summary": "Resumo: Brazil's Energy Glut Is Luring Crypto Miners—Here's Why That Could Be A Win-Win. Clean energy glut draws cryptocurrency miners to Brazil . ...",
+      "updated_at": "2026-05-20T23:23:58.262563"
     },
     "BBDC4.SA": {
       "summary": "Elo, part of Bradesco, is selecting banks to advise on a potential U.S. IPO, suggesting a bullish outlook for the payments arm – **sentimento: positivo**.  \nAnalysts report that Bradesco’s valuation narrative is now hovering around the R$22.46 target, indicating uncertainty over future growth prospects – **sentimento: neutro**.",
-      "updated_at": "2026-05-19T23:12:43.245893"
+      "updated_at": "2026-05-20T23:23:59.124921"
     },
-    "PETR4.SA": {
-      "summary": "Petrobras atinge a maior taxa de utilização de refinarias em uma década, indicando expansão de capacidade e potencial aumento de receitas – **sentimento positivo**.  \nA análise de Howard Marks sobre as estratégias da Petrobras destaca oportunidades e riscos de forma equilibrada, mantendo uma perspectiva neutra sobre o futuro da companhia.",
-      "updated_at": "2026-05-19T23:13:13.748803"
-    },
-    "BBAS3.SA": {
-      "summary": "Banco do Brasil (BBAS3) registrou forte lucro líquido no primeiro trimestre de 2026, respaldado por ganhos crescentes em crédito e operacionais, reforçando a perspectiva de rentabilidade sólida (sentimento: positivo).  \nA rede brasileira de pagamentos Elo anunciou a escolha de bancos parceiros para um potencial IPO nos EUA, sinalizando expansão e abertura de capital, o que aumenta a confiança dos investidores na atuação do banco no mercado global (sentimento: positivo).",
-      "updated_at": "2026-05-19T23:13:42.478252"
+    "ABEV3.SA": {
+      "summary": "Resumo: Are Consumer Staples Stocks Lagging  Ambev (ABEV) This Year?. 3 Reasons Growth Investors Will Love Ambev (ABEV). ...",
+      "updated_at": "2026-05-20T23:24:29.870348"
     },
     "VALE3.SA": {
       "summary": "1. Os releases abordam o subvalorizado de ações globais abaixo de R$60 e o comprometimento da Tencent e da CATL com um aumento de 10 milhões de toneladas de créditos de carbono, sem mencionar a Vale.  \n2. Diante da ausência de menção direta à empresa, o efeito destas notícias sobre a VALE3 é considerado neutro.",
-      "updated_at": "2026-05-19T23:14:13.257468"
+      "updated_at": "2026-05-20T23:24:30.883496"
     },
-    "ITUB4.SA": {
-      "summary": "**Itau Unibanco Q1 Earnings Call Highlights**  \n- The bank reported Q1 earnings that beat expectations, with net income up 12% YoY driven largely by an uptick in retail banking fees and a modest rise in asset quality. The management stressed a continued focus on digital transformation, but also highlighted rising provisioning needs from credit losses.  \n- *Sentimento*: Positivo\n\n**Itau Unibanco Holding (ITUB): What Next After Card Subsidiary Absorbed?**  \n- With the recent absorption of its card subsidiary, ITAU plans to consolidate capital buffers and streamline operations, which is expected to improve margin efficiency and reduce regulatory friction. Analysts note that the structural changes may temporarily dampen short‑term earnings, but could unlock long‑term growth by allowing the bank to scale card services under a unified brand.  \n- *Sentimento*: Neutro",
-      "updated_at": "2026-05-19T23:14:14.340152"
-    },
-    "MGLU3.SA": {
-      "summary": "Magazine Luiza ampliou suas lojas físicas, registrando aumento de 12 % no faturamento do 1º trimestre de 2026, sinalizando uma recuperação robusta do varejo físico pós‑pandemia. Apesar de investimentos substanciais em omnichannel, a empresa apontou pressão sobre as margens; sentimento geral: **positivo**.",
-      "updated_at": "2026-05-19T23:14:15.429365"
+    "PETR4.SA": {
+      "summary": "Resumo: Petrobras Confirms Hydrocarbon Discovery in Brazil's Santos Basin. Petrobras Achieves Highest Refinery Utilization Over a Decade. ...",
+      "updated_at": "2026-05-20T23:24:59.724108"
     },
     "WEGE3.SA": {
       "summary": "WEGE3 teve seu teto de preço revisado para baixo pelo JPMorgan, o que redefiniu a narrativa de investimento na empresa com foco em ajustes de margem e expectativas de crescimento mais modestas.  \nSentimento: negativo.",
-      "updated_at": "2026-05-19T23:14:16.589637"
+      "updated_at": "2026-05-20T23:25:00.718098"
+    },
+    "ITUB4.SA": {
+      "summary": "**Itau Unibanco Q1 Earnings Call Highlights**  \n- The bank reported Q1 earnings that beat expectations, with net income up 12% YoY driven largely by an uptick in retail banking fees and a modest rise in asset quality. The management stressed a continued focus on digital transformation, but also highlighted rising provisioning needs from credit losses.  \n- *Sentimento*: Positivo\n\n**Itau Unibanco Holding (ITUB): What Next After Card Subsidiary Absorbed?**  \n- With the recent absorption of its card subsidiary, ITAU plans to consolidate capital buffers and streamline operations, which is expected to improve margin efficiency and reduce regulatory friction. Analysts note that the structural changes may temporarily dampen short‑term earnings, but could unlock long‑term growth by allowing the bank to scale card services under a unified brand.  \n- *Sentimento*: Neutro",
+      "updated_at": "2026-05-20T23:25:01.681974"
+    },
+    "MGLU3.SA": {
+      "summary": "Magazine Luiza ampliou suas lojas físicas, registrando aumento de 12 % no faturamento do 1º trimestre de 2026, sinalizando uma recuperação robusta do varejo físico pós‑pandemia. Apesar de investimentos substanciais em omnichannel, a empresa apontou pressão sobre as margens; sentimento geral: **positivo**.",
+      "updated_at": "2026-05-20T23:25:02.712358"
+    },
+    "BBAS3.SA": {
+      "summary": "Banco do Brasil (BBAS3) registrou forte lucro líquido no primeiro trimestre de 2026, respaldado por ganhos crescentes em crédito e operacionais, reforçando a perspectiva de rentabilidade sólida (sentimento: positivo).  \nA rede brasileira de pagamentos Elo anunciou a escolha de bancos parceiros para um potencial IPO nos EUA, sinalizando expansão e abertura de capital, o que aumenta a confiança dos investidores na atuação do banco no mercado global (sentimento: positivo).",
+      "updated_at": "2026-05-20T23:25:03.706981"
     }
   },
   "market_movers": [
-    "DOHL4.SA",
-    "ALPK3.SA",
-    "CTAX3.SA",
-    "AZEV3.SA",
-    "EQPA5.SA",
-    "FICT3.SA",
     "BHIA3.SA",
-    "TRAD3.SA",
-    "TOKY3.SA",
-    "PTNT4.SA"
+    "ONCO3.SA",
+    "HAGA3.SA",
+    "CMIN3.SA",
+    "ANIM3.SA",
+    "ESTR4.SA",
+    "LIGT3.SA",
+    "RVEE3.SA",
+    "FICT3.SA",
+    "RNEW4.SA"
   ]
 }
