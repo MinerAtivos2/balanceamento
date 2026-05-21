@@ -2,15 +2,12 @@
   {
     "id": "radar-intraday-movimentacoes-do-mercado",
     "title": "Radar Intraday: Movimentações do Mercado",
-    "description": "<style>\n        :root {\n            --primary-color: #00C853; /* Verde vibrante */\n            --secondary-color: #212121; /* Dark Gray */\n           ...",
+    "description": "<header>\n            <h1>Guia Definitivo da Teoria de Markowitz para Investidores</h1>\n            <p class=\"meta\">Por Minerativos | Maio de 2026 | Ca...",
     "imageUrl": "docs/assets/blog/old_favicon.png",
     "path": "posts/radar-intraday-movimentacoes-do-mercado.html",
     "date": "2026-05-21",
     "tags": [
-      "Radar",
-      "Intraday",
-      "Bovespa",
-      "Novidade"
+      "Conteúdo"
     ]
   },
   {
