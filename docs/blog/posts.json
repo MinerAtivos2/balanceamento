@@ -16,7 +16,7 @@
   {
     "id": "guia-da-teoria-de-markowitz-para-investidores",
     "title": "Guia da Teoria de Markowitz para Investidores",
-    "description": "<html lang=\"pt-BR\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Guia Defin...",
+    "description": "<style>\n        :root {\n            --primary-color: #00C853; /* Verde vibrante */\n            --secondary-color: #212121; /* Dark Gray */\n           ...",
     "imageUrl": "docs/assets/blog/old_favicon.png",
     "path": "posts/guia-da-teoria-de-markowitz-para-investidores.html",
     "date": "2026-05-20",
