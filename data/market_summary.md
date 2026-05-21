@@ -1,21 +1,21 @@
-## Resumo de Mercado - 2026-05-20
+## Resumo de Mercado - 2026-05-21
 
 ### 📈 Maiores Altas (Dia)
 
 | Ativo | Nome | Fechamento | Anterior | Variação | DeltaVolume |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| BHIA3.SA | Grupo Casas Bahia S.A. | R$ 1.56 | R$ 1.26 | **+23.81%** 🚀 | +209.63% ⬆️ |
-| ONCO3.SA | Oncoclínicas do Brasil Serviços Médicos S.A. | R$ 1.25 | R$ 1.06 | **+17.92%** 🚀 | +51.17% ⬆️ |
-| HAGA3.SA | HAGA S/A Indústria e Comércio | R$ 2.83 | R$ 2.56 | **+10.55%** 🚀 | +13.85% ⬆️ |
-| CMIN3.SA | CSN Mineração S.A. | R$ 4.50 | R$ 4.08 | **+10.29%** 🚀 | +164.10% ⬆️ |
-| ANIM3.SA | Ânima Holding S.A. | R$ 3.39 | R$ 3.11 | **+9.00%** 🚀 | -8.34% ⬇️ |
+| RVEE3.SA | RVEE3.SA | R$ 0.87 | R$ 0.76 | **+14.47%** 🚀 | -46.84% ⬇️ |
+| FICT3.SA | Fictor Alimentos S.A. | R$ 0.20 | R$ 0.18 | **+11.11%** 🚀 | +63.33% ⬆️ |
+| ESTR4.SA | Manufatura de Brinquedos Estrela S.A. | R$ 3.30 | R$ 3.00 | **+10.00%** 🚀 | -86.84% ⬇️ |
+| ONCO3.SA | Oncoclínicas do Brasil Serviços Médicos S.A. | R$ 1.37 | R$ 1.25 | **+9.60%** 🚀 | +104.78% ⬆️ |
+| WEST3.SA | Westwing Comércio Varejista S.A. | R$ 8.65 | R$ 7.99 | **+8.26%** 🚀 | -83.40% ⬇️ |
 
 ### 📉 Maiores Baixas (Dia)
 
 | Ativo | Nome | Fechamento | Anterior | Variação | DeltaVolume |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| ESTR4.SA | Manufatura de Brinquedos Estrela S.A. | R$ 3.00 | R$ 4.51 | **-33.48%** 📉 | 0.00% — |
-| LIGT3.SA | Light S.A. | R$ 2.85 | R$ 4.18 | **-31.82%** 📉 | +660.79% ⬆️ |
-| RVEE3.SA | RVEE3.SA | R$ 0.76 | R$ 0.88 | **-13.64%** 📉 | -74.55% ⬇️ |
-| FICT3.SA | Fictor Alimentos S.A. | R$ 0.18 | R$ 0.20 | **-10.00%** 📉 | +356.63% ⬆️ |
-| RNEW4.SA | Renova Energia S.A. | R$ 0.89 | R$ 0.96 | **-7.29%** 📉 | +79.57% ⬆️ |
+| CRPG3.SA | Tronox Pigmentos do Brasil S.A. | R$ 16.00 | R$ 18.70 | **-14.44%** 📉 | +100.00% ⬆️ |
+| LIGT3.SA | Light S.A. | R$ 2.52 | R$ 2.85 | **-11.58%** 📉 | +208.94% ⬆️ |
+| BOBR4.SA | Bombril S.A. | R$ 1.18 | R$ 1.30 | **-9.23%** 📉 | +58.59% ⬆️ |
+| BDLL3.SA | Bardella S.A. Indústrias Mecânicas | R$ 6.20 | R$ 6.80 | **-8.82%** 📉 | +500.00% ⬆️ |
+| RAIZ4.SA | Raízen S.A. | R$ 0.39 | R$ 0.42 | **-7.14%** 📉 | +39.03% ⬆️ |
