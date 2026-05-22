@@ -689,6 +689,35 @@ input[type="number"]:focus, select:focus {
   font-weight: 800;
   font-size: 1.25rem;
   color: var(--accent);
+  line-height: 1;
+}
+
+.news-card-perf {
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.news-perf-price {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.news-perf-delta {
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.news-outdated-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--yellow);
+  background: var(--yellow-bg);
+  padding: 4px 8px;
+  border-radius: 4px;
+  border: 1px solid rgba(245, 158, 11, 0.2);
 }
 
 .news-card-summary {

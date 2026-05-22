@@ -831,11 +831,36 @@ class B3App {
       const data = this.marketNews.assets[ticker];
       const card = document.createElement('div');
       card.className = 'card glass news-card';
+
+      let performanceHtml = '';
+      if (data.last_close != null && data.daily_delta != null) {
+        const delta = (data.daily_delta * 100).toFixed(2);
+        const colorClass = data.daily_delta >= 0 ? 'var-up' : 'var-down';
+        const sign = data.daily_delta > 0 ? '+' : '';
+        performanceHtml = `
+          <div class="news-card-perf">
+            <span class="news-perf-price">R$ ${data.last_close.toFixed(2)}</span>
+            <span class="news-perf-delta ${colorClass}">${sign}${delta}%</span>
+          </div>
+        `;
+      }
+
+      let outdatedBadge = '';
+      if (data.is_outdated) {
+        outdatedBadge = `<div class="news-outdated-label">⚠️ Notícias de período anterior ao dia atual</div>`;
+      }
+
+      const displayDate = data.price_date ? data.price_date.split('-').reverse().join('/') : new Date(data.updated_at).toLocaleDateString('pt-BR');
+
       card.innerHTML = `
         <div class="news-card-header">
-          <span class="news-card-ticker">${escapeHTML(ticker.replace('.SA', ''))}</span>
-          <span style="font-size: 0.7rem; color: var(--text-muted);">${new Date(data.updated_at).toLocaleDateString('pt-BR')}</span>
+          <div style="display:flex; flex-direction:column">
+            <span class="news-card-ticker">${escapeHTML(ticker.replace('.SA', ''))}</span>
+            <span style="font-size: 0.65rem; color: var(--text-muted);">${displayDate}</span>
+          </div>
+          ${performanceHtml}
         </div>
+        ${outdatedBadge}
         <div class="news-card-summary">${escapeHTML(data.summary)}</div>
         <button class="btn btn-outline btn-sm" onclick="app.showAssetNews('${escapeHTML(ticker)}')" style="margin-top:auto">Ver Mais</button>
       `;
@@ -858,7 +883,11 @@ class B3App {
     this.$('newsModalUpdateDate').textContent = updateText;
 
     // TextContent is safe from XSS
-    this.$('newsModalText').textContent = data.summary;
+    let summaryText = data.summary;
+    if (data.is_outdated) {
+        summaryText = "[AVISO: Estas notícias não necessariamente retratam o desempenho do dia, pois não houve fontes disponíveis para a data atual.]\n\n" + summaryText;
+    }
+    this.$('newsModalText').textContent = summaryText;
 
     const sourcesDiv = this.$('newsModalSources');
     if (sourcesDiv) {

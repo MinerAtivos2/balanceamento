@@ -147,8 +147,21 @@ def main():
     all_tickers = load_tickers()
     movers = get_market_movers()
 
+    # Carregar dados de mercado para contexto e exibição
+    market_summary_data = {}
+    market_last_date = None
+    if os.path.exists(MARKET_SUMMARY_JSON):
+        try:
+            with open(MARKET_SUMMARY_JSON, 'r', encoding='utf-8') as f:
+                summary_json = json.load(f)
+                market_last_date = summary_json.get('date')
+                for a in summary_json.get('all_assets', []):
+                    market_summary_data[a['ticker']] = a
+        except: pass
+
     news_output = {
         "last_update": datetime.now().isoformat(),
+        "market_last_date": market_last_date,
         "market_summary": "O mercado brasileiro segue atento ao cenário fiscal e movimentações de commodities.",
         "assets": {},
         "market_movers": movers
@@ -195,19 +208,35 @@ def main():
                 if item['date']: dates.append(item['date'])
 
             period_str = ""
+            max_news_date_str = None
             if dates:
-                min_date = min(dates).strftime('%d/%m/%Y')
-                max_date = max(dates).strftime('%d/%m/%Y')
-                period_str = f"Em {min_date}" if min_date == max_date else f"De {min_date} a {max_date}"
+                min_date = min(dates)
+                max_date = max(dates)
+                min_date_str = min_date.strftime('%d/%m/%Y')
+                max_date_str = max_date.strftime('%d/%m/%Y')
+                max_news_date_str = max_date.strftime('%Y-%m-%d')
+                period_str = f"Em {min_date_str}" if min_date_str == max_date_str else f"De {min_date_str} a {max_date_str}"
+
+            # Verificar se a notícia é anterior à data do mercado
+            is_outdated = False
+            if market_last_date and max_news_date_str:
+                if max_news_date_str < market_last_date:
+                    is_outdated = True
 
             is_prio = ticker in movers or processed_count <= 25
             summary = get_ai_summary(ticker, context, is_priority=is_prio)
+
+            asset_market_info = market_summary_data.get(ticker, {})
 
             news_output["assets"][ticker] = {
                 "summary": summary,
                 "period": period_str,
                 "sources": list(dict.fromkeys(sources)),
-                "updated_at": datetime.now().isoformat()
+                "updated_at": datetime.now().isoformat(),
+                "is_outdated": is_outdated,
+                "last_close": asset_market_info.get('last_close'),
+                "daily_delta": asset_market_info.get('daily_delta'),
+                "price_date": asset_market_info.get('date')
             }
             if is_prio: time.sleep(0.5)
 
@@ -215,15 +244,31 @@ def main():
             print(f"Erro em {ticker}: {e}")
 
     try:
-        top_summaries = [f"{t}: {news_output['assets'][t]['summary']}" for t in sorted_tickers[:10] if t in news_output["assets"]]
-        if top_summaries:
-            combined = "\n".join(top_summaries)
-            news_output["market_summary"] = g4f.ChatCompletion.create(
-                model="openai",
-                provider=g4f.Provider.PollinationsAI,
-                messages=[{"role": "user", "content": f"Resuma, em português, o clima do mercado B3 hoje em 3 frases:\n{combined}"}],
-            )
-    except: pass
+        # Melhorar o resumo geral separando ganhadores e perdedores
+        gainers = []
+        losers = []
+        if os.path.exists(MARKET_SUMMARY_JSON):
+            with open(MARKET_SUMMARY_JSON, 'r', encoding='utf-8') as f:
+                ms = json.load(f)
+                gainers = [a['ticker'] for a in ms.get('gainers', [])]
+                losers = [a['ticker'] for a in ms.get('losers', [])]
+
+        gainers_summaries = [f"{t}: {news_output['assets'][t]['summary']}" for t in gainers if t in news_output["assets"]]
+        losers_summaries = [f"{t}: {news_output['assets'][t]['summary']}" for t in losers if t in news_output["assets"]]
+
+        prompt = "Resuma, em português, o clima do mercado B3 hoje em 3 frases curtas e diretas.\n"
+        if gainers_summaries:
+            prompt += f"Ações que SUBIRAM hoje:\n" + "\n".join(gainers_summaries) + "\n"
+        if losers_summaries:
+            prompt += f"Ações que CAÍRAM hoje:\n" + "\n".join(losers_summaries) + "\n"
+
+        news_output["market_summary"] = g4f.ChatCompletion.create(
+            model="openai",
+            provider=g4f.Provider.PollinationsAI,
+            messages=[{"role": "user", "content": prompt}],
+        )
+    except Exception as e:
+        print(f"Erro no resumo geral IA: {e}")
 
     os.makedirs(DATA_DIR, exist_ok=True)
     with open(OUTPUT_JSON, 'w', encoding='utf-8') as f:
