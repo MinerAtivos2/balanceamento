@@ -1,21 +1,21 @@
-## Resumo de Mercado - 2026-05-22
+## Resumo de Mercado - 2026-05-25
 
 ### 📈 Maiores Altas (Dia)
 
 | Ativo | Nome | Fechamento | Anterior | Variação | DeltaVolume |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| BDLL4.SA | Bardella S.A. Indústrias Mecânicas | R$ 3.79 | R$ 3.15 | **+20.32%** 🚀 | +400.17% ⬆️ |
-| GSHP3.SA | General Shopping e Outlets do Brasil S.A. | R$ 3.29 | R$ 2.90 | **+13.45%** 🚀 | +164.86% ⬆️ |
-| BOBR4.SA | Bombril S.A. | R$ 1.33 | R$ 1.18 | **+12.71%** 🚀 | -1.64% ⬇️ |
-| ESTR4.SA | Manufatura de Brinquedos Estrela S.A. | R$ 3.66 | R$ 3.30 | **+10.91%** 🚀 | +13.18% ⬆️ |
-| LIGT3.SA | Light S.A. | R$ 2.79 | R$ 2.52 | **+10.71%** 🚀 | +226.16% ⬆️ |
+| MILS3.SA | Mills Locação, Serviços e Logística S.A. | R$ 15.05 | R$ 13.10 | **+14.89%** 🚀 | +585.48% ⬆️ |
+| TOKY3.SA | TOKY3.SA | R$ 0.16 | R$ 0.14 | **+14.29%** 🚀 | +70.06% ⬆️ |
+| DASA3.SA | Diagnósticos da América S.A. | R$ 3.48 | R$ 3.05 | **+14.10%** 🚀 | +51.34% ⬆️ |
+| FRIO3.SA | Metalfrio Solutions S.A. | R$ 205.00 | R$ 180.00 | **+13.89%** 🚀 | +500.00% ⬆️ |
+| CRPG3.SA | Tronox Pigmentos do Brasil S.A. | R$ 18.00 | R$ 16.00 | **+12.50%** 🚀 | -20.00% ⬇️ |
 
 ### 📉 Maiores Baixas (Dia)
 
 | Ativo | Nome | Fechamento | Anterior | Variação | DeltaVolume |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| WLMM3.SA | WLM Participações e Comércio de Máquinas e Veículos S.A. | R$ 20.10 | R$ 23.39 | **-14.07%** 📉 | 0.00% — |
-| PLPL3.SA | Plano & Plano Desenvolvimento Imobiliário S.A. | R$ 9.33 | R$ 10.28 | **-9.24%** 📉 | +150.92% ⬆️ |
-| NUTR3.SA | Nutriplant Indústria e Comércio S/A | R$ 2.22 | R$ 2.44 | **-9.02%** 📉 | +65.59% ⬆️ |
-| SEQL3.SA | Sequoia Logística e Transportes S.A. | R$ 0.11 | R$ 0.12 | **-8.33%** 📉 | -89.26% ⬇️ |
-| EPAR3.SA | Embpar Participacoes S.A. | R$ 2.03 | R$ 2.20 | **-7.73%** 📉 | +201.56% ⬆️ |
+| GSHP3.SA | General Shopping e Outlets do Brasil S.A. | R$ 2.90 | R$ 3.29 | **-11.85%** 📉 | +119.61% ⬆️ |
+| TRAD3.SA | TC S.A. | R$ 1.35 | R$ 1.49 | **-9.40%** 📉 | +6.83% ⬆️ |
+| OIBR3.SA | Oi S.A. | R$ 0.13 | R$ 0.14 | **-7.14%** 📉 | +30.26% ⬆️ |
+| CTAX3.SA | Contax Participações S.A. | R$ 0.57 | R$ 0.61 | **-6.56%** 📉 | -88.20% ⬇️ |
+| PRIO3.SA | Prio S.A. | R$ 64.31 | R$ 68.40 | **-5.98%** 📉 | -18.00% ⬇️ |
