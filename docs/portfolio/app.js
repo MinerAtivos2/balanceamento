@@ -9,7 +9,7 @@ class B3App {
     // 2. Extensões > Apps Script. Cole o código do arquivo 'docs/api.gs'.
     // 3. Implantar > App da Web (Quem tem acesso: "Qualquer pessoa").
     // 4. Copie a URL gerada e cole abaixo:
-    this.GAS_URL = "https://script.google.com/macros/s/AKfycbzKplDKt_HeRM704IjhVMTNXjG59Yo4LO4IGLeGfxX6jynfUBn0lbowIikYaqC5aFNc/exec";
+    this.GAS_URL = "https://script.google.com/macros/s/AKfycbxJtX1FkpmSw-y1MB3B3OUBzFTdB-7AhYMJK8kryYm0IogCVHzv3bt3K-t6XYUZrBw/exec";
 
     this.portfolio = { name: 'Meu Portfólio', positions: [] };
     this.user = null; // { username: '...' } if logged in
