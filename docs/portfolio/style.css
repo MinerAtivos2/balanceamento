@@ -263,6 +263,9 @@ body::after {
   gap: 1.25rem;
   margin-bottom: 2rem;
 }
+.stats-grid-main {
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+}
 .stats-grid-3 {
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
 }

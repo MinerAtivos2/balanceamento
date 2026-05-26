@@ -57,6 +57,7 @@ class B3App {
     this.$('btnAnalyze').addEventListener('click', () => this.runAnalysis());
     this.$('btnRunBarsi').addEventListener('click', () => this.runBarsi());
     this.$('btnRunRebalance').addEventListener('click', () => this.runRebalance());
+    this.$('btnRequestExpertAnalysis').addEventListener('click', () => this.requestExpertAnalysis());
     this.$('btnAddBulk').addEventListener('click', () => this.openBulkModal());
 
     // Mobile
@@ -1209,9 +1210,19 @@ class B3App {
       allocationInvested[p.ticker] = (p.totalInvested / (totalInvestedValue || 1) * 100);
     });
 
-    const avgRent = positions.reduce((a, b) => a + (b.rentability_market || 0), 0) / (positions.length || 1);
-    const avgVol = positions.reduce((a, b) => a + (b.volatility || 0), 0) / (positions.length || 1);
+    const weights = positions.map(p => p.total_equity / (totalEquityValue || 1));
+    const portfolioReturn = positions.reduce((acc, p, idx) => acc + (weights[idx] * (p.rentability_market || 0)), 0);
+
+    // Weighted Volatility (Simplification as covariance requires aligned time series)
+    // For the Dashboard summary, we use weighted average of individual volatilities as a proxy
+    // but the Rebalance engine will use the full covariance matrix.
+    const portfolioVol = positions.reduce((acc, p, idx) => acc + (weights[idx] * (p.volatility || 0)), 0);
+
     const portfolioRentReal = totalInvestedValue > 0 ? ((totalEquityValue - totalInvestedValue) / totalInvestedValue * 100) : 0;
+
+    // Sharpe Ratio calculation
+    const riskFree = parseFloat(this.$('riskFreeRate').value) || 10;
+    const sharpe = (portfolioVol > 0) ? (portfolioReturn - riskFree) / portfolioVol : 0;
 
     this.analysis = {
       timestamp: new Date().toISOString(),
@@ -1224,9 +1235,10 @@ class B3App {
         total_invested: totalInvestedValue,
         total_proventos: totalDividendsValue,
         num_positions: positions.length,
-        avg_rentability: avgRent,
+        avg_rentability: portfolioReturn,
         portfolio_rentability_real: portfolioRentReal,
-        portfolio_volatility: avgVol
+        portfolio_volatility: portfolioVol,
+        sharpe_ratio: sharpe
       }
     };
 
@@ -1300,39 +1312,138 @@ class B3App {
       return;
     }
 
-    this.showLoading('Calculando alocação via Volatilidade Inversa...');
+    const strategy = this.$('rebalanceStrategy').value;
+    const maxWeight = parseFloat(this.$('maxAssetWeight').value) || 100;
+    const months = parseInt(this.$('analysisPeriod').value) || 12;
+    const riskFree = parseFloat(this.$('riskFreeRate').value) || 10;
 
-    // Estratégia: Volatilidade Inversa (Inverse Volatility Weighting)
-    // Peso_i = (1 / Vol_i) / Sum(1 / Vol_j)
+    this.showLoading(`Otimizando via ${strategy.toUpperCase()}...`);
 
-    const validAssets = tickers.map(t => this.marketData.assets[t]).filter(a => a && (a.stats.volatility || 0) > 0);
-
-    if (validAssets.length === 0) {
+    // 1. Preparar Retornos e Matriz de Covariância
+    const assetsData = tickers.map(t => this.marketData.assets[t]).filter(a => a && a.history && a.history.closes.length > 20);
+    if (assetsData.length < 2) {
       this.hideLoading();
-      this.toast('Não há dados de volatilidade suficientes para os ativos selecionados.', 'warning');
+      this.toast('Dados históricos insuficientes para os ativos.', 'warning');
       return;
     }
 
-    const sumInverseVol = validAssets.reduce((acc, a) => acc + (1 / a.stats.volatility), 0);
+    const cutoffDate = new Date();
+    cutoffDate.setMonth(cutoffDate.getMonth() - months);
+    const cutoffStr = cutoffDate.toISOString().split('T')[0];
 
-    const weights = {};
-    validAssets.forEach(a => {
-      weights[a.ticker] = ((1 / a.stats.volatility) / sumInverseVol) * 100;
+    const returnsMap = {};
+    const tickersList = [];
+
+    assetsData.forEach(a => {
+      const idx = a.history.dates.findIndex(d => d >= cutoffStr);
+      const closes = idx === -1 ? a.history.closes : a.history.closes.slice(idx);
+
+      const dailyReturns = [];
+      for (let i = 1; i < closes.length; i++) {
+        dailyReturns.push((closes[i] - closes[i-1]) / closes[i-1]);
+      }
+
+      const meanDaily = dailyReturns.reduce((a, b) => a + b, 0) / (dailyReturns.length || 1);
+      const annualReturn = meanDaily * 252 * 100;
+      const annualVol = Math.sqrt(dailyReturns.reduce((a, b) => a + Math.pow(b - meanDaily, 2), 0) / (dailyReturns.length || 1)) * Math.sqrt(252) * 100;
+
+      returnsMap[a.ticker] = {
+        ticker: a.ticker,
+        annualReturn,
+        annualVol,
+        dailyReturns,
+        meanDaily
+      };
+      tickersList.push(a.ticker);
     });
 
+    // Calcular Matriz de Covariância Anualizada
+    const nAssets = tickersList.length;
+    const minLen = Math.min(...tickersList.map(t => returnsMap[t].dailyReturns.length));
+    const covMatrix = Array.from({ length: nAssets }, () => new Array(nAssets).fill(0));
+
+    for (let i = 0; i < nAssets; i++) {
+      for (let j = 0; j < nAssets; j++) {
+        const retI = returnsMap[tickersList[i]].dailyReturns.slice(-minLen);
+        const retJ = returnsMap[tickersList[j]].dailyReturns.slice(-minLen);
+        const meanI = returnsMap[tickersList[i]].meanDaily;
+        const meanJ = returnsMap[tickersList[j]].meanDaily;
+
+        let cov = 0;
+        for (let k = 0; k < minLen; k++) {
+          cov += (retI[k] - meanI) * (retJ[k] - meanJ);
+        }
+        covMatrix[i][j] = (cov / minLen) * 252 * 10000; // Anualizado e em escala percentual (100*100)
+      }
+    }
+
+    // 2. Otimização (Monte Carlo Robusto)
+    let weights = {};
+    if (strategy === 'volatility') {
+      const sumInvVol = assetsData.reduce((acc, a) => acc + (1 / (returnsMap[a.ticker].annualVol || 1)), 0);
+      assetsData.forEach(a => {
+        weights[a.ticker] = ((1 / (returnsMap[a.ticker].annualVol || 1)) / sumInvVol) * 100;
+      });
+    } else {
+      let bestMetric = -Infinity;
+      let bestWeights = {};
+      const numSimulations = 3000;
+
+      for (let i = 0; i < numSimulations; i++) {
+        let w = assetsData.map(() => Math.random());
+        const sum = w.reduce((a, b) => a + b, 0);
+        w = w.map(val => (val / sum) * 100);
+
+        // Constraint enforcement logic
+        if (maxWeight < 100) {
+          for (let iter = 0; iter < 5; iter++) {
+            let excess = 0;
+            let sumUnder = 0;
+            w = w.map(val => {
+              if (val > maxWeight) { excess += (val - maxWeight); return maxWeight; }
+              sumUnder += val;
+              return val;
+            });
+            if (excess <= 0.0001) break;
+            w = w.map(val => val < maxWeight ? val + (excess * (val / (sumUnder || 1))) : val);
+          }
+        }
+
+        let pRet = 0, variance = 0;
+        for (let j = 0; j < nAssets; j++) {
+          pRet += (w[j] / 100) * returnsMap[tickersList[j]].annualReturn;
+          for (let k = 0; k < nAssets; k++) {
+            variance += (w[j] / 100) * (w[k] / 100) * covMatrix[j][k];
+          }
+        }
+        const pVol = Math.sqrt(Math.max(0, variance));
+
+        let metric = 0;
+        if (strategy === 'sharpe') metric = pVol > 0 ? (pRet - riskFree) / pVol : -Infinity;
+        else if (strategy === 'return') metric = pRet;
+        else if (strategy === 'risk') metric = -pVol;
+
+        if (metric > bestMetric) {
+          bestMetric = metric;
+          tickersList.forEach((t, idx) => bestWeights[t] = w[idx]);
+        }
+      }
+      weights = bestWeights;
+    }
+
+    // 3. Sugestões de Rebalanceamento
     const portfolioMap = {};
     this.portfolio.positions.forEach(p => { portfolioMap[p.ticker] = (portfolioMap[p.ticker] || 0) + p.quantity; });
-
-    const totalValue = validAssets.reduce((acc, a) => acc + (portfolioMap[a.ticker] || 0) * a.last_price, 0);
+    const totalValue = assetsData.reduce((acc, a) => acc + (portfolioMap[a.ticker] || 0) * a.last_price, 0);
 
     const suggestions = [];
-    validAssets.forEach(a => {
+    assetsData.forEach(a => {
       const price = a.last_price;
       const curQty = portfolioMap[a.ticker] || 0;
       const curVal = curQty * price;
-      const curPct = (curVal / totalValue * 100);
+      const curPct = (totalValue > 0) ? (curVal / totalValue * 100) : 0;
       const tgtPct = weights[a.ticker];
-      const tgtVal = (tgtPct / 100) * totalValue;
+      const tgtVal = (tgtPct / 100) * (totalValue || 10000); // Se portfólio vazio, assume aporte de 10k
       const tgtQty = Math.round(tgtVal / price);
       const diff = tgtQty - curQty;
 
@@ -1350,12 +1461,23 @@ class B3App {
       }
     });
 
+    let finalRet = 0, finalVar = 0;
+    for (let j = 0; j < nAssets; j++) {
+      const tJ = tickersList[j];
+      finalRet += (weights[tJ] / 100) * returnsMap[tJ].annualReturn;
+      for (let k = 0; k < nAssets; k++) {
+        const tK = tickersList[k];
+        finalVar += (weights[tJ] / 100) * (weights[tK] / 100) * covMatrix[j][k];
+      }
+    }
+    const finalVol = Math.sqrt(Math.max(0, finalVar));
+
     this.rebalanceResults = {
       optimal_allocation: {
         weights,
-        expected_return: this.analysis?.summary.avg_rentability || 0,
-        volatility: this.analysis?.summary.portfolio_volatility || 0,
-        sharpe_ratio: (this.analysis?.summary.avg_rentability / this.analysis?.summary.portfolio_volatility) || 0
+        expected_return: finalRet,
+        volatility: finalVol,
+        sharpe_ratio: finalVol > 0 ? (finalRet - riskFree) / finalVol : 0
       },
       rebalancing_suggestions: suggestions
     };
@@ -1364,7 +1486,47 @@ class B3App {
       this.renderRebalance();
       this.hideLoading();
       this.toast('Otimização concluída!', 'success');
-    }, 500);
+    }, 600);
+  }
+
+  async requestExpertAnalysis() {
+    if (!this.user) {
+      this.toast('Faça login para solicitar análise especializada.', 'warning');
+      this.showPage('members');
+      return;
+    }
+
+    const params = {
+      strategy: this.$('rebalanceStrategy').value,
+      max_weight: this.$('maxAssetWeight').value,
+      period_months: this.$('analysisPeriod').value,
+      risk_free: this.$('riskFreeRate').value
+    };
+
+    this.showLoading('Enviando solicitação...');
+    try {
+      const res = await fetch(this.GAS_URL, {
+        method: 'POST',
+        mode: 'cors',
+        body: JSON.stringify({
+          action: 'request_rebalance',
+          username: this.user.username,
+          session_token: this.user.session_token,
+          params: params,
+          portfolio: this.portfolio
+        })
+      });
+      const data = await res.json();
+      this.hideLoading();
+      if (data.success) {
+        this.toast('Solicitação enviada com sucesso! O administrador processará e enviará por e-mail.', 'success');
+      } else {
+        this.toast(data.error || 'Erro ao enviar solicitação.', 'error');
+      }
+    } catch (err) {
+      this.hideLoading();
+      this.toast('Falha na comunicação com o servidor.', 'error');
+    }
   }
 
   /* ------------------------------------------------------------------
@@ -1377,21 +1539,23 @@ class B3App {
       this.$('statTotalProventos').textContent = 'R$ 0,00';
       this.$('statRentabilityReal').textContent = '0%';
       this.$('statPositions').textContent = '0';
-      this.$('statVolatility').textContent = '—';
+      this.$('statVolatility').textContent = '0%';
+      this.$('statSharpe').textContent = '0.00';
       return;
     }
 
     const s = this.analysis.summary;
-    this.$('statTotalValue').textContent = this.formatCurrency(s.total_value);
-    this.$('statTotalInvested').textContent = this.formatCurrency(s.total_invested);
-    this.$('statTotalProventos').textContent = this.formatCurrency(s.total_proventos);
-    this.$('statPositions').textContent = s.num_positions;
+    this.$('statTotalValue').textContent = this.formatCurrency(s.total_value || 0);
+    this.$('statTotalInvested').textContent = this.formatCurrency(s.total_invested || 0);
+    this.$('statTotalProventos').textContent = this.formatCurrency(s.total_proventos || 0);
+    this.$('statPositions').textContent = s.num_positions || 0;
 
     const rentRealEl = this.$('statRentabilityReal');
     rentRealEl.textContent = (s.portfolio_rentability_real > 0 ? '+' : '') + s.portfolio_rentability_real.toFixed(2) + '%';
     rentRealEl.className = 'stat-value ' + (s.portfolio_rentability_real >= 0 ? 'positive' : 'negative');
 
     this.$('statVolatility').textContent = s.portfolio_volatility.toFixed(2) + '%';
+    this.$('statSharpe').textContent = (s.sharpe_ratio || 0).toFixed(2);
 
     this.renderAllocationChart();
     this.renderRentabilityChart();

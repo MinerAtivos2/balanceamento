@@ -58,6 +58,8 @@ function processRequest(e) {
     return handleStatus(data.username, data.session_token);
   } else if (action === "get_all_tickers") {
     return handleGetAllTickers();
+  } else if (action === "request_rebalance") {
+    return handleRequestRebalance(data.username, data.session_token, data.params, data.portfolio);
   }
 
   return { error: "Ação não reconhecida: " + action };
@@ -170,6 +172,38 @@ function handleGetAllTickers() {
     } catch (e) {}
   }
   return { success: true, tickers: Array.from(tickers) };
+}
+
+function handleRequestRebalance(username, token, params, portfolio) {
+  const user = findUser(username);
+  if (!user) return { error: "Não autorizado" };
+
+  const sheet = getSheet("RebalanceRequests");
+  if (!sheet) {
+    // Tenta criar a aba se não existir
+    try {
+      const ss = SpreadsheetApp.openById(SPREADSHEET_ID);
+      ss.insertSheet("RebalanceRequests");
+      const newSheet = ss.getSheetByName("RebalanceRequests");
+      newSheet.appendRow(["Timestamp", "User ID", "Username", "Strategy", "Max Weight", "Period", "Risk Free", "Portfolio JSON"]);
+    } catch (e) {
+      return { error: "Erro ao acessar base de dados de solicitações." };
+    }
+  }
+
+  const finalSheet = getSheet("RebalanceRequests");
+  finalSheet.appendRow([
+    new Date().toISOString(),
+    user.id,
+    username,
+    params.strategy,
+    params.max_weight,
+    params.period_months,
+    params.risk_free,
+    JSON.stringify(portfolio)
+  ]);
+
+  return { success: true };
 }
 
 function handleUpdatePassword(username, oldPassword, newPassword) {
