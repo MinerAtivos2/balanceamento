@@ -887,7 +887,7 @@ class B3App {
     let summaryText = data.summary;
     if (data.is_outdated) {
         //summaryText = "[AVISO: Estas notícias não necessariamente retratam o desempenho do dia, pois não houve fontes disponíveis para a data atual.]\n\n" + summaryText;
-         summaryText = <p class="news-outdated-label"> [AVISO: Estas notícias não necessariamente retratam o desempenho do dia, pois não houve fontes disponíveis para a data atual.]</p> + summaryText;
+         summaryText = `<p class="news-outdated-label"> [AVISO: Estas notícias não necessariamente retratam o desempenho do dia, pois não houve fontes disponíveis para a data atual.]</p>` + summaryText;
     }
     this.$('newsModalText').textContent = summaryText;
 
