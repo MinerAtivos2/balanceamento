@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TradingView — Monitor de Ações</title>
+    <title>Monitor de Ações — TradingView</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
@@ -15,18 +15,16 @@
             align-items: center;
             padding: 20px;
         }
-        h1 { color: #00d4aa; margin-bottom: 15px; font-size: 1.6rem; }
+        h1 { color: #00d4aa; margin-bottom: 15px; font-size: 1.5rem; }
+
         .controls {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 15px;
-            flex-wrap: wrap;
-            justify-content: center;
+            display: flex; gap: 10px; margin-bottom: 15px;
+            flex-wrap: wrap; justify-content: center;
         }
-        .controls button {
-            padding: 8px 16px;
+        .controls select, .controls button {
+            padding: 8px 14px;
             border: 1px solid #00d4aa;
-            background: transparent;
+            background: rgba(255,255,255,0.08);
             color: #00d4aa;
             border-radius: 6px;
             cursor: pointer;
@@ -34,31 +32,22 @@
             transition: all 0.3s;
         }
         .controls button:hover, .controls button.active {
-            background: #00d4aa;
-            color: #0f0c29;
+            background: #00d4aa; color: #0f0c29;
         }
-        .controls select, .controls input {
-            padding: 8px 12px;
-            border: 1px solid #00d4aa;
-            background: rgba(255,255,255,0.08);
-            color: #fff;
-            border-radius: 6px;
-            font-size: 0.9rem;
-        }
-        .controls input { width: 220px; }
-        .controls select { width: 180px; }
-        #tv_chart_container {
+
+        .chart-wrapper {
             width: 100%;
             max-width: 1400px;
-            height: 650px;
+            height: 660px;
             border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.4);
             background: #131722;
         }
+
         .footer {
-            margin-top: 15px;
-            color: rgba(255,255,255,0.4);
+            margin-top: 12px;
+            color: rgba(255,255,255,0.3);
             font-size: 0.75rem;
         }
         .footer a { color: #00d4aa; text-decoration: none; }
@@ -68,150 +57,142 @@
 
     <h1>📊 Monitor de Ações — TradingView</h1>
 
-    <!-- Controles -->
+    <!-- Seletor de ação -->
     <div class="controls">
-        <input type="text" id="symbolInput" placeholder="Ex: BMFBOVESPA:PETR4" value="BMFBOVESPA:PETR4">
-        
-        <select id="presetSelect" onchange="loadPreset()">
-            <option value="">⭐ Ações Rápidas</option>
-            <option value="BMFBOVESPA:PETR4">Petrobras PN</option>
-            <option value="BMFBOVESPA:VALE3">Vale ON</option>
-            <option value="BMFBOVESPA:ITUB4">Itaú PN</option>
-            <option value="BMFBOVESPA:BBAS3">Banco do Brasil</option>
-            <option value="BMFBOVESPA:BBDC4">Bradesco PN</option>
-            <option value="BMFBOVESPA:BRSR6">Banrisul PN</option>
-            <option value="BMFBOVESPA:WEGE3">WEG ON</option>
-            <option value="NASDAQ:AAPL">Apple</option>
-            <option value="NASDAQ:MSFT">Microsoft</option>
-            <option value="NASDAQ:NVDA">NVIDIA</option>
-            <option value="BINANCE:BTCUSDT">Bitcoin</option>
+        <select id="stockSelect">
+            <optgroup label="🇧🇷 Brasil (B3)">
+                <option value="BMFBOVESPA:PETR4" selected>Petrobras PN (PETR4)</option>
+                <option value="BMFBOVESPA:VALE3">Vale ON (VALE3)</option>
+                <option value="BMFBOVESPA:ITUB4">Itaú PN (ITUB4)</option>
+                <option value="BMFBOVESPA:BBAS3">Banco do Brasil (BBAS3)</option>
+                <option value="BMFBOVESPA:BBDC4">Bradesco PN (BBDC4)</option>
+                <option value="BMFBOVESPA:BRSR6">Banrisul PN (BRSR6)</option>
+                <option value="BMFBOVESPA:WEGE3">WEG ON (WEGE3)</option>
+                <option value="BMFBOVESPA:MGLU3">Magazine Luiza (MGLU3)</option>
+                <option value="BMFBOVESPA:ABEV3">Ambev (ABEV3)</option>
+            </optgroup>
+            <optgroup label="🇺🇸 EUA">
+                <option value="NASDAQ:AAPL">Apple (AAPL)</option>
+                <option value="NASDAQ:MSFT">Microsoft (MSFT)</option>
+                <option value="NASDAQ:NVDA">NVIDIA (NVDA)</option>
+                <option value="NASDAQ:GOOGL">Google (GOOGL)</option>
+                <option value="NASDAQ:AMZN">Amazon (AMZN)</option>
+                <option value="NASDAQ:META">Meta (META)</option>
+                <option value="NASDAQ:TSLA">Tesla (TSLA)</option>
+            </optgroup>
+            <optgroup label="🪙 Cripto">
+                <option value="BINANCE:BTCUSDT">Bitcoin (BTC)</option>
+                <option value="BINANCE:ETHUSDT">Ethereum (ETH)</option>
+                <option value="BINANCE:SOLUSDT">Solana (SOL)</option>
+            </optgroup>
+            <optgroup label="📊 Índices">
+                <option value="BMFBOVESPA:IBOV">Ibovespa</option>
+                <option value="SP:SPX">S&P 500</option>
+                <option value="NASDAQ:NDX">Nasdaq 100</option>
+            </optgroup>
         </select>
 
-        <button onclick="changeSymbol()">🔍 Carregar</button>
-        <button onclick="setInterval_('1')">1m</button>
-        <button onclick="setInterval_('5')">5m</button>
-        <button onclick="setInterval_('15')">15m</button>
-        <button onclick="setInterval_('60')">1h</button>
-        <button onclick="setInterval_('D')" class="active" id="btnD">Diário</button>
-        <button onclick="setInterval_('W')">Semanal</button>
-        <button onclick="setInterval_('M')">Mensal</button>
+        <button onclick="loadChart()">🔍 Carregar</button>
+        <button onclick="loadChart('1')" >1m</button>
+        <button onclick="loadChart('5')" >5m</button>
+        <button onclick="loadChart('15')">15m</button>
+        <button onclick="loadChart('60')">1h</button>
+        <button onclick="loadChart('D')"  class="active" id="btnD">Diário</button>
+        <button onclick="loadChart('W')" >Semanal</button>
+        <button onclick="loadChart('M')" >Mensal</button>
     </div>
 
-    <!-- Gráfico -->
-    <div id="tv_chart_container"></div>
+    <!-- Container do gráfico -->
+    <div class="chart-wrapper" id="chartWrapper"></div>
 
     <div class="footer">
         Dados fornecidos por <a href="https://www.tradingview.com/" target="_blank">TradingView</a>
     </div>
 
-    <!-- Charting Library CDN -->
-    <script src="https://charting-library.tradingview-widget.com/charting_library/charting_library.standalone.js"></script>
-
     <script>
         // ============================================
-        // CONFIGURAÇÃO — ALTERE AQUI
+        // CONFIGURAÇÃO
         // ============================================
-        const CONFIG = {
-            symbol: 'BMFBOVESPA:PETR4',
-            interval: 'D',
-            theme: 'dark',
-            locale: 'br',
-            timezone: 'America/Sao_Paulo',
-            style: 1,
-        };
+        let currentInterval = 'D';
 
-        let tvWidget = null;
+        function loadChart(interval) {
+            if (interval) currentInterval = interval;
 
-        // ============================================
-        // INICIALIZAÇÃO DO WIDGET
-        // ============================================
-        function initWidget(symbol, interval) {
-            if (tvWidget) {
-                try { tvWidget.remove(); } catch(e) {}
-            }
+            const symbol = document.getElementById('stockSelect').value;
+            const wrapper = document.getElementById('chartWrapper');
 
-            tvWidget = new TradingView.widget({
-                symbol: symbol || CONFIG.symbol,
-                interval: interval || CONFIG.interval,
-                theme: CONFIG.theme,
-                style: CONFIG.style,
-                locale: CONFIG.locale,
-                timezone: CONFIG.timezone,
-                container: 'tv_chart_container',
-                library_path: 'https://charting-library.tradingview-widget.com/charting_library/',
-                fullscreen: false,
-                autosize: true,
+            // Limpa o container
+            wrapper.innerHTML = '';
 
-                enabled_features: [
-                    'study_templates',
-                    'use_localstorage_for_settings',
-                    'save_chart_properties_to_local_storage',
-                    'header_compare',
-                    'header_symbol_search',
-                    'header_chart_type',
-                    'header_indicators',
-                    'header_undo_redo',
-                    'header_screenshot',
-                    'header_fullscreen_button',
+            // Cria o container do widget
+            const container = document.createElement('div');
+            container.className = 'tradingview-widget-container';
+            container.style.height = '100%';
+            container.style.width = '100%';
+
+            const widgetDiv = document.createElement('div');
+            widgetDiv.className = 'tradingview-widget-container__widget';
+            widgetDiv.style.height = 'calc(100% - 32px)';
+            widgetDiv.style.width = '100%';
+            container.appendChild(widgetDiv);
+
+            // Copyright (obrigatório pelo TradingView)
+            const copyright = document.createElement('div');
+            copyright.className = 'tradingview-widget-copyright';
+            copyright.innerHTML = '<a href="https://www.tradingview.com/" rel="noopener nofollow" // Script do widget
+            const script = document.createElement('script');
+            script.type = 'text/javascript';
+            script.src = 'https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js';
+            script.async = true;
+            script.innerHTML = JSON.stringify({
+                "symbol": symbol,
+                "interval": currentInterval,
+                "timezone": "America/Sao_Paulo",
+                "theme": "dark",
+                "style": "1",
+                "locale": "br",
+                "allow_symbol_change": true,
+                "calendar": false,
+                "hide_side_toolbar": false,
+                "hide_top_toolbar": false,
+                "hide_legend": false,
+                "hide_volume": false,
+                "save_image": true,
+                "backgroundColor": "#131722",
+                "gridColor": "rgba(255, 255, 255, 0.06)",
+                "withdateranges": true,
+                "details": true,
+                "hotlist": true,
+                "studies": [
+                    "MASimple@tv-basicstudies",
+                    "RSI@tv-basicstudies",
+                    "MACD@tv-basicstudies"
                 ],
-                disabled_features: ['popup_hints'],
-
-                overrides: {
-                    'mainSeriesProperties.candleStyle.upColor': '#00d4aa',
-                    'mainSeriesProperties.candleStyle.downColor': '#ff4757',
-                    'mainSeriesProperties.candleStyle.borderUpColor': '#00d4aa',
-                    'mainSeriesProperties.candleStyle.borderDownColor': '#ff4757',
-                    'mainSeriesProperties.candleStyle.wickUpColor': '#00d4aa',
-                    'mainSeriesProperties.candleStyle.wickDownColor': '#ff4757',
-                    'paneProperties.background': '#131722',
-                    'paneProperties.backgroundType': 'solid',
-                },
+                "support_host": "https://www.tradingview.com",
+                "autosize": true
             });
 
-            tvWidget.onChartReady(function() {
-                const chart = tvWidget.activeChart();
-                chart.createStudy('Moving Average', false, false, { length: 20 });
-                chart.createStudy('Moving Average', false, false, { length: 50 });
-                chart.createStudy('Volume', true, false);
-                console.log('✅ Gráfico pronto:', symbol || CONFIG.symbol);
-            });
-        }
+            container.appendChild(script);
+            wrapper.appendChild(container);
 
-        // ============================================
-        // CONTROLES
-        // ============================================
-        function changeSymbol() {
-            const input = document.getElementById('symbolInput').value.trim().toUpperCase();
-            if (input) {
-                CONFIG.symbol = input;
-                initWidget(input, CONFIG.interval);
-            }
-        }
-
-        function loadPreset() {
-            const sel = document.getElementById('presetSelect').value;
-            if (sel) {
-                document.getElementById('symbolInput').value = sel;
-                CONFIG.symbol = sel;
-                initWidget(sel, CONFIG.interval);
-            }
-        }
-
-        function setInterval_(newInterval) {
-            CONFIG.interval = newInterval;
-            initWidget(CONFIG.symbol, newInterval);
+            // Atualizar botão ativo (intervalos)
             document.querySelectorAll('.controls button').forEach(b => b.classList.remove('active'));
-            if (event && event.target) event.target.classList.add('active');
+            if (event && event.target && event.target.tagName === 'BUTTON') {
+                event.target.classList.add('active');
+            }
         }
 
-        document.getElementById('symbolInput').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') changeSymbol();
+        // ============================================
+        // Recarregar ao trocar ação no select
+        // ============================================
+        document.getElementById('stockSelect').addEventListener('change', function() {
+            loadChart();
         });
 
         // ============================================
         // INICIAR
         // ============================================
-        initWidget();
+        loadChart();
     </script>
 
 </body>
