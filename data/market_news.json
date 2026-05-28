@@ -1,90 +1,90 @@
 {
-  "last_update": "2026-05-27T23:23:28.916838",
-  "market_summary": "A maioria das ações listadas não apontou notícias relevantes, mantendo a posição de mercado em calma.  \nEntre os poucos updates, Light e Iguatemi registraram ganhos operacionais e recordes de vendas, gerando um ânimo ligeiramente positivo.  \nCSAN apresentou resultados ligeiramente acima do consenso, enquanto o resto permanece sem mudanças, reforçando um cenário neutro mas com sinal de possível margem de crescimento.",
+  "last_update": "2026-05-28T23:27:46.099130",
+  "market_summary": "A maioria das ações listadas no B3 não teve notícias de impacto hoje, refletindo um cenário relativamente estático.  \nEntre as novidades, DASA3.SA e RAIZ4.SA registraram sinais de crescimento e fortalecimento de caixa (crescimento de receita no Q1 de 2026 e aporte de US$ 765 mi), gerando otimismo, enquanto a entrada de PIMCO em OI acentua a incerteza política e gera sentimento negativo para OIBR3.SA.  \nCom poucos anúncios decisivos, a volatilidade permanece baixa, e a maioria dos papéis continua neutra, salvo destacando os resultados positivos de DASA e RAIZ, mas com cautela em relação ao ambiente regulatório e político.",
   "assets": {
-    "ONCO3.SA": {
+    "BSLI3.SA": {
       "summary": "Sem notícias recentes de impacto encontradas nos principais canais financeiros.",
-      "updated_at": "2026-05-27T23:23:29.129066"
+      "updated_at": "2026-05-28T23:27:46.479384"
     },
-    "FICT3.SA": {
+    "BIED3.SA": {
       "summary": "Sem notícias recentes de impacto encontradas nos principais canais financeiros.",
-      "updated_at": "2026-05-27T23:23:29.741086"
+      "updated_at": "2026-05-28T23:27:47.091709"
     },
-    "BSLI4.SA": {
+    "DMVF3.SA": {
       "summary": "Sem notícias recentes de impacto encontradas nos principais canais financeiros.",
-      "updated_at": "2026-05-27T23:23:30.316190"
-    },
-    "LIGT3.SA": {
-      "summary": "Light SA’s Q1 2026 earnings call focused on maneuvering market headwinds through strategic adjustments, yielding a neutral sentiment.  \nIn its Q4 2025 earnings call, Light SA reported strong operational gains amid continued market challenges, reflecting a positive outlook.",
-      "updated_at": "2026-05-27T23:23:31.974918"
-    },
-    "BMEB4.SA": {
-      "summary": "Sem notícias recentes de impacto encontradas nos principais canais financeiros.",
-      "updated_at": "2026-05-27T23:23:32.559987"
+      "updated_at": "2026-05-28T23:27:47.712712"
     },
     "PMAM3.SA": {
       "summary": "Sem notícias recentes de impacto encontradas nos principais canais financeiros.",
-      "updated_at": "2026-05-27T23:23:33.137639"
+      "updated_at": "2026-05-28T23:27:48.325257"
     },
-    "NORD3.SA": {
+    "DASA3.SA": {
+      "summary": "Diagnósticos da América SA (BSP:DASA3) reportou crescimento robusto da receita no 1.º trimestre de 2026, impulsionado por maior volume de operações e gestão eficaz de custos.  \nSentimento: positivo.",
+      "updated_at": "2026-05-28T23:27:50.595592"
+    },
+    "ONCO3.SA": {
       "summary": "Sem notícias recentes de impacto encontradas nos principais canais financeiros.",
-      "updated_at": "2026-05-27T23:23:33.755368"
+      "updated_at": "2026-05-28T23:27:51.208072"
     },
-    "CSAN3.SA": {
-      "summary": "CSAN’s Q‑1 earnings call highlighted a stronger-than‑expected revenue rise and earnings that nudged above analyst consensus, hinting at an upside potential for the quarter – sentiment: slightly positive.  \nGoldman Sachs’ decision to keep a Hold rating on CSAN signals a neutral view on the stock’s valuation, keeping the overall tone steady – sentiment: neutral.",
-      "updated_at": "2026-05-27T23:23:40.752766"
+    "RAIZ4.SA": {
+      "summary": "Cosan’s joint venture with Raízen está discutindo um aporte de US$ 765 milhões, o que reforça o caixa e a capacidade de expansão – sentimento: positivo.  \nA elevação do preço alvo da Citi para Shell PLC, embora reflita otimismo no setor energético, não traz impacto direto sobre a Raízen e permanece neutra em relação ao seu desempenho – sentimento: neutro.",
+      "updated_at": "2026-05-28T23:27:52.692651"
     },
-    "IGTI3.SA": {
-      "summary": "**Dior irregragra boutique no Iguatemi São Paulo até 2027**  \nA empresa Dior planeja lançar uma boutique dentro do Shopping Iguatemi até o fim de 2027, ampliando a presença de marcas de luxo no centro de São Paulo. **Sentimento: positivo** – reforça a imagem de sofisticação do shopping e pode elevar o tráfego de consumidores premium.  \n\n**Resultados do quarto trimestre de 2025 do Iguatemi SA (B3:IGTI3)**  \nOs destaques da chamada de resultados destacaram vendas recordes e crescimento estratégico, impulsionando a avaliação de desempenho da companhia. **Sentimento: positivo** – indica tendência de expansão e robustez financeira.",
-      "updated_at": "2026-05-27T23:24:08.300649"
-    },
-    "CEDO4.SA": {
+    "RPMG3.SA": {
       "summary": "Sem notícias recentes de impacto encontradas nos principais canais financeiros.",
-      "updated_at": "2026-05-27T23:24:08.907901"
+      "updated_at": "2026-05-28T23:27:53.304195"
     },
-    "ITUB4.SA": {
-      "summary": "O Itau Unibanco reportou no Q1 um crescimento mais alto que expectativas, com aumento de receitas e margens sólidas, sinalizando performance operacional positiva.  \nA absorção da filial de cartão visa consolidar operações e melhorar sinergias operacionais, mantendo a estabilidade corporativa, o que pode ser classificado como sentiment neutro.",
-      "updated_at": "2026-05-27T23:24:10.008590"
+    "OIBR3.SA": {
+      "summary": "PIMCO confirma investimento em OI, reforçando a expectativa de reestruturação financeira, mas a entrada em um cenário político mais turbulento aumenta a incerteza quanto ao prazo e ao sucesso do processo.  \nSentimento: negativo.",
+      "updated_at": "2026-05-28T23:27:54.532954"
     },
-    "BBAS3.SA": {
-      "summary": "Banco do Brasil (BBAS3) registrou forte lucro líquido no primeiro trimestre de 2026, respaldado por ganhos crescentes em crédito e operacionais, reforçando a perspectiva de rentabilidade sólida (sentimento: positivo).  \nA rede brasileira de pagamentos Elo anunciou a escolha de bancos parceiros para um potencial IPO nos EUA, sinalizando expansão e abertura de capital, o que aumenta a confiança dos investidores na atuação do banco no mercado global (sentimento: positivo).",
-      "updated_at": "2026-05-27T23:24:11.024847"
-    },
-    "WEGE3.SA": {
-      "summary": "- As análises “How The WEG (BOVESPA:WEGE3) Investment Story Is Resetting After JPMorgan’s Target Cut” e “How The WEG (BOVESPA:WEGE3) Investment Story Is Shifting After JPMorgan’s Target Cut” revelam que a redução do preço objetivo pela JPMorgan envolveu uma reavaliação mais cautelosa do desempenho da empresa, apontando potenciais riscos e um panorama de crescimento mais modesto.  \n- Sentimento: neutro, já que os comentários não evidenciam ganho ou perda de confiança, mas apenas uma redefinição dos parâmetros e expectativas.",
-      "updated_at": "2026-05-27T23:24:11.988757"
-    },
-    "ABEV3.SA": {
-      "summary": "Ambev (ABEV3.SA) não é mencionado diretamente nas notícias apresentadas, que abordam tendências de bebidas premium e um potencial extra‑valor de dividendos em empresas sub‑US$5, sem impacto comprovado na companhia.  Sentimento geral: neutro.",
-      "updated_at": "2026-05-27T23:24:39.405208"
-    },
-    "MGLU3.SA": {
-      "summary": "Magazine Luiza SA registrou expansão sólida das lojas físicas no 1.º trimestre de 2026, reforçando a presença no varejo tradicional apesar das volatilidades do mercado. Sentimento geral: positivo.",
-      "updated_at": "2026-05-27T23:24:40.410501"
+    "FESA3.SA": {
+      "summary": "Sem notícias recentes de impacto encontradas nos principais canais financeiros.",
+      "updated_at": "2026-05-28T23:27:55.155632"
     },
     "VALE3.SA": {
       "summary": "Vale’s joint bid with I‑Squared to acquire a $5 billion iron‑ore port in Brazil signals strong growth momentum, bolstering investor confidence – **positive**. A surge in analyst attention and “searches” for VALE following clarified disclosures suggests the market’s curiosity is escalating, but the evidence to date points to a **neutral** stance.",
-      "updated_at": "2026-05-27T23:24:41.429974"
+      "updated_at": "2026-05-28T23:27:56.472392"
+    },
+    "BBAS3.SA": {
+      "summary": "Resumo: Brazil's government, federal district agree on BRB loan deal. Banco do Brasil SA BB Brasil (BDORY) Q1 2026 Earnings Call Highlights: Strong Net Income Amid .... ...",
+      "updated_at": "2026-05-28T23:27:58.568062"
+    },
+    "ITUB4.SA": {
+      "summary": "**BRB – acordo de financiamento**  \n1. O governo federal e o Distrito Federal concordaram em fechar um contrato de financiamento com o Banco Regional do Brasil (BRB), planejando ampliar a liquidez do banco. 2. O acordo é visto como um impulso para a capacidade de crédito do BRB, indicando posições favoráveis para o mercado.  \n**Sentimento:** positivo.\n\n**Itau Unibanco – Destaques do Call de Lucros Q1**  \n1. O Ibovespa de Itau Unibanco registrou lucro líquido acima das expectativas, com margem de lucro superior ao consenso, mas com diminuição de receita de crédito e de comissões. 2. Os analistas destacam que, apesar da desaceleração em certas linhas de crédito, a performance geral do trimestre permanece saudável.  \n**Sentimento:** positivo.",
+      "updated_at": "2026-05-28T23:28:11.050653"
     },
     "BBDC4.SA": {
-      "summary": "Elo’s choice of Brazilian banks for a potential U.S. IPO reinforces Bradesco’s payment‑network position and signals possible margin expansion—sentimento: positivo. Shifts in Bradesco’s valuation narrative around the R$22.46 target reveal a more cautious outlook tied to modest growth expectations, dampening investor enthusiasm—sentimento: negativo.",
-      "updated_at": "2026-05-27T23:25:12.335345"
+      "summary": "Concordância do governo brasileiro e do Distrito Federal no acordo de crédito com o BBDC4 reforça a carteira de empréstimos do banco e sinaliza suporte a setores estratégicos – sentimento: positivo.  \n\nA seleção de bancos pela rede de pagamentos Elo para um potencial IPO nos EUA abre possibilidade de novos canais de parceria, embora a reação imediata do mercado ainda não seja definida – sentimento: neutro.",
+      "updated_at": "2026-05-28T23:28:46.386792"
     },
     "PETR4.SA": {
-      "summary": "Baker Hughes firma contrato ampliado no Banco de Santos, reforçando a posição upstream da PETR4 e projetando um aumento adicional de fluxo de caixa (Sentimento: Positivo).  \nPetrobras superou seus pares das commodities de petróleo e energia neste ano, o que eleva sua avaliação relativa ao setor (Sentimento: Positivo).",
-      "updated_at": "2026-05-27T23:25:41.723277"
+      "summary": "Constellation Oil Services Holding SA revelou que o segundo trimestre de 2026 dobraria seus principais indicadores, indicando maior demanda por serviços offshore e esperada pressão de compra nas barras bidirecionais de Petrobras; **Sentimento: positivo**.  \nPetrobras anunciou a expansão de produção de gás na região amazônica, planificando aumentos significativos na exploração e na exportação de gás; **Sentimento: positivo**.",
+      "updated_at": "2026-05-28T23:29:09.316221"
+    },
+    "MGLU3.SA": {
+      "summary": "Magazine Luiza SA registrou expansão sólida das lojas físicas no 1.º trimestre de 2026, reforçando a presença no varejo tradicional apesar das volatilidades do mercado. Sentimento geral: positivo.",
+      "updated_at": "2026-05-28T23:29:10.538857"
+    },
+    "ABEV3.SA": {
+      "summary": "Archer Daniels reporta um forte aumento nas margens de etanol, sinalizando potencial de pressão sobre os custos de matéria‑prima, mas também sinaliza capacidade de gerar ganhos se a tendência se sustentar; Boston Beer mostra esforço sólido para capturar o mercado de bebidas premium, mas enfrenta desafios de posicionamento frente às preferências locais. Sentimento: neutro.",
+      "updated_at": "2026-05-28T23:29:39.870568"
+    },
+    "WEGE3.SA": {
+      "summary": "- As análises “How The WEG (BOVESPA:WEGE3) Investment Story Is Resetting After JPMorgan’s Target Cut” e “How The WEG (BOVESPA:WEGE3) Investment Story Is Shifting After JPMorgan’s Target Cut” revelam que a redução do preço objetivo pela JPMorgan envolveu uma reavaliação mais cautelosa do desempenho da empresa, apontando potenciais riscos e um panorama de crescimento mais modesto.  \n- Sentimento: neutro, já que os comentários não evidenciam ganho ou perda de confiança, mas apenas uma redefinição dos parâmetros e expectativas.",
+      "updated_at": "2026-05-28T23:29:41.074209"
     }
   },
   "market_movers": [
-    "ONCO3.SA",
-    "FICT3.SA",
-    "BSLI4.SA",
-    "LIGT3.SA",
-    "BMEB4.SA",
+    "BSLI3.SA",
+    "BIED3.SA",
+    "DMVF3.SA",
     "PMAM3.SA",
-    "NORD3.SA",
-    "CSAN3.SA",
-    "IGTI3.SA",
-    "CEDO4.SA"
+    "DASA3.SA",
+    "ONCO3.SA",
+    "RAIZ4.SA",
+    "RPMG3.SA",
+    "OIBR3.SA",
+    "FESA3.SA"
   ]
 }
