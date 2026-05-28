@@ -59,8 +59,8 @@ def get_market_movers():
 def fetch_google_news(ticker):
     """Busca notícias via Google News RSS para o ticker"""
     clean_ticker = ticker.replace('.SA', '')
-    query = urllib.parse.quote(f"{clean_ticker} ações notícias")
-    url = f"https://news.google.com/rss/search?q={query}&hl=pt-BR&gl=BR&ceid=BR:pt-419"
+    query = urllib.parse.quote(f"{clean_ticker}")
+    url = f"https://news.google.com/rss/search?q={query}%20when%3A15d&hl=pt-BR&gl=BR&ceid=BR:pt-419"
 
     news_items = []
     try:
