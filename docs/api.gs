@@ -60,6 +60,10 @@ function processRequest(e) {
     return handleGetAllTickers();
   } else if (action === "request_rebalance") {
     return handleRequestRebalance(data.username, data.session_token, data.params, data.portfolio);
+  } else if (action === "get_deepnews_tickers") {
+    return handleGetDeepNewsTickers();
+  } else if (action === "update_deepnews_results") {
+    return handleUpdateDeepNewsResults(data.results);
   }
 
   return { error: "Ação não reconhecida: " + action };
@@ -221,4 +225,39 @@ function handleUpdatePassword(username, oldPassword, newPassword) {
     }
   }
   return { error: "Usuário não encontrado." };
+}
+
+function handleGetDeepNewsTickers() {
+  const sheet = getSheet("Monitoramento");
+  if (!sheet) return { success: false, error: "Aba 'Monitoramento' não encontrada." };
+
+  const data = sheet.getDataRange().getValues();
+  const tickers = [];
+  for (let i = 1; i < data.length; i++) {
+    if (data[i][0]) tickers.push(data[i][0]);
+  }
+  // No GAS Set não funciona igual JS moderno em versões antigas, melhor usar o tickers normal e depois limpar ou apenas retornar
+  return { success: true, tickers: tickers };
+}
+
+function handleUpdateDeepNewsResults(results) {
+  const sheet = getSheet("Monitoramento");
+  if (!sheet) return { success: false, error: "Aba 'Monitoramento' não encontrada." };
+
+  const data = sheet.getDataRange().getValues();
+
+  results.forEach(res => {
+    let found = false;
+    for (let i = 1; i < data.length; i++) {
+      if (data[i][0] === res.ticker) {
+        sheet.getRange(i + 1, 2).setValue(res.summary);
+        sheet.getRange(i + 1, 3).setValue(res.sentiment);
+        sheet.getRange(i + 1, 4).setValue(res.updated_at);
+        found = true;
+        break;
+      }
+    }
+  });
+
+  return { success: true };
 }
