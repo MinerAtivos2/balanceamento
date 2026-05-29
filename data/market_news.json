@@ -1,90 +1,90 @@
 {
-  "last_update": "2026-05-28T23:27:46.099130",
-  "market_summary": "A maioria das ações listadas no B3 não teve notícias de impacto hoje, refletindo um cenário relativamente estático.  \nEntre as novidades, DASA3.SA e RAIZ4.SA registraram sinais de crescimento e fortalecimento de caixa (crescimento de receita no Q1 de 2026 e aporte de US$ 765 mi), gerando otimismo, enquanto a entrada de PIMCO em OI acentua a incerteza política e gera sentimento negativo para OIBR3.SA.  \nCom poucos anúncios decisivos, a volatilidade permanece baixa, e a maioria dos papéis continua neutra, salvo destacando os resultados positivos de DASA e RAIZ, mas com cautela em relação ao ambiente regulatório e político.",
+  "last_update": "2026-05-29T23:21:21.485708",
+  "market_summary": "Hoje a B3 apresenta um clima de mercado majoritariamente neutro, com poucas ações gerando reações de mercado em relação às últimas divulgações. O destaque vai para a Veste, que mostrou crescimento robusto em receita e vendas digitais, e para a Braskem, que recebeu upgrade “Buy” e reforça a confiança em commodities brasileiras. Em contraste, títulos como BEEF e outros não apresentaram novidades de impacto, mantendo os investidores em postura cautelosa enquanto aguardam próximos eventos.",
   "assets": {
-    "BSLI3.SA": {
+    "CEGR3.SA": {
       "summary": "Sem notícias recentes de impacto encontradas nos principais canais financeiros.",
-      "updated_at": "2026-05-28T23:27:46.479384"
-    },
-    "BIED3.SA": {
-      "summary": "Sem notícias recentes de impacto encontradas nos principais canais financeiros.",
-      "updated_at": "2026-05-28T23:27:47.091709"
+      "updated_at": "2026-05-29T23:21:21.712901"
     },
     "DMVF3.SA": {
       "summary": "Sem notícias recentes de impacto encontradas nos principais canais financeiros.",
-      "updated_at": "2026-05-28T23:27:47.712712"
+      "updated_at": "2026-05-29T23:21:22.348613"
     },
-    "PMAM3.SA": {
+    "CALI3.SA": {
       "summary": "Sem notícias recentes de impacto encontradas nos principais canais financeiros.",
-      "updated_at": "2026-05-28T23:27:48.325257"
+      "updated_at": "2026-05-29T23:21:22.934961"
     },
-    "DASA3.SA": {
-      "summary": "Diagnósticos da América SA (BSP:DASA3) reportou crescimento robusto da receita no 1.º trimestre de 2026, impulsionado por maior volume de operações e gestão eficaz de custos.  \nSentimento: positivo.",
-      "updated_at": "2026-05-28T23:27:50.595592"
+    "VSTE3.SA": {
+      "summary": "Veste SA (VSTE3) reportou forte crescimento de receita no Q4 2025, demonstrando sentimento positivo.  \nVeste SA (VSTE3) destacou forte crescimento de vendas digitais no Q3 2025, confirmando sentimento positivo.",
+      "updated_at": "2026-05-29T23:21:35.825951"
     },
-    "ONCO3.SA": {
+    "BIED3.SA": {
       "summary": "Sem notícias recentes de impacto encontradas nos principais canais financeiros.",
-      "updated_at": "2026-05-28T23:27:51.208072"
+      "updated_at": "2026-05-29T23:21:36.456612"
     },
-    "RAIZ4.SA": {
-      "summary": "Cosan’s joint venture with Raízen está discutindo um aporte de US$ 765 milhões, o que reforça o caixa e a capacidade de expansão – sentimento: positivo.  \nA elevação do preço alvo da Citi para Shell PLC, embora reflita otimismo no setor energético, não traz impacto direto sobre a Raízen e permanece neutra em relação ao seu desempenho – sentimento: neutro.",
-      "updated_at": "2026-05-28T23:27:52.692651"
-    },
-    "RPMG3.SA": {
+    "NUTR3.SA": {
       "summary": "Sem notícias recentes de impacto encontradas nos principais canais financeiros.",
-      "updated_at": "2026-05-28T23:27:53.304195"
+      "updated_at": "2026-05-29T23:21:37.041596"
     },
-    "OIBR3.SA": {
-      "summary": "PIMCO confirma investimento em OI, reforçando a expectativa de reestruturação financeira, mas a entrada em um cenário político mais turbulento aumenta a incerteza quanto ao prazo e ao sucesso do processo.  \nSentimento: negativo.",
-      "updated_at": "2026-05-28T23:27:54.532954"
+    "BEEF3.SA": {
+      "summary": "BEEF3.SA está em expectativa de resgatar a performance do último semestre após o anúncio da Minerva SA de receita recorde nos trimestres Q3 e Q4 de 2025, mas enfrenta desafios estratégicos que rondam a continuidade do crescimento. O sentimento geral do mercado tende a ser **neutro**, equilibrando otimismo perante os números fortes com cautela sobre os obstáculos que a empresa deve superar na próxima fase.",
+      "updated_at": "2026-05-29T23:21:58.163157"
     },
-    "FESA3.SA": {
-      "summary": "Sem notícias recentes de impacto encontradas nos principais canais financeiros.",
-      "updated_at": "2026-05-28T23:27:55.155632"
+    "CVCB3.SA": {
+      "summary": "Desculpe, mas eu preciso de mais detalhes das “earnings call highlights” para fazer um resumo objetivo e identificar o sentimento. Pode me passar os pontos principais ou os dados mais relevantes de cada call? Assim consigo gerar os dois‑sentenças que você precisa.",
+      "updated_at": "2026-05-29T23:22:29.112715"
+    },
+    "LIGT3.SA": {
+      "summary": "Light SA’s Q1 2026 earnings call focused on maneuvering market headwinds through strategic adjustments, yielding a neutral sentiment.  \nIn its Q4 2025 earnings call, Light SA reported strong operational gains amid continued market challenges, reflecting a positive outlook.",
+      "updated_at": "2026-05-29T23:22:30.323147"
+    },
+    "BRKM5.SA": {
+      "summary": "Braskem recebeu upgrade para “Buy” por analistas do Zacks, indicando maior confiança na valorização futura do título e no retorno de rentabilidade esperado – sentimento positivo.  \nEsse movimento, junto ao destaque da mesma publicação para Braskem dentro do cluster de players de químicos, reforça a atenção dos investidores no mercado de commodities brasileiras.",
+      "updated_at": "2026-05-29T23:22:59.981572"
     },
     "VALE3.SA": {
       "summary": "Vale’s joint bid with I‑Squared to acquire a $5 billion iron‑ore port in Brazil signals strong growth momentum, bolstering investor confidence – **positive**. A surge in analyst attention and “searches” for VALE following clarified disclosures suggests the market’s curiosity is escalating, but the evidence to date points to a **neutral** stance.",
-      "updated_at": "2026-05-28T23:27:56.472392"
-    },
-    "BBAS3.SA": {
-      "summary": "Resumo: Brazil's government, federal district agree on BRB loan deal. Banco do Brasil SA BB Brasil (BDORY) Q1 2026 Earnings Call Highlights: Strong Net Income Amid .... ...",
-      "updated_at": "2026-05-28T23:27:58.568062"
+      "updated_at": "2026-05-29T23:23:00.957255"
     },
     "ITUB4.SA": {
       "summary": "**BRB – acordo de financiamento**  \n1. O governo federal e o Distrito Federal concordaram em fechar um contrato de financiamento com o Banco Regional do Brasil (BRB), planejando ampliar a liquidez do banco. 2. O acordo é visto como um impulso para a capacidade de crédito do BRB, indicando posições favoráveis para o mercado.  \n**Sentimento:** positivo.\n\n**Itau Unibanco – Destaques do Call de Lucros Q1**  \n1. O Ibovespa de Itau Unibanco registrou lucro líquido acima das expectativas, com margem de lucro superior ao consenso, mas com diminuição de receita de crédito e de comissões. 2. Os analistas destacam que, apesar da desaceleração em certas linhas de crédito, a performance geral do trimestre permanece saudável.  \n**Sentimento:** positivo.",
-      "updated_at": "2026-05-28T23:28:11.050653"
-    },
-    "BBDC4.SA": {
-      "summary": "Concordância do governo brasileiro e do Distrito Federal no acordo de crédito com o BBDC4 reforça a carteira de empréstimos do banco e sinaliza suporte a setores estratégicos – sentimento: positivo.  \n\nA seleção de bancos pela rede de pagamentos Elo para um potencial IPO nos EUA abre possibilidade de novos canais de parceria, embora a reação imediata do mercado ainda não seja definida – sentimento: neutro.",
-      "updated_at": "2026-05-28T23:28:46.386792"
+      "updated_at": "2026-05-29T23:23:02.148512"
     },
     "PETR4.SA": {
       "summary": "Constellation Oil Services Holding SA revelou que o segundo trimestre de 2026 dobraria seus principais indicadores, indicando maior demanda por serviços offshore e esperada pressão de compra nas barras bidirecionais de Petrobras; **Sentimento: positivo**.  \nPetrobras anunciou a expansão de produção de gás na região amazônica, planificando aumentos significativos na exploração e na exportação de gás; **Sentimento: positivo**.",
-      "updated_at": "2026-05-28T23:29:09.316221"
-    },
-    "MGLU3.SA": {
-      "summary": "Magazine Luiza SA registrou expansão sólida das lojas físicas no 1.º trimestre de 2026, reforçando a presença no varejo tradicional apesar das volatilidades do mercado. Sentimento geral: positivo.",
-      "updated_at": "2026-05-28T23:29:10.538857"
-    },
-    "ABEV3.SA": {
-      "summary": "Archer Daniels reporta um forte aumento nas margens de etanol, sinalizando potencial de pressão sobre os custos de matéria‑prima, mas também sinaliza capacidade de gerar ganhos se a tendência se sustentar; Boston Beer mostra esforço sólido para capturar o mercado de bebidas premium, mas enfrenta desafios de posicionamento frente às preferências locais. Sentimento: neutro.",
-      "updated_at": "2026-05-28T23:29:39.870568"
+      "updated_at": "2026-05-29T23:23:03.255808"
     },
     "WEGE3.SA": {
       "summary": "- As análises “How The WEG (BOVESPA:WEGE3) Investment Story Is Resetting After JPMorgan’s Target Cut” e “How The WEG (BOVESPA:WEGE3) Investment Story Is Shifting After JPMorgan’s Target Cut” revelam que a redução do preço objetivo pela JPMorgan envolveu uma reavaliação mais cautelosa do desempenho da empresa, apontando potenciais riscos e um panorama de crescimento mais modesto.  \n- Sentimento: neutro, já que os comentários não evidenciam ganho ou perda de confiança, mas apenas uma redefinição dos parâmetros e expectativas.",
-      "updated_at": "2026-05-28T23:29:41.074209"
+      "updated_at": "2026-05-29T23:23:04.160903"
+    },
+    "BBAS3.SA": {
+      "summary": "Banco do Brasil (BBAS3) recebeu aprovação de um acordo de refinanciamento do BRB, envolvendo o governo federal e o Distrito Federal, o que reforça a liquidez e a posição financeira da instituição.  \nNa coletiva de resultados do Q1 de 2026, a companhia registrou lucro líquido sólido, ajudado por ganhos de mercado e eficiência operacional, mantendo a tendência de crescimento do lucro.  \n\nSentimento: positivo.",
+      "updated_at": "2026-05-29T23:23:29.787969"
+    },
+    "BBDC4.SA": {
+      "summary": "Concordância do governo brasileiro e do Distrito Federal no acordo de crédito com o BBDC4 reforça a carteira de empréstimos do banco e sinaliza suporte a setores estratégicos – sentimento: positivo.  \n\nA seleção de bancos pela rede de pagamentos Elo para um potencial IPO nos EUA abre possibilidade de novos canais de parceria, embora a reação imediata do mercado ainda não seja definida – sentimento: neutro.",
+      "updated_at": "2026-05-29T23:23:31.065884"
+    },
+    "MGLU3.SA": {
+      "summary": "Magazine Luiza SA registrou expansão sólida das lojas físicas no 1.º trimestre de 2026, reforçando a presença no varejo tradicional apesar das volatilidades do mercado. Sentimento geral: positivo.",
+      "updated_at": "2026-05-29T23:23:32.197840"
+    },
+    "ABEV3.SA": {
+      "summary": "Archer Daniels reporta um forte aumento nas margens de etanol, sinalizando potencial de pressão sobre os custos de matéria‑prima, mas também sinaliza capacidade de gerar ganhos se a tendência se sustentar; Boston Beer mostra esforço sólido para capturar o mercado de bebidas premium, mas enfrenta desafios de posicionamento frente às preferências locais. Sentimento: neutro.",
+      "updated_at": "2026-05-29T23:23:33.273782"
     }
   },
   "market_movers": [
-    "BSLI3.SA",
-    "BIED3.SA",
+    "CEGR3.SA",
     "DMVF3.SA",
-    "PMAM3.SA",
-    "DASA3.SA",
-    "ONCO3.SA",
-    "RAIZ4.SA",
-    "RPMG3.SA",
-    "OIBR3.SA",
-    "FESA3.SA"
+    "CALI3.SA",
+    "VSTE3.SA",
+    "BIED3.SA",
+    "NUTR3.SA",
+    "BEEF3.SA",
+    "CVCB3.SA",
+    "LIGT3.SA",
+    "BRKM5.SA"
   ]
 }
