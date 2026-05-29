@@ -11,7 +11,7 @@ from newspaper import Article
 
 # Configurações
 DATA_DIR = os.path.join(os.path.dirname(__file__), '..', 'data')
-GAS_URL = "https://script.google.com/macros/s/AKfycbyH2wrJBEMXBZHyTIIkeaRoI5vIYUgjX60rXqlAh6lZKEYWkZEEI9TxhbKu_pf4cD-C/exec"
+GAS_URL = os.environ.get('GAS_URL')
 
 def load_tickers_from_monitoramento():
     if not GAS_URL:
@@ -131,7 +131,15 @@ def get_deep_ai_analysis(ticker, news_data):
         f"Conteúdo das Notícias:\n{combined_content}"
     )
 
-    for provider in [g4f.Provider.PuterJS, g4f.Provider.PollinationsAI, g4f.Provider.Blackbox]:
+    # Lista de provedores atualizada e mais estável
+    providers = [
+        g4f.Provider.PuterJS,
+        g4f.Provider.PollinationsAI,
+        g4f.Provider.Liaobots,
+        g4f.Provider.Airforce
+    ]
+
+    for provider in providers:
         try:
             response = g4f.ChatCompletion.create(
                 model="gpt-4o-mini",
@@ -173,7 +181,11 @@ def main():
     now = datetime.now()
     one_week_ago = now - timedelta(days=7)
 
-    for ticker in tickers:
+    for ticker_raw in tickers:
+        ticker = ticker_raw.strip().upper()
+        if not ticker.endswith('.SA') and '.' not in ticker:
+            ticker = f"{ticker}.SA"
+
         print(f"🔍 Analisando {ticker}...")
         try:
             yahoo_news = fetch_yahoo_news(ticker)
