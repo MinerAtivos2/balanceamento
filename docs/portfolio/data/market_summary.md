@@ -1,21 +1,21 @@
-## Resumo de Mercado - 2026-05-15
+## Resumo de Mercado - 2026-06-01
 
 ### 📈 Maiores Altas (Dia)
 
 | Ativo | Nome | Fechamento | Anterior | Variação | DeltaVolume |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| DOTZ3.SA | Dotz S.A. | R$ 3.92 | R$ 2.93 | **+33.79%** 🚀 | +1758.86% ⬆️ |
-| CTSA4.SA | Companhia Tecidos Santanense Ltda. | R$ 1.29 | R$ 1.14 | **+13.16%** 🚀 | +14.47% ⬆️ |
-| VITT3.SA | Vittia S.A. | R$ 3.45 | R$ 3.13 | **+10.22%** 🚀 | +257.09% ⬆️ |
-| BSLI4.SA | BRB - Banco de Brasília S.A. | R$ 3.83 | R$ 3.50 | **+9.43%** 🚀 | -39.77% ⬇️ |
-| SEQL3.SA | Sequoia Logística e Transportes S.A. | R$ 0.13 | R$ 0.12 | **+8.33%** 🚀 | -62.48% ⬇️ |
+| TOKY3.SA | TOKY3.SA | R$ 0.16 | R$ 0.15 | **+6.67%** 🚀 | -99.83% ⬇️ |
+| AMBP3.SA | Ambipar Participações e Empreendimentos S.A. | R$ 0.18 | R$ 0.17 | **+5.88%** 🚀 | -82.88% ⬇️ |
+| RAIZ4.SA | Raízen S.A. | R$ 0.38 | R$ 0.36 | **+5.56%** 🚀 | -64.12% ⬇️ |
+| AZTE3.SA | Azevedo & Travassos Energia S.A. | R$ 0.21 | R$ 0.20 | **+5.00%** 🚀 | -95.95% ⬇️ |
+| HAGA4.SA | HAGA S/A Indústria e Comércio | R$ 1.60 | R$ 1.53 | **+4.58%** 🚀 | -99.62% ⬇️ |
 
 ### 📉 Maiores Baixas (Dia)
 
 | Ativo | Nome | Fechamento | Anterior | Variação | DeltaVolume |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| BDLL4.SA | Bardella S.A. Indústrias Mecânicas | R$ 3.70 | R$ 4.22 | **-12.32%** 📉 | +193.27% ⬆️ |
-| TOKY3.SA | TOKY3.SA | R$ 0.17 | R$ 0.19 | **-10.53%** 📉 | +84.26% ⬆️ |
-| VVEO3.SA | CM Hospitalar S/A | R$ 1.21 | R$ 1.35 | **-10.37%** 📉 | +304.23% ⬆️ |
-| BHIA3.SA | Grupo Casas Bahia S.A. | R$ 1.67 | R$ 1.85 | **-9.73%** 📉 | +5.68% ⬆️ |
-| TRIS3.SA | Trisul S.A. | R$ 4.17 | R$ 4.60 | **-9.35%** 📉 | +215.93% ⬆️ |
+| PMAM3.SA | Paranapanema S.A. | R$ 0.28 | R$ 0.33 | **-15.15%** 📉 | -46.82% ⬇️ |
+| RPMG3.SA | Refinaria de Petróleos de Manguinhos S.A. | R$ 1.66 | R$ 1.87 | **-11.23%** 📉 | -57.34% ⬇️ |
+| SEQL3.SA | Sequoia Logística e Transportes S.A. | R$ 0.11 | R$ 0.12 | **-8.33%** 📉 | -41.28% ⬇️ |
+| AZEV4.SA | Azevedo & Travassos S.A. | R$ 0.12 | R$ 0.13 | **-7.69%** 📉 | -94.30% ⬇️ |
+| TRAD3.SA | TC S.A. | R$ 1.16 | R$ 1.25 | **-7.20%** 📉 | -85.64% ⬇️ |

@@ -163,9 +163,17 @@ def main():
         "last_update": datetime.now().isoformat(),
         "market_last_date": market_last_date,
         "market_summary": "O mercado brasileiro segue atento ao cenário fiscal e movimentações de commodities.",
+        "ibov": None,
         "assets": {},
         "market_movers": movers
     }
+
+    if os.path.exists(MARKET_SUMMARY_JSON):
+        try:
+            with open(MARKET_SUMMARY_JSON, 'r', encoding='utf-8') as f:
+                ms_data = json.load(f)
+                news_output["ibov"] = ms_data.get('ibov')
+        except: pass
 
     processed_count = 0
     total = len(all_tickers)
@@ -236,6 +244,8 @@ def main():
                 "is_outdated": is_outdated,
                 "last_close": asset_market_info.get('last_close'),
                 "daily_delta": asset_market_info.get('daily_delta'),
+                "monthly_delta": asset_market_info.get('monthly_delta'),
+                "yearly_delta": asset_market_info.get('yearly_delta'),
                 "price_date": asset_market_info.get('date')
             }
             if is_prio: time.sleep(0.5)
@@ -256,11 +266,16 @@ def main():
         gainers_summaries = [f"{t}: {news_output['assets'][t]['summary']}" for t in gainers if t in news_output["assets"]]
         losers_summaries = [f"{t}: {news_output['assets'][t]['summary']}" for t in losers if t in news_output["assets"]]
 
-        prompt = "Resuma, em português, o clima do mercado B3 hoje em 3 frases curtas e diretas.\n"
+        ibov_info = ""
+        if news_output.get("ibov"):
+            i = news_output["ibov"]
+            ibov_info = f"O IBOVESPA fechou em {i['last_close']:.0f} pontos, com variação de {i['daily_delta']*100:.2f}% no dia, {i['monthly_delta']*100:.2f}% no mês e {i['yearly_delta']*100:.2f}% no ano.\n"
+
+        prompt = f"Aja como um analista financeiro. {ibov_info}Resuma, em português, o clima do mercado B3 hoje em 3 frases curtas e diretas.\n"
         if gainers_summaries:
-            prompt += f"Ações que SUBIRAM hoje:\n" + "\n".join(gainers_summaries) + "\n"
+            prompt += f"Destaques de alta:\n" + "\n".join(gainers_summaries) + "\n"
         if losers_summaries:
-            prompt += f"Ações que CAÍRAM hoje:\n" + "\n".join(losers_summaries) + "\n"
+            prompt += f"Destaques de baixa:\n" + "\n".join(losers_summaries) + "\n"
 
         news_output["market_summary"] = g4f.ChatCompletion.create(
             model="openai",

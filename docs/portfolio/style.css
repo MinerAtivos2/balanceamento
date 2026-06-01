@@ -888,6 +888,28 @@ input[type="number"]:focus, select:focus {
 .var-up { color: var(--green); }
 .var-down { color: var(--red); }
 
+.btn-period {
+  background: transparent;
+  color: var(--text-secondary);
+  border: none;
+  padding: 0.4rem 1rem;
+  font-size: 0.8rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-period.active {
+  background: var(--accent);
+  color: #fff;
+  box-shadow: 0 2px 8px var(--accent-glow);
+}
+
+.ibov-header-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-glass);
+}
+
 /* -- Responsive -------------------------------------------------------- */
 @media (max-width: 768px) {
   .sidebar {
