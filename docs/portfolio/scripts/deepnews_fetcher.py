@@ -11,7 +11,7 @@ from newspaper import Article
 
 # Configurações
 DATA_DIR = os.path.join(os.path.dirname(__file__), '..', 'data')
-GAS_URL = "https://script.google.com/macros/s/AKfycbyH2wrJBEMXBZHyTIIkeaRoI5vIYUgjX60rXqlAh6lZKEYWkZEEI9TxhbKu_pf4cD-C/exec" # os.environ.get('GAS_URL')
+GAS_URL = os.environ.get('GAS_URL')
 
 def load_tickers_from_monitoramento():
     if not GAS_URL:
@@ -131,16 +131,26 @@ def get_deep_ai_analysis(ticker, news_data):
         f"Conteúdo das Notícias:\n{combined_content}"
     )
 
-    # Lista de provedores atualizada e mais estável
-    providers = [
-        g4f.Provider.PuterJS,
-        g4f.Provider.PollinationsAI,
-        g4f.Provider.Liaobots,
-        g4f.Provider.Airforce
+    # Lista de provedores potenciais (serão filtrados pelo que existe na versão instalada)
+    potential_providers = [
+        "PuterJS",
+        "PollinationsAI",
+        "DeepInfra",
+        "OpenRouterFree",
+        "HuggingChat",
+        "CablyAI",
+        "Airforce",
+        "Blackbox"
     ]
 
-    for provider in providers:
+    for p_name in potential_providers:
         try:
+            # Busca o provider dinamicamente para evitar AttributeErrors
+            if not hasattr(g4f.Provider, p_name):
+                continue
+
+            provider = getattr(g4f.Provider, p_name)
+
             response = g4f.ChatCompletion.create(
                 model="gpt-4o-mini",
                 provider=provider,
@@ -182,14 +192,15 @@ def main():
     one_week_ago = now - timedelta(days=7)
 
     for ticker_raw in tickers:
-        ticker = ticker_raw.strip().upper()
-        if not ticker.endswith('.SA') and '.' not in ticker:
-            ticker = f"{ticker}.SA"
+        ticker_original = ticker_raw.strip()
+        ticker_yf = ticker_original.upper()
+        if not ticker_yf.endswith('.SA') and '.' not in ticker_yf:
+            ticker_yf = f"{ticker_yf}.SA"
 
-        print(f"🔍 Analisando {ticker}...")
+        print(f"🔍 Analisando {ticker_original} (Yahoo: {ticker_yf})...")
         try:
-            yahoo_news = fetch_yahoo_news(ticker)
-            google_news = fetch_google_news(ticker)
+            yahoo_news = fetch_yahoo_news(ticker_yf)
+            google_news = fetch_google_news(ticker_yf)
             combined_news = yahoo_news + google_news
 
             seen_titles = set()
@@ -198,30 +209,41 @@ def main():
                 title_norm = item['title'].lower().strip()
                 if title_norm in seen_titles: continue
 
-                if item['date'] and item['date'] >= one_week_ago:
+                # Normalizar datetime para offset-naive para comparação segura
+                item_date = item['date']
+                if item_date and item_date.tzinfo is not None:
+                    item_date = item_date.replace(tzinfo=None)
+
+                if item_date and item_date >= one_week_ago:
                     valid_news.append(item)
                     seen_titles.add(title_norm)
 
             # Se não houver notícias da última semana, pega as mais recentes disponíveis
-            if not valid_news and combined_news:
-                valid_news = sorted(combined_news, key=lambda x: x['date'] if x['date'] else datetime.min, reverse=True)[:3]
-            else:
-                valid_news = sorted(valid_news, key=lambda x: x['date'] if x['date'] else datetime.min, reverse=True)[:3]
+            def get_date(x):
+                dt = x.get('date')
+                if dt and dt.tzinfo is not None:
+                    return dt.replace(tzinfo=None)
+                return dt if dt else datetime.min
 
-            summary, sentiment = get_deep_ai_analysis(ticker, valid_news)
+            if not valid_news and combined_news:
+                valid_news = sorted(combined_news, key=get_date, reverse=True)[:3]
+            else:
+                valid_news = sorted(valid_news, key=get_date, reverse=True)[:3]
+
+            summary, sentiment = get_deep_ai_analysis(ticker_yf, valid_news)
 
             results.append({
-                "ticker": ticker,
+                "ticker": ticker_original, # Usar o nome original para o GAS encontrar a linha correta
                 "summary": summary,
                 "sentiment": sentiment,
                 "updated_at": datetime.now().strftime('%d/%m/%Y %H:%M:%S')
             })
 
-            print(f"   ✅ {ticker}: {sentiment}")
+            print(f"   ✅ {ticker_original}: {sentiment}")
             time.sleep(1) # Delay para evitar rate limiting
 
         except Exception as e:
-            print(f"❌ Erro ao processar {ticker}: {e}")
+            print(f"❌ Erro ao processar {ticker_original}: {e}")
 
     if results:
         update_monitoramento(results)
