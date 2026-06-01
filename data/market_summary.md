@@ -1,21 +1,21 @@
-## Resumo de Mercado - 2026-05-29
+## Resumo de Mercado - 2026-06-01
 
 ### 📈 Maiores Altas (Dia)
 
 | Ativo | Nome | Fechamento | Anterior | Variação | DeltaVolume |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| CEGR3.SA | Companhia Distribuidora de Gás do Rio de Janeiro - CEG | R$ 39.00 | R$ 32.69 | **+19.30%** 🚀 | 0.00% — |
-| DMVF3.SA | d1000 Varejo Farma Participações S.A. | R$ 6.95 | R$ 6.20 | **+12.10%** 🚀 | +1702.31% ⬆️ |
-| CALI3.SA | Construtora Adolpho Lindenberg S.A. | R$ 24.96 | R$ 23.00 | **+8.52%** 🚀 | -66.67% ⬇️ |
-| VSTE3.SA | Veste S.A. Estilo | R$ 4.41 | R$ 4.08 | **+8.09%** 🚀 | +78.68% ⬆️ |
-| BIED3.SA | Bioma Educação S.A. | R$ 9.00 | R$ 8.39 | **+7.27%** 🚀 | +306.72% ⬆️ |
+| MWET4.SA | Wetzel S.A. | R$ 17.48 | R$ 14.90 | **+17.32%** 🚀 | -87.88% ⬇️ |
+| CBEE3.SA | Ampla Energia e Serviços S.A. | R$ 13.95 | R$ 11.95 | **+16.74%** 🚀 | -42.86% ⬇️ |
+| SOND6.SA | Sondotécnica Engenharia de Solos S.A. | R$ 80.00 | R$ 70.21 | **+13.94%** 🚀 | 0.00% — |
+| RAIZ4.SA | Raízen S.A. | R$ 0.40 | R$ 0.36 | **+11.11%** 🚀 | +191.80% ⬆️ |
+| SNSY3.SA | Sansuy S.A. | R$ 11.95 | R$ 10.85 | **+10.14%** 🚀 | 0.00% — |
 
 ### 📉 Maiores Baixas (Dia)
 
 | Ativo | Nome | Fechamento | Anterior | Variação | DeltaVolume |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| NUTR3.SA | Nutriplant Indústria e Comércio S/A | R$ 2.17 | R$ 2.39 | **-9.21%** 📉 | +31.58% ⬆️ |
-| BEEF3.SA | Minerva S.A. | R$ 3.69 | R$ 3.97 | **-7.05%** 📉 | +30.07% ⬆️ |
-| CVCB3.SA | CVC Brasil Operadora e Agência de Viagens S.A. | R$ 1.50 | R$ 1.60 | **-6.25%** 📉 | +82.06% ⬆️ |
-| LIGT3.SA | Light S.A. | R$ 2.73 | R$ 2.91 | **-6.19%** 📉 | +45.79% ⬆️ |
-| BRKM5.SA | Braskem S.A. | R$ 10.46 | R$ 11.13 | **-6.02%** 📉 | -15.32% ⬇️ |
+| SEQL3.SA | Sequoia Logística e Transportes S.A. | R$ 0.08 | R$ 0.12 | **-33.33%** 📉 | +872.42% ⬆️ |
+| PMAM3.SA | Paranapanema S.A. | R$ 0.27 | R$ 0.33 | **-18.18%** 📉 | +69.94% ⬆️ |
+| RPMG3.SA | Refinaria de Petróleos de Manguinhos S.A. | R$ 1.60 | R$ 1.87 | **-14.44%** 📉 | +67.85% ⬆️ |
+| AXIA5.SA | AXIA Energia SA | R$ 55.50 | R$ 64.63 | **-14.13%** 📉 | +300.00% ⬆️ |
+| PCAR3.SA | Companhia Brasileira De Distribuicao | R$ 1.61 | R$ 1.86 | **-13.44%** 📉 | +134.17% ⬆️ |
