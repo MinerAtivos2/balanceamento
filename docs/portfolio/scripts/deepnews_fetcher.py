@@ -11,7 +11,7 @@ from newspaper import Article
 
 # Configurações
 DATA_DIR = os.path.join(os.path.dirname(__file__), '..', 'data')
-GAS_URL = 'https://script.google.com/macros/s/AKfycbyH2wrJBEMXBZHyTIIkeaRoI5vIYUgjX60rXqlAh6lZKEYWkZEEI9TxhbKu_pf4cD-C/exec' # os.environ.get('GAS_URL')
+GAS_URL = os.environ.get('GAS_URL')
 
 def load_tickers_from_monitoramento():
     if not GAS_URL:
@@ -132,13 +132,16 @@ def get_deep_ai_analysis(ticker, news_data):
     )
 
     # Configurações de modelos e provedores para tentar (fallback)
+    # gpt-3.5-turbo está sendo removido de muitos provedores, gpt-4o e gpt-4 são mais comuns agora
     configs = [
         {"model": "gpt-4o-mini", "provider": "Airforce"},
-        {"model": "gpt-4o", "provider": "PollinationsAI"},
         {"model": "gpt-4o", "provider": "Airforce"},
         {"model": "gpt-4o-mini", "provider": "Blackbox"},
         {"model": "gpt-4", "provider": "Bing"},
-        {"model": "", "provider": ""}, # Tenta o g4f escolher o melhor automaticamente
+        {"model": "gpt-4o", "provider": "PollinationsAI"},
+        {"model": "gpt-4o", "provider": ""}, # g4f escolhe o provider para gpt-4o
+        {"model": "gpt-4", "provider": ""},   # g4f escolhe o provider para gpt-4
+        {"model": "", "provider": ""},        # Tentativa total automática
     ]
 
     for config in configs:
@@ -152,8 +155,8 @@ def get_deep_ai_analysis(ticker, news_data):
                     continue
                 provider = getattr(g4f.Provider, p_name)
 
-            # Se não houver modelo definido, g4f decide
-            model_arg = model if model else "gpt-3.5-turbo"
+            # Se não houver modelo definido, g4f decide. Evitamos gpt-3.5 que é instável
+            model_arg = model if model else "gpt-4o"
 
             response = g4f.ChatCompletion.create(
                 model=model_arg,
