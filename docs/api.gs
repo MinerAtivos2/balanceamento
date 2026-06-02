@@ -253,6 +253,7 @@ function handleUpdateDeepNewsResults(results) {
         sheet.getRange(i + 1, 2).setValue(res.summary);
         sheet.getRange(i + 1, 3).setValue(res.sentiment);
         sheet.getRange(i + 1, 4).setValue(res.updated_at);
+        sheet.getRange(i + 1, 5).setValue(res.sources);
         found = true;
         break;
       }

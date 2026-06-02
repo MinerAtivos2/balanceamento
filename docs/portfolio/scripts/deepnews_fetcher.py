@@ -11,7 +11,7 @@ from newspaper import Article
 
 # Configurações
 DATA_DIR = os.path.join(os.path.dirname(__file__), '..', 'data')
-GAS_URL = 'https://script.google.com/macros/s/AKfycbyH2wrJBEMXBZHyTIIkeaRoI5vIYUgjX60rXqlAh6lZKEYWkZEEI9TxhbKu_pf4cD-C/exec'
+GAS_URL = os.environ.get('GAS_URL')
 
 def load_tickers_from_monitoramento():
     if not GAS_URL:
@@ -239,10 +239,14 @@ def main():
 
             summary, sentiment = get_deep_ai_analysis(ticker_yf, valid_news)
 
+            sources = [item['link'] for item in valid_news if item.get('link')]
+            sources_str = "\n".join(list(dict.fromkeys(sources))) # Remover duplicados e unir com quebra de linha
+
             results.append({
                 "ticker": ticker_original, # Usar o nome original para o GAS encontrar a linha correta
                 "summary": summary,
                 "sentiment": sentiment,
+                "sources": sources_str,
                 "updated_at": datetime.now().strftime('%d/%m/%Y %H:%M:%S')
             })
 
