@@ -246,7 +246,7 @@ def main():
                 "updated_at": datetime.now().strftime('%d/%m/%Y %H:%M:%S')
             })
 
-            print(f"   ✅ {ticker_original}: {sentiment}")
+            print(f"   ✅ {ticker_original}: {summary} {sentiment}")
             time.sleep(1) # Delay para evitar rate limiting
 
         except Exception as e:
