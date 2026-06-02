@@ -11,8 +11,7 @@ from newspaper import Article
 
 # Configurações
 DATA_DIR = os.path.join(os.path.dirname(__file__), '..', 'data')
-GAS_URL = "https://script.google.com/macros/s/AKfycbyH2wrJBEMXBZHyTIIkeaRoI5vIYUgjX60rXqlAh6lZKEYWkZEEI9TxhbKu_pf4cD-C/exec"
-#os.environ.get('GAS_URL')
+GAS_URL = os.environ.get('GAS_URL')
 
 def load_tickers_from_monitoramento():
     if not GAS_URL:
@@ -132,28 +131,32 @@ def get_deep_ai_analysis(ticker, news_data):
         f"Conteúdo das Notícias:\n{combined_content}"
     )
 
-    # Lista de provedores potenciais (serão filtrados pelo que existe na versão instalada)
-    potential_providers = [
-        "PuterJS",
-        "PollinationsAI",
-        "DeepInfra",
-        "OpenRouterFree",
-        "HuggingChat",
-        "CablyAI",
-        "Airforce",
-        "Blackbox"
+    # Configurações de modelos e provedores para tentar (fallback)
+    configs = [
+        {"model": "gpt-4o-mini", "provider": "Airforce"},
+        {"model": "gpt-4o", "provider": "PollinationsAI"},
+        {"model": "gpt-4o", "provider": "Airforce"},
+        {"model": "gpt-4o-mini", "provider": "Blackbox"},
+        {"model": "gpt-4", "provider": "Bing"},
+        {"model": "", "provider": ""}, # Tenta o g4f escolher o melhor automaticamente
     ]
 
-    for p_name in potential_providers:
-        try:
-            # Busca o provider dinamicamente para evitar AttributeErrors
-            if not hasattr(g4f.Provider, p_name):
-                continue
+    for config in configs:
+        p_name = config["provider"]
+        model = config["model"]
 
-            provider = getattr(g4f.Provider, p_name)
+        try:
+            provider = None
+            if p_name:
+                if not hasattr(g4f.Provider, p_name):
+                    continue
+                provider = getattr(g4f.Provider, p_name)
+
+            # Se não houver modelo definido, g4f decide
+            model_arg = model if model else "gpt-3.5-turbo"
 
             response = g4f.ChatCompletion.create(
-                model="gpt-4o-mini",
+                model=model_arg,
                 provider=provider,
                 messages=[{"role": "user", "content": prompt}],
             )
