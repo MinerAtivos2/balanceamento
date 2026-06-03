@@ -12,7 +12,7 @@ from newspaper import Article
 
 # Configurações
 DATA_DIR = os.path.join(os.path.dirname(__file__), '..', 'data')
-GAS_URL = 'https://script.google.com/macros/s/AKfycbyH2wrJBEMXBZHyTIIkeaRoI5vIYUgjX60rXqlAh6lZKEYWkZEEI9TxhbKu_pf4cD-C/exec'
+GAS_URL = os.environ.get('GAS_URL')
 
 def load_tickers_from_monitoramento():
     if not GAS_URL:
@@ -133,17 +133,15 @@ def get_deep_ai_analysis(ticker, news_data):
     )
 
     # Configurações otimizadas para ambientes headless (GitHub Actions)
-    # Evitamos provedores que pedem .har ou browser proof
+    # Evitamos provedores que pedem .har ou que estão muito congestionados como PollinationsAI
     configs = [
         {"model": "gpt-4o-mini", "provider": "Airforce"},
         {"model": "gpt-4o", "provider": "Airforce"},
         {"model": "gpt-4o", "provider": "Blackbox"},
-        {"model": "openai", "provider": "PollinationsAI"}, # Pollinations usa 'openai' como alias para o modelo default
         {"model": "gpt-4o", "provider": "ChatGptEs"},
-        {"model": "gpt-4o", "provider": "Liaobots"},
         {"model": "gpt-4o", "provider": "DuckDuckGo"},
         {"model": "gpt-4o", "provider": "AmigoChat"},
-        {"model": "gpt-4o", "provider": ""},
+        {"model": "gpt-4o", "provider": "Liaobots"},
     ]
 
     # Embaralhar para evitar bater sempre no mesmo provider primeiro (ajuda com rate limits)
@@ -207,6 +205,9 @@ def main():
     one_week_ago = now - timedelta(days=7)
 
     for ticker_raw in tickers:
+        # Aumentar delay entre ativos para evitar rate limit de IP (GitHub Actions compartilha IPs)
+        time.sleep(random.uniform(3, 7))
+
         ticker_original = ticker_raw.strip()
         ticker_yf = ticker_original.upper()
         if not ticker_yf.endswith('.SA') and '.' not in ticker_yf:
