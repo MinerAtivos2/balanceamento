@@ -12,7 +12,7 @@ from newspaper import Article
 
 # Configurações
 DATA_DIR = os.path.join(os.path.dirname(__file__), '..', 'data')
-GAS_URL = os.environ.get('GAS_URL')
+GAS_URL = 'https://script.google.com/macros/s/AKfycbyH2wrJBEMXBZHyTIIkeaRoI5vIYUgjX60rXqlAh6lZKEYWkZEEI9TxhbKu_pf4cD-C/exec'
 
 def load_tickers_from_monitoramento():
     if not GAS_URL:
