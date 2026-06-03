@@ -110,9 +110,8 @@
     }
 	
     </style>
-<body class="min-h-screen">
-
 </head>
+<body class="min-h-screen">
     <!-- Header -->
     <header class="bg-white shadow-sm sticky top-0 z-50">
         <div class="container mx-auto px-4 py-3 flex justify-between items-center">
@@ -198,9 +197,14 @@
     </article> -->
 
 
-    <h2>Painel de Análise Avançada</h2>
+    <div style="padding: 1rem 2rem; display: flex; align-items: center; justify-content: space-between;">
+        <h2 style="font-size: 1.5rem; font-weight: 700; margin: 0;">Painel de Análise Avançada</h2>
+        <a id="btnVoltar" href="index.html" class="btn-voltar">
+            <i class="fas fa-arrow-left"></i> Voltar
+        </a>
+    </div>
 
-    <div class="control-panel">
+    <div class="control-panel" style="padding: 0 2rem 1rem;">
         <label for="assetSelect">Selecione o Ativo:</label>
         <select id="assetSelect">
 			<option value="AALR3">AALR3</option>
@@ -737,9 +741,40 @@
             carregarGrafico(this.value);
         });
 
-        // Executa automaticamente ao carregar a página pela primeira vez (inicia com RAIZ4)
+        // Executa automaticamente ao carregar a página pela primeira vez
         window.onload = function() {
-            carregarGrafico(dropdown.value);
+            const urlParams = new URLSearchParams(window.location.search);
+            const tickerParam = urlParams.get('ticker');
+            const fromParam = urlParams.get('from');
+
+            if (fromParam) {
+                document.getElementById('btnVoltar').href = `index.html?section=${fromParam}`;
+            }
+
+            if (tickerParam) {
+                const tickerUpper = tickerParam.toUpperCase();
+
+                // Verifica se o ticker já existe no dropdown
+                let exists = false;
+                for (let i = 0; i < dropdown.options.length; i++) {
+                    if (dropdown.options[i].value === tickerUpper) {
+                        exists = true;
+                        dropdown.selectedIndex = i;
+                        break;
+                    }
+                }
+
+                // Se não existir, adiciona dinamicamente
+                if (!exists) {
+                    const newOption = new Option(tickerUpper, tickerUpper);
+                    dropdown.add(newOption, 0);
+                    dropdown.selectedIndex = 0;
+                }
+
+                carregarGrafico(tickerUpper);
+            } else {
+                carregarGrafico(dropdown.value);
+            }
         };
 
     </script>
