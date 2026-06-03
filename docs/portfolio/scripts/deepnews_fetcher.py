@@ -4,6 +4,7 @@ import json
 import os
 from datetime import datetime, timedelta
 import time
+import random
 import requests
 import feedparser
 import urllib.parse
@@ -11,7 +12,7 @@ from newspaper import Article
 
 # Configurações
 DATA_DIR = os.path.join(os.path.dirname(__file__), '..', 'data')
-GAS_URL = 'https://script.google.com/macros/s/AKfycbyH2wrJBEMXBZHyTIIkeaRoI5vIYUgjX60rXqlAh6lZKEYWkZEEI9TxhbKu_pf4cD-C/exec'
+GAS_URL = os.environ.get('GAS_URL')
 
 def load_tickers_from_monitoramento():
     if not GAS_URL:
@@ -140,8 +141,13 @@ def get_deep_ai_analysis(ticker, news_data):
         {"model": "openai", "provider": "PollinationsAI"}, # Pollinations usa 'openai' como alias para o modelo default
         {"model": "gpt-4o", "provider": "ChatGptEs"},
         {"model": "gpt-4o", "provider": "Liaobots"},
+        {"model": "gpt-4o", "provider": "DuckDuckGo"},
+        {"model": "gpt-4o", "provider": "AmigoChat"},
         {"model": "gpt-4o", "provider": ""},
     ]
+
+    # Embaralhar para evitar bater sempre no mesmo provider primeiro (ajuda com rate limits)
+    random.shuffle(configs)
 
     for config in configs:
         p_name = config["provider"]
@@ -179,7 +185,9 @@ def get_deep_ai_analysis(ticker, news_data):
                 summary = "\n".join(summary_lines).strip()
                 return summary, sentiment
         except Exception as e:
-            print(f"   ⚠️ Erro no provedor {provider}: {e}")
+            print(f"   ⚠️ Erro no provedor {p_name}: {e}")
+            # Pequeno delay aleatório entre retentativas se falhar por rate limit ou erro
+            time.sleep(random.uniform(1, 3))
             continue
 
     return "Erro ao gerar análise profunda via IA.", "Neutro"
