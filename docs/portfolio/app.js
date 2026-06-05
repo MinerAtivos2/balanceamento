@@ -920,7 +920,7 @@ class B3App {
       card.innerHTML = `
         <div class="news-card-header">
           <div style="display:flex; flex-direction:column">
-            <a href="#" onclick="event.preventDefault(); app.showMonitor('${tickerClean}')" class="ticker-link news-card-ticker">${tickerClean}</a>
+            <a href="#" onclick="event.preventDefault(); app.showMonitor('${tickerClean}')" class="ticker-link news-card-ticker"><strong>${tickerClean}</strong></a>
             <span style="font-size: 0.65rem; color: var(--text-muted);">${displayDate}</span>
           </div>
           ${performanceHtml}
@@ -1029,13 +1029,13 @@ class B3App {
   populateAssetDatalist() {
     const datalist = this.$('assetList');
     if (datalist) {
-        datalist.innerHTML = '';
-        this.assets.forEach(a => {
-            const option = document.createElement('option');
-            option.value = a.ticker;
-            option.textContent = `${a.ticker} — ${a.name}`;
-            datalist.appendChild(option);
-        });
+      datalist.innerHTML = '';
+      this.assets.forEach(a => {
+        const option = document.createElement('option');
+        option.value = a.ticker;
+        option.textContent = `${a.ticker} — ${a.name}`;
+        datalist.appendChild(option);
+      });
     }
   }
 
@@ -1787,7 +1787,7 @@ class B3App {
       ` : '';
 
       html += `<tr>
-        <td><a href="#" onclick="event.preventDefault(); app.showMonitor('${tickerClean}')" class="ticker-link">${tickerClean}</a><br><small style="color:var(--text-muted)">${a.name || item.ticker}</small></td>
+        <td><a href="#" onclick="event.preventDefault(); app.showMonitor('${tickerClean}')" class="ticker-link"><strong>${tickerClean}</strong><br><small style="color:var(--text-muted)">${a.name || item.ticker}</small></a></td>
         <td>${item.totalQty}</td>
         <td>R$ ${item.avgPrice.toFixed(2)}</td>
         <td>${this.formatCurrency(item.totalInvested)}</td>
@@ -2109,7 +2109,7 @@ class B3App {
 
         return `
           <tr>
-            <td><a href="#" onclick="event.preventDefault(); app.showMonitor('${tickerClean}')" class="ticker-link">${tickerClean}</a></td>
+            <td><a href="#" onclick="event.preventDefault(); app.showMonitor('${tickerClean}')" class="ticker-link"><strong>${tickerClean}</strong></a></td>
             <td>R$${item.last_close.toFixed(2)}</td>
             <td class="${cssClass}">${(deltaVal > 0) ? '+' : ''}${delta}% ${icon}</td>
             <td class="${volClass}">${this.summaryPeriod === 'day' ? (volVal > 0 ? '+' : '') + volPct + '% ' + volIcon : '—'}</td>
@@ -2313,7 +2313,12 @@ class B3App {
     console.log('Showing monitor for:', ticker);
     const tickerClean = ticker.replace('.SA', '').toUpperCase();
     this.showPage('monitor');
-    this.renderChart(tickerClean);
+
+    // Garantir que o container está visível e dimensionado antes de renderizar
+    // O fadeUp leva 0.4s, então vamos aguardar um pouco mais para garantir
+    setTimeout(() => {
+        this.renderChart(tickerClean);
+    }, 450);
   }
 
   renderChart(ticker) {
