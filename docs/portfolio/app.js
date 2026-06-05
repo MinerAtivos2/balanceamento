@@ -63,9 +63,6 @@ class B3App {
     this.$('btnAddBulk').addEventListener('click', () => this.openBulkModal());
     this.$('btnVoltarMonitor').addEventListener('click', () => this.showPage(this.previousPage));
 
-    // Monitor dropdown
-    this.$('monitorAssetSelect').addEventListener('change', (e) => this.renderChart(e.target.value));
-
     // Mobile
     this.$('hamburger').addEventListener('click', () => this.toggleSidebar());
     this.$('overlay').addEventListener('click', () => this.toggleSidebar(false));
@@ -1031,7 +1028,6 @@ class B3App {
 
   populateAssetDatalist() {
     const datalist = this.$('assetList');
-    const monitorSelect = this.$('monitorAssetSelect');
     if (datalist) {
         datalist.innerHTML = '';
         this.assets.forEach(a => {
@@ -1039,16 +1035,6 @@ class B3App {
             option.value = a.ticker;
             option.textContent = `${a.ticker} — ${a.name}`;
             datalist.appendChild(option);
-        });
-    }
-
-    if (monitorSelect) {
-        monitorSelect.innerHTML = '<option value="">Selecione um ativo...</option>';
-        this.assets.forEach(a => {
-            const option = document.createElement('option');
-            option.value = a.ticker.replace('.SA', '');
-            option.textContent = `${a.ticker.replace('.SA', '')} — ${a.name}`;
-            monitorSelect.appendChild(option);
         });
     }
   }
@@ -2327,25 +2313,6 @@ class B3App {
     console.log('Showing monitor for:', ticker);
     const tickerClean = ticker.replace('.SA', '').toUpperCase();
     this.showPage('monitor');
-
-    const monitorSelect = this.$('monitorAssetSelect');
-    if (monitorSelect) {
-      let exists = false;
-      for (let i = 0; i < monitorSelect.options.length; i++) {
-        if (monitorSelect.options[i].value === tickerClean) {
-          exists = true;
-          monitorSelect.selectedIndex = i;
-          break;
-        }
-      }
-
-      if (!exists) {
-        const newOption = new Option(tickerClean, tickerClean);
-        monitorSelect.add(newOption, 1);
-        monitorSelect.selectedIndex = 1;
-      }
-    }
-
     this.renderChart(tickerClean);
   }
 

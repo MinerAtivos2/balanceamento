@@ -673,21 +673,12 @@
           <h1>Análise Avançada</h1>
           <p class="subtitle">Gráficos técnicos em tempo real via TradingView</p>
         </div>
-        <button class="btn btn-primary" id="btnVoltarMonitor">
+        <button class="btn btn-primary btn-voltar" id="btnVoltarMonitor">
           <i class="fas fa-arrow-left"></i> Voltar
         </button>
       </div>
 
-      <div class="card glass" style="margin-bottom: 1.5rem; padding: 1.25rem;">
-        <div class="form-inline">
-          <label for="monitorAssetSelect">Selecione o Ativo:</label>
-          <select id="monitorAssetSelect" style="width: 200px;">
-            <!-- Preenchido via JS -->
-          </select>
-        </div>
-      </div>
-
-      <div class="card glass" style="height: 600px; padding: 0; overflow: hidden; border-radius: var(--radius);">
+      <div class="card glass" style="height: calc(100vh - 180px); min-height: 500px; padding: 0; overflow: hidden; border-radius: var(--radius);">
         <div id="tradingview_chart_spa" style="height: 100%; width: 100%;"></div>
       </div>
     </section>
