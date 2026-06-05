@@ -10,6 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chartjs-chart-treemap@3.0.0/dist/chartjs-chart-treemap.min.js"></script>
+  <script src="https://s3.tradingview.com/tv.js"></script>
   <link rel="stylesheet" href="style.css">
   <script src="../cookie-consent.js"></script>
   <script src="app.js"></script>
@@ -663,6 +664,34 @@
     <!-- ============================================================ -->
     <!-- SOBRE -->
     <!-- ============================================================ -->
+    <!-- ============================================================ -->
+    <!-- MONITOR DE GRÁFICOS (Análise Avançada) -->
+    <!-- ============================================================ -->
+    <section class="page" data-page="monitor" id="page-monitor">
+      <div class="page-header" style="display: flex; justify-content: space-between; align-items: center;">
+        <div>
+          <h1>Análise Avançada</h1>
+          <p class="subtitle">Gráficos técnicos em tempo real via TradingView</p>
+        </div>
+        <button class="btn btn-primary" id="btnVoltarMonitor">
+          <i class="fas fa-arrow-left"></i> Voltar
+        </button>
+      </div>
+
+      <div class="card glass" style="margin-bottom: 1.5rem; padding: 1.25rem;">
+        <div class="form-inline">
+          <label for="monitorAssetSelect">Selecione o Ativo:</label>
+          <select id="monitorAssetSelect" style="width: 200px;">
+            <!-- Preenchido via JS -->
+          </select>
+        </div>
+      </div>
+
+      <div class="card glass" style="height: 600px; padding: 0; overflow: hidden; border-radius: var(--radius);">
+        <div id="tradingview_chart_spa" style="height: 100%; width: 100%;"></div>
+      </div>
+    </section>
+
     <section class="page" data-page="about" id="page-about">
       <div class="page-header">
         <h1>Sobre o Projeto</h1>
@@ -857,7 +886,16 @@
         window.addEventListener('load', function() {
           const urlParams = new URLSearchParams(window.location.search);
           const targetSection = urlParams.get('section');
+          const ticker = urlParams.get('ticker');
       
+          // Se houver ticker na URL, abre o monitor SPA
+          if (ticker && window.app) {
+              setTimeout(() => {
+                  window.app.showMonitor(ticker);
+              }, 800); // Aguarda inicialização dos dados
+              return;
+          }
+
           if (targetSection) {
             const btn = document.getElementById('nav-' + targetSection) || document.querySelector(`[data-section="${targetSection}"]`);
             // Tenta encontrar a seção real que o botão ativa
