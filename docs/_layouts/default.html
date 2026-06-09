@@ -1,8 +1,8 @@
 <html lang="pt-br">
 	<head>
-		<link rel="icon" type="image/png" href="favicon.png">
+		<link rel="icon" type="image/png" href="/favicon.png">
 
-    <script src="cookie-consent.js"></script>
+    <script src="/cookie-consent.js"></script>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,8 +10,8 @@
 	                <meta name="MinerAtivos" content="Insights de mercado acionáveis. Fundamentos para análises e estratégias baseadas em dados para os mercados financeiros dinâmicos de hoje. Fornecendo insights de mercado acionáveis​para ajudar os investidores a tomarem decisões baseados em dados. Mercado de Ações, Commodities, Altas e quedas, Forecast, Algoritmos, Radar Intraday, Resumo do mercado, Balanceamento de portfólio">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-			<link rel="stylesheet" href="style.css">
-			<script src="script.js"></script>
+			<link rel="stylesheet" href="/style.css">
+			<script src="/script.js"></script>
     <script>
         tailwind.config = {
             theme: {
@@ -114,21 +114,22 @@
     <!-- Header -->
     <header class="bg-white shadow-sm sticky top-0 z-50">
         <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-            <div class="flex items-center space-x-2">
-                <i class="fas fa-chart-line text-primary text-2xl"></i>
-                <h1 class="text-xl font-bold text-dark">Miner<span class="text-primary">Ativos</span></h1>
+            <div class="flex items-center">
+                <a href="/index.html">
+                    <img src="/assets/logo.png" alt="MinerAtivos" class="h-10 w-auto">
+                </a>
             </div>
             <div class="hidden md:flex md:items-center md:space-x-8">
                 <nav class="flex flex-col md:flex-row md:space-x-8">
-					<a href="index.html" class="text-dark hover:text-primary font-medium">Início</a>
+					<a href="/index.html" class="text-dark hover:text-primary font-medium">Início</a>
                     <a href="#" class="text-dark hover:text-primary font-medium">Mercados</a>
                     <!--<a href="#" class="text-dark hover:text-primary font-medium">Insights</a>-->
 					<a href="#oraculo" class="text-dark hover:text-primary font-medium">Forecast</a>
-					<a href="metodologia.html" class="text-dark hover:text-primary font-medium">Algoritmos</a>
+					<a href="/metodologia.html" class="text-dark hover:text-primary font-medium">Algoritmos</a>
 					<a href="#oraculo" class="text-dark hover:text-primary font-medium">Radar Intraday</a>
-					<a href="monitor.html" class="text-dark hover:text-primary font-medium">Monitor</a>
-					<a href="balanceamento.html" class="text-dark hover:text-primary font-medium">Balanceamento de portfólio</a>
-                    <a href="metodologia.html" class="text-dark hover:text-primary font-medium">Sobre</a>
+					<a href="/monitor.html" class="text-dark hover:text-primary font-medium">Monitor</a>
+					<a href="/balanceamento.html" class="text-dark hover:text-primary font-medium">Balanceamento de portfólio</a>
+                    <a href="/metodologia.html" class="text-dark hover:text-primary font-medium">Sobre</a>
                 </nav>
             </div>
             <div class="flex items-center space-x-4">
@@ -156,15 +157,15 @@
                     </button>
                 </div>
                 <nav class="flex flex-col space-y-2">
-					<a href="index.html" class="text-dark hover:text-primary block px-3 py-2 rounded-md text-base font-medium">Início</a>
+					<a href="/index.html" class="text-dark hover:text-primary block px-3 py-2 rounded-md text-base font-medium">Início</a>
 					<a href="#" class="text-dark hover:text-primary block px-3 py-2 rounded-md text-base font-medium">Mercados</a>
                     <!--<a href="#" class="text-dark hover:text-primary font-medium">Insights</a>-->
 					<a href="#oraculo" class="text-dark hover:text-primary block px-3 py-2 rounded-md text-base font-medium">Forecast</a>
-					<a href="metodologia.html" class="text-dark hover:text-primary block px-3 py-2 rounded-md text-base font-medium">Algoritmos</a>
+					<a href="/metodologia.html" class="text-dark hover:text-primary block px-3 py-2 rounded-md text-base font-medium">Algoritmos</a>
 					<a href="#oraculo" class="text-dark hover:text-primary block px-3 py-2 rounded-md text-base font-medium">Radar Intraday</a>
-					<a href="monitor.html" class="text-dark hover:text-primary block px-3 py-2 rounded-md text-base font-medium">Monitor</a>
-					<a href="balanceamento.html" class="text-dark hover:text-primary block px-3 py-2 rounded-md text-base font-medium">Balanceamento de portfólio</a>
-                    <a href="metodologia.html" class="text-dark hover:text-primary block px-3 py-2 rounded-md text-base font-medium">Sobre</a>
+					<a href="/monitor.html" class="text-dark hover:text-primary block px-3 py-2 rounded-md text-base font-medium">Monitor</a>
+					<a href="/balanceamento.html" class="text-dark hover:text-primary block px-3 py-2 rounded-md text-base font-medium">Balanceamento de portfólio</a>
+                    <a href="/metodologia.html" class="text-dark hover:text-primary block px-3 py-2 rounded-md text-base font-medium">Sobre</a>
 
                 </nav>
             </div>
@@ -464,9 +465,8 @@ document.addEventListener('DOMContentLoaded', function () {
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
                 <div>
-                    <div class="flex items-center space-x-2 mb-4">
-                        <i class="fas fa-chart-line text-primary text-2xl"></i>
-                        <h3 class="text-xl font-bold">Miner<span class="text-primary">Ativos</span></h3>
+                    <div class="flex items-center mb-4">
+                        <img src="/assets/logo.png" alt="MinerAtivos" class="h-10 w-auto">
                     </div>
                     <p class="text-gray-400 mb-4">Fornecendo insights de mercado acionáveis ​para ajudar os investidores a tomarem decisões baseados em dados.</p>
                     <div class="flex space-x-4">
@@ -489,22 +489,22 @@ document.addEventListener('DOMContentLoaded', function () {
                 <div>
                     <h4 class="text-lg font-semibold mb-4">Recursos</h4>
                     <ul class="space-y-2">
-					<li><a href="index.html" class="text-gray-400 hover:text-white">Início</a></li>
+					<li><a href="/index.html" class="text-gray-400 hover:text-white">Início</a></li>
 					<li><a href="#" class="text-gray-400 hover:text-white">Mercados</a></li>
                     <li><!--<a href="#" class="text-dark hover:text-primary font-medium">Insights</a>-->
 					<li><a href="#oraculo" class="text-gray-400 hover:text-white">Forecast</a></li>
-					<li><a href="metodologia.html" class="text-gray-400 hover:text-white">Algoritmos</a></li>
+					<li><a href="/metodologia.html" class="text-gray-400 hover:text-white">Algoritmos</a></li>
 					<li><a href="#oraculo" class="text-gray-400 hover:text-white">Radar Intraday</a></li>
-					<li><a href="monitor.html" class="text-gray-400 hover:text-white">Monitor</a></li>
-					<li><a href="balanceamento.html" class="text-gray-400 hover:text-white">Balanceamento de portfólio</a></li>
-                    <li><a href="metodologia.html" class="text-gray-400 hover:text-white">Sobre</a></li>
+					<li><a href="/monitor.html" class="text-gray-400 hover:text-white">Monitor</a></li>
+					<li><a href="/balanceamento.html" class="text-gray-400 hover:text-white">Balanceamento de portfólio</a></li>
+                    <li><a href="/metodologia.html" class="text-gray-400 hover:text-white">Sobre</a></li>
                     </ul>
                 </div>
 
                 <div>
                     <h4 class="text-lg font-semibold mb-4">Quem somos</h4>
                     <ul class="space-y-2">
-                        <li><a href="metodologia.html" class="text-gray-400 hover:text-white">Sobre</a></li>
+                        <li><a href="/metodologia.html" class="text-gray-400 hover:text-white">Sobre</a></li>
 						<li><a href="#" class="text-gray-400 hover:text-white">Blog</a></li>
                         <li><a href="#" class="text-gray-400 hover:text-white">Contato</a></li>
                     </ul>
