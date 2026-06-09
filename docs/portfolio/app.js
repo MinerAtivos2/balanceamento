@@ -2341,7 +2341,13 @@ class B3App {
         "enable_publishing": false,
         "hide_side_toolbar": false,
         "allow_symbol_change": true,
-        "container_id": containerId
+        "container_id": containerId,
+            "studies": [
+            "STD;Bollinger_Bands",
+            "STD;MACD",
+            "STD;Divergence%1Indicator",
+            "STD;Stochastic_RSI"
+            ]
       });
     } else {
       container.innerHTML = '<p class="empty-state">Erro ao carregar o TradingView. Verifique sua conexão.</p>';
