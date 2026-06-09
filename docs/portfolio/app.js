@@ -1387,10 +1387,13 @@ class B3App {
     } else {
       let bestMetric = -Infinity;
       let bestWeights = {};
-      const numSimulations = 3000;
+      const numSimulations = 10000;
 
       for (let i = 0; i < numSimulations; i++) {
-        let w = assetsData.map(() => Math.random());
+        // Gera pesos iniciais: combina aleatoriedade com viés para pesos iguais na primeira iteração
+        let w = i === 0
+          ? assetsData.map(() => 1 / nAssets)
+          : assetsData.map(() => Math.random());
         const sum = w.reduce((a, b) => a + b, 0);
         w = w.map(val => (val / sum) * 100);
 
