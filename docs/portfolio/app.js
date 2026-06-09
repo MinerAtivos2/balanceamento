@@ -2331,12 +2331,11 @@ class B3App {
 
     if (typeof TradingView !== "undefined") {
       new TradingView.widget({
-        "width": "100%",
-        "height": "100%",
+        "autosize": true,
         "symbol": "BMFBOVESPA:" + ticker,
         "interval": "D",
         "timezone": "America/Sao_Paulo",
-        "theme": "light",
+        "theme": "dark",
         "style": "1",
         "locale": "br",
         "enable_publishing": false,
