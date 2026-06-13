@@ -3,8 +3,9 @@ name: Fetch Market Data
 on:
   schedule:
     # Executa todos os dias úteis às 23:00 UTC (20:00 BRT), após fechamento da B3
-    - cron: '5 22 * * 1-5'
-
+    #- cron: '5 22 * * 1-5'
+    - cron: '27 20 * * 1-5'
+    
   workflow_dispatch:  # Permite execução manual
 
 permissions:
@@ -27,16 +28,16 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install yfinance pandas g4f
+          python -m pip install -r requirements.txt
       
       - name: Fetch market data
-        run: python scripts/data_fetcher.py
+        run: python docs/portfolio/scripts/data_fetcher.py
 
       - name: Generate market summary
-        run: python scripts/market_summary.py
+        run: python docs/portfolio/scripts/market_summary.py
 
       - name: Generate AI News and Insights
-        run: python scripts/news_fetcher.py
+        run: python docs/portfolio/scripts/news_fetcher.py
         env:
           GAS_URL: ${{ secrets.GAS_URL }}
       
@@ -44,6 +45,6 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add data/market_data.json data/market_summary.json data/market_summary.md data/market_news.json
+          git add docs/portfolio/data/market_data.json docs/portfolio/data/market_summary.json docs/portfolio/data/market_summary.md docs/portfolio/data/market_news.json
           git commit -m "Update market data, summary and AI insights - $(date +'%Y-%m-%d %H:%M:%S')" || echo "No changes to commit"
           git push
