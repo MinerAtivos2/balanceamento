@@ -2352,7 +2352,7 @@ class B3App {
     const logoUrl = `../assets/logos/${tickerClean}.svg`;
     const fallbackUrl = `../assets/logo4.png`;
     return `<img src="${logoUrl}" alt="${tickerClean}" width="${size}" height="${size}"
-                 style="vertical-align: middle; margin-right: 8px; border-radius: 4px; object-fit: contain; background: #fff; padding: 0px;"
+                 style="vertical-align: middle; margin-right: 8px; border-radius: 4px; object-fit: contain; background: #fff; padding: 0.5px;"
                  onerror="this.src='${fallbackUrl}'; this.onerror=null;">`;
   }
 
