@@ -2166,7 +2166,7 @@ class B3App {
           },
           {
             data: avgLine,
-            borderColor: 'rgba(148, 163, 184, 0.7)',
+            borderColor: 'rgba(148, 163, 184, 0.9)',
             borderWidth: 1,
             borderDash: [3, 3],
             pointRadius: 0,
