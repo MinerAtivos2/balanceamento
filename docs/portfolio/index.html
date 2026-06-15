@@ -15,9 +15,18 @@
   <script src="../cookie-consent.js"></script>
   <script src="app.js"></script>
 </head>
-<body>
+<body class="loading">
 
-
+  <!-- Splash Screen -->
+  <div id="splashScreen" class="splash-screen">
+    <div class="splash-content">
+      <img src="../assets/logo4_2.png" alt="MinerAtivos" class="splash-logo">
+      <div class="splash-loader">
+        <div class="spinner"></div>
+        <p id="splashMessage">Carregando ambiente...</p>
+      </div>
+    </div>
+  </div>
 
   <!-- Sidebar Navigation -->
   <aside class="sidebar" id="sidebar">
