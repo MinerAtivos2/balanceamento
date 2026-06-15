@@ -2125,7 +2125,7 @@ class B3App {
         const tickerClean = this.escapeHTML(item.ticker.replace('.SA', ''));
         const deltaVal = item[deltaKey] || 0;
         const delta = (deltaVal * 100).toFixed(2);
-        const icon = isGainer ? '🚀' : '📉';
+        const icon = isGainer ? '' : '';
         const cssClass = isGainer ? 'var-up' : 'var-down';
 
         const logoHtml = this.getAssetLogoHTML(item.ticker, 24);
@@ -2194,8 +2194,8 @@ class B3App {
           },
           {
             data: avgLine,
-            borderColor: 'rgba(255, 255, 255, 0.85)',
-            borderWidth: 1.5,
+            borderColor: 'rgba(255, 255, 255, 0.7)',
+            borderWidth: 1.0,
             borderDash: [5, 2],
             pointRadius: 0,
             fill: false
