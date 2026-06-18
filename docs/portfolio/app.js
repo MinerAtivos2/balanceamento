@@ -64,7 +64,8 @@ class B3App {
 
   bindUI() {
     // Buttons
-    this.$('btnAddPosition').addEventListener('click', () => this.openModal());
+    this.$('btnAddPosition').addEventListener('click', () => this.openModal(null, 'buy'));
+    this.$('btnSellPosition').addEventListener('click', () => this.openModal(null, 'sell'));
     this.$('btnAnalyze').addEventListener('click', () => this.runAnalysis());
     this.$('btnRunBarsi').addEventListener('click', () => this.runBarsi());
     this.$('btnRunRebalance').addEventListener('click', () => this.runRebalance());
@@ -457,6 +458,14 @@ class B3App {
       if (e.target === this.$('modalOverlay')) this.closeModal();
     });
 
+    this.$('posType').addEventListener('change', () => {
+      const type = this.$('posType').value;
+      if (this.editIndex === null) {
+        this.$('modalTitle').textContent = type === 'buy' ? 'Registrar Compra' : 'Registrar Venda';
+        this.$('labelPosPrice').textContent = type === 'buy' ? 'Preço de Compra (R$)' : 'Preço de Venda (R$)';
+      }
+    });
+
     // Bulk Modal
     this.$('bulkModalClose').addEventListener('click', () => this.closeBulkModal());
     this.$('bulkModalCancel').addEventListener('click', () => this.closeBulkModal());
@@ -467,7 +476,7 @@ class B3App {
     });
   }
 
-  openModal(editIndex = null) {
+  openModal(editIndex = null, defaultType = 'buy') {
     // Limit check for non-members
     if (!this.user && editIndex === null) {
       const uniqueTickers = new Set(this.portfolio.positions.map(p => p.ticker));
@@ -478,7 +487,14 @@ class B3App {
     }
 
     this.editIndex = editIndex;
-    this.$('modalTitle').textContent = editIndex !== null ? 'Editar Registro' : 'Adicionar Ativo';
+
+    if (editIndex !== null) {
+      this.$('modalTitle').textContent = 'Editar Registro';
+      this.$('labelPosPrice').textContent = 'Preço da Operação (R$)';
+    } else {
+      this.$('modalTitle').textContent = defaultType === 'buy' ? 'Registrar Compra' : 'Registrar Venda';
+      this.$('labelPosPrice').textContent = defaultType === 'buy' ? 'Preço de Compra (R$)' : 'Preço de Venda (R$)';
+    }
 
     // Ensure datalist is populated (fallback)
     if (this.$('assetList').children.length === 0 && this.assets.length > 0) {
@@ -497,7 +513,7 @@ class B3App {
       this.$('posPrice').value = pos.purchase_price;
       this.$('posDate').value = pos.purchase_date || new Date().toISOString().slice(0, 10);
     } else {
-      this.$('posType').value = 'buy';
+      this.$('posType').value = defaultType;
       this.$('posQty').value = '';
       this.$('posPrice').value = '';
       this.$('posDate').value = new Date().toISOString().slice(0, 10);

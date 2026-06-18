@@ -354,6 +354,15 @@ body::after {
   transform: translateY(-1px);
   box-shadow: 0 4px 16px var(--accent-glow);
 }
+.btn-danger {
+  background: var(--red);
+  color: #fff;
+}
+.btn-danger:hover {
+  background: #ff5f5f;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(239, 68, 68, 0.35);
+}
 .btn-outline {
   background: transparent;
   border: 1.5px solid var(--border-glass);
