@@ -87,6 +87,7 @@ class B3App {
 
     // Sort listeners
     this.$('sortPositions').addEventListener('change', () => this.renderPositions());
+    this.$('hideClosedPositions').addEventListener('change', () => this.renderPositions());
     this.$('sortBarsi').addEventListener('change', () => this.renderBarsi());
     this.$('sortRebalance').addEventListener('change', () => this.renderRebalance());
 
@@ -1732,9 +1733,11 @@ class B3App {
     }
 
     const s = this.analysis.summary;
-    this.$('statTotalValue').textContent = this.formatCurrency(s.total_value || 0);
+    this.$('statTotalValue').textContent = this.formatCurrency(s.total_market_value + s.total_proventos + s.total_effective_profit);
     this.$('statTotalInvested').textContent = this.formatCurrency(s.total_invested || 0);
     this.$('statTotalProventos').textContent = this.formatCurrency(s.total_proventos || 0);
+    this.$('statRealizedProfit').textContent = this.formatCurrency(s.total_effective_profit || 0);
+    this.$('statRealizedProfit').className = 'stat-value ' + (s.total_effective_profit >= 0 ? 'positive' : 'negative');
     this.$('statPositions').textContent = s.num_positions || 0;
 
     const rentRealEl = this.$('statRentabilityReal');
@@ -1753,9 +1756,13 @@ class B3App {
     const ctx = this.$('allocationChart');
     if (this.charts.allocation) this.charts.allocation.destroy();
 
-    const labels = this.analysis.positions.map(p => p.ticker.replace('.SA', ''));
-    const currentValues = this.analysis.positions.map(p => p.total_equity);
-    const investedValues = this.analysis.positions.map(p => p.totalInvested);
+    // Filter only open positions for allocation chart
+    const openPositions = this.analysis.positions.filter(p => p.quantity > 0);
+    if (!openPositions.length) return;
+
+    const labels = openPositions.map(p => p.ticker.replace('.SA', ''));
+    const currentValues = openPositions.map(p => p.market_value);
+    const investedValues = openPositions.map(p => p.totalInvested);
     const colors = this.palette(labels.length);
 
     this.charts.allocation = new Chart(ctx, {
@@ -1869,6 +1876,13 @@ class B3App {
     }
 
     let consolidated = this.consolidatePortfolio();
+
+    // Filter out closed positions if requested
+    const hideClosed = this.$('hideClosedPositions').checked;
+    if (hideClosed) {
+      consolidated = consolidated.filter(c => c.totalQty > 0);
+    }
+
     const analysisMap = {};
     if (this.analysis) {
       this.analysis.positions.forEach(p => { analysisMap[p.ticker] = p; });

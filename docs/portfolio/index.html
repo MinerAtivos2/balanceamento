@@ -118,6 +118,11 @@
           <div class="stat-value positive" id="statTotalProventos">R$ 0,00</div>
         </div>
         <div class="stat-card glass">
+          <div class="stat-icon">📉</div>
+          <div class="stat-label">Lucro Realizado</div>
+          <div class="stat-value" id="statRealizedProfit">R$ 0,00</div>
+        </div>
+        <div class="stat-card glass">
           <div class="stat-icon">📊</div>
           <div class="stat-label">Rentab. Real</div>
           <div class="stat-value" id="statRentabilityReal">0%</div>
@@ -189,6 +194,11 @@
             <option value="equity">Patrimônio Total</option>
             <option value="rentability">Rentabilidade</option>
           </select>
+        </div>
+        <div class="form-inline">
+          <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+            <input type="checkbox" id="hideClosedPositions" checked> Ocultar encerradas
+          </label>
         </div>
       </div>
 
