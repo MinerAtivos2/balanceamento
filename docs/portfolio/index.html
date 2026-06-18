@@ -195,14 +195,15 @@
             <thead>
               <tr>
                 <th>Ativo</th>
-                <th>Qtd Total</th>
+                <th>Qtd Atual</th>
                 <th>Preço Médio</th>
-                <th>Investido</th>
-                <th>Preço Atual</th>
+                <th>Custo Total</th>
                 <th>Valor Mercado</th>
-                <th>Total Proventos</th>
-                <th>Patrimônio Total</th>
-                <th>Rentab. Real</th>
+                <th>Proventos</th>
+                <th>Patrimônio</th>
+                <th>Lucro Efetivo</th>
+                <th>Lucro Projetado</th>
+                <th>Rentab. Total</th>
                 <th>Ações</th>
               </tr>
             </thead>
@@ -743,6 +744,13 @@
       </div>
       <form id="positionForm">
         <div class="form-group">
+          <label for="posType">Tipo de Operação</label>
+          <select id="posType" required>
+            <option value="buy">Compra</option>
+            <option value="sell">Venda</option>
+          </select>
+        </div>
+        <div class="form-group">
           <label for="posTicker">Código do Ativo</label>
           <input type="text" id="posTicker" list="assetList" required placeholder="Ex: PETR4">
           <datalist id="assetList"></datalist>
@@ -787,10 +795,11 @@
         <table id="bulkTable">
           <thead>
             <tr>
+              <th>Tipo</th>
               <th>Ativo</th>
               <th>Quantidade</th>
-              <th>Preço de Compra</th>
-              <th>Data Compra</th>
+              <th>Preço (Unit.)</th>
+              <th>Data</th>
               <th>Ação</th>
             </tr>
           </thead>

@@ -491,11 +491,13 @@ class B3App {
 
     if (editIndex !== null && this.portfolio.positions[editIndex]) {
       const pos = this.portfolio.positions[editIndex];
+      this.$('posType').value = pos.type || 'buy';
       tickerInput.value = pos.ticker;
       this.$('posQty').value = pos.quantity;
       this.$('posPrice').value = pos.purchase_price;
       this.$('posDate').value = pos.purchase_date || new Date().toISOString().slice(0, 10);
     } else {
+      this.$('posType').value = 'buy';
       this.$('posQty').value = '';
       this.$('posPrice').value = '';
       this.$('posDate').value = new Date().toISOString().slice(0, 10);
@@ -617,6 +619,12 @@ class B3App {
 
     tr.innerHTML = `
       <td>
+        <select class="bulk-type" style="width: 100%">
+          <option value="buy">Compra</option>
+          <option value="sell">Venda</option>
+        </select>
+      </td>
+      <td>
         <select class="bulk-ticker" style="width: 100%">${options}</select>
       </td>
       <td>
@@ -655,19 +663,42 @@ class B3App {
       }
     }
 
+    // Validation: Check balances for bulk adds
+    const tempPortfolio = JSON.parse(JSON.stringify(this.portfolio.positions));
+
     for (const row of rows) {
+      const type = row.querySelector('.bulk-type').value;
       const ticker = row.querySelector('.bulk-ticker').value;
       const qty = parseInt(row.querySelector('.bulk-qty').value, 10);
       const price = parseFloat(row.querySelector('.bulk-price').value);
       const date = row.querySelector('.bulk-date').value;
 
       if (ticker && !isNaN(qty) && !isNaN(price)) {
-        newPositions.push({
+        if (type === 'sell') {
+          // Calculate current balance for this ticker in temp portfolio
+          let balance = 0;
+          tempPortfolio.forEach(p => {
+            if (p.ticker === ticker) {
+              if ((p.type || 'buy') === 'buy') balance += p.quantity;
+              else balance -= p.quantity;
+            }
+          });
+
+          if (qty > balance) {
+            this.toast(`Saldo insuficiente de ${ticker.replace('.SA', '')} para a venda de ${qty} unidades. Saldo disponível: ${balance}`, 'error');
+            return;
+          }
+        }
+
+        const newPos = {
+          type,
           ticker,
           quantity: qty,
           purchase_price: price,
           purchase_date: date || new Date().toISOString().slice(0, 10)
-        });
+        };
+        newPositions.push(newPos);
+        tempPortfolio.push(newPos);
       }
     }
 
@@ -1106,41 +1137,59 @@ class B3App {
   consolidatePortfolio() {
     const consolidated = {};
 
+    // Group transactions by ticker
+    const grouped = {};
     this.portfolio.positions.forEach((pos, index) => {
-      if (!consolidated[pos.ticker]) {
-        consolidated[pos.ticker] = {
-          ticker: pos.ticker,
-          totalQty: 0,
-          totalInvested: 0,
-          weightedDateSum: 0,
-          transactions: []
-        };
-      }
-
-      const tickerData = consolidated[pos.ticker];
-      const qty = pos.quantity;
-      const price = pos.purchase_price;
-      const dateStr = pos.purchase_date || new Date().toISOString().slice(0, 10);
-      const date = new Date(dateStr);
-      const timestamp = date.getTime();
-
-      tickerData.totalQty += qty;
-      tickerData.totalInvested += (qty * price);
-      tickerData.weightedDateSum += (timestamp * qty);
-      tickerData.transactions.push({ ...pos, originalIndex: index, purchase_date: dateStr });
+      if (!grouped[pos.ticker]) grouped[pos.ticker] = [];
+      grouped[pos.ticker].push({ ...pos, originalIndex: index });
     });
 
-    return Object.values(consolidated).map(item => {
-      const avgPrice = item.totalInvested / item.totalQty;
-      const avgTimestamp = item.weightedDateSum / item.totalQty;
-      const avgDate = new Date(avgTimestamp).toISOString().slice(0, 10);
+    Object.keys(grouped).forEach(ticker => {
+      const transactions = grouped[ticker];
+      // Sort by date to process chronologically
+      transactions.sort((a, b) => a.purchase_date.localeCompare(b.purchase_date));
 
-      return {
-        ...item,
-        avgPrice: avgPrice,
-        avgDate: avgDate
+      let currentQty = 0;
+      let currentPM = 0;
+      let currentTotalCost = 0;
+      let totalRealizedProfit = 0;
+      let totalCostOfSoldShares = 0;
+
+      transactions.forEach(t => {
+        const type = t.type || 'buy';
+        if (type === 'buy') {
+          // Rule 1.1: Calculate Average Price (PM) on purchase
+          const newTotalCost = currentTotalCost + (t.quantity * t.purchase_price);
+          const newTotalQty = currentQty + t.quantity;
+          currentPM = newTotalCost / newTotalQty;
+          currentQty = newTotalQty;
+          currentTotalCost = newTotalCost;
+        } else {
+          // Rule 1.2: Calculate Realized Result on sale
+          const saleValue = t.quantity * t.purchase_price;
+          const costOfSharesSold = t.quantity * currentPM;
+          const result = saleValue - costOfSharesSold;
+          totalRealizedProfit += result;
+          totalCostOfSoldShares += costOfSharesSold;
+
+          // Rule 1.3: Update Position (PM remains the same)
+          currentQty -= t.quantity;
+          currentTotalCost = currentQty * currentPM;
+        }
+      });
+
+      consolidated[ticker] = {
+        ticker,
+        totalQty: currentQty,
+        avgPrice: currentPM,
+        totalInvested: currentTotalCost,
+        realizedProfit: totalRealizedProfit,
+        costOfSoldShares: totalCostOfSoldShares,
+        transactions // original transactions sorted by date
       };
     });
+
+    return Object.values(consolidated);
   }
 
   findCloseForDate(asset, targetDateStr) {
@@ -1168,7 +1217,21 @@ class B3App {
   /* ------------------------------------------------------------------
      CRUD — Positions
   ------------------------------------------------------------------ */
+  getTickerBalance(ticker, excludeIndex = null) {
+    let balance = 0;
+    this.portfolio.positions.forEach((pos, idx) => {
+      if (idx === excludeIndex) return;
+      if (pos.ticker === ticker) {
+        const type = pos.type || 'buy';
+        if (type === 'buy') balance += pos.quantity;
+        else balance -= pos.quantity;
+      }
+    });
+    return balance;
+  }
+
   async savePosition() {
+    const type = this.$('posType').value;
     let ticker = this.$('posTicker').value.toUpperCase();
     if (ticker && !ticker.endsWith('.SA')) {
       const found = this.assets.find(a => a.ticker === ticker + '.SA');
@@ -1180,11 +1243,21 @@ class B3App {
     if (!ticker || !qty || !price) return;
 
     const pos = {
+      type,
       ticker,
       quantity: qty,
       purchase_price: price,
       purchase_date: date || new Date().toISOString().slice(0, 10)
     };
+
+    // Validation: Sale cannot exceed current balance
+    if (type === 'sell') {
+      const currentBalance = this.getTickerBalance(ticker, this.editIndex);
+      if (qty > currentBalance) {
+        this.toast(`Saldo insuficiente de ${ticker.replace('.SA', '')} para realizar a venda. Saldo atual: ${currentBalance}`, 'error');
+        return;
+      }
+    }
 
     if (this.editIndex !== null) {
       this.portfolio.positions[this.editIndex] = pos;
@@ -1226,7 +1299,9 @@ class B3App {
       let qtyOnDate = 0;
       transactions.forEach(t => {
         if (t.purchase_date <= date) {
-          qtyOnDate += t.quantity;
+          const type = t.type || 'buy';
+          if (type === 'buy') qtyOnDate += t.quantity;
+          else qtyOnDate -= t.quantity;
         }
       });
 
@@ -1247,6 +1322,8 @@ class B3App {
     let totalMarketValue = 0;
     let totalInvestedValue = 0;
     let totalDividendsValue = 0;
+    let totalEffectiveProfit = 0;
+    let totalProjectedProfit = 0;
 
     consolidated.forEach(item => {
       const asset = this.marketData.assets[item.ticker];
@@ -1256,28 +1333,20 @@ class B3App {
       const marketValue = currentPrice * item.totalQty;
       const investedValue = item.totalInvested;
       const totalProventos = this.getDividendsForTicker(item.ticker, item.transactions);
-      const totalEquity = marketValue + totalProventos;
 
-      // Nova Rentabilidade Real: (Valor Mercado + Total Proventos - Valor Investido) / Valor Investido
-      const rentReal = investedValue > 0 ? ((totalEquity - investedValue) / investedValue * 100) : 0;
+      const effectiveProfit = item.realizedProfit;
+      const projectedProfit = item.totalQty > 0 ? (marketValue - investedValue) : 0;
 
-      // Rentabilidade do Ativo (Mercado): Ponderada pelas datas de compra
-      // Para cada lote: (Preço Atual + Proventos do Lote / Preço na Data da Compra) - 1
-      let weightedMarketRentSum = 0;
-      item.transactions.forEach(t => {
-        const histPrice = this.findCloseForDate(asset, t.purchase_date);
-        const lotProventos = this.getDividendsForTicker(item.ticker, [t]);
-        if (histPrice) {
-          const lotInvested = histPrice * t.quantity;
-          const lotMarketValue = currentPrice * t.quantity;
-          const lotEquity = lotMarketValue + lotProventos;
-          const lotRent = ((lotEquity - lotInvested) / lotInvested * 100);
-          weightedMarketRentSum += (lotRent * t.quantity);
-        } else {
-          weightedMarketRentSum += (rentReal * t.quantity);
-        }
-      });
-      const rentMarket = weightedMarketRentSum / item.totalQty;
+      const totalEquity = marketValue + totalProventos + effectiveProfit;
+
+      // Rentabilidades Individuais para o Gráfico
+      const rentEfetivaPerc = item.costOfSoldShares > 0 ? (effectiveProfit / item.costOfSoldShares * 100) : 0;
+      const rentProjetadaPerc = investedValue > 0 ? (projectedProfit / investedValue * 100) : 0;
+
+      // Rentabilidade Total do Ativo: Lucro Total / (Custo Atual + Custo de lotes já vendidos)
+      const denominator = (investedValue + item.costOfSoldShares);
+      const rentTotal = denominator > 0 ?
+        ((effectiveProfit + projectedProfit + totalProventos) / denominator * 100) : 0;
 
       positions.push({
         ticker: item.ticker,
@@ -1285,43 +1354,40 @@ class B3App {
         sector: asset.sector || 'N/A',
         quantity: item.totalQty,
         avgPrice: item.avgPrice,
-        avgDate: item.avgDate,
         totalInvested: investedValue,
         current_price: currentPrice,
-        position_value: marketValue,
         market_value: marketValue,
         total_proventos: totalProventos,
+        effectiveProfit: effectiveProfit,
+        projectedProfit: projectedProfit,
+        rentEfetivaPerc: rentEfetivaPerc,
+        rentProjetadaPerc: rentProjetadaPerc,
         total_equity: totalEquity,
-        rentability_market: rentMarket,
-        rentability_real: rentReal,
+        rentability_total: rentTotal,
         volatility: asset.stats.volatility || 0
       });
+
       totalMarketValue += marketValue;
       totalInvestedValue += investedValue;
       totalDividendsValue += totalProventos;
+      totalEffectiveProfit += effectiveProfit;
+      totalProjectedProfit += projectedProfit;
     });
 
-    const totalEquityValue = totalMarketValue + totalDividendsValue;
+    const totalEquityValue = totalMarketValue + totalDividendsValue + totalEffectiveProfit;
 
     const allocation = {};
     const allocationInvested = {};
     positions.forEach(p => {
-      // Allocation based on Total Equity (Market + Dividends)
       allocation[p.ticker] = (p.total_equity / (totalEquityValue || 1) * 100);
       allocationInvested[p.ticker] = (p.totalInvested / (totalInvestedValue || 1) * 100);
     });
 
-    const weights = positions.map(p => p.total_equity / (totalEquityValue || 1));
-    const portfolioReturn = positions.reduce((acc, p, idx) => acc + (weights[idx] * (p.rentability_market || 0)), 0);
+    // We use projected rentability for the return metrics if requested, or total
+    const portfolioReturn = (totalInvestedValue > 0) ? (totalProjectedProfit / totalInvestedValue * 100) : 0;
+    const portfolioVol = positions.reduce((acc, p, idx) => acc + ((p.total_equity / (totalEquityValue || 1)) * (p.volatility || 0)), 0);
+    const portfolioRentTotal = (totalInvestedValue > 0) ? ((totalEffectiveProfit + totalProjectedProfit + totalDividendsValue) / totalInvestedValue * 100) : 0;
 
-    // Weighted Volatility (Simplification as covariance requires aligned time series)
-    // For the Dashboard summary, we use weighted average of individual volatilities as a proxy
-    // but the Rebalance engine will use the full covariance matrix.
-    const portfolioVol = positions.reduce((acc, p, idx) => acc + (weights[idx] * (p.volatility || 0)), 0);
-
-    const portfolioRentReal = totalInvestedValue > 0 ? ((totalEquityValue - totalInvestedValue) / totalInvestedValue * 100) : 0;
-
-    // Sharpe Ratio calculation
     const riskFree = parseFloat(this.$('riskFreeRate').value) || 10;
     const sharpe = (portfolioVol > 0) ? (portfolioReturn - riskFree) / portfolioVol : 0;
 
@@ -1335,9 +1401,11 @@ class B3App {
         total_market_value: totalMarketValue,
         total_invested: totalInvestedValue,
         total_proventos: totalDividendsValue,
-        num_positions: positions.length,
+        total_effective_profit: totalEffectiveProfit,
+        total_projected_profit: totalProjectedProfit,
+        num_positions: positions.filter(p => p.quantity > 0).length,
         avg_rentability: portfolioReturn,
-        portfolio_rentability_real: portfolioRentReal,
+        portfolio_rentability_real: portfolioRentTotal,
         portfolio_volatility: portfolioVol,
         sharpe_ratio: sharpe
       }
@@ -1347,7 +1415,7 @@ class B3App {
   }
 
   async runBarsi() {
-    if (!this.portfolio.positions.length || !this.marketData) {
+    if (!this.analysis || !this.analysis.positions.length || !this.marketData) {
       this.toast('Adicione ativos ao portfólio primeiro', 'error');
       return;
     }
@@ -1356,7 +1424,8 @@ class B3App {
     this.$('barsiTargetDisplay').textContent = targetYield + '%';
 
     const analyses = [];
-    const tickers = [...new Set(this.portfolio.positions.map(p => p.ticker))];
+    // Only consider tickers with active positions (qty > 0)
+    const tickers = this.analysis.positions.filter(p => p.quantity > 0).map(p => p.ticker);
 
     for (const ticker of tickers) {
       const asset = this.marketData.assets[ticker];
@@ -1406,8 +1475,9 @@ class B3App {
   }
 
   async runRebalance() {
-    if (!this.marketData) return;
-    const tickers = [...new Set(this.portfolio.positions.map(p => p.ticker))];
+    if (!this.marketData || !this.analysis) return;
+    // Only consider tickers with active positions (qty > 0)
+    const tickers = this.analysis.positions.filter(p => p.quantity > 0).map(p => p.ticker);
     if (tickers.length < 2) {
       this.toast('Necessário pelo menos 2 ativos para otimização', 'error');
       return;
@@ -1723,8 +1793,8 @@ class B3App {
     if (this.charts.rentability) this.charts.rentability.destroy();
 
     const labels = this.analysis.positions.map(p => p.ticker.replace('.SA', ''));
-    const marketValues = this.analysis.positions.map(p => p.rentability_market);
-    const investorValues = this.analysis.positions.map(p => p.rentability_real);
+    const effectiveValues = this.analysis.positions.map(p => p.rentEfetivaPerc);
+    const projectedValues = this.analysis.positions.map(p => p.rentProjetadaPerc);
 
     this.charts.rentability = new Chart(ctx, {
       type: 'bar',
@@ -1732,17 +1802,17 @@ class B3App {
         labels,
         datasets: [
           {
-            label: 'Rentab. Ativo (%)',
-            data: marketValues,
-            backgroundColor: '#6366f1',
+            label: 'Rentab. Efetiva (%)',
+            data: effectiveValues,
+            backgroundColor: '#22c55e',
             borderRadius: 4,
             barPercentage: 0.8,
             categoryPercentage: 0.7
           },
           {
-            label: 'Minha Rentab. (%)',
-            data: investorValues,
-            backgroundColor: '#22c55e',
+            label: 'Rentab. Projetada (%)',
+            data: projectedValues,
+            backgroundColor: '#6366f1',
             borderRadius: 4,
             barPercentage: 0.8,
             categoryPercentage: 0.7
@@ -1778,7 +1848,7 @@ class B3App {
   renderPositions() {
     const tbody = this.$('positionsBody');
     if (!this.portfolio.positions.length) {
-      tbody.innerHTML = '<tr><td colspan="10" class="empty-state">Nenhum ativo no portfólio. Clique em "Adicionar Ativo".</td></tr>';
+      tbody.innerHTML = '<tr><td colspan="11" class="empty-state">Nenhum ativo no portfólio. Clique em "Adicionar Ativo".</td></tr>';
       return;
     }
 
@@ -1796,7 +1866,7 @@ class B3App {
       if (sortBy === 'market_value') return (bn.market_value || 0) - (an.market_value || 0);
       if (sortBy === 'dividends') return (bn.total_proventos || 0) - (an.total_proventos || 0);
       if (sortBy === 'equity') return (bn.total_equity || 0) - (an.total_equity || 0);
-      if (sortBy === 'rentability') return (bn.rentability_real || 0) - (an.rentability_real || 0);
+      if (sortBy === 'rentability') return (bn.rentability_total || 0) - (an.rentability_total || 0);
       return a.ticker.localeCompare(b.ticker);
     });
 
@@ -1804,9 +1874,13 @@ class B3App {
     consolidated.forEach(item => {
       const a = analysisMap[item.ticker] || {};
       const tickerClean = this.escapeHTML(item.ticker.replace('.SA', ''));
-      const rent = a.rentability_real;
+
+      const rent = a.rentability_total;
       const rentClass = rent !== undefined ? (rent >= 0 ? 'positive' : 'negative') : '';
       const rentText = rent !== undefined ? ((rent > 0 ? '+' : '') + rent.toFixed(2) + '%') : '—';
+
+      const effProf = a.effectiveProfit || 0;
+      const projProf = a.projectedProfit || 0;
 
       const aiButton = this.user ? `
         <button class="btn-ai-icon" onclick="app.showAssetNews('${item.ticker}')" title="Ver resumo IA">🤖</button>
@@ -1815,12 +1889,13 @@ class B3App {
       html += `<tr>
         <td><a href="#" onclick="event.preventDefault(); app.showMonitor('${tickerClean}')" class="ticker-link"><strong>${tickerClean}</strong><br><small style="color:var(--text-muted)">${a.name || item.ticker}</small></a></td>
         <td>${item.totalQty}</td>
-        <td>R$ ${item.avgPrice.toFixed(2)}</td>
+        <td>R$ ${item.avgPrice.toFixed(4)}</td>
         <td>${this.formatCurrency(item.totalInvested)}</td>
-        <td>${a.current_price ? 'R$ ' + a.current_price.toFixed(2) : '—'}</td>
         <td>${a.market_value ? this.formatCurrency(a.market_value) : '—'}</td>
         <td class="positive">${a.total_proventos ? this.formatCurrency(a.total_proventos) : 'R$ 0,00'}</td>
         <td style="font-weight:700">${a.total_equity ? this.formatCurrency(a.total_equity) : '—'}</td>
+        <td class="${effProf >= 0 ? 'positive' : 'negative'}">${this.formatCurrency(effProf)}</td>
+        <td class="${projProf >= 0 ? 'positive' : 'negative'}">${this.formatCurrency(projProf)}</td>
         <td class="${rentClass}">${rentText}</td>
         <td>
           <div style="display:flex; gap:0.25rem">
@@ -1923,8 +1998,10 @@ class B3App {
 
     let rows = '';
     tickerData.transactions.forEach(t => {
+      const typeLabel = (t.type || 'buy') === 'buy' ? '<span class="badge badge-buy">Compra</span>' : '<span class="badge badge-sell">Venda</span>';
       rows += `
         <tr>
+          <td>${typeLabel}</td>
           <td>${t.purchase_date}</td>
           <td>${t.quantity}</td>
           <td>R$ ${t.purchase_price.toFixed(2)}</td>
@@ -1947,6 +2024,7 @@ class B3App {
             <table>
               <thead>
                 <tr>
+                  <th>Tipo</th>
                   <th>Data</th>
                   <th>Quantidade</th>
                   <th>Preço</th>
