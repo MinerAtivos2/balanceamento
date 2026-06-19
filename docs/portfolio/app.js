@@ -985,13 +985,13 @@ class B3App {
     const ibovCard = this.$('ibovHeaderCard');
     if (ibov && ibovCard) {
       ibovCard.style.display = 'block';
-      this.$('ibovScore').textContent = ibov.last_close.toLocaleString('pt-BR', { maximumFractionDigits: 0 }) + ' pts';
+      this.$('ibovScore').textContent = this.formatNumber(ibov.last_close, 0) + ' pts';
 
       const renderDelta = (id, val, label) => {
         const el = this.$(id);
         const sign = val > 0 ? '+' : '';
         const color = val >= 0 ? 'var(--green)' : 'var(--red)';
-        el.textContent = `${label}: ${sign}${(val * 100).toFixed(2)}%`;
+        el.textContent = `${label}: ${sign}${this.formatNumber((val * 100), 2)}%`;
         el.style.color = color;
       };
 
@@ -1019,14 +1019,14 @@ class B3App {
 
       let performanceHtml = '';
       if (data.last_close != null && data.daily_delta != null) {
-        const d_delta = (data.daily_delta * 100).toFixed(2);
+        const d_delta = this.formatNumber(data.daily_delta * 100, 2);
         const d_color = data.daily_delta >= 0 ? 'var-up' : 'var-down';
         const d_sign = data.daily_delta > 0 ? '+' : '';
 
         let extraDeltas = '';
         if (data.monthly_delta != null && data.yearly_delta != null) {
-          const m_delta = (data.monthly_delta * 100).toFixed(1);
-          const y_delta = (data.yearly_delta * 100).toFixed(1);
+          const m_delta = this.formatNumber(data.monthly_delta * 100, 1);
+          const y_delta = this.formatNumber(data.yearly_delta * 100, 1);
           extraDeltas = `
             <div style="font-size: 0.65rem; color: var(--text-muted); margin-top: 2px;">
               M: <span class="${data.monthly_delta >= 0 ? 'var-up' : 'var-down'}">${data.monthly_delta > 0 ? '+' : ''}${m_delta}%</span> |
@@ -1037,7 +1037,7 @@ class B3App {
 
         performanceHtml = `
           <div class="news-card-perf">
-            <span class="news-perf-price">R$ ${data.last_close.toFixed(2)}</span>
+            <span class="news-perf-price">R$ ${this.formatNumber(data.last_close, 2)}</span>
             <span class="news-perf-delta ${d_color}">${d_sign}${d_delta}%</span>
             ${extraDeltas}
           </div>
@@ -1855,11 +1855,11 @@ class B3App {
     this.$('statPositions').textContent = s.num_positions || 0;
 
     const rentRealEl = this.$('statRentabilityReal');
-    rentRealEl.textContent = (s.portfolio_rentability_real > 0 ? '+' : '') + s.portfolio_rentability_real.toFixed(2) + '%';
+    rentRealEl.textContent = (s.portfolio_rentability_real > 0 ? '+' : '') + this.formatNumber(s.portfolio_rentability_real, 2) + '%';
     rentRealEl.className = 'stat-value ' + (s.portfolio_rentability_real >= 0 ? 'positive' : 'negative');
 
-    this.$('statVolatility').textContent = s.portfolio_volatility.toFixed(2) + '%';
-    this.$('statSharpe').textContent = (s.sharpe_ratio || 0).toFixed(2);
+    this.$('statVolatility').textContent = this.formatNumber(s.portfolio_volatility, 2) + '%';
+    this.$('statSharpe').textContent = this.formatNumber(s.sharpe_ratio || 0, 2);
 
     this.renderAllocationChart();
     this.renderRentabilityChart();
@@ -1915,7 +1915,7 @@ class B3App {
               label: context => {
                 const label = context.dataset.label || '';
                 const value = context.raw || 0;
-                return `${context.label} (${label}): R$ ${value.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`;
+                return `${context.label} (${label}): R$ ${this.formatNumber(value, 2)}`;
               },
             },
           },
@@ -1980,7 +1980,7 @@ class B3App {
           },
           tooltip: {
             callbacks: {
-              label: ctx => `${ctx.dataset.label}: ${(ctx.raw > 0 ? '+' : '') + ctx.raw.toFixed(2)}%`
+              label: ctx => `${ctx.dataset.label}: ${(ctx.raw > 0 ? '+' : '') + this.formatNumber(ctx.raw, 2)}%`
             }
           },
         },
@@ -2030,7 +2030,7 @@ class B3App {
 
       const rent = a.rentability_total;
       const rentClass = rent !== undefined ? (rent >= 0 ? 'positive' : 'negative') : '';
-      const rentText = rent !== undefined ? ((rent > 0 ? '+' : '') + rent.toFixed(2) + '%') : '—';
+      const rentText = rent !== undefined ? ((rent > 0 ? '+' : '') + this.formatNumber(rent, 2) + '%') : '—';
 
       const effProf = a.effectiveProfit || 0;
       const projProf = a.projectedProfit || 0;
@@ -2042,7 +2042,7 @@ class B3App {
       html += `<tr>
         <td><a href="#" onclick="event.preventDefault(); app.showMonitor('${tickerClean}')" class="ticker-link"><strong>${tickerClean}</strong><br><small style="color:var(--text-muted)">${a.name || item.ticker}</small></a></td>
         <td>${item.totalQty}</td>
-        <td>R$ ${item.avgPrice.toFixed(4)}</td>
+        <td>R$ ${this.formatNumber(item.avgPrice, 4)}</td>
         <td>${this.formatCurrency(item.totalInvested)}</td>
         <td>${a.market_value ? this.formatCurrency(a.market_value) : '—'}</td>
         <td class="positive">${a.total_proventos ? this.formatCurrency(a.total_proventos) : 'R$ 0,00'}</td>
@@ -2121,7 +2121,7 @@ class B3App {
 
     if (!this.isDiscoveryMode) {
       const avgYield = tableData.reduce((acc, val) => acc + val.yield_period, 0) / (tableData.length || 1);
-      this.$('divStatYield').textContent = avgYield.toFixed(2) + '%';
+      this.$('divStatYield').textContent = this.formatNumber(avgYield, 2) + '%';
     } else {
       this.$('divStatYield').textContent = '—';
     }
@@ -2137,8 +2137,8 @@ class B3App {
       <tr>
         <td><strong>${item.ticker.replace('.SA', '')}</strong><br><small style="color:var(--text-muted)">${item.name}</small></td>
         <td class="positive">${this.formatCurrency(item.total_proventos)}${item.isDiscovery ? ' /ação' : ''}</td>
-        <td>${item.yield_period.toFixed(2)}%</td>
-        <td>${this.isDiscoveryMode ? '—' : ((item.total_proventos / (totalProventos || 1)) * 100).toFixed(1) + '%'}</td>
+        <td>${this.formatNumber(item.yield_period, 2)}%</td>
+        <td>${this.isDiscoveryMode ? '—' : this.formatNumber(((item.total_proventos / (totalProventos || 1)) * 100), 1) + '%'}</td>
       </tr>
     `).join('');
   }
@@ -2157,7 +2157,7 @@ class B3App {
           <td>${typeLabel}</td>
           <td>${t.purchase_date}</td>
           <td>${t.quantity}</td>
-          <td>R$ ${t.purchase_price.toFixed(2)}</td>
+          <td>R$ ${this.formatNumber(t.purchase_price, 2)}</td>
           <td>
             <button class="btn-outline-sm" onclick="app.closeTransactionModal(); app.openModal(${t.originalIndex})">✏️</button>
             <button class="btn-danger-sm" onclick="if(confirm('Excluir este registro?')){ app.removePosition(${t.originalIndex}); app.manageTransactions('${ticker}'); }">🗑</button>
@@ -2238,10 +2238,10 @@ class B3App {
 
       html += `<tr>
         <td><strong>${a.ticker.replace('.SA', '')}</strong><br><small style="color:var(--text-muted)">${a.name}</small></td>
-        <td>R$ ${a.current_price.toFixed(2)}</td>
-        <td>${a.price_ceiling !== null ? 'R$ ' + a.price_ceiling.toFixed(2) : '—'}</td>
-        <td class="${marginClass}">${a.margin_of_safety > 0 ? '+' : ''}${a.margin_of_safety.toFixed(1)}%</td>
-        <td>${a.current_yield.toFixed(2)}%</td>
+        <td>R$ ${this.formatNumber(a.current_price, 2)}</td>
+        <td>${a.price_ceiling !== null ? 'R$ ' + this.formatNumber(a.price_ceiling, 2) : '—'}</td>
+        <td class="${marginClass}">${a.margin_of_safety > 0 ? '+' : ''}${this.formatNumber(a.margin_of_safety, 1)}%</td>
+        <td>${this.formatNumber(a.current_yield, 2)}%</td>
         <td><span class="badge ${badgeClass}">${badgeText}</span></td>
       </tr>`;
     });
@@ -2265,9 +2265,9 @@ class B3App {
     this.$('rebalanceResults').style.display = 'block';
 
     const opt = data.optimal_allocation;
-    this.$('rebReturn').textContent = opt.expected_return.toFixed(2) + '%';
-    this.$('rebVol').textContent = opt.volatility.toFixed(2) + '%';
-    this.$('rebSharpe').textContent = opt.sharpe_ratio.toFixed(4);
+    this.$('rebReturn').textContent = this.formatNumber(opt.expected_return, 2) + '%';
+    this.$('rebVol').textContent = this.formatNumber(opt.volatility, 2) + '%';
+    this.$('rebSharpe').textContent = this.formatNumber(opt.sharpe_ratio, 4);
 
     const ctx = this.$('optimalChart');
     if (this.charts.optimal) this.charts.optimal.destroy();
@@ -2289,7 +2289,7 @@ class B3App {
         cutout: '65%',
         plugins: {
           legend: { position: 'bottom', labels: { color: '#94a3b8', padding: 16, font: { family: 'Inter', size: 12 } } },
-          tooltip: { callbacks: { label: ctx => `${ctx.label}: ${ctx.raw.toFixed(2)}%` } },
+          tooltip: { callbacks: { label: ctx => `${ctx.label}: ${this.formatNumber(ctx.raw, 2)}%` } },
         },
       },
     });
@@ -2316,9 +2316,9 @@ class B3App {
         <td><span class="badge ${actionClass}">${s.action}</span></td>
         <td><strong>${s.ticker.replace('.SA', '')}</strong><br><small style="color:var(--text-muted)">${s.name}</small></td>
         <td>${s.quantity}</td>
-        <td>R$ ${s.price.toFixed(2)}</td>
+        <td>R$ ${this.formatNumber(s.price, 2)}</td>
         <td>${this.formatCurrency(s.total_value)}</td>
-        <td>${s.current_allocation.toFixed(1)}% → ${s.target_allocation.toFixed(1)}%</td>
+        <td>${this.formatNumber(s.current_allocation, 1)}% → ${this.formatNumber(s.target_allocation, 1)}%</td>
       </tr>`;
     });
     tbody.innerHTML = html;
@@ -2355,7 +2355,7 @@ class B3App {
       return data.map((item, idx) => {
         const tickerClean = this.escapeHTML(item.ticker.replace('.SA', ''));
         const deltaVal = item[deltaKey] || 0;
-        const delta = (deltaVal * 100).toFixed(2);
+        const delta = this.formatNumber(deltaVal * 100, 2);
         const icon = isGainer ? '' : '';
         const cssClass = isGainer ? 'var-up' : 'var-down';
 
@@ -2370,7 +2370,7 @@ class B3App {
                 <a href="#" onclick="event.preventDefault(); app.showMonitor('${tickerClean}')" class="ticker-link"><strong>${tickerClean}</strong></a>
               </div>
             </td>
-            <td>R$${item.last_close.toFixed(2)}</td>
+            <td>R$${this.formatNumber(item.last_close, 2)}</td>
             <td class="${cssClass}">${(deltaVal > 0) ? '+' : ''}${delta}% ${icon}</td>
             <td style="padding: 2px 5px;"><canvas id="${canvasId}" width="80" height="30"></canvas></td>
           </tr>
@@ -2659,10 +2659,10 @@ class B3App {
           <td><strong>${d.ticker.replace('.SA','')}</strong></td>
           <td><span class="badge ${d.type === 'Day Trade' ? 'badge-daytrade' : 'badge-hold'}">${d.type}</span></td>
           <td>${d.qty}</td>
-          <td>R$ ${d.price.toFixed(2)}</td>
-          <td>R$ ${d.costs.toFixed(2)}</td>
+          <td>R$ ${this.formatNumber(d.price, 2)}</td>
+          <td>R$ ${this.formatNumber(d.costs, 2)}</td>
           <td class="${d.result >= 0 ? 'positive' : 'negative'}">${this.formatCurrency(d.result)}</td>
-          <td>R$ ${d.irrf.toFixed(2)}</td>
+          <td>R$ ${this.formatNumber(d.irrf, 2)}</td>
         </tr>
       `).join('');
     }
@@ -2815,10 +2815,10 @@ class B3App {
         ticker: a.ticker.replace('.SA', ''),
         name: a.name,
         value: Math.max(Math.abs(val), 0.5),
-        daily: (a.daily_delta * 100).toFixed(2) + '%',
-        monthly: (a.monthly_delta * 100).toFixed(2) + '%',
-        yearly: (a.yearly_delta * 100).toFixed(2) + '%',
-        delta_volume: (a.delta_volume * 100).toFixed(2) + '%',
+        daily: this.formatNumber(a.daily_delta * 100, 2) + '%',
+        monthly: this.formatNumber(a.monthly_delta * 100, 2) + '%',
+        yearly: this.formatNumber(a.yearly_delta * 100, 2) + '%',
+        delta_volume: this.formatNumber(a.delta_volume * 100, 2) + '%',
         delta: a[deltaKey],
         color: color
       };
