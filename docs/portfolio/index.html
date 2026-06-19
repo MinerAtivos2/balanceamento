@@ -57,6 +57,9 @@
       <a href="#" class="nav-link" data-section="dividends" id="nav-dividends">
         <span class="nav-icon">💰</span> Proventos
       </a>
+      <a href="#" class="nav-link" data-section="taxes" id="nav-taxes">
+        <span class="nav-icon">📜</span> Imposto de Renda
+      </a>
       <a href="#" class="nav-link" data-section="summary" id="nav-summary">
         <span class="nav-icon">🌍</span> Resumo de Mercado
       </a>
@@ -181,6 +184,10 @@
           <button class="btn btn-secondary" id="btnAddBulk">
             📥 Adicionar Vários
           </button>
+          <button class="btn btn-outline" onclick="app.$('fileImport').click()">
+            📄 Importar CSV
+          </button>
+          <input type="file" id="fileImport" style="display:none" accept=".csv" onchange="app.importCSV(this)">
           <button class="btn btn-outline" id="btnAnalyze">
             📊 Analisar Portfólio
           </button>
@@ -298,6 +305,107 @@
           </div>
         </div>
       </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- IMPOSTO DE RENDA -->
+    <!-- ============================================================ -->
+    <section class="page" data-page="taxes" id="page-taxes">
+      <div class="page-header">
+        <h1>Apuração de Imposto de Renda</h1>
+        <p class="subtitle">Controle de lucros, prejuízos e DARF (Day Trade e Swing Trade)</p>
+      </div>
+
+      <div class="alert alert-info glass" id="taxesGuestAlert">
+        <strong>🔒 Área Exclusiva:</strong> Faça login para gerenciar sua apuração de IR e compensação de prejuízos.
+      </div>
+
+      <div id="taxesContent" class="hidden">
+        <div class="toolbar">
+          <div class="toolbar-group">
+            <div class="form-inline">
+              <label for="taxMonth">Mês:</label>
+              <select id="taxMonth" class="input-sm">
+                <option value="1">Janeiro</option>
+                <option value="2">Fevereiro</option>
+                <option value="3">Março</option>
+                <option value="4">Abril</option>
+                <option value="5">Maio</option>
+                <option value="6">Junho</option>
+                <option value="7">Julho</option>
+                <option value="8">Agosto</option>
+                <option value="9">Setembro</option>
+                <option value="10">Outubro</option>
+                <option value="11">Novembro</option>
+                <option value="12">Dezembro</option>
+              </select>
+            </div>
+            <div class="form-inline">
+              <label for="taxYear">Ano:</label>
+              <input type="number" id="taxYear" value="2024" class="input-sm" style="width: 80px;">
+            </div>
+            <button class="btn btn-primary" id="btnCalculateTaxes">
+              🧾 Gerar Relatório
+            </button>
+            <button class="btn btn-outline" id="btnSaveFiscalBalance" style="display: none;">
+              💾 Confirmar e Salvar Balanço
+            </button>
+          </div>
+        </div>
+
+        <div class="grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
+          <div class="card glass">
+            <h2 class="card-title">Resumo do Mês</h2>
+            <div class="tax-report-summary" id="taxReportSummary">
+              <div class="report-item"><span>Total de Vendas (Ações):</span> <strong id="repTotalSales">R$ 0,00</strong></div>
+              <div class="report-item"><span>Isenção Aplicada:</span> <strong id="repIsento">Não</strong></div>
+              <hr style="opacity: 0.1; margin: 0.5rem 0;">
+              <div class="report-item"><span>Lucro/Prejuízo Swing Trade:</span> <strong id="repSTResult">R$ 0,00</strong></div>
+              <div class="report-item"><span>Lucro/Prejuízo Day Trade:</span> <strong id="repDTResult">R$ 0,00</strong></div>
+              <div class="report-item"><span>Prejuízo Compensado:</span> <strong id="repLossCompensated">R$ 0,00</strong></div>
+              <hr style="opacity: 0.1; margin: 0.5rem 0;">
+              <div class="report-item"><span>Imposto Devido (Bruto):</span> <strong id="repTaxDue">R$ 0,00</strong></div>
+              <div class="report-item"><span>IRRF Retido (Dedo-duro):</span> <strong id="repIRRF">R$ 0,00</strong></div>
+              <div class="report-item" style="font-size: 1.2rem; margin-top: 0.5rem; color: var(--accent);"><span>DARF a Pagar (6015):</span> <strong id="repDARF">R$ 0,00</strong></div>
+            </div>
+          </div>
+
+          <div class="card glass">
+            <h2 class="card-title">Saldos Acumulados</h2>
+            <div class="tax-report-summary">
+              <div class="report-item"><span>Prejuízo Swing Trade Acumulado:</span> <strong id="repSTLossBalance">R$ 0,00</strong></div>
+              <div class="report-item"><span>Prejuízo Day Trade Acumulado:</span> <strong id="repDTLossBalance">R$ 0,00</strong></div>
+              <div class="report-item"><span>Saldo de IRRF para Compensar:</span> <strong id="repIRRFBalance">R$ 0,00</strong></div>
+              <div class="report-item"><span>Imposto Acumulado (Meses Ant.):</span> <strong id="repTaxBalance">R$ 0,00</strong></div>
+              <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 1rem;">* Estes saldos são atualizados automaticamente após a apuração de cada mês.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card glass" style="margin-top: 1.5rem;">
+          <h2 class="card-title">Detalhamento das Operações</h2>
+          <div class="table-responsive">
+            <table id="taxDetailsTable">
+              <thead>
+                <tr>
+                  <th>Data</th>
+                  <th>Ativo</th>
+                  <th>Tipo</th>
+                  <th>Qtd</th>
+                  <th>Preço Unit.</th>
+                  <th>Custos</th>
+                  <th>Resultado</th>
+                  <th>IRRF</th>
+                </tr>
+              </thead>
+              <tbody id="taxDetailsBody">
+                <tr><td colspan="8" class="empty-state">Selecione o mês e ano para ver o detalhamento.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <p style="margin-top: 1rem; font-size: 0.8em; color: #94a3b8; font-weight: normal;">⚠️ Atenção: A apuração automática é uma ferramenta de auxílio. Verifique sempre as Notas de Corretagem e consulte um contador especializado para sua declaração anual.</p>
     </section>
 
     <!-- ============================================================ -->
@@ -775,11 +883,21 @@
         </div>
         <div class="form-group">
           <label for="posPrice" id="labelPosPrice">Preço de Compra (R$)</label>
-          <input type="number" id="posPrice" min="0.01" step="0.01" required placeholder="Ex: 28.50">
+          <input type="number" id="posPrice" min="0.01" step="0.0001" required placeholder="Ex: 28.5000">
         </div>
         <div class="form-group">
-          <label for="posDate">Data da Compra</label>
+          <label for="posDate">Data da Operação</label>
           <input type="date" id="posDate" required>
+        </div>
+        <div class="grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+          <div class="form-group">
+            <label for="posCosts">Custos Operacionais (R$)</label>
+            <input type="number" id="posCosts" min="0" step="0.01" value="0" placeholder="Ex: 1.50">
+          </div>
+          <div class="form-group">
+            <label for="posIRRF">IRRF Retido (R$)</label>
+            <input type="number" id="posIRRF" min="0" step="0.01" value="0" placeholder="Ex: 0.05">
+          </div>
         </div>
         <div class="form-actions">
           <button type="button" class="btn btn-outline" id="modalCancel">Cancelar</button>

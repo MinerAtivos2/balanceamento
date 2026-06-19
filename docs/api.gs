@@ -14,10 +14,12 @@
   9. Clique em "Implantar", autorize o acesso e COPIE a "URL do app da Web".
   10. Cole essa URL no arquivo 'app.js' do seu projeto no GitHub.
 
-  ESTRUTURA DA PLANILHA (Crie 3 abas com estes nomes):
+  ESTRUTURA DA PLANILHA (Crie estas abas com estes nomes):
   - Users: [id, username, password, is_admin]
   - Portfolios: [user_id, data, updated_at]
   - Leads: [email, timestamp]
+  - TaxConfig: [key, value, description]
+  - FiscalData: [user_id, dt_loss, st_loss, irrf_balance, updated_at, tax_balance]
 */
 
 const SPREADSHEET_ID = SpreadsheetApp.getActiveSpreadsheet().getId();
@@ -62,6 +64,12 @@ function processRequest(e) {
     return handleGetAllTickers();
   } else if (action === "request_rebalance") {
     return handleRequestRebalance(data.username, data.session_token, data.params, data.portfolio);
+  } else if (action === "get_tax_config") {
+    return handleGetTaxConfig();
+  } else if (action === "get_fiscal_data") {
+    return handleGetFiscalData(data.username, data.session_token);
+  } else if (action === "save_fiscal_data") {
+    return handleSaveFiscalData(data.username, data.session_token, data.fiscal_data);
   }
 
   return { error: "Ação não reconhecida: " + action };
@@ -75,6 +83,7 @@ function getSheet(name) {
 
 function findUser(username) {
   const sheet = getSheet("Users");
+  if (!sheet) return null;
   const data = sheet.getDataRange().getValues();
   // Pular cabeçalho na linha 0
   for (let i = 1; i < data.length; i++) {
@@ -238,4 +247,82 @@ function handleUpdatePassword(username, oldPassword, newPassword) {
     }
   }
   return { error: "Usuário não encontrado." };
+}
+
+function handleGetTaxConfig() {
+  const sheet = getSheet("TaxConfig");
+  if (!sheet) {
+    return {
+      STOCK_EXEMPTION_LIMIT: 20000,
+      STOCK_ST_RATE: 0.15,
+      STOCK_DT_RATE: 0.20,
+      FII_RATE: 0.20,
+      IRRF_ST_RATE: 0.00005,
+      IRRF_DT_RATE: 0.01
+    };
+  }
+  const data = sheet.getDataRange().getValues();
+  const config = {};
+  for (let i = 1; i < data.length; i++) {
+    config[data[i][0]] = data[i][1];
+  }
+  return {
+    STOCK_EXEMPTION_LIMIT: config.STOCK_EXEMPTION_LIMIT || 20000,
+    STOCK_ST_RATE: config.STOCK_ST_RATE || 0.15,
+    STOCK_DT_RATE: config.STOCK_DT_RATE || 0.20,
+    FII_RATE: config.FII_RATE || 0.20,
+    IRRF_ST_RATE: config.IRRF_ST_RATE || 0.00005,
+    IRRF_DT_RATE: config.IRRF_DT_RATE || 0.01
+  };
+}
+
+function handleGetFiscalData(username, token) {
+  const user = findUser(username);
+  if (!user) return { error: "Não autorizado" };
+
+  const sheet = getSheet("FiscalData");
+  if (!sheet) return { dt_loss: 0, st_loss: 0, irrf_balance: 0, tax_balance: 0 };
+
+  const data = sheet.getDataRange().getValues();
+  for (let i = 1; i < data.length; i++) {
+    if (data[i][0] == user.id) {
+      return {
+        dt_loss: data[i][1],
+        st_loss: data[i][2],
+        irrf_balance: data[i][3],
+        tax_balance: data[i][5] || 0
+      };
+    }
+  }
+  return { dt_loss: 0, st_loss: 0, irrf_balance: 0, tax_balance: 0 };
+}
+
+function handleSaveFiscalData(username, token, fiscalData) {
+  const user = findUser(username);
+  if (!user) return { error: "Não autorizado" };
+
+  let sheet = getSheet("FiscalData");
+  if (!sheet) {
+    const ss = SpreadsheetApp.openById(SPREADSHEET_ID);
+    ss.insertSheet("FiscalData");
+    sheet = ss.getSheetByName("FiscalData");
+    sheet.appendRow(["user_id", "dt_loss", "st_loss", "irrf_balance", "updated_at", "tax_balance"]);
+  }
+
+  const data = sheet.getDataRange().getValues();
+  const now = new Date().toISOString();
+
+  for (let i = 1; i < data.length; i++) {
+    if (data[i][0] == user.id) {
+      sheet.getRange(i + 1, 2).setValue(fiscalData.dt_loss);
+      sheet.getRange(i + 1, 3).setValue(fiscalData.st_loss);
+      sheet.getRange(i + 1, 4).setValue(fiscalData.irrf_balance);
+      sheet.getRange(i + 1, 5).setValue(now);
+      sheet.getRange(i + 1, 6).setValue(fiscalData.tax_balance || 0);
+      return { success: true };
+    }
+  }
+
+  sheet.appendRow([user.id, fiscalData.dt_loss, fiscalData.st_loss, fiscalData.irrf_balance, now, fiscalData.tax_balance || 0]);
+  return { success: true };
 }

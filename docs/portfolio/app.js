@@ -22,6 +22,8 @@ class B3App {
     this.currentPage = 'dashboard';
     this.previousPage = 'dashboard';
     this.summaryPeriod = 'day'; // day, month, year
+    this.taxConfig = null;
+    this.fiscalData = { dt_loss: 0, st_loss: 0, irrf_balance: 0, tax_balance: 0 };
     this.init();
   }
 
@@ -67,6 +69,8 @@ class B3App {
     this.$('btnAddPosition').addEventListener('click', () => this.openModal(null, 'buy'));
     this.$('btnSellPosition').addEventListener('click', () => this.openModal(null, 'sell'));
     this.$('btnAnalyze').addEventListener('click', () => this.runAnalysis());
+    this.$('btnCalculateTaxes').addEventListener('click', () => this.renderTaxReport());
+    this.$('btnSaveFiscalBalance').addEventListener('click', () => this.confirmAndSaveFiscalBalance());
     this.$('btnRunBarsi').addEventListener('click', () => this.runBarsi());
     this.$('btnRunRebalance').addEventListener('click', () => this.runRebalance());
     this.$('btnRequestExpertAnalysis').addEventListener('click', () => this.requestExpertAnalysis());
@@ -175,6 +179,14 @@ class B3App {
     if (name === 'summary') {
       this.renderMarketSummary();
     }
+
+    if (name === 'taxes') {
+      if (!this.user) {
+        this.openMembershipModal('taxes');
+        return;
+      }
+      this.loadTaxData();
+    }
   }
 
   toggleSidebar(force) {
@@ -202,6 +214,41 @@ class B3App {
       const newPassword = this.$('newPassword').value;
       await this.changePassword(oldPassword, newPassword);
     });
+  }
+
+  async loadTaxData() {
+    if (!this.user || !this.GAS_URL) return;
+    try {
+      this.showLoading('Carregando dados fiscais...');
+      const [configRes, fiscalRes] = await Promise.all([
+        fetch(this.GAS_URL, {
+          method: 'POST',
+          mode: 'cors',
+          body: JSON.stringify({ action: 'get_tax_config' })
+        }),
+        fetch(this.GAS_URL, {
+          method: 'POST',
+          mode: 'cors',
+          body: JSON.stringify({
+            action: 'get_fiscal_data',
+            username: this.user.username,
+            session_token: this.user.session_token
+          })
+        })
+      ]);
+      this.taxConfig = await configRes.json();
+      this.fiscalData = await fiscalRes.json();
+      this.hideLoading();
+
+      const today = new Date();
+      this.$('taxMonth').value = today.getMonth() + 1;
+      this.$('taxYear').value = today.getFullYear();
+
+      this.renderTaxReport();
+    } catch (err) {
+      this.hideLoading();
+      console.error('Erro ao carregar dados fiscais:', err);
+    }
   }
 
   async checkAuthStatus() {
@@ -381,6 +428,10 @@ class B3App {
       if (this.$('dividendsGuestAlert')) this.$('dividendsGuestAlert').classList.add('hidden');
       if (this.$('dividendsContent')) this.$('dividendsContent').classList.remove('hidden');
 
+      // Taxes area
+      if (this.$('taxesGuestAlert')) this.$('taxesGuestAlert').classList.add('hidden');
+      if (this.$('taxesContent')) this.$('taxesContent').classList.remove('hidden');
+
       // News area
       if (this.$('newsGuestTip')) this.$('newsGuestTip').classList.add('hidden');
 
@@ -398,6 +449,10 @@ class B3App {
       // Proventos area
       if (this.$('dividendsGuestAlert')) this.$('dividendsGuestAlert').classList.remove('hidden');
       if (this.$('dividendsContent')) this.$('dividendsContent').classList.add('hidden');
+
+      // Taxes area
+      if (this.$('taxesGuestAlert')) this.$('taxesGuestAlert').classList.remove('hidden');
+      if (this.$('taxesContent')) this.$('taxesContent').classList.add('hidden');
 
       // News area
       if (this.$('newsGuestTip')) this.$('newsGuestTip').classList.remove('hidden');
@@ -513,11 +568,15 @@ class B3App {
       this.$('posQty').value = pos.quantity;
       this.$('posPrice').value = pos.purchase_price;
       this.$('posDate').value = pos.purchase_date || new Date().toISOString().slice(0, 10);
+      this.$('posCosts').value = pos.costs || 0;
+      this.$('posIRRF').value = pos.irrf || 0;
     } else {
       this.$('posType').value = defaultType;
       this.$('posQty').value = '';
       this.$('posPrice').value = '';
       this.$('posDate').value = new Date().toISOString().slice(0, 10);
+      this.$('posCosts').value = 0;
+      this.$('posIRRF').value = 0;
     }
 
     this.$('modalOverlay').classList.add('show');
@@ -552,6 +611,9 @@ class B3App {
     } else if (reason === 'registration') {
       title.textContent = 'Solicitar Cadastramento';
       text.textContent = 'Preencha seu e-mail abaixo para solicitar seu cadastro no Plano Pro e ter acesso a todas as funcionalidades exclusivas. Desta forma, você sinaliza que viu as condições e concorda.';
+    } else if (reason === 'taxes') {
+      title.textContent = 'Apuração de IR';
+      text.textContent = 'A seção de Imposto de Renda é exclusiva para membros. Faça login ou solicite seu cadastramento abaixo.';
     } else if (reason === 'dividends') {
       title.textContent = 'Área de Membros';
       text.textContent = 'A seção de Proventos é exclusiva para membros. Faça login ou solicite seu cadastramento abaixo para ter acesso.';
@@ -1158,13 +1220,13 @@ class B3App {
     const grouped = {};
     this.portfolio.positions.forEach((pos, index) => {
       if (!grouped[pos.ticker]) grouped[pos.ticker] = [];
-      grouped[pos.ticker].push({ ...pos, originalIndex: index });
+      grouped[pos.ticker].push({ ...pos, originalIndex: index, originalQty: pos.quantity });
     });
 
     Object.keys(grouped).forEach(ticker => {
-      const transactions = grouped[ticker];
-      // Sort by date to process chronologically
-      transactions.sort((a, b) => a.purchase_date.localeCompare(b.purchase_date));
+      const transactions = [...grouped[ticker]];
+      // Sort by date and original index to keep chronological order
+      transactions.sort((a, b) => a.purchase_date.localeCompare(b.purchase_date) || a.originalIndex - b.originalIndex);
 
       let currentQty = 0;
       let currentPM = 0;
@@ -1172,27 +1234,75 @@ class B3App {
       let totalRealizedProfit = 0;
       let totalCostOfSoldShares = 0;
 
+      // Group transactions by day to detect Day Trade
+      const byDay = {};
       transactions.forEach(t => {
-        const type = t.type || 'buy';
-        if (type === 'buy') {
-          // Rule 1.1: Calculate Average Price (PM) on purchase
-          const newTotalCost = currentTotalCost + (t.quantity * t.purchase_price);
-          const newTotalQty = currentQty + t.quantity;
-          currentPM = newTotalCost / newTotalQty;
-          currentQty = newTotalQty;
-          currentTotalCost = newTotalCost;
-        } else {
-          // Rule 1.2: Calculate Realized Result on sale
-          const saleValue = t.quantity * t.purchase_price;
-          const costOfSharesSold = t.quantity * currentPM;
-          const result = saleValue - costOfSharesSold;
-          totalRealizedProfit += result;
-          totalCostOfSoldShares += costOfSharesSold;
+        if (!byDay[t.purchase_date]) byDay[t.purchase_date] = [];
+        byDay[t.purchase_date].push(t);
+      });
 
-          // Rule 1.3: Update Position (PM remains the same)
-          currentQty -= t.quantity;
-          currentTotalCost = currentQty * currentPM;
+      Object.keys(byDay).sort().forEach(date => {
+        const dayTrans = byDay[date];
+        let buys = dayTrans.filter(t => (t.type || 'buy') === 'buy');
+        let sells = dayTrans.filter(t => t.type === 'sell');
+
+        // Rule: Identify Day Trade (matched pairs in the same day)
+        // Simple FIFO approach within the day
+        let dtProfit = 0;
+        let dtQty = 0;
+
+        let buyPtr = 0, sellPtr = 0;
+        while (buyPtr < buys.length && sellPtr < sells.length) {
+          let b = buys[buyPtr];
+          let s = sells[sellPtr];
+          let matchQty = Math.min(b.quantity, s.quantity);
+
+          // Day Trade Result: (SalePrice - BuyPrice) * qty - proportional costs
+          // Rule says: Subtract costs from profit.
+          const grossResult = (s.purchase_price - b.purchase_price) * matchQty;
+          // Proportional costs for this match
+          const propCosts = ((b.costs || 0) * (matchQty / b.originalQty)) + ((s.costs || 0) * (matchQty / s.originalQty));
+          dtProfit += (grossResult - propCosts);
+          dtQty += matchQty;
+
+          b.quantity -= matchQty;
+          s.quantity -= matchQty;
+
+          if (b.quantity === 0) buyPtr++;
+          if (s.quantity === 0) sellPtr++;
         }
+
+        // Add remaining day transactions to the global FIFO (Swing Trade)
+        dayTrans.forEach(t => {
+          if (t.quantity > 0) {
+            const type = t.type || 'buy';
+            if (type === 'buy') {
+              // Rule 1.1: PMC includes costs (proportional if part was day-traded)
+              const propCosts = (t.costs || 0) * (t.quantity / t.originalQty);
+              const totalCost = (t.quantity * t.purchase_price) + propCosts;
+              const newTotalCost = currentTotalCost + totalCost;
+              const newTotalQty = currentQty + t.quantity;
+              currentPM = newTotalCost / newTotalQty;
+              currentQty = newTotalQty;
+              currentTotalCost = newTotalCost;
+            } else {
+              // Rule 1.2: Realized Result on sale (Net of costs, proportional)
+              const propCosts = (t.costs || 0) * (t.quantity / t.originalQty);
+              const netSaleValue = (t.quantity * t.purchase_price) - propCosts;
+              const costOfSharesSold = t.quantity * currentPM;
+              const result = netSaleValue - costOfSharesSold;
+              totalRealizedProfit += result;
+              totalCostOfSoldShares += costOfSharesSold;
+
+              currentQty -= t.quantity;
+              currentTotalCost = currentQty * currentPM;
+            }
+          }
+        });
+
+        // Day trade results are added to realized profit for general tracking,
+        // but for tax report they will be segregated.
+        totalRealizedProfit += dtProfit;
       });
 
       consolidated[ticker] = {
@@ -1202,7 +1312,7 @@ class B3App {
         totalInvested: currentTotalCost,
         realizedProfit: totalRealizedProfit,
         costOfSoldShares: totalCostOfSoldShares,
-        transactions // original transactions sorted by date
+        transactions: grouped[ticker]
       };
     });
 
@@ -1257,6 +1367,8 @@ class B3App {
     const qty = parseInt(this.$('posQty').value, 10);
     const price = parseFloat(this.$('posPrice').value);
     const date = this.$('posDate').value;
+    const costs = parseFloat(this.$('posCosts').value) || 0;
+    const irrf = parseFloat(this.$('posIRRF').value) || 0;
     if (!ticker || !qty || !price) return;
 
     const pos = {
@@ -1264,7 +1376,9 @@ class B3App {
       ticker,
       quantity: qty,
       purchase_price: price,
-      purchase_date: date || new Date().toISOString().slice(0, 10)
+      purchase_date: date || new Date().toISOString().slice(0, 10),
+      costs,
+      irrf
     };
 
     // Validation: Sale cannot exceed current balance
@@ -1815,9 +1929,12 @@ class B3App {
     const ctx = this.$('rentabilityChart');
     if (this.charts.rentability) this.charts.rentability.destroy();
 
-    const labels = this.analysis.positions.map(p => p.ticker.replace('.SA', ''));
-    const effectiveValues = this.analysis.positions.map(p => p.rentEfetivaPerc);
-    const projectedValues = this.analysis.positions.map(p => p.rentProjetadaPerc);
+    // Sort by total equity to have a consistent view
+    const sortedPositions = [...this.analysis.positions].sort((a, b) => b.total_equity - a.total_equity);
+
+    const labels = sortedPositions.map(p => p.ticker.replace('.SA', ''));
+    const effectiveValues = sortedPositions.map(p => p.rentEfetivaPerc);
+    const projectedValues = sortedPositions.map(p => p.rentProjetadaPerc);
 
     this.charts.rentability = new Chart(ctx, {
       type: 'bar',
@@ -1829,16 +1946,14 @@ class B3App {
             data: effectiveValues,
             backgroundColor: '#22c55e',
             borderRadius: 4,
-            barPercentage: 0.8,
-            categoryPercentage: 0.7
+            stack: 'combined'
           },
           {
             label: 'Rentab. Projetada (%)',
             data: projectedValues,
             backgroundColor: '#6366f1',
             borderRadius: 4,
-            barPercentage: 0.8,
-            categoryPercentage: 0.7
+            stack: 'combined'
           }
         ],
       },
@@ -1846,8 +1961,16 @@ class B3App {
         responsive: true,
         maintainAspectRatio: false,
         scales: {
-          x: { ticks: { color: '#94a3b8', font: { family: 'Inter', size: 10 } }, grid: { display: false } },
-          y: { ticks: { color: '#94a3b8', callback: v => v + '%' }, grid: { color: 'rgba(255,255,255,0.05)' } },
+          x: {
+            ticks: { color: '#94a3b8', font: { family: 'Inter', size: 10 } },
+            grid: { display: false },
+            stacked: true
+          },
+          y: {
+            ticks: { color: '#94a3b8', callback: v => v + '%' },
+            grid: { color: 'rgba(255,255,255,0.05)' },
+            stacked: true
+          },
         },
         plugins: {
           legend: {
@@ -2322,6 +2445,308 @@ class B3App {
       }
     });
     this.sparkCharts.push(chart);
+  }
+
+  renderTaxReport() {
+    const month = parseInt(this.$('taxMonth').value);
+    const year = parseInt(this.$('taxYear').value);
+
+    if (!this.portfolio.positions.length) return;
+
+    // 1. Segregar operações por mês e tipo (DT vs ST)
+    const monthStr = `${year}-${String(month).padStart(2, '0')}`;
+    const reportData = {
+      totalSalesStocks: 0,
+      stProfitStocks: 0, // Apenas Ações (sujeito a isenção 20k)
+      stProfitOthers: 0, // ETFs, Opções (15% sem isenção)
+      stProfitFIIs: 0,   // FIIs/Fiagros (20% sem isenção)
+      dtProfit: 0,
+      irrfMonth: 0,
+      details: []
+    };
+
+    // Necessitamos recalcular tudo cronologicamente para ter o PMC correto no mês
+    const consolidated = {};
+    const tickers = [...new Set(this.portfolio.positions.map(p => p.ticker))];
+
+    tickers.forEach(ticker => {
+      const transactions = [...this.portfolio.positions]
+        .filter(p => p.ticker === ticker)
+        .map((p, i) => ({ ...p, originalIndex: i, originalQty: p.quantity }));
+
+      transactions.sort((a, b) => a.purchase_date.localeCompare(b.purchase_date) || a.originalIndex - b.originalIndex);
+
+      let currentQty = 0;
+      let currentPM = 0;
+      let currentTotalCost = 0;
+
+      const byDay = {};
+      transactions.forEach(t => {
+        if (!byDay[t.purchase_date]) byDay[t.purchase_date] = [];
+        byDay[t.purchase_date].push(t);
+      });
+
+      Object.keys(byDay).sort().forEach(date => {
+        const isCurrentMonth = date.startsWith(monthStr);
+        const dayTrans = byDay[date];
+
+        // Clone to not affect original objects during internal day-trade matching
+        let buys = dayTrans.filter(t => (t.type || 'buy') === 'buy').map(t => ({...t}));
+        let sells = dayTrans.filter(t => t.type === 'sell').map(t => ({...t}));
+
+        // Day Trade Detection
+        let buyPtr = 0, sellPtr = 0;
+        while (buyPtr < buys.length && sellPtr < sells.length) {
+          let b = buys[buyPtr];
+          let s = sells[sellPtr];
+          let matchQty = Math.min(b.quantity, s.quantity);
+
+          if (isCurrentMonth) {
+            const gross = (s.purchase_price - b.purchase_price) * matchQty;
+            const costs = ((b.costs || 0) * (matchQty / b.originalQty)) + ((s.costs || 0) * (matchQty / s.originalQty));
+            const result = gross - costs;
+            const irrf = (s.irrf || 0) * (matchQty / s.originalQty);
+
+            reportData.dtProfit += result;
+            reportData.irrfMonth += irrf;
+            reportData.details.push({
+              date, ticker, type: 'Day Trade', qty: matchQty, price: s.purchase_price, costs, result, irrf
+            });
+          }
+
+          b.quantity -= matchQty;
+          s.quantity -= matchQty;
+          if (b.quantity === 0) buyPtr++;
+          if (s.quantity === 0) sellPtr++;
+        }
+
+        // Swing Trade FIFO
+        dayTrans.forEach((t, i) => {
+          // Use remaining quantity from day-trade matching
+          let remainingQty = (t.type === 'sell') ? sells.find(s => s.originalIndex === t.originalIndex).quantity
+                                               : buys.find(b => b.originalIndex === t.originalIndex).quantity;
+
+          if (remainingQty > 0) {
+            if ((t.type || 'buy') === 'buy') {
+              const propCosts = (t.costs || 0) * (remainingQty / t.originalQty);
+              const totalCost = (remainingQty * t.purchase_price) + propCosts;
+              currentTotalCost += totalCost;
+              currentQty += remainingQty;
+              currentPM = currentTotalCost / currentQty;
+            } else {
+              const propCosts = (t.costs || 0) * (remainingQty / t.originalQty);
+              const netSaleValue = (remainingQty * t.purchase_price) - propCosts;
+              const costOfSharesSold = remainingQty * currentPM;
+              const result = netSaleValue - costOfSharesSold;
+              const irrf = (t.irrf || 0) * (remainingQty / t.originalQty);
+
+              if (isCurrentMonth) {
+                const asset = this.assets.find(a => a.ticker === ticker);
+                const description = (asset && asset.description) ? asset.description.toUpperCase() : '';
+                const isFII = description.includes('FII') || description.includes('FIAGRO');
+                // Ações: Tickers com 4 letras e final 3, 4, 11 (UNITS podem ser confundidas com ETFs)
+                // Para simplificar, consideramos Ação se NÃO for FII e não tiver 'ETF' na descrição
+                const isStock = !isFII && !description.includes('ETF') && !description.includes('OPÇÃO');
+
+                if (isStock) {
+                  reportData.totalSalesStocks += (remainingQty * t.purchase_price);
+                  reportData.stProfitStocks += result;
+                } else if (isFII) {
+                  reportData.stProfitFIIs += result;
+                } else {
+                  // ETFs / Opções (ST 15% mas sem isenção)
+                  reportData.stProfitOthers += result;
+                }
+
+                reportData.irrfMonth += irrf;
+                reportData.details.push({
+                  date, ticker, type: 'Swing Trade', qty: remainingQty, price: t.purchase_price, costs: t.costs * (remainingQty / t.originalQty), result, irrf
+                });
+              }
+
+              currentQty -= remainingQty;
+              currentTotalCost = currentQty * currentPM;
+            }
+          }
+        });
+      });
+    });
+
+    // 2. Aplicar Regras de Isenção e Compensação
+    const config = this.taxConfig || { STOCK_EXEMPTION_LIMIT: 20000, STOCK_ST_RATE: 0.15, STOCK_DT_RATE: 0.20, FII_RATE: 0.20 };
+    const fiscal = this.fiscalData || { st_loss: 0, dt_loss: 0, irrf_balance: 0, tax_balance: 0 };
+
+    // Isenção 20k (Apenas para AÇÕES em Swing Trade)
+    let isento = reportData.totalSalesStocks <= config.STOCK_EXEMPTION_LIMIT && reportData.stProfitStocks > 0;
+
+    // Lucro Tributável ST (15%) = (Stocks se não isento) + Outros ST (ETFs/Opções)
+    let stProfit15 = (isento ? 0 : reportData.stProfitStocks) + reportData.stProfitOthers;
+    let stTaxable = Math.max(0, stProfit15);
+    let stLossCurrent = stProfit15 < 0 ? -stProfit15 : 0;
+
+    // Lucro Tributável FIIs (20%)
+    let fiiTaxable = Math.max(0, reportData.stProfitFIIs);
+    let fiiLossCurrent = reportData.stProfitFIIs < 0 ? -reportData.stProfitFIIs : 0;
+
+    // Compensação de prejuízos Swing Trade (ST 15%)
+    let stLossComp = 0;
+    if (stTaxable > 0 && fiscal.st_loss > 0) {
+      stLossComp = Math.min(stTaxable, fiscal.st_loss);
+      stTaxable -= stLossComp;
+    }
+
+    // Compensação de Day Trade (DT 20%)
+    let dtTaxable = Math.max(0, reportData.dtProfit);
+    let dtLossComp = 0;
+    let dtLossCurrent = reportData.dtProfit < 0 ? -reportData.dtProfit : 0;
+    if (dtTaxable > 0 && fiscal.dt_loss > 0) {
+      dtLossComp = Math.min(dtTaxable, fiscal.dt_loss);
+      dtTaxable -= dtLossComp;
+    }
+
+    // Cálculo do Imposto do Mês + Imposto Acumulado de meses anteriores (DARF < R$10)
+    let taxDue = (stTaxable * config.STOCK_ST_RATE) + (fiiTaxable * config.FII_RATE) + (dtTaxable * config.STOCK_DT_RATE);
+    let totalTaxDue = taxDue + (fiscal.tax_balance || 0);
+
+    // Abatimento de IRRF
+    let irrfAvailable = reportData.irrfMonth + (fiscal.irrf_balance || 0);
+    let irrfCompensated = Math.min(totalTaxDue, irrfAvailable);
+    let taxAfterIRRF = Math.max(0, totalTaxDue - irrfCompensated);
+
+    let darf = 0;
+    let nextTaxBalance = 0;
+
+    // Regra R$ 10,00 para emissão de DARF
+    if (taxAfterIRRF >= 10) {
+      darf = taxAfterIRRF;
+      nextTaxBalance = 0;
+    } else {
+      darf = 0;
+      nextTaxBalance = taxAfterIRRF;
+    }
+
+    // 3. Renderizar UI
+    this.$('repTotalSales').textContent = this.formatCurrency(reportData.totalSalesStocks);
+    this.$('repIsento').textContent = isento ? 'Sim' : 'Não';
+    this.$('repSTResult').textContent = this.formatCurrency(reportData.stProfitStocks + reportData.stProfitOthers + reportData.stProfitFIIs);
+    this.$('repDTResult').textContent = this.formatCurrency(reportData.dtProfit);
+    this.$('repLossCompensated').textContent = this.formatCurrency(stLossComp + dtLossComp);
+    this.$('repTaxDue').textContent = this.formatCurrency(taxDue);
+    this.$('repIRRF').textContent = this.formatCurrency(reportData.irrfMonth);
+    this.$('repDARF').textContent = this.formatCurrency(darf);
+
+    this.$('repSTLossBalance').textContent = this.formatCurrency(fiscal.st_loss);
+    this.$('repDTLossBalance').textContent = this.formatCurrency(fiscal.dt_loss);
+    this.$('repIRRFBalance').textContent = this.formatCurrency(fiscal.irrf_balance);
+    if (this.$('repTaxBalance')) this.$('repTaxBalance').textContent = this.formatCurrency(fiscal.tax_balance);
+
+    // Store calculated next balances for saving
+    this.nextFiscalBalances = {
+      st_loss: Math.max(0, fiscal.st_loss - stLossComp + stLossCurrent + fiiLossCurrent),
+      dt_loss: Math.max(0, fiscal.dt_loss - dtLossComp + dtLossCurrent),
+      irrf_balance: Math.max(0, irrfAvailable - irrfCompensated),
+      tax_balance: nextTaxBalance
+    };
+    this.$('btnSaveFiscalBalance').style.display = 'inline-block';
+
+    const tbody = this.$('taxDetailsBody');
+    if (reportData.details.length === 0) {
+      tbody.innerHTML = '<tr><td colspan="8" class="empty-state">Nenhuma operação de venda/day trade neste mês.</td></tr>';
+    } else {
+      tbody.innerHTML = reportData.details.map(d => `
+        <tr>
+          <td>${d.date.split('-').reverse().join('/')}</td>
+          <td><strong>${d.ticker.replace('.SA','')}</strong></td>
+          <td><span class="badge ${d.type === 'Day Trade' ? 'badge-daytrade' : 'badge-hold'}">${d.type}</span></td>
+          <td>${d.qty}</td>
+          <td>R$ ${d.price.toFixed(2)}</td>
+          <td>R$ ${d.costs.toFixed(2)}</td>
+          <td class="${d.result >= 0 ? 'positive' : 'negative'}">${this.formatCurrency(d.result)}</td>
+          <td>R$ ${d.irrf.toFixed(2)}</td>
+        </tr>
+      `).join('');
+    }
+  }
+
+  importCSV(input) {
+    const file = input.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = async (e) => {
+      const text = e.target.result;
+      const lines = text.split('\n');
+      const newPositions = [];
+
+      // Skip header
+      for (let i = 1; i < lines.length; i++) {
+        const line = lines[i].trim();
+        if (!line) continue;
+
+        const cols = line.split(',');
+        if (cols.length < 5) continue;
+
+        // Formato esperado: Data,Ticker,Tipo,Qtd,Preço,Custos,IRRF
+        // Ex: 2024-05-10,PETR4,buy,100,35.50,1.50,0
+        const [date, ticker, type, qty, price, costs, irrf] = cols;
+
+        newPositions.push({
+          purchase_date: date,
+          ticker: ticker.toUpperCase().endsWith('.SA') ? ticker.toUpperCase() : ticker.toUpperCase() + '.SA',
+          type: type.toLowerCase() === 'v' || type.toLowerCase() === 'sell' ? 'sell' : 'buy',
+          quantity: parseInt(qty),
+          purchase_price: parseFloat(price),
+          costs: parseFloat(costs) || 0,
+          irrf: parseFloat(irrf) || 0
+        });
+      }
+
+      if (newPositions.length > 0) {
+        this.portfolio.positions.push(...newPositions);
+        this.savePortfolio();
+        await this.runAnalysis();
+        this.renderPositions();
+        this.toast(`${newPositions.length} registros importados!`, 'success');
+      }
+    };
+    reader.readAsText(file);
+    input.value = ''; // Reset input
+  }
+
+  async saveFiscalData(newFiscalData) {
+    if (!this.user || !this.GAS_URL) return;
+    try {
+      this.showLoading('Salvando balanço fiscal...');
+      const res = await fetch(this.GAS_URL, {
+        method: 'POST',
+        mode: 'cors',
+        body: JSON.stringify({
+          action: 'save_fiscal_data',
+          username: this.user.username,
+          session_token: this.user.session_token,
+          fiscal_data: newFiscalData
+        })
+      });
+      const data = await res.json();
+      this.hideLoading();
+      if (data.success) {
+        this.fiscalData = newFiscalData;
+        this.toast('Balanço fiscal salvo com sucesso!', 'success');
+        this.renderTaxReport();
+      } else {
+        this.toast(data.error || 'Erro ao salvar balanço fiscal.', 'error');
+      }
+    } catch (err) {
+      this.hideLoading();
+      console.error('Erro ao salvar dados fiscais:', err);
+    }
+  }
+
+  confirmAndSaveFiscalBalance() {
+    if (!this.nextFiscalBalances) return;
+    if (confirm('Deseja salvar os saldos calculados como base para os próximos meses?')) {
+      this.saveFiscalData(this.nextFiscalBalances);
+    }
   }
 
   renderMarketTreemap() {

@@ -505,6 +505,7 @@ tbody tr:hover {
 .badge-buy   { background: var(--green-bg); color: var(--green); }
 .badge-hold  { background: var(--yellow-bg); color: var(--yellow); }
 .badge-sell  { background: var(--red-bg); color: var(--red); }
+.badge-daytrade { background: rgba(139, 92, 246, 0.12); color: #8b5cf6; border: 1px solid rgba(139, 92, 246, 0.2); }
 .badge-none  { background: var(--bg-glass); color: var(--text-muted); }
 
 /* -- Alerts ------------------------------------------------------------ */
@@ -531,6 +532,25 @@ tbody tr:hover {
   gap: 2rem;
   padding: 1rem 1.5rem;
   margin-top: 1rem;
+}
+
+/* Tax Report Styles */
+.tax-report-summary {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.report-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+}
+
+.report-item strong {
+  color: var(--text-primary);
 }
 .summary-item {
   display: flex;
