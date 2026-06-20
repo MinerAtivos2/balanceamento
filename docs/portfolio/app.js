@@ -9,7 +9,7 @@ class B3App {
     // 2. Extensões > Apps Script. Cole o código do arquivo 'docs/api.gs'.
     // 3. Implantar > App da Web (Quem tem acesso: "Qualquer pessoa").
     // 4. Copie a URL gerada e cole abaixo:
-    this.GAS_URL = "https://script.google.com/macros/s/AKfycbyIQkk8nPe2ROYHPbMbvfm6EZV8TvSneHgnKovW7JoVxbMrVjF3Bs-0SG_Ps6uLk1NY5Q/exec";
+    this.GAS_URL = "https://script.google.com/macros/s/AKfycbxJtX1FkpmSw-y1MB3B3OUBzFTdB-7AhYMJK8kryYm0IogCVHzv3bt3K-t6XYUZrBw/exec";
 
     this.portfolio = { name: 'Meu Portfólio', positions: [] };
     this.user = null; // { username: '...' } if logged in
@@ -25,6 +25,86 @@ class B3App {
     this.taxConfig = null;
     this.fiscalData = { dt_loss: 0, st_loss: 0, irrf_balance: 0, tax_balance: 0 };
     this.init();
+  }
+
+  /* ------------------------------------------------------------------
+     Utilities & Helpers
+  ------------------------------------------------------------------ */
+  $(id) { return document.getElementById(id); }
+
+  formatCurrency(v) {
+    if (v == null) return 'R$ 0,00';
+    return 'R$ ' + v.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  }
+
+  formatNumber(n, decimals = 2) {
+    if (n == null || isNaN(n)) return '0';
+    return n.toLocaleString('pt-BR', {
+      minimumFractionDigits: decimals,
+      maximumFractionDigits: decimals
+    });
+  }
+
+  escapeHTML(str) {
+    if (!str) return '';
+    return str.replace(/[&<>"']/g, m => ({
+      '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+    }[m]));
+  }
+
+  getAssetLogoHTML(ticker, size = 24) {
+    const tickerClean = this.escapeHTML(ticker.replace('.SA', '').toUpperCase());
+    const logoUrl = `../assets/logos/${tickerClean}.svg`;
+    const fallbackUrl = `../assets/logo4.png`;
+    return `<img src="${logoUrl}" alt="${tickerClean}" width="${size}" height="${size}"
+                 style="vertical-align: middle; margin-right: 8px; border-radius: 4px; object-fit: contain; background: #fff; padding: 1px;"
+                 onerror="this.src='${fallbackUrl}'; this.onerror=null;">`;
+  }
+
+  palette(n) {
+    const base = [
+      '#6366f1', '#8b5cf6', '#ec4899', '#f43f5e', '#f97316',
+      '#eab308', '#22c55e', '#14b8a6', '#06b6d4', '#3b82f6',
+      '#a855f7', '#d946ef',
+    ];
+    const out = [];
+    for (let i = 0; i < n; i++) out.push(base[i % base.length]);
+    return out;
+  }
+
+  showLoading(text = 'Processando...') {
+    this.$('loadingText').textContent = text;
+    this.$('loadingOverlay').classList.add('show');
+  }
+
+  hideLoading() {
+    this.$('loadingOverlay').classList.remove('show');
+  }
+
+  setSplashMessage(text) {
+    const el = this.$('splashMessage');
+    if (el) el.textContent = text;
+  }
+
+  hideSplashScreen() {
+    const splash = this.$('splashScreen');
+    if (splash) {
+      splash.classList.add('hide');
+      document.body.classList.remove('loading');
+      setTimeout(() => splash.remove(), 600);
+    }
+  }
+
+  showMonitor(ticker) {
+    console.log('Showing monitor for:', ticker);
+    const tickerClean = ticker.replace('.SA', '').toUpperCase();
+    this.showPage('monitor');
+
+    // Garantir que o container está visível e dimensionado antes de renderizar
+    // O fadeUp leva 0.4s, então vamos aguardar um pouco mais para garantir
+    setTimeout(() => {
+        this.renderChart(tickerClean);
+    }, 450);
   }
 
   /* ------------------------------------------------------------------
@@ -122,7 +202,6 @@ class B3App {
     this.$('posTicker').addEventListener('input', () => this.validateTicker());
   }
 
-  $(id) { return document.getElementById(id); }
 
   /* ------------------------------------------------------------------
      Navigation
@@ -1933,8 +2012,8 @@ class B3App {
     const sortedPositions = [...this.analysis.positions].sort((a, b) => b.total_equity - a.total_equity);
 
     const labels = sortedPositions.map(p => p.ticker.replace('.SA', ''));
-    const effectiveValues = sortedPositions.map(p => p.rentEfetivaPerc);
-    const projectedValues = sortedPositions.map(p => p.rentProjetadaPerc);
+    const effectiveValues = sortedPositions.map(p => p.effectiveProfit);
+    const projectedValues = sortedPositions.map(p => p.projectedProfit);
 
     this.charts.rentability = new Chart(ctx, {
       type: 'bar',
@@ -1942,18 +2021,16 @@ class B3App {
         labels,
         datasets: [
           {
-            label: 'Rentab. Efetiva (%)',
+            label: 'Lucro Efetivo (R$)',
             data: effectiveValues,
             backgroundColor: '#22c55e',
-            borderRadius: 4,
-            stack: 'combined'
+            borderRadius: 4
           },
           {
-            label: 'Rentab. Projetada (%)',
+            label: 'Lucro Projetado (R$)',
             data: projectedValues,
             backgroundColor: '#6366f1',
-            borderRadius: 4,
-            stack: 'combined'
+            borderRadius: 4
           }
         ],
       },
@@ -1967,7 +2044,7 @@ class B3App {
             stacked: true
           },
           y: {
-            ticks: { color: '#94a3b8', callback: v => v + '%' },
+            ticks: { color: '#94a3b8', callback: v => 'R$ ' + this.formatNumber(v, 0) },
             grid: { color: 'rgba(255,255,255,0.05)' },
             stacked: true
           },
@@ -1980,7 +2057,7 @@ class B3App {
           },
           tooltip: {
             callbacks: {
-              label: ctx => `${ctx.dataset.label}: ${(ctx.raw > 0 ? '+' : '') + this.formatNumber(ctx.raw, 2)}%`
+              label: ctx => `${ctx.dataset.label}: R$ ${this.formatNumber(ctx.raw, 2)}`
             }
           },
         },
@@ -2543,10 +2620,14 @@ class B3App {
               if (isCurrentMonth) {
                 const asset = this.assets.find(a => a.ticker === ticker);
                 const description = (asset && asset.description) ? asset.description.toUpperCase() : '';
-                const isFII = description.includes('FII') || description.includes('FIAGRO');
-                // Ações: Tickers com 4 letras e final 3, 4, 11 (UNITS podem ser confundidas com ETFs)
-                // Para simplificar, consideramos Ação se NÃO for FII e não tiver 'ETF' na descrição
-                const isStock = !isFII && !description.includes('ETF') && !description.includes('OPÇÃO');
+                const sector = (asset && asset.sector) ? asset.sector.toUpperCase() : '';
+                const tickerClean = ticker.replace('.SA', '');
+
+                // Melhorando a detecção por Ticker e Setor
+                const isFII = description.includes('FII') || description.includes('FIAGRO') || sector.includes('IMOBILIÁRIO') || sector.includes('FUNDO');
+                const isETF = description.includes('ETF') || tickerClean === 'BOVA11' || tickerClean === 'IVVB11' || tickerClean === 'SMAL11';
+                const isOption = description.includes('OPÇÃO') || tickerClean.match(/[A-Z]{4}[A-X][0-9]+/);
+                const isStock = !isFII && !isETF && !isOption;
 
                 if (isStock) {
                   reportData.totalSalesStocks += (remainingQty * t.purchase_price);
@@ -2588,11 +2669,25 @@ class B3App {
     let fiiTaxable = Math.max(0, reportData.stProfitFIIs);
     let fiiLossCurrent = reportData.stProfitFIIs < 0 ? -reportData.stProfitFIIs : 0;
 
-    // Compensação de prejuízos Swing Trade (ST 15%)
+    // Compensação de prejuízos Swing Trade (ST 15% + FII 20%)
+    // Baseado na regra do usuário: Prejuízos de Swing Trade SÓ podem compensar lucros de Swing Trade
+    let stLossAvailable = fiscal.st_loss;
     let stLossComp = 0;
-    if (stTaxable > 0 && fiscal.st_loss > 0) {
-      stLossComp = Math.min(stTaxable, fiscal.st_loss);
-      stTaxable -= stLossComp;
+
+    // Primeiro compensa Swing Trade Comum (15%)
+    if (stTaxable > 0 && stLossAvailable > 0) {
+      const comp = Math.min(stTaxable, stLossAvailable);
+      stLossComp += comp;
+      stTaxable -= comp;
+      stLossAvailable -= comp;
+    }
+
+    // Depois compensa FIIs (20%) se sobrar prejuízo
+    if (fiiTaxable > 0 && stLossAvailable > 0) {
+      const comp = Math.min(fiiTaxable, stLossAvailable);
+      stLossComp += comp;
+      fiiTaxable -= comp;
+      stLossAvailable -= comp;
     }
 
     // Compensação de Day Trade (DT 20%)
@@ -2642,7 +2737,7 @@ class B3App {
 
     // Store calculated next balances for saving
     this.nextFiscalBalances = {
-      st_loss: Math.max(0, fiscal.st_loss - stLossComp + stLossCurrent + fiiLossCurrent),
+      st_loss: Math.max(0, stLossAvailable + stLossCurrent + fiiLossCurrent),
       dt_loss: Math.max(0, fiscal.dt_loss - dtLossComp + dtLossCurrent),
       irrf_balance: Math.max(0, irrfAvailable - irrfCompensated),
       tax_balance: nextTaxBalance
@@ -2898,78 +2993,6 @@ class B3App {
         }
       }
     });
-  }
-
-  /* ------------------------------------------------------------------
-     Utilities
-  ------------------------------------------------------------------ */
-  formatCurrency(v) {
-    if (v == null) return 'R$ 0,00';
-    return 'R$ ' + v.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-  }
-
-  getAssetLogoHTML(ticker, size = 24) {
-    const tickerClean = this.escapeHTML(ticker.replace('.SA', '').toUpperCase());
-    const logoUrl = `../assets/logos/${tickerClean}.svg`;
-    const fallbackUrl = `../assets/logo4.png`;
-    return `<img src="${logoUrl}" alt="${tickerClean}" width="${size}" height="${size}"
-                 style="vertical-align: middle; margin-right: 8px; border-radius: 4px; object-fit: contain; background: #fff; padding: 1px;"
-                 onerror="this.src='${fallbackUrl}'; this.onerror=null;">`;
-  }
-
-  palette(n) {
-    const base = [
-      '#6366f1', '#8b5cf6', '#ec4899', '#f43f5e', '#f97316',
-      '#eab308', '#22c55e', '#14b8a6', '#06b6d4', '#3b82f6',
-      '#a855f7', '#d946ef',
-    ];
-    const out = [];
-    for (let i = 0; i < n; i++) out.push(base[i % base.length]);
-    return out;
-  }
-
-  showLoading(text = 'Processando...') {
-    this.$('loadingText').textContent = text;
-    this.$('loadingOverlay').classList.add('show');
-  }
-
-  hideLoading() {
-    this.$('loadingOverlay').classList.remove('show');
-  }
-
-  setSplashMessage(text) {
-    const el = this.$('splashMessage');
-    if (el) el.textContent = text;
-  }
-
-  hideSplashScreen() {
-    const splash = this.$('splashScreen');
-    if (splash) {
-      splash.classList.add('hide');
-      document.body.classList.remove('loading');
-      setTimeout(() => splash.remove(), 600);
-    }
-  }
-
-  $(id) { return document.getElementById(id); }
-
-  escapeHTML(str) {
-    if (!str) return '';
-    return str.replace(/[&<>"']/g, m => ({
-      '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
-    }[m]));
-  }
-
-  showMonitor(ticker) {
-    console.log('Showing monitor for:', ticker);
-    const tickerClean = ticker.replace('.SA', '').toUpperCase();
-    this.showPage('monitor');
-
-    // Garantir que o container está visível e dimensionado antes de renderizar
-    // O fadeUp leva 0.4s, então vamos aguardar um pouco mais para garantir
-    setTimeout(() => {
-        this.renderChart(tickerClean);
-    }, 450);
   }
 
   renderChart(ticker) {
