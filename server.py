@@ -10,7 +10,6 @@ import sqlite3
 import traceback
 from datetime import datetime
 
-import numpy as np
 from flask import Flask, jsonify, request, send_from_directory, session
 from werkzeug.security import check_password_hash, generate_password_hash
 

@@ -45,6 +45,24 @@ class B3App {
     });
   }
 
+  parseRate(val) {
+    if (val == null || val === '') return 0;
+    if (typeof val === 'number') return val;
+    let s = val.toString().trim();
+    if (/^\d+\.\d+$/.test(s)) return parseFloat(s);
+    if (/^\d+,\d+$/.test(s)) return parseFloat(s.replace(',', '.'));
+    if (s.includes('.') && s.includes(',')) {
+      if (s.lastIndexOf('.') < s.lastIndexOf(',')) {
+        return parseFloat(s.replace(/\./g, '').replace(',', '.')) || 0;
+      } else {
+        return parseFloat(s.replace(/,/g, '')) || 0;
+      }
+    }
+    let clean = s.replace(/\./g, '').replace(',', '.');
+    let parsed = parseFloat(clean);
+    return isNaN(parsed) ? 0 : parsed;
+  }
+
   escapeHTML(str) {
     if (!str) return '';
     return str.replace(/[&<>"']/g, m => ({
@@ -1304,16 +1322,13 @@ class B3App {
 
     Object.keys(grouped).forEach(ticker => {
       const transactions = [...grouped[ticker]];
-      // Sort by date and original index to keep chronological order
       transactions.sort((a, b) => a.purchase_date.localeCompare(b.purchase_date) || a.originalIndex - b.originalIndex);
 
       let currentQty = 0;
-      let currentPM = 0;
-      let currentTotalCost = 0;
       let totalRealizedProfit = 0;
       let totalCostOfSoldShares = 0;
+      let swingTradeLots = []; // FIFO queue
 
-      // Group transactions by day to detect Day Trade
       const byDay = {};
       transactions.forEach(t => {
         if (!byDay[t.purchase_date]) byDay[t.purchase_date] = [];
@@ -1322,27 +1337,21 @@ class B3App {
 
       Object.keys(byDay).sort().forEach(date => {
         const dayTrans = byDay[date];
-        let buys = dayTrans.filter(t => (t.type || 'buy') === 'buy');
-        let sells = dayTrans.filter(t => t.type === 'sell');
+        let buys = dayTrans.filter(t => (t.type || 'buy') === 'buy').map(t => ({ ...t }));
+        let sells = dayTrans.filter(t => t.type === 'sell').map(t => ({ ...t }));
 
-        // Rule: Identify Day Trade (matched pairs in the same day)
-        // Simple FIFO approach within the day
         let dtProfit = 0;
-        let dtQty = 0;
 
+        // Day Trade matching (FIFO within the day)
         let buyPtr = 0, sellPtr = 0;
         while (buyPtr < buys.length && sellPtr < sells.length) {
           let b = buys[buyPtr];
           let s = sells[sellPtr];
           let matchQty = Math.min(b.quantity, s.quantity);
 
-          // Day Trade Result: (SalePrice - BuyPrice) * qty - proportional costs
-          // Rule says: Subtract costs from profit.
           const grossResult = (s.purchase_price - b.purchase_price) * matchQty;
-          // Proportional costs for this match
           const propCosts = ((b.costs || 0) * (matchQty / b.originalQty)) + ((s.costs || 0) * (matchQty / s.originalQty));
           dtProfit += (grossResult - propCosts);
-          dtQty += matchQty;
 
           b.quantity -= matchQty;
           s.quantity -= matchQty;
@@ -1351,44 +1360,49 @@ class B3App {
           if (s.quantity === 0) sellPtr++;
         }
 
-        // Add remaining day transactions to the global FIFO (Swing Trade)
+        // Remaining day transactions go to global Swing Trade FIFO
         dayTrans.forEach(t => {
-          if (t.quantity > 0) {
-            const type = t.type || 'buy';
-            if (type === 'buy') {
-              // Rule 1.1: PMC includes costs (proportional if part was day-traded)
-              const propCosts = (t.costs || 0) * (t.quantity / t.originalQty);
-              const totalCost = (t.quantity * t.purchase_price) + propCosts;
-              const newTotalCost = currentTotalCost + totalCost;
-              const newTotalQty = currentQty + t.quantity;
-              currentPM = newTotalCost / newTotalQty;
-              currentQty = newTotalQty;
-              currentTotalCost = newTotalCost;
-            } else {
-              // Rule 1.2: Realized Result on sale (Net of costs, proportional)
-              const propCosts = (t.costs || 0) * (t.quantity / t.originalQty);
-              const netSaleValue = (t.quantity * t.purchase_price) - propCosts;
-              const costOfSharesSold = t.quantity * currentPM;
-              const result = netSaleValue - costOfSharesSold;
-              totalRealizedProfit += result;
-              totalCostOfSoldShares += costOfSharesSold;
+          const type = t.type || 'buy';
+          let remainingQty = (type === 'sell') ? sells.find(s => s.originalIndex === t.originalIndex).quantity
+                                               : buys.find(b => b.originalIndex === t.originalIndex).quantity;
 
-              currentQty -= t.quantity;
-              currentTotalCost = currentQty * currentPM;
+          if (remainingQty > 0) {
+            if (type === 'buy') {
+              const propCosts = (t.costs || 0) * (remainingQty / t.originalQty);
+              const totalCost = (remainingQty * t.purchase_price) + propCosts;
+              const unitCost = totalCost / remainingQty;
+              swingTradeLots.push({ qty: remainingQty, unitCost: unitCost });
+              currentQty += remainingQty;
+            } else {
+              const propCosts = (t.costs || 0) * (remainingQty / t.originalQty);
+              const netSaleValue = (remainingQty * t.purchase_price) - propCosts;
+              let costBasisSold = 0;
+              let toSell = remainingQty;
+              while (toSell > 0 && swingTradeLots.length > 0) {
+                let lot = swingTradeLots[0];
+                let take = Math.min(toSell, lot.qty);
+                costBasisSold += (take * lot.unitCost);
+                lot.qty -= take;
+                toSell -= take;
+                if (lot.qty === 0) swingTradeLots.shift();
+              }
+              totalRealizedProfit += (netSaleValue - costBasisSold);
+              totalCostOfSoldShares += costBasisSold;
+              currentQty -= remainingQty;
             }
           }
         });
-
-        // Day trade results are added to realized profit for general tracking,
-        // but for tax report they will be segregated.
         totalRealizedProfit += dtProfit;
       });
+
+      const totalInvested = swingTradeLots.reduce((acc, lot) => acc + (lot.qty * lot.unitCost), 0);
+      const currentPM = currentQty > 0 ? totalInvested / currentQty : 0;
 
       consolidated[ticker] = {
         ticker,
         totalQty: currentQty,
         avgPrice: currentPM,
-        totalInvested: currentTotalCost,
+        totalInvested: totalInvested,
         realizedProfit: totalRealizedProfit,
         costOfSoldShares: totalCostOfSoldShares,
         transactions: grouped[ticker]
@@ -1814,7 +1828,10 @@ class B3App {
 
     // 3. Sugestões de Rebalanceamento
     const portfolioMap = {};
-    this.portfolio.positions.forEach(p => { portfolioMap[p.ticker] = (portfolioMap[p.ticker] || 0) + p.quantity; });
+    this.analysis.positions.forEach(p => {
+      if (!portfolioMap[p.ticker]) portfolioMap[p.ticker] = 0;
+      portfolioMap[p.ticker] += p.quantity;
+    });
     const totalValue = assetsData.reduce((acc, a) => acc + (portfolioMap[a.ticker] || 0) * a.last_price, 0);
 
     const suggestions = [];
@@ -2598,8 +2615,10 @@ class B3App {
         }
 
         // Swing Trade FIFO
+        if (!consolidated[ticker]) consolidated[ticker] = { qty: 0, lots: [] };
+        let state = consolidated[ticker];
+
         dayTrans.forEach((t, i) => {
-          // Use remaining quantity from day-trade matching
           let remainingQty = (t.type === 'sell') ? sells.find(s => s.originalIndex === t.originalIndex).quantity
                                                : buys.find(b => b.originalIndex === t.originalIndex).quantity;
 
@@ -2607,14 +2626,25 @@ class B3App {
             if ((t.type || 'buy') === 'buy') {
               const propCosts = (t.costs || 0) * (remainingQty / t.originalQty);
               const totalCost = (remainingQty * t.purchase_price) + propCosts;
-              currentTotalCost += totalCost;
-              currentQty += remainingQty;
-              currentPM = currentTotalCost / currentQty;
+              const unitCost = totalCost / remainingQty;
+              state.lots.push({ qty: remainingQty, unitCost: unitCost });
+              state.qty += remainingQty;
             } else {
               const propCosts = (t.costs || 0) * (remainingQty / t.originalQty);
               const netSaleValue = (remainingQty * t.purchase_price) - propCosts;
-              const costOfSharesSold = remainingQty * currentPM;
-              const result = netSaleValue - costOfSharesSold;
+
+              let costBasisSold = 0;
+              let toSell = remainingQty;
+              while (toSell > 0 && state.lots.length > 0) {
+                let lot = state.lots[0];
+                let take = Math.min(toSell, lot.qty);
+                costBasisSold += (take * lot.unitCost);
+                lot.qty -= take;
+                toSell -= take;
+                if (lot.qty === 0) state.lots.shift();
+              }
+
+              const result = netSaleValue - costBasisSold;
               const irrf = (t.irrf || 0) * (remainingQty / t.originalQty);
 
               if (isCurrentMonth) {
@@ -2654,8 +2684,19 @@ class B3App {
     });
 
     // 2. Aplicar Regras de Isenção e Compensação
-    const config = this.taxConfig || { STOCK_EXEMPTION_LIMIT: 20000, STOCK_ST_RATE: 0.15, STOCK_DT_RATE: 0.20, FII_RATE: 0.20 };
-    const fiscal = this.fiscalData || { st_loss: 0, dt_loss: 0, irrf_balance: 0, tax_balance: 0 };
+    const rawConfig = this.taxConfig || { STOCK_EXEMPTION_LIMIT: 20000, STOCK_ST_RATE: 0.15, STOCK_DT_RATE: 0.20, FII_RATE: 0.20 };
+    const config = {
+      STOCK_EXEMPTION_LIMIT: this.parseRate(rawConfig.STOCK_EXEMPTION_LIMIT),
+      STOCK_ST_RATE: this.parseRate(rawConfig.STOCK_ST_RATE),
+      STOCK_DT_RATE: this.parseRate(rawConfig.STOCK_DT_RATE),
+      FII_RATE: this.parseRate(rawConfig.FII_RATE)
+    };
+    const fiscal = {
+      st_loss: this.parseRate(this.fiscalData?.st_loss),
+      dt_loss: this.parseRate(this.fiscalData?.dt_loss),
+      irrf_balance: this.parseRate(this.fiscalData?.irrf_balance),
+      tax_balance: this.parseRate(this.fiscalData?.tax_balance)
+    };
 
     // Isenção 20k (Apenas para AÇÕES em Swing Trade)
     let isento = reportData.totalSalesStocks <= config.STOCK_EXEMPTION_LIMIT && reportData.stProfitStocks > 0;
@@ -2700,7 +2741,11 @@ class B3App {
     }
 
     // Cálculo do Imposto do Mês + Imposto Acumulado de meses anteriores (DARF < R$10)
-    let taxDue = (stTaxable * config.STOCK_ST_RATE) + (fiiTaxable * config.FII_RATE) + (dtTaxable * config.STOCK_DT_RATE);
+    const st_rate = config.STOCK_ST_RATE || 0.15;
+    const fii_rate = config.FII_RATE || 0.20;
+    const dt_rate = config.STOCK_DT_RATE || 0.20;
+
+    let taxDue = (stTaxable * st_rate) + (fiiTaxable * fii_rate) + (dtTaxable * dt_rate);
     let totalTaxDue = taxDue + (fiscal.tax_balance || 0);
 
     // Abatimento de IRRF
@@ -2726,9 +2771,17 @@ class B3App {
     this.$('repSTResult').textContent = this.formatCurrency(reportData.stProfitStocks + reportData.stProfitOthers + reportData.stProfitFIIs);
     this.$('repDTResult').textContent = this.formatCurrency(reportData.dtProfit);
     this.$('repLossCompensated').textContent = this.formatCurrency(stLossComp + dtLossComp);
-    this.$('repTaxDue').textContent = this.formatCurrency(taxDue);
+
+    // Mostra o imposto bruto calculado para dar visibilidade ao usuário
+    this.$('repTaxDue').innerHTML = `${this.formatCurrency(taxDue)}${fiscal.tax_balance > 0 ? ` <br><small style="font-size: 0.7rem; color: var(--text-muted);">+ ${this.formatCurrency(fiscal.tax_balance)} acumulado</small>` : ''}`;
+
     this.$('repIRRF').textContent = this.formatCurrency(reportData.irrfMonth);
-    this.$('repDARF').textContent = this.formatCurrency(darf);
+
+    if (darf === 0 && nextTaxBalance > 0) {
+      this.$('repDARF').innerHTML = `${this.formatCurrency(0)} <br><small style="font-size: 0.75rem; color: var(--text-muted); font-weight: normal;">(Abaixo do mínimo de R$ 10,00. Acumulado para o próximo mês: ${this.formatCurrency(nextTaxBalance)})</small>`;
+    } else {
+      this.$('repDARF').textContent = this.formatCurrency(darf);
+    }
 
     this.$('repSTLossBalance').textContent = this.formatCurrency(fiscal.st_loss);
     this.$('repDTLossBalance').textContent = this.formatCurrency(fiscal.dt_loss);
