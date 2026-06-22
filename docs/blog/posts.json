@@ -1,17 +1,5 @@
 [
   {
-    "id": "mes1_semana2_post1_ia_mercado",
-    "title": "Uso de IA no mercado financeiro",
-    "description": "A Inteligência Artificial (IA) deixou de ser ficção científica para se tornar uma realidade transformadora no mercado financeiro. Investidores de todo...",
-    "imageUrl": "../assets/logo4.png",
-    "path": "posts/mes1_semana2_post1_ia_mercado.html",
-    "date": "2025-06-15",
-    "tags": [
-      "Estratégia",
-      "B3"
-    ]
-  },
-  {
     "id": "mes1_semana1_post2_barsi",
     "title": "Método Barsi",
     "description": "Luiz Barsi Filho, conhecido como o \"Rei dos Dividendos\", construiu uma fortuna investindo em ações de empresas sólidas que pagam bons proventos. Seu m...",
@@ -20,19 +8,6 @@
     "date": "2026-05-27",
     "tags": [
       "Conteúdo"
-    ]
-  },
-  {
-    "id": "2025-08-22-radar",
-    "title": "Radar Intraday: Movimentações do Mercado",
-    "description": "O mercado hoje apresentou forte volatilidade no período da tarde... Destaque para as ações da Vale e Petrobras que sustentaram o índice.",
-    "imageUrl": "../assets/logo4.png",
-    "path": "posts/2025-08-22-radar.html",
-    "date": "2025-08-22",
-    "tags": [
-      "Radar",
-      "Intraday",
-      "Bovespa"
     ]
   },
   {
@@ -58,6 +33,19 @@
       "Intraday",
       "Bovespa",
       "Novidade"
+    ]
+  },
+  {
+    "id": "2025-08-22-radar",
+    "title": "Radar Intraday: Movimentações do Mercado",
+    "description": "O mercado hoje apresentou forte volatilidade no período da tarde... Destaque para as ações da Vale e Petrobras que sustentaram o índice.",
+    "imageUrl": "../assets/logo4.png",
+    "path": "posts/2025-08-22-radar.html",
+    "date": "2025-08-22",
+    "tags": [
+      "Radar",
+      "Intraday",
+      "Bovespa"
     ]
   }
 ]

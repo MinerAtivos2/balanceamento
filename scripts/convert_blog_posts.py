@@ -3,8 +3,9 @@ import re
 import glob
 import json
 import argparse
+from bs4 import BeautifulSoup
 
-def extract_metadata(html_content, filename):
+def extract_metadata(soup, filename):
     metadata = {
         'title': 'Insight de Mercado',
         'date': '2025-01-01',
@@ -12,76 +13,115 @@ def extract_metadata(html_content, filename):
         'datetime': '2025-01-01'
     }
 
-    # Try to extract from comments
-    title_match = re.search(r'Title:\s*(.*)', html_content, re.IGNORECASE)
-    if title_match:
-        metadata['title'] = title_match.group(1).strip()
-    else:
-        # Try to find <h1>
-        h1_match = re.search(r'<h1>(.*?)</h1>', html_content, re.IGNORECASE | re.DOTALL)
-        if h1_match:
-            metadata['title'] = re.sub('<[^<]+?>', '', h1_match.group(1)).strip()
+    # Search for metadata in comments
+    comments = soup.find_all(string=lambda text: isinstance(text, str) and ('Title:' in text or 'Date:' in text or 'Tags:' in text))
+    for comment in comments:
+        title_match = re.search(r'Title:\s*(.*)', comment, re.IGNORECASE)
+        if title_match:
+            metadata['title'] = title_match.group(1).strip()
+
+        date_match = re.search(r'Date:\s*(.*)', comment, re.IGNORECASE)
+        if date_match:
+            date_str = date_match.group(1).strip()
+            metadata['datetime'] = date_str
+            if '-' in date_str:
+                parts = date_str.split('-')
+                if len(parts) == 3:
+                    if len(parts[0]) == 4:
+                        metadata['date'] = f"{parts[2]}/{parts[1]}/{parts[0]}"
+                    else:
+                        metadata['date'] = date_str
+            else:
+                metadata['date'] = date_str
+
+        tags_match = re.search(r'Tags:\s*(.*)', comment, re.IGNORECASE)
+        if tags_match:
+            tags_str = tags_match.group(1).strip()
+            metadata['tags'] = [t.strip() for t in tags_str.split(',')]
+
+    # Fallback for title
+    if metadata['title'] == 'Insight de Mercado':
+        h1 = soup.find('h1')
+        if h1:
+            metadata['title'] = h1.get_text().strip()
         else:
-            # Fallback to filename
             metadata['title'] = filename.replace('.html', '').replace('-', ' ').replace('_', ' ').title()
-
-    date_match = re.search(r'Date:\s*(.*)', html_content, re.IGNORECASE)
-    if date_match:
-        date_str = date_match.group(1).strip()
-        metadata['datetime'] = date_str
-        # Try to format date for display (assuming YYYY-MM-DD or DD/MM/YYYY)
-        if '-' in date_str:
-            parts = date_str.split('-')
-            if len(parts) == 3:
-                # Handle YYYY-MM-DD to DD/MM/YYYY
-                if len(parts[0]) == 4:
-                    metadata['date'] = f"{parts[2]}/{parts[1]}/{parts[0]}"
-                else:
-                    metadata['date'] = date_str
-        else:
-            metadata['date'] = date_str
-
-    tags_match = re.search(r'Tags:\s*(.*)', html_content, re.IGNORECASE)
-    if tags_match:
-        tags_str = tags_match.group(1).strip()
-        metadata['tags'] = [t.strip() for t in tags_str.split(',')]
 
     return metadata
 
-def extract_content(html_content, title):
-    # Extract scripts and styles from head or outside body to preserve them
-    extra_assets = re.findall(r'<(?:script|style).*?>.*?</(?:script|style)>', html_content, re.IGNORECASE | re.DOTALL)
+def clean_styles(style_content):
+    # Remove body and html selectors to prevent layout breakage
+    cleaned = re.sub(r'(body|html)\s*\{[^}]*\}', '', style_content, flags=re.IGNORECASE | re.DOTALL)
+    # Remove references to .container if it might conflict
+    cleaned = re.sub(r'\.container\s*\{[^}]*\}', '', cleaned, flags=re.IGNORECASE | re.DOTALL)
+    return cleaned.strip()
 
-    # Take body if exists, otherwise take all
-    body_match = re.search(r'<body.*?>(.*?)</body>', html_content, re.IGNORECASE | re.DOTALL)
-    if body_match:
-        content = body_match.group(1)
-        # Prepend scripts/styles that were outside body
-        assets_to_add = []
-        for asset in extra_assets:
-            if asset not in content:
-                assets_to_add.append(asset)
-        if assets_to_add:
-            content = "\n".join(assets_to_add) + "\n" + content
+def extract_content(soup, title):
+    # Extract scripts and styles
+    scripts = [str(s) for s in soup.find_all('script') if 'tailwindcss' not in s.get('src', '') and 'font-awesome' not in s.get('src', '')]
+    styles = []
+    for s in soup.find_all('style'):
+        if s.string:
+            s.string = clean_styles(s.string)
+        styles.append(str(s))
+
+    links = [str(l) for l in soup.find_all('link') if 'stylesheet' in l.get('rel', [])]
+
+    # Remove script, style and link tags from their original positions
+    for tag in soup(['script', 'style', 'link']):
+        tag.decompose()
+
+    # Identify the main content
+    body = soup.find('body')
+
+    # Remove unwanted elements from the content
+    content_root = body if body else soup
+    for tag_name in ['header', 'footer', 'nav']:
+        for item in content_root.find_all(tag_name):
+            item.decompose()
+
+    # Remove existing title H1 to avoid duplication
+    for h1 in content_root.find_all('h1'):
+        if h1.get_text().strip().lower() == title.lower() or "radar" in h1.get_text().strip().lower():
+            h1.decompose()
+
+    for p in content_root.find_all('p', class_='meta'):
+        p.decompose()
+
+    # Combine styles, scripts and main body content
+    result_html = ""
+    unique_assets = set()
+
+    for s_str in styles:
+        if s_str not in unique_assets:
+            result_html += s_str + "\n"
+            unique_assets.add(s_str)
+
+    for s_str in scripts:
+        if s_str not in unique_assets:
+            result_html += s_str + "\n"
+            unique_assets.add(s_str)
+
+    for l_str in links:
+        if l_str not in unique_assets:
+            result_html += l_str + "\n"
+            unique_assets.add(l_str)
+
+    # Get inner content
+    if body:
+        for child in body.contents:
+            child_str = str(child)
+            # Remove any nested <html> or <body> tags
+            child_str = re.sub(r'</?(html|body|head).*?>', '', child_str, flags=re.IGNORECASE)
+            result_html += child_str
     else:
-        # Remove metadata comments
-        content = re.sub(r'<!--.*?-->', '', html_content, flags=re.DOTALL)
+        # If no body, clean up other technical tags and get what's left
+        for tag_name in ['head', 'meta', 'title']:
+            for item in soup.find_all(tag_name):
+                item.decompose()
+        result_html += str(soup)
 
-    # Cleanup redundant elements
-    # Remove internal header if it exists
-    content = re.sub(r'<header.*?>.*?</header>', '', content, flags=re.IGNORECASE | re.DOTALL)
-    # Remove internal footer if it exists
-    content = re.sub(r'<footer.*?>.*?</footer>', '', content, flags=re.IGNORECASE | re.DOTALL)
-    # Remove meta paragraphs
-    content = re.sub(r'<p class="meta">.*?</p>', '', content, flags=re.IGNORECASE | re.DOTALL)
-
-    # Remove h1 if it's the title to avoid duplication
-    escaped_title = re.escape(title).replace(r'\ ', r'\s+')
-    content = re.sub(rf'<h1.*?>\s*{escaped_title}\s*</h1>', '', content, flags=re.IGNORECASE | re.DOTALL)
-    # Clean up any remaining first <h1> tag as it's likely the title
-    content = re.sub(r'<h1>.*?</h1>', '', content, count=1, flags=re.IGNORECASE | re.DOTALL)
-
-    return content.strip()
+    return result_html
 
 def update_posts_json(posts_json_path, new_post):
     if not os.path.exists(posts_json_path):
@@ -90,17 +130,14 @@ def update_posts_json(posts_json_path, new_post):
         with open(posts_json_path, 'r', encoding='utf-8') as f:
             posts = json.load(f)
 
-    # Check if already exists (by path or id) to avoid duplicates
-    found = False
-    for i, post in enumerate(posts):
-        if post.get('path') == new_post['path'] or post.get('id') == new_post['id']:
-            posts[i] = new_post
-            found = True
-            break
+    # Clean duplicates
+    posts = [p for p in posts if p.get('id') != new_post['id'] and p.get('path') != new_post['path']]
 
-    if not found:
-        # Add to top
-        posts.insert(0, new_post)
+    # Add to top
+    posts.insert(0, new_post)
+
+    # Sort by date descending
+    posts.sort(key=lambda x: x.get('date', '0000-00-00'), reverse=True)
 
     with open(posts_json_path, 'w', encoding='utf-8') as f:
         json.dump(posts, f, indent=2, ensure_ascii=False)
@@ -114,7 +151,7 @@ def convert_posts(source_dir, output_dir, update_json=False):
         return
 
     with open(template_path, 'r', encoding='utf-8') as f:
-        template = f.read()
+        template_content = f.read()
 
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
@@ -129,27 +166,40 @@ def convert_posts(source_dir, output_dir, update_json=False):
         with open(filepath, 'r', encoding='utf-8') as f:
             source_html = f.read()
 
-        metadata = extract_metadata(source_html, filename)
-        content = extract_content(source_html, metadata['title'])
+        soup = BeautifulSoup(source_html, 'html.parser')
+        metadata = extract_metadata(soup, filename)
+        content = extract_content(soup, metadata['title'])
 
         # Prepare tags HTML
         tags_html = "".join([f'<span class="bg-blue-100 text-blue-600 px-2 py-1 rounded-full text-xs font-medium mr-2">#{tag}</span>' for tag in metadata['tags']])
 
         # Apply template
-        new_html = template
-        new_html = re.sub(r'<title>.*?</title>', f"<title>MinerAtivos | {metadata['title']}</title>", new_html)
-        new_html = re.sub(r'<time datetime=".*?">.*?</time>', f'<time datetime="{metadata["datetime"]}">{metadata["date"]}</time>', new_html)
+        new_html = template_content
+        # Use lambda for re.sub to avoid backslash escaping issues in metadata
+        new_html = re.sub(r'<title>.*?</title>',
+                          lambda m: f"<title>MinerAtivos | {metadata['title']}</title>", new_html)
 
+        # Replace date
+        new_html = re.sub(r'<time datetime="[^"]*">[^<]*</time>',
+                          lambda m: f'<time datetime="{metadata["datetime"]}">{metadata["date"]}</time>', new_html)
+
+        # Replace tags
         tags_placeholder_pattern = r'<div class="flex">\s*<span[^>]*>#Template</span>\s*</div>'
-        new_html = re.sub(tags_placeholder_pattern, f'<div class="flex">{tags_html}</div>', new_html)
+        new_html = re.sub(tags_placeholder_pattern,
+                          lambda m: f'<div class="flex">{tags_html}</div>', new_html)
 
+        # Replace Title
         new_html = re.sub(r'<h1 class="text-4xl md:text-5xl font-bold text-dark mb-6">.*?</h1>',
-                          f'<h1 class="text-4xl md:text-5xl font-bold text-dark mb-6">{metadata["title"]}</h1>', new_html)
+                          lambda m: f'<h1 class="text-4xl md:text-5xl font-bold text-dark mb-6">{metadata["title"]}</h1>', new_html)
 
         new_html = new_html.replace('alt="Template Post"', f'alt="{metadata["title"]}"')
 
-        content_placeholder = r'<div class="prose prose-lg max-w-none text-gray-700 leading-relaxed">\s*Template content\s*</div>'
-        new_html = re.sub(content_placeholder, f'<div class="prose prose-lg max-w-none text-gray-700 leading-relaxed">\n            {content}\n        </div>', new_html)
+        # Inject Content
+        content_placeholder = r'<div class="prose prose-lg max-w-none text-gray-700 leading-relaxed">.*?</div>'
+        def replace_content(match):
+            return f'<div class="prose prose-lg max-w-none text-gray-700 leading-relaxed">\n            {content}\n        </div>'
+
+        new_html = re.sub(content_placeholder, replace_content, new_html, flags=re.DOTALL)
 
         # Save result
         output_path = os.path.join(output_dir, filename)
@@ -159,9 +209,10 @@ def convert_posts(source_dir, output_dir, update_json=False):
         print(f"Saved to {output_path}")
 
         if update_json:
-            # Clean description: remove HTML tags, scripts, and styles
-            desc_content = re.sub(r'<(?:script|style).*?>.*?</(?:script|style)>', '', content, flags=re.IGNORECASE | re.DOTALL)
-            clean_text = re.sub('<[^<]+?>', '', desc_content)
+            temp_soup = BeautifulSoup(content, 'html.parser')
+            for s in temp_soup(['script', 'style']):
+                s.decompose()
+            clean_text = temp_soup.get_text()
             clean_text = re.sub(r'\s+', ' ', clean_text).strip()
             description = (clean_text[:150] + '...') if len(clean_text) > 150 else clean_text
 
@@ -181,7 +232,7 @@ def convert_posts(source_dir, output_dir, update_json=False):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Converte posts HTML para o padrão MinerAtivos.')
     parser.add_argument('--src', default='blog_posts_source', help='Diretório de origem')
-    parser.add_argument('--dest', default='docs/blog/posts', help='Diretório de destino')
+    parser.add_argument('--dest', default='docs/blog/temp', help='Diretório de destino')
     parser.add_argument('--update-json', action='store_true', help='Atualizar posts.json')
 
     args = parser.parse_args()
