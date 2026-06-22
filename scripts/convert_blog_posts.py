@@ -1,6 +1,8 @@
 import os
 import re
 import glob
+import json
+import argparse
 
 def extract_metadata(html_content, filename):
     metadata = {
@@ -31,7 +33,11 @@ def extract_metadata(html_content, filename):
         if '-' in date_str:
             parts = date_str.split('-')
             if len(parts) == 3:
-                metadata['date'] = f"{parts[2]}/{parts[1]}/{parts[0]}"
+                # Handle YYYY-MM-DD to DD/MM/YYYY
+                if len(parts[0]) == 4:
+                    metadata['date'] = f"{parts[2]}/{parts[1]}/{parts[0]}"
+                else:
+                    metadata['date'] = date_str
         else:
             metadata['date'] = date_str
 
@@ -43,65 +49,65 @@ def extract_metadata(html_content, filename):
     return metadata
 
 def extract_content(html_content, title):
-    # Extract scripts from head or outside body to preserve them
-    extra_scripts = re.findall(r'<script.*?>.*?</script>', html_content, re.IGNORECASE | re.DOTALL)
+    # Extract scripts and styles from head or outside body to preserve them
+    extra_assets = re.findall(r'<(?:script|style).*?>.*?</(?:script|style)>', html_content, re.IGNORECASE | re.DOTALL)
 
     # Take body if exists, otherwise take all
     body_match = re.search(r'<body.*?>(.*?)</body>', html_content, re.IGNORECASE | re.DOTALL)
     if body_match:
         content = body_match.group(1)
-        # Prepend scripts that were outside body
-        scripts_to_add = []
-        for script in extra_scripts:
-            if script not in content:
-                scripts_to_add.append(script)
-        if scripts_to_add:
-            content = "\n".join(scripts_to_add) + "\n" + content
+        # Prepend scripts/styles that were outside body
+        assets_to_add = []
+        for asset in extra_assets:
+            if asset not in content:
+                assets_to_add.append(asset)
+        if assets_to_add:
+            content = "\n".join(assets_to_add) + "\n" + content
     else:
         # Remove metadata comments
         content = re.sub(r'<!--.*?-->', '', html_content, flags=re.DOTALL)
 
-    # If there is a <div class="content"> or <div class="container">, try to take its inner content
-    # to avoid double containers
-    inner_content_match = re.search(r'<div\s+class=["\'](?:content|container)["\'].*?>(.*)</div>', content, re.IGNORECASE | re.DOTALL)
-    if inner_content_match:
-        # We need to be careful with greedy matching here, but usually these are the main wrappers
-        # A better way would be finding the first <div> and last </div>, but let's try this
-        # Actually, let's just remove the outermost div if it wraps everything
-        content = content.strip()
-        if content.startswith('<div') and content.endswith('</div>'):
-            # Only remove if it seems to be a wrapper
-            content = re.sub(r'^<div.*?>', '', content, count=1, flags=re.IGNORECASE)
-            content = re.sub(r'</div>$', '', content, count=1, flags=re.IGNORECASE)
-
+    # Cleanup redundant elements
     # Remove internal header if it exists
     content = re.sub(r'<header.*?>.*?</header>', '', content, flags=re.IGNORECASE | re.DOTALL)
-
     # Remove internal footer if it exists
     content = re.sub(r'<footer.*?>.*?</footer>', '', content, flags=re.IGNORECASE | re.DOTALL)
-
-    # Remove meta paragraphs (like "Por Minerativos | Maio de 2026")
+    # Remove meta paragraphs
     content = re.sub(r'<p class="meta">.*?</p>', '', content, flags=re.IGNORECASE | re.DOTALL)
 
     # Remove h1 if it's the title to avoid duplication
-    # Use a more flexible regex for title matching
     escaped_title = re.escape(title).replace(r'\ ', r'\s+')
     content = re.sub(rf'<h1.*?>\s*{escaped_title}\s*</h1>', '', content, flags=re.IGNORECASE | re.DOTALL)
-
     # Clean up any remaining first <h1> tag as it's likely the title
     content = re.sub(r'<h1>.*?</h1>', '', content, count=1, flags=re.IGNORECASE | re.DOTALL)
 
-    # Remove redundant Chart.js if it's already included (but keep it if needed)
-    # The user said to preserve it, so I'll keep it.
+    return content.strip()
 
-    content = content.strip()
+def update_posts_json(posts_json_path, new_post):
+    if not os.path.exists(posts_json_path):
+        posts = []
+    else:
+        with open(posts_json_path, 'r', encoding='utf-8') as f:
+            posts = json.load(f)
 
-    return content
+    # Check if already exists (by path or id) to avoid duplicates
+    found = False
+    for i, post in enumerate(posts):
+        if post.get('path') == new_post['path'] or post.get('id') == new_post['id']:
+            posts[i] = new_post
+            found = True
+            break
 
-def convert_posts():
-    source_dir = 'blog_posts_source'
-    output_dir = 'docs/blog/temp'
+    if not found:
+        # Add to top
+        posts.insert(0, new_post)
+
+    with open(posts_json_path, 'w', encoding='utf-8') as f:
+        json.dump(posts, f, indent=2, ensure_ascii=False)
+
+def convert_posts(source_dir, output_dir, update_json=False):
     template_path = 'docs/blog/posts/template-post.html'
+    posts_json_path = 'docs/blog/posts.json'
 
     if not os.path.exists(template_path):
         print(f"Template not found at {template_path}")
@@ -115,6 +121,9 @@ def convert_posts():
 
     for filepath in glob.glob(os.path.join(source_dir, '*.html')):
         filename = os.path.basename(filepath)
+        if filename == 'template-post.html':
+            continue
+
         print(f"Processing {filename}...")
 
         with open(filepath, 'r', encoding='utf-8') as f:
@@ -126,38 +135,54 @@ def convert_posts():
         # Prepare tags HTML
         tags_html = "".join([f'<span class="bg-blue-100 text-blue-600 px-2 py-1 rounded-full text-xs font-medium mr-2">#{tag}</span>' for tag in metadata['tags']])
 
-        # Start with template
+        # Apply template
         new_html = template
-
-        # Replace Title in head
         new_html = re.sub(r'<title>.*?</title>', f"<title>MinerAtivos | {metadata['title']}</title>", new_html)
-
-        # Replace Date
         new_html = re.sub(r'<time datetime=".*?">.*?</time>', f'<time datetime="{metadata["datetime"]}">{metadata["date"]}</time>', new_html)
 
-        # Replace Tags
-        # Search for the tags container with a more flexible regex
         tags_placeholder_pattern = r'<div class="flex">\s*<span[^>]*>#Template</span>\s*</div>'
         new_html = re.sub(tags_placeholder_pattern, f'<div class="flex">{tags_html}</div>', new_html)
 
-        # Replace Title in body
         new_html = re.sub(r'<h1 class="text-4xl md:text-5xl font-bold text-dark mb-6">.*?</h1>',
                           f'<h1 class="text-4xl md:text-5xl font-bold text-dark mb-6">{metadata["title"]}</h1>', new_html)
 
-        # Replace Cover alt
         new_html = new_html.replace('alt="Template Post"', f'alt="{metadata["title"]}"')
 
-        # Replace Content
-        # We look for <div class="prose prose-lg max-w-none text-gray-700 leading-relaxed">Template content</div>
-        content_pattern = r'<div class="prose prose-lg max-w-none text-gray-700 leading-relaxed">\s*Template content\s*</div>'
-        new_html = re.sub(content_pattern, f'<div class="prose prose-lg max-w-none text-gray-700 leading-relaxed">\n            {content}\n        </div>', new_html)
+        content_placeholder = r'<div class="prose prose-lg max-w-none text-gray-700 leading-relaxed">\s*Template content\s*</div>'
+        new_html = re.sub(content_placeholder, f'<div class="prose prose-lg max-w-none text-gray-700 leading-relaxed">\n            {content}\n        </div>', new_html)
 
-        # Save the result
+        # Save result
         output_path = os.path.join(output_dir, filename)
         with open(output_path, 'w', encoding='utf-8') as f:
             f.write(new_html)
 
         print(f"Saved to {output_path}")
 
+        if update_json:
+            # Clean description: remove HTML tags, scripts, and styles
+            desc_content = re.sub(r'<(?:script|style).*?>.*?</(?:script|style)>', '', content, flags=re.IGNORECASE | re.DOTALL)
+            clean_text = re.sub('<[^<]+?>', '', desc_content)
+            clean_text = re.sub(r'\s+', ' ', clean_text).strip()
+            description = (clean_text[:150] + '...') if len(clean_text) > 150 else clean_text
+
+            post_id = os.path.splitext(filename)[0]
+            new_post_entry = {
+                "id": post_id,
+                "title": metadata['title'],
+                "description": description,
+                "imageUrl": "../assets/logo4.png",
+                "path": f"posts/{filename}",
+                "date": metadata['datetime'],
+                "tags": metadata['tags']
+            }
+            update_posts_json(posts_json_path, new_post_entry)
+            print(f"Updated posts.json for {filename}")
+
 if __name__ == "__main__":
-    convert_posts()
+    parser = argparse.ArgumentParser(description='Converte posts HTML para o padrão MinerAtivos.')
+    parser.add_argument('--src', default='blog_posts_source', help='Diretório de origem')
+    parser.add_argument('--dest', default='docs/blog/posts', help='Diretório de destino')
+    parser.add_argument('--update-json', action='store_true', help='Atualizar posts.json')
+
+    args = parser.parse_args()
+    convert_posts(args.src, args.dest, args.update_json)

@@ -31,9 +31,6 @@ jobs:
       
       - name: atualiza blog
         run: python update_blog.py
-
-      - name: converte html
-        run: python scripts/convert_blog_posts.py
       
       - name: Commit and push changes
         run: |

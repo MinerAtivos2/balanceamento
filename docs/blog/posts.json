@@ -1,51 +1,51 @@
 [
   {
-    "id": "metodo-barsi",
+    "id": "mes1_semana1_post2_barsi",
     "title": "Método Barsi",
-    "description": "<body>\n    <link href=\"https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap\" rel=\"stylesheet\">\n<script src=\"https://cdn.js...",
+    "description": "Luiz Barsi Filho, conhecido como o \"Rei dos Dividendos\", construiu uma fortuna investindo em ações de empresas sólidas que pagam bons proventos. Seu m...",
     "imageUrl": "../assets/logo4.png",
-    "path": "posts/metodo-barsi.html",
+    "path": "posts/mes1_semana1_post2_barsi.html",
     "date": "2026-05-27",
     "tags": [
       "Conteúdo"
     ]
   },
   {
-    "id": "teoria-de-markowitz-para-investidores",
-    "title": "Teoria de Markowitz para Investidores",
-    "description": "<script src=\"https://cdn.jsdelivr.net/npm/chart.js\"></script>\n\n<body>\n\n\n    <div>\n        <header>\n            <h1>Guia Definitivo da Teoria de Markow...",
+    "id": "2025-08-22-radar",
+    "title": "Radar Intraday: Movimentações do Mercado",
+    "description": "O mercado hoje apresentou forte volatilidade no período da tarde... Destaque para as ações da Vale e Petrobras que sustentaram o índice.",
     "imageUrl": "../assets/logo4.png",
-    "path": "posts/teoria-de-markowitz-para-investidores.html",
+    "path": "posts/2025-08-22-radar.html",
+    "date": "2025-08-22",
+    "tags": [
+      "Radar",
+      "Intraday",
+      "Bovespa"
+    ]
+  },
+  {
+    "id": "m1_s1_p1_markowitz (1)",
+    "title": "Teoria de Markowitz para Investidores",
+    "description": "A busca por retornos otimizados e riscos controlados é uma constante para qualquer investidor do mercado. É nesse cenário que a Teoria Moderna de Port...",
+    "imageUrl": "../assets/logo4.png",
+    "path": "posts/m1_s1_p1_markowitz (1).html",
     "date": "2026-05-21",
     "tags": [
       "Conteúdo"
     ]
   },
   {
-    "id": "radar-intraday-movimentacoes-do-mercado",
+    "id": "teste",
     "title": "Radar Intraday: Movimentações do Mercado",
-    "description": "<p>Novidade!</p>\n<img src=\"../../assets/20250822_resumo.png\" alt=\"Radar\">\n<p>Teste de postagem</p>...",
-    "imageUrl": "assets/20250822_resumo.png",
-    "path": "posts/radar-intraday-movimentacoes-do-mercado.html",
+    "description": "Novidade! Teste de postagem",
+    "imageUrl": "../assets/logo4.png",
+    "path": "posts/teste.html",
     "date": "2026-05-21",
     "tags": [
       "Radar",
       "Intraday",
       "Bovespa",
       "Novidade"
-    ]
-  },
-  {
-    "id": "radar-intraday-movimentacoes-do-mercado",
-    "title": "Radar Intraday: Movimentações do Mercado",
-    "description": "<p>O mercado hoje apresentou forte volatilidade no período da tarde...</p>\n<img src=\"../../assets/20250822_resumo.png\" alt=\"Radar\">\n<p>Destaque para a...",
-    "imageUrl": "assets/20250822_resumo.png",
-    "path": "posts/radar-intraday-movimentacoes-do-mercado.html",
-    "date": "2025-08-22",
-    "tags": [
-      "Radar",
-      "Intraday",
-      "Bovespa"
     ]
   }
 ]
