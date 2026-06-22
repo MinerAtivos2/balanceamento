@@ -5,7 +5,7 @@
     <script src="../../cookie-consent.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MinerAtivos | Teoria de Markowitz para Investidores</title>
+    <title>MinerAtivos | Uso de IA no mercado financeiro</title>
     <meta name="MinerAtivos" content="Insights de mercado acionáveis. Fundamentos para análises e estratégias baseadas em dados para os mercados financeiros dinâmicos de hoje. Fornecendo insights de mercado acionáveis​para ajudar os investidores a tomarem decisões baseados em dados. Mercado de Ações, Commodities, Altas e quedas, Forecast, Algoritmos, Radar Intraday, Resumo do mercado, Balanceamento de portfólio">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -163,35 +163,219 @@
         <article class="max-w-4xl mx-auto px-4 py-12">
             <header class="mb-8">
                 <div class="flex items-center space-x-2 text-sm text-gray-500 mb-4">
-                    <time datetime="2026-05-21">21/05/2026</time>
+                    <time datetime="2025-06-15">15/06/2025</time>
                     <span>•</span>
-                    <div class="flex"><span class="bg-blue-100 text-blue-600 px-2 py-1 rounded-full text-xs font-medium mr-2">#Conteúdo</span></div>
+                    <div class="flex"><span class="bg-blue-100 text-blue-600 px-2 py-1 rounded-full text-xs font-medium mr-2">#Estratégia</span><span class="bg-blue-100 text-blue-600 px-2 py-1 rounded-full text-xs font-medium mr-2">#B3</span></div>
                 </div>
-                <h1 class="text-4xl md:text-5xl font-bold text-dark mb-6">Teoria de Markowitz para Investidores</h1>
-                <img src="../../assets/blog/default-cover.png" alt="Teoria de Markowitz para Investidores" class="w-full h-[400px] object-cover rounded-2xl shadow-lg mb-8">
+                <h1 class="text-4xl md:text-5xl font-bold text-dark mb-6">Uso de IA no mercado financeiro</h1>
+                <img src="../../assets/blog/default-cover.png" alt="Uso de IA no mercado financeiro" class="w-full h-[400px] object-cover rounded-2xl shadow-lg mb-8">
             </header>
             <div class="prose prose-lg max-w-none text-gray-700 leading-relaxed">
-            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+            <style>
+        :root {
+            --primary-color: #00C853; /* Verde vibrante */
+            --secondary-color: #212121; /* Dark Gray */
+            --background-color: #121212; /* Darker background */
+            --text-color: #E0E0E0; /* Light Gray for text */
+            --heading-color: #FFFFFF; /* White for headings */
+            --card-background: #1E1E1E; /* Slightly lighter dark for cards */
+            --border-color: #333333;
+        }
 
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+        }
 
+        .container {
+            width: 100%;
+            max-width: 800px;
+            margin: 20px;
+            padding: 30px;
+            background-color: var(--secondary-color);
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+        }
 
-    <div>
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        header h1 {
+            color: var(--heading-color);
+            font-size: 2.8em;
+            margin-bottom: 10px;
+            line-height: 1.2;
+        }
+
+        header p.meta {
+            color: var(--primary-color);
+            font-size: 0.9em;
+            font-weight: 600;
+        }
+
+        .content h2 {
+            color: var(--heading-color);
+            font-size: 1.8em;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 10px;
+        }
+
+        .content h3 {
+            color: var(--primary-color);
+            font-size: 1.4em;
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+
+        .content p {
+            margin-bottom: 1em;
+            font-size: 1.05em;
+        }
+
+        .content ul,
+        .content ol {
+            margin-bottom: 1em;
+            padding-left: 25px;
+        }
+
+        .content li {
+            margin-bottom: 0.5em;
+        }
+
+        .image-container {
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .image-container figcaption {
+            font-size: 0.85em;
+            color: #B0B0B0;
+            margin-top: 10px;
+        }
+
+        .infographic-placeholder {
+            background-color: var(--card-background);
+            border: 2px dashed var(--primary-color);
+            padding: 40px 20px;
+            margin: 30px 0;
+            text-align: center;
+            font-style: italic;
+            color: var(--primary-color);
+            border-radius: 8px;
+            font-size: 1.1em;
+        }
+
+        .chart-placeholder {
+            background-color: var(--card-background);
+            border: 2px dashed #64B5F6; /* Azul para gráficos */
+            padding: 40px 20px;
+            margin: 30px 0;
+            text-align: center;
+            font-style: italic;
+            color: #64B5F6;
+            border-radius: 8px;
+            font-size: 1.1em;
+        }
+
+        .call-to-action {
+            background-color: var(--primary-color);
+            color: var(--heading-color);
+            padding: 20px;
+            text-align: center;
+            border-radius: 8px;
+            margin-top: 40px;
+            font-size: 1.2em;
+            font-weight: 700;
+        }
+
+        .call-to-action a {
+            color: var(--heading-color);
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 15px;
+            padding: 12px 25px;
+            background-color: #009624; /* Um verde mais escuro para o botão */
+            border-radius: 6px;
+            transition: background-color 0.3s ease;
+        }
+
+        .call-to-action a:hover {
+            background-color: #00791E;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            font-size: 0.8em;
+            color: #888888;
+        }
+
+        .disclaimer {
+            font-size: 0.8em;
+            color: #FFC107; /* Amarelo para avisos */
+            background-color: #333333;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                padding: 20px;
+            }
+
+            header h1 {
+                font-size: 2em;
+            }
+
+            .content h2 {
+                font-size: 1.5em;
+            }
+
+            .content h3 {
+                font-size: 1.2em;
+            }
+        }
+    </style>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <div class="container">
         
 
-        <div>
-            <p>A busca por retornos otimizados e riscos controlados é uma constante para qualquer investidor do mercado. É nesse cenário que a <strong>Teoria Moderna de Portfólio (TMP)</strong>, desenvolvida por Harry Markowitz, se torna uma ferramenta indispensável. Mas como aplicá-la de forma eficaz?</p>
+        <div class="content">
+            <p>A Inteligência Artificial (IA) deixou de ser ficção científica para se tornar uma realidade transformadora no mercado financeiro. Investidores de todos os portes estão buscando maneiras de alavancar o poder da IA para analisar dados, identificar padrões e, em última instância, tomar decisões mais informadas. Mas como a IA realmente funciona nesse contexto e como você pode utilizá-la a seu favor?</p>
 
-            <h2>O que é a Teoria de Markowitz?</h2>
-            <p>A Teoria de Markowitz, laureada com o Prêmio Nobel, revolucionou a forma como entendemos a construção de carteiras de investimento. Sua premissa central é que o investidor não deve focar apenas no retorno esperado de um ativo individual, mas sim na relação risco-retorno do portfólio como um todo. A diversificação inteligente, combinando ativos que não se movem na mesma direção, pode reduzir o risco total da carteira sem sacrificar o retorno esperado.</p>
-
-            <h3>Risco, Retorno e Diversificação</h3>
-            <p>Markowitz introduziu conceitos cruciais como:</p>
+            <h2>O Papel da IA na Análise de Mercado</h2>
+            <p>A capacidade da IA de processar e analisar vastas quantidades de dados em velocidades sobre-humanas a torna uma ferramenta inestimável para o mercado financeiro. Ela pode:</p>
             <ul>
-                <li><strong>Retorno Esperado:</strong> A média ponderada dos retornos possíveis de um ativo ou carteira.</li>
-                <li><strong>Risco (Volatilidade):</strong> Medido pelo desvio padrão dos retornos, indicando a dispersão dos resultados em torno da média.</li>
-                <li><strong>Correlação:</strong> A forma como os retornos de dois ativos se movem em relação um ao outro. Ativos com baixa correlação são ideais para diversificação.</li>
+                <li><strong>Identificar Padrões Complexos:</strong> Detectar correlações e anomalias que seriam imperceptíveis para a análise humana.</li>
+                <li><strong>Processar Notícias e Sentimentos:</strong> Analisar notícias, relatórios e redes sociais para medir o sentimento do mercado e prever movimentos.</li>
+                <li><strong>Prever Tendências:</strong> Utilizar algoritmos de aprendizado de máquina para antecipar possíveis direções de preços e volumes.</li>
+                <li><strong>Otimizar Portfólios:</strong> Sugerir alocações de ativos que maximizem retornos e minimizem riscos, como visto na Teoria de Markowitz.</li>
             </ul>
-            <p>A chave é encontrar a combinação de ativos que ofereça o maior retorno para um dado nível de risco, ou o menor risco para um dado nível de retorno. Isso nos leva ao conceito de <strong>Fronteira Eficiente</strong>.</p>
+
+            <h3>IA na Minerativos: Mineração de Outliers</h3>
+            <p>Na Minerativos, nossa IA é especializada na mineração diária de <strong>outliers no intraday</strong>. Isso significa que ela varre o mercado em tempo real (ou com um pequeno delay, dependendo da versão) para identificar ações que estão se comportando de maneira atípica, seja com volumes de negociação expressivos ou movimentos de preço incomuns. Esses outliers podem indicar o início de uma nova tendência ou uma oportunidade de curto prazo.</p>
 
             
     <div style="display: flex; justify-content: space-around; flex-wrap: wrap; gap: 20px; margin: 30px 0;">
@@ -210,61 +394,21 @@
     </div>
     
 
-            <h2>Mas como aplicar de forma simplificada a Otimização de Portfólio?</h2>
-            <p>Aplicar a Teoria de Markowitz manualmente pode ser complexo, exigindo cálculos estatísticos avançados e acesso a dados históricos. A gente automatiza todo o processo, permitindo que você:</p>
+            <h2>Como a IA da Minerativos Pode Ajudar Você?</h2>
+            <p>Nossa plataforma oferece insights gerados por IA que complementam sua análise e te ajudam a:</p>
             <ol>
-                <li><strong>Analise a Correlação:</strong> Entenda como seus ativos se comportam juntos.</li>
-                <li><strong>Calcule a Volatilidade:</strong> Avalie o risco de cada ativo e do seu portfólio.</li>
-                <li><strong>Identifique a Fronteira Eficiente:</strong> Descubra as alocações ideais para maximizar seu retorno para o nível de risco desejado.</li>
-                <li><strong>Rebalanceie com Precisão:</strong> Receba insights para manter seu portfólio na fronteira eficiente.</li>
+                <li><strong>Economizar Tempo:</strong> Em vez de monitorar centenas de ativos, a IA destaca o que realmente importa.</li>
+                <li><strong>Descobrir Oportunidades:</strong> Identificar ações com potencial de movimento antes que se tornem amplamente conhecidas.</li>
+                <li><strong>Validar Suas Análises:</strong> Usar os insights da IA como um segundo filtro para suas próprias estratégias.</li>
+                <li><strong>Manter-se Atualizado:</strong> Receber informações sobre o comportamento do mercado em tempo quase real.</li>
             </ol>
 
-            
-        <div style="background: #1E1E1E; padding: 20px; border-radius: 8px; margin: 20px 0;">
-            <canvas id="markowitzChart"></canvas>
-        </div>
-        <script>
-            const ctx = document.getElementById('markowitzChart').getContext('2d');
-            new Chart(ctx, {
-                type: 'scatter',
-                data: {
-                    datasets: [{
-                        label: 'Portfólios Aleatórios',
-                        data: Array.from({length: 100}, () => ({x: Math.random() * 10 + 5, y: Math.random() * 15 + 5})),
-                        backgroundColor: 'rgba(255, 255, 255, 0.2)'
-                    }, {
-                        label: 'Fronteira Eficiente',
-                        data: [{x: 5, y: 10}, {x: 6, y: 14}, {x: 8, y: 18}, {x: 12, y: 22}],
-                        showLine: true,
-                        borderColor: '#00C853',
-                        backgroundColor: '#00C853',
-                        pointRadius: 5
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    plugins: { title: { display: true, text: 'Risco vs Retorno (B3)', color: '#fff' } },
-                    scales: {
-                        x: { title: { display: true, text: 'Risco (Volatilidade %)', color: '#ccc' }, grid: { color: '#333' } },
-                        y: { title: { display: true, text: 'Retorno Esperado (%)', color: '#ccc' }, grid: { color: '#333' } }
-                    }
-                }
-            });
-        </script>
-        
-
-            <h2>Comece a Otimizar Seu Portfólio Hoje!</h2>
-            <p>Não deixe seu dinheiro parado ou exposto a riscos desnecessários. A análise combinada para otimização de portfólio oferece o poder de equalizar seu portfólio.</p>
+            <h2>Aproveite o Poder da IA para Seus Investimentos!</h2>
+            <p>A Inteligência Artificial não é uma bola de cristal, mas uma ferramenta poderosa que, quando bem utilizada, pode aprimorar significativamente sua capacidade de análise e decisão no mercado financeiro. A Minerativos coloca essa tecnologia ao seu alcance.</p>
 
             <div class="disclaimer">
-                <strong>⚠️ Aviso Legal:</strong> Este conteúdo é fornecido apenas para fins educacionais e informativos. Não constitui recomendação de investimento. Consulte um profissional certificado antes de tomar qualquer decisão financeira.
+                <strong>⚠️ Aviso Legal:</strong> Este conteúdo é fornecido apenas para fins educacionais e informativos. Não constitui recomendação de investimento. Consulte um profissional qualificado antes de tomar qualquer decisão financeira.
             </div>
-        </div>
-
-        <div class="call-to-action">
-            <h2>Leve sua Análise de Investimentos para o Próximo Nível!</h2>
-            <p>Descubra como otimizar seu portfólio de forma inteligente.</p>
-            <a href="https://minerativos.com.br?cadastro=true" target="_blank">Quero me cadastrar</a>
         </div>
         
     </div>
