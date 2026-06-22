@@ -11,6 +11,17 @@
     ]
   },
   {
+    "id": "m1_s1_p1_markowitz (1)",
+    "title": "Teoria de Markowitz para Investidores",
+    "description": "A busca por retornos otimizados e riscos controlados é uma constante para qualquer investidor do mercado. É nesse cenário que a Teoria Moderna de Port...",
+    "imageUrl": "../assets/logo4.png",
+    "path": "posts/m1_s1_p1_markowitz (1).html",
+    "date": "2026-05-21",
+    "tags": [
+      "Conteúdo"
+    ]
+  },
+  {
     "id": "teste",
     "title": "Radar Intraday: Movimentações do Mercado",
     "description": "Novidade! Teste de postagem",
@@ -25,17 +36,6 @@
     ]
   },
   {
-    "id": "m1_s1_p1_markowitz (1)",
-    "title": "Teoria de Markowitz para Investidores",
-    "description": "A busca por retornos otimizados e riscos controlados é uma constante para qualquer investidor do mercado. É nesse cenário que a Teoria Moderna de Port...",
-    "imageUrl": "../assets/logo4.png",
-    "path": "posts/m1_s1_p1_markowitz (1).html",
-    "date": "2026-05-21",
-    "tags": [
-      "Conteúdo"
-    ]
-  },
-  {
     "id": "2025-08-22-radar",
     "title": "Radar Intraday: Movimentações do Mercado",
     "description": "O mercado hoje apresentou forte volatilidade no período da tarde... Destaque para as ações da Vale e Petrobras que sustentaram o índice.",
@@ -46,18 +46,6 @@
       "Radar",
       "Intraday",
       "Bovespa"
-    ]
-  },
-  {
-    "id": "mes1_semana2_post1_ia_mercado",
-    "title": "Uso de IA no mercado financeiro",
-    "description": "A Inteligência Artificial (IA) deixou de ser ficção científica para se tornar uma realidade transformadora no mercado financeiro. Investidores de todo...",
-    "imageUrl": "../assets/logo4.png",
-    "path": "posts/mes1_semana2_post1_ia_mercado.html",
-    "date": "2025-06-15",
-    "tags": [
-      "Estratégia",
-      "B3"
     ]
   }
 ]
