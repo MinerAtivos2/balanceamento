@@ -3,22 +3,40 @@ import re
 import glob
 import json
 import argparse
+import unicodedata
 from bs4 import BeautifulSoup
+
+def slugify(value):
+    value = unicodedata.normalize('NFKD', value).encode('ascii', 'ignore').decode('ascii')
+    value = re.sub(r'[^\w\s-]', '', value).strip().lower()
+    return re.sub(r'[-\s]+', '-', value)
+
+def extract_first_image(html_content):
+    soup = BeautifulSoup(html_content, 'html.parser')
+    img = soup.find('img')
+    if img and img.get('src'):
+        return img.get('src')
+    return None
 
 def extract_metadata(soup, filename):
     metadata = {
         'title': 'Insight de Mercado',
         'date': '2025-01-01',
         'tags': ['Conteúdo'],
-        'datetime': '2025-01-01'
+        'datetime': '2025-01-01',
+        'image': None
     }
 
     # Search for metadata in comments
-    comments = soup.find_all(string=lambda text: isinstance(text, str) and ('Title:' in text or 'Date:' in text or 'Tags:' in text))
+    comments = soup.find_all(string=lambda text: isinstance(text, str) and ('Title:' in text or 'Date:' in text or 'Tags:' in text or 'Image:' in text))
     for comment in comments:
         title_match = re.search(r'Title:\s*(.*)', comment, re.IGNORECASE)
         if title_match:
             metadata['title'] = title_match.group(1).strip()
+
+        image_match = re.search(r'Image:\s*(.*)', comment, re.IGNORECASE)
+        if image_match:
+            metadata['image'] = image_match.group(1).strip()
 
         date_match = re.search(r'Date:\s*(.*)', comment, re.IGNORECASE)
         if date_match:
@@ -216,18 +234,43 @@ def convert_posts(source_dir, output_dir, update_json=False):
             clean_text = re.sub(r'\s+', ' ', clean_text).strip()
             description = (clean_text[:150] + '...') if len(clean_text) > 150 else clean_text
 
+            # Image logic
+            DEFAULT_IMAGE = "../assets/logo4.png"
+            cover_image = metadata.get('image')
+
+            if not cover_image:
+                cover_image = extract_first_image(content)
+                if cover_image:
+                    # Remove relative path prefixes for JSON index consistency
+                    cover_image = cover_image.replace('../../', '')
+                    # If it was just a local path like 'image.png', prepend assets path if appropriate
+                    # but usually it's better to keep it relative to the blog root
+
+            if not cover_image:
+                slug = slugify(metadata['title'])
+                potential_img = f"assets/blog/{slug}.png"
+                if os.path.exists(os.path.join('docs', potential_img)):
+                    cover_image = potential_img
+                else:
+                    cover_image = DEFAULT_IMAGE
+
+            # Ensure cover_image has proper relative path for the blog index (which is in docs/blog/)
+            # The logic below matches the requirement: if it's from assets/, prepend ../ for the index.
+            if cover_image and not cover_image.startswith('http') and not cover_image.startswith('..'):
+                cover_image = f"../{cover_image}"
+
             post_id = os.path.splitext(filename)[0]
             new_post_entry = {
                 "id": post_id,
                 "title": metadata['title'],
                 "description": description,
-                "imageUrl": "../assets/logo4.png",
+                "imageUrl": cover_image,
                 "path": f"posts/{filename}",
                 "date": metadata['datetime'],
                 "tags": metadata['tags']
             }
             update_posts_json(posts_json_path, new_post_entry)
-            print(f"Updated posts.json for {filename}")
+            print(f"Updated posts.json for {filename} with image: {cover_image}")
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Converte posts HTML para o padrão MinerAtivos.')

@@ -28,6 +28,13 @@ Tags: Dividendos, Estratégia, B3
 
 Coloque seus arquivos HTML na pasta `blog_posts_source/` e execute o script de conversão:
 
+### Pré-requisitos
+Certifique-se de ter as dependências instaladas:
+```bash
+pip install -r requirements.txt
+```
+*(O script utiliza a biblioteca `beautifulsoup4` para processar o HTML)*
+
 ### Opção A: Conversão para visualização (Pasta Temp)
 Isso criará os arquivos em `docs/blog/temp/` para você revisar.
 ```bash
