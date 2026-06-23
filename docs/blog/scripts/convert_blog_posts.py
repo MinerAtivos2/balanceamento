@@ -221,7 +221,7 @@ def convert_posts(source_dir, output_dir, update_json=False):
                 "id": post_id,
                 "title": metadata['title'],
                 "description": description,
-                "imageUrl": "../assets/logo4.png",
+                "imageUrl": "/assets/logo4.png",
                 "path": f"posts/{filename}",
                 "date": metadata['datetime'],
                 "tags": metadata['tags']
