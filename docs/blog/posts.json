@@ -1,11 +1,60 @@
 [
   {
+    "id": "como_usar_indicadores_tecnicos",
+    "title": "Como usar indicadores técnicos",
+    "description": "Como usar indicadores técnicos para operar no mercado financeiro? Se você é iniciante no mercado financeiro, provavelmente já ouviu falar de indicador...",
+    "imageUrl": "../assets/logo4.png",
+    "path": "posts/como_usar_indicadores_tecnicos.html",
+    "date": "2026-06-23",
+    "tags": [
+      "Radar",
+      "Intraday",
+      "Bovespa"
+    ]
+  },
+  {
+    "id": "mes1_semana1_post2_barsi",
+    "title": "Método Barsi",
+    "description": "Luiz Barsi Filho, conhecido como o \"Rei dos Dividendos\", construiu uma fortuna investindo em ações de empresas sólidas que pagam bons proventos. Seu m...",
+    "imageUrl": "../assets/logo4.png",
+    "path": "posts/mes1_semana1_post2_barsi.html",
+    "date": "2026-05-27",
+    "tags": [
+      "Conteúdo"
+    ]
+  },
+  {
     "id": "metodo-barsi",
     "title": "Método Barsi",
     "description": "<body>\n    <link href=\"https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap\" rel=\"stylesheet\">\n<script src=\"https://cdn.js...",
     "imageUrl": "../assets/logo4.png",
     "path": "posts/metodo-barsi.html",
     "date": "2026-05-27",
+    "tags": [
+      "Conteúdo"
+    ]
+  },
+  {
+    "id": "teste",
+    "title": "Radar Intraday: Movimentações do Mercado",
+    "description": "Novidade! Teste de postagem",
+    "imageUrl": "../assets/logo4.png",
+    "path": "posts/teste.html",
+    "date": "2026-05-21",
+    "tags": [
+      "Radar",
+      "Intraday",
+      "Bovespa",
+      "Novidade"
+    ]
+  },
+  {
+    "id": "m1_s1_p1_markowitz (1)",
+    "title": "Teoria de Markowitz para Investidores",
+    "description": "A busca por retornos otimizados e riscos controlados é uma constante para qualquer investidor do mercado. É nesse cenário que a Teoria Moderna de Port...",
+    "imageUrl": "../assets/logo4.png",
+    "path": "posts/m1_s1_p1_markowitz (1).html",
+    "date": "2026-05-21",
     "tags": [
       "Conteúdo"
     ]
@@ -33,6 +82,19 @@
       "Intraday",
       "Bovespa",
       "Novidade"
+    ]
+  },
+  {
+    "id": "2025-08-22-radar",
+    "title": "Radar Intraday: Movimentações do Mercado",
+    "description": "O mercado hoje apresentou forte volatilidade no período da tarde... Destaque para as ações da Vale e Petrobras que sustentaram o índice.",
+    "imageUrl": "../assets/logo4.png",
+    "path": "posts/2025-08-22-radar.html",
+    "date": "2025-08-22",
+    "tags": [
+      "Radar",
+      "Intraday",
+      "Bovespa"
     ]
   },
   {
