@@ -235,7 +235,7 @@ def convert_posts(source_dir, output_dir, update_json=False):
             description = (clean_text[:150] + '...') if len(clean_text) > 150 else clean_text
 
             # Image logic
-            DEFAULT_IMAGE = "../assets/logo4.png"
+            DEFAULT_IMAGE = "/assets/logo4.png"
             cover_image = metadata.get('image')
 
             if not cover_image:
