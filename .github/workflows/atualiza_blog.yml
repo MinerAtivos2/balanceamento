@@ -32,7 +32,7 @@ jobs:
 #      - name: atualiza blog
 #        run: python update_blog.py
       - name: converte arquivos blog_posts_source e atualiza blog 
-        run: python blog/scripts/convert_blog_posts.py --dest docs/blog/posts --update-json
+        run: python docs/blog/scripts/convert_blog_posts.py --dest docs/blog/posts --update-json
       
       - name: Commit and push changes
         run: |
