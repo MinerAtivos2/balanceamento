@@ -202,10 +202,13 @@ class B3App {
       this.renderDividendsPage();
     });
 
-    // Membership modal
-    this.$('membershipModalClose').addEventListener('click', () => this.closeMembershipModal());
-    this.$('membershipModalOverlay').addEventListener('click', e => {
-      if (e.target === this.$('membershipModalOverlay')) this.closeMembershipModal();
+    // Auth Modal
+    this.$('authModalClose').addEventListener('click', () => this.closeAuthModal());
+    this.$('authModalOverlay').addEventListener('click', e => {
+      if (e.target === this.$('authModalOverlay')) this.closeAuthModal();
+    });
+    document.querySelectorAll('.auth-tab').forEach(tab => {
+      tab.addEventListener('click', () => this.switchAuthTab(tab.dataset.tab));
     });
 
     // News modal
@@ -241,9 +244,15 @@ class B3App {
       this.previousPage = this.currentPage;
     }
 
+    // Modal based navigation for guests
+    if (name === 'members' && !this.user) {
+      this.openAuthModal('login');
+      // Continuamos para mostrar a página de membros com o CTA
+    }
+
     // Protection for dividends page
     if (name === 'dividends' && !this.user) {
-      this.openMembershipModal('dividends');
+      this.openAuthModal('register', 'dividends');
       return;
     }
 
@@ -279,7 +288,7 @@ class B3App {
 
     if (name === 'taxes') {
       if (!this.user) {
-        this.openMembershipModal('taxes');
+        this.openAuthModal('register', 'taxes');
         return;
       }
       this.loadTaxData();
@@ -411,6 +420,7 @@ class B3App {
 
         this.toast(`Bem-vindo, ${data.username}!`, 'success');
         this.updateAuthUI(data);
+        this.closeAuthModal();
 
         // Load server portfolio first
         const serverData = await this.loadPortfolioFromServer();
@@ -634,7 +644,7 @@ class B3App {
     if (!this.user && editIndex === null) {
       const uniqueTickers = new Set(this.portfolio.positions.map(p => p.ticker));
       if (uniqueTickers.size >= 5) {
-        this.openMembershipModal('limit');
+        this.openAuthModal('register', 'limit');
         return;
       }
     }
@@ -693,45 +703,40 @@ class B3App {
     }
   }
 
-  openMembershipModal(reason = 'general') {
-    const title = this.$('membershipModalTitle');
-    const text = this.$('membershipModalText');
-    const leadEmail = this.$('leadEmail');
+  openAuthModal(tab = 'login', reason = null) {
+    this.switchAuthTab(tab);
 
-    // Clear extra buttons if any
-    const extraActions = this.$('membershipExtraActions');
-    if (extraActions) extraActions.innerHTML = '';
+    const reasonBox = this.$('authModalReasonBox');
+    const reasonText = this.$('authModalReasonText');
 
     if (reason === 'limit') {
-      title.textContent = 'Limite Atingido';
-      text.innerHTML = 'Você atingiu o limite de <strong>5 ativos</strong> para usuários não cadastrados.<br><br>Para gerenciar um portfólio ilimitado, acessar análises avançadas e sincronizar seus dados na nuvem, torne-se um membro.';
-    } else if (reason === 'registration') {
-      title.textContent = 'Solicitar Cadastramento';
-      text.textContent = 'Preencha seu e-mail abaixo para solicitar seu cadastro no Plano Pro e ter acesso a todas as funcionalidades exclusivas. Desta forma, você sinaliza que viu as condições e concorda.';
-    } else if (reason === 'taxes') {
-      title.textContent = 'Apuração de IR';
-      text.textContent = 'A seção de Imposto de Renda é exclusiva para membros. Faça login ou solicite seu cadastramento abaixo.';
+      reasonBox.classList.remove('hidden');
+      reasonText.innerHTML = '⚠️ Limite de 5 ativos atingido. <br>Seja Membro Pro para ativos ilimitados.';
     } else if (reason === 'dividends') {
-      title.textContent = 'Área de Membros';
-      text.textContent = 'A seção de Proventos é exclusiva para membros. Faça login ou solicite seu cadastramento abaixo para ter acesso.';
-
-      if (extraActions) {
-        extraActions.innerHTML = `
-          <button class="btn btn-outline" style="width: 100%; margin-bottom: 1rem;" onclick="app.closeMembershipModal(); app.showPage('members');">Já sou membro (Fazer Login)</button>
-          <div style="text-align: center; margin-bottom: 1rem; font-size: 0.8rem; color: var(--text-muted);">OU</div>
-        `;
-      }
+      reasonBox.classList.remove('hidden');
+      reasonText.textContent = '🔒 A análise de proventos é exclusiva para membros.';
+    } else if (reason === 'taxes') {
+      reasonBox.classList.remove('hidden');
+      reasonText.textContent = '📜 A apuração de IR é exclusiva para membros.';
     } else {
-      title.textContent = 'Seja Membro';
-      text.textContent = 'Para gerenciar um portfólio ilimitado, acessar análises avançadas e sincronizar seus dados na nuvem, torne-se um membro da nossa plataforma.';
+      reasonBox.classList.add('hidden');
     }
 
-    this.$('membershipModalOverlay').classList.add('show');
-    if (leadEmail) leadEmail.focus();
+    this.$('authModalOverlay').classList.add('show');
+    if (tab === 'login') {
+      this.$('loginUsername').focus();
+    } else {
+      this.$('leadEmail').focus();
+    }
   }
 
-  closeMembershipModal() {
-    this.$('membershipModalOverlay').classList.remove('show');
+  closeAuthModal() {
+    this.$('authModalOverlay').classList.remove('show');
+  }
+
+  switchAuthTab(tab) {
+    document.querySelectorAll('.auth-tab').forEach(t => t.classList.toggle('active', t.dataset.tab === tab));
+    document.querySelectorAll('.auth-tab-content').forEach(c => c.classList.toggle('active', c.id === 'authTab' + tab.charAt(0).toUpperCase() + tab.slice(1)));
   }
 
   async handleLeadSubmit(e) {
@@ -754,7 +759,7 @@ class B3App {
       this.hideLoading();
       if (data.success) {
         this.toast('Obrigado! Entraremos em contato em breve para a realização do seu cadastro.', 'success');
-        this.closeMembershipModal();
+        this.closeAuthModal();
         this.$('leadForm').reset();
       } else {
         this.toast('Erro ao salvar lead no sistema.', 'error');
@@ -834,7 +839,7 @@ class B3App {
       const combined = new Set([...currentTickers, ...incomingTickers]);
       if (combined.size > 5) {
         this.toast('Limite de 5 ativos atingido para não-membros', 'warning');
-        this.openMembershipModal();
+        this.openAuthModal('register', 'limit');
         return;
       }
     }
