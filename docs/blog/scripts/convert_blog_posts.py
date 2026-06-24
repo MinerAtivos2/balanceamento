@@ -257,7 +257,8 @@ def convert_posts(source_dir, output_dir, update_json=False):
             # Ensure cover_image has proper relative path for the blog index (which is in docs/blog/)
             # The logic below matches the requirement: if it's from assets/, prepend ../ for the index.
             if cover_image and not cover_image.startswith('http') and not cover_image.startswith('..'):
-                cover_image = f"../{cover_image}"
+                #cover_image = f"../{cover_image}"
+                cover_image = f"{cover_image}"
 
             post_id = os.path.splitext(filename)[0]
             new_post_entry = {
