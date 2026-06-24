@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const date = new Date(post.date).toLocaleDateString('pt-BR');
         return `
             <div class="relative group cursor-pointer overflow-hidden rounded-3xl shadow-xl transition-all hover:shadow-2xl" onclick="window.location.href='${post.path}'">
-                <img src="../${post.imageUrl}" alt="${post.title}" class="w-full h-[500px] object-cover transition-transform duration-500 group-hover:scale-105">
+                <img src="${post.imageUrl}" alt="${post.title}" class="w-full h-[500px] object-cover transition-transform duration-500 group-hover:scale-105">
                 <div class="absolute inset-0 bg-gradient-to-t from-[#0b0f19] via-transparent to-transparent"></div>
                 <div class="absolute bottom-0 left-0 p-8 md:p-12 w-full">
                     <span class="bg-primary text-white px-3 py-1 rounded-md text-sm font-bold mb-4 inline-block">Destaque</span>
