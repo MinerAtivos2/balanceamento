@@ -117,7 +117,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const date = new Date(post.date).toLocaleDateString('pt-BR');
         return `
             <article class="glass-card flex flex-col overflow-hidden card-hover cursor-pointer h-full" onclick="window.location.href='${post.path}'">
-                <img src="../${post.imageUrl}" alt="${post.title}" class="w-full h-48 object-cover">
+                <img src="${post.imageUrl}" alt="${post.title}" class="w-full h-48 object-cover">
                 <div class="p-6 flex flex-col flex-grow">
                     <div class="flex items-center text-xs text-gray-500 mb-3">
                         <span>${date}</span>
