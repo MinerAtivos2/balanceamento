@@ -13,6 +13,21 @@ DATA_DIR = os.path.join(os.path.dirname(__file__), '..', 'data')
 MARKET_SUMMARY_JSON = os.path.join(DATA_DIR, 'market_summary.json')
 OUTPUT_JSON = os.path.join(DATA_DIR, 'market_news.json')
 GAS_URL = os.environ.get('GAS_URL')
+GEMINI_API_KEY = None
+
+def get_gemini_key():
+    global GEMINI_API_KEY
+    if not GAS_URL: return None
+    try:
+        response = requests.post(GAS_URL, json={"action": "get_tax_config"}, timeout=30)
+        data = response.json()
+        GEMINI_API_KEY = data.get('GEMINI_API_KEY')
+        if GEMINI_API_KEY:
+            print("✅ Gemini API Key carregada com sucesso.")
+        return GEMINI_API_KEY
+    except Exception as e:
+        print(f"❌ Erro ao buscar Gemini Key da Planilha: {e}")
+    return None
 
 def load_tickers_from_sheets():
     if not GAS_URL:
@@ -125,9 +140,32 @@ def get_ai_summary(ticker, context, is_priority=False):
             return f"Movimentações recentes: {'; '.join(clean_titles[:2])}. O mercado monitora o desempenho do papel frente ao setor."
         return "Ativo com baixa frequência de notícias recentes."
 
-    prompt = (
-        f"Aja como um analista B3. Resuma em português e em 3 frases objetivas as notícias de {ticker}. Algumas vezes a notícia se refere a mais de um ticker, por isso, certifique-se de estar resumindo algum fato sobre {ticker}."
-        f"Seja direto sobre o sentimento (positivo/negativo/neutro).\nNotícias de múltiplas fontes:\n{context}"
+    # 1. Tentar Gemini se disponível
+    if GEMINI_API_KEY:
+        url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key={GEMINI_API_KEY}"
+        prompt = (
+            f"Aja como um analista experiente da B3. Analise e resuma com profundidade as notícias de {ticker}.\n"
+            f"Contexto (manchetes): {context}\n\n"
+            f"Instruções:\n"
+            f"1. Identifique os fatos principais que impactam o papel.\n"
+            f"2. Extraia o sentimento do mercado (otimista, pessimista ou neutro) e explique brevemente.\n"
+            f"3. Resumo em português, fluído, entre 3 a 4 frases.\n"
+            f"4. Foque em inteligência e tendências, indo além de apenas repetir títulos."
+        )
+        payload = {"contents": [{"parts": [{"text": prompt}]}]}
+        try:
+            res = requests.post(url, json=payload, timeout=30)
+            data = res.json()
+            if 'candidates' in data and data['candidates']:
+                text = data['candidates'][0]['content']['parts'][0]['text']
+                if text: return text.strip()
+        except Exception as e:
+            print(f"⚠️ Erro Gemini para {ticker}: {e}")
+
+    # 2. Fallback para g4f (Lógica Original)
+    prompt_fallback = (
+        f"Aja como um analista B3. Resuma em português e em 3 frases objetivas as notícias de {ticker}. Certifique-se de resumir fatos sobre {ticker}."
+        f"Seja direto sobre o sentimento (positivo/negativo/neutro).\nNotícias:\n{context}"
     )
 
     for provider in [g4f.Provider.PollinationsAI, g4f.Provider.PuterJS]:
@@ -135,7 +173,7 @@ def get_ai_summary(ticker, context, is_priority=False):
             response = g4f.ChatCompletion.create(
                 model="openai" if provider == g4f.Provider.PollinationsAI else "gpt-4o-mini",
                 provider=provider,
-                messages=[{"role": "user", "content": prompt}],
+                messages=[{"role": "user", "content": prompt_fallback}],
             )
             if response and len(response) > 15:
                 return response.strip()
@@ -144,6 +182,7 @@ def get_ai_summary(ticker, context, is_priority=False):
 
 def main():
     print("🚀 Iniciando Multi-Source News Fetcher...")
+    get_gemini_key()
     all_tickers = load_tickers()
     movers = get_market_movers()
 
@@ -277,11 +316,24 @@ def main():
         if losers_summaries:
             prompt += f"Destaques de baixa:\n" + "\n".join(losers_summaries) + "\n"
 
-        news_output["market_summary"] = g4f.ChatCompletion.create(
-            model="openai",
-            provider=g4f.Provider.PollinationsAI,
-            messages=[{"role": "user", "content": prompt}],
-        )
+        summary_success = False
+        if GEMINI_API_KEY:
+            try:
+                url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key={GEMINI_API_KEY}"
+                payload = {"contents": [{"parts": [{"text": prompt}]}]}
+                res = requests.post(url, json=payload, timeout=30)
+                data = res.json()
+                if 'candidates' in data and data['candidates']:
+                    news_output["market_summary"] = data['candidates'][0]['content']['parts'][0]['text'].strip()
+                    summary_success = True
+            except: pass
+
+        if not summary_success:
+            news_output["market_summary"] = g4f.ChatCompletion.create(
+                model="openai",
+                provider=g4f.Provider.PollinationsAI,
+                messages=[{"role": "user", "content": prompt}],
+            )
     except Exception as e:
         print(f"Erro no resumo geral IA: {e}")
 

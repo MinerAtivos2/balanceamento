@@ -272,7 +272,8 @@ function handleGetTaxConfig() {
     STOCK_DT_RATE: config.STOCK_DT_RATE || 0.20,
     FII_RATE: config.FII_RATE || 0.20,
     IRRF_ST_RATE: config.IRRF_ST_RATE || 0.00005,
-    IRRF_DT_RATE: config.IRRF_DT_RATE || 0.01
+    IRRF_DT_RATE: config.IRRF_DT_RATE || 0.01,
+    GEMINI_API_KEY: config.GEMINI_API_KEY || ""
   };
 }
 
