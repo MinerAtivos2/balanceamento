@@ -1184,16 +1184,27 @@ class B3App {
     this.$('newsModalTitle').textContent = `Resumo IA: ${ticker.replace('.SA', '')}`;
     this.$('newsModalTickerName').textContent = ticker;
 
+    const logoContainer = this.$('newsModalLogoContainer');
+    if (logoContainer) {
+      logoContainer.innerHTML = this.getAssetLogoHTML(ticker, 48);
+    }
+
     let updateText = `Atualizado em ${new Date(data.updated_at).toLocaleString('pt-BR')}`;
     if (data.period) updateText += ` | Período: ${data.period}`;
     this.$('newsModalUpdateDate').textContent = updateText;
 
-    // TextContent is safe from XSS
-    let summaryText = data.summary;
-    if (data.is_outdated) {
-        summaryText = "[AVISO: Estas notícias não necessariamente retratam o desempenho do dia, pois não houve fontes disponíveis para a data atual.]\n\n" + summaryText;
+    // Handle summary text and outdated disclaimer
+    const textElement = this.$('newsModalText');
+    if (textElement) {
+      if (data.is_outdated) {
+        textElement.innerHTML = `
+          <div class="outdated-disclaimer" style="margin-bottom: 1rem;">[AVISO: Estas notícias não necessariamente retratam o desempenho do dia, pois não houve fontes disponíveis para a data atual.]</div>
+          <div style="white-space: pre-wrap;">${this.escapeHTML(data.summary)}</div>
+        `;
+      } else {
+        textElement.textContent = data.summary;
+      }
     }
-    this.$('newsModalText').textContent = summaryText;
 
     const sourcesDiv = this.$('newsModalSources');
     if (sourcesDiv) {
@@ -1222,6 +1233,10 @@ class B3App {
     }
 
     this.$('newsModalOverlay').classList.add('show');
+
+    // Reset scroll position
+    const scrollArea = this.$('newsModalScrollArea');
+    if (scrollArea) scrollArea.scrollTop = 0;
   }
 
   closeNewsModal() {

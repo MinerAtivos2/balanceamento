@@ -630,8 +630,46 @@ select:focus {
 .modal {
   width: 90%;
   max-width: 440px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
   padding: 1.75rem;
   animation: fadeUp 0.3s ease;
+}
+
+.news-modal-content {
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 0.5rem;
+}
+
+/* Custom scrollbar for news content */
+.news-modal-content::-webkit-scrollbar {
+  width: 6px;
+}
+.news-modal-content::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+}
+.news-modal-content::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+.news-modal-content::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+#newsModalText {
+  font-size: 0.95rem !important;
+  white-space: pre-wrap;
+}
+
+.outdated-disclaimer {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-style: italic;
+  margin-bottom: 1rem;
+  display: block;
 }
 .modal-lg {
   max-width: 800px;
