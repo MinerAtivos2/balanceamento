@@ -1198,7 +1198,7 @@ class B3App {
     if (textElement) {
       if (data.is_outdated) {
         textElement.innerHTML = `
-          <div class="outdated-disclaimer" style="margin-bottom: 1rem;">[AVISO: Estas notícias não necessariamente retratam o desempenho do dia, pois não houve fontes disponíveis para a data atual.]</div>
+          <div class="outdated-disclaimer" style="margin-top: 0.2rem; margin-bottom: 0.2rem; line-height: 1.2;">[AVISO: Estas notícias não necessariamente retratam o desempenho do dia, pois não houve fontes disponíveis para a data atual.]</div>
           <div style="white-space: pre-wrap;">${this.escapeHTML(data.summary)}</div>
         `;
       } else {
