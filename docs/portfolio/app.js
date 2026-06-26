@@ -1196,15 +1196,10 @@ class B3App {
     // Handle summary text and outdated disclaimer
     const textElement = this.$('newsModalText');
     if (textElement) {
-         // Zera padding e margens padrão do container do modal
-        //textElement.style.paddingTop = '0';
-        //textElement.style.marginTop = '0';
-        textElement.style.setProperty('margin-top', '0', 'important');
-        textElement.style.setProperty('padding-top', '0', 'important');
       if (data.is_outdated) {
         textElement.innerHTML = `
-          <div class="news-outdated-label" style="margin-bottom: 0;">[AVISO: Estas notícias não necessariamente retratam o desempenho do dia, pois não houve fontes disponíveis para a data atual.]</div>
-          <div style="white-space: pre-wrap; margin-top: 0;">${this.escapeHTML(data.summary).trim()}</div>
+          <div class="news-outdated-label" style="margin-bottom: 0;">AVISO: Este resumo não necessariamente retra o desempenho do dia, pois não houve fontes disponíveis para a data atual.</div>
+          <div style="white-space: pre-wrap; margin-top: 0;">${this.escapeHTML(data.summary).trim()}</div><br>
         `.replace(/>\s+</g, '><'); // Remove os espaços e quebras de linha gerados pelas crases;
       } else {
         textElement.textContent = data.summary;
