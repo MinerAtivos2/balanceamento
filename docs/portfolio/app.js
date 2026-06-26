@@ -1196,6 +1196,13 @@ class B3App {
     // Handle summary text and outdated disclaimer
     const textElement = this.$('newsModalText');
     if (textElement) {
+        // Transforma o container em flexbox para neutralizar margens invisíveis do topo
+        textElement.style.display = 'flex';
+        textElement.style.flexDirection = 'column';
+        textElement.style.justifyContent = 'flex-start';
+        textElement.style.gap = '0px'; // Garante espaço zero entre os elementos filhos
+        textElement.style.paddingTop = '0px';
+        textElement.style.marginTop = '0px';       
       if (data.is_outdated) {
         textElement.innerHTML = `
           <div class="news-outdated-label" style="margin-bottom: 0;">AVISO: Este resumo não necessariamente retra o desempenho do dia, pois não houve fontes disponíveis para a data atual.</div>
