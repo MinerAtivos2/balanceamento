@@ -1202,11 +1202,10 @@ class B3App {
         textElement.style.justifyContent = 'flex-start';
         textElement.style.gap = '0px'; // Garante espaço zero entre os elementos filhos
         textElement.style.paddingTop = '0px';
-        textElement.style.marginTop = '0px';
-        textElement.style.marginBottom = '3rem';
+        textElement.style.marginTop = '0px';        
       if (data.is_outdated) {
         textElement.innerHTML = `
-          <div class="news-outdated-label" style="margin-bottom: 0;">AVISO: Este resumo não necessariamente retrata o desempenho do dia, pois não houve fontes disponíveis para a data atual.</div>
+          <div class="news-outdated-label" style="margin-bottom: 1rem;">AVISO: Este resumo não necessariamente retrata o desempenho do dia, pois não houve fontes disponíveis para a data atual.</div>
           <div style="white-space: pre-wrap; margin-top: 0;">${this.escapeHTML(data.summary).trim()}</div><br>
         `.replace(/>\s+</g, '><'); // Remove os espaços e quebras de linha gerados pelas crases;
       } else {
