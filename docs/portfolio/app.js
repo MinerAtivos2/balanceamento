@@ -2454,7 +2454,7 @@ class B3App {
     const summary = this.marketSummaryData;
     if (!summary) return;
 
-    this.$('summaryDateFull').textContent = `Dados atualizados em ${summary.date} (referente à coleta de ${summary.last_update.split('T')[0]})`;
+    this.$('summaryDateFull').textContent = `Dados atualizados em ${Date(summary.date).toLocaleString('pt-BR')} (referente à coleta de ${summary.last_update.split('T')[0]})`;
 
     let gainers, losers, deltaKey;
     if (this.summaryPeriod === 'month') {
