@@ -2538,7 +2538,7 @@ class B3App {
         datasets: [
           {
             data: data,
-            borderColor: isUp ? '#22c55e' : '#ef4444',
+            borderColor: isUp ? '#00ccff' : '#ff9900',
             borderWidth: 1.8,
             pointRadius: 0,
             fill: false,
