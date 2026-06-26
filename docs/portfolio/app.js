@@ -1199,7 +1199,7 @@ class B3App {
       if (data.is_outdated) {
         textElement.innerHTML = `
           <div class="news-outdated-label">[AVISO: Estas notícias não necessariamente retratam o desempenho do dia, pois não houve fontes disponíveis para a data atual.]</div>
-          <div style="white-space: pre-wrap; margin-top: 0; margin-bottom: 0;">${this.escapeHTML(data.summary)}</div>
+          <div style="margin-top: 0; margin-bottom: 0;">${this.escapeHTML(data.summary)}</div>
         `;
       } else {
         textElement.textContent = data.summary;
