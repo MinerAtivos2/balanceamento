@@ -1198,9 +1198,9 @@ class B3App {
     if (textElement) {
       if (data.is_outdated) {
         textElement.innerHTML = `
-          <div class="news-outdated-label">[AVISO: Estas notícias não necessariamente retratam o desempenho do dia, pois não houve fontes disponíveis para a data atual.]</div>
-          <div style="margin-top: 0; margin-bottom: 0;">${this.escapeHTML(data.summary)}</div>
-        `;
+          <div class="news-outdated-label" style="margin-bottom: 0;">[AVISO: Estas notícias não necessariamente retratam o desempenho do dia, pois não houve fontes disponíveis para a data atual.]</div>
+          <div style="white-space: pre-wrap; margin-top: 0;">${this.escapeHTML(data.summary).trim()}</div>
+        `.replace(/>\s+</g, '><'); // Remove os espaços e quebras de linha gerados pelas crases;
       } else {
         textElement.textContent = data.summary;
       }
