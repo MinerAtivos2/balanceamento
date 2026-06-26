@@ -1184,16 +1184,34 @@ class B3App {
     this.$('newsModalTitle').textContent = `Resumo IA: ${ticker.replace('.SA', '')}`;
     this.$('newsModalTickerName').textContent = ticker;
 
+    const logoContainer = this.$('newsModalLogoContainer');
+    if (logoContainer) {
+      logoContainer.innerHTML = this.getAssetLogoHTML(ticker, 48);
+    }
+
     let updateText = `Atualizado em ${new Date(data.updated_at).toLocaleString('pt-BR')}`;
     if (data.period) updateText += ` | Período: ${data.period}`;
     this.$('newsModalUpdateDate').textContent = updateText;
 
-    // TextContent is safe from XSS
-    let summaryText = data.summary;
-    if (data.is_outdated) {
-        summaryText = "[AVISO: Estas notícias não necessariamente retratam o desempenho do dia, pois não houve fontes disponíveis para a data atual.]\n\n" + summaryText;
+    // Handle summary text and outdated disclaimer
+    const textElement = this.$('newsModalText');
+    if (textElement) {
+        // Transforma o container em flexbox para neutralizar margens invisíveis do topo
+        textElement.style.display = 'flex';
+        textElement.style.flexDirection = 'column';
+        textElement.style.justifyContent = 'flex-start';
+        textElement.style.gap = '0px'; // Garante espaço zero entre os elementos filhos
+        textElement.style.paddingTop = '0px';
+        textElement.style.marginTop = '0px';       
+      if (data.is_outdated) {
+        textElement.innerHTML = `
+          <div class="news-outdated-label" style="margin-bottom: 0;">AVISO: Este resumo não necessariamente retra o desempenho do dia, pois não houve fontes disponíveis para a data atual.</div>
+          <div style="white-space: pre-wrap; margin-top: 0;">${this.escapeHTML(data.summary).trim()}</div><br>
+        `.replace(/>\s+</g, '><'); // Remove os espaços e quebras de linha gerados pelas crases;
+      } else {
+        textElement.textContent = data.summary;
+      }
     }
-    this.$('newsModalText').textContent = summaryText;
 
     const sourcesDiv = this.$('newsModalSources');
     if (sourcesDiv) {
@@ -1222,6 +1240,10 @@ class B3App {
     }
 
     this.$('newsModalOverlay').classList.add('show');
+
+    // Reset scroll position
+    const scrollArea = this.$('newsModalScrollArea');
+    if (scrollArea) scrollArea.scrollTop = 0;
   }
 
   closeNewsModal() {
