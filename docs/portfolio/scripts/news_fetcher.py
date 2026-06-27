@@ -30,6 +30,13 @@ def get_gemini_api_key():
     if _GEMINI_API_KEY:
         return _GEMINI_API_KEY
 
+    # 1. Tentar variável de ambiente (prioridade para GitHub Actions)
+    env_key = os.environ.get('GEMINI_API_KEY')
+    if env_key:
+        _GEMINI_API_KEY = env_key
+        return _GEMINI_API_KEY
+
+    # 2. Tentar via GAS
     if not GAS_URL:
         return None
 

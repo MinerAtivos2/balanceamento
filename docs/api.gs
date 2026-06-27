@@ -251,29 +251,25 @@ function handleUpdatePassword(username, oldPassword, newPassword) {
 
 function handleGetTaxConfig() {
   const sheet = getSheet("TaxConfig");
-  if (!sheet) {
-    return {
-      STOCK_EXEMPTION_LIMIT: 20000,
-      STOCK_ST_RATE: 0.15,
-      STOCK_DT_RATE: 0.20,
-      FII_RATE: 0.20,
-      IRRF_ST_RATE: 0.00005,
-      IRRF_DT_RATE: 0.01
-    };
-  }
-  const data = sheet.getDataRange().getValues();
-  const config = {};
-  for (let i = 1; i < data.length; i++) {
-    config[data[i][0]] = data[i][1];
-  }
-  return {
-    STOCK_EXEMPTION_LIMIT: config.STOCK_EXEMPTION_LIMIT || 20000,
-    STOCK_ST_RATE: config.STOCK_ST_RATE || 0.15,
-    STOCK_DT_RATE: config.STOCK_DT_RATE || 0.20,
-    FII_RATE: config.FII_RATE || 0.20,
-    IRRF_ST_RATE: config.IRRF_ST_RATE || 0.00005,
-    IRRF_DT_RATE: config.IRRF_DT_RATE || 0.01
+  const defaultConfig = {
+    STOCK_EXEMPTION_LIMIT: 20000,
+    STOCK_ST_RATE: 0.15,
+    STOCK_DT_RATE: 0.20,
+    FII_RATE: 0.20,
+    IRRF_ST_RATE: 0.00005,
+    IRRF_DT_RATE: 0.01
   };
+
+  if (!sheet) return defaultConfig;
+
+  const data = sheet.getDataRange().getValues();
+  const config = { ...defaultConfig };
+  for (let i = 1; i < data.length; i++) {
+    if (data[i][0]) {
+      config[data[i][0]] = data[i][1];
+    }
+  }
+  return config;
 }
 
 function handleGetFiscalData(username, token) {
