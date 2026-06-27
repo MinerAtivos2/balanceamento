@@ -4,6 +4,7 @@ import json
 import os
 from datetime import datetime, timedelta
 import time
+import random
 import requests
 import feedparser
 import urllib.parse
@@ -130,16 +131,39 @@ def get_ai_summary(ticker, context, is_priority=False):
         f"Seja direto sobre o sentimento (positivo/negativo/neutro).\nNotícias de múltiplas fontes:\n{context}"
     )
 
-    for provider in [g4f.Provider.PollinationsAI, g4f.Provider.PuterJS]:
+    # Configurações otimizadas para ambientes headless (GitHub Actions)
+    configs = [
+        {"model": "gpt-4o-mini", "provider": "Airforce"},
+        {"model": "gpt-4o", "provider": "Airforce"},
+        {"model": "gpt-4o", "provider": "Blackbox"},
+        {"model": "openai", "provider": "PollinationsAI"},
+        {"model": "gpt-4o", "provider": "ChatGptEs"},
+        {"model": "gpt-4o", "provider": "Liaobots"},
+        {"model": "gpt-4o", "provider": ""},
+    ]
+    random.shuffle(configs)
+
+    for config in configs:
+        p_name = config["provider"]
+        model = config["model"]
         try:
+            provider = None
+            if p_name:
+                if not hasattr(g4f.Provider, p_name): continue
+                provider = getattr(g4f.Provider, p_name)
+                if hasattr(provider, 'needs_auth') and provider.needs_auth: continue
+
             response = g4f.ChatCompletion.create(
-                model="openai" if provider == g4f.Provider.PollinationsAI else "gpt-4o-mini",
+                model=model if model else "gpt-4o",
                 provider=provider,
                 messages=[{"role": "user", "content": prompt}],
+                timeout=30
             )
             if response and len(response) > 15:
                 return response.strip()
-        except: continue
+        except:
+            time.sleep(random.uniform(0.5, 1.5))
+            continue
     return f"Resumo: {context[:200]}..."
 
 def main():
@@ -262,11 +286,31 @@ def main():
         if losers_summaries:
             prompt += f"Ações que CAÍRAM hoje:\n" + "\n".join(losers_summaries) + "\n"
 
-        news_output["market_summary"] = g4f.ChatCompletion.create(
-            model="openai",
-            provider=g4f.Provider.PollinationsAI,
-            messages=[{"role": "user", "content": prompt}],
-        )
+        # Reutilizar lógica robusta para o resumo de mercado
+        market_summary = ""
+        configs = [
+            {"model": "gpt-4o", "provider": "Airforce"},
+            {"model": "gpt-4o", "provider": "Blackbox"},
+            {"model": "openai", "provider": "PollinationsAI"},
+            {"model": "gpt-4o", "provider": ""},
+        ]
+        for config in configs:
+            try:
+                p_name = config["provider"]
+                provider = getattr(g4f.Provider, p_name) if p_name and hasattr(g4f.Provider, p_name) else None
+                res = g4f.ChatCompletion.create(
+                    model=config["model"],
+                    provider=provider,
+                    messages=[{"role": "user", "content": prompt}],
+                    timeout=45
+                )
+                if res and len(res) > 20:
+                    market_summary = res.strip()
+                    break
+            except: continue
+
+        if market_summary:
+            news_output["market_summary"] = market_summary
     except Exception as e:
         print(f"Erro no resumo geral IA: {e}")
 
