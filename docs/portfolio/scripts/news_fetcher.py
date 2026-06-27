@@ -7,12 +7,86 @@ import time
 import requests
 import feedparser
 import urllib.parse
+import random
+
+# Configuração do Gemini
+try:
+    import google.generativeai as genai
+    HAS_GEMINI_LIB = True
+except ImportError:
+    HAS_GEMINI_LIB = False
 
 # Configurações
 DATA_DIR = os.path.join(os.path.dirname(__file__), '..', 'data')
 MARKET_SUMMARY_JSON = os.path.join(DATA_DIR, 'market_summary.json')
 OUTPUT_JSON = os.path.join(DATA_DIR, 'market_news.json')
 GAS_URL = os.environ.get('GAS_URL')
+
+# Cache para a chave do Gemini
+_GEMINI_API_KEY = None
+
+def get_gemini_api_key():
+    global _GEMINI_API_KEY
+    if _GEMINI_API_KEY:
+        return _GEMINI_API_KEY
+
+    if not GAS_URL:
+        return None
+
+    try:
+        response = requests.post(GAS_URL, json={"action": "get_tax_config"}, timeout=30)
+        data = response.json()
+        _GEMINI_API_KEY = data.get('GEMINI_API_KEY')
+        return _GEMINI_API_KEY
+    except Exception as e:
+        print(f"⚠️ Erro ao buscar GEMINI_API_KEY: {e}")
+        return None
+
+def call_gemini(prompt):
+    key = get_gemini_api_key()
+    if not key or not HAS_GEMINI_LIB:
+        return None
+
+    try:
+        genai.configure(api_key=key)
+        model = genai.GenerativeModel('gemini-1.5-flash')
+        response = model.generate_content(prompt)
+        if response and response.text:
+            return response.text.strip()
+    except Exception as e:
+        print(f"⚠️ Erro no Gemini: {e}")
+    return None
+
+def call_g4f(prompt, model="gpt-4o-mini"):
+    """Tenta múltiplos provedores g4f para maior resiliência"""
+    providers = [
+        g4f.Provider.Blackbox,
+        g4f.Provider.ChatGptEs,
+        g4f.Provider.Airforce,
+        g4f.Provider.PuterJS,
+        g4f.Provider.AmigoChat,
+    ]
+    random.shuffle(providers)
+
+    for provider in providers:
+        # Pular provedores que sabidamente estão dando erro de atributo .working
+        try:
+            if hasattr(provider, 'working') and not provider.working:
+                continue
+        except:
+            continue
+
+        try:
+            response = g4f.ChatCompletion.create(
+                model=model,
+                provider=provider,
+                messages=[{"role": "user", "content": prompt}],
+            )
+            if response and len(str(response)) > 15:
+                return str(response).strip()
+        except Exception:
+            continue
+    return None
 
 def load_tickers_from_sheets():
     if not GAS_URL:
@@ -136,16 +210,16 @@ def get_ai_summary(ticker, context, is_priority=False):
             f"5. Foque em inteligência e tendências, indo além de apenas repetir títulos."
     )
 
-    for provider in [g4f.Provider.PollinationsAI, g4f.Provider.PuterJS]:
-        try:
-            response = g4f.ChatCompletion.create(
-                model="openai" if provider == g4f.Provider.PollinationsAI else "gpt-4o-mini",
-                provider=provider,
-                messages=[{"role": "user", "content": prompt}],
-            )
-            if response and len(response) > 15:
-                return response.strip()
-        except: continue
+    # 1. Tentar Gemini
+    response = call_gemini(prompt)
+    if response:
+        return response
+
+    # 2. Fallback para g4f
+    response = call_g4f(prompt)
+    if response:
+        return response
+
     return f"Resumo: {context[:300]}..."
 
 def main():
@@ -283,11 +357,15 @@ def main():
         if losers_summaries:
             prompt += f"Destaques de baixa:\n" + "\n".join(losers_summaries) + "\n"
 
-        news_output["market_summary"] = g4f.ChatCompletion.create(
-            model="openai",
-            provider=g4f.Provider.PollinationsAI,
-            messages=[{"role": "user", "content": prompt}],
-        )
+        # 1. Tentar Gemini
+        summary = call_gemini(prompt)
+
+        # 2. Fallback para g4f
+        if not summary:
+            summary = call_g4f(prompt, model="gpt-4o")
+
+        if summary:
+            news_output["market_summary"] = summary
     except Exception as e:
         print(f"Erro no resumo geral IA: {e}")
 
