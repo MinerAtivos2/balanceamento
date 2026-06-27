@@ -12,8 +12,8 @@ import urllib.parse
 DATA_DIR = os.path.join(os.path.dirname(__file__), '..', 'data')
 MARKET_SUMMARY_JSON = os.path.join(DATA_DIR, 'market_summary.json')
 OUTPUT_JSON = os.path.join(DATA_DIR, 'market_news.json')
-GAS_URL = "https://script.google.com/macros/s/AKfycby2slkMMAGMXOkqXG5hpMSYYc_MFHcc3WQFG8s9ELu4b9Wng77DCB-x-G4l0J6oVx2I/exec"
-GEMINI_API_KEY = "AIzaSyAvV8CmtG3WsOnxsg-208ntg2lkCCrt5Wk"
+GAS_URL = os.environ.get('GAS_URL')
+GEMINI_API_KEY = None
 
 def get_gemini_key():
     global GEMINI_API_KEY
@@ -162,16 +162,23 @@ def get_ai_summary(ticker, context, is_priority=False):
         except Exception as e:
             print(f"⚠️ Erro Gemini para {ticker}: {e}")
 
-    # 2. Fallback para g4f (Lógica Original)
+    # 2. Fallback para g4f
     prompt_fallback = (
         f"Aja como um analista B3. Resuma em português e em 3 frases objetivas as notícias de {ticker}. Certifique-se de resumir fatos sobre {ticker}."
         f"Seja direto sobre o sentimento (positivo/negativo/neutro).\nNotícias:\n{context}"
     )
 
-    for provider in [g4f.Provider.PollinationsAI, g4f.Provider.PuterJS]:
+    # Lista de provedores robustos com tratamento de erro dinâmico
+    providers = []
+    for p_name in ["PollinationsAI", "PuterJS", "Airforce", "Blackbox"]:
+        if hasattr(g4f.Provider, p_name):
+            providers.append(getattr(g4f.Provider, p_name))
+
+    for provider in providers:
         try:
+            model = "openai" if "Pollinations" in str(provider) else "gpt-4o-mini"
             response = g4f.ChatCompletion.create(
-                model="openai" if provider == g4f.Provider.PollinationsAI else "gpt-4o-mini",
+                model=model,
                 provider=provider,
                 messages=[{"role": "user", "content": prompt_fallback}],
             )
@@ -329,11 +336,19 @@ def main():
             except: pass
 
         if not summary_success:
-            news_output["market_summary"] = g4f.ChatCompletion.create(
-                model="openai",
-                provider=g4f.Provider.PollinationsAI,
-                messages=[{"role": "user", "content": prompt}],
-            )
+            # Fallback geral robusto
+            for p_name in ["PollinationsAI", "PuterJS", "Airforce"]:
+                if hasattr(g4f.Provider, p_name):
+                    try:
+                        news_output["market_summary"] = g4f.ChatCompletion.create(
+                            model="openai" if p_name == "PollinationsAI" else "gpt-4o-mini",
+                            provider=getattr(g4f.Provider, p_name),
+                            messages=[{"role": "user", "content": prompt}],
+                        )
+                        if news_output["market_summary"]:
+                            summary_success = True
+                            break
+                    except: continue
     except Exception as e:
         print(f"Erro no resumo geral IA: {e}")
 
