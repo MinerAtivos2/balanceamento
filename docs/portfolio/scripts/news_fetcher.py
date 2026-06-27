@@ -13,7 +13,7 @@ DATA_DIR = os.path.join(os.path.dirname(__file__), '..', 'data')
 MARKET_SUMMARY_JSON = os.path.join(DATA_DIR, 'market_summary.json')
 OUTPUT_JSON = os.path.join(DATA_DIR, 'market_news.json')
 GAS_URL = 'https://script.google.com/macros/s/AKfycby2slkMMAGMXOkqXG5hpMSYYc_MFHcc3WQFG8s9ELu4b9Wng77DCB-x-G4l0J6oVx2I/exec'
-GEMINI_API_KEY = 'AIzaSyAvV8CmtG3WsOnxsg-208ntg2lkCCrt5Wk'
+GEMINI_API_KEY = None
 
 def get_gemini_key():
     global GEMINI_API_KEY
