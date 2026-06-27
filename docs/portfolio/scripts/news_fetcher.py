@@ -115,6 +115,35 @@ def fetch_yahoo_news(ticker):
         print(f"⚠️ Erro no Yahoo Finance para {ticker}: {e}")
     return news_items
 
+def safe_g4f_completion(prompt, fallback_text):
+    """Executa a conclusão com redundância de provedores g4f."""
+    providers = [
+        g4f.Provider.Blackbox,
+        g4f.Provider.Airforce,
+        g4f.Provider.ChatGptEs,
+        g4f.Provider.AmigoChat,
+        g4f.Provider.Liaobots,
+        g4f.Provider.PuterJS
+    ]
+
+    for provider in providers:
+        try:
+            # Verifica se o provedor tem o atributo 'working' antes de acessar
+            if hasattr(provider, 'working') and not provider.working:
+                continue
+
+            response = g4f.ChatCompletion.create(
+                model="gpt-4o-mini",
+                provider=provider,
+                messages=[{"role": "user", "content": prompt}],
+            )
+            if response and len(str(response)) > 20:
+                return str(response).strip()
+        except Exception:
+            continue
+
+    return fallback_text
+
 def get_ai_summary(ticker, context, is_priority=False):
     if not context or context.strip() == "":
         return "Sem notícias recentes de impacto encontradas nos principais canais financeiros."
@@ -136,17 +165,7 @@ def get_ai_summary(ticker, context, is_priority=False):
             f"5. Foque em inteligência e tendências, indo além de apenas repetir títulos."
     )
 
-    for provider in [g4f.Provider.PollinationsAI, g4f.Provider.PuterJS]:
-        try:
-            response = g4f.ChatCompletion.create(
-                model="openai" if provider == g4f.Provider.PollinationsAI else "gpt-4o-mini",
-                provider=provider,
-                messages=[{"role": "user", "content": prompt}],
-            )
-            if response and len(response) > 15:
-                return response.strip()
-        except: continue
-    return f"Resumo: {context[:300]}..."
+    return safe_g4f_completion(prompt, f"Resumo: {context[:300]}...")
 
 def main():
     print("🚀 Iniciando Multi-Source News Fetcher...")
@@ -279,15 +298,11 @@ def main():
 
         prompt = f"Aja como um analista financeiro. {ibov_info}Resuma, em português, o clima do mercado B3 hoje em 3 frases curtas e diretas.\n"
         if gainers_summaries:
-            prompt += f"Destaques de alta:\n" + "\n".join(gainers_summaries) + "\n"
+            prompt += f"Destaques de alta:\n" + "\n".join(gainers_summaries[:5]) + "\n"
         if losers_summaries:
-            prompt += f"Destaques de baixa:\n" + "\n".join(losers_summaries) + "\n"
+            prompt += f"Destaques de baixa:\n" + "\n".join(losers_summaries[:5]) + "\n"
 
-        news_output["market_summary"] = g4f.ChatCompletion.create(
-            model="openai",
-            provider=g4f.Provider.PollinationsAI,
-            messages=[{"role": "user", "content": prompt}],
-        )
+        news_output["market_summary"] = safe_g4f_completion(prompt, news_output["market_summary"])
     except Exception as e:
         print(f"Erro no resumo geral IA: {e}")
 
