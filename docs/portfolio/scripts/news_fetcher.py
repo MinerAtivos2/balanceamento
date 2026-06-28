@@ -148,7 +148,8 @@ def get_ai_summary(ticker, context, genai_client=None):
 
     # 1. Tentar Gemini se disponível (via SDK oficial)
     if genai_client:
-        for model_name in ["gemini-2.0-flash", "gemini-1.5-flash"]:
+        # Ordem de preferência para o Free Tier
+        for model_name in ["gemini-2.0-flash", "gemini-1.5-flash", "gemini-1.5-flash-8b"]:
             if model_name in EXHAUSTED_MODELS:
                 continue
 
@@ -197,6 +198,9 @@ def get_ai_summary(ticker, context, genai_client=None):
                             EXHAUSTED_MODELS.add(model_name)
                 elif "403" in error_msg:
                     print(f"🚫 Erro de permissão (403) para {model_name}. Pulando...")
+                    EXHAUSTED_MODELS.add(model_name)
+                elif "404" in error_msg:
+                    print(f"🚫 Modelo não encontrado (404): {model_name}. Removendo da lista.")
                     EXHAUSTED_MODELS.add(model_name)
 
                 # Continua para o próximo modelo se houver erro (removido o break)
@@ -249,6 +253,14 @@ def main():
         try:
             genai_client = genai.Client(api_key=api_key)
             print(f"✅ Google GenAI Client inicializado (Key: {api_key[:4]}...{api_key[-4:]})")
+
+            # Diagnóstico opcional de modelos disponíveis
+            try:
+                print("🔍 Verificando modelos disponíveis...")
+                models = genai_client.models.list()
+                available = [m.name for m in models if "generateContent" in m.supported_methods]
+                print(f"🤖 Modelos suportados na sua cota: {', '.join(available)}")
+            except: pass
         except Exception as e:
             print(f"❌ Erro ao inicializar Google GenAI Client: {e}")
 
@@ -390,7 +402,8 @@ def main():
 
         summary_success = False
         if genai_client:
-            for model_name in ["gemini-2.0-flash", "gemini-1.5-flash"]:
+            for model_name in ["gemini-2.0-flash", "gemini-1.5-flash", "gemini-1.5-flash-8b"]:
+                if model_name in EXHAUSTED_MODELS: continue
                 try:
                     response = genai_client.models.generate_content(
                         model=model_name,
