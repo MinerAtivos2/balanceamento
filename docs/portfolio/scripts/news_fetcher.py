@@ -12,8 +12,7 @@ import urllib.parse
 DATA_DIR = os.path.join(os.path.dirname(__file__), '..', 'data')
 MARKET_SUMMARY_JSON = os.path.join(DATA_DIR, 'market_summary.json')
 OUTPUT_JSON = os.path.join(DATA_DIR, 'market_news.json')
-#GAS_URL = os.environ.get('GAS_URL')
-GAS_URL = 'https://script.google.com/macros/s/AKfycbwtMb0_J0qQoILBwR6oWXWiPFUzqs3iAFje-7gVFsbmOP9bg7OhrT8oJ0VA01Mytpntww/exec'
+GAS_URL = os.environ.get('GAS_URL')
 GEMINI_API_KEY = None
 
 def get_gemini_key():
@@ -158,10 +157,14 @@ def get_ai_summary(ticker, context):
         payload = {"contents": [{"parts": [{"text": prompt}]}]}
         try:
             res = requests.post(url, json=payload, timeout=30)
+            if res.status_code != 200:
+                print(f"❌ Gemini API Error ({res.status_code}): {res.text}")
             data = res.json()
             if 'candidates' in data and data['candidates']:
                 text = data['candidates'][0]['content']['parts'][0]['text']
                 if text: return text.strip()
+            else:
+                print(f"⚠️ Gemini retornou formato inesperado para {ticker}: {data}")
         except Exception as e:
             print(f"⚠️ Erro Gemini para {ticker}: {e}")
 
@@ -191,8 +194,8 @@ def get_ai_summary(ticker, context):
                 provider=provider,
                 messages=[{"role": "user", "content": prompt_fallback}],
             )
-            if response and len(response) > 15:
-                return response.strip()
+            if response and len(str(response)) > 15:
+                return str(response).strip()
         except Exception as e:
             print(f"⚠️ Erro g4f ({provider.__name__}) para {ticker}: {e}")
             continue
