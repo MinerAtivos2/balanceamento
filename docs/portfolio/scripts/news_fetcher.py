@@ -12,8 +12,7 @@ import urllib.parse
 DATA_DIR = os.path.join(os.path.dirname(__file__), '..', 'data')
 MARKET_SUMMARY_JSON = os.path.join(DATA_DIR, 'market_summary.json')
 OUTPUT_JSON = os.path.join(DATA_DIR, 'market_news.json')
-# GAS_URL = os.environ.get('GAS_URL')
-GAS_URL = 'https://script.google.com/macros/s/AKfycbwtMb0_J0qQoILBwR6oWXWiPFUzqs3iAFje-7gVFsbmOP9bg7OhrT8oJ0VA01Mytpntww/exec'
+GAS_URL = os.environ.get('GAS_URL')
 GEMINI_API_KEY = None
 
 def get_gemini_key():
@@ -175,7 +174,7 @@ def get_ai_summary(ticker, context):
 
     # Lista de provedores robustos com tratamento de erro dinâmico
     available_providers = []
-    for p_name in ["Airforce", "Blackbox", "PuterJS", "ChatGptEs"]:
+    for p_name in ["Airforce", "Blackbox", "ChatGptEs", "AmigoChat", "Liaobots"]:
         if hasattr(g4f.Provider, p_name):
             provider = getattr(g4f.Provider, p_name)
             # Verificar se o provider tem o atributo 'working' antes de acessar
@@ -359,7 +358,7 @@ def main():
         if not summary_success:
             # Fallback geral robusto (mesma lógica de provedores de get_ai_summary)
             available_providers = []
-            for p_name in ["Airforce", "Blackbox", "PuterJS", "ChatGptEs"]:
+            for p_name in ["Airforce", "Blackbox", "ChatGptEs", "AmigoChat", "Liaobots"]:
                 if hasattr(g4f.Provider, p_name):
                     provider = getattr(g4f.Provider, p_name)
                     if hasattr(provider, 'working') and not provider.working:
