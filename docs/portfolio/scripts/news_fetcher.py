@@ -17,13 +17,20 @@ GEMINI_API_KEY = None
 
 def get_gemini_key():
     global GEMINI_API_KEY
+    # 1. Prioridade: Variável de ambiente
+    GEMINI_API_KEY = os.environ.get('GEMINI_API_KEY')
+    if GEMINI_API_KEY:
+        print("✅ Gemini API Key carregada de variável de ambiente.")
+        return GEMINI_API_KEY
+
+    # 2. Fallback: Google Apps Script
     if not GAS_URL: return None
     try:
         response = requests.post(GAS_URL, json={"action": "get_tax_config"}, timeout=30)
         data = response.json()
         GEMINI_API_KEY = data.get('GEMINI_API_KEY')
         if GEMINI_API_KEY:
-            print("✅ Gemini API Key carregada com sucesso.")
+            print("✅ Gemini API Key carregada via GAS.")
         return GEMINI_API_KEY
     except Exception as e:
         print(f"❌ Erro ao buscar Gemini Key da Planilha: {e}")
@@ -130,27 +137,22 @@ def fetch_yahoo_news(ticker):
         print(f"⚠️ Erro no Yahoo Finance para {ticker}: {e}")
     return news_items
 
-def get_ai_summary(ticker, context, is_priority=False):
+def get_ai_summary(ticker, context):
     if not context or context.strip() == "":
         return "Sem notícias recentes de impacto encontradas nos principais canais financeiros."
-
-    if not is_priority:
-        clean_titles = [t.strip() for t in context.split('.') if len(t.strip()) > 10]
-        if clean_titles:
-            return f"Movimentações recentes: {'; '.join(clean_titles[:2])}. O mercado monitora o desempenho do papel frente ao setor."
-        return "Ativo com baixa frequência de notícias recentes."
 
     # 1. Tentar Gemini se disponível
     if GEMINI_API_KEY:
         url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key={GEMINI_API_KEY}"
         prompt = (
-            f"Aja como um analista experiente da B3. Analise e resuma com profundidade as notícias de {ticker}.\n"
+            f"Aja como um analista experiente da B3. Analise e resuma com PROFUNDIDADE as notícias de {ticker}.\n"
             f"Contexto (manchetes): {context}\n\n"
-            f"Instruções:\n"
-            f"1. Identifique os fatos principais que impactam o papel.\n"
-            f"2. Extraia o sentimento do mercado (otimista, pessimista ou neutro) e explique brevemente.\n"
-            f"3. Resumo em português, fluído, entre 3 a 4 frases.\n"
-            f"4. Foque em inteligência e tendências, indo além de apenas repetir títulos."
+            f"Instruções OBRIGATÓRIAS:\n"
+            f"1. NÃO apenas repita os títulos das notícias. Analise o que elas significam para a empresa.\n"
+            f"2. Identifique os fatos principais que impactam o papel.\n"
+            f"3. Extraia o sentimento do mercado (otimista, pessimista ou neutro) e explique o porquê.\n"
+            f"4. Escreva o resumo em português, fluído, entre 3 a 4 frases.\n"
+            f"5. Se as notícias forem contraditórias, aponte os pontos de atenção."
         )
         payload = {"contents": [{"parts": [{"text": prompt}]}]}
         try:
@@ -164,19 +166,25 @@ def get_ai_summary(ticker, context, is_priority=False):
 
     # 2. Fallback para g4f
     prompt_fallback = (
-        f"Aja como um analista B3. Resuma em português e em 3 frases objetivas as notícias de {ticker}. Certifique-se de resumir fatos sobre {ticker}."
-        f"Seja direto sobre o sentimento (positivo/negativo/neutro).\nNotícias:\n{context}"
+        f"Aja como um analista B3 experiente. Resuma em português e em 3 frases OBJETIVAS e ANALÍTICAS as notícias de {ticker}.\n"
+        f"Foque no impacto financeiro e no sentimento (positivo/negativo/neutro).\n"
+        f"NÃO apenas liste os títulos.\n"
+        f"Notícias:\n{context}"
     )
 
     # Lista de provedores robustos com tratamento de erro dinâmico
-    providers = []
-    for p_name in ["PollinationsAI", "PuterJS", "Airforce", "Blackbox"]:
+    available_providers = []
+    for p_name in ["Airforce", "Blackbox", "PuterJS", "ChatGptEs"]:
         if hasattr(g4f.Provider, p_name):
-            providers.append(getattr(g4f.Provider, p_name))
+            provider = getattr(g4f.Provider, p_name)
+            # Verificar se o provider tem o atributo 'working' antes de acessar
+            if hasattr(provider, 'working') and not provider.working:
+                continue
+            available_providers.append(provider)
 
-    for provider in providers:
+    for provider in available_providers:
         try:
-            model = "openai" if "Pollinations" in str(provider) else "gpt-4o-mini"
+            model = "gpt-4o-mini"
             response = g4f.ChatCompletion.create(
                 model=model,
                 provider=provider,
@@ -184,7 +192,15 @@ def get_ai_summary(ticker, context, is_priority=False):
             )
             if response and len(response) > 15:
                 return response.strip()
-        except: continue
+        except Exception as e:
+            print(f"⚠️ Erro g4f ({provider.__name__}) para {ticker}: {e}")
+            continue
+
+    # Último recurso: extração manual básica se a IA falhar
+    clean_titles = [t.strip() for t in context.split('.') if len(t.strip()) > 15]
+    if clean_titles:
+        return f"Destaques: {'; '.join(clean_titles[:2])}. O mercado monitora o impacto destes fatos no desempenho do papel."
+
     return f"Resumo: {context[:300]}..."
 
 def main():
@@ -277,8 +293,7 @@ def main():
                 if max_news_date_str < market_last_date:
                     is_outdated = True
 
-            is_prio = ticker in movers or processed_count <= 25
-            summary = get_ai_summary(ticker, context, is_priority=is_prio)
+            summary = get_ai_summary(ticker, context)
 
             asset_market_info = market_summary_data.get(ticker, {})
 
@@ -294,7 +309,8 @@ def main():
                 "yearly_delta": asset_market_info.get('yearly_delta'),
                 "price_date": asset_market_info.get('date')
             }
-            if is_prio: time.sleep(0.5)
+            # Pequeno delay para evitar rate limiting em massa
+            time.sleep(0.3)
 
         except Exception as e:
             print(f"Erro em {ticker}: {e}")
@@ -317,7 +333,10 @@ def main():
             i = news_output["ibov"]
             ibov_info = f"O IBOVESPA fechou em {i['last_close']:.0f} pontos, com variação de {i['daily_delta']*100:.2f}% no dia, {i['monthly_delta']*100:.2f}% no mês e {i['yearly_delta']*100:.2f}% no ano.\n"
 
-        prompt = f"Aja como um analista financeiro. {ibov_info}Resuma, em português, o clima do mercado B3 hoje em 3 frases curtas e diretas.\n"
+        prompt = (
+            f"Aja como um analista financeiro sênior. {ibov_info}Resuma, em português, o clima do mercado B3 hoje em 3 a 4 frases analíticas e conectadas.\n"
+            f"Evite apenas listar nomes de empresas, busque explicar a tendência do dia.\n"
+        )
         if gainers_summaries:
             prompt += f"Destaques de alta:\n" + "\n".join(gainers_summaries) + "\n"
         if losers_summaries:
@@ -333,22 +352,30 @@ def main():
                 if 'candidates' in data and data['candidates']:
                     news_output["market_summary"] = data['candidates'][0]['content']['parts'][0]['text'].strip()
                     summary_success = True
-            except: pass
+            except Exception as e:
+                print(f"⚠️ Erro Gemini no resumo geral: {e}")
 
         if not summary_success:
-            # Fallback geral robusto
-            for p_name in ["PollinationsAI", "PuterJS", "Airforce"]:
+            # Fallback geral robusto (mesma lógica de provedores de get_ai_summary)
+            available_providers = []
+            for p_name in ["Airforce", "Blackbox", "PuterJS", "ChatGptEs"]:
                 if hasattr(g4f.Provider, p_name):
-                    try:
-                        news_output["market_summary"] = g4f.ChatCompletion.create(
-                            model="openai" if p_name == "PollinationsAI" else "gpt-4o-mini",
-                            provider=getattr(g4f.Provider, p_name),
-                            messages=[{"role": "user", "content": prompt}],
-                        )
-                        if news_output["market_summary"]:
-                            summary_success = True
-                            break
-                    except: continue
+                    provider = getattr(g4f.Provider, p_name)
+                    if hasattr(provider, 'working') and not provider.working:
+                        continue
+                    available_providers.append(provider)
+
+            for provider in available_providers:
+                try:
+                    news_output["market_summary"] = g4f.ChatCompletion.create(
+                        model="gpt-4o-mini",
+                        provider=provider,
+                        messages=[{"role": "user", "content": prompt}],
+                    )
+                    if news_output["market_summary"] and len(news_output["market_summary"]) > 20:
+                        summary_success = True
+                        break
+                except: continue
     except Exception as e:
         print(f"Erro no resumo geral IA: {e}")
 
