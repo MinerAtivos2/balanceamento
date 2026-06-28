@@ -17,6 +17,7 @@ OUTPUT_JSON = os.path.join(DATA_DIR, 'market_news.json')
 #GAS_URL = os.environ.get('GAS_URL')
 GAS_URL = 'https://script.google.com/macros/s/AKfycbwtMb0_J0qQoILBwR6oWXWiPFUzqs3iAFje-7gVFsbmOP9bg7OhrT8oJ0VA01Mytpntww/exec'
 GEMINI_API_KEY = None
+EXHAUSTED_MODELS = set()
 
 def get_gemini_key():
     global GEMINI_API_KEY
@@ -141,12 +142,16 @@ def fetch_yahoo_news(ticker):
     return news_items
 
 def get_ai_summary(ticker, context, genai_client=None):
+    global EXHAUSTED_MODELS
     if not context or context.strip() == "":
         return "Sem notícias recentes de impacto encontradas nos principais canais financeiros."
 
     # 1. Tentar Gemini se disponível (via SDK oficial)
     if genai_client:
         for model_name in ["gemini-2.0-flash", "gemini-1.5-flash"]:
+            if model_name in EXHAUSTED_MODELS:
+                continue
+
             try:
                 prompt = (
                     f"Aja como um analista experiente da B3. Analise e resuma com PROFUNDIDADE as notícias de {ticker}.\n"
@@ -169,9 +174,32 @@ def get_ai_summary(ticker, context, genai_client=None):
                 else:
                     print(f"⚠️ Gemini ({model_name}) retornou resposta vazia para {ticker}")
             except Exception as e:
-                print(f"⚠️ Erro Gemini SDK ({model_name}) para {ticker}: {e}")
-                if "403" in str(e) or "429" in str(e):
-                    break
+                error_msg = str(e)
+                print(f"⚠️ Erro Gemini SDK ({model_name}) para {ticker}: {error_msg}")
+
+                # Tratar cota esgotada (429) ou erro de permissão (403)
+                if "429" in error_msg:
+                    # Se o limite for 0, o modelo não está disponível para esta conta/tier
+                    if "limit: 0" in error_msg:
+                        print(f"🚫 Modelo {model_name} parece desabilitado (limit: 0). Pulando...")
+                        EXHAUSTED_MODELS.add(model_name)
+                    else:
+                        # Tentar extrair tempo de espera e pausar
+                        import re
+                        match = re.search(r"retry in ([\d\.]+)s", error_msg)
+                        if match:
+                            wait_time = float(match.group(1)) + 1
+                            print(f"⏳ Quota atingida para {model_name}. Aguardando {wait_time}s...")
+                            time.sleep(wait_time)
+                        else:
+                            # Se não achou tempo, marca como exausto para não travar o script
+                            print(f"⚠️ Quota excedida para {model_name} sem tempo definido. Pulando modelo nesta rodada.")
+                            EXHAUSTED_MODELS.add(model_name)
+                elif "403" in error_msg:
+                    print(f"🚫 Erro de permissão (403) para {model_name}. Pulando...")
+                    EXHAUSTED_MODELS.add(model_name)
+
+                # Continua para o próximo modelo se houver erro (removido o break)
 
     # 2. Fallback para g4f
     prompt_fallback = (
@@ -327,8 +355,8 @@ def main():
                 "yearly_delta": asset_market_info.get('yearly_delta'),
                 "price_date": asset_market_info.get('date')
             }
-            # Pequeno delay para evitar rate limiting em massa
-            time.sleep(0.3)
+            # Delay maior para respeitar cota do Free Tier (máx 15 RPM em alguns casos)
+            time.sleep(1.5)
 
         except Exception as e:
             print(f"Erro em {ticker}: {e}")
