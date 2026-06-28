@@ -3,6 +3,7 @@ import g4f
 from google import genai
 import json
 import os
+import traceback
 from datetime import datetime, timedelta
 import time
 import requests
@@ -139,36 +140,38 @@ def fetch_yahoo_news(ticker):
         print(f"⚠️ Erro no Yahoo Finance para {ticker}: {e}")
     return news_items
 
-def get_ai_summary(ticker, context):
+def get_ai_summary(ticker, context, genai_client=None):
     if not context or context.strip() == "":
         return "Sem notícias recentes de impacto encontradas nos principais canais financeiros."
 
     # 1. Tentar Gemini se disponível (via SDK oficial)
-    if GEMINI_API_KEY:
-        try:
-            client = genai.Client(api_key=GEMINI_API_KEY)
-            prompt = (
-                f"Aja como um analista experiente da B3. Analise e resuma com PROFUNDIDADE as notícias de {ticker}.\n"
-                f"Contexto (manchetes): {context}\n\n"
-                f"Instruções OBRIGATÓRIAS:\n"
-                f"1. NÃO apenas repita os títulos das notícias. Analise o que elas significam para a empresa.\n"
-                f"2. Identifique os fatos principais que impactam o papel.\n"
-                f"3. Extraia o sentimento do mercado (otimista, pessimista ou neutro) e explique o porquê.\n"
-                f"4. Escreva o resumo em português, fluído, entre 3 a 4 frases.\n"
-                f"5. Se as notícias forem contraditórias, aponte os pontos de atenção."
-            )
+    if genai_client:
+        for model_name in ["gemini-2.0-flash", "gemini-1.5-flash"]:
+            try:
+                prompt = (
+                    f"Aja como um analista experiente da B3. Analise e resuma com PROFUNDIDADE as notícias de {ticker}.\n"
+                    f"Contexto (manchetes): {context}\n\n"
+                    f"Instruções OBRIGATÓRIAS:\n"
+                    f"1. NÃO apenas repita os títulos das notícias. Analise o que elas significam para a empresa.\n"
+                    f"2. Identifique os fatos principais que impactam o papel.\n"
+                    f"3. Extraia o sentimento do mercado (otimista, pessimista ou neutro) e explique o porquê.\n"
+                    f"4. Escreva o resumo em português, fluído, entre 3 a 4 frases.\n"
+                    f"5. Se as notícias forem contraditórias, aponte os pontos de atenção."
+                )
 
-            response = client.models.generate_content(
-                model="gemini-2.0-flash",
-                contents=prompt,
-            )
+                response = genai_client.models.generate_content(
+                    model=model_name,
+                    contents=prompt,
+                )
 
-            if response and response.text:
-                return response.text.strip()
-            else:
-                print(f"⚠️ Gemini retornou resposta vazia para {ticker}")
-        except Exception as e:
-            print(f"⚠️ Erro Gemini SDK para {ticker}: {e}")
+                if response and response.text:
+                    return response.text.strip()
+                else:
+                    print(f"⚠️ Gemini ({model_name}) retornou resposta vazia para {ticker}")
+            except Exception as e:
+                print(f"⚠️ Erro Gemini SDK ({model_name}) para {ticker}: {e}")
+                if "403" in str(e) or "429" in str(e):
+                    break
 
     # 2. Fallback para g4f
     prompt_fallback = (
@@ -203,7 +206,7 @@ def get_ai_summary(ticker, context):
             continue
 
     # Último recurso: extração manual básica se a IA falhar
-    clean_titles = [t.strip() for t in context.split('.') if len(t.strip()) > 15]
+    clean_titles = [t.strip() for t in context.replace('[', '.[').split('.') if len(t.strip()) > 15]
     if clean_titles:
         return f"Destaques: {'; '.join(clean_titles[:2])}. O mercado monitora o impacto destes fatos no desempenho do papel."
 
@@ -211,7 +214,16 @@ def get_ai_summary(ticker, context):
 
 def main():
     print("🚀 Iniciando Multi-Source News Fetcher...")
-    get_gemini_key()
+    api_key = get_gemini_key()
+
+    genai_client = None
+    if api_key:
+        try:
+            genai_client = genai.Client(api_key=api_key)
+            print(f"✅ Google GenAI Client inicializado (Key: {api_key[:4]}...{api_key[-4:]})")
+        except Exception as e:
+            print(f"❌ Erro ao inicializar Google GenAI Client: {e}")
+
     all_tickers = load_tickers()
     movers = get_market_movers()
 
@@ -299,7 +311,7 @@ def main():
                 if max_news_date_str < market_last_date:
                     is_outdated = True
 
-            summary = get_ai_summary(ticker, context)
+            summary = get_ai_summary(ticker, context, genai_client=genai_client)
 
             asset_market_info = market_summary_data.get(ticker, {})
 
@@ -349,18 +361,19 @@ def main():
             prompt += f"Destaques de baixa:\n" + "\n".join(losers_summaries) + "\n"
 
         summary_success = False
-        if GEMINI_API_KEY:
-            try:
-                client = genai.Client(api_key=GEMINI_API_KEY)
-                response = client.models.generate_content(
-                    model="gemini-2.0-flash",
-                    contents=prompt,
-                )
-                if response and response.text:
-                    news_output["market_summary"] = response.text.strip()
-                    summary_success = True
-            except Exception as e:
-                print(f"⚠️ Erro Gemini SDK no resumo geral: {e}")
+        if genai_client:
+            for model_name in ["gemini-2.0-flash", "gemini-1.5-flash"]:
+                try:
+                    response = genai_client.models.generate_content(
+                        model=model_name,
+                        contents=prompt,
+                    )
+                    if response and response.text:
+                        news_output["market_summary"] = response.text.strip()
+                        summary_success = True
+                        break
+                except Exception as e:
+                    print(f"⚠️ Erro Gemini SDK ({model_name}) no resumo geral: {e}")
 
         if not summary_success:
             # Fallback geral robusto (mesma lógica de provedores de get_ai_summary)
