@@ -1,5 +1,6 @@
 import yfinance as yf
 import g4f
+from google import genai
 import json
 import os
 from datetime import datetime, timedelta
@@ -142,32 +143,32 @@ def get_ai_summary(ticker, context):
     if not context or context.strip() == "":
         return "Sem notícias recentes de impacto encontradas nos principais canais financeiros."
 
-    # 1. Tentar Gemini se disponível
+    # 1. Tentar Gemini se disponível (via SDK oficial)
     if GEMINI_API_KEY:
-        url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key={GEMINI_API_KEY}"
-        prompt = (
-            f"Aja como um analista experiente da B3. Analise e resuma com PROFUNDIDADE as notícias de {ticker}.\n"
-            f"Contexto (manchetes): {context}\n\n"
-            f"Instruções OBRIGATÓRIAS:\n"
-            f"1. NÃO apenas repita os títulos das notícias. Analise o que elas significam para a empresa.\n"
-            f"2. Identifique os fatos principais que impactam o papel.\n"
-            f"3. Extraia o sentimento do mercado (otimista, pessimista ou neutro) e explique o porquê.\n"
-            f"4. Escreva o resumo em português, fluído, entre 3 a 4 frases.\n"
-            f"5. Se as notícias forem contraditórias, aponte os pontos de atenção."
-        )
-        payload = {"contents": [{"parts": [{"text": prompt}]}]}
         try:
-            res = requests.post(url, json=payload, timeout=30)
-            if res.status_code != 200:
-                print(f"❌ Gemini API Error ({res.status_code}): {res.text}")
-            data = res.json()
-            if 'candidates' in data and data['candidates']:
-                text = data['candidates'][0]['content']['parts'][0]['text']
-                if text: return text.strip()
+            client = genai.Client(api_key=GEMINI_API_KEY)
+            prompt = (
+                f"Aja como um analista experiente da B3. Analise e resuma com PROFUNDIDADE as notícias de {ticker}.\n"
+                f"Contexto (manchetes): {context}\n\n"
+                f"Instruções OBRIGATÓRIAS:\n"
+                f"1. NÃO apenas repita os títulos das notícias. Analise o que elas significam para a empresa.\n"
+                f"2. Identifique os fatos principais que impactam o papel.\n"
+                f"3. Extraia o sentimento do mercado (otimista, pessimista ou neutro) e explique o porquê.\n"
+                f"4. Escreva o resumo em português, fluído, entre 3 a 4 frases.\n"
+                f"5. Se as notícias forem contraditórias, aponte os pontos de atenção."
+            )
+
+            response = client.models.generate_content(
+                model="gemini-2.0-flash",
+                contents=prompt,
+            )
+
+            if response and response.text:
+                return response.text.strip()
             else:
-                print(f"⚠️ Gemini retornou formato inesperado para {ticker}: {data}")
+                print(f"⚠️ Gemini retornou resposta vazia para {ticker}")
         except Exception as e:
-            print(f"⚠️ Erro Gemini para {ticker}: {e}")
+            print(f"⚠️ Erro Gemini SDK para {ticker}: {e}")
 
     # 2. Fallback para g4f
     prompt_fallback = (
@@ -350,15 +351,16 @@ def main():
         summary_success = False
         if GEMINI_API_KEY:
             try:
-                url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key={GEMINI_API_KEY}"
-                payload = {"contents": [{"parts": [{"text": prompt}]}]}
-                res = requests.post(url, json=payload, timeout=30)
-                data = res.json()
-                if 'candidates' in data and data['candidates']:
-                    news_output["market_summary"] = data['candidates'][0]['content']['parts'][0]['text'].strip()
+                client = genai.Client(api_key=GEMINI_API_KEY)
+                response = client.models.generate_content(
+                    model="gemini-2.0-flash",
+                    contents=prompt,
+                )
+                if response and response.text:
+                    news_output["market_summary"] = response.text.strip()
                     summary_success = True
             except Exception as e:
-                print(f"⚠️ Erro Gemini no resumo geral: {e}")
+                print(f"⚠️ Erro Gemini SDK no resumo geral: {e}")
 
         if not summary_success:
             # Fallback geral robusto (mesma lógica de provedores de get_ai_summary)
