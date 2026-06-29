@@ -142,13 +142,13 @@ def fetch_yahoo_news(ticker):
         print(f"⚠️ Erro no Yahoo Finance para {ticker}: {e}")
     return news_items
 
-def get_ai_summary(ticker, context, genai_client=None):
+def get_ai_summary(ticker, context, genai_client=None, genai_state=None):
     global EXHAUSTED_MODELS
     if not context or context.strip() == "":
         return "Sem notícias recentes de impacto encontradas nos principais canais financeiros."
 
     # 1. Tentar Gemini se disponível (via SDK oficial)
-    if genai_client:
+    if genai_client and (genai_state is None or genai_state.get("is_valid", True)):
         # Ordem de preferência para o Free Tier (incluindo variações de nomes comuns)
         for model_name in ["gemini-2.0-flash", "gemini-1.5-flash", "gemini-1.5-flash-8b", "gemini-1.5-pro", "gemini-1.5-pro-002", "gemini-1.5-flash-002"]:
             if model_name in EXHAUSTED_MODELS:
@@ -200,7 +200,11 @@ def get_ai_summary(ticker, context, genai_client=None):
                             print(f"⚠️ Quota excedida para {model_name} sem tempo definido. Pulando modelo nesta rodada.")
                             EXHAUSTED_MODELS.add(model_name)
                 elif "403" in error_msg:
-                    print(f"🚫 Erro de permissão (403) para {model_name}. Pulando...")
+                    if "leaked" in error_msg.lower():
+                        print(f"🚨 ALERTA: Sua Gemini API Key foi reportada como VAZADA (leaked) pelo Google e desativada.")
+                        if genai_state: genai_state["is_valid"] = False
+                    else:
+                        print(f"🚫 Erro de permissão (403) para {model_name}. Pulando...")
                     EXHAUSTED_MODELS.add(model_name)
                 elif "404" in error_msg:
                     print(f"🚫 Modelo não encontrado (404): {model_name}. Removendo da lista.")
@@ -252,6 +256,7 @@ def main():
     api_key = get_gemini_key()
 
     genai_client = None
+    genai_state = {"is_valid": True}
     if api_key:
         try:
             genai_client = genai.Client(api_key=api_key)
@@ -269,7 +274,12 @@ def main():
                     available.append(clean_name)
                 print(f"🤖 Modelos encontrados na sua conta: {', '.join(available)}")
             except Exception as diag_e:
-                print(f"⚠️ Não foi possível listar modelos: {diag_e}")
+                diag_msg = str(diag_e)
+                if "leaked" in diag_msg.lower():
+                    print("🚨 ALERTA: Sua API Key foi reportada como VAZADA (leaked) pelo Google.")
+                    genai_state["is_valid"] = False
+                else:
+                    print(f"⚠️ Não foi possível listar modelos: {diag_msg}")
         except Exception as e:
             print(f"❌ Erro ao inicializar Google GenAI Client: {e}")
 
@@ -360,7 +370,7 @@ def main():
                 if max_news_date_str < market_last_date:
                     is_outdated = True
 
-            summary = get_ai_summary(ticker, context, genai_client=genai_client)
+            summary = get_ai_summary(ticker, context, genai_client=genai_client, genai_state=genai_state)
 
             asset_market_info = market_summary_data.get(ticker, {})
 
@@ -410,7 +420,7 @@ def main():
             prompt += f"Destaques de baixa:\n" + "\n".join(losers_summaries) + "\n"
 
         summary_success = False
-        if genai_client:
+        if genai_client and genai_state.get("is_valid", True):
             for model_name in ["gemini-2.0-flash", "gemini-1.5-flash", "gemini-1.5-flash-8b", "gemini-1.5-pro"]:
                 if model_name in EXHAUSTED_MODELS: continue
                 try:
