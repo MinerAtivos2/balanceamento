@@ -64,36 +64,58 @@ def call_gemini(prompt):
         print(f"⚠️ Erro no Gemini: {e}")
     return None
 
+
+import g4f
+from g4f.Provider import ProviderUtils
+
 def call_g4f(prompt, model="gpt-4o-mini"):
-    """Tenta múltiplos provedores g4f para maior resiliência"""
-    providers = [
-        g4f.Provider.DuckDuckGo,
-        g4f.Provider.Blackbox,
-        g4f.Provider.ChatGptEs,
-        g4f.Provider.Airforce,
-        g4f.Provider.PuterJS,
-        g4f.Provider.AmigoChat,
-    ]
+    """Varre dinamicamente todos os provedores ativos no g4f para máxima resiliência"""
+    
+    # 1. Pega os nomes de todos os provedores registrados no pacote instalado
+    all_provider_names = list(ProviderUtils.convert.keys())
+    
+    providers = []
+    for name in all_provider_names:
+        provider = ProviderUtils.convert.get(name)
+        try:
+            # 2. Filtra apenas os provedores que estão marcados como ativos (.working = True)
+            if provider and hasattr(provider, 'working') and provider.working:
+                providers.append(provider)
+        except Exception:
+            continue
+            
+    # 3. Embaralha a lista dinâmica para evitar sobrecarregar sempre o mesmo provedor
     random.shuffle(providers)
 
+    # 4. Loop de tentativas nos provedores validados
     for provider in providers:
-        # Pular provedores que sabidamente estão dando erro de atributo .working
-        try:
-            if hasattr(provider, 'working') and not provider.working:
-                continue
-        except:
-            continue
-
         try:
             response = g4f.ChatCompletion.create(
                 model=model,
                 provider=provider,
                 messages=[{"role": "user", "content": prompt}],
             )
+            # Mantém a sua validação original de tamanho da resposta
             if response and len(str(response)) > 15:
+                print(f"✅ Sucesso com o provedor: {provider.__name__}")
                 return str(response).strip()
+                
         except Exception:
+            # Se um provedor falhar em tempo de execução, pula silenciosamente para o próximo
             continue
+            
+    # 5. BACKUP FINAL: Se a lista dinâmica falhar, deixa o g4f escolher de forma 100% automática
+    try:
+        print("🔄 Tentando chamada com seleção automática do g4f...")
+        response = g4f.ChatCompletion.create(
+            model=model,
+            messages=[{"role": "user", "content": prompt}],
+        )
+        if response and len(str(response)) > 15:
+            return str(response).strip()
+    except Exception:
+        pass
+        
     return None
 
 def load_tickers_from_sheets():
