@@ -9,107 +9,58 @@ import feedparser
 import urllib.parse
 import random
 
-# Configuração do Gemini
-try:
-    import google.generativeai as genai
-    HAS_GEMINI_LIB = True
-except ImportError:
-    HAS_GEMINI_LIB = False
-
 # Configurações
 DATA_DIR = os.path.join(os.path.dirname(__file__), '..', 'data')
 MARKET_SUMMARY_JSON = os.path.join(DATA_DIR, 'market_summary.json')
 OUTPUT_JSON = os.path.join(DATA_DIR, 'market_news.json')
 GAS_URL = os.environ.get('GAS_URL')
 
-# Cache para a chave do Gemini
-_GEMINI_API_KEY = None
-
-def get_gemini_api_key():
-    global _GEMINI_API_KEY
-    if _GEMINI_API_KEY:
-        return _GEMINI_API_KEY
-
-    # 1. Tentar variável de ambiente (prioridade para GitHub Actions)
-    env_key = os.environ.get('GEMINI_API_KEY')
-    if env_key:
-        _GEMINI_API_KEY = env_key
-        return _GEMINI_API_KEY
-
-    # 2. Tentar via GAS
-    if not GAS_URL:
-        return None
-
-    try:
-        response = requests.post(GAS_URL, json={"action": "get_tax_config"}, timeout=30)
-        data = response.json()
-        _GEMINI_API_KEY = data.get('GEMINI_API_KEY')
-        return _GEMINI_API_KEY
-    except Exception as e:
-        print(f"⚠️ Erro ao buscar GEMINI_API_KEY: {e}")
-        return None
-
-def call_gemini(prompt):
-    key = get_gemini_api_key()
-    if not key or not HAS_GEMINI_LIB:
-        return None
-
-    try:
-        genai.configure(api_key=key)
-        model = genai.GenerativeModel('gemini-1.5-flash')
-        response = model.generate_content(prompt)
-        if response and response.text:
-            return response.text.strip()
-    except Exception as e:
-        print(f"⚠️ Erro no Gemini: {e}")
-    return None
-
-
 import g4f
 from g4f.Provider import ProviderUtils
 
 def call_g4f(prompt, model="gpt-4o-mini"):
-    """Varre dinamicamente todos os provedores ativos no g4f para máxima resiliência"""
+    """Varre dinamicamente uma amostra de provedores ativos no g4f para evitar lentidão"""
     
-    # 1. Pega os nomes de todos os provedores registrados no pacote instalado
+    # 1. Pega os nomes de todos os provedores registrados
     all_provider_names = list(ProviderUtils.convert.keys())
     
-    providers = []
+    working_providers = []
     for name in all_provider_names:
         provider = ProviderUtils.convert.get(name)
         try:
-            # 2. Filtra apenas os provedores que estão marcados como ativos (.working = True)
+            # Filtra apenas os provedores que estão marcados como ativos
             if provider and hasattr(provider, 'working') and provider.working:
-                providers.append(provider)
+                working_providers.append(provider)
         except Exception:
             continue
             
-    # 3. Embaralha a lista dinâmica para evitar sobrecarregar sempre o mesmo provedor
-    random.shuffle(providers)
+    # 2. Embaralha e limita a no máximo 5 tentativas para evitar loops/lentidão
+    random.shuffle(working_providers)
+    selected_providers = working_providers[:5]
 
-    # 4. Loop de tentativas nos provedores validados
-    for provider in providers:
+    # 3. Loop de tentativas nos provedores selecionados
+    for provider in selected_providers:
         try:
+            print(f"🤖 Tentando g4f com provedor: {provider.__name__}...")
             response = g4f.ChatCompletion.create(
                 model=model,
                 provider=provider,
                 messages=[{"role": "user", "content": prompt}],
+                timeout=15, # Timeout de 15 segundos por tentativa
             )
-            # Mantém a sua validação original de tamanho da resposta
             if response and len(str(response)) > 15:
                 print(f"✅ Sucesso com o provedor: {provider.__name__}")
                 return str(response).strip()
-                
         except Exception:
-            # Se um provedor falhar em tempo de execução, pula silenciosamente para o próximo
             continue
             
-    # 5. BACKUP FINAL: Se a lista dinâmica falhar, deixa o g4f escolher de forma 100% automática
+    # 4. BACKUP FINAL: Se falhar, tenta uma última vez deixando o g4f escolher
     try:
-        print("🔄 Tentando chamada com seleção automática do g4f...")
+        print("🔄 Tentando g4f com seleção automática (última tentativa)...")
         response = g4f.ChatCompletion.create(
             model=model,
             messages=[{"role": "user", "content": prompt}],
+            timeout=20,
         )
         if response and len(str(response)) > 15:
             return str(response).strip()
@@ -240,12 +191,7 @@ def get_ai_summary(ticker, context, is_priority=False):
             f"5. Foque em inteligência e tendências, indo além de apenas repetir títulos."
     )
 
-    # 1. Tentar Gemini
-    response = call_gemini(prompt)
-    if response:
-        return response
-
-    # 2. Fallback para g4f
+    # Chamada para g4f (GPT-4 Free)
     response = call_g4f(prompt)
     if response:
         return response
@@ -387,12 +333,8 @@ def main():
         if losers_summaries:
             prompt += f"Destaques de baixa:\n" + "\n".join(losers_summaries) + "\n"
 
-        # 1. Tentar Gemini
-        summary = call_gemini(prompt)
-
-        # 2. Fallback para g4f
-        if not summary:
-            summary = call_g4f(prompt, model="gpt-4o")
+        # Chamada para g4f (GPT-4 Free)
+        summary = call_g4f(prompt, model="gpt-4o")
 
         if summary:
             news_output["market_summary"] = summary
