@@ -16,7 +16,7 @@ DATA_DIR = os.path.join(os.path.dirname(__file__), '..', 'data')
 MARKET_SUMMARY_JSON = os.path.join(DATA_DIR, 'market_summary.json')
 OUTPUT_JSON = os.path.join(DATA_DIR, 'market_news.json')
 #GAS_URL = os.environ.get('GAS_URL')
-GAS_URL = "https://script.google.com/macros/s/AKfycbyIQkk8nPe2ROYHPbMbvfm6EZV8TvSneHgnKovW7JoVxbMrVjF3Bs-0SG_Ps6uLk1NY5Q/exec"
+GAS_URL = 'https://script.google.com/macros/s/AKfycbwtMb0_J0qQoILBwR6oWXWiPFUzqs3iAFje-7gVFsbmOP9bg7OhrT8oJ0VA01Mytpntww/exec'
 GEMINI_API_KEY = None
 EXHAUSTED_MODELS = set()
 
@@ -149,8 +149,12 @@ def get_ai_summary(ticker, context, genai_client=None, genai_state=None):
 
     # 1. Tentar Gemini se disponível (via SDK oficial)
     if genai_client and (genai_state is None or genai_state.get("is_valid", True)):
-        # Ordem de preferência para o Free Tier (incluindo variações de nomes comuns)
-        for model_name in ["gemini-2.0-flash", "gemini-1.5-flash", "gemini-1.5-flash-8b", "gemini-1.5-pro", "gemini-1.5-pro-002", "gemini-1.5-flash-002"]:
+        # Ordem de preferência para o Free Tier (incluindo as versões mais recentes detectadas)
+        for model_name in [
+            "gemini-2.0-flash", "gemini-1.5-flash", "gemini-flash-latest",
+            "gemini-2.0-flash-lite", "gemini-1.5-flash-8b", "gemini-1.5-pro",
+            "gemini-pro-latest", "gemini-2.5-flash", "gemini-3.5-flash"
+        ]:
             if model_name in EXHAUSTED_MODELS:
                 continue
 
@@ -421,7 +425,10 @@ def main():
 
         summary_success = False
         if genai_client and genai_state.get("is_valid", True):
-            for model_name in ["gemini-2.0-flash", "gemini-1.5-flash", "gemini-1.5-flash-8b", "gemini-1.5-pro"]:
+            for model_name in [
+                "gemini-2.0-flash", "gemini-1.5-flash", "gemini-flash-latest",
+                "gemini-2.0-flash-lite", "gemini-1.5-flash-8b", "gemini-1.5-pro"
+            ]:
                 if model_name in EXHAUSTED_MODELS: continue
                 try:
                     response = genai_client.models.generate_content(
