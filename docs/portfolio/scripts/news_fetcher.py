@@ -67,6 +67,7 @@ def call_gemini(prompt):
 def call_g4f(prompt, model="gpt-4o-mini"):
     """Tenta múltiplos provedores g4f para maior resiliência"""
     providers = [
+        g4f.Provider.DuckDuckGo,
         g4f.Provider.Blackbox,
         g4f.Provider.ChatGptEs,
         g4f.Provider.Airforce,
