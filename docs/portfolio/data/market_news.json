@@ -1,5 +1,5 @@
 {
-  "last_update": "2026-06-27T19:23:42.212502",
+  "last_update": "2026-06-29T15:08:52.777941",
   "market_last_date": "2026-06-12",
   "market_summary": "O mercado brasileiro segue atento ao cenário fiscal e movimentações de commodities.",
   "ibov": {
@@ -18,7 +18,7 @@
       "summary": "Sem notícias recentes de impacto encontradas nos principais canais financeiros.",
       "period": "",
       "sources": [],
-      "updated_at": "2026-06-27T19:23:43.830429",
+      "updated_at": "2026-06-29T15:08:54.201297",
       "is_outdated": false,
       "last_close": 1.98,
       "daily_delta": 0.06451612903225801,
@@ -30,7 +30,7 @@
       "summary": "Sem notícias recentes de impacto encontradas nos principais canais financeiros.",
       "period": "",
       "sources": [],
-      "updated_at": "2026-06-27T19:23:45.093327",
+      "updated_at": "2026-06-29T15:08:55.527118",
       "is_outdated": false,
       "last_close": 11.1,
       "daily_delta": 0.05714285714285716,
@@ -38,23 +38,11 @@
       "yearly_delta": -0.1461538461538462,
       "price_date": "2026-06-12"
     },
-    "VIVR3.SA": {
-      "summary": "Sem notícias recentes de impacto encontradas nos principais canais financeiros.",
-      "period": "",
-      "sources": [],
-      "updated_at": "2026-06-27T19:23:45.931258",
-      "is_outdated": false,
-      "last_close": 2.12,
-      "daily_delta": -0.1382113821138211,
-      "monthly_delta": -0.45641025641025634,
-      "yearly_delta": -0.7617977528089888,
-      "price_date": "2026-06-12"
-    },
     "SNSY5.SA": {
       "summary": "Sem notícias recentes de impacto encontradas nos principais canais financeiros.",
       "period": "",
       "sources": [],
-      "updated_at": "2026-06-27T19:23:46.710454",
+      "updated_at": "2026-06-29T15:08:56.661594",
       "is_outdated": false,
       "last_close": 1.56,
       "daily_delta": -0.11864406779661019,
@@ -66,7 +54,7 @@
       "summary": "Sem notícias recentes de impacto encontradas nos principais canais financeiros.",
       "period": "",
       "sources": [],
-      "updated_at": "2026-06-27T19:23:47.475346",
+      "updated_at": "2026-06-29T15:08:57.455386",
       "is_outdated": false,
       "last_close": 8.19,
       "daily_delta": -0.08797327394209364,
