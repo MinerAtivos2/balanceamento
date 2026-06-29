@@ -4,6 +4,7 @@ from google import genai
 import json
 import os
 import traceback
+import re
 from datetime import datetime, timedelta
 import time
 import requests
@@ -148,8 +149,8 @@ def get_ai_summary(ticker, context, genai_client=None):
 
     # 1. Tentar Gemini se disponível (via SDK oficial)
     if genai_client:
-        # Ordem de preferência para o Free Tier
-        for model_name in ["gemini-2.0-flash", "gemini-1.5-flash", "gemini-1.5-flash-8b"]:
+        # Ordem de preferência para o Free Tier (incluindo variações de nomes comuns)
+        for model_name in ["gemini-2.0-flash", "gemini-1.5-flash", "gemini-1.5-flash-8b", "gemini-1.5-pro", "gemini-1.5-pro-002", "gemini-1.5-flash-002"]:
             if model_name in EXHAUSTED_MODELS:
                 continue
 
@@ -182,12 +183,14 @@ def get_ai_summary(ticker, context, genai_client=None):
                 if "429" in error_msg:
                     # Se o limite for 0, o modelo não está disponível para esta conta/tier
                     if "limit: 0" in error_msg:
-                        print(f"🚫 Modelo {model_name} parece desabilitado (limit: 0). Pulando...")
+                        print(f"🚫 Modelo {model_name} atingiu limite diário ou está desabilitado. Pulando...")
                         EXHAUSTED_MODELS.add(model_name)
                     else:
                         # Tentar extrair tempo de espera e pausar
-                        import re
                         match = re.search(r"retry in ([\d\.]+)s", error_msg)
+                        if not match:
+                            match = re.search(r"retryDelay': '(\d+)s'", error_msg)
+
                         if match:
                             wait_time = float(match.group(1)) + 1
                             print(f"⏳ Quota atingida para {model_name}. Aguardando {wait_time}s...")
@@ -257,10 +260,16 @@ def main():
             # Diagnóstico opcional de modelos disponíveis
             try:
                 print("🔍 Verificando modelos disponíveis...")
-                models = genai_client.models.list()
-                available = [m.name for m in models if "generateContent" in m.supported_methods]
-                print(f"🤖 Modelos suportados na sua cota: {', '.join(available)}")
-            except: pass
+                # Tentar listar modelos para ver os nomes exatos permitidos
+                available = []
+                for m in genai_client.models.list():
+                    name = m.name
+                    # O SDK às vezes retorna 'models/gemini-...' ou apenas 'gemini-...'
+                    clean_name = name.replace("models/", "")
+                    available.append(clean_name)
+                print(f"🤖 Modelos encontrados na sua conta: {', '.join(available)}")
+            except Exception as diag_e:
+                print(f"⚠️ Não foi possível listar modelos: {diag_e}")
         except Exception as e:
             print(f"❌ Erro ao inicializar Google GenAI Client: {e}")
 
@@ -402,7 +411,7 @@ def main():
 
         summary_success = False
         if genai_client:
-            for model_name in ["gemini-2.0-flash", "gemini-1.5-flash", "gemini-1.5-flash-8b"]:
+            for model_name in ["gemini-2.0-flash", "gemini-1.5-flash", "gemini-1.5-flash-8b", "gemini-1.5-pro"]:
                 if model_name in EXHAUSTED_MODELS: continue
                 try:
                     response = genai_client.models.generate_content(
