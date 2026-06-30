@@ -167,14 +167,15 @@ def get_ai_summary(ticker, context, genai_client=None, genai_state=None):
 
             try:
                 prompt = (
-                    f"Aja como um analista experiente da B3. Analise e resuma com PROFUNDIDADE as notícias de {ticker}.\n"
+                    f"Você é um analista experiente da B3. Analise e resuma com PROFUNDIDADE as notícias de {ticker}.\n"
                     f"Contexto (manchetes): {context}\n\n"
                     f"Instruções OBRIGATÓRIAS:\n"
-                    f"1. NÃO apenas repita os títulos das notícias. Analise o que elas significam para a empresa.\n"
-                    f"2. Identifique os fatos principais que impactam o papel.\n"
-                    f"3. Extraia o sentimento do mercado (otimista, pessimista ou neutro) e explique o porquê.\n"
-                    f"4. Escreva o resumo em português, fluído, entre 3 a 4 frases.\n"
-                    f"5. Se as notícias forem contraditórias, aponte os pontos de atenção."
+                    f"1. Comece DIRETAMENTE com a análise das notícias. NÃO use introduções, saudações ou frases como 'Como analista...', 'Com base nas notícias' ou 'Aqui está o resumo'.\n"
+                    f"2. NÃO apenas repita os títulos das notícias. Analise o que elas significam para a empresa.\n"
+                    f"3. Identifique os fatos principais que impactam o papel.\n"
+                    f"4. Extraia o sentimento do mercado (otimista, pessimista ou neutro) e explique o porquê.\n"
+                    f"5. Escreva o resumo em português, fluído, entre 3 a 4 frases.\n"
+                    f"6. Se as notícias forem contraditórias, aponte os pontos de atenção."
                 )
 
                 response = genai_client.models.generate_content(
