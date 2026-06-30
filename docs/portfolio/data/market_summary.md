@@ -1,21 +1,21 @@
-## Resumo de Mercado - 2026-06-29
+## Resumo de Mercado - 2026-06-30
 
 ### 📈 Maiores Altas (Dia)
 
 | Ativo | Nome | Fechamento | Anterior | Variação | DeltaVolume |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| OSXB3.SA | OSX Brasil S.A. | R$ 1.17 | R$ 1.04 | **+12.50%** 🚀 | +67.60% ⬆️ |
-| GEPA4.SA | Rio Paranapanema Energia S.A. | R$ 38.94 | R$ 36.00 | **+8.17%** 🚀 | +439.02% ⬆️ |
-| BRKM3.SA | Braskem S.A. | R$ 5.80 | R$ 5.48 | **+5.84%** 🚀 | +5.30% ⬆️ |
-| BRKM5.SA | Braskem S.A. | R$ 6.61 | R$ 6.25 | **+5.76%** 🚀 | +26.11% ⬆️ |
-| ESPA3.SA | MPM Corpóreos S.A. | R$ 7.39 | R$ 7.00 | **+5.57%** 🚀 | -5.08% ⬇️ |
+| NGRD3.SA | Neogrid Participações S.A. | R$ 40.95 | R$ 34.22 | **+19.67%** 🚀 | -78.00% ⬇️ |
+| AALR3.SA | Alliança Saúde e Participações S.A. | R$ 3.14 | R$ 2.72 | **+15.44%** 🚀 | +330.80% ⬆️ |
+| VVEO3.SA | CM Hospitalar S/A | R$ 0.72 | R$ 0.64 | **+12.50%** 🚀 | +142.59% ⬆️ |
+| BOBR4.SA | Bombril S.A. | R$ 1.40 | R$ 1.25 | **+12.00%** 🚀 | +2400.00% ⬆️ |
+| OIBR4.SA | Oi S.A. | R$ 0.88 | R$ 0.80 | **+10.00%** 🚀 | +123.28% ⬆️ |
 
 ### 📉 Maiores Baixas (Dia)
 
 | Ativo | Nome | Fechamento | Anterior | Variação | DeltaVolume |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| AZEV4.SA | Azevedo & Travassos S.A. | R$ 1.63 | R$ 2.22 | **-26.58%** 📉 | +532.61% ⬆️ |
-| AZEV3.SA | Azevedo & Travassos S.A. | R$ 1.94 | R$ 2.55 | **-23.92%** 📉 | +959.87% ⬆️ |
-| VVEO3.SA | CM Hospitalar S/A | R$ 0.64 | R$ 0.77 | **-16.88%** 📉 | +425.06% ⬆️ |
-| INEP3.SA | Inepar S.A. Indústria e Construções | R$ 2.27 | R$ 2.50 | **-9.20%** 📉 | +803.33% ⬆️ |
-| ALPK3.SA | Allpark Empreendimentos, Participações e Serviços S.A. | R$ 4.14 | R$ 4.55 | **-9.01%** 📉 | +664.11% ⬆️ |
+| OIBR3.SA | Oi S.A. | R$ 0.10 | R$ 0.11 | **-9.09%** 📉 | +96.02% ⬆️ |
+| ONCO3.SA | Oncoclínicas do Brasil Serviços Médicos S.A. | R$ 1.23 | R$ 1.35 | **-8.89%** 📉 | -36.57% ⬇️ |
+| PMAM3.SA | Paranapanema S.A. | R$ 0.25 | R$ 0.27 | **-7.41%** 📉 | +42.52% ⬆️ |
+| AMER3.SA | Americanas S.A. | R$ 3.84 | R$ 4.14 | **-7.25%** 📉 | +126.21% ⬆️ |
+| DOTZ3.SA | Dotz S.A. | R$ 4.18 | R$ 4.49 | **-6.90%** 📉 | +79.29% ⬆️ |
