@@ -1,21 +1,21 @@
-## Resumo de Mercado - 2026-07-02
+## Resumo de Mercado - 2026-03-24
 
 ### 📈 Maiores Altas (Dia)
 
 | Ativo | Nome | Fechamento | Anterior | Variação | DeltaVolume |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| TOKY3.SA | TOKY3.SA | R$ 0.30 | R$ 0.26 | **+15.38%** 🚀 | +201.18% ⬆️ |
-| OIBR3.SA | Oi S.A. | R$ 0.11 | R$ 0.10 | **+10.00%** 🚀 | -26.34% ⬇️ |
-| GGPS3.SA | GPS Participações e Empreendimentos S.A. | R$ 12.46 | R$ 11.66 | **+6.86%** 🚀 | +83.85% ⬆️ |
-| ATED3.SA | ATED3.SA | R$ 1.92 | R$ 1.80 | **+6.67%** 🚀 | -90.73% ⬇️ |
-| BALM4.SA | Baumer S.A. | R$ 16.99 | R$ 16.04 | **+5.92%** 🚀 | -52.78% ⬇️ |
+| SMTO3.SA | São Martinho S.A. | R$ 19.95 | R$ 19.15 | **+4.18%** 🚀 | 0.00% — |
+| WHRL4.SA | Whirlpool S.A. | R$ 4.55 | R$ 4.41 | **+3.17%** 🚀 | 0.00% — |
+| TASA4.SA | Taurus Armas S.A. | R$ 5.59 | R$ 5.42 | **+3.14%** 🚀 | 0.00% — |
+| TELB4.SA | Telecomunicações Brasileiras S.A. - Telebras | R$ 9.14 | R$ 8.87 | **+3.04%** 🚀 | 0.00% — |
+| WEST3.SA | Westwing Comércio Varejista S.A. | R$ 7.71 | R$ 7.50 | **+2.80%** 🚀 | 0.00% — |
 
 ### 📉 Maiores Baixas (Dia)
 
 | Ativo | Nome | Fechamento | Anterior | Variação | DeltaVolume |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| SEQL3.SA | Sequoia Logística e Transportes S.A. | R$ 0.07 | R$ 0.08 | **-12.50%** 📉 | +110.27% ⬆️ |
-| VVEO3.SA | CM Hospitalar S/A | R$ 0.63 | R$ 0.70 | **-10.00%** 📉 | +44.67% ⬆️ |
-| PDTC3.SA | Padtec Holding S.A. | R$ 1.34 | R$ 1.48 | **-9.46%** 📉 | +245.65% ⬆️ |
-| PMAM3.SA | Paranapanema S.A. | R$ 0.23 | R$ 0.25 | **-8.00%** 📉 | +39.46% ⬆️ |
-| BMEB4.SA | Banco Mercantil do Brasil S.A. | R$ 61.25 | R$ 66.18 | **-7.45%** 📉 | +29.30% ⬆️ |
+| RCSL4.SA | Recrusul S/A | R$ 1.11 | R$ 1.27 | **-12.60%** 📉 | 0.00% — |
+| SAPR3.SA | Companhia de Saneamento do Paraná - SANEPAR | R$ 9.80 | R$ 10.52 | **-6.84%** 📉 | 0.00% — |
+| SAPR11.SA | Companhia de Saneamento do Paraná - SANEPAR | R$ 41.91 | R$ 44.85 | **-6.56%** 📉 | 0.00% — |
+| SAPR4.SA | Companhia de Saneamento do Paraná - SANEPAR | R$ 8.04 | R$ 8.58 | **-6.29%** 📉 | 0.00% — |
+| UNIP5.SA | Unipar Carbocloro S.A. | R$ 60.00 | R$ 63.90 | **-6.10%** 📉 | 0.00% — |
