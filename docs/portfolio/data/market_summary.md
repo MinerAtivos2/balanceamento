@@ -1,21 +1,21 @@
-## Resumo de Mercado - 2026-03-24
+## Resumo de Mercado - 2026-07-06
 
 ### 📈 Maiores Altas (Dia)
 
 | Ativo | Nome | Fechamento | Anterior | Variação | DeltaVolume |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| SMTO3.SA | São Martinho S.A. | R$ 19.95 | R$ 19.15 | **+4.18%** 🚀 | 0.00% — |
-| WHRL4.SA | Whirlpool S.A. | R$ 4.55 | R$ 4.41 | **+3.17%** 🚀 | 0.00% — |
-| TASA4.SA | Taurus Armas S.A. | R$ 5.59 | R$ 5.42 | **+3.14%** 🚀 | 0.00% — |
-| TELB4.SA | Telecomunicações Brasileiras S.A. - Telebras | R$ 9.14 | R$ 8.87 | **+3.04%** 🚀 | 0.00% — |
-| WEST3.SA | Westwing Comércio Varejista S.A. | R$ 7.71 | R$ 7.50 | **+2.80%** 🚀 | 0.00% — |
+| SEQL3.SA | Sequoia Logística e Transportes S.A. | R$ 0.07 | R$ 0.06 | **+16.67%** 🚀 | -57.97% ⬇️ |
+| RVEE3.SA | RVEE3.SA | R$ 1.02 | R$ 0.92 | **+10.87%** 🚀 | +126.85% ⬆️ |
+| FICT3.SA | Fictor Alimentos S.A. | R$ 0.25 | R$ 0.23 | **+8.70%** 🚀 | +58.95% ⬆️ |
+| SNSY5.SA | Sansuy S.A. | R$ 1.51 | R$ 1.39 | **+8.63%** 🚀 | +3.01% ⬆️ |
+| AMER3.SA | Americanas S.A. | R$ 3.85 | R$ 3.58 | **+7.54%** 🚀 | +108.99% ⬆️ |
 
 ### 📉 Maiores Baixas (Dia)
 
 | Ativo | Nome | Fechamento | Anterior | Variação | DeltaVolume |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| RCSL4.SA | Recrusul S/A | R$ 1.11 | R$ 1.27 | **-12.60%** 📉 | 0.00% — |
-| SAPR3.SA | Companhia de Saneamento do Paraná - SANEPAR | R$ 9.80 | R$ 10.52 | **-6.84%** 📉 | 0.00% — |
-| SAPR11.SA | Companhia de Saneamento do Paraná - SANEPAR | R$ 41.91 | R$ 44.85 | **-6.56%** 📉 | 0.00% — |
-| SAPR4.SA | Companhia de Saneamento do Paraná - SANEPAR | R$ 8.04 | R$ 8.58 | **-6.29%** 📉 | 0.00% — |
-| UNIP5.SA | Unipar Carbocloro S.A. | R$ 60.00 | R$ 63.90 | **-6.10%** 📉 | 0.00% — |
+| GFSA3.SA | Gafisa S.A. | R$ 0.69 | R$ 1.00 | **-31.00%** 📉 | +502.27% ⬆️ |
+| HBOR3.SA | Helbor Empreendimentos S.A. | R$ 1.75 | R$ 2.36 | **-25.85%** 📉 | +964.60% ⬆️ |
+| HBRE3.SA | HBR Realty Empreendimentos Imobiliários S.A. | R$ 2.05 | R$ 2.59 | **-20.85%** 📉 | +2017.69% ⬆️ |
+| BOBR4.SA | Bombril S.A. | R$ 1.21 | R$ 1.37 | **-11.68%** 📉 | +105.13% ⬆️ |
+| INEP3.SA | Inepar S.A. Indústria e Construções | R$ 1.96 | R$ 2.21 | **-11.31%** 📉 | +164.00% ⬆️ |
