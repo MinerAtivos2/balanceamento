@@ -1,6 +1,6 @@
 ## Resumo de Mercado - 2026-06-12
 
-### 📈 Maiores Altas (Dia)
+### 📈 Maiores Altas (Dia - Geral)
 
 | Ativo | Nome | Fechamento | Anterior | Variação | DeltaVolume |
 | :--- | :--- | :--- | :--- | :--- | :--- |
@@ -10,7 +10,7 @@
 | PCAR3.SA | Companhia Brasileira De Distribuicao | R$ 1.55 | R$ 1.46 | **+6.16%** 🚀 | +83.47% ⬆️ |
 | TELB3.SA | Telecomunicações Brasileiras S.A. - Telebras | R$ 11.10 | R$ 10.50 | **+5.71%** 🚀 | +164.06% ⬆️ |
 
-### 📉 Maiores Baixas (Dia)
+### 📉 Maiores Baixas (Dia - Geral)
 
 | Ativo | Nome | Fechamento | Anterior | Variação | DeltaVolume |
 | :--- | :--- | :--- | :--- | :--- | :--- |
