@@ -9,7 +9,7 @@ class B3App {
     // 2. Extensões > Apps Script. Cole o código do arquivo 'docs/api.gs'.
     // 3. Implantar > App da Web (Quem tem acesso: "Qualquer pessoa").
     // 4. Copie a URL gerada e cole abaixo:
-    this.GAS_URL = "https://script.google.com/macros/s/AKfycbxJtX1FkpmSw-y1MB3B3OUBzFTdB-7AhYMJK8kryYm0IogCVHzv3bt3K-t6XYUZrBw/exec";
+    this.GAS_URL = "https://script.google.com/macros/s/AKfycbyIQkk8nPe2ROYHPbMbvfm6EZV8TvSneHgnKovW7JoVxbMrVjF3Bs-0SG_Ps6uLk1NY5Q/exec";
 
     this.portfolio = { name: 'Meu Portfólio', positions: [] };
     this.user = null; // { username: '...' } if logged in
@@ -22,7 +22,108 @@ class B3App {
     this.currentPage = 'dashboard';
     this.previousPage = 'dashboard';
     this.summaryPeriod = 'day'; // day, month, year
+    this.summaryFilter = 'geral'; // geral, liquid, ibov
+    this.taxConfig = null;
+    this.fiscalData = { dt_loss: 0, st_loss: 0, irrf_balance: 0, tax_balance: 0 };
     this.init();
+  }
+
+  /* ------------------------------------------------------------------
+     Utilities & Helpers
+  ------------------------------------------------------------------ */
+  $(id) { return document.getElementById(id); }
+
+  formatCurrency(v) {
+    if (v == null) return 'R$ 0,00';
+    return 'R$ ' + v.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  }
+
+  formatNumber(n, decimals = 2) {
+    if (n == null || isNaN(n)) return '0';
+    return n.toLocaleString('pt-BR', {
+      minimumFractionDigits: decimals,
+      maximumFractionDigits: decimals
+    });
+  }
+
+  parseRate(val) {
+    if (val == null || val === '') return 0;
+    if (typeof val === 'number') return val;
+    let s = val.toString().trim();
+    if (/^\d+\.\d+$/.test(s)) return parseFloat(s);
+    if (/^\d+,\d+$/.test(s)) return parseFloat(s.replace(',', '.'));
+    if (s.includes('.') && s.includes(',')) {
+      if (s.lastIndexOf('.') < s.lastIndexOf(',')) {
+        return parseFloat(s.replace(/\./g, '').replace(',', '.')) || 0;
+      } else {
+        return parseFloat(s.replace(/,/g, '')) || 0;
+      }
+    }
+    let clean = s.replace(/\./g, '').replace(',', '.');
+    let parsed = parseFloat(clean);
+    return isNaN(parsed) ? 0 : parsed;
+  }
+
+  escapeHTML(str) {
+    if (!str) return '';
+    return str.replace(/[&<>"']/g, m => ({
+      '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+    }[m]));
+  }
+
+  getAssetLogoHTML(ticker, size = 24) {
+    const tickerClean = this.escapeHTML(ticker.replace('.SA', '').toUpperCase());
+    const logoUrl = `../assets/logos/${tickerClean}.svg`;
+    const fallbackUrl = `../assets/logo4.png`;
+    return `<img src="${logoUrl}" alt="${tickerClean}" width="${size}" height="${size}"
+                 style="vertical-align: middle; margin-right: 8px; border-radius: 4px; object-fit: contain; background: #fff; padding: 1px;"
+                 onerror="this.src='${fallbackUrl}'; this.onerror=null;">`;
+  }
+
+  palette(n) {
+    const base = [
+      '#6366f1', '#8b5cf6', '#ec4899', '#f43f5e', '#f97316',
+      '#eab308', '#22c55e', '#14b8a6', '#06b6d4', '#3b82f6',
+      '#a855f7', '#d946ef',
+    ];
+    const out = [];
+    for (let i = 0; i < n; i++) out.push(base[i % base.length]);
+    return out;
+  }
+
+  showLoading(text = 'Processando...') {
+    this.$('loadingText').textContent = text;
+    this.$('loadingOverlay').classList.add('show');
+  }
+
+  hideLoading() {
+    this.$('loadingOverlay').classList.remove('show');
+  }
+
+  setSplashMessage(text) {
+    const el = this.$('splashMessage');
+    if (el) el.textContent = text;
+  }
+
+  hideSplashScreen() {
+    const splash = this.$('splashScreen');
+    if (splash) {
+      splash.classList.add('hide');
+      document.body.classList.remove('loading');
+      setTimeout(() => splash.remove(), 600);
+    }
+  }
+
+  showMonitor(ticker) {
+    console.log('Showing monitor for:', ticker);
+    const tickerClean = ticker.replace('.SA', '').toUpperCase();
+    this.showPage('monitor');
+
+    // Garantir que o container está visível e dimensionado antes de renderizar
+    // O fadeUp leva 0.4s, então vamos aguardar um pouco mais para garantir
+    setTimeout(() => {
+        this.renderChart(tickerClean);
+    }, 450);
   }
 
   /* ------------------------------------------------------------------
@@ -34,29 +135,41 @@ class B3App {
     this.setupModal();
     this.setupAuth();
 
-    // 1. Carregar status de autenticação primeiro (rápido)
-    // Mantemos o await aqui pois o portfólio depende do usuário logado
+    this.setSplashMessage('Verificando sessão...');
+    // 1. Carregar status de autenticação e portfólio (Unificado)
     await this.checkAuthStatus();
 
-    // 2. Carregar todos os recursos em paralelo (Progressivo)
-    // loadMarketData agora é interno e não bloqueante para os históricos
+    this.setSplashMessage('Carregando mercado...');
+    // 2. Carregar recursos essenciais para o Dashboard (Progressivo)
     await Promise.all([
       this.loadAssets(),
       this.loadMarketNews(),
       this.loadMarketSummary(),
       this.loadPortfolio(),
-      this.loadMarketData() // O loadMarketData agora faz o await apenas do necessário
+      this.loadMarketData(true) // true = load only essential market_data.json
     ]);
 
-    // 3. Análise final do boot (garante que tudo que foi carregado até agora seja processado)
+    // 3. Análise inicial para liberar o dashboard rapidamente
+    this.setSplashMessage('Sincronizando portfólio...');
     await this.runAnalysis();
     this.renderPositions();
+
+    // 4. Liberar a UI
+    this.hideSplashScreen();
+
+    // 5. Carregar históricos pesados em segundo plano (Não bloqueante)
+    if (this.user) {
+      this.loadMarketData(false); // Carregar histórico completo para membros
+    }
   }
 
   bindUI() {
     // Buttons
-    this.$('btnAddPosition').addEventListener('click', () => this.openModal());
+    this.$('btnAddPosition').addEventListener('click', () => this.openModal(null, 'buy'));
+    this.$('btnSellPosition').addEventListener('click', () => this.openModal(null, 'sell'));
     this.$('btnAnalyze').addEventListener('click', () => this.runAnalysis());
+    this.$('btnCalculateTaxes').addEventListener('click', () => this.renderTaxReport());
+    this.$('btnSaveFiscalBalance').addEventListener('click', () => this.confirmAndSaveFiscalBalance());
     this.$('btnRunBarsi').addEventListener('click', () => this.runBarsi());
     this.$('btnRunRebalance').addEventListener('click', () => this.runRebalance());
     this.$('btnRequestExpertAnalysis').addEventListener('click', () => this.requestExpertAnalysis());
@@ -77,6 +190,7 @@ class B3App {
 
     // Sort listeners
     this.$('sortPositions').addEventListener('change', () => this.renderPositions());
+    this.$('hideClosedPositions').addEventListener('change', () => this.renderPositions());
     this.$('sortBarsi').addEventListener('change', () => this.renderBarsi());
     this.$('sortRebalance').addEventListener('change', () => this.renderRebalance());
 
@@ -89,10 +203,13 @@ class B3App {
       this.renderDividendsPage();
     });
 
-    // Membership modal
-    this.$('membershipModalClose').addEventListener('click', () => this.closeMembershipModal());
-    this.$('membershipModalOverlay').addEventListener('click', e => {
-      if (e.target === this.$('membershipModalOverlay')) this.closeMembershipModal();
+    // Auth Modal
+    this.$('authModalClose').addEventListener('click', () => this.closeAuthModal());
+    this.$('authModalOverlay').addEventListener('click', e => {
+      if (e.target === this.$('authModalOverlay')) this.closeAuthModal();
+    });
+    document.querySelectorAll('.auth-tab').forEach(tab => {
+      tab.addEventListener('click', () => this.switchAuthTab(tab.dataset.tab));
     });
 
     // News modal
@@ -107,7 +224,6 @@ class B3App {
     this.$('posTicker').addEventListener('input', () => this.validateTicker());
   }
 
-  $(id) { return document.getElementById(id); }
 
   /* ------------------------------------------------------------------
      Navigation
@@ -129,9 +245,15 @@ class B3App {
       this.previousPage = this.currentPage;
     }
 
+    // Modal based navigation for guests
+    if (name === 'members' && !this.user) {
+      this.openAuthModal('login');
+      // Continuamos para mostrar a página de membros com o CTA
+    }
+
     // Protection for dividends page
     if (name === 'dividends' && !this.user) {
-      this.openMembershipModal('dividends');
+      this.openAuthModal('register', 'dividends');
       return;
     }
 
@@ -159,6 +281,18 @@ class B3App {
 
     if (name === 'news') {
       this.renderMarketNews();
+    }
+
+    if (name === 'summary') {
+      this.renderMarketSummary();
+    }
+
+    if (name === 'taxes') {
+      if (!this.user) {
+        this.openAuthModal('register', 'taxes');
+        return;
+      }
+      this.loadTaxData();
     }
   }
 
@@ -189,6 +323,41 @@ class B3App {
     });
   }
 
+  async loadTaxData() {
+    if (!this.user || !this.GAS_URL) return;
+    try {
+      this.showLoading('Carregando dados fiscais...');
+      const [configRes, fiscalRes] = await Promise.all([
+        fetch(this.GAS_URL, {
+          method: 'POST',
+          mode: 'cors',
+          body: JSON.stringify({ action: 'get_tax_config' })
+        }),
+        fetch(this.GAS_URL, {
+          method: 'POST',
+          mode: 'cors',
+          body: JSON.stringify({
+            action: 'get_fiscal_data',
+            username: this.user.username,
+            session_token: this.user.session_token
+          })
+        })
+      ]);
+      this.taxConfig = await configRes.json();
+      this.fiscalData = await fiscalRes.json();
+      this.hideLoading();
+
+      const today = new Date();
+      this.$('taxMonth').value = today.getMonth() + 1;
+      this.$('taxYear').value = today.getFullYear();
+
+      this.renderTaxReport();
+    } catch (err) {
+      this.hideLoading();
+      console.error('Erro ao carregar dados fiscais:', err);
+    }
+  }
+
   async checkAuthStatus() {
     if (!this.GAS_URL) {
       console.log('Google Apps Script URL não configurada. Usando modo local.');
@@ -205,7 +374,7 @@ class B3App {
           method: 'POST',
           mode: 'cors',
           body: JSON.stringify({
-            action: 'status',
+            action: 'status_and_portfolio',
             username: user.username,
             session_token: user.session_token
           })
@@ -214,6 +383,9 @@ class B3App {
         if (data.logged_in) {
           this.user = { ...user, is_admin: !!data.is_admin };
           this.updateAuthUI(data);
+          if (data.portfolio) {
+            this.portfolio = data.portfolio;
+          }
         } else {
           this.logout();
         }
@@ -249,6 +421,7 @@ class B3App {
 
         this.toast(`Bem-vindo, ${data.username}!`, 'success');
         this.updateAuthUI(data);
+        this.closeAuthModal();
 
         // Load server portfolio first
         const serverData = await this.loadPortfolioFromServer();
@@ -363,6 +536,10 @@ class B3App {
       if (this.$('dividendsGuestAlert')) this.$('dividendsGuestAlert').classList.add('hidden');
       if (this.$('dividendsContent')) this.$('dividendsContent').classList.remove('hidden');
 
+      // Taxes area
+      if (this.$('taxesGuestAlert')) this.$('taxesGuestAlert').classList.add('hidden');
+      if (this.$('taxesContent')) this.$('taxesContent').classList.remove('hidden');
+
       // News area
       if (this.$('newsGuestTip')) this.$('newsGuestTip').classList.add('hidden');
 
@@ -380,6 +557,10 @@ class B3App {
       // Proventos area
       if (this.$('dividendsGuestAlert')) this.$('dividendsGuestAlert').classList.remove('hidden');
       if (this.$('dividendsContent')) this.$('dividendsContent').classList.add('hidden');
+
+      // Taxes area
+      if (this.$('taxesGuestAlert')) this.$('taxesGuestAlert').classList.remove('hidden');
+      if (this.$('taxesContent')) this.$('taxesContent').classList.add('hidden');
 
       // News area
       if (this.$('newsGuestTip')) this.$('newsGuestTip').classList.remove('hidden');
@@ -441,6 +622,14 @@ class B3App {
       if (e.target === this.$('modalOverlay')) this.closeModal();
     });
 
+    this.$('posType').addEventListener('change', () => {
+      const type = this.$('posType').value;
+      if (this.editIndex === null) {
+        this.$('modalTitle').textContent = type === 'buy' ? 'Registrar Compra' : 'Registrar Venda';
+        this.$('labelPosPrice').textContent = type === 'buy' ? 'Preço de Compra (R$)' : 'Preço de Venda (R$)';
+      }
+    });
+
     // Bulk Modal
     this.$('bulkModalClose').addEventListener('click', () => this.closeBulkModal());
     this.$('bulkModalCancel').addEventListener('click', () => this.closeBulkModal());
@@ -451,18 +640,25 @@ class B3App {
     });
   }
 
-  openModal(editIndex = null) {
+  openModal(editIndex = null, defaultType = 'buy') {
     // Limit check for non-members
     if (!this.user && editIndex === null) {
       const uniqueTickers = new Set(this.portfolio.positions.map(p => p.ticker));
       if (uniqueTickers.size >= 5) {
-        this.openMembershipModal('limit');
+        this.openAuthModal('register', 'limit');
         return;
       }
     }
 
     this.editIndex = editIndex;
-    this.$('modalTitle').textContent = editIndex !== null ? 'Editar Registro' : 'Adicionar Ativo';
+
+    if (editIndex !== null) {
+      this.$('modalTitle').textContent = 'Editar Registro';
+      this.$('labelPosPrice').textContent = 'Preço da Operação (R$)';
+    } else {
+      this.$('modalTitle').textContent = defaultType === 'buy' ? 'Registrar Compra' : 'Registrar Venda';
+      this.$('labelPosPrice').textContent = defaultType === 'buy' ? 'Preço de Compra (R$)' : 'Preço de Venda (R$)';
+    }
 
     // Ensure datalist is populated (fallback)
     if (this.$('assetList').children.length === 0 && this.assets.length > 0) {
@@ -475,14 +671,20 @@ class B3App {
 
     if (editIndex !== null && this.portfolio.positions[editIndex]) {
       const pos = this.portfolio.positions[editIndex];
+      this.$('posType').value = pos.type || 'buy';
       tickerInput.value = pos.ticker;
       this.$('posQty').value = pos.quantity;
       this.$('posPrice').value = pos.purchase_price;
       this.$('posDate').value = pos.purchase_date || new Date().toISOString().slice(0, 10);
+      this.$('posCosts').value = pos.costs || 0;
+      this.$('posIRRF').value = pos.irrf || 0;
     } else {
+      this.$('posType').value = defaultType;
       this.$('posQty').value = '';
       this.$('posPrice').value = '';
       this.$('posDate').value = new Date().toISOString().slice(0, 10);
+      this.$('posCosts').value = 0;
+      this.$('posIRRF').value = 0;
     }
 
     this.$('modalOverlay').classList.add('show');
@@ -502,42 +704,40 @@ class B3App {
     }
   }
 
-  openMembershipModal(reason = 'general') {
-    const title = this.$('membershipModalTitle');
-    const text = this.$('membershipModalText');
-    const leadEmail = this.$('leadEmail');
+  openAuthModal(tab = 'login', reason = null) {
+    this.switchAuthTab(tab);
 
-    // Clear extra buttons if any
-    const extraActions = this.$('membershipExtraActions');
-    if (extraActions) extraActions.innerHTML = '';
+    const reasonBox = this.$('authModalReasonBox');
+    const reasonText = this.$('authModalReasonText');
 
     if (reason === 'limit') {
-      title.textContent = 'Limite Atingido';
-      text.innerHTML = 'Você atingiu o limite de <strong>5 ativos</strong> para usuários não cadastrados.<br><br>Para gerenciar um portfólio ilimitado, acessar análises avançadas e sincronizar seus dados na nuvem, torne-se um membro.';
-    } else if (reason === 'registration') {
-      title.textContent = 'Solicitar Cadastramento';
-      text.textContent = 'Preencha seu e-mail abaixo para solicitar seu cadastro no Plano Pro e ter acesso a todas as funcionalidades exclusivas. Desta forma, você sinaliza que viu as condições e concorda.';
+      reasonBox.classList.remove('hidden');
+      reasonText.innerHTML = '⚠️ Limite de 5 ativos atingido. <br>Seja Membro Pro para ativos ilimitados.';
     } else if (reason === 'dividends') {
-      title.textContent = 'Área de Membros';
-      text.textContent = 'A seção de Proventos é exclusiva para membros. Faça login ou solicite seu cadastramento abaixo para ter acesso.';
-
-      if (extraActions) {
-        extraActions.innerHTML = `
-          <button class="btn btn-outline" style="width: 100%; margin-bottom: 1rem;" onclick="app.closeMembershipModal(); app.showPage('members');">Já sou membro (Fazer Login)</button>
-          <div style="text-align: center; margin-bottom: 1rem; font-size: 0.8rem; color: var(--text-muted);">OU</div>
-        `;
-      }
+      reasonBox.classList.remove('hidden');
+      reasonText.textContent = '🔒 A análise de proventos é exclusiva para membros.';
+    } else if (reason === 'taxes') {
+      reasonBox.classList.remove('hidden');
+      reasonText.textContent = '📜 A apuração de IR é exclusiva para membros.';
     } else {
-      title.textContent = 'Seja Membro';
-      text.textContent = 'Para gerenciar um portfólio ilimitado, acessar análises avançadas e sincronizar seus dados na nuvem, torne-se um membro da nossa plataforma.';
+      reasonBox.classList.add('hidden');
     }
 
-    this.$('membershipModalOverlay').classList.add('show');
-    if (leadEmail) leadEmail.focus();
+    this.$('authModalOverlay').classList.add('show');
+    if (tab === 'login') {
+      this.$('loginUsername').focus();
+    } else {
+      this.$('leadEmail').focus();
+    }
   }
 
-  closeMembershipModal() {
-    this.$('membershipModalOverlay').classList.remove('show');
+  closeAuthModal() {
+    this.$('authModalOverlay').classList.remove('show');
+  }
+
+  switchAuthTab(tab) {
+    document.querySelectorAll('.auth-tab').forEach(t => t.classList.toggle('active', t.dataset.tab === tab));
+    document.querySelectorAll('.auth-tab-content').forEach(c => c.classList.toggle('active', c.id === 'authTab' + tab.charAt(0).toUpperCase() + tab.slice(1)));
   }
 
   async handleLeadSubmit(e) {
@@ -560,7 +760,7 @@ class B3App {
       this.hideLoading();
       if (data.success) {
         this.toast('Obrigado! Entraremos em contato em breve para a realização do seu cadastro.', 'success');
-        this.closeMembershipModal();
+        this.closeAuthModal();
         this.$('leadForm').reset();
       } else {
         this.toast('Erro ao salvar lead no sistema.', 'error');
@@ -601,6 +801,12 @@ class B3App {
 
     tr.innerHTML = `
       <td>
+        <select class="bulk-type" style="width: 100%">
+          <option value="buy">Compra</option>
+          <option value="sell">Venda</option>
+        </select>
+      </td>
+      <td>
         <select class="bulk-ticker" style="width: 100%">${options}</select>
       </td>
       <td>
@@ -634,24 +840,47 @@ class B3App {
       const combined = new Set([...currentTickers, ...incomingTickers]);
       if (combined.size > 5) {
         this.toast('Limite de 5 ativos atingido para não-membros', 'warning');
-        this.openMembershipModal();
+        this.openAuthModal('register', 'limit');
         return;
       }
     }
 
+    // Validation: Check balances for bulk adds
+    const tempPortfolio = JSON.parse(JSON.stringify(this.portfolio.positions));
+
     for (const row of rows) {
+      const type = row.querySelector('.bulk-type').value;
       const ticker = row.querySelector('.bulk-ticker').value;
       const qty = parseInt(row.querySelector('.bulk-qty').value, 10);
       const price = parseFloat(row.querySelector('.bulk-price').value);
       const date = row.querySelector('.bulk-date').value;
 
       if (ticker && !isNaN(qty) && !isNaN(price)) {
-        newPositions.push({
+        if (type === 'sell') {
+          // Calculate current balance for this ticker in temp portfolio
+          let balance = 0;
+          tempPortfolio.forEach(p => {
+            if (p.ticker === ticker) {
+              if ((p.type || 'buy') === 'buy') balance += p.quantity;
+              else balance -= p.quantity;
+            }
+          });
+
+          if (qty > balance) {
+            this.toast(`Saldo insuficiente de ${ticker.replace('.SA', '')} para a venda de ${qty} unidades. Saldo disponível: ${balance}`, 'error');
+            return;
+          }
+        }
+
+        const newPos = {
+          type,
           ticker,
           quantity: qty,
           purchase_price: price,
           purchase_date: date || new Date().toISOString().slice(0, 10)
-        });
+        };
+        newPositions.push(newPos);
+        tempPortfolio.push(newPos);
       }
     }
 
@@ -672,7 +901,7 @@ class B3App {
   /* ------------------------------------------------------------------
      Data loading
   ------------------------------------------------------------------ */
-  async loadMarketData() {
+  async loadMarketData(essentialOnly = false) {
     try {
       // 1. Carregar manifest para saber quais arquivos existem
       const manifestUrl = `./data/manifest.json?t=${new Date().getTime()}`;
@@ -684,10 +913,8 @@ class B3App {
         files = manifest.market_data_files || files;
       }
 
-      // Performance Optimization: Guests only load the main market_data.json
-      // Members load everything including large historical files
-      if (!this.user) {
-        console.log('Modo Visitante: Carregando apenas dados recentes para performance.');
+      // Performance Optimization: Guests or essential load only the main market_data.json
+      if (!this.user || essentialOnly) {
         files = ['market_data.json'];
       }
 
@@ -711,7 +938,16 @@ class B3App {
       }
 
       // 3. Mesclar dados (Merge)
-      this.marketData = this.mergeMarketData(dataList);
+      const newData = this.mergeMarketData(dataList);
+
+      // Se já temos dados carregados (essential), mesclamos com o novo histórico completo
+      if (this.marketData && !essentialOnly) {
+        this.marketData = this.mergeMarketData([this.marketData, newData]);
+        // Re-analisar para habilitar ferramentas que dependem do histórico completo
+        this.runAnalysis();
+      } else {
+        this.marketData = newData;
+      }
 
       // 4. Se for visitante, garantir restrição de 2 anos no histórico para economia de memória
       if (!this.user) {
@@ -721,7 +957,9 @@ class B3App {
       console.log('Dados de mercado carregados e mesclados com sucesso');
     } catch (err) {
       console.error('Erro ao carregar dados de mercado:', err);
-      this.toast('Erro ao carregar dados históricos: ' + err.message, 'error');
+      if (!essentialOnly) {
+          this.toast('Erro ao carregar dados históricos: ' + err.message, 'error');
+      }
     }
   }
 
@@ -850,13 +1088,13 @@ class B3App {
     const ibovCard = this.$('ibovHeaderCard');
     if (ibov && ibovCard) {
       ibovCard.style.display = 'block';
-      this.$('ibovScore').textContent = ibov.last_close.toLocaleString('pt-BR', { maximumFractionDigits: 0 }) + ' pts';
+      this.$('ibovScore').textContent = this.formatNumber(ibov.last_close, 0) + ' pts';
 
       const renderDelta = (id, val, label) => {
         const el = this.$(id);
         const sign = val > 0 ? '+' : '';
         const color = val >= 0 ? 'var(--green)' : 'var(--red)';
-        el.textContent = `${label}: ${sign}${(val * 100).toFixed(2)}%`;
+        el.textContent = `${label}: ${sign}${this.formatNumber((val * 100), 2)}%`;
         el.style.color = color;
       };
 
@@ -884,14 +1122,14 @@ class B3App {
 
       let performanceHtml = '';
       if (data.last_close != null && data.daily_delta != null) {
-        const d_delta = (data.daily_delta * 100).toFixed(2);
+        const d_delta = this.formatNumber(data.daily_delta * 100, 2);
         const d_color = data.daily_delta >= 0 ? 'var-up' : 'var-down';
         const d_sign = data.daily_delta > 0 ? '+' : '';
 
         let extraDeltas = '';
         if (data.monthly_delta != null && data.yearly_delta != null) {
-          const m_delta = (data.monthly_delta * 100).toFixed(1);
-          const y_delta = (data.yearly_delta * 100).toFixed(1);
+          const m_delta = this.formatNumber(data.monthly_delta * 100, 1);
+          const y_delta = this.formatNumber(data.yearly_delta * 100, 1);
           extraDeltas = `
             <div style="font-size: 0.65rem; color: var(--text-muted); margin-top: 2px;">
               M: <span class="${data.monthly_delta >= 0 ? 'var-up' : 'var-down'}">${data.monthly_delta > 0 ? '+' : ''}${m_delta}%</span> |
@@ -902,7 +1140,7 @@ class B3App {
 
         performanceHtml = `
           <div class="news-card-perf">
-            <span class="news-perf-price">R$ ${data.last_close.toFixed(2)}</span>
+            <span class="news-perf-price">R$ ${this.formatNumber(data.last_close, 2)}</span>
             <span class="news-perf-delta ${d_color}">${d_sign}${d_delta}%</span>
             ${extraDeltas}
           </div>
@@ -917,11 +1155,15 @@ class B3App {
       const displayDate = data.price_date ? data.price_date.split('-').reverse().join('/') : new Date(data.updated_at).toLocaleDateString('pt-BR');
 
       const tickerClean = this.escapeHTML(ticker.replace('.SA', ''));
+      const logoHtml = this.getAssetLogoHTML(ticker, 32);
       card.innerHTML = `
         <div class="news-card-header">
-          <div style="display:flex; flex-direction:column">
-            <a href="#" onclick="event.preventDefault(); app.showMonitor('${tickerClean}')" class="ticker-link news-card-ticker"><strong>${tickerClean}</strong></a>
-            <span style="font-size: 0.65rem; color: var(--text-muted);">${displayDate}</span>
+          <div style="display:flex; align-items:center; gap:0.75rem">
+            ${logoHtml}
+            <div style="display:flex; flex-direction:column">
+              <a href="#" onclick="event.preventDefault(); app.showMonitor('${tickerClean}')" class="ticker-link news-card-ticker"><strong>${tickerClean}</strong></a>
+              <span style="font-size: 0.65rem; color: var(--text-muted);">${displayDate}</span>
+            </div>
           </div>
           ${performanceHtml}
         </div>
@@ -943,16 +1185,34 @@ class B3App {
     this.$('newsModalTitle').textContent = `Resumo IA: ${ticker.replace('.SA', '')}`;
     this.$('newsModalTickerName').textContent = ticker;
 
+    const logoContainer = this.$('newsModalLogoContainer');
+    if (logoContainer) {
+      logoContainer.innerHTML = this.getAssetLogoHTML(ticker, 48);
+    }
+
     let updateText = `Atualizado em ${new Date(data.updated_at).toLocaleString('pt-BR')}`;
     if (data.period) updateText += ` | Período: ${data.period}`;
     this.$('newsModalUpdateDate').textContent = updateText;
 
-    // TextContent is safe from XSS
-    let summaryText = data.summary;
-    if (data.is_outdated) {
-        summaryText = "[AVISO: Estas notícias não necessariamente retratam o desempenho do dia, pois não houve fontes disponíveis para a data atual.]\n\n" + summaryText;
+    // Handle summary text and outdated disclaimer
+    const textElement = this.$('newsModalText');
+    if (textElement) {
+        // Transforma o container em flexbox para neutralizar margens invisíveis do topo
+        textElement.style.display = 'flex';
+        textElement.style.flexDirection = 'column';
+        textElement.style.justifyContent = 'flex-start';
+        textElement.style.gap = '0px'; // Garante espaço zero entre os elementos filhos
+        textElement.style.paddingTop = '0px';
+        textElement.style.marginTop = '0px';       
+      if (data.is_outdated) {
+        textElement.innerHTML = `
+          <div class="news-outdated-label" style="margin-bottom: 1rem;">AVISO: Este resumo não necessariamente retrata o desempenho do dia, pois não houve fontes disponíveis para a data atual.</div>
+          <div style="white-space: pre-wrap; margin-top: 0;">${this.escapeHTML(data.summary).trim()}</div><br>
+        `.replace(/>\s+</g, '><'); // Remove os espaços e quebras de linha gerados pelas crases;
+      } else {
+        textElement.textContent = data.summary;
+      }
     }
-    this.$('newsModalText').textContent = summaryText;
 
     const sourcesDiv = this.$('newsModalSources');
     if (sourcesDiv) {
@@ -981,6 +1241,10 @@ class B3App {
     }
 
     this.$('newsModalOverlay').classList.add('show');
+
+    // Reset scroll position
+    const scrollArea = this.$('newsModalScrollArea');
+    if (scrollArea) scrollArea.scrollTop = 0;
   }
 
   closeNewsModal() {
@@ -1013,6 +1277,16 @@ class B3App {
     this.renderMarketTreemap();
   }
 
+  setSummaryFilter(filter) {
+    this.summaryFilter = filter;
+    document.querySelectorAll('.btn-summary-filter').forEach(b => b.classList.remove('active'));
+    const btn = this.$(`btn-filter-${filter}`);
+    if (btn) btn.classList.add('active');
+
+    this.renderMarketSummary();
+    this.renderMarketTreemap();
+  }
+   
   async loadAssets() {
     try {
       const res = await fetch('./assets.json');
@@ -1040,12 +1314,9 @@ class B3App {
   }
 
   async loadPortfolio() {
+    // Portfolio loading is now handled unified in checkAuthStatus for members
     if (this.user) {
-      const serverData = await this.loadPortfolioFromServer();
-      if (serverData && !serverData.error) {
-        this.portfolio = serverData;
         return;
-      }
     }
 
     // Fallback para localStorage
@@ -1080,41 +1351,103 @@ class B3App {
   consolidatePortfolio() {
     const consolidated = {};
 
+    // Group transactions by ticker
+    const grouped = {};
     this.portfolio.positions.forEach((pos, index) => {
-      if (!consolidated[pos.ticker]) {
-        consolidated[pos.ticker] = {
-          ticker: pos.ticker,
-          totalQty: 0,
-          totalInvested: 0,
-          weightedDateSum: 0,
-          transactions: []
-        };
-      }
-
-      const tickerData = consolidated[pos.ticker];
-      const qty = pos.quantity;
-      const price = pos.purchase_price;
-      const dateStr = pos.purchase_date || new Date().toISOString().slice(0, 10);
-      const date = new Date(dateStr);
-      const timestamp = date.getTime();
-
-      tickerData.totalQty += qty;
-      tickerData.totalInvested += (qty * price);
-      tickerData.weightedDateSum += (timestamp * qty);
-      tickerData.transactions.push({ ...pos, originalIndex: index, purchase_date: dateStr });
+      if (!grouped[pos.ticker]) grouped[pos.ticker] = [];
+      grouped[pos.ticker].push({ ...pos, originalIndex: index, originalQty: pos.quantity });
     });
 
-    return Object.values(consolidated).map(item => {
-      const avgPrice = item.totalInvested / item.totalQty;
-      const avgTimestamp = item.weightedDateSum / item.totalQty;
-      const avgDate = new Date(avgTimestamp).toISOString().slice(0, 10);
+    Object.keys(grouped).forEach(ticker => {
+      const transactions = [...grouped[ticker]];
+      transactions.sort((a, b) => a.purchase_date.localeCompare(b.purchase_date) || a.originalIndex - b.originalIndex);
 
-      return {
-        ...item,
-        avgPrice: avgPrice,
-        avgDate: avgDate
+      let currentQty = 0;
+      let totalRealizedProfit = 0;
+      let totalCostOfSoldShares = 0;
+      let swingTradeLots = []; // FIFO queue
+
+      const byDay = {};
+      transactions.forEach(t => {
+        if (!byDay[t.purchase_date]) byDay[t.purchase_date] = [];
+        byDay[t.purchase_date].push(t);
+      });
+
+      Object.keys(byDay).sort().forEach(date => {
+        const dayTrans = byDay[date];
+        let buys = dayTrans.filter(t => (t.type || 'buy') === 'buy').map(t => ({ ...t }));
+        let sells = dayTrans.filter(t => t.type === 'sell').map(t => ({ ...t }));
+
+        let dtProfit = 0;
+
+        // Day Trade matching (FIFO within the day)
+        let buyPtr = 0, sellPtr = 0;
+        while (buyPtr < buys.length && sellPtr < sells.length) {
+          let b = buys[buyPtr];
+          let s = sells[sellPtr];
+          let matchQty = Math.min(b.quantity, s.quantity);
+
+          const grossResult = (s.purchase_price - b.purchase_price) * matchQty;
+          const propCosts = ((b.costs || 0) * (matchQty / b.originalQty)) + ((s.costs || 0) * (matchQty / s.originalQty));
+          dtProfit += (grossResult - propCosts);
+
+          b.quantity -= matchQty;
+          s.quantity -= matchQty;
+
+          if (b.quantity === 0) buyPtr++;
+          if (s.quantity === 0) sellPtr++;
+        }
+
+        // Remaining day transactions go to global Swing Trade FIFO
+        dayTrans.forEach(t => {
+          const type = t.type || 'buy';
+          let remainingQty = (type === 'sell') ? sells.find(s => s.originalIndex === t.originalIndex).quantity
+                                               : buys.find(b => b.originalIndex === t.originalIndex).quantity;
+
+          if (remainingQty > 0) {
+            if (type === 'buy') {
+              const propCosts = (t.costs || 0) * (remainingQty / t.originalQty);
+              const totalCost = (remainingQty * t.purchase_price) + propCosts;
+              const unitCost = totalCost / remainingQty;
+              swingTradeLots.push({ qty: remainingQty, unitCost: unitCost });
+              currentQty += remainingQty;
+            } else {
+              const propCosts = (t.costs || 0) * (remainingQty / t.originalQty);
+              const netSaleValue = (remainingQty * t.purchase_price) - propCosts;
+              let costBasisSold = 0;
+              let toSell = remainingQty;
+              while (toSell > 0 && swingTradeLots.length > 0) {
+                let lot = swingTradeLots[0];
+                let take = Math.min(toSell, lot.qty);
+                costBasisSold += (take * lot.unitCost);
+                lot.qty -= take;
+                toSell -= take;
+                if (lot.qty === 0) swingTradeLots.shift();
+              }
+              totalRealizedProfit += (netSaleValue - costBasisSold);
+              totalCostOfSoldShares += costBasisSold;
+              currentQty -= remainingQty;
+            }
+          }
+        });
+        totalRealizedProfit += dtProfit;
+      });
+
+      const totalInvested = swingTradeLots.reduce((acc, lot) => acc + (lot.qty * lot.unitCost), 0);
+      const currentPM = currentQty > 0 ? totalInvested / currentQty : 0;
+
+      consolidated[ticker] = {
+        ticker,
+        totalQty: currentQty,
+        avgPrice: currentPM,
+        totalInvested: totalInvested,
+        realizedProfit: totalRealizedProfit,
+        costOfSoldShares: totalCostOfSoldShares,
+        transactions: grouped[ticker]
       };
     });
+
+    return Object.values(consolidated);
   }
 
   findCloseForDate(asset, targetDateStr) {
@@ -1142,7 +1475,21 @@ class B3App {
   /* ------------------------------------------------------------------
      CRUD — Positions
   ------------------------------------------------------------------ */
+  getTickerBalance(ticker, excludeIndex = null) {
+    let balance = 0;
+    this.portfolio.positions.forEach((pos, idx) => {
+      if (idx === excludeIndex) return;
+      if (pos.ticker === ticker) {
+        const type = pos.type || 'buy';
+        if (type === 'buy') balance += pos.quantity;
+        else balance -= pos.quantity;
+      }
+    });
+    return balance;
+  }
+
   async savePosition() {
+    const type = this.$('posType').value;
     let ticker = this.$('posTicker').value.toUpperCase();
     if (ticker && !ticker.endsWith('.SA')) {
       const found = this.assets.find(a => a.ticker === ticker + '.SA');
@@ -1151,14 +1498,28 @@ class B3App {
     const qty = parseInt(this.$('posQty').value, 10);
     const price = parseFloat(this.$('posPrice').value);
     const date = this.$('posDate').value;
+    const costs = parseFloat(this.$('posCosts').value) || 0;
+    const irrf = parseFloat(this.$('posIRRF').value) || 0;
     if (!ticker || !qty || !price) return;
 
     const pos = {
+      type,
       ticker,
       quantity: qty,
       purchase_price: price,
-      purchase_date: date || new Date().toISOString().slice(0, 10)
+      purchase_date: date || new Date().toISOString().slice(0, 10),
+      costs,
+      irrf
     };
+
+    // Validation: Sale cannot exceed current balance
+    if (type === 'sell') {
+      const currentBalance = this.getTickerBalance(ticker, this.editIndex);
+      if (qty > currentBalance) {
+        this.toast(`Saldo insuficiente de ${ticker.replace('.SA', '')} para realizar a venda. Saldo atual: ${currentBalance}`, 'error');
+        return;
+      }
+    }
 
     if (this.editIndex !== null) {
       this.portfolio.positions[this.editIndex] = pos;
@@ -1200,7 +1561,9 @@ class B3App {
       let qtyOnDate = 0;
       transactions.forEach(t => {
         if (t.purchase_date <= date) {
-          qtyOnDate += t.quantity;
+          const type = t.type || 'buy';
+          if (type === 'buy') qtyOnDate += t.quantity;
+          else qtyOnDate -= t.quantity;
         }
       });
 
@@ -1221,6 +1584,8 @@ class B3App {
     let totalMarketValue = 0;
     let totalInvestedValue = 0;
     let totalDividendsValue = 0;
+    let totalEffectiveProfit = 0;
+    let totalProjectedProfit = 0;
 
     consolidated.forEach(item => {
       const asset = this.marketData.assets[item.ticker];
@@ -1230,28 +1595,20 @@ class B3App {
       const marketValue = currentPrice * item.totalQty;
       const investedValue = item.totalInvested;
       const totalProventos = this.getDividendsForTicker(item.ticker, item.transactions);
-      const totalEquity = marketValue + totalProventos;
 
-      // Nova Rentabilidade Real: (Valor Mercado + Total Proventos - Valor Investido) / Valor Investido
-      const rentReal = investedValue > 0 ? ((totalEquity - investedValue) / investedValue * 100) : 0;
+      const effectiveProfit = item.realizedProfit;
+      const projectedProfit = item.totalQty > 0 ? (marketValue - investedValue) : 0;
 
-      // Rentabilidade do Ativo (Mercado): Ponderada pelas datas de compra
-      // Para cada lote: (Preço Atual + Proventos do Lote / Preço na Data da Compra) - 1
-      let weightedMarketRentSum = 0;
-      item.transactions.forEach(t => {
-        const histPrice = this.findCloseForDate(asset, t.purchase_date);
-        const lotProventos = this.getDividendsForTicker(item.ticker, [t]);
-        if (histPrice) {
-          const lotInvested = histPrice * t.quantity;
-          const lotMarketValue = currentPrice * t.quantity;
-          const lotEquity = lotMarketValue + lotProventos;
-          const lotRent = ((lotEquity - lotInvested) / lotInvested * 100);
-          weightedMarketRentSum += (lotRent * t.quantity);
-        } else {
-          weightedMarketRentSum += (rentReal * t.quantity);
-        }
-      });
-      const rentMarket = weightedMarketRentSum / item.totalQty;
+      const totalEquity = marketValue + totalProventos + effectiveProfit;
+
+      // Rentabilidades Individuais para o Gráfico
+      const rentEfetivaPerc = item.costOfSoldShares > 0 ? (effectiveProfit / item.costOfSoldShares * 100) : 0;
+      const rentProjetadaPerc = investedValue > 0 ? (projectedProfit / investedValue * 100) : 0;
+
+      // Rentabilidade Total do Ativo: Lucro Total / (Custo Atual + Custo de lotes já vendidos)
+      const denominator = (investedValue + item.costOfSoldShares);
+      const rentTotal = denominator > 0 ?
+        ((effectiveProfit + projectedProfit + totalProventos) / denominator * 100) : 0;
 
       positions.push({
         ticker: item.ticker,
@@ -1259,43 +1616,40 @@ class B3App {
         sector: asset.sector || 'N/A',
         quantity: item.totalQty,
         avgPrice: item.avgPrice,
-        avgDate: item.avgDate,
         totalInvested: investedValue,
         current_price: currentPrice,
-        position_value: marketValue,
         market_value: marketValue,
         total_proventos: totalProventos,
+        effectiveProfit: effectiveProfit,
+        projectedProfit: projectedProfit,
+        rentEfetivaPerc: rentEfetivaPerc,
+        rentProjetadaPerc: rentProjetadaPerc,
         total_equity: totalEquity,
-        rentability_market: rentMarket,
-        rentability_real: rentReal,
+        rentability_total: rentTotal,
         volatility: asset.stats.volatility || 0
       });
+
       totalMarketValue += marketValue;
       totalInvestedValue += investedValue;
       totalDividendsValue += totalProventos;
+      totalEffectiveProfit += effectiveProfit;
+      totalProjectedProfit += projectedProfit;
     });
 
-    const totalEquityValue = totalMarketValue + totalDividendsValue;
+    const totalEquityValue = totalMarketValue + totalDividendsValue + totalEffectiveProfit;
 
     const allocation = {};
     const allocationInvested = {};
     positions.forEach(p => {
-      // Allocation based on Total Equity (Market + Dividends)
       allocation[p.ticker] = (p.total_equity / (totalEquityValue || 1) * 100);
       allocationInvested[p.ticker] = (p.totalInvested / (totalInvestedValue || 1) * 100);
     });
 
-    const weights = positions.map(p => p.total_equity / (totalEquityValue || 1));
-    const portfolioReturn = positions.reduce((acc, p, idx) => acc + (weights[idx] * (p.rentability_market || 0)), 0);
+    // We use projected rentability for the return metrics if requested, or total
+    const portfolioReturn = (totalInvestedValue > 0) ? (totalProjectedProfit / totalInvestedValue * 100) : 0;
+    const portfolioVol = positions.reduce((acc, p, idx) => acc + ((p.total_equity / (totalEquityValue || 1)) * (p.volatility || 0)), 0);
+    const portfolioRentTotal = (totalInvestedValue > 0) ? ((totalEffectiveProfit + totalProjectedProfit + totalDividendsValue) / totalInvestedValue * 100) : 0;
 
-    // Weighted Volatility (Simplification as covariance requires aligned time series)
-    // For the Dashboard summary, we use weighted average of individual volatilities as a proxy
-    // but the Rebalance engine will use the full covariance matrix.
-    const portfolioVol = positions.reduce((acc, p, idx) => acc + (weights[idx] * (p.volatility || 0)), 0);
-
-    const portfolioRentReal = totalInvestedValue > 0 ? ((totalEquityValue - totalInvestedValue) / totalInvestedValue * 100) : 0;
-
-    // Sharpe Ratio calculation
     const riskFree = parseFloat(this.$('riskFreeRate').value) || 10;
     const sharpe = (portfolioVol > 0) ? (portfolioReturn - riskFree) / portfolioVol : 0;
 
@@ -1309,9 +1663,11 @@ class B3App {
         total_market_value: totalMarketValue,
         total_invested: totalInvestedValue,
         total_proventos: totalDividendsValue,
-        num_positions: positions.length,
+        total_effective_profit: totalEffectiveProfit,
+        total_projected_profit: totalProjectedProfit,
+        num_positions: positions.filter(p => p.quantity > 0).length,
         avg_rentability: portfolioReturn,
-        portfolio_rentability_real: portfolioRentReal,
+        portfolio_rentability_real: portfolioRentTotal,
         portfolio_volatility: portfolioVol,
         sharpe_ratio: sharpe
       }
@@ -1321,7 +1677,7 @@ class B3App {
   }
 
   async runBarsi() {
-    if (!this.portfolio.positions.length || !this.marketData) {
+    if (!this.analysis || !this.analysis.positions.length || !this.marketData) {
       this.toast('Adicione ativos ao portfólio primeiro', 'error');
       return;
     }
@@ -1330,7 +1686,8 @@ class B3App {
     this.$('barsiTargetDisplay').textContent = targetYield + '%';
 
     const analyses = [];
-    const tickers = [...new Set(this.portfolio.positions.map(p => p.ticker))];
+    // Only consider tickers with active positions (qty > 0)
+    const tickers = this.analysis.positions.filter(p => p.quantity > 0).map(p => p.ticker);
 
     for (const ticker of tickers) {
       const asset = this.marketData.assets[ticker];
@@ -1380,8 +1737,9 @@ class B3App {
   }
 
   async runRebalance() {
-    if (!this.marketData) return;
-    const tickers = [...new Set(this.portfolio.positions.map(p => p.ticker))];
+    if (!this.marketData || !this.analysis) return;
+    // Only consider tickers with active positions (qty > 0)
+    const tickers = this.analysis.positions.filter(p => p.quantity > 0).map(p => p.ticker);
     if (tickers.length < 2) {
       this.toast('Necessário pelo menos 2 ativos para otimização', 'error');
       return;
@@ -1508,7 +1866,10 @@ class B3App {
 
     // 3. Sugestões de Rebalanceamento
     const portfolioMap = {};
-    this.portfolio.positions.forEach(p => { portfolioMap[p.ticker] = (portfolioMap[p.ticker] || 0) + p.quantity; });
+    this.analysis.positions.forEach(p => {
+      if (!portfolioMap[p.ticker]) portfolioMap[p.ticker] = 0;
+      portfolioMap[p.ticker] += p.quantity;
+    });
     const totalValue = assetsData.reduce((acc, a) => acc + (portfolioMap[a.ticker] || 0) * a.last_price, 0);
 
     const suggestions = [];
@@ -1620,17 +1981,19 @@ class B3App {
     }
 
     const s = this.analysis.summary;
-    this.$('statTotalValue').textContent = this.formatCurrency(s.total_value || 0);
+    this.$('statTotalValue').textContent = this.formatCurrency(s.total_market_value + s.total_proventos + s.total_effective_profit);
     this.$('statTotalInvested').textContent = this.formatCurrency(s.total_invested || 0);
     this.$('statTotalProventos').textContent = this.formatCurrency(s.total_proventos || 0);
+    this.$('statRealizedProfit').textContent = this.formatCurrency(s.total_effective_profit || 0);
+    this.$('statRealizedProfit').className = 'stat-value ' + (s.total_effective_profit >= 0 ? 'positive' : 'negative');
     this.$('statPositions').textContent = s.num_positions || 0;
 
     const rentRealEl = this.$('statRentabilityReal');
-    rentRealEl.textContent = (s.portfolio_rentability_real > 0 ? '+' : '') + s.portfolio_rentability_real.toFixed(2) + '%';
+    rentRealEl.textContent = (s.portfolio_rentability_real > 0 ? '+' : '') + this.formatNumber(s.portfolio_rentability_real, 2) + '%';
     rentRealEl.className = 'stat-value ' + (s.portfolio_rentability_real >= 0 ? 'positive' : 'negative');
 
-    this.$('statVolatility').textContent = s.portfolio_volatility.toFixed(2) + '%';
-    this.$('statSharpe').textContent = (s.sharpe_ratio || 0).toFixed(2);
+    this.$('statVolatility').textContent = this.formatNumber(s.portfolio_volatility, 2) + '%';
+    this.$('statSharpe').textContent = this.formatNumber(s.sharpe_ratio || 0, 2);
 
     this.renderAllocationChart();
     this.renderRentabilityChart();
@@ -1641,9 +2004,13 @@ class B3App {
     const ctx = this.$('allocationChart');
     if (this.charts.allocation) this.charts.allocation.destroy();
 
-    const labels = this.analysis.positions.map(p => p.ticker.replace('.SA', ''));
-    const currentValues = this.analysis.positions.map(p => p.total_equity);
-    const investedValues = this.analysis.positions.map(p => p.totalInvested);
+    // Filter only open positions for allocation chart
+    const openPositions = this.analysis.positions.filter(p => p.quantity > 0);
+    if (!openPositions.length) return;
+
+    const labels = openPositions.map(p => p.ticker.replace('.SA', ''));
+    const currentValues = openPositions.map(p => p.market_value);
+    const investedValues = openPositions.map(p => p.totalInvested);
     const colors = this.palette(labels.length);
 
     this.charts.allocation = new Chart(ctx, {
@@ -1682,7 +2049,7 @@ class B3App {
               label: context => {
                 const label = context.dataset.label || '';
                 const value = context.raw || 0;
-                return `${context.label} (${label}): R$ ${value.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`;
+                return `${context.label} (${label}): R$ ${this.formatNumber(value, 2)}`;
               },
             },
           },
@@ -1696,9 +2063,12 @@ class B3App {
     const ctx = this.$('rentabilityChart');
     if (this.charts.rentability) this.charts.rentability.destroy();
 
-    const labels = this.analysis.positions.map(p => p.ticker.replace('.SA', ''));
-    const marketValues = this.analysis.positions.map(p => p.rentability_market);
-    const investorValues = this.analysis.positions.map(p => p.rentability_real);
+    // Sort by total equity to have a consistent view
+    const sortedPositions = [...this.analysis.positions].sort((a, b) => b.total_equity - a.total_equity);
+
+    const labels = sortedPositions.map(p => p.ticker.replace('.SA', ''));
+    const effectiveValues = sortedPositions.map(p => p.effectiveProfit);
+    const projectedValues = sortedPositions.map(p => p.projectedProfit);
 
     this.charts.rentability = new Chart(ctx, {
       type: 'bar',
@@ -1706,20 +2076,16 @@ class B3App {
         labels,
         datasets: [
           {
-            label: 'Rentab. Ativo (%)',
-            data: marketValues,
-            backgroundColor: '#6366f1',
-            borderRadius: 4,
-            barPercentage: 0.8,
-            categoryPercentage: 0.7
+            label: 'Lucro Efetivo (R$)',
+            data: effectiveValues,
+            backgroundColor: '#22c55e',
+            borderRadius: 4
           },
           {
-            label: 'Minha Rentab. (%)',
-            data: investorValues,
-            backgroundColor: '#22c55e',
-            borderRadius: 4,
-            barPercentage: 0.8,
-            categoryPercentage: 0.7
+            label: 'Lucro Projetado (R$)',
+            data: projectedValues,
+            backgroundColor: '#6366f1',
+            borderRadius: 4
           }
         ],
       },
@@ -1727,8 +2093,16 @@ class B3App {
         responsive: true,
         maintainAspectRatio: false,
         scales: {
-          x: { ticks: { color: '#94a3b8', font: { family: 'Inter', size: 10 } }, grid: { display: false } },
-          y: { ticks: { color: '#94a3b8', callback: v => v + '%' }, grid: { color: 'rgba(255,255,255,0.05)' } },
+          x: {
+            ticks: { color: '#94a3b8', font: { family: 'Inter', size: 10 } },
+            grid: { display: false },
+            stacked: true
+          },
+          y: {
+            ticks: { color: '#94a3b8', callback: v => 'R$ ' + this.formatNumber(v, 0) },
+            grid: { color: 'rgba(255,255,255,0.05)' },
+            stacked: true
+          },
         },
         plugins: {
           legend: {
@@ -1738,7 +2112,7 @@ class B3App {
           },
           tooltip: {
             callbacks: {
-              label: ctx => `${ctx.dataset.label}: ${(ctx.raw > 0 ? '+' : '') + ctx.raw.toFixed(2)}%`
+              label: ctx => `${ctx.dataset.label}: R$ ${this.formatNumber(ctx.raw, 2)}`
             }
           },
         },
@@ -1752,11 +2126,18 @@ class B3App {
   renderPositions() {
     const tbody = this.$('positionsBody');
     if (!this.portfolio.positions.length) {
-      tbody.innerHTML = '<tr><td colspan="10" class="empty-state">Nenhum ativo no portfólio. Clique em "Adicionar Ativo".</td></tr>';
+      tbody.innerHTML = '<tr><td colspan="11" class="empty-state">Nenhum ativo no portfólio. Clique em "Adicionar Ativo".</td></tr>';
       return;
     }
 
     let consolidated = this.consolidatePortfolio();
+
+    // Filter out closed positions if requested
+    const hideClosed = this.$('hideClosedPositions').checked;
+    if (hideClosed) {
+      consolidated = consolidated.filter(c => c.totalQty > 0);
+    }
+
     const analysisMap = {};
     if (this.analysis) {
       this.analysis.positions.forEach(p => { analysisMap[p.ticker] = p; });
@@ -1770,7 +2151,7 @@ class B3App {
       if (sortBy === 'market_value') return (bn.market_value || 0) - (an.market_value || 0);
       if (sortBy === 'dividends') return (bn.total_proventos || 0) - (an.total_proventos || 0);
       if (sortBy === 'equity') return (bn.total_equity || 0) - (an.total_equity || 0);
-      if (sortBy === 'rentability') return (bn.rentability_real || 0) - (an.rentability_real || 0);
+      if (sortBy === 'rentability') return (bn.rentability_total || 0) - (an.rentability_total || 0);
       return a.ticker.localeCompare(b.ticker);
     });
 
@@ -1778,9 +2159,13 @@ class B3App {
     consolidated.forEach(item => {
       const a = analysisMap[item.ticker] || {};
       const tickerClean = this.escapeHTML(item.ticker.replace('.SA', ''));
-      const rent = a.rentability_real;
+
+      const rent = a.rentability_total;
       const rentClass = rent !== undefined ? (rent >= 0 ? 'positive' : 'negative') : '';
-      const rentText = rent !== undefined ? ((rent > 0 ? '+' : '') + rent.toFixed(2) + '%') : '—';
+      const rentText = rent !== undefined ? ((rent > 0 ? '+' : '') + this.formatNumber(rent, 2) + '%') : '—';
+
+      const effProf = a.effectiveProfit || 0;
+      const projProf = a.projectedProfit || 0;
 
       const aiButton = this.user ? `
         <button class="btn-ai-icon" onclick="app.showAssetNews('${item.ticker}')" title="Ver resumo IA">🤖</button>
@@ -1789,12 +2174,13 @@ class B3App {
       html += `<tr>
         <td><a href="#" onclick="event.preventDefault(); app.showMonitor('${tickerClean}')" class="ticker-link"><strong>${tickerClean}</strong><br><small style="color:var(--text-muted)">${a.name || item.ticker}</small></a></td>
         <td>${item.totalQty}</td>
-        <td>R$ ${item.avgPrice.toFixed(2)}</td>
+        <td>R$ ${this.formatNumber(item.avgPrice, 4)}</td>
         <td>${this.formatCurrency(item.totalInvested)}</td>
-        <td>${a.current_price ? 'R$ ' + a.current_price.toFixed(2) : '—'}</td>
         <td>${a.market_value ? this.formatCurrency(a.market_value) : '—'}</td>
         <td class="positive">${a.total_proventos ? this.formatCurrency(a.total_proventos) : 'R$ 0,00'}</td>
         <td style="font-weight:700">${a.total_equity ? this.formatCurrency(a.total_equity) : '—'}</td>
+        <td class="${effProf >= 0 ? 'positive' : 'negative'}">${this.formatCurrency(effProf)}</td>
+        <td class="${projProf >= 0 ? 'positive' : 'negative'}">${this.formatCurrency(projProf)}</td>
         <td class="${rentClass}">${rentText}</td>
         <td>
           <div style="display:flex; gap:0.25rem">
@@ -1867,7 +2253,7 @@ class B3App {
 
     if (!this.isDiscoveryMode) {
       const avgYield = tableData.reduce((acc, val) => acc + val.yield_period, 0) / (tableData.length || 1);
-      this.$('divStatYield').textContent = avgYield.toFixed(2) + '%';
+      this.$('divStatYield').textContent = this.formatNumber(avgYield, 2) + '%';
     } else {
       this.$('divStatYield').textContent = '—';
     }
@@ -1883,8 +2269,8 @@ class B3App {
       <tr>
         <td><strong>${item.ticker.replace('.SA', '')}</strong><br><small style="color:var(--text-muted)">${item.name}</small></td>
         <td class="positive">${this.formatCurrency(item.total_proventos)}${item.isDiscovery ? ' /ação' : ''}</td>
-        <td>${item.yield_period.toFixed(2)}%</td>
-        <td>${this.isDiscoveryMode ? '—' : ((item.total_proventos / (totalProventos || 1)) * 100).toFixed(1) + '%'}</td>
+        <td>${this.formatNumber(item.yield_period, 2)}%</td>
+        <td>${this.isDiscoveryMode ? '—' : this.formatNumber(((item.total_proventos / (totalProventos || 1)) * 100), 1) + '%'}</td>
       </tr>
     `).join('');
   }
@@ -1897,11 +2283,13 @@ class B3App {
 
     let rows = '';
     tickerData.transactions.forEach(t => {
+      const typeLabel = (t.type || 'buy') === 'buy' ? '<span class="badge badge-buy">Compra</span>' : '<span class="badge badge-sell">Venda</span>';
       rows += `
         <tr>
+          <td>${typeLabel}</td>
           <td>${t.purchase_date}</td>
           <td>${t.quantity}</td>
-          <td>R$ ${t.purchase_price.toFixed(2)}</td>
+          <td>R$ ${this.formatNumber(t.purchase_price, 2)}</td>
           <td>
             <button class="btn-outline-sm" onclick="app.closeTransactionModal(); app.openModal(${t.originalIndex})">✏️</button>
             <button class="btn-danger-sm" onclick="if(confirm('Excluir este registro?')){ app.removePosition(${t.originalIndex}); app.manageTransactions('${ticker}'); }">🗑</button>
@@ -1921,6 +2309,7 @@ class B3App {
             <table>
               <thead>
                 <tr>
+                  <th>Tipo</th>
                   <th>Data</th>
                   <th>Quantidade</th>
                   <th>Preço</th>
@@ -1981,10 +2370,10 @@ class B3App {
 
       html += `<tr>
         <td><strong>${a.ticker.replace('.SA', '')}</strong><br><small style="color:var(--text-muted)">${a.name}</small></td>
-        <td>R$ ${a.current_price.toFixed(2)}</td>
-        <td>${a.price_ceiling !== null ? 'R$ ' + a.price_ceiling.toFixed(2) : '—'}</td>
-        <td class="${marginClass}">${a.margin_of_safety > 0 ? '+' : ''}${a.margin_of_safety.toFixed(1)}%</td>
-        <td>${a.current_yield.toFixed(2)}%</td>
+        <td>R$ ${this.formatNumber(a.current_price, 2)}</td>
+        <td>${a.price_ceiling !== null ? 'R$ ' + this.formatNumber(a.price_ceiling, 2) : '—'}</td>
+        <td class="${marginClass}">${a.margin_of_safety > 0 ? '+' : ''}${this.formatNumber(a.margin_of_safety, 1)}%</td>
+        <td>${this.formatNumber(a.current_yield, 2)}%</td>
         <td><span class="badge ${badgeClass}">${badgeText}</span></td>
       </tr>`;
     });
@@ -2008,9 +2397,9 @@ class B3App {
     this.$('rebalanceResults').style.display = 'block';
 
     const opt = data.optimal_allocation;
-    this.$('rebReturn').textContent = opt.expected_return.toFixed(2) + '%';
-    this.$('rebVol').textContent = opt.volatility.toFixed(2) + '%';
-    this.$('rebSharpe').textContent = opt.sharpe_ratio.toFixed(4);
+    this.$('rebReturn').textContent = this.formatNumber(opt.expected_return, 2) + '%';
+    this.$('rebVol').textContent = this.formatNumber(opt.volatility, 2) + '%';
+    this.$('rebSharpe').textContent = this.formatNumber(opt.sharpe_ratio, 4);
 
     const ctx = this.$('optimalChart');
     if (this.charts.optimal) this.charts.optimal.destroy();
@@ -2032,7 +2421,7 @@ class B3App {
         cutout: '65%',
         plugins: {
           legend: { position: 'bottom', labels: { color: '#94a3b8', padding: 16, font: { family: 'Inter', size: 12 } } },
-          tooltip: { callbacks: { label: ctx => `${ctx.label}: ${ctx.raw.toFixed(2)}%` } },
+          tooltip: { callbacks: { label: ctx => `${ctx.label}: ${this.formatNumber(ctx.raw, 2)}%` } },
         },
       },
     });
@@ -2059,9 +2448,9 @@ class B3App {
         <td><span class="badge ${actionClass}">${s.action}</span></td>
         <td><strong>${s.ticker.replace('.SA', '')}</strong><br><small style="color:var(--text-muted)">${s.name}</small></td>
         <td>${s.quantity}</td>
-        <td>R$ ${s.price.toFixed(2)}</td>
+        <td>R$ ${this.formatNumber(s.price, 2)}</td>
         <td>${this.formatCurrency(s.total_value)}</td>
-        <td>${s.current_allocation.toFixed(1)}% → ${s.target_allocation.toFixed(1)}%</td>
+        <td>${this.formatNumber(s.current_allocation, 1)}% → ${this.formatNumber(s.target_allocation, 1)}%</td>
       </tr>`;
     });
     tbody.innerHTML = html;
@@ -2076,43 +2465,48 @@ class B3App {
     const summary = this.marketSummaryData;
     if (!summary) return;
 
-    this.$('summaryDateFull').textContent = `Dados atualizados em ${summary.date} (referente à coleta de ${summary.last_update.split('T')[0]})`;
+    this.$('summaryDateFull').textContent = `Dados atualizados em ${new Date(summary.date + 'T00:00:00').toLocaleDateString('pt-BR')} (referente à coleta de ${new Date(summary.last_update).toLocaleDateString('pt-BR', {timeZone:'America/Sao_Paulo'})})`;
 
     let gainers, losers, deltaKey;
+    const filterSuffix = this.summaryFilter === 'geral' ? '' : `_${this.summaryFilter}`;
+
     if (this.summaryPeriod === 'month') {
-      gainers = summary.gainers_month;
-      losers = summary.losers_month;
+      gainers = summary[`gainers_month${filterSuffix}`];
+      losers = summary[`losers_month${filterSuffix}`];
       deltaKey = 'monthly_delta';
     } else if (this.summaryPeriod === 'year') {
-      gainers = summary.gainers_year;
-      losers = summary.losers_year;
+      gainers = summary[`gainers_year${filterSuffix}`];
+      losers = summary[`losers_year${filterSuffix}`];
       deltaKey = 'yearly_delta';
     } else {
-      gainers = summary.gainers;
-      losers = summary.losers;
+      gainers = summary[`gainers${filterSuffix}`];
+      losers = summary[`losers${filterSuffix}`];
       deltaKey = 'daily_delta';
     }
 
     const renderRows = (data, isGainer) => {
       if (!data) return '<tr><td colspan="4" class="empty-state">Sem dados para este período</td></tr>';
-      return data.map(item => {
+      return data.map((item, idx) => {
         const tickerClean = this.escapeHTML(item.ticker.replace('.SA', ''));
         const deltaVal = item[deltaKey] || 0;
-        const delta = (deltaVal * 100).toFixed(2);
-        const icon = isGainer ? '🚀' : '📉';
+        const delta = this.formatNumber(deltaVal * 100, 2);
+        const icon = isGainer ? '' : '';
         const cssClass = isGainer ? 'var-up' : 'var-down';
 
-        const volVal = item.delta_volume !== undefined ? item.delta_volume : 0;
-        const volPct = (volVal * 100).toFixed(0);
-        const volClass = volVal > 0 ? 'var-up' : 'var-down';
-        const volIcon = (this.summaryPeriod === 'day' && volVal > 1) ? '⬆️😲' : '';
+        const logoHtml = this.getAssetLogoHTML(item.ticker, 24);
+        const canvasId = `spark-${isGainer ? 'up' : 'down'}-${idx}`;
 
         return `
           <tr>
-            <td><a href="#" onclick="event.preventDefault(); app.showMonitor('${tickerClean}')" class="ticker-link"><strong>${tickerClean}</strong></a></td>
-            <td>R$${item.last_close.toFixed(2)}</td>
+            <td>
+              <div style="display: flex; align-items: center;">
+                ${logoHtml}
+                <a href="#" onclick="event.preventDefault(); app.showMonitor('${tickerClean}')" class="ticker-link"><strong>${tickerClean}</strong></a>
+              </div>
+            </td>
+            <td>R$${this.formatNumber(item.last_close, 2)}</td>
             <td class="${cssClass}">${(deltaVal > 0) ? '+' : ''}${delta}% ${icon}</td>
-            <td class="${volClass}">${this.summaryPeriod === 'day' ? (volVal > 0 ? '+' : '') + volPct + '% ' + volIcon : '—'}</td>
+            <td style="padding: 2px 5px;"><canvas id="${canvasId}" width="80" height="30"></canvas></td>
           </tr>
         `;
       }).join('');
@@ -2120,6 +2514,427 @@ class B3App {
 
     this.$('gainersBody').innerHTML = renderRows(gainers, true);
     this.$('losersBody').innerHTML = renderRows(losers, false);
+
+    // Render sparklines
+    if (!this.sparkCharts) this.sparkCharts = [];
+    this.sparkCharts.forEach(c => c.destroy());
+    this.sparkCharts = [];
+
+    // Render sparklines with small delay to ensure DOM is ready
+    setTimeout(() => {
+      if (gainers) gainers.forEach((item, idx) => this.renderSparkline(item.ticker, `spark-up-${idx}`));
+      if (losers) losers.forEach((item, idx) => this.renderSparkline(item.ticker, `spark-down-${idx}`));
+    }, 50);
+  }
+
+  renderSparkline(ticker, canvasId) {
+    const asset = this.marketData && this.marketData.assets[ticker];
+    if (!asset || !asset.history || !asset.history.closes) return;
+
+    const ctx = document.getElementById(canvasId);
+    if (!ctx) {
+      console.warn(`Canvas ${canvasId} not found for ${ticker}`);
+      return;
+    }
+
+    const data = asset.history.closes.slice(-15);
+    if (data.length === 0) return;
+
+    const avg = data.reduce((a, b) => a + b, 0) / data.length;
+    const avgLine = data.map(() => avg);
+    const isUp = data[data.length - 1] >= data[0];
+
+    const chart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: data.map((_, i) => i),
+        datasets: [
+          {
+            data: data,
+            borderColor: isUp ? '#00ccff' : '#ffcc00',
+            borderWidth: 1.8,
+            pointRadius: 0,
+            fill: false,
+            tension: 0.3
+          },
+          {
+            data: avgLine,
+            borderColor: 'rgba(255, 255, 255, 0.7)',
+            borderWidth: 1.0,
+            borderDash: [5, 2],
+            pointRadius: 0,
+            fill: false
+          }
+        ]
+      },
+      options: {
+        events: [],
+        responsive: false,
+        maintainAspectRatio: false,
+        plugins: { legend: { display: false }, tooltip: { enabled: false } },
+        scales: {
+          x: { display: false },
+          y: { display: false }
+        }
+      }
+    });
+    this.sparkCharts.push(chart);
+  }
+
+  renderTaxReport() {
+    const month = parseInt(this.$('taxMonth').value);
+    const year = parseInt(this.$('taxYear').value);
+
+    if (!this.portfolio.positions.length) return;
+
+    // 1. Segregar operações por mês e tipo (DT vs ST)
+    const monthStr = `${year}-${String(month).padStart(2, '0')}`;
+    const reportData = {
+      totalSalesStocks: 0,
+      stProfitStocks: 0, // Apenas Ações (sujeito a isenção 20k)
+      stProfitOthers: 0, // ETFs, Opções (15% sem isenção)
+      stProfitFIIs: 0,   // FIIs/Fiagros (20% sem isenção)
+      dtProfit: 0,
+      irrfMonth: 0,
+      details: []
+    };
+
+    // Necessitamos recalcular tudo cronologicamente para ter o PMC correto no mês
+    const consolidated = {};
+    const tickers = [...new Set(this.portfolio.positions.map(p => p.ticker))];
+
+    tickers.forEach(ticker => {
+      const transactions = [...this.portfolio.positions]
+        .filter(p => p.ticker === ticker)
+        .map((p, i) => ({ ...p, originalIndex: i, originalQty: p.quantity }));
+
+      transactions.sort((a, b) => a.purchase_date.localeCompare(b.purchase_date) || a.originalIndex - b.originalIndex);
+
+      let currentQty = 0;
+      let currentPM = 0;
+      let currentTotalCost = 0;
+
+      const byDay = {};
+      transactions.forEach(t => {
+        if (!byDay[t.purchase_date]) byDay[t.purchase_date] = [];
+        byDay[t.purchase_date].push(t);
+      });
+
+      Object.keys(byDay).sort().forEach(date => {
+        const isCurrentMonth = date.startsWith(monthStr);
+        const dayTrans = byDay[date];
+
+        // Clone to not affect original objects during internal day-trade matching
+        let buys = dayTrans.filter(t => (t.type || 'buy') === 'buy').map(t => ({...t}));
+        let sells = dayTrans.filter(t => t.type === 'sell').map(t => ({...t}));
+
+        // Day Trade Detection
+        let buyPtr = 0, sellPtr = 0;
+        while (buyPtr < buys.length && sellPtr < sells.length) {
+          let b = buys[buyPtr];
+          let s = sells[sellPtr];
+          let matchQty = Math.min(b.quantity, s.quantity);
+
+          if (isCurrentMonth) {
+            const gross = (s.purchase_price - b.purchase_price) * matchQty;
+            const costs = ((b.costs || 0) * (matchQty / b.originalQty)) + ((s.costs || 0) * (matchQty / s.originalQty));
+            const result = gross - costs;
+            const irrf = (s.irrf || 0) * (matchQty / s.originalQty);
+
+            reportData.dtProfit += result;
+            reportData.irrfMonth += irrf;
+            reportData.details.push({
+              date, ticker, type: 'Day Trade', qty: matchQty, price: s.purchase_price, costs, result, irrf
+            });
+          }
+
+          b.quantity -= matchQty;
+          s.quantity -= matchQty;
+          if (b.quantity === 0) buyPtr++;
+          if (s.quantity === 0) sellPtr++;
+        }
+
+        // Swing Trade FIFO
+        if (!consolidated[ticker]) consolidated[ticker] = { qty: 0, lots: [] };
+        let state = consolidated[ticker];
+
+        dayTrans.forEach((t, i) => {
+          let remainingQty = (t.type === 'sell') ? sells.find(s => s.originalIndex === t.originalIndex).quantity
+                                               : buys.find(b => b.originalIndex === t.originalIndex).quantity;
+
+          if (remainingQty > 0) {
+            if ((t.type || 'buy') === 'buy') {
+              const propCosts = (t.costs || 0) * (remainingQty / t.originalQty);
+              const totalCost = (remainingQty * t.purchase_price) + propCosts;
+              const unitCost = totalCost / remainingQty;
+              state.lots.push({ qty: remainingQty, unitCost: unitCost });
+              state.qty += remainingQty;
+            } else {
+              const propCosts = (t.costs || 0) * (remainingQty / t.originalQty);
+              const netSaleValue = (remainingQty * t.purchase_price) - propCosts;
+
+              let costBasisSold = 0;
+              let toSell = remainingQty;
+              while (toSell > 0 && state.lots.length > 0) {
+                let lot = state.lots[0];
+                let take = Math.min(toSell, lot.qty);
+                costBasisSold += (take * lot.unitCost);
+                lot.qty -= take;
+                toSell -= take;
+                if (lot.qty === 0) state.lots.shift();
+              }
+
+              const result = netSaleValue - costBasisSold;
+              const irrf = (t.irrf || 0) * (remainingQty / t.originalQty);
+
+              if (isCurrentMonth) {
+                const asset = this.assets.find(a => a.ticker === ticker);
+                const description = (asset && asset.description) ? asset.description.toUpperCase() : '';
+                const sector = (asset && asset.sector) ? asset.sector.toUpperCase() : '';
+                const tickerClean = ticker.replace('.SA', '');
+
+                // Melhorando a detecção por Ticker e Setor
+                const isFII = description.includes('FII') || description.includes('FIAGRO') || sector.includes('IMOBILIÁRIO') || sector.includes('FUNDO');
+                const isETF = description.includes('ETF') || tickerClean === 'BOVA11' || tickerClean === 'IVVB11' || tickerClean === 'SMAL11';
+                const isOption = description.includes('OPÇÃO') || tickerClean.match(/[A-Z]{4}[A-X][0-9]+/);
+                const isStock = !isFII && !isETF && !isOption;
+
+                if (isStock) {
+                  reportData.totalSalesStocks += (remainingQty * t.purchase_price);
+                  reportData.stProfitStocks += result;
+                } else if (isFII) {
+                  reportData.stProfitFIIs += result;
+                } else {
+                  // ETFs / Opções (ST 15% mas sem isenção)
+                  reportData.stProfitOthers += result;
+                }
+
+                reportData.irrfMonth += irrf;
+                reportData.details.push({
+                  date, ticker, type: 'Swing Trade', qty: remainingQty, price: t.purchase_price, costs: t.costs * (remainingQty / t.originalQty), result, irrf
+                });
+              }
+
+              currentQty -= remainingQty;
+              currentTotalCost = currentQty * currentPM;
+            }
+          }
+        });
+      });
+    });
+
+    // 2. Aplicar Regras de Isenção e Compensação
+    const rawConfig = this.taxConfig || { STOCK_EXEMPTION_LIMIT: 20000, STOCK_ST_RATE: 0.15, STOCK_DT_RATE: 0.20, FII_RATE: 0.20 };
+    const config = {
+      STOCK_EXEMPTION_LIMIT: this.parseRate(rawConfig.STOCK_EXEMPTION_LIMIT),
+      STOCK_ST_RATE: this.parseRate(rawConfig.STOCK_ST_RATE),
+      STOCK_DT_RATE: this.parseRate(rawConfig.STOCK_DT_RATE),
+      FII_RATE: this.parseRate(rawConfig.FII_RATE)
+    };
+    const fiscal = {
+      st_loss: this.parseRate(this.fiscalData?.st_loss),
+      dt_loss: this.parseRate(this.fiscalData?.dt_loss),
+      irrf_balance: this.parseRate(this.fiscalData?.irrf_balance),
+      tax_balance: this.parseRate(this.fiscalData?.tax_balance)
+    };
+
+    // Isenção 20k (Apenas para AÇÕES em Swing Trade)
+    let isento = reportData.totalSalesStocks <= config.STOCK_EXEMPTION_LIMIT && reportData.stProfitStocks > 0;
+
+    // Lucro Tributável ST (15%) = (Stocks se não isento) + Outros ST (ETFs/Opções)
+    let stProfit15 = (isento ? 0 : reportData.stProfitStocks) + reportData.stProfitOthers;
+    let stTaxable = Math.max(0, stProfit15);
+    let stLossCurrent = stProfit15 < 0 ? -stProfit15 : 0;
+
+    // Lucro Tributável FIIs (20%)
+    let fiiTaxable = Math.max(0, reportData.stProfitFIIs);
+    let fiiLossCurrent = reportData.stProfitFIIs < 0 ? -reportData.stProfitFIIs : 0;
+
+    // Compensação de prejuízos Swing Trade (ST 15% + FII 20%)
+    // Baseado na regra do usuário: Prejuízos de Swing Trade SÓ podem compensar lucros de Swing Trade
+    let stLossAvailable = fiscal.st_loss;
+    let stLossComp = 0;
+
+    // Primeiro compensa Swing Trade Comum (15%)
+    if (stTaxable > 0 && stLossAvailable > 0) {
+      const comp = Math.min(stTaxable, stLossAvailable);
+      stLossComp += comp;
+      stTaxable -= comp;
+      stLossAvailable -= comp;
+    }
+
+    // Depois compensa FIIs (20%) se sobrar prejuízo
+    if (fiiTaxable > 0 && stLossAvailable > 0) {
+      const comp = Math.min(fiiTaxable, stLossAvailable);
+      stLossComp += comp;
+      fiiTaxable -= comp;
+      stLossAvailable -= comp;
+    }
+
+    // Compensação de Day Trade (DT 20%)
+    let dtTaxable = Math.max(0, reportData.dtProfit);
+    let dtLossComp = 0;
+    let dtLossCurrent = reportData.dtProfit < 0 ? -reportData.dtProfit : 0;
+    if (dtTaxable > 0 && fiscal.dt_loss > 0) {
+      dtLossComp = Math.min(dtTaxable, fiscal.dt_loss);
+      dtTaxable -= dtLossComp;
+    }
+
+    // Cálculo do Imposto do Mês + Imposto Acumulado de meses anteriores (DARF < R$10)
+    const st_rate = config.STOCK_ST_RATE || 0.15;
+    const fii_rate = config.FII_RATE || 0.20;
+    const dt_rate = config.STOCK_DT_RATE || 0.20;
+
+    let taxDue = (stTaxable * st_rate) + (fiiTaxable * fii_rate) + (dtTaxable * dt_rate);
+    let totalTaxDue = taxDue + (fiscal.tax_balance || 0);
+
+    // Abatimento de IRRF
+    let irrfAvailable = reportData.irrfMonth + (fiscal.irrf_balance || 0);
+    let irrfCompensated = Math.min(totalTaxDue, irrfAvailable);
+    let taxAfterIRRF = Math.max(0, totalTaxDue - irrfCompensated);
+
+    let darf = 0;
+    let nextTaxBalance = 0;
+
+    // Regra R$ 10,00 para emissão de DARF
+    if (taxAfterIRRF >= 10) {
+      darf = taxAfterIRRF;
+      nextTaxBalance = 0;
+    } else {
+      darf = 0;
+      nextTaxBalance = taxAfterIRRF;
+    }
+
+    // 3. Renderizar UI
+    this.$('repTotalSales').textContent = this.formatCurrency(reportData.totalSalesStocks);
+    this.$('repIsento').textContent = isento ? 'Sim' : 'Não';
+    this.$('repSTResult').textContent = this.formatCurrency(reportData.stProfitStocks + reportData.stProfitOthers + reportData.stProfitFIIs);
+    this.$('repDTResult').textContent = this.formatCurrency(reportData.dtProfit);
+    this.$('repLossCompensated').textContent = this.formatCurrency(stLossComp + dtLossComp);
+
+    // Mostra o imposto bruto calculado para dar visibilidade ao usuário
+    this.$('repTaxDue').innerHTML = `${this.formatCurrency(taxDue)}${fiscal.tax_balance > 0 ? ` <br><small style="font-size: 0.7rem; color: var(--text-muted);">+ ${this.formatCurrency(fiscal.tax_balance)} acumulado</small>` : ''}`;
+
+    this.$('repIRRF').textContent = this.formatCurrency(reportData.irrfMonth);
+
+    if (darf === 0 && nextTaxBalance > 0) {
+      this.$('repDARF').innerHTML = `${this.formatCurrency(0)} <br><small style="font-size: 0.75rem; color: var(--text-muted); font-weight: normal;">(Abaixo do mínimo de R$ 10,00. Acumulado para o próximo mês: ${this.formatCurrency(nextTaxBalance)})</small>`;
+    } else {
+      this.$('repDARF').textContent = this.formatCurrency(darf);
+    }
+
+    this.$('repSTLossBalance').textContent = this.formatCurrency(fiscal.st_loss);
+    this.$('repDTLossBalance').textContent = this.formatCurrency(fiscal.dt_loss);
+    this.$('repIRRFBalance').textContent = this.formatCurrency(fiscal.irrf_balance);
+    if (this.$('repTaxBalance')) this.$('repTaxBalance').textContent = this.formatCurrency(fiscal.tax_balance);
+
+    // Store calculated next balances for saving
+    this.nextFiscalBalances = {
+      st_loss: Math.max(0, stLossAvailable + stLossCurrent + fiiLossCurrent),
+      dt_loss: Math.max(0, fiscal.dt_loss - dtLossComp + dtLossCurrent),
+      irrf_balance: Math.max(0, irrfAvailable - irrfCompensated),
+      tax_balance: nextTaxBalance
+    };
+    this.$('btnSaveFiscalBalance').style.display = 'inline-block';
+
+    const tbody = this.$('taxDetailsBody');
+    if (reportData.details.length === 0) {
+      tbody.innerHTML = '<tr><td colspan="8" class="empty-state">Nenhuma operação de venda/day trade neste mês.</td></tr>';
+    } else {
+      tbody.innerHTML = reportData.details.map(d => `
+        <tr>
+          <td>${d.date.split('-').reverse().join('/')}</td>
+          <td><strong>${d.ticker.replace('.SA','')}</strong></td>
+          <td><span class="badge ${d.type === 'Day Trade' ? 'badge-daytrade' : 'badge-hold'}">${d.type}</span></td>
+          <td>${d.qty}</td>
+          <td>R$ ${this.formatNumber(d.price, 2)}</td>
+          <td>R$ ${this.formatNumber(d.costs, 2)}</td>
+          <td class="${d.result >= 0 ? 'positive' : 'negative'}">${this.formatCurrency(d.result)}</td>
+          <td>R$ ${this.formatNumber(d.irrf, 2)}</td>
+        </tr>
+      `).join('');
+    }
+  }
+
+  importCSV(input) {
+    const file = input.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = async (e) => {
+      const text = e.target.result;
+      const lines = text.split('\n');
+      const newPositions = [];
+
+      // Skip header
+      for (let i = 1; i < lines.length; i++) {
+        const line = lines[i].trim();
+        if (!line) continue;
+
+        const cols = line.split(',');
+        if (cols.length < 5) continue;
+
+        // Formato esperado: Data,Ticker,Tipo,Qtd,Preço,Custos,IRRF
+        // Ex: 2024-05-10,PETR4,buy,100,35.50,1.50,0
+        const [date, ticker, type, qty, price, costs, irrf] = cols;
+
+        newPositions.push({
+          purchase_date: date,
+          ticker: ticker.toUpperCase().endsWith('.SA') ? ticker.toUpperCase() : ticker.toUpperCase() + '.SA',
+          type: type.toLowerCase() === 'v' || type.toLowerCase() === 'sell' ? 'sell' : 'buy',
+          quantity: parseInt(qty),
+          purchase_price: parseFloat(price),
+          costs: parseFloat(costs) || 0,
+          irrf: parseFloat(irrf) || 0
+        });
+      }
+
+      if (newPositions.length > 0) {
+        this.portfolio.positions.push(...newPositions);
+        this.savePortfolio();
+        await this.runAnalysis();
+        this.renderPositions();
+        this.toast(`${newPositions.length} registros importados!`, 'success');
+      }
+    };
+    reader.readAsText(file);
+    input.value = ''; // Reset input
+  }
+
+  async saveFiscalData(newFiscalData) {
+    if (!this.user || !this.GAS_URL) return;
+    try {
+      this.showLoading('Salvando balanço fiscal...');
+      const res = await fetch(this.GAS_URL, {
+        method: 'POST',
+        mode: 'cors',
+        body: JSON.stringify({
+          action: 'save_fiscal_data',
+          username: this.user.username,
+          session_token: this.user.session_token,
+          fiscal_data: newFiscalData
+        })
+      });
+      const data = await res.json();
+      this.hideLoading();
+      if (data.success) {
+        this.fiscalData = newFiscalData;
+        this.toast('Balanço fiscal salvo com sucesso!', 'success');
+        this.renderTaxReport();
+      } else {
+        this.toast(data.error || 'Erro ao salvar balanço fiscal.', 'error');
+      }
+    } catch (err) {
+      this.hideLoading();
+      console.error('Erro ao salvar dados fiscais:', err);
+    }
+  }
+
+  confirmAndSaveFiscalBalance() {
+    if (!this.nextFiscalBalances) return;
+    if (confirm('Deseja salvar os saldos calculados como base para os próximos meses?')) {
+      this.saveFiscalData(this.nextFiscalBalances);
+    }
   }
 
   renderMarketTreemap() {
@@ -2132,7 +2947,15 @@ class B3App {
     const deltaKey = this.summaryPeriod === 'month' ? 'monthly_delta' : (this.summaryPeriod === 'year' ? 'yearly_delta' : 'daily_delta');
 
     // Filter and prepare data
-    const validAssets = allAssets.filter(a => a[deltaKey] !== undefined && a.ticker !== '^BVSP');
+    let filteredAssets = allAssets;
+    if (this.summaryFilter === 'liquid') {
+      filteredAssets = allAssets.filter(a => a.is_liquid);
+    } else if (this.summaryFilter === 'ibov') {
+      filteredAssets = allAssets.filter(a => a.is_ibov);
+    }
+
+    const validAssets = filteredAssets.filter(a => a[deltaKey] !== undefined && a.ticker !== '^BVSP');
+
 
     const posPriceAssets = validAssets.filter(a => a[deltaKey] > 0);
     const negPriceAssets = validAssets.filter(a => a[deltaKey] < 0);
@@ -2188,10 +3011,10 @@ class B3App {
         ticker: a.ticker.replace('.SA', ''),
         name: a.name,
         value: Math.max(Math.abs(val), 0.5),
-        daily: (a.daily_delta * 100).toFixed(2) + '%',
-        monthly: (a.monthly_delta * 100).toFixed(2) + '%',
-        yearly: (a.yearly_delta * 100).toFixed(2) + '%',
-        delta_volume: (a.delta_volume * 100).toFixed(2) + '%',
+        daily: this.formatNumber(a.daily_delta * 100, 2) + '%',
+        monthly: this.formatNumber(a.monthly_delta * 100, 2) + '%',
+        yearly: this.formatNumber(a.yearly_delta * 100, 2) + '%',
+        delta_volume: this.formatNumber(a.delta_volume * 100, 2) + '%',
         delta: a[deltaKey],
         color: color
       };
@@ -2271,54 +3094,6 @@ class B3App {
         }
       }
     });
-  }
-
-  /* ------------------------------------------------------------------
-     Utilities
-  ------------------------------------------------------------------ */
-  formatCurrency(v) {
-    return 'R$ ' + v.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-  }
-
-  palette(n) {
-    const base = [
-      '#6366f1', '#8b5cf6', '#ec4899', '#f43f5e', '#f97316',
-      '#eab308', '#22c55e', '#14b8a6', '#06b6d4', '#3b82f6',
-      '#a855f7', '#d946ef',
-    ];
-    const out = [];
-    for (let i = 0; i < n; i++) out.push(base[i % base.length]);
-    return out;
-  }
-
-  showLoading(text = 'Processando...') {
-    this.$('loadingText').textContent = text;
-    this.$('loadingOverlay').classList.add('show');
-  }
-
-  hideLoading() {
-    this.$('loadingOverlay').classList.remove('show');
-  }
-
-  $(id) { return document.getElementById(id); }
-
-  escapeHTML(str) {
-    if (!str) return '';
-    return str.replace(/[&<>"']/g, m => ({
-      '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
-    }[m]));
-  }
-
-  showMonitor(ticker) {
-    console.log('Showing monitor for:', ticker);
-    const tickerClean = ticker.replace('.SA', '').toUpperCase();
-    this.showPage('monitor');
-
-    // Garantir que o container está visível e dimensionado antes de renderizar
-    // O fadeUp leva 0.4s, então vamos aguardar um pouco mais para garantir
-    setTimeout(() => {
-        this.renderChart(tickerClean);
-    }, 450);
   }
 
   renderChart(ticker) {

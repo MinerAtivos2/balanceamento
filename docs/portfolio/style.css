@@ -80,6 +80,7 @@ body::after {
   flex-direction: column;
   z-index: 200;
   transition: transform var(--transition);
+   overflow: hidden; /*sidebar scrool*/
 }
 .sidebar-header {
   display: flex;
@@ -102,11 +103,18 @@ body::after {
 }
 .sidebar-nav {
   flex: 1;
-  padding: 1rem 0.75rem;
+  padding: 1rem 0.75rem 2rem; /*sidebar scrool*/
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
+  overflow-y: auto; /*sidebar scrool*/
+  scrollbar-width: none; /* Firefox */ /*sidebar scrool*/
+  -ms-overflow-style: none; /* IE and Edge */ /*sidebar scrool*/
 }
+
+.sidebar-nav::-webkit-scrollbar { /*sidebar scrool*/
+  display: none; /* Chrome, Safari, Opera */ /*sidebar scrool*/
+} /*sidebar scrool*/
 .nav-link {
   display: flex;
   align-items: center;
@@ -354,6 +362,15 @@ body::after {
   transform: translateY(-1px);
   box-shadow: 0 4px 16px var(--accent-glow);
 }
+.btn-danger {
+  background: var(--red);
+  color: #fff;
+}
+.btn-danger:hover {
+  background: #ff5f5f;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(239, 68, 68, 0.35);
+}
 .btn-outline {
   background: transparent;
   border: 1.5px solid var(--border-glass);
@@ -496,6 +513,7 @@ tbody tr:hover {
 .badge-buy   { background: var(--green-bg); color: var(--green); }
 .badge-hold  { background: var(--yellow-bg); color: var(--yellow); }
 .badge-sell  { background: var(--red-bg); color: var(--red); }
+.badge-daytrade { background: rgba(139, 92, 246, 0.12); color: #8b5cf6; border: 1px solid rgba(139, 92, 246, 0.2); }
 .badge-none  { background: var(--bg-glass); color: var(--text-muted); }
 
 /* -- Alerts ------------------------------------------------------------ */
@@ -523,6 +541,25 @@ tbody tr:hover {
   padding: 1rem 1.5rem;
   margin-top: 1rem;
 }
+
+/* Tax Report Styles */
+.tax-report-summary {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.report-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+}
+
+.report-item strong {
+  color: var(--text-primary);
+}
 .summary-item {
   display: flex;
   align-items: center;
@@ -539,7 +576,12 @@ tbody tr:hover {
 .dot-red    { background: var(--red); }
 
 /* -- Forms / Inputs ---------------------------------------------------- */
-input[type="number"], select {
+input[type="number"],
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="date"],
+select {
   background: var(--bg-secondary);
   border: 1px solid var(--border-glass);
   border-radius: var(--radius-sm);
@@ -549,7 +591,12 @@ input[type="number"], select {
   font-size: 0.875rem;
   transition: border-color var(--transition), box-shadow var(--transition);
 }
-input[type="number"]:focus, select:focus {
+input[type="number"]:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="email"]:focus,
+input[type="date"]:focus,
+select:focus {
   outline: none;
   border-color: var(--accent);
   box-shadow: 0 0 0 3px var(--accent-glow);
@@ -569,21 +616,6 @@ input[type="number"]:focus, select:focus {
 }
 .form-group input, .form-group select {
   width: 100%;
-}
-.form-group input[type="text"] {
-  background: var(--bg-secondary);
-  border: 1px solid var(--border-glass);
-  border-radius: var(--radius-sm);
-  padding: 0.6rem 0.75rem;
-  color: var(--text-primary);
-  font-family: inherit;
-  font-size: 0.875rem;
-  transition: border-color var(--transition), box-shadow var(--transition);
-}
-.form-group input[type="text"]:focus {
-  outline: none;
-  border-color: var(--accent);
-  box-shadow: 0 0 0 3px var(--accent-glow);
 }
 .form-actions {
   display: flex;
@@ -606,8 +638,46 @@ input[type="number"]:focus, select:focus {
 .modal {
   width: 90%;
   max-width: 440px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
   padding: 1.75rem;
   animation: fadeUp 0.3s ease;
+}
+
+.news-modal-content {
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 0.5rem;
+}
+
+/* Custom scrollbar for news content */
+.news-modal-content::-webkit-scrollbar {
+  width: 6px;
+}
+.news-modal-content::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+}
+.news-modal-content::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+.news-modal-content::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+#newsModalText {
+  font-size: 0.95rem !important;
+  white-space: pre-wrap;
+}
+
+.outdated-disclaimer {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-style: italic;
+  margin-bottom: 0.5rem;
+  display: block;
 }
 .modal-lg {
   max-width: 800px;
@@ -631,6 +701,51 @@ input[type="number"]:focus, select:focus {
   transition: color var(--transition);
 }
 .modal-close:hover { color: var(--red); }
+
+/* -- Splash Screen ----------------------------------------------------- */
+.splash-screen {
+  position: fixed;
+  inset: 0;
+  background: var(--bg-primary);
+  z-index: 10000; /* Higher than cookie banner (9999) */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.5s ease, visibility 0.5s;
+}
+.splash-screen.hide {
+  opacity: 0;
+  visibility: hidden;
+}
+.splash-content {
+  text-align: center;
+  animation: splashFadeIn 0.8s ease-out;
+}
+@keyframes splashFadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+.splash-logo {
+  height: 100px;
+  width: auto;
+  margin-bottom: 2rem;
+}
+.splash-loader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+}
+#splashMessage {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  min-height: 1.5em;
+}
+body.loading {
+  overflow: hidden;
+}
 
 /* -- Loading overlay --------------------------------------------------- */
 .loading-overlay {
@@ -780,43 +895,133 @@ input[type="number"]:focus, select:focus {
 .toast.error   { background: var(--red); }
 .toast.info    { background: var(--accent); }
 
-/* -- Membership Modal -------------------------------------------------- */
-.membership-content {
-  text-align: center;
+/* -- Auth Modal (Unified) ---------------------------------------------- */
+.auth-modal {
+  max-width: 420px;
+  padding: 0 !important;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.15);
 }
-.membership-content p {
+
+.auth-modal-header {
+  padding: 0;
+  margin-bottom: 0;
+  border-bottom: 1px solid var(--border-glass);
+  position: relative;
+}
+
+.auth-tabs {
+  display: flex;
+  width: 100%;
+}
+
+.auth-tab {
+  flex: 1;
+  padding: 1.25rem;
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all var(--transition);
+  border-bottom: 2px solid transparent;
+}
+
+.auth-tab.active {
+  color: var(--accent-light);
+  background: rgba(99, 102, 241, 0.05);
+  border-bottom-color: var(--accent);
+}
+
+.auth-tab:hover:not(.active) {
   color: var(--text-secondary);
-  margin-bottom: 1rem;
-  font-size: 0.95rem;
+  background: rgba(255, 255, 255, 0.02);
 }
-.membership-plans h3 {
-  font-size: 1rem;
-  font-weight: 700;
-}
-.membership-plans ul li {
-  margin-bottom: 0.4rem;
+
+.auth-modal .modal-close {
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.2);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 1.2rem;
+}
+
+.auth-tab-content {
+  display: none;
+  padding: 2.5rem 2rem;
+  animation: fadeIn 0.3s ease;
+}
+
+.auth-tab-content.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.auth-content-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.auth-content-header h2 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+  color: var(--text-primary);
+}
+
+.auth-reason-box {
+  background: var(--accent-glow);
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border-glass);
+  text-align: center;
+}
+
+.auth-reason-box p {
+  font-size: 0.85rem;
+  color: var(--accent-light);
+  font-weight: 600;
+}
+
+.auth-footer {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border-glass);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.auth-features-list {
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: var(--radius-sm);
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid var(--border-glass);
+}
+
+.feature-item {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+  display: flex;
   gap: 0.5rem;
 }
-#leadForm {
-  text-align: left;
-  margin-top: 1.5rem;
-}
-#leadForm .form-group label {
-  text-transform: none;
-  font-size: 0.85rem;
-  color: var(--text-primary);
-  margin-bottom: 0.5rem;
-}
-#leadEmail {
-  background: var(--bg-secondary);
-  border: 1px solid var(--border-glass);
-  border-radius: var(--radius-sm);
-  padding: 0.75rem;
-  color: var(--text-primary);
-  margin-bottom: 1rem;
+
+.feature-item:last-child {
+  margin-bottom: 0;
 }
 
 /* -- About ------------------------------------------------------------- */
@@ -911,7 +1116,8 @@ input[type="number"]:focus, select:focus {
   transition: all 0.2s;
 }
 
-.btn-period.active {
+.btn-period.active,
+.btn-summary-filter.active {
   background: var(--accent);
   color: #fff;
   box-shadow: 0 2px 8px var(--accent-glow);
