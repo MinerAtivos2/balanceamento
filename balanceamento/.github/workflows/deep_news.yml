@@ -1,0 +1,29 @@
+name: Deep AI News Analysis (On-Demand)
+
+on:
+  workflow_dispatch:  # Apenas execução manual conforme solicitado
+
+permissions:
+  contents: read
+
+jobs:
+  deep-analysis:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
+
+      - name: Run Deep News Analysis
+        run: python docs/portfolio/scripts/deepnews_fetcher.py
+        env:
+          GAS_URL: ${{ secrets.GAS_URL }}
