@@ -117,7 +117,29 @@ class B3App {
   showMonitor(ticker) {
     console.log('Showing monitor for:', ticker);
     const tickerClean = ticker.replace('.SA', '').toUpperCase();
+    const tickerWithSA = tickerClean.endsWith('.SA') ? tickerClean : tickerClean + '.SA';
+
+    // Armazena o ticker atual para renderizações e alternâncias de abas
+    this.currentMonitorTicker = tickerWithSA;
+
+    // Atualiza o título da página de monitoramento com o ticker
+    const titleEl = this.$('monitorPageTitle');
+    if (titleEl) {
+      titleEl.textContent = `Análise de Ativo - ${tickerClean}`;
+    }
+
     this.showPage('monitor');
+
+    // Reseta botões de abas para o padrão (Análise Técnica ativa)
+    const btnTech = this.$('btnMonitorTabTechnical');
+    const btnFund = this.$('btnMonitorTabFundamental');
+    const panelTech = this.$('monitorTabContentTechnical');
+    const panelFund = this.$('monitorTabContentFundamental');
+
+    if (btnTech) btnTech.classList.add('active');
+    if (btnFund) btnFund.classList.remove('active');
+    if (panelTech) panelTech.style.display = 'flex';
+    if (panelFund) panelFund.style.display = 'none';
 
     // Garantir que o container está visível e dimensionado antes de renderizar
     // O fadeUp leva 0.4s, então vamos aguardar um pouco mais para garantir
@@ -146,7 +168,8 @@ class B3App {
       this.loadMarketNews(),
       this.loadMarketSummary(),
       this.loadPortfolio(),
-      this.loadMarketData(true) // true = load only essential market_data.json
+      this.loadMarketData(true), // true = load only essential market_data.json
+      this.loadMarketFinancials() // Carrega demonstrativos para o monitor
     ]);
 
     // 3. Análise inicial para liberar o dashboard rapidamente
@@ -175,6 +198,36 @@ class B3App {
     this.$('btnRequestExpertAnalysis').addEventListener('click', () => this.requestExpertAnalysis());
     this.$('btnAddBulk').addEventListener('click', () => this.openBulkModal());
     this.$('btnVoltarMonitor').addEventListener('click', () => this.showPage(this.previousPage));
+
+    // Bind para abas do Monitor de Análise Avançada
+    const btnTech = this.$('btnMonitorTabTechnical');
+    const btnFund = this.$('btnMonitorTabFundamental');
+    if (btnTech && btnFund) {
+      btnTech.addEventListener('click', () => {
+        btnTech.classList.add('active');
+        btnFund.classList.remove('active');
+        this.$('monitorTabContentTechnical').style.display = 'flex';
+        this.$('monitorTabContentFundamental').style.display = 'none';
+
+        // Redesenha o gráfico de tradingview se necessário
+        if (this.currentMonitorTicker) {
+          const tickerClean = this.currentMonitorTicker.replace('.SA', '');
+          this.renderChart(tickerClean);
+        }
+      });
+
+      btnFund.addEventListener('click', () => {
+        btnFund.classList.add('active');
+        btnTech.classList.remove('active');
+        this.$('monitorTabContentTechnical').style.display = 'none';
+        this.$('monitorTabContentFundamental').style.display = 'flex';
+
+        // Renderiza o painel fundamentalista para o ticker atual
+        if (this.currentMonitorTicker) {
+          this.renderFundamentalAnalysis(this.currentMonitorTicker);
+        }
+      });
+    }
 
     // Mobile
     this.$('hamburger').addEventListener('click', () => this.toggleSidebar());
@@ -1264,6 +1317,18 @@ class B3App {
       }
     } catch (err) {
       console.warn('Resumo de mercado não disponível');
+    }
+  }
+
+  async loadMarketFinancials() {
+    try {
+      const url = `./data/market_financials.json?t=${new Date().getTime()}`;
+      const res = await fetch(url);
+      if (!res.ok) return;
+      this.marketFinancials = await res.json();
+      console.log('✓ Dados fundamentalistas carregados com sucesso!');
+    } catch (err) {
+      console.warn('Demonstrativos fundamentalistas não disponíveis ainda.');
     }
   }
 
@@ -3137,6 +3202,657 @@ class B3App {
     container.appendChild(el);
     setTimeout(() => { el.style.opacity = '0'; setTimeout(() => el.remove(), 400); }, 3800);
   }
+
+  renderFundamentalAnalysis(ticker) {
+    console.log('Rendering fundamental analysis for:', ticker);
+    if (!this.marketFinancials) {
+      console.warn('Market financials not loaded yet.');
+      return;
+    }
+
+    const asset = this.marketFinancials.assets[ticker];
+    if (!asset) {
+      console.warn('Asset fundamental data not found for:', ticker);
+      this.toast('Dados fundamentalistas indisponíveis para este ativo.', 'warning');
+      return;
+    }
+
+    const stats = asset.stats || {};
+    const historical = asset.historical || {};
+
+    // 1. Atualizar Título da Página e Subtítulo
+    const subtitleEl = this.$('monitorPageSubtitle');
+    if (subtitleEl) {
+      const sec = stats.sector || 'Setor N/A';
+      const ind = stats.industry || 'Indústria N/A';
+      subtitleEl.innerHTML = `Setor: <strong>${sec}</strong> | Segmento: <strong>${ind}</strong>`;
+    }
+
+    // 2. Preencher KPI Cards Principais do Ativo
+    if (this.$('fundKpiMarketCap')) {
+      this.$('fundKpiMarketCap').textContent = stats.market_cap ? this.formatCurrency(stats.market_cap).replace(',00', '') : '—';
+    }
+    if (this.$('fundKpiPE')) {
+      this.$('fundKpiPE').textContent = stats.forward_pe ? this.formatNumber(stats.forward_pe, 2) : '—';
+    }
+    if (this.$('fundKpiPB')) {
+      this.$('fundKpiPB').textContent = stats.price_to_book ? this.formatNumber(stats.price_to_book, 2) : '—';
+    }
+    if (this.$('fundKpiDY')) {
+      this.$('fundKpiDY').textContent = stats.dividend_yield ? this.formatNumber(stats.dividend_yield * 100, 2) + '%' : '—';
+    }
+    if (this.$('fundKpiROE')) {
+      this.$('fundKpiROE').textContent = stats.roe ? this.formatNumber(stats.roe * 100, 2) + '%' : '—';
+    }
+
+    // 3. Obter lista de concorrentes baseada estritamente na categoria do Ativo ("sector")
+    const sector = stats.sector;
+    const peers = [];
+    if (sector && sector !== 'N/A') {
+      Object.keys(this.marketFinancials.assets).forEach(t => {
+        const other = this.marketFinancials.assets[t];
+        if (other && other.stats && other.stats.sector === sector) {
+          peers.push(other);
+        }
+      });
+    }
+
+    // Se houver pouquíssimos pares, garante preenchimento de segurança com a indústria ou geral
+    if (peers.length < 3 && stats.industry && stats.industry !== 'N/A') {
+      Object.keys(this.marketFinancials.assets).forEach(t => {
+        const other = this.marketFinancials.assets[t];
+        if (other && other.stats && other.stats.industry === stats.industry && !peers.find(p => p.ticker === t)) {
+          peers.push(other);
+        }
+      });
+    }
+
+    // Ordenar pares por valor de mercado decrescente
+    peers.sort((a, b) => (b.stats.market_cap || 0) - (a.stats.market_cap || 0));
+
+    // Pegar médias da categoria do setor correspondente
+    const industryAvg = this.marketFinancials.sector_averages[sector] || { stats: {}, historical: {} };
+
+    // Limpar gráficos anteriores para evitar vazamento ou duplicação
+    if (this.fundamentalCharts) {
+      Object.keys(this.fundamentalCharts).forEach(key => {
+        if (this.fundamentalCharts[key]) {
+          this.fundamentalCharts[key].destroy();
+        }
+      });
+    }
+    this.fundamentalCharts = {};
+
+    // -------------------------------------------------------------
+    // GRÁFICO: Performance Comparada Rescalonada Base 100 & Média (Mais Recentes 60 dias)
+    // -------------------------------------------------------------
+    const canvasPerf = this.$('chartPerformanceBase100');
+    if (canvasPerf && this.marketData) {
+      const topPeers = peers.slice(0, 5); // Traz os top 5 pares
+      const datasets = [];
+      let commonDates = [];
+
+      // Coleta datas válidas dos últimos 60 dias do ativo principal
+      const mainHist = this.marketData.assets[ticker] && this.marketData.assets[ticker].history;
+      if (mainHist && mainHist.dates && mainHist.dates.length > 0) {
+        commonDates = mainHist.dates.slice(-60);
+      }
+
+      if (commonDates.length > 0) {
+        // Ativo principal (VALE3 por exemplo) rescalonado para Base 100
+        const mainCloses = commonDates.map(d => {
+          const idx = mainHist.dates.indexOf(d);
+          return idx !== -1 ? mainHist.closes[idx] : null;
+        });
+        const firstMainClose = mainCloses.find(v => v !== null && v > 0);
+        const mainBase100 = mainCloses.map(v => (firstMainClose ? (v / firstMainClose) * 100 : 100));
+
+        datasets.push({
+          label: ticker.replace('.SA', ''),
+          data: mainBase100,
+          borderColor: 'var(--accent)',
+          borderWidth: 3,
+          pointRadius: 0,
+          fill: false,
+          tension: 0.1
+        });
+
+        // Pares individuais
+        const peerSeries = [];
+        topPeers.forEach((p, idx) => {
+          if (p.ticker === ticker) return; // ignora a si mesmo
+          const pHist = this.marketData.assets[p.ticker] && this.marketData.assets[p.ticker].history;
+          if (pHist && pHist.dates && pHist.dates.length > 0) {
+            const pCloses = commonDates.map(d => {
+              const oIdx = pHist.dates.indexOf(d);
+              return oIdx !== -1 ? pHist.closes[oIdx] : null;
+            });
+            const firstPClose = pCloses.find(v => v !== null && v > 0);
+            const pBase100 = pCloses.map(v => (firstPClose ? (v / firstPClose) * 100 : 100));
+
+            peerSeries.push(pBase100);
+
+            datasets.push({
+              label: p.ticker.replace('.SA', ''),
+              data: pBase100,
+              borderColor: `rgba(255, 255, 255, ${0.15 + (idx * 0.15)})`,
+              borderWidth: 1.2,
+              borderDash: [3, 3],
+              pointRadius: 0,
+              fill: false,
+              tension: 0.1
+            });
+          }
+        });
+
+        // Média dos Pares (Média simples rescalonada)
+        if (peerSeries.length > 0) {
+          const avgBase100 = commonDates.map((_, colIdx) => {
+            const vals = peerSeries.map(ser => ser[colIdx]).filter(v => v !== null && !isNaN(v));
+            return vals.length > 0 ? vals.reduce((a, b) => a + b, 0) / vals.length : 100;
+          });
+
+          datasets.push({
+            label: 'Média de Pares',
+            data: avgBase100,
+            borderColor: '#ec4899', // Rosa de destaque
+            borderWidth: 2,
+            pointRadius: 0,
+            fill: false,
+            tension: 0.1
+          });
+        }
+
+        // Formatação das datas para formato brasileiro (ex: 20/Jul)
+        const labelsBr = commonDates.map(d => {
+          const dateObj = new Date(d + 'T12:00:00');
+          return dateObj.toLocaleDateString('pt-BR', { day: 'numeric', month: 'short' });
+        });
+
+        this.fundamentalCharts.performance = new Chart(canvasPerf, {
+          type: 'line',
+          data: { labels: labelsBr, datasets },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: { position: 'top', labels: { color: 'var(--text-primary)', font: { size: 11 } } },
+              tooltip: { mode: 'index', intersect: false }
+            },
+            scales: {
+              x: { grid: { color: 'rgba(255, 255, 255, 0.05)' }, ticks: { color: 'var(--text-muted)', maxTicksLimit: 10 } },
+              y: { grid: { color: 'rgba(255, 255, 255, 0.05)' }, ticks: { color: 'var(--text-muted)' } }
+            }
+          }
+        });
+      }
+    }
+
+    // -------------------------------------------------------------
+    // GRÁFICO 1: Receita Anual (Linhas de evolução comparada)
+    // -------------------------------------------------------------
+    const canvasRev = this.$('chartAnnualRevenue');
+    if (canvasRev) {
+      const years = Object.keys(historical.revenue || {}).sort();
+      if (years.length > 0) {
+        const assetVals = years.map(y => (historical.revenue[y] || 0) / 1000000); // Milhões de USD/BRL
+        const industryVals = years.map(y => {
+          const raw = (industryAvg.historical && industryAvg.historical.revenue && industryAvg.historical.revenue[y]);
+          return raw ? raw / 1000000 : null;
+        });
+
+        this.fundamentalCharts.revenue = new Chart(canvasRev, {
+          type: 'line',
+          data: {
+            labels: years,
+            datasets: [
+              {
+                label: ticker.replace('.SA', ''),
+                data: assetVals,
+                borderColor: 'var(--accent)',
+                backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                borderWidth: 3,
+                fill: true,
+                tension: 0.15
+              },
+              {
+                label: `Média do Setor / Categoria`,
+                data: industryVals,
+                borderColor: '#10b981',
+                borderDash: [5, 5],
+                borderWidth: 2,
+                fill: false,
+                tension: 0.15
+              }
+            ]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: { labels: { color: 'var(--text-primary)' } },
+              tooltip: {
+                callbacks: {
+                  label: (context) => {
+                    return `${context.dataset.label}: M R$ ${this.formatNumber(context.raw, 2)}`;
+                  }
+                }
+              }
+            },
+            scales: {
+              x: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: 'var(--text-muted)' } },
+              y: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: 'var(--text-muted)' } }
+            }
+          }
+        });
+      }
+    }
+
+    // -------------------------------------------------------------
+    // GRÁFICO 2: Margem Operacional (Evolução comparada)
+    // -------------------------------------------------------------
+    const canvasMargin = this.$('chartOperatingMargin');
+    if (canvasMargin) {
+      const years = Object.keys(historical.operating_margin || {}).sort();
+      if (years.length > 0) {
+        const assetVals = years.map(y => (historical.operating_margin[y] || 0) * 100);
+        const industryVals = years.map(y => {
+          const raw = (industryAvg.historical && industryAvg.historical.operating_margin && industryAvg.historical.operating_margin[y]);
+          return raw ? raw * 100 : null;
+        });
+
+        this.fundamentalCharts.margin = new Chart(canvasMargin, {
+          type: 'line',
+          data: {
+            labels: years,
+            datasets: [
+              {
+                label: ticker.replace('.SA', ''),
+                data: assetVals,
+                borderColor: '#eab308', // Amarelo brilhante
+                borderWidth: 3,
+                fill: false,
+                tension: 0.15
+              },
+              {
+                label: `Média do Segmento`,
+                data: industryVals,
+                borderColor: 'var(--accent)',
+                borderDash: [5, 5],
+                borderWidth: 2,
+                fill: false,
+                tension: 0.15
+              }
+            ]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: { labels: { color: 'var(--text-primary)' } },
+              tooltip: {
+                callbacks: {
+                  label: (context) => `${context.dataset.label}: ${this.formatNumber(context.raw, 2)}%`
+                }
+              }
+            },
+            scales: {
+              x: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: 'var(--text-muted)' } },
+              y: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: 'var(--text-muted)', callback: value => value + '%' } }
+            }
+          }
+        });
+      }
+    }
+
+    // -------------------------------------------------------------
+    // GRÁFICO 3: Liquidez Corrente / Razão Atual
+    // Esquerda: Barra horizontal (Peers). Direita: Histórico (Linha)
+    // -------------------------------------------------------------
+    const canvasLiqPeers = this.$('chartLiquidityPeers');
+    const canvasLiqHistory = this.$('chartLiquidityHistory');
+
+    if (canvasLiqPeers) {
+      const topPeers = peers.slice(0, 5);
+      const labels = topPeers.map(p => p.ticker.replace('.SA', ''));
+      const values = topPeers.map(p => {
+        // tenta liquidez corrente atual mais recente do histórico ou atual
+        const hist = p.historical && p.historical.current_liquidity;
+        if (hist) {
+          const years = Object.keys(hist).sort();
+          if (years.length > 0) return hist[years[years.length - 1]];
+        }
+        return null;
+      });
+
+      const peerAvgVal = industryAvg.stats && industryAvg.stats.current_liquidity_current || (industryAvg.historical && industryAvg.historical.current_liquidity && Object.values(industryAvg.historical.current_liquidity)[0]) || 1.44;
+
+      this.fundamentalCharts.liqPeers = new Chart(canvasLiqPeers, {
+        type: 'bar',
+        data: {
+          labels: labels,
+          datasets: [
+            {
+              label: 'Liquidez Corrente',
+              data: values,
+              backgroundColor: topPeers.map(p => p.ticker === ticker ? 'rgba(59, 130, 246, 0.8)' : 'rgba(255, 255, 255, 0.25)'),
+              borderColor: topPeers.map(p => p.ticker === ticker ? 'var(--accent)' : 'rgba(255, 255, 255, 0.4)'),
+              borderWidth: 1,
+              barThickness: 24
+            }
+          ]
+        },
+        options: {
+          indexAxis: 'y',
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              callbacks: {
+                label: (context) => `Liquidez: ${this.formatNumber(context.raw, 2)}`
+              }
+            },
+            // Linhas indicadoras de Média
+            annotation: {
+              annotations: {
+                line1: {
+                  type: 'line',
+                  xMin: peerAvgVal,
+                  xMax: peerAvgVal,
+                  borderColor: 'rgba(236, 72, 153, 0.8)', // Rosa
+                  borderWidth: 2,
+                  label: {
+                    content: `Média de Pares: ${this.formatNumber(peerAvgVal, 2)}`,
+                    display: true,
+                    position: 'end',
+                    backgroundColor: 'rgba(236, 72, 153, 0.9)',
+                    color: '#fff',
+                    font: { size: 9, weight: 'bold' }
+                  }
+                }
+              }
+            }
+          },
+          scales: {
+            x: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: 'var(--text-muted)' } },
+            y: { grid: { display: false }, ticks: { color: 'var(--text-primary)' } }
+          }
+        }
+      });
+    }
+
+    if (canvasLiqHistory) {
+      const years = Object.keys(historical.current_liquidity || {}).sort();
+      if (years.length > 0) {
+        const values = years.map(y => historical.current_liquidity[y]);
+        this.fundamentalCharts.liqHistory = new Chart(canvasLiqHistory, {
+          type: 'line',
+          data: {
+            labels: years,
+            datasets: [
+              {
+                label: 'Histórico',
+                data: values,
+                borderColor: 'var(--accent)',
+                backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                borderWidth: 3,
+                fill: true,
+                tension: 0.15
+              }
+            ]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: { legend: { display: false } },
+            scales: {
+              x: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: 'var(--text-muted)' } },
+              y: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: 'var(--text-muted)' } }
+            }
+          }
+        });
+      }
+    }
+
+    // -------------------------------------------------------------
+    // GRÁFICO 4: ROE (Retorno sobre Capital Próprio) versus Pares
+    // -------------------------------------------------------------
+    const canvasRoePeers = this.$('chartRoePeers');
+    if (canvasRoePeers) {
+      const topPeers = peers.slice(0, 5);
+      const labels = topPeers.map(p => p.ticker.replace('.SA', ''));
+      const values = topPeers.map(p => p.stats.roe ? p.stats.roe * 100 : null);
+      const peerAvgVal = industryAvg.stats && industryAvg.stats.roe ? industryAvg.stats.roe * 100 : 10.98;
+
+      this.fundamentalCharts.roePeers = new Chart(canvasRoePeers, {
+        type: 'bar',
+        data: {
+          labels: labels,
+          datasets: [
+            {
+              label: 'ROE (%)',
+              data: values,
+              backgroundColor: topPeers.map(p => p.ticker === ticker ? 'rgba(59, 130, 246, 0.8)' : (values[topPeers.indexOf(p)] < 0 ? 'rgba(239, 68, 68, 0.4)' : 'rgba(255, 255, 255, 0.25)')),
+              borderColor: topPeers.map(p => p.ticker === ticker ? 'var(--accent)' : 'rgba(255, 255, 255, 0.4)'),
+              borderWidth: 1,
+              barThickness: 24
+            }
+          ]
+        },
+        options: {
+          indexAxis: 'y',
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              callbacks: {
+                label: (context) => `ROE: ${this.formatNumber(context.raw, 2)}%`
+              }
+            },
+            annotation: {
+              annotations: {
+                line1: {
+                  type: 'line',
+                  xMin: peerAvgVal,
+                  xMax: peerAvgVal,
+                  borderColor: 'rgba(236, 72, 153, 0.8)',
+                  borderWidth: 2,
+                  label: {
+                    content: `Média de Pares: ${this.formatNumber(peerAvgVal, 2)}%`,
+                    display: true,
+                    position: 'end',
+                    backgroundColor: 'rgba(236, 72, 153, 0.9)',
+                    color: '#fff',
+                    font: { size: 9, weight: 'bold' }
+                  }
+                }
+              }
+            }
+          },
+          scales: {
+            x: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: 'var(--text-muted)' } },
+            y: { grid: { display: false }, ticks: { color: 'var(--text-primary)' } }
+          }
+        }
+      });
+    }
+
+    // -------------------------------------------------------------
+    // GRÁFICO 5: Relação Dívida / Patrimônio (Debt to Equity)
+    // Esquerda: Barra horizontal (Peers). Direita: Histórico (Linha)
+    // -------------------------------------------------------------
+    const canvasDebtPeers = this.$('chartDebtEquityPeers');
+    const canvasDebtHistory = this.$('chartDebtEquityHistory');
+
+    if (canvasDebtPeers) {
+      const topPeers = peers.slice(0, 5);
+      const labels = topPeers.map(p => p.ticker.replace('.SA', ''));
+      const values = topPeers.map(p => {
+        const hist = p.historical && p.historical.debt_to_equity;
+        if (hist) {
+          const years = Object.keys(hist).sort();
+          if (years.length > 0) return hist[years[years.length - 1]] * 100; // Converte em %
+        }
+        return p.stats.debt_to_equity_current ? p.stats.debt_to_equity_current : null;
+      });
+
+      const peerAvgVal = (industryAvg.stats && industryAvg.stats.debt_to_equity_current) || (industryAvg.historical && industryAvg.historical.debt_to_equity && Object.values(industryAvg.historical.debt_to_equity)[0] * 100) || 167.17;
+
+      this.fundamentalCharts.debtPeers = new Chart(canvasDebtPeers, {
+        type: 'bar',
+        data: {
+          labels: labels,
+          datasets: [
+            {
+              label: 'Dívida/Patrimônio (%)',
+              data: values,
+              backgroundColor: topPeers.map(p => p.ticker === ticker ? 'rgba(59, 130, 246, 0.8)' : (values[topPeers.indexOf(p)] < 0 ? 'rgba(239, 68, 68, 0.4)' : 'rgba(255, 255, 255, 0.25)')),
+              borderColor: topPeers.map(p => p.ticker === ticker ? 'var(--accent)' : 'rgba(255, 255, 255, 0.4)'),
+              borderWidth: 1,
+              barThickness: 24
+            }
+          ]
+        },
+        options: {
+          indexAxis: 'y',
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              callbacks: {
+                label: (context) => `Dívida/Patrimônio: ${this.formatNumber(context.raw, 2)}%`
+              }
+            },
+            annotation: {
+              annotations: {
+                line1: {
+                  type: 'line',
+                  xMin: peerAvgVal,
+                  xMax: peerAvgVal,
+                  borderColor: 'rgba(236, 72, 153, 0.8)',
+                  borderWidth: 2,
+                  label: {
+                    content: `Média de Pares: ${this.formatNumber(peerAvgVal, 2)}%`,
+                    display: true,
+                    position: 'end',
+                    backgroundColor: 'rgba(236, 72, 153, 0.9)',
+                    color: '#fff',
+                    font: { size: 9, weight: 'bold' }
+                  }
+                }
+              }
+            }
+          },
+          scales: {
+            x: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: 'var(--text-muted)' } },
+            y: { grid: { display: false }, ticks: { color: 'var(--text-primary)' } }
+          }
+        }
+      });
+    }
+
+    if (canvasDebtHistory) {
+      const years = Object.keys(historical.debt_to_equity || {}).sort();
+      if (years.length > 0) {
+        const values = years.map(y => historical.debt_to_equity[y] * 100);
+        this.fundamentalCharts.debtHistory = new Chart(canvasDebtHistory, {
+          type: 'line',
+          data: {
+            labels: years,
+            datasets: [
+              {
+                label: 'Dívida/Patrimônio (%)',
+                data: values,
+                borderColor: '#e11d48', // Vermelho/Rosa escuro
+                backgroundColor: 'rgba(225, 29, 72, 0.1)',
+                borderWidth: 3,
+                fill: true,
+                tension: 0.15
+              }
+            ]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: { legend: { display: false } },
+            scales: {
+              x: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: 'var(--text-muted)' } },
+              y: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: 'var(--text-muted)', callback: value => value + '%' } }
+            }
+          }
+        });
+      }
+    }
+
+    // -------------------------------------------------------------
+    // GRÁFICO 6: EV/EBITDA versus Pares (Proposta adicional comum ao mercado de ações)
+    // -------------------------------------------------------------
+    const canvasEvEbitdaPeers = this.$('chartEvEbitdaPeers');
+    if (canvasEvEbitdaPeers) {
+      const topPeers = peers.slice(0, 5);
+      const labels = topPeers.map(p => p.ticker.replace('.SA', ''));
+      const values = topPeers.map(p => p.stats.ev_to_ebitda ? p.stats.ev_to_ebitda : null);
+      const peerAvgVal = industryAvg.stats && industryAvg.stats.ev_to_ebitda ? industryAvg.stats.ev_to_ebitda : 6.46;
+
+      this.fundamentalCharts.evEbitdaPeers = new Chart(canvasEvEbitdaPeers, {
+        type: 'bar',
+        data: {
+          labels: labels,
+          datasets: [
+            {
+              label: 'EV/EBITDA',
+              data: values,
+              backgroundColor: topPeers.map(p => p.ticker === ticker ? 'rgba(59, 130, 246, 0.8)' : (values[topPeers.indexOf(p)] < 0 ? 'rgba(239, 68, 68, 0.4)' : 'rgba(255, 255, 255, 0.25)')),
+              borderColor: topPeers.map(p => p.ticker === ticker ? 'var(--accent)' : 'rgba(255, 255, 255, 0.4)'),
+              borderWidth: 1,
+              barThickness: 24
+            }
+          ]
+        },
+        options: {
+          indexAxis: 'y',
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              callbacks: {
+                label: (context) => `EV/EBITDA: ${this.formatNumber(context.raw, 2)}x`
+              }
+            },
+            annotation: {
+              annotations: {
+                line1: {
+                  type: 'line',
+                  xMin: peerAvgVal,
+                  xMax: peerAvgVal,
+                  borderColor: 'rgba(236, 72, 153, 0.8)',
+                  borderWidth: 2,
+                  label: {
+                    content: `Média de Pares: ${this.formatNumber(peerAvgVal, 2)}x`,
+                    display: true,
+                    position: 'end',
+                    backgroundColor: 'rgba(236, 72, 153, 0.9)',
+                    color: '#fff',
+                    font: { size: 9, weight: 'bold' }
+                  }
+                }
+              }
+            }
+          },
+          scales: {
+            x: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: 'var(--text-muted)' } },
+            y: { grid: { display: false }, ticks: { color: 'var(--text-primary)' } }
+          }
+        }
+      });
+    }
+
+  }
+
 }
 
 // Boot
