@@ -3228,9 +3228,9 @@ class B3App {
       subtitleEl.innerHTML = `Setor: <strong>${sec}</strong> | Segmento: <strong>${ind}</strong>`;
     }
 
-    // 2. Preencher KPI Cards Principais do Ativo
+    // 2. Preencher KPI Cards Principais do Ativo (Valor de Mercado abreviado a milhões)
     if (this.$('fundKpiMarketCap')) {
-      this.$('fundKpiMarketCap').textContent = stats.market_cap ? this.formatCurrency(stats.market_cap).replace(',00', '') : '—';
+      this.$('fundKpiMarketCap').textContent = stats.market_cap ? this.formatCurrency(stats.market_cap / 1000000).replace(',00', '') + ' M' : '—';
     }
     if (this.$('fundKpiPE')) {
       this.$('fundKpiPE').textContent = stats.forward_pe ? this.formatNumber(stats.forward_pe, 2) : '—';
@@ -3317,9 +3317,12 @@ class B3App {
           tension: 0.1
         });
 
-        // Pares individuais
+        // Pares individuais (usando cores sólidas distintas da paleta premium para evitar confusão)
         const peerSeries = [];
-        topPeers.forEach((p, idx) => {
+        const peerColors = ['#10b981', '#f59e0b', '#a855f7', '#06b6d4', '#f97316'];
+        let colorIdx = 0;
+
+        topPeers.forEach((p) => {
           if (p.ticker === ticker) return; // ignora a si mesmo
           const pHist = this.marketData.assets[p.ticker] && this.marketData.assets[p.ticker].history;
           if (pHist && pHist.dates && pHist.dates.length > 0) {
@@ -3332,12 +3335,14 @@ class B3App {
 
             peerSeries.push(pBase100);
 
+            const chosenColor = peerColors[colorIdx % peerColors.length];
+            colorIdx++;
+
             datasets.push({
               label: p.ticker.replace('.SA', ''),
               data: pBase100,
-              borderColor: `rgba(255, 255, 255, ${0.15 + (idx * 0.15)})`,
-              borderWidth: 1.2,
-              borderDash: [3, 3],
+              borderColor: chosenColor,
+              borderWidth: 1.8,
               pointRadius: 0,
               fill: false,
               tension: 0.1
@@ -3376,12 +3381,12 @@ class B3App {
             responsive: true,
             maintainAspectRatio: false,
             plugins: {
-              legend: { position: 'top', labels: { color: 'var(--text-primary)', font: { size: 11 } } },
+              legend: { position: 'top', labels: { color: '#f3f4f6', font: { size: 11 } } },
               tooltip: { mode: 'index', intersect: false }
             },
             scales: {
-              x: { grid: { color: 'rgba(255, 255, 255, 0.05)' }, ticks: { color: 'var(--text-muted)', maxTicksLimit: 10 } },
-              y: { grid: { color: 'rgba(255, 255, 255, 0.05)' }, ticks: { color: 'var(--text-muted)' } }
+              x: { grid: { color: 'rgba(255, 255, 255, 0.05)' }, ticks: { color: '#9ca3af', maxTicksLimit: 10 } },
+              y: { grid: { color: 'rgba(255, 255, 255, 0.05)' }, ticks: { color: '#9ca3af' } }
             }
           }
         });
@@ -3409,7 +3414,7 @@ class B3App {
               {
                 label: ticker.replace('.SA', ''),
                 data: assetVals,
-                borderColor: 'var(--accent)',
+                borderColor: '#3b82f6',
                 backgroundColor: 'rgba(59, 130, 246, 0.1)',
                 borderWidth: 3,
                 fill: true,
@@ -3430,7 +3435,7 @@ class B3App {
             responsive: true,
             maintainAspectRatio: false,
             plugins: {
-              legend: { labels: { color: 'var(--text-primary)' } },
+              legend: { labels: { color: '#f3f4f6' } },
               tooltip: {
                 callbacks: {
                   label: (context) => {
@@ -3440,8 +3445,8 @@ class B3App {
               }
             },
             scales: {
-              x: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: 'var(--text-muted)' } },
-              y: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: 'var(--text-muted)' } }
+              x: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#9ca3af' } },
+              y: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#9ca3af' } }
             }
           }
         });
@@ -3477,7 +3482,7 @@ class B3App {
               {
                 label: `Média do Segmento`,
                 data: industryVals,
-                borderColor: 'var(--accent)',
+                borderColor: '#3b82f6',
                 borderDash: [5, 5],
                 borderWidth: 2,
                 fill: false,
@@ -3489,7 +3494,7 @@ class B3App {
             responsive: true,
             maintainAspectRatio: false,
             plugins: {
-              legend: { labels: { color: 'var(--text-primary)' } },
+              legend: { labels: { color: '#f3f4f6' } },
               tooltip: {
                 callbacks: {
                   label: (context) => `${context.dataset.label}: ${this.formatNumber(context.raw, 2)}%`
@@ -3497,8 +3502,8 @@ class B3App {
               }
             },
             scales: {
-              x: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: 'var(--text-muted)' } },
-              y: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: 'var(--text-muted)', callback: value => value + '%' } }
+              x: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#9ca3af' } },
+              y: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#9ca3af', callback: value => value + '%' } }
             }
           }
         });
@@ -3536,7 +3541,7 @@ class B3App {
               label: 'Liquidez Corrente',
               data: values,
               backgroundColor: topPeers.map(p => p.ticker === ticker ? 'rgba(59, 130, 246, 0.8)' : 'rgba(255, 255, 255, 0.25)'),
-              borderColor: topPeers.map(p => p.ticker === ticker ? 'var(--accent)' : 'rgba(255, 255, 255, 0.4)'),
+              borderColor: topPeers.map(p => p.ticker === ticker ? '#3b82f6' : 'rgba(255, 255, 255, 0.4)'),
               borderWidth: 1,
               barThickness: 24
             }
@@ -3553,7 +3558,7 @@ class B3App {
                 label: (context) => `Liquidez: ${this.formatNumber(context.raw, 2)}`
               }
             },
-            // Linhas indicadoras de Média
+            // Linhas indicadoras de Média (Posição alterada para 'start' para não ofuscar o ativo principal)
             annotation: {
               annotations: {
                 line1: {
@@ -3565,7 +3570,7 @@ class B3App {
                   label: {
                     content: `Média de Pares: ${this.formatNumber(peerAvgVal, 2)}`,
                     display: true,
-                    position: 'end',
+                    position: 'start',
                     backgroundColor: 'rgba(236, 72, 153, 0.9)',
                     color: '#fff',
                     font: { size: 9, weight: 'bold' }
@@ -3575,8 +3580,8 @@ class B3App {
             }
           },
           scales: {
-            x: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: 'var(--text-muted)' } },
-            y: { grid: { display: false }, ticks: { color: 'var(--text-primary)' } }
+            x: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#9ca3af' } },
+            y: { grid: { display: false }, ticks: { color: '#f3f4f6' } }
           }
         }
       });
@@ -3594,7 +3599,7 @@ class B3App {
               {
                 label: 'Histórico',
                 data: values,
-                borderColor: 'var(--accent)',
+                borderColor: '#3b82f6',
                 backgroundColor: 'rgba(59, 130, 246, 0.1)',
                 borderWidth: 3,
                 fill: true,
@@ -3607,8 +3612,8 @@ class B3App {
             maintainAspectRatio: false,
             plugins: { legend: { display: false } },
             scales: {
-              x: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: 'var(--text-muted)' } },
-              y: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: 'var(--text-muted)' } }
+              x: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#9ca3af' } },
+              y: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#9ca3af' } }
             }
           }
         });
@@ -3634,7 +3639,7 @@ class B3App {
               label: 'ROE (%)',
               data: values,
               backgroundColor: topPeers.map(p => p.ticker === ticker ? 'rgba(59, 130, 246, 0.8)' : (values[topPeers.indexOf(p)] < 0 ? 'rgba(239, 68, 68, 0.4)' : 'rgba(255, 255, 255, 0.25)')),
-              borderColor: topPeers.map(p => p.ticker === ticker ? 'var(--accent)' : 'rgba(255, 255, 255, 0.4)'),
+              borderColor: topPeers.map(p => p.ticker === ticker ? '#3b82f6' : 'rgba(255, 255, 255, 0.4)'),
               borderWidth: 1,
               barThickness: 24
             }
@@ -3662,7 +3667,7 @@ class B3App {
                   label: {
                     content: `Média de Pares: ${this.formatNumber(peerAvgVal, 2)}%`,
                     display: true,
-                    position: 'end',
+                    position: 'start',
                     backgroundColor: 'rgba(236, 72, 153, 0.9)',
                     color: '#fff',
                     font: { size: 9, weight: 'bold' }
@@ -3672,8 +3677,8 @@ class B3App {
             }
           },
           scales: {
-            x: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: 'var(--text-muted)' } },
-            y: { grid: { display: false }, ticks: { color: 'var(--text-primary)' } }
+            x: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#9ca3af' } },
+            y: { grid: { display: false }, ticks: { color: '#f3f4f6' } }
           }
         }
       });
@@ -3709,7 +3714,7 @@ class B3App {
               label: 'Dívida/Patrimônio (%)',
               data: values,
               backgroundColor: topPeers.map(p => p.ticker === ticker ? 'rgba(59, 130, 246, 0.8)' : (values[topPeers.indexOf(p)] < 0 ? 'rgba(239, 68, 68, 0.4)' : 'rgba(255, 255, 255, 0.25)')),
-              borderColor: topPeers.map(p => p.ticker === ticker ? 'var(--accent)' : 'rgba(255, 255, 255, 0.4)'),
+              borderColor: topPeers.map(p => p.ticker === ticker ? '#3b82f6' : 'rgba(255, 255, 255, 0.4)'),
               borderWidth: 1,
               barThickness: 24
             }
@@ -3737,7 +3742,7 @@ class B3App {
                   label: {
                     content: `Média de Pares: ${this.formatNumber(peerAvgVal, 2)}%`,
                     display: true,
-                    position: 'end',
+                    position: 'start',
                     backgroundColor: 'rgba(236, 72, 153, 0.9)',
                     color: '#fff',
                     font: { size: 9, weight: 'bold' }
@@ -3747,8 +3752,8 @@ class B3App {
             }
           },
           scales: {
-            x: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: 'var(--text-muted)' } },
-            y: { grid: { display: false }, ticks: { color: 'var(--text-primary)' } }
+            x: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#9ca3af' } },
+            y: { grid: { display: false }, ticks: { color: '#f3f4f6' } }
           }
         }
       });
@@ -3779,8 +3784,8 @@ class B3App {
             maintainAspectRatio: false,
             plugins: { legend: { display: false } },
             scales: {
-              x: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: 'var(--text-muted)' } },
-              y: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: 'var(--text-muted)', callback: value => value + '%' } }
+              x: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#9ca3af' } },
+              y: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#9ca3af', callback: value => value + '%' } }
             }
           }
         });
@@ -3806,7 +3811,7 @@ class B3App {
               label: 'EV/EBITDA',
               data: values,
               backgroundColor: topPeers.map(p => p.ticker === ticker ? 'rgba(59, 130, 246, 0.8)' : (values[topPeers.indexOf(p)] < 0 ? 'rgba(239, 68, 68, 0.4)' : 'rgba(255, 255, 255, 0.25)')),
-              borderColor: topPeers.map(p => p.ticker === ticker ? 'var(--accent)' : 'rgba(255, 255, 255, 0.4)'),
+              borderColor: topPeers.map(p => p.ticker === ticker ? '#3b82f6' : 'rgba(255, 255, 255, 0.4)'),
               borderWidth: 1,
               barThickness: 24
             }
@@ -3834,7 +3839,7 @@ class B3App {
                   label: {
                     content: `Média de Pares: ${this.formatNumber(peerAvgVal, 2)}x`,
                     display: true,
-                    position: 'end',
+                    position: 'start',
                     backgroundColor: 'rgba(236, 72, 153, 0.9)',
                     color: '#fff',
                     font: { size: 9, weight: 'bold' }
@@ -3844,8 +3849,8 @@ class B3App {
             }
           },
           scales: {
-            x: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: 'var(--text-muted)' } },
-            y: { grid: { display: false }, ticks: { color: 'var(--text-primary)' } }
+            x: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#9ca3af' } },
+            y: { grid: { display: false }, ticks: { color: '#f3f4f6' } }
           }
         }
       });
