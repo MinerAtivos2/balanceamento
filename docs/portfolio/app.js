@@ -3856,6 +3856,134 @@ class B3App {
       });
     }
 
+    // -------------------------------------------------------------
+    // GRÁFICO 7: Preço / Lucro (P/L) versus Pares
+    // -------------------------------------------------------------
+    const canvasPLPeers = this.$('chartPLPeers');
+    if (canvasPLPeers) {
+      const topPeers = peers.slice(0, 5);
+      const labels = topPeers.map(p => p.ticker.replace('.SA', ''));
+      const values = topPeers.map(p => p.stats.forward_pe ? p.stats.forward_pe : null);
+      const peerAvgVal = industryAvg.stats && industryAvg.stats.forward_pe ? industryAvg.stats.forward_pe : 8.5;
+
+      this.fundamentalCharts.plPeers = new Chart(canvasPLPeers, {
+        type: 'bar',
+        data: {
+          labels: labels,
+          datasets: [
+            {
+              label: 'P/L',
+              data: values,
+              backgroundColor: topPeers.map(p => p.ticker === ticker ? 'rgba(59, 130, 246, 0.8)' : (values[topPeers.indexOf(p)] < 0 ? 'rgba(239, 68, 68, 0.4)' : 'rgba(255, 255, 255, 0.25)')),
+              borderColor: topPeers.map(p => p.ticker === ticker ? '#3b82f6' : 'rgba(255, 255, 255, 0.4)'),
+              borderWidth: 1,
+              barThickness: 24
+            }
+          ]
+        },
+        options: {
+          indexAxis: 'y',
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              callbacks: {
+                label: (context) => `P/L: ${this.formatNumber(context.raw, 2)}x`
+              }
+            },
+            annotation: {
+              annotations: {
+                line1: {
+                  type: 'line',
+                  xMin: peerAvgVal,
+                  xMax: peerAvgVal,
+                  borderColor: 'rgba(236, 72, 153, 0.8)',
+                  borderWidth: 2,
+                  label: {
+                    content: `Média de Pares: ${this.formatNumber(peerAvgVal, 2)}x`,
+                    display: true,
+                    position: 'start',
+                    backgroundColor: 'rgba(236, 72, 153, 0.9)',
+                    color: '#fff',
+                    font: { size: 9, weight: 'bold' }
+                  }
+                }
+              }
+            }
+          },
+          scales: {
+            x: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#9ca3af' } },
+            y: { grid: { display: false }, ticks: { color: '#f3f4f6' } }
+          }
+        }
+      });
+    }
+
+    // -------------------------------------------------------------
+    // GRÁFICO 8: Preço / Valor Patrimonial (P/VP) versus Pares
+    // -------------------------------------------------------------
+    const canvasPVPeers = this.$('chartPVPeers');
+    if (canvasPVPeers) {
+      const topPeers = peers.slice(0, 5);
+      const labels = topPeers.map(p => p.ticker.replace('.SA', ''));
+      const values = topPeers.map(p => p.stats.price_to_book ? p.stats.price_to_book : null);
+      const peerAvgVal = industryAvg.stats && industryAvg.stats.price_to_book ? industryAvg.stats.price_to_book : 1.5;
+
+      this.fundamentalCharts.pvPeers = new Chart(canvasPVPeers, {
+        type: 'bar',
+        data: {
+          labels: labels,
+          datasets: [
+            {
+              label: 'P/VP',
+              data: values,
+              backgroundColor: topPeers.map(p => p.ticker === ticker ? 'rgba(59, 130, 246, 0.8)' : (values[topPeers.indexOf(p)] < 0 ? 'rgba(239, 68, 68, 0.4)' : 'rgba(255, 255, 255, 0.25)')),
+              borderColor: topPeers.map(p => p.ticker === ticker ? '#3b82f6' : 'rgba(255, 255, 255, 0.4)'),
+              borderWidth: 1,
+              barThickness: 24
+            }
+          ]
+        },
+        options: {
+          indexAxis: 'y',
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              callbacks: {
+                label: (context) => `P/VP: ${this.formatNumber(context.raw, 2)}x`
+              }
+            },
+            annotation: {
+              annotations: {
+                line1: {
+                  type: 'line',
+                  xMin: peerAvgVal,
+                  xMax: peerAvgVal,
+                  borderColor: 'rgba(236, 72, 153, 0.8)',
+                  borderWidth: 2,
+                  label: {
+                    content: `Média de Pares: ${this.formatNumber(peerAvgVal, 2)}x`,
+                    display: true,
+                    position: 'start',
+                    backgroundColor: 'rgba(236, 72, 153, 0.9)',
+                    color: '#fff',
+                    font: { size: 9, weight: 'bold' }
+                  }
+                }
+              }
+            }
+          },
+          scales: {
+            x: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#9ca3af' } },
+            y: { grid: { display: false }, ticks: { color: '#f3f4f6' } }
+          }
+        }
+      });
+    }
+
   }
 
 }
