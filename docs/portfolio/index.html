@@ -852,7 +852,7 @@
         </div>
 
         <!-- Grid de Gráficos Financeiros e de Pares -->
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 1.5rem;">
+        <div class="fund-charts-grid">
 
           <!-- 1. Receita Anual -->
           <div class="card glass" style="padding: 1.5rem;">
@@ -876,7 +876,7 @@
           <div class="card glass" style="padding: 1.5rem;">
             <h2 class="card-title" style="margin-bottom: 0.25rem; font-size: 1.1rem; font-weight: 700;">Índice de Liquidez Corrente em Comparação com os Pares</h2>
             <p class="subtitle" style="margin: 0 0 1rem 0; font-size: 0.85rem;">Capacidade de cobrir obrigações de curto prazo com ativos circulantes de curto prazo.</p>
-            <div style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 1rem; align-items: center;">
+            <div class="fund-sub-grid">
               <div style="height: 220px; position: relative;">
                 <canvas id="chartLiquidityPeers"></canvas>
               </div>
@@ -899,7 +899,7 @@
           <div class="card glass" style="padding: 1.5rem;">
             <h2 class="card-title" style="margin-bottom: 0.25rem; font-size: 1.1rem; font-weight: 700;">Índice Dívida/Patrimônio em Comparação com os Pares</h2>
             <p class="subtitle" style="margin: 0 0 1rem 0; font-size: 0.85rem;">Nível de endividamento bruto comparado com o capital próprio dos acionistas.</p>
-            <div style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 1rem; align-items: center;">
+            <div class="fund-sub-grid">
               <div style="height: 220px; position: relative;">
                 <canvas id="chartDebtEquityPeers"></canvas>
               </div>

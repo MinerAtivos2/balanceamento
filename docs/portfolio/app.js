@@ -130,22 +130,39 @@ class B3App {
 
     this.showPage('monitor');
 
-    // Reseta botões de abas para o padrão (Análise Técnica ativa)
+    // Reseta botões de abas para o padrão fundamentalista se houver dados, senão técnica
     const btnTech = this.$('btnMonitorTabTechnical');
     const btnFund = this.$('btnMonitorTabFundamental');
     const panelTech = this.$('monitorTabContentTechnical');
     const panelFund = this.$('monitorTabContentFundamental');
 
-    if (btnTech) btnTech.classList.add('active');
-    if (btnFund) btnFund.classList.remove('active');
-    if (panelTech) panelTech.style.display = 'flex';
-    if (panelFund) panelFund.style.display = 'none';
+    const hasFundamentalData = this.marketFinancials && this.marketFinancials.assets && this.marketFinancials.assets[tickerWithSA];
 
-    // Garantir que o container está visível e dimensionado antes de renderizar
-    // O fadeUp leva 0.4s, então vamos aguardar um pouco mais para garantir
-    setTimeout(() => {
+    if (hasFundamentalData) {
+      if (btnFund) {
+        btnFund.classList.add('active');
+        btnFund.style.display = 'inline-block';
+      }
+      if (btnTech) btnTech.classList.remove('active');
+      if (panelFund) panelFund.style.display = 'flex';
+      if (panelTech) panelTech.style.display = 'none';
+
+      setTimeout(() => {
+        this.renderFundamentalAnalysis(tickerWithSA);
+      }, 450);
+    } else {
+      if (btnFund) {
+        btnFund.classList.remove('active');
+        btnFund.style.display = 'none'; // Esconde o botão se não houver dados
+      }
+      if (btnTech) btnTech.classList.add('active');
+      if (panelFund) panelFund.style.display = 'none';
+      if (panelTech) panelTech.style.display = 'block';
+
+      setTimeout(() => {
         this.renderChart(tickerClean);
-    }, 450);
+      }, 450);
+    }
   }
 
   /* ------------------------------------------------------------------
@@ -206,7 +223,7 @@ class B3App {
       btnTech.addEventListener('click', () => {
         btnTech.classList.add('active');
         btnFund.classList.remove('active');
-        this.$('monitorTabContentTechnical').style.display = 'flex';
+        this.$('monitorTabContentTechnical').style.display = 'block';
         this.$('monitorTabContentFundamental').style.display = 'none';
 
         // Redesenha o gráfico de tradingview se necessário
@@ -3310,7 +3327,7 @@ class B3App {
         datasets.push({
           label: ticker.replace('.SA', ''),
           data: mainBase100,
-          borderColor: 'var(--accent)',
+          borderColor: '#ffffff',
           borderWidth: 3,
           pointRadius: 0,
           fill: false,
