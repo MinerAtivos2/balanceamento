@@ -3287,6 +3287,16 @@ class B3App {
     // Ordenar pares por valor de mercado decrescente
     peers.sort((a, b) => (b.stats.market_cap || 0) - (a.stats.market_cap || 0));
 
+    // Garantir que o ativo analisado esteja SEMPRE incluído no topPeers (Ativo + 4 maiores pares)
+    let topPeers = [];
+    const activeAssetObj = this.marketFinancials.assets[ticker];
+    const otherPeers = peers.filter(p => p.ticker !== ticker);
+    if (activeAssetObj) {
+      topPeers = [activeAssetObj, ...otherPeers.slice(0, 4)];
+    } else {
+      topPeers = peers.slice(0, 5);
+    }
+
     // Pegar médias da categoria do setor correspondente
     const industryAvg = this.marketFinancials.sector_averages[sector] || { stats: {}, historical: {} };
 
@@ -3305,7 +3315,6 @@ class B3App {
     // -------------------------------------------------------------
     const canvasPerf = this.$('chartPerformanceBase100');
     if (canvasPerf && this.marketData) {
-      const topPeers = peers.slice(0, 5); // Traz os top 5 pares
       const datasets = [];
       let commonDates = [];
 
@@ -3535,7 +3544,6 @@ class B3App {
     const canvasLiqHistory = this.$('chartLiquidityHistory');
 
     if (canvasLiqPeers) {
-      const topPeers = peers.slice(0, 5);
       const labels = topPeers.map(p => p.ticker.replace('.SA', ''));
       const values = topPeers.map(p => {
         // tenta liquidez corrente atual mais recente do histórico ou atual
@@ -3642,7 +3650,6 @@ class B3App {
     // -------------------------------------------------------------
     const canvasRoePeers = this.$('chartRoePeers');
     if (canvasRoePeers) {
-      const topPeers = peers.slice(0, 5);
       const labels = topPeers.map(p => p.ticker.replace('.SA', ''));
       const values = topPeers.map(p => p.stats.roe ? p.stats.roe * 100 : null);
       const peerAvgVal = industryAvg.stats && industryAvg.stats.roe ? industryAvg.stats.roe * 100 : 10.98;
@@ -3709,7 +3716,6 @@ class B3App {
     const canvasDebtHistory = this.$('chartDebtEquityHistory');
 
     if (canvasDebtPeers) {
-      const topPeers = peers.slice(0, 5);
       const labels = topPeers.map(p => p.ticker.replace('.SA', ''));
       const values = topPeers.map(p => {
         const hist = p.historical && p.historical.debt_to_equity;
@@ -3814,7 +3820,6 @@ class B3App {
     // -------------------------------------------------------------
     const canvasEvEbitdaPeers = this.$('chartEvEbitdaPeers');
     if (canvasEvEbitdaPeers) {
-      const topPeers = peers.slice(0, 5);
       const labels = topPeers.map(p => p.ticker.replace('.SA', ''));
       const values = topPeers.map(p => p.stats.ev_to_ebitda ? p.stats.ev_to_ebitda : null);
       const peerAvgVal = industryAvg.stats && industryAvg.stats.ev_to_ebitda ? industryAvg.stats.ev_to_ebitda : 6.46;
@@ -3878,7 +3883,6 @@ class B3App {
     // -------------------------------------------------------------
     const canvasPLPeers = this.$('chartPLPeers');
     if (canvasPLPeers) {
-      const topPeers = peers.slice(0, 5);
       const labels = topPeers.map(p => p.ticker.replace('.SA', ''));
       const values = topPeers.map(p => p.stats.forward_pe ? p.stats.forward_pe : null);
       const peerAvgVal = industryAvg.stats && industryAvg.stats.forward_pe ? industryAvg.stats.forward_pe : 8.5;
@@ -3942,7 +3946,6 @@ class B3App {
     // -------------------------------------------------------------
     const canvasPVPeers = this.$('chartPVPeers');
     if (canvasPVPeers) {
-      const topPeers = peers.slice(0, 5);
       const labels = topPeers.map(p => p.ticker.replace('.SA', ''));
       const values = topPeers.map(p => p.stats.price_to_book ? p.stats.price_to_book : null);
       const peerAvgVal = industryAvg.stats && industryAvg.stats.price_to_book ? industryAvg.stats.price_to_book : 1.5;
