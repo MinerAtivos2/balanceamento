@@ -32,26 +32,22 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install -r requirements.txt
       
-      #- name: Fetch market data
-      #  run: python docs/portfolio/scripts/data_fetcher.py
+      - name: Fetch market data
+        run: python docs/portfolio/scripts/data_fetcher.py
 
-      #- name: Generate market summary
-      #  run: python docs/portfolio/scripts/market_summary.py
+      - name: Generate market summary
+        run: python docs/portfolio/scripts/market_summary.py
 
-      #- name: Generate AI News and Insights
-      #  run: python docs/portfolio/scripts/news_fetcher.py
-      #  env:
-      #    GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-      #    GAS_URL: ${{ secrets.GAS_URL }}
-
-      - name: Fetch market data fundamentals
-        run: python docs/portfolio/scripts/financials_fetcher.py
+      - name: Generate AI News and Insights
+        run: python docs/portfolio/scripts/news_fetcher.py
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GAS_URL: ${{ secrets.GAS_URL }}
       
       - name: Commit and push changes
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          #git add docs/portfolio/data/market_data.json docs/portfolio/data/market_summary.json docs/portfolio/data/market_summary.md docs/portfolio/data/market_news.json
-          git add docs/portfolio/data/market_financials.json
+          git add docs/portfolio/data/market_data.json docs/portfolio/data/market_summary.json docs/portfolio/data/market_summary.md docs/portfolio/data/market_news.json
           git commit -m "Update market data, summary and AI insights - $(date +'%Y-%m-%d %H:%M:%S')" || echo "No changes to commit"
           git push
