@@ -1,5 +1,5 @@
 {
-  "last_update": "2026-07-13T17:11:43.504843",
+  "last_update": "2026-07-14T18:54:55.191788",
   "assets": {
     "ABEV3.SA": {
       "ticker": "ABEV3.SA",
@@ -7,11 +7,11 @@
       "stats": {
         "sector": "Consumer Defensive",
         "industry": "Beverages - Brewers",
-        "market_cap": 245923807232.0,
-        "forward_pe": 14.051543,
-        "price_to_book": 2.7426891,
+        "market_cap": 244617740288.0,
+        "forward_pe": 14.0338125,
+        "price_to_book": 2.7392282,
         "dividend_yield": 1.14,
-        "ev_to_ebitda": 8.548,
+        "ev_to_ebitda": 8.554,
         "roe": 0.17251,
         "profit_margin": 0.1766,
         "operating_margin_current": 0.26229,
@@ -68,11 +68,11 @@
       "stats": {
         "sector": "Utilities",
         "industry": "Utilities - Renewable",
-        "market_cap": 16029607936.0,
-        "forward_pe": 12.219665,
-        "price_to_book": 1.1961383,
+        "market_cap": 16153277440.0,
+        "forward_pe": 12.31394,
+        "price_to_book": 1.2053666,
         "dividend_yield": 2.47,
-        "ev_to_ebitda": 8.826,
+        "ev_to_ebitda": 8.791,
         "roe": 0.12679,
         "profit_margin": 0.25167,
         "operating_margin_current": 0.58217996,
@@ -129,11 +129,11 @@
       "stats": {
         "sector": "Financial Services",
         "industry": "Financial Data & Stock Exchanges",
-        "market_cap": 75124424704.0,
-        "forward_pe": 11.540587,
-        "price_to_book": 4.1257205,
+        "market_cap": 76923813888.0,
+        "forward_pe": 11.817009,
+        "price_to_book": 4.22454,
         "dividend_yield": 5.74,
-        "ev_to_ebitda": 10.865,
+        "ev_to_ebitda": 10.656,
         "roe": 0.26738,
         "profit_margin": 0.46965,
         "operating_margin_current": 0.67303,
@@ -190,9 +190,9 @@
       "stats": {
         "sector": "Financial Services",
         "industry": "Banks - Regional",
-        "market_cap": 115715145728.0,
-        "forward_pe": 4.2110906,
-        "price_to_book": 0.6228108,
+        "market_cap": 116974813184.0,
+        "forward_pe": 4.2567954,
+        "price_to_book": 0.6295704,
         "dividend_yield": 1.16,
         "ev_to_ebitda": null,
         "roe": 0.09224,
@@ -236,10 +236,10 @@
       "stats": {
         "sector": "Financial Services",
         "industry": "Banks - Regional",
-        "market_cap": 186441891840.0,
-        "forward_pe": 7.82381,
-        "price_to_book": 0.9661296,
-        "dividend_yield": 1.32,
+        "market_cap": 184058871808.0,
+        "forward_pe": 7.798077,
+        "price_to_book": 0.95378095,
+        "dividend_yield": 1.27,
         "ev_to_ebitda": null,
         "roe": 0.13366,
         "profit_margin": 0.25358,
@@ -282,10 +282,10 @@
       "stats": {
         "sector": "Financial Services",
         "industry": "Banks - Regional",
-        "market_cap": 198729383936.0,
-        "forward_pe": 6.1960316,
-        "price_to_book": 1.1054921,
-        "dividend_yield": 1.26,
+        "market_cap": 195452469248.0,
+        "forward_pe": 6.0938635,
+        "price_to_book": 1.0872632,
+        "dividend_yield": 1.21,
         "ev_to_ebitda": null,
         "roe": 0.13366,
         "profit_margin": 0.25358,
@@ -328,10 +328,10 @@
       "stats": {
         "sector": "Financial Services",
         "industry": "Capital Markets",
-        "market_cap": 194625781760.0,
-        "forward_pe": 9.671607,
-        "price_to_book": 3.7370598,
-        "dividend_yield": 2.51,
+        "market_cap": 194794274816.0,
+        "forward_pe": 9.67998,
+        "price_to_book": 3.740295,
+        "dividend_yield": 2.38,
         "ev_to_ebitda": null,
         "roe": 0.2484,
         "profit_margin": 0.3877,
@@ -400,9 +400,9 @@
       "stats": {
         "sector": "Basic Materials",
         "industry": "Aluminum",
-        "market_cap": 7031585280.0,
-        "forward_pe": 8.025026,
-        "price_to_book": 1.5185602,
+        "market_cap": 7038096384.0,
+        "forward_pe": 8.032457,
+        "price_to_book": 1.5199664,
         "dividend_yield": 0.41,
         "ev_to_ebitda": 11.392,
         "roe": 0.05051,
@@ -461,11 +461,11 @@
       "stats": {
         "sector": "Utilities",
         "industry": "Utilities - Regulated Electric",
-        "market_cap": 31696355328.0,
-        "forward_pe": 9.308343,
-        "price_to_book": 1.097247,
+        "market_cap": 31867998208.0,
+        "forward_pe": 9.358749,
+        "price_to_book": 1.1031889,
         "dividend_yield": 11.26,
-        "ev_to_ebitda": 6.552,
+        "ev_to_ebitda": 6.438,
         "roe": 0.17038,
         "profit_margin": 0.111549996,
         "operating_margin_current": 0.1251,
@@ -522,11 +522,11 @@
       "stats": {
         "sector": "Basic Materials",
         "industry": "Steel",
-        "market_cap": 29604640768.0,
-        "forward_pe": 13.212121,
-        "price_to_book": 4.1826553,
-        "dividend_yield": 12.94,
-        "ev_to_ebitda": 4.764,
+        "market_cap": 27390349312.0,
+        "forward_pe": 12.114696,
+        "price_to_book": 3.891021,
+        "dividend_yield": 11.95,
+        "ev_to_ebitda": 4.962,
         "roe": 0.25741,
         "profit_margin": 0.12511,
         "operating_margin_current": 0.25923002,
@@ -583,11 +583,11 @@
       "stats": {
         "sector": "Utilities",
         "industry": "Utilities - Regulated Electric",
-        "market_cap": 54155960320.0,
-        "forward_pe": 10.526057,
-        "price_to_book": 2.2288613,
+        "market_cap": 54397931520.0,
+        "forward_pe": 10.573088,
+        "price_to_book": 2.23882,
         "dividend_yield": 7.8,
-        "ev_to_ebitda": 6.463,
+        "ev_to_ebitda": 6.375,
         "roe": 0.24763,
         "profit_margin": 0.12792,
         "operating_margin_current": 0.28258,
@@ -670,11 +670,11 @@
       "stats": {
         "sector": "Energy",
         "industry": "Oil & Gas Refining & Marketing",
-        "market_cap": 15461917696.0,
-        "forward_pe": 7.1347966,
-        "price_to_book": 4.394619,
+        "market_cap": 15264698368.0,
+        "forward_pe": 7.0437913,
+        "price_to_book": 4.338565,
         "dividend_yield": null,
-        "ev_to_ebitda": 1.652,
+        "ev_to_ebitda": 1.604,
         "roe": -0.29937,
         "profit_margin": -0.23923,
         "operating_margin_current": 0.30708998,
@@ -731,11 +731,11 @@
       "stats": {
         "sector": "Utilities",
         "industry": "Utilities - Regulated Water",
-        "market_cap": 25283819520.0,
-        "forward_pe": 14.93393,
-        "price_to_book": 2.8833349,
+        "market_cap": 25056309248.0,
+        "forward_pe": 14.799552,
+        "price_to_book": 2.8573902,
         "dividend_yield": 1.79,
-        "ev_to_ebitda": 11.433,
+        "ev_to_ebitda": 11.276,
         "roe": 0.15884,
         "profit_margin": 0.16141,
         "operating_margin_current": 0.25837,
@@ -792,11 +792,11 @@
       "stats": {
         "sector": "Basic Materials",
         "industry": "Steel",
-        "market_cap": 6935471616.0,
-        "forward_pe": -5.4582644,
-        "price_to_book": 0.5397317,
+        "market_cap": 6816122880.0,
+        "forward_pe": -4.3719378,
+        "price_to_book": 0.5304438,
         "dividend_yield": null,
-        "ev_to_ebitda": 6.476,
+        "ev_to_ebitda": 6.487,
         "roe": -0.08274,
         "profit_margin": -0.04492,
         "operating_margin_current": 0.02903,
@@ -853,11 +853,11 @@
       "stats": {
         "sector": "Utilities",
         "industry": "Utilities - Renewable",
-        "market_cap": 37193252864.0,
-        "forward_pe": 11.8961935,
-        "price_to_book": 2.7345262,
-        "dividend_yield": 5.61,
-        "ev_to_ebitda": 9.157,
+        "market_cap": 36610678784.0,
+        "forward_pe": 11.709858,
+        "price_to_book": 2.691694,
+        "dividend_yield": 5.65,
+        "ev_to_ebitda": 8.974,
         "roe": 0.20204,
         "profit_margin": 0.19354999,
         "operating_margin_current": 0.50492,
@@ -992,11 +992,11 @@
       "stats": {
         "sector": "Utilities",
         "industry": "Utilities - Regulated Electric",
-        "market_cap": 50472726528.0,
-        "forward_pe": 21.740541,
-        "price_to_book": 1.9686736,
-        "dividend_yield": 5.8,
-        "ev_to_ebitda": 8.52,
+        "market_cap": 51188027392.0,
+        "forward_pe": 22.048649,
+        "price_to_book": 1.9965737,
+        "dividend_yield": 5.9,
+        "ev_to_ebitda": 8.446,
         "roe": 0.069359995,
         "profit_margin": 0.02894,
         "operating_margin_current": 0.17711,
@@ -1053,11 +1053,11 @@
       "stats": {
         "sector": "Basic Materials",
         "industry": "Steel",
-        "market_cap": 45270945792.0,
-        "forward_pe": 8.290968,
-        "price_to_book": 0.859742,
+        "market_cap": 45408366592.0,
+        "forward_pe": 8.316135,
+        "price_to_book": 0.8623518,
         "dividend_yield": 2.96,
-        "ev_to_ebitda": 6.013,
+        "ev_to_ebitda": 5.972,
         "roe": 0.03066,
         "profit_margin": 0.02369,
         "operating_margin_current": 0.10481,
@@ -1117,8 +1117,8 @@
         "market_cap": 13440404480.0,
         "forward_pe": 5.004926,
         "price_to_book": 0.71158427,
-        "dividend_yield": 3.36,
-        "ev_to_ebitda": 6.358,
+        "dividend_yield": 3.29,
+        "ev_to_ebitda": 6.345,
         "roe": 0.030550001,
         "profit_margin": 0.0083099995,
         "operating_margin_current": 0.10633001,
@@ -1175,11 +1175,11 @@
       "stats": {
         "sector": "Financial Services",
         "industry": "Insurance - Life",
-        "market_cap": 4983672320.0,
-        "forward_pe": 6.5427556,
-        "price_to_book": 0.1034925,
+        "market_cap": 5197462016.0,
+        "forward_pe": 6.8234267,
+        "price_to_book": 0.10793212,
         "dividend_yield": null,
-        "ev_to_ebitda": 5.449,
+        "ev_to_ebitda": 5.421,
         "roe": -0.00885,
         "profit_margin": -0.013459999,
         "operating_margin_current": 0.06616,
@@ -1236,11 +1236,11 @@
       "stats": {
         "sector": "Industrials",
         "industry": "Conglomerates",
-        "market_cap": 155445952512.0,
-        "forward_pe": 7.17415,
-        "price_to_book": 1.7240522,
+        "market_cap": 156230451200.0,
+        "forward_pe": 7.2103567,
+        "price_to_book": 1.7327532,
         "dividend_yield": 0.68,
-        "ev_to_ebitda": 99.243,
+        "ev_to_ebitda": 96.942,
         "roe": 0.184,
         "profit_margin": 2.0302498,
         "operating_margin_current": 0.04705,
@@ -1297,10 +1297,10 @@
       "stats": {
         "sector": "Financial Services",
         "industry": "Banks - Regional",
-        "market_cap": 507864252416.0,
-        "forward_pe": 11.184466,
-        "price_to_book": 2.4218216,
-        "dividend_yield": 0.47,
+        "market_cap": 504116969472.0,
+        "forward_pe": 11.26601,
+        "price_to_book": 2.4039524,
+        "dividend_yield": 0.48,
         "ev_to_ebitda": null,
         "roe": 0.21816,
         "profit_margin": 0.33278,
@@ -1343,10 +1343,10 @@
       "stats": {
         "sector": "Financial Services",
         "industry": "Banks - Regional",
-        "market_cap": 481655816192.0,
-        "forward_pe": 8.4660225,
-        "price_to_book": 2.2967362,
-        "dividend_yield": 2.01,
+        "market_cap": 478790123520.0,
+        "forward_pe": 8.415652,
+        "price_to_book": 2.2830713,
+        "dividend_yield": 2.05,
         "ev_to_ebitda": null,
         "roe": 0.21816,
         "profit_margin": 0.33278,
@@ -1415,11 +1415,11 @@
       "stats": {
         "sector": "Consumer Cyclical",
         "industry": "Department Stores",
-        "market_cap": 13823252480.0,
-        "forward_pe": 8.174588,
-        "price_to_book": 1.3544316,
+        "market_cap": 13659834368.0,
+        "forward_pe": 8.0821295,
+        "price_to_book": 1.3384196,
         "dividend_yield": 6.27,
-        "ev_to_ebitda": 6.454,
+        "ev_to_ebitda": 6.26,
         "roe": 0.14479999,
         "profit_margin": 0.09373,
         "operating_margin_current": 0.08607,
@@ -1476,11 +1476,11 @@
       "stats": {
         "sector": "Consumer Cyclical",
         "industry": "Specialty Retail",
-        "market_cap": 3945447680.0,
-        "forward_pe": 6.283485,
-        "price_to_book": 0.34958792,
+        "market_cap": 3893805312.0,
+        "forward_pe": 6.1970716,
+        "price_to_book": 0.3447802,
         "dividend_yield": 0.5,
-        "ev_to_ebitda": 7.701,
+        "ev_to_ebitda": 7.615,
         "roe": 0.01207,
         "profit_margin": 0.0035499998,
         "operating_margin_current": 0.03423,
@@ -1537,11 +1537,11 @@
       "stats": {
         "sector": "Energy",
         "industry": "Oil & Gas Integrated",
-        "market_cap": 587726192640.0,
-        "forward_pe": 3.0829556,
-        "price_to_book": 1.3201702,
+        "market_cap": 585663971328.0,
+        "forward_pe": 3.0721383,
+        "price_to_book": 1.315538,
         "dividend_yield": 8.82,
-        "ev_to_ebitda": 4.397,
+        "ev_to_ebitda": 4.493,
         "roe": 0.25601,
         "profit_margin": 0.21599,
         "operating_margin_current": 0.31947002,
@@ -1598,11 +1598,11 @@
       "stats": {
         "sector": "Energy",
         "industry": "Oil & Gas Integrated",
-        "market_cap": 556650463232.0,
-        "forward_pe": 4.2169547,
-        "price_to_book": 1.1794679,
+        "market_cap": 554600890368.0,
+        "forward_pe": 4.2014284,
+        "price_to_book": 1.1751252,
         "dividend_yield": 9.83,
-        "ev_to_ebitda": 4.11,
+        "ev_to_ebitda": 4.174,
         "roe": 0.25601,
         "profit_margin": 0.21599,
         "operating_margin_current": 0.31947002,
@@ -1659,11 +1659,11 @@
       "stats": {
         "sector": "Basic Materials",
         "industry": "Copper",
-        "market_cap": 79837960.0,
-        "forward_pe": 0.390625,
-        "price_to_book": -0.0039945035,
+        "market_cap": 86225000.0,
+        "forward_pe": 0.42187503,
+        "price_to_book": -0.004314064,
         "dividend_yield": null,
-        "ev_to_ebitda": -20.842,
+        "ev_to_ebitda": -20.847,
         "roe": null,
         "profit_margin": -2.36737,
         "operating_margin_current": -1.46174,
@@ -1715,11 +1715,11 @@
       "stats": {
         "sector": "Energy",
         "industry": "Oil & Gas E&P",
-        "market_cap": 45067776000.0,
-        "forward_pe": 6.2219725,
-        "price_to_book": 1.7122499,
+        "market_cap": 45434896384.0,
+        "forward_pe": 6.272656,
+        "price_to_book": 1.7261977,
         "dividend_yield": null,
-        "ev_to_ebitda": 7.08,
+        "ev_to_ebitda": 7.225,
         "roe": 0.09729999,
         "profit_margin": 0.14653,
         "operating_margin_current": 0.37522,
@@ -1776,11 +1776,11 @@
       "stats": {
         "sector": "Healthcare",
         "industry": "Pharmaceutical Retailers",
-        "market_cap": 32085639168.0,
-        "forward_pe": 15.517445,
-        "price_to_book": 4.371129,
+        "market_cap": 32208035840.0,
+        "forward_pe": 15.578616,
+        "price_to_book": 4.3878036,
         "dividend_yield": 2.34,
-        "ev_to_ebitda": 11.651,
+        "ev_to_ebitda": 11.368,
         "roe": 0.1886,
         "profit_margin": 0.02836,
         "operating_margin_current": 0.043169998,
@@ -1837,11 +1837,11 @@
       "stats": {
         "sector": "Energy",
         "industry": "Oil & Gas E&P",
-        "market_cap": 3009203200.0,
-        "forward_pe": 5.123728,
-        "price_to_book": 0.7171287,
-        "dividend_yield": 13.63,
-        "ev_to_ebitda": 3.441,
+        "market_cap": 3026783488.0,
+        "forward_pe": 5.1536617,
+        "price_to_book": 0.7213183,
+        "dividend_yield": 13.25,
+        "ev_to_ebitda": 3.458,
         "roe": 0.12347,
         "profit_margin": 0.17932,
         "operating_margin_current": 0.21929,
@@ -1898,10 +1898,10 @@
       "stats": {
         "sector": "Financial Services",
         "industry": "Banks - Regional",
-        "market_cap": 146212388864.0,
-        "forward_pe": 5.4693246,
-        "price_to_book": 0.8059356,
-        "dividend_yield": 6.42,
+        "market_cap": 146964676608.0,
+        "forward_pe": 5.489036,
+        "price_to_book": 0.8100823,
+        "dividend_yield": 7.81,
         "ev_to_ebitda": null,
         "roe": 0.10467,
         "profit_margin": 0.2816,
@@ -1947,8 +1947,8 @@
         "market_cap": 11285679104.0,
         "forward_pe": 6.764493,
         "price_to_book": 0.8886033,
-        "dividend_yield": 2.92,
-        "ev_to_ebitda": 4.844,
+        "dividend_yield": 2.99,
+        "ev_to_ebitda": 4.751,
         "roe": 0.098979995,
         "profit_margin": 0.16664,
         "operating_margin_current": 0.35345,
@@ -2005,11 +2005,11 @@
       "stats": {
         "sector": "Utilities",
         "industry": "Utilities - Regulated Water",
-        "market_cap": 106712858624.0,
-        "forward_pe": 11.6137495,
-        "price_to_book": 2.4418232,
+        "market_cap": 106397237248.0,
+        "forward_pe": 11.579401,
+        "price_to_book": 2.4346013,
         "dividend_yield": 4.56,
-        "ev_to_ebitda": 9.324,
+        "ev_to_ebitda": 9.153,
         "roe": 0.21233,
         "profit_margin": 0.22026,
         "operating_margin_current": 0.33873,
@@ -2066,11 +2066,11 @@
       "stats": {
         "sector": "Utilities",
         "industry": "Utilities - Regulated Electric",
-        "market_cap": 42704220160.0,
-        "forward_pe": 9.456286,
-        "price_to_book": 1.7884349,
-        "dividend_yield": 8.13,
-        "ev_to_ebitda": 10.6,
+        "market_cap": 42745561088.0,
+        "forward_pe": 9.465441,
+        "price_to_book": 1.7901663,
+        "dividend_yield": 7.92,
+        "ev_to_ebitda": 10.538,
         "roe": 0.20559,
         "profit_margin": 0.33521998,
         "operating_margin_current": 0.58442,
@@ -2127,11 +2127,11 @@
       "stats": {
         "sector": "Energy",
         "industry": "Oil & Gas Refining & Marketing",
-        "market_cap": 33058641920.0,
-        "forward_pe": 11.395875,
-        "price_to_book": 2.007008,
-        "dividend_yield": 5.81,
-        "ev_to_ebitda": 6.61,
+        "market_cap": 31882938368.0,
+        "forward_pe": 10.99059,
+        "price_to_book": 1.9356303,
+        "dividend_yield": 5.66,
+        "ev_to_ebitda": 6.641,
         "roe": 0.19181,
         "profit_margin": 0.020550001,
         "operating_margin_current": 0.04982,
@@ -2188,11 +2188,11 @@
       "stats": {
         "sector": "Basic Materials",
         "industry": "Steel",
-        "market_cap": 9305926656.0,
-        "forward_pe": 5.2499995,
-        "price_to_book": 0.45312876,
+        "market_cap": 9195142144.0,
+        "forward_pe": 5.1874995,
+        "price_to_book": 0.44773436,
         "dividend_yield": null,
-        "ev_to_ebitda": 7.289,
+        "ev_to_ebitda": 7.268,
         "roe": -0.09325,
         "profit_margin": -0.10316,
         "operating_margin_current": 0.05603,
@@ -2249,11 +2249,11 @@
       "stats": {
         "sector": "Basic Materials",
         "industry": "Steel",
-        "market_cap": 10315299840.0,
-        "forward_pe": 9.666851,
-        "price_to_book": 0.5022776,
+        "market_cap": 10179897344.0,
+        "forward_pe": 9.53996,
+        "price_to_book": 0.4956845,
         "dividend_yield": null,
-        "ev_to_ebitda": 7.892,
+        "ev_to_ebitda": 7.841,
         "roe": -0.09325,
         "profit_margin": -0.10316,
         "operating_margin_current": 0.05603,
@@ -2310,11 +2310,11 @@
       "stats": {
         "sector": "Basic Materials",
         "industry": "Other Industrial Metals & Mining",
-        "market_cap": 309556051968.0,
-        "forward_pe": 8.88198,
-        "price_to_book": 1.6215794,
-        "dividend_yield": 9.43,
-        "ev_to_ebitda": 5.205,
+        "market_cap": 315309457408.0,
+        "forward_pe": 9.060466,
+        "price_to_book": 1.6523561,
+        "dividend_yield": 9.3,
+        "ev_to_ebitda": 5.132,
         "roe": 0.068390004,
         "profit_margin": 0.072620004,
         "operating_margin_current": 0.28124002,
@@ -2371,11 +2371,11 @@
       "stats": {
         "sector": "Consumer Cyclical",
         "industry": "Specialty Retail",
-        "market_cap": 39738142720.0,
-        "forward_pe": 9.983995,
-        "price_to_book": 1.8281105,
-        "dividend_yield": 4.86,
-        "ev_to_ebitda": 7.7,
+        "market_cap": 39416037376.0,
+        "forward_pe": 9.903068,
+        "price_to_book": 1.8132924,
+        "dividend_yield": 4.76,
+        "ev_to_ebitda": 7.663,
         "roe": 0.13962,
         "profit_margin": 0.01564,
         "operating_margin_current": 0.05416,
@@ -2432,11 +2432,11 @@
       "stats": {
         "sector": "Industrials",
         "industry": "Electrical Equipment & Parts",
-        "market_cap": 186294845440.0,
-        "forward_pe": 24.004803,
-        "price_to_book": 10.6962185,
+        "market_cap": 186882260992.0,
+        "forward_pe": 24.04007,
+        "price_to_book": 10.729945,
         "dividend_yield": 0.9,
-        "ev_to_ebitda": 22.622,
+        "ev_to_ebitda": 21.585,
         "roe": 0.32525003,
         "profit_margin": 0.15642999,
         "operating_margin_current": 0.18829,
@@ -2491,10 +2491,10 @@
   "industry_averages": {
     "Beverages - Brewers": {
       "stats": {
-        "forward_pe": 14.051543,
-        "price_to_book": 2.7426891,
+        "forward_pe": 14.0338125,
+        "price_to_book": 2.7392282,
         "dividend_yield": 1.14,
-        "ev_to_ebitda": 8.548,
+        "ev_to_ebitda": 8.554,
         "roe": 0.17251,
         "profit_margin": 0.1766,
         "operating_margin_current": 0.26229,
@@ -2529,10 +2529,10 @@
     },
     "Utilities - Renewable": {
       "stats": {
-        "forward_pe": 12.05792925,
-        "price_to_book": 1.96533225,
-        "dividend_yield": 4.04,
-        "ev_to_ebitda": 8.9915,
+        "forward_pe": 12.011899,
+        "price_to_book": 1.9485303,
+        "dividend_yield": 4.0600000000000005,
+        "ev_to_ebitda": 8.8825,
         "roe": 0.164415,
         "profit_margin": 0.222609995,
         "operating_margin_current": 0.5435499800000001,
@@ -2567,10 +2567,10 @@
     },
     "Financial Data & Stock Exchanges": {
       "stats": {
-        "forward_pe": 11.540587,
-        "price_to_book": 4.1257205,
+        "forward_pe": 11.817009,
+        "price_to_book": 4.22454,
         "dividend_yield": 5.74,
-        "ev_to_ebitda": 10.865,
+        "ev_to_ebitda": 10.656,
         "roe": 0.26738,
         "profit_margin": 0.46965,
         "operating_margin_current": 0.67303,
@@ -2605,12 +2605,12 @@
     },
     "Banks - Regional": {
       "stats": {
-        "forward_pe": 7.225124216666667,
-        "price_to_book": 1.3698209833333335,
-        "dividend_yield": 2.106666666666667,
-        "roe": 0.15009166666666665,
+        "forward_pe": 7.21990565,
+        "price_to_book": 1.361286758333333,
+        "dividend_yield": 2.3299999999999996,
+        "roe": 0.15009166666666668,
         "profit_margin": 0.27641333333333334,
-        "operating_margin_current": 0.32327500666666664
+        "operating_margin_current": 0.3232750066666667
       },
       "historical": {
         "revenue": {
@@ -2629,9 +2629,9 @@
     },
     "Capital Markets": {
       "stats": {
-        "forward_pe": 9.671607,
-        "price_to_book": 3.7370598,
-        "dividend_yield": 2.51,
+        "forward_pe": 9.67998,
+        "price_to_book": 3.740295,
+        "dividend_yield": 2.38,
         "roe": 0.2484,
         "profit_margin": 0.3877,
         "operating_margin_current": 0.50953996
@@ -2653,8 +2653,8 @@
     },
     "Aluminum": {
       "stats": {
-        "forward_pe": 8.025026,
-        "price_to_book": 1.5185602,
+        "forward_pe": 8.032457,
+        "price_to_book": 1.5199664,
         "dividend_yield": 0.41,
         "ev_to_ebitda": 11.392,
         "roe": 0.05051,
@@ -2691,11 +2691,11 @@
     },
     "Utilities - Regulated Electric": {
       "stats": {
-        "forward_pe": 12.75780675,
-        "price_to_book": 1.7708042000000002,
-        "dividend_yield": 8.2475,
-        "ev_to_ebitda": 8.03375,
-        "roe": 0.17323999874999998,
+        "forward_pe": 12.86148175,
+        "price_to_book": 1.782187225,
+        "dividend_yield": 8.22,
+        "ev_to_ebitda": 7.94925,
+        "roe": 0.17323999875,
         "profit_margin": 0.150907494,
         "operating_margin_current": 0.2923025,
         "debt_to_equity_current": 141.89375
@@ -2708,9 +2708,9 @@
           "2022": 24998305250.0
         },
         "operating_margin": {
-          "2025": 0.27852244325139824,
+          "2025": 0.2785224432513982,
           "2024": 0.30725512188564386,
-          "2023": 0.3025636448716102,
+          "2023": 0.30256364487161014,
           "2022": 0.3188099552428562
         },
         "current_liquidity": {
@@ -2720,19 +2720,19 @@
           "2022": 1.5570354102761432
         },
         "debt_to_equity": {
-          "2025": 1.4363561430606944,
+          "2025": 1.4363561430606946,
           "2024": 1.3816849220005565,
-          "2023": 1.4193971617385177,
-          "2022": 1.490812322124582
+          "2023": 1.4193971617385175,
+          "2022": 1.4908123221245817
         }
       }
     },
     "Steel": {
       "stats": {
-        "forward_pe": 5.994433516666667,
-        "price_to_book": 1.208186605,
-        "dividend_yield": 6.419999999999999,
-        "ev_to_ebitda": 6.465333333333334,
+        "forward_pe": 5.965213116666668,
+        "price_to_book": 1.1564699550000002,
+        "dividend_yield": 6.066666666666666,
+        "ev_to_ebitda": 6.479166666666667,
         "roe": 0.008230000166666673,
         "profit_margin": -0.01568833341666667,
         "operating_margin_current": 0.10191000500000001,
@@ -2746,19 +2746,19 @@
           "2022": 47900020666.666664
         },
         "operating_margin": {
-          "2025": 0.09935674913593234,
-          "2024": 0.09505660093883844,
+          "2025": 0.09935674913593236,
+          "2024": 0.09505660093883843,
           "2023": 0.13757721763071765,
           "2022": 0.19875316847104477
         },
         "current_liquidity": {
-          "2025": 2.7188893022418505,
+          "2025": 2.7188893022418514,
           "2024": 2.8757363755196788,
           "2023": 2.5276850616276842,
           "2022": 2.6155902329994913
         },
         "debt_to_equity": {
-          "2025": 1.2289902552132004,
+          "2025": 1.2289902552132006,
           "2024": 1.2260571890961274,
           "2023": 0.8305223146613812,
           "2022": 0.7708315804601429
@@ -2767,14 +2767,14 @@
     },
     "Oil & Gas Refining & Marketing": {
       "stats": {
-        "forward_pe": 9.265335799999999,
-        "price_to_book": 3.2008134999999998,
-        "ev_to_ebitda": 4.131,
+        "forward_pe": 9.01719065,
+        "price_to_book": 3.13709765,
+        "ev_to_ebitda": 4.1225000000000005,
         "roe": -0.05378000000000001,
         "profit_margin": -0.1093399995,
         "operating_margin_current": 0.17845498999999998,
         "debt_to_equity_current": 111.9445,
-        "dividend_yield": 5.81
+        "dividend_yield": 5.66
       },
       "historical": {
         "revenue": {
@@ -2805,14 +2805,14 @@
     },
     "Utilities - Regulated Water": {
       "stats": {
-        "forward_pe": 11.104057500000001,
-        "price_to_book": 2.0712538,
-        "dividend_yield": 3.09,
-        "ev_to_ebitda": 8.533666666666667,
+        "forward_pe": 11.047815333333332,
+        "price_to_book": 2.0601982666666667,
+        "dividend_yield": 3.1133333333333333,
+        "ev_to_ebitda": 8.393333333333333,
         "roe": 0.156716665,
         "profit_margin": 0.18277000000000002,
         "operating_margin_current": 0.31685,
-        "debt_to_equity_current": 94.27133333333332
+        "debt_to_equity_current": 94.27133333333335
       },
       "historical": {
         "revenue": {
@@ -2831,21 +2831,21 @@
           "2025": 1.2319251234412745,
           "2024": 1.3685462958461139,
           "2023": 1.1998509732191196,
-          "2022": 1.2914465506105501
+          "2022": 1.29144655061055
         },
         "debt_to_equity": {
-          "2025": 0.8135336258824686,
+          "2025": 0.8135336258824687,
           "2024": 0.6885994050902943,
           "2023": 0.6285810189431916,
-          "2022": 0.6191254663465956
+          "2022": 0.6191254663465955
         }
       }
     },
     "Insurance - Life": {
       "stats": {
-        "forward_pe": 6.5427556,
-        "price_to_book": 0.1034925,
-        "ev_to_ebitda": 5.449,
+        "forward_pe": 6.8234267,
+        "price_to_book": 0.10793212,
+        "ev_to_ebitda": 5.421,
         "roe": -0.00885,
         "profit_margin": -0.013459999,
         "operating_margin_current": 0.06616,
@@ -2880,10 +2880,10 @@
     },
     "Conglomerates": {
       "stats": {
-        "forward_pe": 7.17415,
-        "price_to_book": 1.7240522,
+        "forward_pe": 7.2103567,
+        "price_to_book": 1.7327532,
         "dividend_yield": 0.68,
-        "ev_to_ebitda": 99.243,
+        "ev_to_ebitda": 96.942,
         "roe": 0.184,
         "profit_margin": 2.0302498,
         "operating_margin_current": 0.04705,
@@ -2918,10 +2918,10 @@
     },
     "Department Stores": {
       "stats": {
-        "forward_pe": 8.174588,
-        "price_to_book": 1.3544316,
+        "forward_pe": 8.0821295,
+        "price_to_book": 1.3384196,
         "dividend_yield": 6.27,
-        "ev_to_ebitda": 6.454,
+        "ev_to_ebitda": 6.26,
         "roe": 0.14479999,
         "profit_margin": 0.09373,
         "operating_margin_current": 0.08607,
@@ -2956,10 +2956,10 @@
     },
     "Specialty Retail": {
       "stats": {
-        "forward_pe": 8.13374,
-        "price_to_book": 1.08884921,
-        "dividend_yield": 2.68,
-        "ev_to_ebitda": 7.7005,
+        "forward_pe": 8.0500698,
+        "price_to_book": 1.0790362999999998,
+        "dividend_yield": 2.63,
+        "ev_to_ebitda": 7.639,
         "roe": 0.075845,
         "profit_margin": 0.009594999900000001,
         "operating_margin_current": 0.044195,
@@ -2994,10 +2994,10 @@
     },
     "Oil & Gas Integrated": {
       "stats": {
-        "forward_pe": 3.64995515,
-        "price_to_book": 1.24981905,
+        "forward_pe": 3.63678335,
+        "price_to_book": 1.2453316,
         "dividend_yield": 9.325,
-        "ev_to_ebitda": 4.253500000000001,
+        "ev_to_ebitda": 4.333500000000001,
         "roe": 0.25601,
         "profit_margin": 0.21599,
         "operating_margin_current": 0.31947002,
@@ -3032,9 +3032,9 @@
     },
     "Copper": {
       "stats": {
-        "forward_pe": 0.390625,
-        "price_to_book": -0.0039945035,
-        "ev_to_ebitda": -20.842,
+        "forward_pe": 0.42187503,
+        "price_to_book": -0.004314064,
+        "ev_to_ebitda": -20.847,
         "profit_margin": -2.36737,
         "operating_margin_current": -1.46174
       },
@@ -3061,14 +3061,14 @@
     },
     "Oil & Gas E&P": {
       "stats": {
-        "forward_pe": 5.67285025,
-        "price_to_book": 1.2146892999999999,
-        "ev_to_ebitda": 5.2605,
+        "forward_pe": 5.713158849999999,
+        "price_to_book": 1.223758,
+        "ev_to_ebitda": 5.3415,
         "roe": 0.110384995,
         "profit_margin": 0.162925,
         "operating_margin_current": 0.297255,
         "debt_to_equity_current": 88.87,
-        "dividend_yield": 13.63
+        "dividend_yield": 13.25
       },
       "historical": {
         "revenue": {
@@ -3099,10 +3099,10 @@
     },
     "Pharmaceutical Retailers": {
       "stats": {
-        "forward_pe": 15.517445,
-        "price_to_book": 4.371129,
+        "forward_pe": 15.578616,
+        "price_to_book": 4.3878036,
         "dividend_yield": 2.34,
-        "ev_to_ebitda": 11.651,
+        "ev_to_ebitda": 11.368,
         "roe": 0.1886,
         "profit_margin": 0.02836,
         "operating_margin_current": 0.043169998,
@@ -3137,10 +3137,10 @@
     },
     "Other Industrial Metals & Mining": {
       "stats": {
-        "forward_pe": 8.88198,
-        "price_to_book": 1.6215794,
-        "dividend_yield": 9.43,
-        "ev_to_ebitda": 5.205,
+        "forward_pe": 9.060466,
+        "price_to_book": 1.6523561,
+        "dividend_yield": 9.3,
+        "ev_to_ebitda": 5.132,
         "roe": 0.068390004,
         "profit_margin": 0.072620004,
         "operating_margin_current": 0.28124002,
@@ -3175,10 +3175,10 @@
     },
     "Electrical Equipment & Parts": {
       "stats": {
-        "forward_pe": 24.004803,
-        "price_to_book": 10.6962185,
+        "forward_pe": 24.04007,
+        "price_to_book": 10.729945,
         "dividend_yield": 0.9,
-        "ev_to_ebitda": 22.622,
+        "ev_to_ebitda": 21.585,
         "roe": 0.32525003,
         "profit_margin": 0.15642999,
         "operating_margin_current": 0.18829,
@@ -3215,10 +3215,10 @@
   "sector_averages": {
     "Consumer Defensive": {
       "stats": {
-        "forward_pe": 14.051543,
-        "price_to_book": 2.7426891,
+        "forward_pe": 14.0338125,
+        "price_to_book": 2.7392282,
         "dividend_yield": 1.14,
-        "ev_to_ebitda": 8.548,
+        "ev_to_ebitda": 8.554,
         "roe": 0.17251,
         "profit_margin": 0.1766,
         "operating_margin_current": 0.26229,
@@ -3253,12 +3253,12 @@
     },
     "Utilities": {
       "stats": {
-        "forward_pe": 12.051028666666667,
-        "price_to_book": 1.9141825222222222,
+        "forward_pe": 12.06813011111111,
+        "price_to_book": 1.9118226999999999,
         "dividend_yield": 5.593333333333334,
-        "ev_to_ebitda": 8.413222222222222,
+        "ev_to_ebitda": 8.304666666666666,
         "roe": 0.16577111,
-        "profit_margin": 0.17746221844444443,
+        "profit_margin": 0.17746221844444446,
         "operating_margin_current": 0.35631777333333337,
         "debt_to_equity_current": 131.4501111111111
       },
@@ -3272,11 +3272,11 @@
         "operating_margin": {
           "2025": 0.3107888147915623,
           "2024": 0.38482615018285427,
-          "2023": 0.367325277227815,
+          "2023": 0.36732527722781505,
           "2022": 0.35327495785973123
         },
         "current_liquidity": {
-          "2025": 1.3618092047668717,
+          "2025": 1.361809204766872,
           "2024": 1.2933256090831033,
           "2023": 1.3435305596370986,
           "2022": 1.4958647773531455
@@ -3284,18 +3284,18 @@
         "debt_to_equity": {
           "2025": 1.316334977638691,
           "2024": 1.2532798247438481,
-          "2023": 1.278155413795628,
-          "2022": 1.2917761306331461
+          "2023": 1.2781554137956277,
+          "2022": 1.2917761306331463
         }
       }
     },
     "Financial Services": {
       "stats": {
-        "forward_pe": 7.900632766666667,
-        "price_to_book": 1.7983554111111113,
-        "dividend_yield": 2.61125,
-        "ev_to_ebitda": 8.157,
-        "roe": 0.15638666666666667,
+        "forward_pe": 7.959983288888889,
+        "price_to_book": 1.8044986299999997,
+        "dividend_yield": 2.7624999999999997,
+        "ev_to_ebitda": 8.0385,
+        "roe": 0.15638666666666665,
         "profit_margin": 0.27804111122222225,
         "operating_margin_current": 0.35426444444444444,
         "debt_to_equity_current": 59.455
@@ -3320,22 +3320,22 @@
           "2022": 1.5119879510142198
         },
         "debt_to_equity": {
-          "2025": 1.5382944414062991,
+          "2025": 1.538294441406299,
           "2024": 1.4103153158368285,
           "2023": 1.3193363810496364,
-          "2022": 1.4582250599949165
+          "2022": 1.4582250599949163
         }
       }
     },
     "Basic Materials": {
       "stats": {
-        "forward_pe": 5.918248011111111,
-        "price_to_book": 1.1539183029444446,
-        "dividend_yield": 5.819999999999999,
-        "ev_to_ebitda": 3.8385555555555553,
-        "roe": 0.021035000625000005,
+        "forward_pe": 5.922897414444445,
+        "price_to_book": 1.1229809073333334,
+        "dividend_yield": 5.582,
+        "ev_to_ebitda": 3.839111111111111,
+        "roe": 0.021035000625000008,
         "profit_margin": -0.2638766661666667,
-        "operating_margin_current": -0.049035550000000004,
+        "operating_margin_current": -0.04903555000000001,
         "debt_to_equity_current": 90.291
       },
       "historical": {
@@ -3346,9 +3346,9 @@
           "2022": 38007748555.55556
         },
         "operating_margin": {
-          "2025": -0.014566795238344818,
-          "2024": 0.016479794588854596,
-          "2023": 0.04446290670263121,
+          "2025": -0.014566795238344829,
+          "2024": 0.016479794588854586,
+          "2023": 0.04446290670263122,
           "2022": 0.13147051770720733
         },
         "current_liquidity": {
@@ -3358,7 +3358,7 @@
           "2022": 2.107002407682007
         },
         "debt_to_equity": {
-          "2025": 1.133981368340705,
+          "2025": 1.1339813683407047,
           "2024": 1.1448370400499728,
           "2023": 0.7992637677517814,
           "2022": 0.7055301543729421
@@ -3367,14 +3367,14 @@
     },
     "Energy": {
       "stats": {
-        "forward_pe": 6.196047066666666,
-        "price_to_book": 1.8884406166666665,
-        "ev_to_ebitda": 4.548333333333333,
+        "forward_pe": 6.1223776166666655,
+        "price_to_book": 1.8687290833333332,
+        "ev_to_ebitda": 4.599166666666666,
         "roe": 0.10420499833333334,
         "profit_margin": 0.0898583335,
-        "operating_margin_current": 0.26506000333333335,
-        "debt_to_equity_current": 94.6945,
-        "dividend_yield": 9.5225
+        "operating_margin_current": 0.2650600033333333,
+        "debt_to_equity_current": 94.69449999999999,
+        "dividend_yield": 9.39
       },
       "historical": {
         "revenue": {
@@ -3384,19 +3384,19 @@
           "2022": 250587348868.39267
         },
         "operating_margin": {
-          "2025": 0.2074350144841738,
-          "2024": 0.264522916445087,
+          "2025": 0.20743501448417387,
+          "2024": 0.2645229164450871,
           "2023": 0.3036715439225531,
           "2022": 0.3485469276240208
         },
         "current_liquidity": {
           "2025": 1.8187228038292167,
-          "2024": 1.4890979141456386,
+          "2024": 1.4890979141456384,
           "2023": 1.3254706220159185,
           "2022": 2.3729841074396734
         },
         "debt_to_equity": {
-          "2025": 3.059701260014032,
+          "2025": 3.0597012600140325,
           "2024": 1.8302383695522553,
           "2023": 1.073797450293471,
           "2022": 1.0869191927043589
@@ -3405,10 +3405,10 @@
     },
     "Industrials": {
       "stats": {
-        "forward_pe": 15.5894765,
-        "price_to_book": 6.21013535,
+        "forward_pe": 15.62521335,
+        "price_to_book": 6.2313491,
         "dividend_yield": 0.79,
-        "ev_to_ebitda": 60.9325,
+        "ev_to_ebitda": 59.26349999999999,
         "roe": 0.254625015,
         "profit_margin": 1.093339895,
         "operating_margin_current": 0.11767000000000001,
@@ -3443,10 +3443,10 @@
     },
     "Consumer Cyclical": {
       "stats": {
-        "forward_pe": 8.147356,
-        "price_to_book": 1.1773766733333333,
-        "dividend_yield": 3.8766666666666665,
-        "ev_to_ebitda": 7.285,
+        "forward_pe": 8.060756366666666,
+        "price_to_book": 1.1654973999999998,
+        "dividend_yield": 3.8433333333333333,
+        "ev_to_ebitda": 7.179333333333333,
         "roe": 0.09882999666666666,
         "profit_margin": 0.03763999993333333,
         "operating_margin_current": 0.058153333333333335,
@@ -3473,18 +3473,18 @@
         },
         "debt_to_equity": {
           "2025": 0.7195832632623437,
-          "2024": 0.6899195064109844,
+          "2024": 0.6899195064109843,
           "2023": 0.8629296710687565,
-          "2022": 0.9733847857371747
+          "2022": 0.9733847857371748
         }
       }
     },
     "Healthcare": {
       "stats": {
-        "forward_pe": 15.517445,
-        "price_to_book": 4.371129,
+        "forward_pe": 15.578616,
+        "price_to_book": 4.3878036,
         "dividend_yield": 2.34,
-        "ev_to_ebitda": 11.651,
+        "ev_to_ebitda": 11.368,
         "roe": 0.1886,
         "profit_margin": 0.02836,
         "operating_margin_current": 0.043169998,
