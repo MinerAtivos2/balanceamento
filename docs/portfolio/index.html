@@ -791,12 +791,23 @@
     <!-- MONITOR DE GRÁFICOS (Análise Avançada) -->
     <!-- ============================================================ -->
     <section class="page" data-page="monitor" id="page-monitor">
-      <div class="page-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+      <div class="page-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; gap: 1rem;">
         <div>
           <h1 id="monitorPageTitle" style="margin-bottom: 0.25rem;">Análise de Ativo</h1>
           <p class="subtitle" id="monitorPageSubtitle" style="margin: 0;">Gráficos e comparativos fundamentalistas de pares</p>
         </div>
-        <button class="btn btn-primary btn-voltar" id="btnVoltarMonitor">
+
+        <!-- Bloco de Comparação Personalizada (Adicionar até 3 ativos) -->
+        <div id="monitorComparisonContainer" class="glass" style="display: none; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; border-radius: var(--radius-sm); max-width: 500px; flex: 1; min-width: 280px;">
+          <span style="font-size: 0.8rem; color: var(--text-muted); font-weight: 600; white-space: nowrap;">Comparar +:</span>
+          <div style="display: flex; gap: 0.25rem; flex: 1; align-items: center;">
+            <input type="text" id="monitorCompInput" placeholder="Ex: ITUB4" style="background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.15); color: #fff; padding: 0.35rem 0.5rem; border-radius: 4px; font-size: 0.8rem; width: 80px; text-transform: uppercase;" />
+            <button class="btn btn-primary" id="btnMonitorCompAdd" style="padding: 0.35rem 0.75rem; font-size: 0.8rem; border-radius: 4px; background: var(--accent); color: #fff; border: none; cursor: pointer; font-weight: 600;">+</button>
+          </div>
+          <div id="monitorCompBadges" style="display: flex; gap: 0.35rem; flex-wrap: wrap;"></div>
+        </div>
+
+        <button class="btn btn-primary btn-voltar" id="btnVoltarMonitor" style="margin-left: auto;">
           <i class="fas fa-arrow-left"></i> Voltar
         </button>
       </div>
