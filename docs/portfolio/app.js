@@ -25,6 +25,7 @@ class B3App {
     this.summaryFilter = 'geral'; // geral, liquid, ibov
     this.taxConfig = null;
     this.fiscalData = { dt_loss: 0, st_loss: 0, irrf_balance: 0, tax_balance: 0 };
+    this.userComparisonTickers = []; // Ativos adicionados manualmente pelo usuário para comparação
     this.init();
   }
 
@@ -119,6 +120,11 @@ class B3App {
     const tickerClean = ticker.replace('.SA', '').toUpperCase();
     const tickerWithSA = tickerClean.endsWith('.SA') ? tickerClean : tickerClean + '.SA';
 
+    // Opção X: limpar a lista de ativos comparativos adicionais ao mudar o ativo principal analisado
+    this.userComparisonTickers = [];
+    const compInput = this.$('monitorCompInput');
+    if (compInput) compInput.value = '';
+
     // Armazena o ticker atual para renderizações e alternâncias de abas
     this.currentMonitorTicker = tickerWithSA;
 
@@ -135,6 +141,7 @@ class B3App {
     const btnFund = this.$('btnMonitorTabFundamental');
     const panelTech = this.$('monitorTabContentTechnical');
     const panelFund = this.$('monitorTabContentFundamental');
+    const compContainer = this.$('monitorComparisonContainer');
 
     const hasFundamentalData = this.marketFinancials && this.marketFinancials.assets && this.marketFinancials.assets[tickerWithSA];
 
@@ -146,6 +153,7 @@ class B3App {
       if (btnTech) btnTech.classList.remove('active');
       if (panelFund) panelFund.style.display = 'flex';
       if (panelTech) panelTech.style.display = 'none';
+      if (compContainer) compContainer.style.display = 'flex';
 
       setTimeout(() => {
         this.renderFundamentalAnalysis(tickerWithSA);
@@ -158,11 +166,85 @@ class B3App {
       if (btnTech) btnTech.classList.add('active');
       if (panelFund) panelFund.style.display = 'none';
       if (panelTech) panelTech.style.display = 'block';
+      if (compContainer) compContainer.style.display = 'none';
 
       setTimeout(() => {
         this.renderChart(tickerClean);
       }, 450);
     }
+  }
+
+  addMonitorComparisonTicker() {
+    const input = this.$('monitorCompInput');
+    if (!input) return;
+    const value = input.value.trim().toUpperCase();
+    if (!value) return;
+
+    const tickerSA = value.endsWith('.SA') ? value : value + '.SA';
+
+    // Validações
+    if (tickerSA === this.currentMonitorTicker) {
+      this.toast('Não é possível adicionar o próprio ativo analisado ao comparativo.', 'warning');
+      input.value = '';
+      return;
+    }
+
+    if (this.userComparisonTickers.includes(tickerSA)) {
+      this.toast('Este ativo já está incluído no comparativo.', 'warning');
+      input.value = '';
+      return;
+    }
+
+    if (this.userComparisonTickers.length >= 3) {
+      this.toast('Você pode adicionar no máximo 3 ativos para comparação.', 'warning');
+      input.value = '';
+      return;
+    }
+
+    // Verificar se existem dados fundamentalistas do ativo na base
+    const hasData = this.marketFinancials && this.marketFinancials.assets && this.marketFinancials.assets[tickerSA];
+    if (!hasData) {
+      this.toast(`Dados fundamentalistas indisponíveis para ${tickerSA.replace('.SA', '')}.`, 'warning');
+      input.value = '';
+      return;
+    }
+
+    this.userComparisonTickers.push(tickerSA);
+    input.value = '';
+    this.renderComparisonBadges();
+    this.renderFundamentalAnalysis(this.currentMonitorTicker);
+  }
+
+  removeMonitorComparisonTicker(ticker) {
+    this.userComparisonTickers = this.userComparisonTickers.filter(t => t !== ticker);
+    this.renderComparisonBadges();
+    this.renderFundamentalAnalysis(this.currentMonitorTicker);
+  }
+
+  renderComparisonBadges() {
+    const container = this.$('monitorCompBadges');
+    if (!container) return;
+    container.innerHTML = '';
+
+    this.userComparisonTickers.forEach(ticker => {
+      const cleanTicker = ticker.replace('.SA', '');
+      const badge = document.createElement('div');
+      badge.style.display = 'flex';
+      badge.style.alignItems = 'center';
+      badge.style.gap = '0.25rem';
+      badge.style.background = '#fef08a'; // Amarelo Pastel
+      badge.style.color = '#1e293b'; // Texto escuro para contraste
+      badge.style.padding = '0.2rem 0.5rem';
+      badge.style.borderRadius = '4px';
+      badge.style.fontSize = '0.75rem';
+      badge.style.fontWeight = 'bold';
+
+      badge.innerHTML = `
+        <span>${cleanTicker}</span>
+        <span style="cursor:pointer; font-weight:900; margin-left:2px;" onclick="app.removeMonitorComparisonTicker('${ticker}')">×</span>
+      `;
+      container.appendChild(badge);
+    });
   }
 
   /* ------------------------------------------------------------------
@@ -225,6 +307,8 @@ class B3App {
         btnFund.classList.remove('active');
         this.$('monitorTabContentTechnical').style.display = 'block';
         this.$('monitorTabContentFundamental').style.display = 'none';
+        const compContainer = this.$('monitorComparisonContainer');
+        if (compContainer) compContainer.style.display = 'none';
 
         // Redesenha o gráfico de tradingview se necessário
         if (this.currentMonitorTicker) {
@@ -238,10 +322,24 @@ class B3App {
         btnTech.classList.remove('active');
         this.$('monitorTabContentTechnical').style.display = 'none';
         this.$('monitorTabContentFundamental').style.display = 'flex';
+        const compContainer = this.$('monitorComparisonContainer');
+        if (compContainer) compContainer.style.display = 'flex';
 
         // Renderiza o painel fundamentalista para o ticker atual
         if (this.currentMonitorTicker) {
           this.renderFundamentalAnalysis(this.currentMonitorTicker);
+        }
+      });
+    }
+
+    // Bind para controle de comparação personalizada no monitor
+    const btnCompAdd = this.$('btnMonitorCompAdd');
+    const compInput = this.$('monitorCompInput');
+    if (btnCompAdd && compInput) {
+      btnCompAdd.addEventListener('click', () => this.addMonitorComparisonTicker());
+      compInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+          this.addMonitorComparisonTicker();
         }
       });
     }
@@ -3288,13 +3386,45 @@ class B3App {
     peers.sort((a, b) => (b.stats.market_cap || 0) - (a.stats.market_cap || 0));
 
     // Garantir que o ativo analisado esteja SEMPRE incluído no topPeers (Ativo + 4 maiores pares)
+    // Se houver ativos adicionados manualmente pelo usuário no comparativo (userComparisonTickers):
+    // Cada ativo incluído entra no lugar de um dos da comparação default.
     let topPeers = [];
     const activeAssetObj = this.marketFinancials.assets[ticker];
     const otherPeers = peers.filter(p => p.ticker !== ticker);
+
     if (activeAssetObj) {
-      topPeers = [activeAssetObj, ...otherPeers.slice(0, 4)];
+      // Começamos com o ativo principal
+      topPeers.push(activeAssetObj);
+
+      // Adiciona os ativos de comparação personalizados do usuário
+      const addedTickers = [];
+      this.userComparisonTickers.forEach(tSA => {
+        const compAsset = this.marketFinancials.assets[tSA];
+        if (compAsset && tSA !== ticker) {
+          topPeers.push(compAsset);
+          addedTickers.push(tSA);
+        }
+      });
+
+      // Completa com os maiores concorrentes padrão do setor até atingir um total de 5 ativos (ativo ativo + 4 pares)
+      const remainingSlots = 5 - topPeers.length;
+      if (remainingSlots > 0) {
+        const filteredDefaultPeers = otherPeers.filter(p => !addedTickers.includes(p.ticker));
+        topPeers = topPeers.concat(filteredDefaultPeers.slice(0, remainingSlots));
+      }
     } else {
-      topPeers = peers.slice(0, 5);
+      // Caso o principal por algum motivo não esteja em assets
+      this.userComparisonTickers.forEach(tSA => {
+        const compAsset = this.marketFinancials.assets[tSA];
+        if (compAsset) {
+          topPeers.push(compAsset);
+        }
+      });
+      const remainingSlots = 5 - topPeers.length;
+      if (remainingSlots > 0) {
+        const filteredDefaultPeers = peers.filter(p => !this.userComparisonTickers.includes(p.ticker));
+        topPeers = topPeers.concat(filteredDefaultPeers.slice(0, remainingSlots));
+      }
     }
 
     // Pegar médias da categoria do setor correspondente
@@ -3361,14 +3491,16 @@ class B3App {
 
             peerSeries.push(pBase100);
 
-            const chosenColor = peerColors[colorIdx % peerColors.length];
-            colorIdx++;
+            // Se for ativo incluído pelo usuário, cor pastel amarela (#fef08a). Senão, usa as cores da paleta.
+            const isUserComp = this.userComparisonTickers.includes(p.ticker);
+            const chosenColor = isUserComp ? '#fbbf24' : peerColors[colorIdx % peerColors.length];
+            if (!isUserComp) colorIdx++;
 
             datasets.push({
               label: p.ticker.replace('.SA', ''),
               data: pBase100,
               borderColor: chosenColor,
-              borderWidth: 1.8,
+              borderWidth: isUserComp ? 2.5 : 1.8,
               pointRadius: 0,
               fill: false,
               tension: 0.1
@@ -3565,8 +3697,8 @@ class B3App {
             {
               label: 'Liquidez Corrente',
               data: values,
-              backgroundColor: topPeers.map(p => p.ticker === ticker ? 'rgba(59, 130, 246, 0.8)' : 'rgba(255, 255, 255, 0.25)'),
-              borderColor: topPeers.map(p => p.ticker === ticker ? '#3b82f6' : 'rgba(255, 255, 255, 0.4)'),
+              backgroundColor: topPeers.map(p => p.ticker === ticker ? 'rgba(59, 130, 246, 0.8)' : (this.userComparisonTickers.includes(p.ticker) ? 'rgba(251, 191, 36, 0.8)' : 'rgba(255, 255, 255, 0.25)')),
+              borderColor: topPeers.map(p => p.ticker === ticker ? '#3b82f6' : (this.userComparisonTickers.includes(p.ticker) ? '#fbbf24' : 'rgba(255, 255, 255, 0.4)')),
               borderWidth: 1,
               barThickness: 24
             }
@@ -3662,8 +3794,8 @@ class B3App {
             {
               label: 'ROE (%)',
               data: values,
-              backgroundColor: topPeers.map(p => p.ticker === ticker ? 'rgba(59, 130, 246, 0.8)' : (values[topPeers.indexOf(p)] < 0 ? 'rgba(239, 68, 68, 0.4)' : 'rgba(255, 255, 255, 0.25)')),
-              borderColor: topPeers.map(p => p.ticker === ticker ? '#3b82f6' : 'rgba(255, 255, 255, 0.4)'),
+              backgroundColor: topPeers.map(p => p.ticker === ticker ? 'rgba(59, 130, 246, 0.8)' : (this.userComparisonTickers.includes(p.ticker) ? 'rgba(251, 191, 36, 0.8)' : (values[topPeers.indexOf(p)] < 0 ? 'rgba(239, 68, 68, 0.4)' : 'rgba(255, 255, 255, 0.25)'))),
+              borderColor: topPeers.map(p => p.ticker === ticker ? '#3b82f6' : (this.userComparisonTickers.includes(p.ticker) ? '#fbbf24' : 'rgba(255, 255, 255, 0.4)')),
               borderWidth: 1,
               barThickness: 24
             }
@@ -3736,8 +3868,8 @@ class B3App {
             {
               label: 'Dívida/Patrimônio (%)',
               data: values,
-              backgroundColor: topPeers.map(p => p.ticker === ticker ? 'rgba(59, 130, 246, 0.8)' : (values[topPeers.indexOf(p)] < 0 ? 'rgba(239, 68, 68, 0.4)' : 'rgba(255, 255, 255, 0.25)')),
-              borderColor: topPeers.map(p => p.ticker === ticker ? '#3b82f6' : 'rgba(255, 255, 255, 0.4)'),
+              backgroundColor: topPeers.map(p => p.ticker === ticker ? 'rgba(59, 130, 246, 0.8)' : (this.userComparisonTickers.includes(p.ticker) ? 'rgba(251, 191, 36, 0.8)' : (values[topPeers.indexOf(p)] < 0 ? 'rgba(239, 68, 68, 0.4)' : 'rgba(255, 255, 255, 0.25)'))),
+              borderColor: topPeers.map(p => p.ticker === ticker ? '#3b82f6' : (this.userComparisonTickers.includes(p.ticker) ? '#fbbf24' : 'rgba(255, 255, 255, 0.4)')),
               borderWidth: 1,
               barThickness: 24
             }
@@ -3832,8 +3964,8 @@ class B3App {
             {
               label: 'EV/EBITDA',
               data: values,
-              backgroundColor: topPeers.map(p => p.ticker === ticker ? 'rgba(59, 130, 246, 0.8)' : (values[topPeers.indexOf(p)] < 0 ? 'rgba(239, 68, 68, 0.4)' : 'rgba(255, 255, 255, 0.25)')),
-              borderColor: topPeers.map(p => p.ticker === ticker ? '#3b82f6' : 'rgba(255, 255, 255, 0.4)'),
+              backgroundColor: topPeers.map(p => p.ticker === ticker ? 'rgba(59, 130, 246, 0.8)' : (this.userComparisonTickers.includes(p.ticker) ? 'rgba(251, 191, 36, 0.8)' : (values[topPeers.indexOf(p)] < 0 ? 'rgba(239, 68, 68, 0.4)' : 'rgba(255, 255, 255, 0.25)'))),
+              borderColor: topPeers.map(p => p.ticker === ticker ? '#3b82f6' : (this.userComparisonTickers.includes(p.ticker) ? '#fbbf24' : 'rgba(255, 255, 255, 0.4)')),
               borderWidth: 1,
               barThickness: 24
             }
@@ -3895,8 +4027,8 @@ class B3App {
             {
               label: 'P/L',
               data: values,
-              backgroundColor: topPeers.map(p => p.ticker === ticker ? 'rgba(59, 130, 246, 0.8)' : (values[topPeers.indexOf(p)] < 0 ? 'rgba(239, 68, 68, 0.4)' : 'rgba(255, 255, 255, 0.25)')),
-              borderColor: topPeers.map(p => p.ticker === ticker ? '#3b82f6' : 'rgba(255, 255, 255, 0.4)'),
+              backgroundColor: topPeers.map(p => p.ticker === ticker ? 'rgba(59, 130, 246, 0.8)' : (this.userComparisonTickers.includes(p.ticker) ? 'rgba(251, 191, 36, 0.8)' : (values[topPeers.indexOf(p)] < 0 ? 'rgba(239, 68, 68, 0.4)' : 'rgba(255, 255, 255, 0.25)'))),
+              borderColor: topPeers.map(p => p.ticker === ticker ? '#3b82f6' : (this.userComparisonTickers.includes(p.ticker) ? '#fbbf24' : 'rgba(255, 255, 255, 0.4)')),
               borderWidth: 1,
               barThickness: 24
             }
@@ -3958,8 +4090,8 @@ class B3App {
             {
               label: 'P/VP',
               data: values,
-              backgroundColor: topPeers.map(p => p.ticker === ticker ? 'rgba(59, 130, 246, 0.8)' : (values[topPeers.indexOf(p)] < 0 ? 'rgba(239, 68, 68, 0.4)' : 'rgba(255, 255, 255, 0.25)')),
-              borderColor: topPeers.map(p => p.ticker === ticker ? '#3b82f6' : 'rgba(255, 255, 255, 0.4)'),
+              backgroundColor: topPeers.map(p => p.ticker === ticker ? 'rgba(59, 130, 246, 0.8)' : (this.userComparisonTickers.includes(p.ticker) ? 'rgba(251, 191, 36, 0.8)' : (values[topPeers.indexOf(p)] < 0 ? 'rgba(239, 68, 68, 0.4)' : 'rgba(255, 255, 255, 0.25)'))),
+              borderColor: topPeers.map(p => p.ticker === ticker ? '#3b82f6' : (this.userComparisonTickers.includes(p.ticker) ? '#fbbf24' : 'rgba(255, 255, 255, 0.4)')),
               borderWidth: 1,
               barThickness: 24
             }
