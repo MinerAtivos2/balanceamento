@@ -62,6 +62,14 @@ function processRequest(e) {
     return handleGetAllTickers();
   } else if (action === "request_rebalance") {
     return handleRequestRebalance(data.username, data.session_token, data.params, data.portfolio);
+  } else if (action === "get_live_prices") {
+    return handleGetLivePrices(data.tickers);
+  } else if (action === "get_tax_config") {
+    return handleGetTaxConfig();
+  } else if (action === "get_fiscal_data") {
+    return handleGetFiscalData(data.username, data.session_token);
+  } else if (action === "save_fiscal_data") {
+    return handleSaveFiscalData(data.username, data.session_token, data.fiscal_data);
   }
 
   return { error: "Ação não reconhecida: " + action };
@@ -189,6 +197,139 @@ function handleGetAllTickers() {
     } catch (e) {}
   }
   return { success: true, tickers: Array.from(tickers) };
+}
+
+function handleGetLivePrices(tickers) {
+  if (!tickers || !tickers.length) return {};
+  try {
+    const ss = SpreadsheetApp.openById(SPREADSHEET_ID);
+    let sheet = ss.getSheetByName("LivePricesEval");
+    if (!sheet) {
+      sheet = ss.insertSheet("LivePricesEval");
+    } else {
+      sheet.clearContents();
+    }
+
+    const formulas = [];
+    for (let i = 0; i < tickers.length; i++) {
+      const cleanTicker = tickers[i].toUpperCase().replace(".SA", "");
+      formulas.push(["=GOOGLEFINANCE(\"" + cleanTicker + "\")"]);
+    }
+
+    sheet.getRange(1, 1, formulas.length, 1).setFormulas(formulas);
+    SpreadsheetApp.flush();
+
+    const values = sheet.getRange(1, 1, formulas.length, 1).getValues();
+    const results = {};
+    for (let i = 0; i < tickers.length; i++) {
+      const val = values[i][0];
+      if (val != null && typeof val === "number" && !isNaN(val) && val > 0) {
+        results[tickers[i]] = val;
+      }
+    }
+
+    // Limpa para evitar lixo acumulado
+    sheet.clearContents();
+    return results;
+  } catch (err) {
+    return { error: err.toString() };
+  }
+}
+
+function handleGetTaxConfig() {
+  try {
+    const sheet = getSheet("TaxConfig");
+    if (!sheet) {
+      return {
+        STOCK_EXEMPTION_LIMIT: 20000,
+        STOCK_ST_RATE: 0.15,
+        STOCK_DT_RATE: 0.20,
+        FII_RATE: 0.20
+      };
+    }
+    const data = sheet.getDataRange().getValues();
+    const config = {};
+    for (let i = 1; i < data.length; i++) {
+      if (data[i][0]) {
+        config[data[i][0]] = data[i][1];
+      }
+    }
+    return config;
+  } catch (e) {
+    return {
+      STOCK_EXEMPTION_LIMIT: 20000,
+      STOCK_ST_RATE: 0.15,
+      STOCK_DT_RATE: 0.20,
+      FII_RATE: 0.20
+    };
+  }
+}
+
+function handleGetFiscalData(username, token) {
+  const user = findUser(username);
+  if (!user) return { error: "Não autorizado" };
+
+  try {
+    const sheet = getSheet("FiscalData");
+    if (!sheet) {
+      return { dt_loss: 0, st_loss: 0, irrf_balance: 0, tax_balance: 0 };
+    }
+    const data = sheet.getDataRange().getValues();
+    for (let i = 1; i < data.length; i++) {
+      if (data[i][0] == user.id) {
+        return {
+          dt_loss: data[i][1] || 0,
+          st_loss: data[i][2] || 0,
+          irrf_balance: data[i][3] || 0,
+          tax_balance: data[i][4] || 0
+        };
+      }
+    }
+  } catch (e) {}
+  return { dt_loss: 0, st_loss: 0, irrf_balance: 0, tax_balance: 0 };
+}
+
+function handleSaveFiscalData(username, token, fiscal_data) {
+  const user = findUser(username);
+  if (!user) return { error: "Não autorizado" };
+
+  try {
+    const sheet = getSheet("FiscalData");
+    if (!sheet) {
+      // Tenta criar
+      const ss = SpreadsheetApp.openById(SPREADSHEET_ID);
+      ss.insertSheet("FiscalData");
+      const newSheet = ss.getSheetByName("FiscalData");
+      newSheet.appendRow(["User ID", "DT Loss", "ST Loss", "IRRF Balance", "Tax Balance", "Updated At"]);
+    }
+
+    const finalSheet = getSheet("FiscalData");
+    const data = finalSheet.getDataRange().getValues();
+    const now = new Date().toISOString();
+
+    for (let i = 1; i < data.length; i++) {
+      if (data[i][0] == user.id) {
+        finalSheet.getRange(i + 1, 2).setValue(fiscal_data.dt_loss || 0);
+        finalSheet.getRange(i + 1, 3).setValue(fiscal_data.st_loss || 0);
+        finalSheet.getRange(i + 1, 4).setValue(fiscal_data.irrf_balance || 0);
+        finalSheet.getRange(i + 1, 5).setValue(fiscal_data.tax_balance || 0);
+        finalSheet.getRange(i + 1, 6).setValue(now);
+        return { success: true };
+      }
+    }
+
+    finalSheet.appendRow([
+      user.id,
+      fiscal_data.dt_loss || 0,
+      fiscal_data.st_loss || 0,
+      fiscal_data.irrf_balance || 0,
+      fiscal_data.tax_balance || 0,
+      now
+    ]);
+    return { success: true };
+  } catch (e) {
+    return { error: e.toString() };
+  }
 }
 
 function handleRequestRebalance(username, token, params, portfolio) {

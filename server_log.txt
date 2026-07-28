@@ -1,0 +1,128 @@
+
+============================================================
+  B3 Rebalanceamento & IA — Servidor Web
+  Acesse: http://localhost:5000
+============================================================
+
+ * Serving Flask app 'server'
+ * Debug mode: on
+[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.0.2:5000
+[33mPress CTRL+C to quit[0m
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 123-396-847
+127.0.0.1 - - [24/Jul/2026 15:06:17] "GET /docs/portfolio/index.html HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 15:06:18] "GET /docs/portfolio/app.js HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 15:06:18] "GET /docs/cookie-consent.js HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 15:06:18] "GET /docs/assets/logo4_2.png HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 15:06:18] "GET /docs/portfolio/style.css HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 15:06:18] "GET /docs/portfolio/assets.json HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 15:06:18] "GET /docs/portfolio/data/market_financials.json?t=1784905578342 HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 15:06:18] "GET /docs/portfolio/data/market_summary.json?t=1784905578340 HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 15:06:18] "GET /docs/portfolio/sample_portfolio.json HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 15:06:18] "GET /docs/portfolio/data/manifest.json?t=1784905578342 HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 15:06:18] "GET /docs/portfolio/data/market_news.json?t=1784905578339 HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 15:06:18] "GET /docs/assets/logos/CMIN3.svg HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 15:06:18] "GET /docs/assets/logos/BOBR4.svg HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 15:06:18] "GET /docs/assets/logos/MTSA4.svg HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 15:06:18] "GET /docs/assets/logos/UCAS3.svg HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 15:06:18] "GET /docs/assets/logos/AURE3.svg HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 15:06:18] "GET /docs/assets/logos/ESTR4.svg HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 15:06:18] "GET /docs/assets/logos/ONCO3.svg HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 15:06:18] "GET /docs/assets/logos/OIBR4.svg HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 15:06:18] "GET /docs/assets/logos/PATI3.svg HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 15:06:18] "GET /docs/assets/logos/JFEN3.svg HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 15:06:18] "GET /docs/portfolio/data/market_data.json?t=1784905578890 HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 15:06:19] "GET /docs/assets/logos/ABEV3.svg HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 15:06:19] "GET /docs/assets/logos/ITUB4.svg HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 15:06:19] "GET /docs/assets/logos/PETR4.svg HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 15:06:19] "GET /docs/assets/logos/VALE3.svg HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 15:06:19] "GET /docs/assets/logos/WEGE3.svg HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 15:06:19] "GET /docs/assets/logos/BBDC4.svg HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 15:07:44] "GET /docs/portfolio/index.html HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 15:07:44] "GET /docs/portfolio/style.css HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 15:07:44] "GET /docs/portfolio/app.js HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 15:07:44] "GET /docs/assets/logo4_2.png HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 15:07:44] "GET /docs/cookie-consent.js HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 15:07:45] "GET /docs/portfolio/assets.json HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 15:07:45] "GET /docs/portfolio/sample_portfolio.json HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 15:07:45] "GET /docs/portfolio/data/market_summary.json?t=1784905665080 HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 15:07:45] "GET /docs/portfolio/data/market_news.json?t=1784905665080 HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 15:07:45] "GET /docs/portfolio/data/manifest.json?t=1784905665082 HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 15:07:45] "GET /docs/portfolio/data/market_financials.json?t=1784905665083 HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 15:07:45] "GET /docs/assets/logos/BOBR4.svg HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 15:07:45] "GET /docs/assets/logos/MTSA4.svg HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 15:07:45] "GET /docs/assets/logos/CMIN3.svg HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 15:07:45] "GET /docs/assets/logos/UCAS3.svg HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 15:07:45] "GET /docs/assets/logos/AURE3.svg HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 15:07:45] "GET /docs/assets/logos/ESTR4.svg HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 15:07:45] "GET /docs/portfolio/data/market_data.json?t=1784905665349 HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 15:07:45] "GET /docs/assets/logos/ONCO3.svg HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 15:07:45] "GET /docs/assets/logos/OIBR4.svg HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 15:07:45] "GET /docs/assets/logos/JFEN3.svg HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 15:07:45] "GET /docs/assets/logos/PATI3.svg HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 15:07:45] "GET /docs/assets/logos/ABEV3.svg HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 15:07:45] "GET /docs/assets/logos/PETR4.svg HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 15:07:45] "GET /docs/assets/logos/BBDC4.svg HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 15:07:45] "GET /docs/assets/logos/ITUB4.svg HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 15:07:45] "GET /docs/assets/logos/VALE3.svg HTTP/1.1" 200 -
+127.0.0.1 - - [24/Jul/2026 15:07:45] "GET /docs/assets/logos/WEGE3.svg HTTP/1.1" 200 -
+127.0.0.1 - - [28/Jul/2026 19:24:24] "GET /docs/portfolio/index.html HTTP/1.1" 200 -
+127.0.0.1 - - [28/Jul/2026 19:24:24] "GET /docs/portfolio/style.css HTTP/1.1" 200 -
+127.0.0.1 - - [28/Jul/2026 19:24:24] "GET /docs/portfolio/app.js HTTP/1.1" 200 -
+127.0.0.1 - - [28/Jul/2026 19:24:24] "GET /docs/assets/logo4_2.png HTTP/1.1" 200 -
+127.0.0.1 - - [28/Jul/2026 19:24:24] "GET /docs/cookie-consent.js HTTP/1.1" 200 -
+127.0.0.1 - - [28/Jul/2026 19:24:25] "GET /docs/portfolio/assets.json HTTP/1.1" 200 -
+127.0.0.1 - - [28/Jul/2026 19:24:25] "GET /docs/portfolio/data/manifest.json?t=1785266664981 HTTP/1.1" 200 -
+127.0.0.1 - - [28/Jul/2026 19:24:25] "GET /docs/portfolio/sample_portfolio.json HTTP/1.1" 200 -
+127.0.0.1 - - [28/Jul/2026 19:24:25] "GET /docs/portfolio/data/market_summary.json?t=1785266664979 HTTP/1.1" 200 -
+127.0.0.1 - - [28/Jul/2026 19:24:25] "GET /docs/portfolio/data/market_financials.json?t=1785266664983 HTTP/1.1" 200 -
+127.0.0.1 - - [28/Jul/2026 19:24:25] "GET /docs/portfolio/data/market_news.json?t=1785266664979 HTTP/1.1" 200 -
+127.0.0.1 - - [28/Jul/2026 19:24:25] "GET /docs/portfolio/data/market_data.json?t=1785266665277 HTTP/1.1" 200 -
+127.0.0.1 - - [28/Jul/2026 19:24:25] "GET /docs/assets/logos/MTSA4.svg HTTP/1.1" 200 -
+127.0.0.1 - - [28/Jul/2026 19:24:25] "GET /docs/assets/logos/BOBR4.svg HTTP/1.1" 200 -
+127.0.0.1 - - [28/Jul/2026 19:24:25] "GET /docs/assets/logos/CMIN3.svg HTTP/1.1" 200 -
+127.0.0.1 - - [28/Jul/2026 19:24:25] "GET /docs/assets/logos/UCAS3.svg HTTP/1.1" 200 -
+127.0.0.1 - - [28/Jul/2026 19:24:25] "GET /docs/assets/logos/AURE3.svg HTTP/1.1" 200 -
+127.0.0.1 - - [28/Jul/2026 19:24:25] "GET /docs/assets/logos/ESTR4.svg HTTP/1.1" 200 -
+127.0.0.1 - - [28/Jul/2026 19:24:25] "GET /docs/assets/logos/ONCO3.svg HTTP/1.1" 200 -
+127.0.0.1 - - [28/Jul/2026 19:24:25] "GET /docs/assets/logos/OIBR4.svg HTTP/1.1" 200 -
+127.0.0.1 - - [28/Jul/2026 19:24:25] "GET /docs/assets/logos/PATI3.svg HTTP/1.1" 200 -
+127.0.0.1 - - [28/Jul/2026 19:24:25] "GET /docs/assets/logos/JFEN3.svg HTTP/1.1" 200 -
+127.0.0.1 - - [28/Jul/2026 19:24:26] "GET /docs/assets/logos/BBDC4.svg HTTP/1.1" 200 -
+127.0.0.1 - - [28/Jul/2026 19:24:26] "GET /docs/assets/logos/ABEV3.svg HTTP/1.1" 200 -
+127.0.0.1 - - [28/Jul/2026 19:24:26] "GET /docs/assets/logos/ITUB4.svg HTTP/1.1" 200 -
+127.0.0.1 - - [28/Jul/2026 19:24:26] "GET /docs/assets/logos/VALE3.svg HTTP/1.1" 200 -
+127.0.0.1 - - [28/Jul/2026 19:24:26] "GET /docs/assets/logos/WEGE3.svg HTTP/1.1" 200 -
+127.0.0.1 - - [28/Jul/2026 19:24:26] "GET /docs/assets/logos/PETR4.svg HTTP/1.1" 200 -
+127.0.0.1 - - [28/Jul/2026 19:31:36] "GET /docs/portfolio/index.html HTTP/1.1" 200 -
+127.0.0.1 - - [28/Jul/2026 19:31:36] "GET /docs/portfolio/style.css HTTP/1.1" 200 -
+127.0.0.1 - - [28/Jul/2026 19:31:36] "GET /docs/portfolio/app.js HTTP/1.1" 200 -
+127.0.0.1 - - [28/Jul/2026 19:31:36] "GET /docs/cookie-consent.js HTTP/1.1" 200 -
+127.0.0.1 - - [28/Jul/2026 19:31:36] "GET /docs/assets/logo4_2.png HTTP/1.1" 200 -
+127.0.0.1 - - [28/Jul/2026 19:31:36] "GET /docs/portfolio/assets.json HTTP/1.1" 200 -
+127.0.0.1 - - [28/Jul/2026 19:31:36] "GET /docs/portfolio/data/manifest.json?t=1785267096676 HTTP/1.1" 200 -
+127.0.0.1 - - [28/Jul/2026 19:31:36] "GET /docs/portfolio/data/market_financials.json?t=1785267096676 HTTP/1.1" 200 -
+127.0.0.1 - - [28/Jul/2026 19:31:36] "GET /docs/portfolio/data/market_summary.json?t=1785267096675 HTTP/1.1" 200 -
+127.0.0.1 - - [28/Jul/2026 19:31:36] "GET /docs/portfolio/sample_portfolio.json HTTP/1.1" 200 -
+127.0.0.1 - - [28/Jul/2026 19:31:36] "GET /docs/portfolio/data/market_news.json?t=1785267096674 HTTP/1.1" 200 -
+127.0.0.1 - - [28/Jul/2026 19:31:36] "GET /docs/portfolio/data/market_data.json?t=1785267096790 HTTP/1.1" 200 -
+127.0.0.1 - - [28/Jul/2026 19:31:36] "GET /docs/assets/logos/MTSA4.svg HTTP/1.1" 200 -
+127.0.0.1 - - [28/Jul/2026 19:31:36] "GET /docs/assets/logos/BOBR4.svg HTTP/1.1" 200 -
+127.0.0.1 - - [28/Jul/2026 19:31:36] "GET /docs/assets/logos/UCAS3.svg HTTP/1.1" 200 -
+127.0.0.1 - - [28/Jul/2026 19:31:36] "GET /docs/assets/logos/CMIN3.svg HTTP/1.1" 200 -
+127.0.0.1 - - [28/Jul/2026 19:31:36] "GET /docs/assets/logos/AURE3.svg HTTP/1.1" 200 -
+127.0.0.1 - - [28/Jul/2026 19:31:37] "GET /docs/assets/logos/ESTR4.svg HTTP/1.1" 200 -
+127.0.0.1 - - [28/Jul/2026 19:31:37] "GET /docs/assets/logos/OIBR4.svg HTTP/1.1" 200 -
+127.0.0.1 - - [28/Jul/2026 19:31:37] "GET /docs/assets/logos/ONCO3.svg HTTP/1.1" 200 -
+127.0.0.1 - - [28/Jul/2026 19:31:37] "GET /docs/assets/logos/PATI3.svg HTTP/1.1" 200 -
+127.0.0.1 - - [28/Jul/2026 19:31:37] "GET /docs/assets/logos/JFEN3.svg HTTP/1.1" 200 -
+127.0.0.1 - - [28/Jul/2026 19:31:37] "GET /docs/assets/logos/BBDC4.svg HTTP/1.1" 200 -
+127.0.0.1 - - [28/Jul/2026 19:31:37] "GET /docs/assets/logos/ABEV3.svg HTTP/1.1" 200 -
+127.0.0.1 - - [28/Jul/2026 19:31:37] "GET /docs/assets/logos/ITUB4.svg HTTP/1.1" 200 -
+127.0.0.1 - - [28/Jul/2026 19:31:37] "GET /docs/assets/logos/VALE3.svg HTTP/1.1" 200 -
+127.0.0.1 - - [28/Jul/2026 19:31:37] "GET /docs/assets/logos/PETR4.svg HTTP/1.1" 200 -
+127.0.0.1 - - [28/Jul/2026 19:31:37] "GET /docs/assets/logos/WEGE3.svg HTTP/1.1" 200 -

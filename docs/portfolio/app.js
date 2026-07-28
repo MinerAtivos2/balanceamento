@@ -283,6 +283,66 @@ class B3App {
     if (this.user) {
       this.loadMarketData(false); // Carregar histórico completo para membros
     }
+
+    // 6. Buscar cotações atualizadas em tempo real em background!
+    this.fetchLivePricesInBackground();
+  }
+
+  async fetchLivePricesInBackground() {
+    if (!this.portfolio || !this.portfolio.positions || !this.portfolio.positions.length) return;
+    if (!this.GAS_URL) return;
+
+    try {
+      const tickers = [...new Set(this.portfolio.positions.map(p => p.ticker))];
+      if (!tickers.length) return;
+
+      console.log('Buscando cotações atualizadas (background) para:', tickers);
+      const res = await fetch(this.GAS_URL, {
+        method: 'POST',
+        mode: 'cors',
+        body: JSON.stringify({
+          action: 'get_live_prices',
+          tickers: tickers
+        })
+      });
+      const livePrices = await res.json();
+
+      if (livePrices && !livePrices.error && Object.keys(livePrices).length > 0) {
+        console.log('Cotações em tempo real recebidas:', livePrices);
+
+        let updatedAny = false;
+        if (this.marketData && this.marketData.assets) {
+          Object.keys(livePrices).forEach(ticker => {
+            const price = livePrices[ticker];
+            if (this.marketData.assets[ticker]) {
+              this.marketData.assets[ticker].last_price = price;
+
+              // Sincronizar também no marketNews para garantir que a variação diária/cotação principal nos cards também se atualize!
+              if (this.marketNews && this.marketNews.assets && this.marketNews.assets[ticker]) {
+                const newsAsset = this.marketNews.assets[ticker];
+                if (newsAsset.last_close != null && newsAsset.prev_close == null) {
+                  // Salva o antigo fechamento como o fechamento anterior (prev_close) se não existir para calcular variação correta
+                  newsAsset.prev_close = newsAsset.last_close / (1 + (newsAsset.daily_delta || 0));
+                }
+                newsAsset.last_close = price;
+                if (newsAsset.prev_close != null && newsAsset.prev_close > 0) {
+                  newsAsset.daily_delta = (price / newsAsset.prev_close) - 1;
+                }
+              }
+              updatedAny = true;
+            }
+          });
+        }
+
+        if (updatedAny) {
+          console.log('Recalculando carteira e re-renderizando posições...');
+          await this.runAnalysis();
+          this.renderPositions();
+        }
+      }
+    } catch (err) {
+      console.warn('Erro ao carregar cotações em tempo real:', err);
+    }
   }
 
   bindUI() {
@@ -2308,11 +2368,36 @@ class B3App {
   /* ------------------------------------------------------------------
      Rendering — Positions table
   ------------------------------------------------------------------ */
+  toggleCardExpansion(ticker) {
+    if (!this.expandedTickers) this.expandedTickers = {};
+    this.expandedTickers[ticker] = !this.expandedTickers[ticker];
+
+    const card = document.getElementById(`position-card-${ticker}`);
+    const content = document.getElementById(`position-card-content-${ticker}`);
+    const icon = document.getElementById(`position-card-chevron-${ticker}`);
+
+    if (card && content && icon) {
+      if (this.expandedTickers[ticker]) {
+        card.classList.remove('collapsed');
+        content.style.display = 'block';
+        icon.textContent = '▲';
+      } else {
+        card.classList.add('collapsed');
+        content.style.display = 'none';
+        icon.textContent = '▼';
+      }
+    }
+  }
+
   renderPositions() {
     const grid = this.$('positionsBody');
     if (!this.portfolio.positions.length) {
       grid.innerHTML = '<div class="empty-state" style="width: 100%; text-align: center;">Nenhum ativo no portfólio. Clique em "Registrar Compra".</div>';
       return;
+    }
+
+    if (!this.expandedTickers) {
+      this.expandedTickers = {};
     }
 
     let consolidated = this.consolidatePortfolio();
@@ -2341,7 +2426,7 @@ class B3App {
     });
 
     let html = '';
-    consolidated.forEach(item => {
+    consolidated.forEach((item, idx) => {
       const a = analysisMap[item.ticker] || {};
       const tickerClean = this.escapeHTML(item.ticker.replace('.SA', ''));
 
@@ -2388,81 +2473,101 @@ class B3App {
       }
 
       const logoHtml = this.getAssetLogoHTML(item.ticker, 32);
-      const isMover = this.marketNews && this.marketNews.market_movers && this.marketNews.market_movers.includes(item.ticker);
+      const isExpanded = !!this.expandedTickers[item.ticker];
+      const displayStyle = isExpanded ? 'block' : 'none';
+      const chevronText = isExpanded ? '▲' : '▼';
+      const collapsedClass = isExpanded ? '' : 'collapsed';
 
-      // Mostrar botão IA apenas se for membro OU se for mover no market_news (padrão de visualização dos cards)
-      const showAiButton = this.user || isMover;
-      const aiButton = (showAiButton && newsAsset) ? `
-        <button class="btn btn-outline btn-sm btn-position-action" onclick="app.showAssetNews('${item.ticker}')" style="width: auto; padding: 0.4rem 0.6rem;" title="Ver resumo IA">🤖 Notícias IA</button>
-      ` : '';
+      const sparkId = `spark-pos-${idx}`;
 
       html += `
-        <div class="card glass news-card position-card">
-          <div class="news-card-header" style="margin-bottom: 0.75rem;">
-            <div style="display:flex; align-items:center; gap:0.75rem">
+        <div class="card glass news-card position-card ${collapsedClass}" id="position-card-${item.ticker}" style="min-height: auto; cursor: default;">
+          <div class="news-card-header" style="margin-bottom: 0px; position: relative; gap: 0.5rem; flex-wrap: wrap;">
+            <div style="display:flex; align-items:center; gap:0.5rem; flex: 1; min-width: 140px;">
               ${logoHtml}
               <div style="display:flex; flex-direction:column">
                 <a href="#" onclick="event.preventDefault(); app.showMonitor('${tickerClean}')" class="ticker-link news-card-ticker"><strong>${tickerClean}</strong></a>
-                <span style="font-size: 0.7rem; color: var(--text-muted); text-overflow: ellipsis; overflow: hidden; max-width: 140px; white-space: nowrap;" title="${this.escapeHTML(a.name || item.ticker)}">${this.escapeHTML(a.name || item.ticker)}</span>
+                <span style="font-size: 0.7rem; color: var(--text-muted); text-overflow: ellipsis; overflow: hidden; max-width: 120px; white-space: nowrap;" title="${this.escapeHTML(a.name || item.ticker)}">${this.escapeHTML(a.name || item.ticker)}</span>
               </div>
             </div>
-            ${performanceHtml}
-          </div>
 
-          <div class="position-card-metrics-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem; margin-bottom: 1rem; border-top: 1px solid var(--border-glass); border-bottom: 1px solid var(--border-glass); padding: 0.75rem 0;">
-            <div class="metric-item">
-              <span class="metric-label" style="display: block; font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase;">Qtd Atual</span>
-              <span class="metric-val" style="font-weight: 700; font-size: 0.9rem;">${item.totalQty}</span>
+            <!-- Sparkline Canvas -->
+            <div style="display: flex; align-items: center; justify-content: center; height: 32px; width: 80px; margin-right: 0.5rem;" title="Histórico dos últimos 15 dias">
+              <canvas id="${sparkId}" width="80" height="30"></canvas>
             </div>
-            <div class="metric-item">
-              <span class="metric-label" style="display: block; font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase;">Preço Médio</span>
-              <span class="metric-val" style="font-weight: 700; font-size: 0.9rem;">R$ ${this.formatNumber(item.avgPrice, 2)}</span>
-            </div>
-            <div class="metric-item">
-              <span class="metric-label" style="display: block; font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase;">Custo Total</span>
-              <span class="metric-val" style="font-weight: 700; font-size: 0.9rem;">${this.formatCurrency(item.totalInvested)}</span>
-            </div>
-            <div class="metric-item">
-              <span class="metric-label" style="display: block; font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase;">Val. Mercado</span>
-              <span class="metric-val" style="font-weight: 700; font-size: 0.9rem;">${a.market_value ? this.formatCurrency(a.market_value) : '—'}</span>
-            </div>
-            <div class="metric-item">
-              <span class="metric-label" style="display: block; font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase;">Patrimônio</span>
-              <span class="metric-val" style="font-weight: 700; font-size: 0.9rem; color: var(--accent-light);">${a.total_equity ? this.formatCurrency(a.total_equity) : '—'}</span>
-            </div>
-            <div class="metric-item">
-              <span class="metric-label" style="display: block; font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase;">Proventos</span>
-              <span class="metric-val positive" style="font-weight: 700; font-size: 0.9rem; color: var(--green);">${a.total_proventos ? this.formatCurrency(a.total_proventos) : 'R$ 0,00'}</span>
-            </div>
-            <div class="metric-item">
-              <span class="metric-label" style="display: block; font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase;">Lucro Efetivo</span>
-              <span class="metric-val ${effProf >= 0 ? 'positive' : 'negative'}" style="font-weight: 700; font-size: 0.9rem;">${this.formatCurrency(effProf)}</span>
-            </div>
-            <div class="metric-item">
-              <span class="metric-label" style="display: block; font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase;">Lucro Projetado</span>
-              <span class="metric-val ${projProf >= 0 ? 'positive' : 'negative'}" style="font-weight: 700; font-size: 0.9rem;">${this.formatCurrency(projProf)}</span>
-            </div>
-            <div class="metric-item" style="grid-column: span 2;">
-              <span class="metric-label" style="display: block; font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase;">Rentabilidade Total</span>
-              <span class="metric-val ${rentClass}" style="font-weight: 800; font-size: 1.05rem;">${rentText}</span>
+
+            <div style="display: flex; align-items: center; gap: 0.75rem;">
+              ${performanceHtml}
+
+              <!-- Chevron Toggle Button -->
+              <button class="btn-chevron-toggle" onclick="app.toggleCardExpansion('${item.ticker}')" id="position-card-chevron-${item.ticker}" style="background: none; border: none; color: var(--text-secondary); font-size: 1.1rem; cursor: pointer; padding: 4px 8px; border-radius: 4px; transition: background var(--transition); display: flex; align-items: center; justify-content: center; width: 32px; height: 32px;">${chevronText}</button>
             </div>
           </div>
 
-          <div class="position-card-actions-wrapper" style="display: flex; flex-direction: column; gap: 0.5rem; margin-top: auto;">
-            <div style="display: flex; gap: 0.5rem; width: 100%;">
-              <button class="btn btn-primary btn-sm btn-position-action" onclick="app.openModal(null, 'buy'); app.$('posTicker').value='${tickerClean}'; app.validateTicker();" style="flex: 1; padding: 0.4rem; justify-content: center; font-size: 0.75rem;">Comprar</button>
-              <button class="btn btn-danger btn-sm btn-position-action" onclick="app.openModal(null, 'sell'); app.$('posTicker').value='${tickerClean}'; app.validateTicker();" style="flex: 1; padding: 0.4rem; justify-content: center; font-size: 0.75rem;">Vender</button>
+          <!-- Collapsible Content -->
+          <div id="position-card-content-${item.ticker}" style="display: ${displayStyle}; margin-top: 0.75rem;">
+            <div class="position-card-metrics-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem; margin-bottom: 1rem; border-top: 1px solid var(--border-glass); border-bottom: 1px solid var(--border-glass); padding: 0.75rem 0;">
+              <div class="metric-item">
+                <span class="metric-label" style="display: block; font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase;">Qtd Atual</span>
+                <span class="metric-val" style="font-weight: 700; font-size: 0.9rem;">${item.totalQty}</span>
+              </div>
+              <div class="metric-item">
+                <span class="metric-label" style="display: block; font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase;">Preço Médio</span>
+                <span class="metric-val" style="font-weight: 700; font-size: 0.9rem;">R$ ${this.formatNumber(item.avgPrice, 2)}</span>
+              </div>
+              <div class="metric-item">
+                <span class="metric-label" style="display: block; font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase;">Custo Total</span>
+                <span class="metric-val" style="font-weight: 700; font-size: 0.9rem;">${this.formatCurrency(item.totalInvested)}</span>
+              </div>
+              <div class="metric-item">
+                <span class="metric-label" style="display: block; font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase;">Val. Mercado</span>
+                <span class="metric-val" style="font-weight: 700; font-size: 0.9rem;">${a.market_value ? this.formatCurrency(a.market_value) : '—'}</span>
+              </div>
+              <div class="metric-item">
+                <span class="metric-label" style="display: block; font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase;">Patrimônio</span>
+                <span class="metric-val" style="font-weight: 700; font-size: 0.9rem; color: var(--accent-light);">${a.total_equity ? this.formatCurrency(a.total_equity) : '—'}</span>
+              </div>
+              <div class="metric-item">
+                <span class="metric-label" style="display: block; font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase;">Proventos</span>
+                <span class="metric-val positive" style="font-weight: 700; font-size: 0.9rem; color: var(--green);">${a.total_proventos ? this.formatCurrency(a.total_proventos) : 'R$ 0,00'}</span>
+              </div>
+              <div class="metric-item">
+                <span class="metric-label" style="display: block; font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase;">Lucro Efetivo</span>
+                <span class="metric-val ${effProf >= 0 ? 'positive' : 'negative'}" style="font-weight: 700; font-size: 0.9rem;">${this.formatCurrency(effProf)}</span>
+              </div>
+              <div class="metric-item">
+                <span class="metric-label" style="display: block; font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase;">Lucro Projetado</span>
+                <span class="metric-val ${projProf >= 0 ? 'positive' : 'negative'}" style="font-weight: 700; font-size: 0.9rem;">${this.formatCurrency(projProf)}</span>
+              </div>
+              <div class="metric-item" style="grid-column: span 2;">
+                <span class="metric-label" style="display: block; font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase;">Rentabilidade Total</span>
+                <span class="metric-val ${rentClass}" style="font-weight: 800; font-size: 1.05rem;">${rentText}</span>
+              </div>
             </div>
-            <div style="display: flex; gap: 0.4rem; flex-wrap: wrap; width: 100%;">
-              <button class="btn btn-outline btn-sm btn-position-action" onclick="app.showMonitor('${tickerClean}')" style="flex: 1.2; padding: 0.4rem 0.6rem; font-size: 0.75rem;" title="Análise Fundamentalista">📊 Fundamentalista</button>
-              <button class="btn btn-outline btn-sm btn-position-action" onclick="app.manageTransactions('${item.ticker}')" style="flex: 1; padding: 0.4rem 0.6rem; font-size: 0.75rem;" title="Transações e Configurações">⚙️ Config/Hist</button>
-              ${aiButton}
+
+            <div class="position-card-actions-wrapper" style="display: flex; flex-direction: column; gap: 0.5rem; margin-top: auto;">
+              <div style="display: flex; gap: 0.5rem; width: 100%;">
+                <button class="btn btn-primary btn-sm btn-position-action" onclick="app.openModal(null, 'buy'); app.$('posTicker').value='${tickerClean}'; app.validateTicker();" style="flex: 1; padding: 0.4rem; justify-content: center; font-size: 0.75rem;">Comprar</button>
+                <button class="btn btn-danger btn-sm btn-position-action" onclick="app.openModal(null, 'sell'); app.$('posTicker').value='${tickerClean}'; app.validateTicker();" style="flex: 1; padding: 0.4rem; justify-content: center; font-size: 0.75rem;">Vender</button>
+              </div>
+              <div style="display: flex; gap: 0.4rem; flex-wrap: wrap; width: 100%;">
+                <button class="btn btn-outline btn-sm btn-position-action" onclick="app.showMonitor('${tickerClean}')" style="flex: 1.2; padding: 0.4rem 0.6rem; font-size: 0.75rem;" title="Análise Fundamentalista">📊 Fundamentalista</button>
+                <button class="btn btn-outline btn-sm btn-position-action" onclick="app.manageTransactions('${item.ticker}')" style="flex: 1; padding: 0.4rem 0.6rem; font-size: 0.75rem;" title="Transações e Configurações">⚙️ Config/Hist</button>
+                <button class="btn btn-outline btn-sm btn-position-action" onclick="app.showAssetNews('${item.ticker}')" style="flex: 1; padding: 0.4rem 0.6rem; font-size: 0.75rem;" title="Notícias IA">📰 Notícias</button>
+              </div>
             </div>
           </div>
         </div>
       `;
     });
     grid.innerHTML = html;
+
+    // Render sparklines with small delay
+    setTimeout(() => {
+      consolidated.forEach((item, idx) => {
+        this.renderSparkline(item.ticker, `spark-pos-${idx}`);
+      });
+    }, 50);
   }
 
   renderDividendsPage() {
