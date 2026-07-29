@@ -201,7 +201,10 @@ function handleGetAllTickers() {
 
 function handleGetLivePrices(tickers) {
   if (!tickers || !tickers.length) return {};
+  const lock = LockService.getScriptLock();
   try {
+    // Adquire um bloqueio exclusivo de até 30 segundos para evitar concorrência na mesma folha
+    lock.waitLock(30000);
     const ss = SpreadsheetApp.openById(SPREADSHEET_ID);
     let sheet = ss.getSheetByName("LivePricesEval");
     if (!sheet) {
@@ -233,6 +236,9 @@ function handleGetLivePrices(tickers) {
     return results;
   } catch (err) {
     return { error: err.toString() };
+  } finally {
+    // Libera o bloqueio exclusivo
+    lock.releaseLock();
   }
 }
 
