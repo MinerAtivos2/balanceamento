@@ -2482,21 +2482,21 @@ class B3App {
 
       html += `
         <div class="card glass news-card position-card ${collapsedClass}" id="position-card-${item.ticker}" style="min-height: auto; cursor: default;">
-          <div class="news-card-header" style="margin-bottom: 0px; position: relative; gap: 0.5rem; flex-wrap: wrap;">
-            <div style="display:flex; align-items:center; gap:0.5rem; flex: 1; min-width: 140px;">
+          <div class="news-card-header" style="margin-bottom: 0px; position: relative; display: flex; justify-content: space-between; align-items: center; gap: 0.5rem;">
+            <div style="display:flex; align-items:center; gap:0.5rem; flex: 1; min-width: 0;">
               ${logoHtml}
-              <div style="display:flex; flex-direction:column">
+              <div style="display:flex; flex-direction:column; min-width: 0;">
                 <a href="#" onclick="event.preventDefault(); app.showMonitor('${tickerClean}')" class="ticker-link news-card-ticker"><strong>${tickerClean}</strong></a>
-                <span style="font-size: 0.7rem; color: var(--text-muted); text-overflow: ellipsis; overflow: hidden; max-width: 120px; white-space: nowrap;" title="${this.escapeHTML(a.name || item.ticker)}">${this.escapeHTML(a.name || item.ticker)}</span>
+                <span style="font-size: 0.7rem; color: var(--text-muted); text-overflow: ellipsis; overflow: hidden; white-space: nowrap; margin-bottom: 2px;" title="${this.escapeHTML(a.name || item.ticker)}">${this.escapeHTML(a.name || item.ticker)}</span>
+
+                <!-- Sparkline Canvas directly under asset name -->
+                <div style="display: flex; align-items: center; height: 18px; width: 80px;" title="Histórico dos últimos 15 dias">
+                  <canvas id="${sparkId}" width="80" height="18"></canvas>
+                </div>
               </div>
             </div>
 
-            <!-- Sparkline Canvas -->
-            <div style="display: flex; align-items: center; justify-content: center; height: 32px; width: 80px; margin-right: 0.5rem;" title="Histórico dos últimos 15 dias">
-              <canvas id="${sparkId}" width="80" height="30"></canvas>
-            </div>
-
-            <div style="display: flex; align-items: center; gap: 0.75rem;">
+            <div style="display: flex; align-items: center; gap: 0.75rem; flex-shrink: 0;">
               ${performanceHtml}
 
               <!-- Chevron Toggle Button -->
