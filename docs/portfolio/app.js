@@ -349,7 +349,25 @@ class B3App {
     // Buttons
     this.$('btnAddPosition').addEventListener('click', () => this.openModal(null, 'buy'));
     this.$('btnSellPosition').addEventListener('click', () => this.openModal(null, 'sell'));
-    this.$('btnAnalyze').addEventListener('click', () => this.runAnalysis());
+
+    // Toggle Operations Sub-toolbar
+    const btnToggleOps = this.$('btnToggleOperations');
+    if (btnToggleOps) {
+      btnToggleOps.addEventListener('click', () => {
+        const panel = this.$('collapsibleOperations');
+        const chevron = this.$('operationsChevron');
+        if (panel) {
+          if (panel.style.display === 'none') {
+            panel.style.display = 'block';
+            if (chevron) chevron.textContent = '▲';
+          } else {
+            panel.style.display = 'none';
+            if (chevron) chevron.textContent = '▼';
+          }
+        }
+      });
+    }
+
     this.$('btnCalculateTaxes').addEventListener('click', () => this.renderTaxReport());
     this.$('btnSaveFiscalBalance').addEventListener('click', () => this.confirmAndSaveFiscalBalance());
     this.$('btnRunBarsi').addEventListener('click', () => this.runBarsi());
