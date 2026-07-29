@@ -3060,12 +3060,14 @@ class B3App {
       if (qty > 0 && avgPrice > 0) {
         assetYield = ((plotCloses[i] - avgPrice) / avgPrice) * 100;
       }
+      if (i === 0) assetYield = 0; // Force start at 0% for cumulative comparison
       assetYields.push(assetYield);
 
-      // 2. Calculate CDI cumulative yield on date i (Annual CDI is ~11% standard)
+      // 2. Calculate CDI cumulative yield on date i (Annual CDI/Selic is ~11.25% standard)
       const currentDateTime = new Date(dStr).getTime();
       const elapsedDays = Math.max(0, (currentDateTime - firstDateTime) / (1000 * 60 * 60 * 24));
-      const cdiYield = (Math.pow(1 + 0.11, elapsedDays / 365) - 1) * 100;
+      let cdiYield = (Math.pow(1 + 0.1125, elapsedDays / 365) - 1) * 100;
+      if (i === 0) cdiYield = 0; // Force start at 0%
       cdiYields.push(cdiYield);
 
       zeros.push(0);
