@@ -9,8 +9,7 @@ class B3App {
     // 2. Extensões > Apps Script. Cole o código do arquivo 'docs/api.gs'.
     // 3. Implantar > App da Web (Quem tem acesso: "Qualquer pessoa").
     // 4. Copie a URL gerada e cole abaixo:
-    this.GAS_URL = "https://script.google.com/macros/s/AKfycbzwce9uqotw-sfLsPKb4jfNuksIWWJG84eQEdTCwyeEQKUrmnhnoIbj4sdSDMjbUMdr/exec";
-       //"https://script.google.com/macros/s/AKfycbyIQkk8nPe2ROYHPbMbvfm6EZV8TvSneHgnKovW7JoVxbMrVjF3Bs-0SG_Ps6uLk1NY5Q/exec";
+    this.GAS_URL = "https://script.google.com/macros/s/AKfycbyIQkk8nPe2ROYHPbMbvfm6EZV8TvSneHgnKovW7JoVxbMrVjF3Bs-0SG_Ps6uLk1NY5Q/exec";
 
     this.portfolio = { name: 'Meu Portfólio', positions: [] };
     this.user = null; // { username: '...' } if logged in
@@ -2575,8 +2574,8 @@ class B3App {
               </div>
               <div class="metric-item" style="display: flex; flex-direction: column; justify-content: space-between; align-items: flex-start; height: 100%;">
                 <span class="metric-label" style="display: block; font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase;">Ativo vs CDI (Histórico)</span>
-                <div style="width: 100%; height: 24px; display: flex; align-items: center; margin-top: 4px; position: relative;">
-                  <canvas id="yield-spark-${idx}" style="width: 100% !important; height: 24px !important;"></canvas>
+                <div style="width: 100%; height: 36px; display: flex; align-items: center; margin-top: 4px; position: relative;">
+                  <canvas id="yield-spark-${idx}" style="width: 100% !important; height: 36px !important;"></canvas>
                 </div>
               </div>
             </div>
@@ -2958,6 +2957,11 @@ class B3App {
     const avgLine = data.map(() => avg);
     const isUp = data[data.length - 1] >= data[0];
 
+    const existingChart = Chart.getChart(ctx);
+    if (existingChart) {
+      existingChart.destroy();
+    }
+
     const chart = new Chart(ctx, {
       type: 'line',
       data: {
@@ -3001,6 +3005,11 @@ class B3App {
 
     const ctx = document.getElementById(canvasId);
     if (!ctx) return;
+
+    const existingChart = Chart.getChart(ctx);
+    if (existingChart) {
+      existingChart.destroy();
+    }
 
     // Get the first purchase date of the asset
     const transactions = [...item.transactions];
@@ -3083,7 +3092,7 @@ class B3App {
             label: 'Ativo',
             data: assetYields,
             borderColor: '#3b82f6', // Bright Blue
-            borderWidth: 1.5,
+            borderWidth: 1.2,
             pointRadius: 0,
             fill: false,
             tension: 0.2
@@ -3092,7 +3101,7 @@ class B3App {
             label: 'CDI',
             data: cdiYields,
             borderColor: '#fbbf24', // Warm Yellow/Amber
-            borderWidth: 1.5,
+            borderWidth: 1.2,
             pointRadius: 0,
             fill: false,
             tension: 0.2
@@ -3100,7 +3109,7 @@ class B3App {
           {
             label: 'Ref',
             data: zeros,
-            borderColor: 'rgba(255, 255, 255, 0.4)',
+            borderColor: 'rgba(255, 255, 255, 0.25)',
             borderWidth: 0.8,
             borderDash: [3, 3],
             pointRadius: 0,
@@ -3115,7 +3124,12 @@ class B3App {
         plugins: { legend: { display: false }, tooltip: { enabled: false } },
         scales: {
           x: { display: false },
-          y: { display: false }
+          y: {
+            display: false,
+            grace: '10%',
+            suggestedMin: -5,
+            suggestedMax: 5
+          }
         }
       }
     });
