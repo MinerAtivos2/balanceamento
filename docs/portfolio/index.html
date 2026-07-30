@@ -176,21 +176,8 @@
 
       <div class="toolbar">
         <div class="toolbar-group">
-          <button class="btn btn-primary" id="btnAddPosition">
-            ➕ Registrar Compra
-          </button>
-          <button class="btn btn-danger" id="btnSellPosition">
-            ➖ Registrar Venda
-          </button>
-          <button class="btn btn-secondary" id="btnAddBulk">
-            📥 Adicionar Vários
-          </button>
-          <button class="btn btn-outline" onclick="app.$('fileImport').click()">
-            📄 Importar CSV
-          </button>
-          <input type="file" id="fileImport" style="display:none" accept=".csv" onchange="app.importCSV(this)">
-          <button class="btn btn-outline" id="btnAnalyze">
-            📊 Analisar Portfólio
+          <button class="btn btn-outline" id="btnToggleOperations" style="display: flex; align-items: center; gap: 0.5rem;">
+            ⚙️ Registrar movimentações <span id="operationsChevron">▼</span>
           </button>
         </div>
         <div class="form-inline">
@@ -210,28 +197,28 @@
         </div>
       </div>
 
-      <div class="card glass" id="positionsTableCard">
-        <div class="table-responsive">
-          <table id="positionsTable">
-            <thead>
-              <tr>
-                <th>Ativo</th>
-                <th>Qtd Atual</th>
-                <th>Preço Médio</th>
-                <th>Custo Total</th>
-                <th>Valor Mercado</th>
-                <th>Proventos</th>
-                <th>Patrimônio</th>
-                <th>Lucro Efetivo</th>
-                <th>Lucro Projetado</th>
-                <th>Rentab. Total</th>
-                <th>Ações</th>
-              </tr>
-            </thead>
-            <tbody id="positionsBody">
-              <tr><td colspan="10" class="empty-state">Carregando...</td></tr>
-            </tbody>
-          </table>
+      <!-- Collapsible Operations Sub-Toolbar -->
+      <div class="collapsible-operations glass" id="collapsibleOperations" style="display: none; padding: 1rem; border-radius: 12px; margin-bottom: 1.5rem; border: 1px solid rgba(255, 255, 255, 0.08); background: rgba(255, 255, 255, 0.02);">
+        <div class="toolbar-group" style="margin-bottom: 0;">
+          <button class="btn btn-primary" id="btnAddPosition">
+            ➕ Registrar Compra
+          </button>
+          <button class="btn btn-danger" id="btnSellPosition">
+            ➖ Registrar Venda
+          </button>
+          <button class="btn btn-secondary" id="btnAddBulk">
+            📥 Adicionar Vários
+          </button>
+          <button class="btn btn-outline" onclick="app.$('fileImport').click()">
+            📄 Importar CSV
+          </button>
+          <input type="file" id="fileImport" style="display:none" accept=".csv" onchange="app.importCSV(this)">
+        </div>
+      </div>
+
+      <div class="positions-container" id="positionsTableCard">
+        <div class="news-grid" id="positionsBody">
+          <div class="empty-state" style="width: 100%; text-align: center;">Carregando...</div>
         </div>
       </div>
 		   <p style="margin: 0; font-size: 0.8em; color: #94a3b8; font-weight: normal;">⚠️Disclaimer: </strong>O conteúdo deste site é estritamente educativo e informativo, destinado ao aculturamento de mercado. Não constitui recomendação de compra ou venda de ativos. Investimentos envolvem riscos. Para recomendações personalizadas, consulte um profissional de investimentos certificado (CVM/ANBIMA).</p>
