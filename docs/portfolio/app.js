@@ -2731,7 +2731,7 @@ class B3App {
 
     // 5. Inserir o HTML do widget e do blocker absoluto no canto superior direito
     container.innerHTML = `
-      <tv-ticker-tape symbols="${symbolsAttr}" hover-type="chart" symbol-url="${symbolUrl}"></tv-ticker-tape>
+      <tv-ticker-tape symbols="${symbolsAttr}" hide-chart theme="dark" symbol-url="${symbolUrl}"></tv-ticker-tape>
       <div id="tickerTapeBlocker" style="position: absolute; top: 0; right: 0; width: 44px; height: 100%; display: flex; align-items: center; justify-content: center; z-index: 1000; background: var(--bg-secondary); border-left: 1px solid var(--border-glass); cursor: pointer; pointer-events: auto; transition: background var(--transition);" title="Suas Posições">
         <span style="font-size: 1.1rem;">📈</span>
       </div>
