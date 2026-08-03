@@ -487,6 +487,28 @@ class B3App {
       });
     });
 
+    // Intercepta cliques dentro do widget do TradingView para evitar recarregamento de página/nova aba
+    document.addEventListener('click', e => {
+      const path = e.composedPath();
+      const anchor = path.find(el => el && el.tagName === 'A');
+      if (anchor) {
+        const href = anchor.getAttribute('href') || '';
+        if (href.includes('#positions?ticker=')) {
+          e.preventDefault();
+          e.stopPropagation();
+
+          const hashIndex = href.indexOf('#');
+          if (hashIndex !== -1) {
+            const hashValue = href.substring(hashIndex);
+
+            // Navega na mesma aba de forma SPA!
+            window.location.hash = hashValue;
+            this.handleHashRoute();
+          }
+        }
+      }
+    });
+
     // Escuta mudanças de hash na URL (rotas da SPA)
     window.addEventListener('hashchange', () => this.handleHashRoute());
   }
