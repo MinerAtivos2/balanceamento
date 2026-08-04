@@ -2752,23 +2752,27 @@ class B3App {
     console.log('Atualizando Ticker Tape com símbolos:', symbolsAttr);
 
     // 5. Inserir o HTML do widget e do blocker absoluto no canto superior direito
+    // O container blocker wrapper intercepta qualquer evento de mouse/hover na região do logo TV do widget
     container.innerHTML = `
       <tv-ticker-tape symbols="${symbolsAttr}" hide-chart theme="dark" symbol-url="${symbolUrl}"></tv-ticker-tape>
-      <div id="tickerTapeBlocker" style="position: absolute; right: 4px; top: 50%; transform: translateY(-50%); background: #ffffff; color: #9333ea; padding: 2px 6px; border-radius: 6px; font-size: 0.35rem; font-weight: bold; z-index: 1000; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 4px rgba(0,0,0,0.15); transition: background var(--transition);" title="Suas Posições">
-        <span>📈</span>
+      <div id="tickerTapeBlockerContainer" style="position: absolute; right: 0; top: 0; width: 44px; height: 100%; z-index: 1000; cursor: pointer;">
+        <div id="tickerTapeBlocker" style="position: absolute; right: 2px; top: 2px; background: #ffffff; color: #9333ea; width: 22px; height: 22px; border-radius: 6px; font-size: 0.55rem; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 4px rgba(0,0,0,0.15); transition: background var(--transition);" title="Suas Posições">
+          <span>📈</span>
+        </div>
       </div>
     `;
 
     // 6. Adicionar evento de clique ao blocker para navegar para a página de posições
+    const blockerContainer = container.querySelector('#tickerTapeBlockerContainer');
     const blocker = container.querySelector('#tickerTapeBlocker');
-    if (blocker) {
-      blocker.addEventListener('mouseenter', () => {
+    if (blockerContainer && blocker) {
+      blockerContainer.addEventListener('mouseenter', () => {
         blocker.style.background = '#f3e8ff'; // Roxo bem claro no hover (purple-100)
       });
-      blocker.addEventListener('mouseleave', () => {
+      blockerContainer.addEventListener('mouseleave', () => {
         blocker.style.background = '#ffffff';
       });
-      blocker.addEventListener('click', (e) => {
+      blockerContainer.addEventListener('click', (e) => {
         e.preventDefault();
         e.stopPropagation();
         this.showPage('positions');
