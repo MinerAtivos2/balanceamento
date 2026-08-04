@@ -2754,8 +2754,8 @@ class B3App {
     // 5. Inserir o HTML do widget e do blocker absoluto no canto superior direito
     container.innerHTML = `
       <tv-ticker-tape symbols="${symbolsAttr}" hide-chart theme="dark" symbol-url="${symbolUrl}"></tv-ticker-tape>
-      <div id="tickerTapeBlocker" style="position: absolute; top: 0; right: 0; width: 44px; height: 100%; display: flex; align-items: center; justify-content: center; z-index: 1000; background: var(--bg-secondary); border-left: 1px solid var(--border-glass); cursor: pointer; pointer-events: auto; transition: background var(--transition);" title="Suas Posições">
-        <span style="font-size: 1.1rem;">📈</span>
+      <div id="tickerTapeBlocker" style="position: absolute; right: 4px; top: 50%; transform: translateY(-50%); background: #ffffff; color: #9333ea; padding: 2px 6px; border-radius: 6px; font-size: 0.35rem; font-weight: bold; z-index: 1000; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 4px rgba(0,0,0,0.15); transition: background var(--transition);" title="Suas Posições">
+        <span>📈</span>
       </div>
     `;
 
@@ -2763,10 +2763,10 @@ class B3App {
     const blocker = container.querySelector('#tickerTapeBlocker');
     if (blocker) {
       blocker.addEventListener('mouseenter', () => {
-        blocker.style.background = 'rgba(99, 102, 241, 0.2)'; // Efeito suave de hover com a cor tema
+        blocker.style.background = '#f3e8ff'; // Roxo bem claro no hover (purple-100)
       });
       blocker.addEventListener('mouseleave', () => {
-        blocker.style.background = 'var(--bg-secondary)';
+        blocker.style.background = '#ffffff';
       });
       blocker.addEventListener('click', (e) => {
         e.preventDefault();
