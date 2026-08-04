@@ -286,6 +286,9 @@ class B3App {
 
     // 6. Buscar cotações atualizadas em tempo real em background!
     this.fetchLivePricesInBackground();
+
+    // 7. Processar qualquer rota de hash inicial (se o usuário carregou a página com hash direto)
+    this.handleHashRoute();
   }
 
   async fetchLivePricesInBackground() {
@@ -483,12 +486,112 @@ class B3App {
         this.toggleSidebar(false);
       });
     });
+
+    // Intercepta cliques dentro do widget do TradingView para evitar recarregamento de página/nova aba
+    document.addEventListener('click', e => {
+      const path = e.composedPath();
+      const anchor = path.find(el => el && el.tagName === 'A');
+      if (anchor) {
+        const href = anchor.getAttribute('href') || '';
+        if (href.includes('#positions?ticker=')) {
+          e.preventDefault();
+          e.stopPropagation();
+
+          const hashIndex = href.indexOf('#');
+          if (hashIndex !== -1) {
+            const hashValue = href.substring(hashIndex);
+
+            // Navega na mesma aba de forma SPA!
+            window.location.hash = hashValue;
+            this.handleHashRoute();
+          }
+        }
+      }
+    });
+
+    // Escuta mudanças de hash na URL (rotas da SPA)
+    window.addEventListener('hashchange', () => this.handleHashRoute());
+  }
+
+  handleHashRoute() {
+    const hash = window.location.hash;
+    if (!hash) return;
+
+    console.log('Manipulando rota via hash:', hash);
+
+    // Formato esperado: #positions?ticker=VALE3 ou apenas #positions
+    const parts = hash.substring(1).split('?');
+    const pageName = parts[0];
+
+    if (pageName === 'positions') {
+      // Navega para a página de posições
+      this.showPage('positions');
+      this.toggleSidebar(false);
+
+      // Trata parâmetros de query
+      if (parts[1]) {
+        const params = new URLSearchParams(parts[1]);
+        const tickerParam = params.get('ticker');
+        if (tickerParam) {
+          // Remove qualquer prefixo de exchange (ex: BMFBOVESPA:) que o TradingView possa prepender
+          const cleanParam = tickerParam.includes(':') ? tickerParam.split(':').pop() : tickerParam;
+          const targetTicker = cleanParam.toUpperCase().replace('.SA', '');
+
+          // Localiza o ticker correspondente no portfólio (ex: "PETR4.SA" ou "PETR4")
+          let fullTicker = null;
+          if (this.portfolio && this.portfolio.positions) {
+            const matched = this.portfolio.positions.find(p => p.ticker.toUpperCase().replace('.SA', '') === targetTicker);
+            if (matched) {
+              fullTicker = matched.ticker;
+            }
+          }
+
+          // Fallback caso não esteja na lista explícita do portfólio mas queira estender como .SA
+          if (!fullTicker) {
+            fullTicker = targetTicker + '.SA';
+          }
+
+          console.log('Expandindo e focando no card do ativo:', fullTicker);
+
+          // Expande o card se não estiver expandido
+          if (!this.expandedTickers) {
+            this.expandedTickers = {};
+          }
+          if (!this.expandedTickers[fullTicker]) {
+            this.toggleCardExpansion(fullTicker);
+          }
+
+          // Rola até o card com efeito suave e aplica um destaque estético temporário
+          setTimeout(() => {
+            const cardElement = document.getElementById(`position-card-${fullTicker}`);
+            if (cardElement) {
+              cardElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+              // Aplica borda brilhante com a cor tema indigo de MinerAtivos
+              cardElement.style.transition = 'all 0.5s ease';
+              cardElement.style.boxShadow = '0 0 24px rgba(99, 102, 241, 0.7)';
+              cardElement.style.borderColor = 'rgba(99, 102, 241, 0.9)';
+
+              setTimeout(() => {
+                cardElement.style.boxShadow = '';
+                cardElement.style.borderColor = '';
+              }, 2500);
+            }
+          }, 150);
+        }
+      }
+    }
   }
 
   showPage(name) {
     console.log('Showing page:', name);
     if (this.currentPage !== 'monitor') {
       this.previousPage = this.currentPage;
+    }
+
+    // Se estiver navegando para fora de posições, limpa o hash sem recarregar a página
+    if (name !== 'positions' && window.location.hash) {
+      history.pushState("", document.title, window.location.pathname + window.location.search);
     }
 
     // Modal based navigation for guests
@@ -2604,6 +2707,78 @@ class B3App {
         this.renderYieldSparkline(item, `yield-spark-${idx}`);
       });
     }, 50);
+
+    // Atualiza a fita do TradingView com os novos tickers da carteira
+    this.updateTickerTape();
+  }
+
+  updateTickerTape() {
+    const container = this.$('tickerTapeContainer');
+    if (!container) return;
+
+    // 1. Obter tickers das posições do portfólio
+    let tickers = [];
+    if (this.portfolio && this.portfolio.positions && this.portfolio.positions.length > 0) {
+      tickers = [...new Set(this.portfolio.positions.map(p => p.ticker))];
+    }
+
+    // Filtrar vazios/inválidos por segurança
+    tickers = tickers.filter(t => t);
+
+    // 2. Fallback de ativos padrão (caso de não logado ou portfólio vazio)
+    if (tickers.length === 0) {
+      tickers = ['VALE3.SA', 'PETR4.SA', 'ITUB4.SA', 'BBDC4.SA', 'ABEV3.SA', 'WEGE3.SA'];
+    }
+
+    // 3. Formatar tickers para o TradingView (remover sufixo .SA e colocar o prefixo BMFBOVESPA:)
+    const tvSymbols = tickers.map(ticker => {
+      const clean = ticker.toUpperCase().replace('.SA', '');
+      return `BMFBOVESPA:${clean}`;
+    });
+
+    // Juntar símbolos com vírgula para o atributo symbols do widget
+    const symbolsAttr = tvSymbols.join(',');
+
+    // Otimização: se os símbolos forem exatamente os mesmos da última renderização, não faça nada para evitar piscar/reload
+    if (this.lastTickerTapeSymbols === symbolsAttr) {
+      return;
+    }
+    this.lastTickerTapeSymbols = symbolsAttr;
+
+    // 4. Construir o template de URL apontando para a SPA com hash
+    const baseUrl = window.location.origin + window.location.pathname;
+    const symbolUrl = `${baseUrl}#positions?ticker={tvsymbol}`;
+
+    console.log('Atualizando Ticker Tape com símbolos:', symbolsAttr);
+
+    // 5. Inserir o HTML do widget e do blocker absoluto no canto superior direito
+    // O container blocker wrapper intercepta qualquer evento de mouse/hover na região do logo TV do widget
+    container.innerHTML = `
+      <tv-ticker-tape symbols="${symbolsAttr}" hide-chart theme="dark" symbol-url="${symbolUrl}"></tv-ticker-tape>
+      <div id="tickerTapeBlockerContainer" style="position: absolute; right: 0; top: 0; width: 44px; height: 100%; z-index: 1000; cursor: pointer;">
+        <div id="tickerTapeBlocker" style="position: absolute; right: 2px; top: 2px; background: #ffffff; color: #9333ea; width: 22px; height: 22px; border-radius: 6px; font-size: 0.55rem; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 4px rgba(0,0,0,0.15); transition: background var(--transition);" title="Suas Posições">
+          <span>📈</span>
+        </div>
+      </div>
+    `;
+
+    // 6. Adicionar evento de clique ao blocker para navegar para a página de posições
+    const blockerContainer = container.querySelector('#tickerTapeBlockerContainer');
+    const blocker = container.querySelector('#tickerTapeBlocker');
+    if (blockerContainer && blocker) {
+      blockerContainer.addEventListener('mouseenter', () => {
+        blocker.style.background = '#f3e8ff'; // Roxo bem claro no hover (purple-100)
+      });
+      blockerContainer.addEventListener('mouseleave', () => {
+        blocker.style.background = '#ffffff';
+      });
+      blockerContainer.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        this.showPage('positions');
+        this.toggleSidebar(false);
+      });
+    }
   }
 
   renderDividendsPage() {
