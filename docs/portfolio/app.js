@@ -437,6 +437,10 @@ class B3App {
     // Sort listeners
     this.$('sortPositions').addEventListener('change', () => this.renderPositions());
     this.$('hideClosedPositions').addEventListener('change', () => this.renderPositions());
+    const inputAtr = this.$('inputAtratividade');
+    if (inputAtr) {
+      inputAtr.addEventListener('input', () => this.renderHistoricalComparisonChart());
+    }
     this.$('sortBarsi').addEventListener('change', () => this.renderBarsi());
     this.$('sortRebalance').addEventListener('change', () => this.renderRebalance());
 
@@ -2260,6 +2264,7 @@ class B3App {
 
     this.renderAllocationChart();
     this.renderRentabilityChart();
+    this.renderHistoricalComparisonChart();
   }
 
   renderAllocationChart() {
@@ -2380,6 +2385,300 @@ class B3App {
           },
         },
       },
+    });
+  }
+
+  getPortfolioStateAsOf(dStr) {
+    if (!this.portfolio || !this.portfolio.positions) {
+      return { totalInvested: 0, totalMarketValue: 0, totalRealizedProfit: 0, totalCostOfSoldShares: 0 };
+    }
+
+    const filtered = this.portfolio.positions.filter(pos => pos.purchase_date <= dStr);
+    if (filtered.length === 0) {
+      return { totalInvested: 0, totalMarketValue: 0, totalRealizedProfit: 0, totalCostOfSoldShares: 0 };
+    }
+
+    const grouped = {};
+    filtered.forEach((pos, originalIndex) => {
+      const ticker = pos.ticker;
+      if (!grouped[ticker]) grouped[ticker] = [];
+      grouped[ticker].push({ ...pos, originalQty: pos.quantity, originalIndex });
+    });
+
+    let totalInvestedPortfolio = 0;
+    let totalMarketValuePortfolio = 0;
+    let totalRealizedProfitPortfolio = 0;
+    let totalCostOfSoldSharesPortfolio = 0;
+
+    Object.keys(grouped).forEach(ticker => {
+      const transactions = [...grouped[ticker]];
+      transactions.sort((a, b) => a.purchase_date.localeCompare(b.purchase_date) || a.originalIndex - b.originalIndex);
+
+      let currentQty = 0;
+      let totalRealizedProfit = 0;
+      let totalCostOfSoldShares = 0;
+      let swingTradeLots = [];
+
+      const byDay = {};
+      transactions.forEach(t => {
+        if (!byDay[t.purchase_date]) byDay[t.purchase_date] = [];
+        byDay[t.purchase_date].push(t);
+      });
+
+      Object.keys(byDay).sort().forEach(date => {
+        const dayTrans = byDay[date];
+        let buys = dayTrans.filter(t => (t.type || 'buy') === 'buy').map(t => ({ ...t }));
+        let sells = dayTrans.filter(t => t.type === 'sell').map(t => ({ ...t }));
+
+        let dtProfit = 0;
+
+        // Day Trade matching
+        let buyPtr = 0, sellPtr = 0;
+        while (buyPtr < buys.length && sellPtr < sells.length) {
+          let b = buys[buyPtr];
+          let s = sells[sellPtr];
+          let matchQty = Math.min(b.quantity, s.quantity);
+
+          const grossResult = (s.purchase_price - b.purchase_price) * matchQty;
+          const propCosts = ((b.costs || 0) * (matchQty / b.originalQty)) + ((s.costs || 0) * (matchQty / s.originalQty));
+          dtProfit += (grossResult - propCosts);
+
+          b.quantity -= matchQty;
+          s.quantity -= matchQty;
+
+          if (b.quantity === 0) buyPtr++;
+          if (s.quantity === 0) sellPtr++;
+        }
+
+        // Swing Trade
+        dayTrans.forEach(t => {
+          const type = t.type || 'buy';
+          let remainingQty = (type === 'sell') ? sells.find(s => s.originalIndex === t.originalIndex).quantity
+                                               : buys.find(b => b.originalIndex === t.originalIndex).quantity;
+
+          if (remainingQty > 0) {
+            if (type === 'buy') {
+              const propCosts = (t.costs || 0) * (remainingQty / t.originalQty);
+              const totalCost = (remainingQty * t.purchase_price) + propCosts;
+              const unitCost = totalCost / remainingQty;
+              swingTradeLots.push({ qty: remainingQty, unitCost: unitCost });
+              currentQty += remainingQty;
+            } else {
+              const propCosts = (t.costs || 0) * (remainingQty / t.originalQty);
+              const netSaleValue = (remainingQty * t.purchase_price) - propCosts;
+              let costBasisSold = 0;
+              let toSell = remainingQty;
+              while (toSell > 0 && swingTradeLots.length > 0) {
+                let lot = swingTradeLots[0];
+                let take = Math.min(toSell, lot.qty);
+                costBasisSold += (take * lot.unitCost);
+                lot.qty -= take;
+                toSell -= take;
+                if (lot.qty === 0) swingTradeLots.shift();
+              }
+              totalRealizedProfit += (netSaleValue - costBasisSold);
+              totalCostOfSoldShares += costBasisSold;
+              currentQty -= remainingQty;
+            }
+          }
+        });
+        totalRealizedProfit += dtProfit;
+      });
+
+      const totalInvested = swingTradeLots.reduce((acc, lot) => acc + (lot.qty * lot.unitCost), 0);
+
+      const asset = this.marketData && this.marketData.assets && this.marketData.assets[ticker];
+      const closePrice = this.findCloseForDate(asset, dStr) || 0;
+      const marketValue = currentQty * closePrice;
+
+      totalInvestedPortfolio += totalInvested;
+      totalMarketValuePortfolio += marketValue;
+      totalRealizedProfitPortfolio += totalRealizedProfit;
+      totalCostOfSoldSharesPortfolio += totalCostOfSoldShares;
+    });
+
+    return {
+      totalInvested: totalInvestedPortfolio,
+      totalMarketValue: totalMarketValuePortfolio,
+      totalRealizedProfit: totalRealizedProfitPortfolio,
+      totalCostOfSoldShares: totalCostOfSoldSharesPortfolio
+    };
+  }
+
+  renderHistoricalComparisonChart() {
+    const canvas = this.$('historicalComparisonChart');
+    const container = this.$('historicalComparisonChartContainer');
+    const emptyState = this.$('historicalComparisonEmptyState');
+
+    if (!canvas) return;
+
+    if (!this.portfolio || !this.portfolio.positions || this.portfolio.positions.length === 0) {
+      if (container) container.style.display = 'none';
+      if (emptyState) emptyState.style.display = 'flex';
+      return;
+    }
+
+    if (container) container.style.display = 'block';
+    if (emptyState) emptyState.style.display = 'none';
+
+    // 1. Find earliest purchase date
+    const transactions = [...this.portfolio.positions];
+    transactions.sort((a, b) => a.purchase_date.localeCompare(b.purchase_date));
+    const firstDate = transactions[0].purchase_date;
+
+    // 2. Get dates from ^BVSP starting from firstDate
+    const bvspAsset = this.marketData && this.marketData.assets && this.marketData.assets['^BVSP'];
+    if (!bvspAsset || !bvspAsset.history || !bvspAsset.history.dates || !bvspAsset.history.dates.length) {
+      return;
+    }
+
+    const dates = bvspAsset.history.dates;
+    const closes = bvspAsset.history.closes;
+
+    const startIndex = dates.findIndex(d => d >= firstDate);
+    if (startIndex === -1) {
+      return;
+    }
+
+    const plotDates = dates.slice(startIndex);
+    const plotCloses = closes.slice(startIndex);
+
+    if (plotDates.length === 0) return;
+
+    // Get the specified annual target rate
+    const inputRateEl = this.$('inputAtratividade');
+    const R = inputRateEl ? (parseFloat(inputRateEl.value) || 10) : 10;
+
+    // Series arrays
+    const atratividadeValues = [];
+    const bvspValues = [];
+    const projectedRentabilityValues = [];
+    const effectiveRentabilityValues = [];
+
+    const bvspStartPrice = plotCloses[0];
+
+    plotDates.forEach((dStr, i) => {
+      // 1. Taxa de Atratividade (Option C: compounded daily business days base 252)
+      const atratividade = (Math.pow(1 + (R / 100), i / 252) - 1) * 100;
+      atratividadeValues.push(atratividade);
+
+      // 2. BVSP Rentability (normalized to 0% at start)
+      let bvspRent = 0;
+      if (bvspStartPrice > 0) {
+        bvspRent = ((plotCloses[i] - bvspStartPrice) / bvspStartPrice) * 100;
+      }
+      bvspValues.push(bvspRent);
+
+      // 3 & 4. Portfolio State
+      const state = this.getPortfolioStateAsOf(dStr);
+
+      let projRent = 0;
+      if (state.totalInvested > 0) {
+        projRent = ((state.totalMarketValue / state.totalInvested) - 1) * 100;
+      }
+
+      let effRent = 0;
+      if (state.totalCostOfSoldShares > 0) {
+        effRent = (state.totalRealizedProfit / state.totalCostOfSoldShares) * 100;
+      }
+
+      // Force start at 0% for cumulative comparison
+      if (i === 0) {
+        projRent = 0;
+        effRent = 0;
+      }
+
+      projectedRentabilityValues.push(projRent);
+      effectiveRentabilityValues.push(effRent);
+    });
+
+    // Recreate chart
+    if (this.charts.historicalComparison) {
+      this.charts.historicalComparison.destroy();
+    }
+
+    this.charts.historicalComparison = new Chart(canvas, {
+      type: 'line',
+      data: {
+        labels: plotDates,
+        datasets: [
+          {
+            label: 'Rentabilidade Projetada (%)',
+            data: projectedRentabilityValues,
+            borderColor: '#6366f1', // Indigo/violet
+            borderWidth: 1.5,
+            pointRadius: 0,
+            fill: false,
+            tension: 0.1
+          },
+          {
+            label: 'Rentabilidade Efetiva (%)',
+            data: effectiveRentabilityValues,
+            borderColor: '#22c55e', // Green
+            borderWidth: 1.5,
+            pointRadius: 0,
+            fill: false,
+            tension: 0.1
+          },
+          {
+            label: 'Taxa de Atratividade (%)',
+            data: atratividadeValues,
+            borderColor: '#fbbf24', // Amber/Yellow
+            borderWidth: 1.5,
+            pointRadius: 0,
+            fill: false,
+            tension: 0.1
+          },
+          {
+            label: 'BVSP (Ibovespa) (%)',
+            data: bvspValues,
+            borderColor: '#3b82f6', // Blue
+            borderWidth: 1.5,
+            pointRadius: 0,
+            fill: false,
+            tension: 0.1
+          },
+          {
+            label: 'Ref',
+            data: Array(plotDates.length).fill(0),
+            borderColor: 'rgba(255, 255, 255, 0.25)',
+            borderWidth: 1,
+            borderDash: [4, 4],
+            pointRadius: 0,
+            fill: false
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          x: {
+            ticks: { color: '#94a3b8', font: { family: 'Inter', size: 10 } },
+            grid: { color: 'rgba(255,255,255,0.02)' }
+          },
+          y: {
+            ticks: { color: '#94a3b8', callback: v => v.toFixed(1) + '%' },
+            grid: { color: 'rgba(255,255,255,0.05)' }
+          }
+        },
+        plugins: {
+          legend: {
+            display: true,
+            position: 'top',
+            labels: {
+              color: '#94a3b8',
+              font: { family: 'Inter', size: 11 },
+              filter: (item) => item.text !== 'Ref'
+            }
+          },
+          tooltip: {
+            callbacks: {
+              label: ctx => `${ctx.dataset.label}: ${this.formatNumber(ctx.raw, 2)}%`
+            }
+          }
+        }
+      }
     });
   }
 
