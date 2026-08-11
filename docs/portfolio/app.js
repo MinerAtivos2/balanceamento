@@ -2597,13 +2597,20 @@ class B3App {
       this.charts.historicalComparison.destroy();
     }
 
+    const lastProj = projectedRentabilityValues[projectedRentabilityValues.length - 1] || 0;
+    const lastEff = effectiveRentabilityValues[effectiveRentabilityValues.length - 1] || 0;
+    const lastAtr = atratividadeValues[atratividadeValues.length - 1] || 0;
+    const lastBvsp = bvspValues[bvspValues.length - 1] || 0;
+
+    const formatPct = val => (val >= 0 ? '+' : '') + this.formatNumber(val, 2) + '%';
+
     this.charts.historicalComparison = new Chart(canvas, {
       type: 'line',
       data: {
         labels: plotDates,
         datasets: [
           {
-            label: 'Rentabilidade Projetada (%)',
+            label: `Rentabilidade Projetada (${formatPct(lastProj)})`,
             data: projectedRentabilityValues,
             borderColor: '#6366f1', // Indigo/violet
             borderWidth: 1.5,
@@ -2612,7 +2619,7 @@ class B3App {
             tension: 0.1
           },
           {
-            label: 'Rentabilidade Efetiva (%)',
+            label: `Rentabilidade Efetiva (${formatPct(lastEff)})`,
             data: effectiveRentabilityValues,
             borderColor: '#22c55e', // Green
             borderWidth: 1.5,
@@ -2621,7 +2628,7 @@ class B3App {
             tension: 0.1
           },
           {
-            label: 'Taxa de Atratividade (%)',
+            label: `Taxa de Atratividade (${formatPct(lastAtr)})`,
             data: atratividadeValues,
             borderColor: '#fbbf24', // Amber/Yellow
             borderWidth: 1.5,
@@ -2630,7 +2637,7 @@ class B3App {
             tension: 0.1
           },
           {
-            label: 'BVSP (Ibovespa) (%)',
+            label: `BVSP (Ibovespa) (${formatPct(lastBvsp)})`,
             data: bvspValues,
             borderColor: '#3b82f6', // Blue
             borderWidth: 1.5,
