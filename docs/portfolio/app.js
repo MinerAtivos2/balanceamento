@@ -1923,9 +1923,12 @@ class B3App {
       totalCostOfSoldShares += item.costOfSoldShares;
     });
 
-    const rentDenominator = totalInvestedValue + totalCostOfSoldShares;
+    // Rentab. Real - lucro realizado (proventos + lucro de operações liquidadas) / investimento realizado (liquidado)
+    const rentDenominator = totalCostOfSoldShares;
     const portfolioRentReal = rentDenominator > 0 ? ((totalEffectiveProfit + totalDividendsValue) / rentDenominator * 100) : 0;
-    const portfolioRentProj = rentDenominator > 0 ? (totalProjectedProfit / rentDenominator * 100) : 0;
+
+    // Rentab. Projetada - o lucro projetado / totalInvestedValue (custo total das posições ativas)
+    const portfolioRentProj = totalInvestedValue > 0 ? (totalProjectedProfit / totalInvestedValue * 100) : 0;
 
     const portfolioReturn = (totalInvestedValue > 0) ? (totalProjectedProfit / totalInvestedValue * 100) : 0;
     const portfolioVol = positions.reduce((acc, p, idx) => acc + ((p.total_equity / (totalEquityValue || 1)) * (p.volatility || 0)), 0);
@@ -2266,8 +2269,11 @@ class B3App {
     this.$('statTotalValue').textContent = this.formatCurrency(s.total_market_value + s.total_proventos + s.total_effective_profit);
     this.$('statTotalInvested').textContent = this.formatCurrency(s.total_invested || 0);
     this.$('statTotalProventos').textContent = this.formatCurrency(s.total_proventos || 0);
-    this.$('statRealizedProfit').textContent = this.formatCurrency(s.total_effective_profit || 0);
-    this.$('statRealizedProfit').className = 'stat-value ' + (s.total_effective_profit >= 0 ? 'positive' : 'negative');
+
+    // Lucro Realizado: Proventos Totais + Lucro de Operações Liquidadas
+    const totalLucroRealizado = (s.total_effective_profit || 0) + (s.total_proventos || 0);
+    this.$('statRealizedProfit').textContent = this.formatCurrency(totalLucroRealizado);
+    this.$('statRealizedProfit').className = 'stat-value ' + (totalLucroRealizado >= 0 ? 'positive' : 'negative');
     this.$('statPositions').textContent = s.num_positions || 0;
 
     const rentRealEl = this.$('statRentabilityReal');
@@ -2411,12 +2417,12 @@ class B3App {
 
   getPortfolioStateAsOf(dStr) {
     if (!this.portfolio || !this.portfolio.positions) {
-      return { totalInvested: 0, totalMarketValue: 0, totalRealizedProfit: 0, totalCostOfSoldShares: 0 };
+      return { totalInvested: 0, totalMarketValue: 0, totalRealizedProfit: 0, totalCostOfSoldShares: 0, totalDividendsReceived: 0 };
     }
 
     const filtered = this.portfolio.positions.filter(pos => pos.purchase_date <= dStr);
     if (filtered.length === 0) {
-      return { totalInvested: 0, totalMarketValue: 0, totalRealizedProfit: 0, totalCostOfSoldShares: 0 };
+      return { totalInvested: 0, totalMarketValue: 0, totalRealizedProfit: 0, totalCostOfSoldShares: 0, totalDividendsReceived: 0 };
     }
 
     const grouped = {};
@@ -2430,6 +2436,7 @@ class B3App {
     let totalMarketValuePortfolio = 0;
     let totalRealizedProfitPortfolio = 0;
     let totalCostOfSoldSharesPortfolio = 0;
+    let totalDividendsReceivedPortfolio = 0;
 
     Object.keys(grouped).forEach(ticker => {
       const transactions = [...grouped[ticker]];
@@ -2517,17 +2524,39 @@ class B3App {
       const closePrice = this.findCloseForDate(asset, dStr) || 0;
       const marketValue = currentQty * closePrice;
 
+      // Calculate slice-in-time dividends/proventos for this ticker announced on or before dStr
+      let tickerDividendsReceived = 0;
+      if (asset && asset.dividends && asset.dividends.dates) {
+        asset.dividends.dates.forEach((divDate, divIdx) => {
+          if (divDate <= dStr) {
+            const value = asset.dividends.values[divIdx];
+            // Quantity owned up to divDate (using transactions on or before divDate)
+            let qtyOnDate = 0;
+            transactions.forEach(t => {
+              if (t.purchase_date <= divDate) {
+                const type = t.type || 'buy';
+                if (type === 'buy') qtyOnDate += t.quantity;
+                else qtyOnDate -= t.quantity;
+              }
+            });
+            tickerDividendsReceived += (qtyOnDate * value);
+          }
+        });
+      }
+
       totalInvestedPortfolio += totalInvested;
       totalMarketValuePortfolio += marketValue;
       totalRealizedProfitPortfolio += totalRealizedProfit;
       totalCostOfSoldSharesPortfolio += totalCostOfSoldShares;
+      totalDividendsReceivedPortfolio += tickerDividendsReceived;
     });
 
     return {
       totalInvested: totalInvestedPortfolio,
       totalMarketValue: totalMarketValuePortfolio,
       totalRealizedProfit: totalRealizedProfitPortfolio,
-      totalCostOfSoldShares: totalCostOfSoldSharesPortfolio
+      totalCostOfSoldShares: totalCostOfSoldSharesPortfolio,
+      totalDividendsReceived: totalDividendsReceivedPortfolio
     };
   }
 
@@ -2600,12 +2629,12 @@ class B3App {
 
       let projRent = 0;
       if (state.totalInvested > 0) {
-        projRent = ((state.totalMarketValue / state.totalInvested) - 1) * 100;
+        projRent = ((state.totalMarketValue - state.totalInvested) / state.totalInvested) * 100;
       }
 
       let effRent = 0;
       if (state.totalCostOfSoldShares > 0) {
-        effRent = (state.totalRealizedProfit / state.totalCostOfSoldShares) * 100;
+        effRent = ((state.totalRealizedProfit + state.totalDividendsReceived) / state.totalCostOfSoldShares) * 100;
       }
 
       // Force start at 0% for cumulative comparison
