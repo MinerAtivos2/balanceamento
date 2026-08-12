@@ -1646,6 +1646,7 @@ class B3App {
         let sells = dayTrans.filter(t => t.type === 'sell').map(t => ({ ...t }));
 
         let dtProfit = 0;
+        let dtCostBasis = 0;
 
         // Day Trade matching (FIFO within the day)
         let buyPtr = 0, sellPtr = 0;
@@ -1657,6 +1658,9 @@ class B3App {
           const grossResult = (s.purchase_price - b.purchase_price) * matchQty;
           const propCosts = ((b.costs || 0) * (matchQty / b.originalQty)) + ((s.costs || 0) * (matchQty / s.originalQty));
           dtProfit += (grossResult - propCosts);
+
+          const bCostsProp = (b.costs || 0) * (matchQty / b.originalQty);
+          dtCostBasis += (b.purchase_price * matchQty) + bCostsProp;
 
           b.quantity -= matchQty;
           s.quantity -= matchQty;
@@ -1698,6 +1702,7 @@ class B3App {
           }
         });
         totalRealizedProfit += dtProfit;
+        totalCostOfSoldShares += dtCostBasis;
       });
 
       const totalInvested = swingTradeLots.reduce((acc, lot) => acc + (lot.qty * lot.unitCost), 0);
@@ -2431,6 +2436,7 @@ class B3App {
         let sells = dayTrans.filter(t => t.type === 'sell').map(t => ({ ...t }));
 
         let dtProfit = 0;
+        let dtCostBasis = 0;
 
         // Day Trade matching
         let buyPtr = 0, sellPtr = 0;
@@ -2442,6 +2448,9 @@ class B3App {
           const grossResult = (s.purchase_price - b.purchase_price) * matchQty;
           const propCosts = ((b.costs || 0) * (matchQty / b.originalQty)) + ((s.costs || 0) * (matchQty / s.originalQty));
           dtProfit += (grossResult - propCosts);
+
+          const bCostsProp = (b.costs || 0) * (matchQty / b.originalQty);
+          dtCostBasis += (b.purchase_price * matchQty) + bCostsProp;
 
           b.quantity -= matchQty;
           s.quantity -= matchQty;
@@ -2483,6 +2492,7 @@ class B3App {
           }
         });
         totalRealizedProfit += dtProfit;
+        totalCostOfSoldShares += dtCostBasis;
       });
 
       const totalInvested = swingTradeLots.reduce((acc, lot) => acc + (lot.qty * lot.unitCost), 0);
