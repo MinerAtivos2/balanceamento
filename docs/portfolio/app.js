@@ -1918,9 +1918,17 @@ class B3App {
     });
 
     // We use projected rentability for the return metrics if requested, or total
+    let totalCostOfSoldShares = 0;
+    consolidated.forEach(item => {
+      totalCostOfSoldShares += item.costOfSoldShares;
+    });
+
+    const rentDenominator = totalInvestedValue + totalCostOfSoldShares;
+    const portfolioRentReal = rentDenominator > 0 ? ((totalEffectiveProfit + totalDividendsValue) / rentDenominator * 100) : 0;
+    const portfolioRentProj = rentDenominator > 0 ? (totalProjectedProfit / rentDenominator * 100) : 0;
+
     const portfolioReturn = (totalInvestedValue > 0) ? (totalProjectedProfit / totalInvestedValue * 100) : 0;
     const portfolioVol = positions.reduce((acc, p, idx) => acc + ((p.total_equity / (totalEquityValue || 1)) * (p.volatility || 0)), 0);
-    const portfolioRentTotal = (totalInvestedValue > 0) ? ((totalEffectiveProfit + totalProjectedProfit + totalDividendsValue) / totalInvestedValue * 100) : 0;
 
     const riskFree = parseFloat(this.$('riskFreeRate').value) || 10;
     const sharpe = (portfolioVol > 0) ? (portfolioReturn - riskFree) / portfolioVol : 0;
@@ -1939,7 +1947,8 @@ class B3App {
         total_projected_profit: totalProjectedProfit,
         num_positions: positions.filter(p => p.quantity > 0).length,
         avg_rentability: portfolioReturn,
-        portfolio_rentability_real: portfolioRentTotal,
+        portfolio_rentability_real: portfolioRentReal,
+        portfolio_rentability_proj: portfolioRentProj,
         portfolio_volatility: portfolioVol,
         sharpe_ratio: sharpe
       }
@@ -2246,6 +2255,7 @@ class B3App {
       this.$('statTotalInvested').textContent = 'R$ 0,00';
       this.$('statTotalProventos').textContent = 'R$ 0,00';
       this.$('statRentabilityReal').textContent = '0%';
+      this.$('statRentabilityProj').textContent = '0%';
       this.$('statPositions').textContent = '0';
       this.$('statVolatility').textContent = '0%';
       this.$('statSharpe').textContent = '0.00';
@@ -2263,6 +2273,12 @@ class B3App {
     const rentRealEl = this.$('statRentabilityReal');
     rentRealEl.textContent = (s.portfolio_rentability_real > 0 ? '+' : '') + this.formatNumber(s.portfolio_rentability_real, 2) + '%';
     rentRealEl.className = 'stat-value ' + (s.portfolio_rentability_real >= 0 ? 'positive' : 'negative');
+
+    const rentProjEl = this.$('statRentabilityProj');
+    if (rentProjEl) {
+      rentProjEl.textContent = (s.portfolio_rentability_proj > 0 ? '+' : '') + this.formatNumber(s.portfolio_rentability_proj, 2) + '%';
+      rentProjEl.className = 'stat-value ' + (s.portfolio_rentability_proj >= 0 ? 'positive' : 'negative');
+    }
 
     this.$('statVolatility').textContent = this.formatNumber(s.portfolio_volatility, 2) + '%';
     this.$('statSharpe').textContent = this.formatNumber(s.sharpe_ratio || 0, 2);
