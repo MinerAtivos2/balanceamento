@@ -1,21 +1,21 @@
-## Resumo de Mercado - 2026-08-12
+## Resumo de Mercado - 2026-08-13
 
 ### 📈 Maiores Altas (Dia)
 
 | Ativo | Nome | Fechamento | Anterior | Variação | DeltaVolume |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| ONCO3.SA | Oncoclínicas do Brasil Serviços Médicos S.A. | R$ 0.69 | R$ 0.56 | **+23.21%** 🚀 | +158.63% ⬆️ |
-| SNSY5.SA | Sansuy S.A. | R$ 2.67 | R$ 2.38 | **+12.18%** 🚀 | +210.34% ⬆️ |
-| BLAU3.SA | Blau Farmacêutica S.A. | R$ 9.30 | R$ 8.35 | **+11.38%** 🚀 | +290.77% ⬆️ |
-| ATED3.SA | ATED3.SA | R$ 1.49 | R$ 1.36 | **+9.56%** 🚀 | -2.44% ⬇️ |
-| TPIS3.SA | Triunfo Participações e Investimentos S.A. | R$ 8.69 | R$ 8.10 | **+7.28%** 🚀 | +2.82% ⬆️ |
+| ESTR4.SA | Manufatura de Brinquedos Estrela S.A. | R$ 1.71 | R$ 1.30 | **+31.54%** 🚀 | +291.78% ⬆️ |
+| MLAS3.SA | Grupo Multi S.A. | R$ 1.92 | R$ 1.56 | **+23.08%** 🚀 | +455.48% ⬆️ |
+| AZEV3.SA | Azevedo & Travassos S.A. | R$ 3.88 | R$ 3.27 | **+18.65%** 🚀 | -52.73% ⬇️ |
+| ALLD3.SA | Allied Tecnologia S.A. | R$ 5.23 | R$ 4.45 | **+17.53%** 🚀 | +610.57% ⬆️ |
+| SEQL3.SA | Sequoia Logística e Transportes S.A. | R$ 0.07 | R$ 0.06 | **+16.67%** 🚀 | -36.10% ⬇️ |
 
 ### 📉 Maiores Baixas (Dia)
 
 | Ativo | Nome | Fechamento | Anterior | Variação | DeltaVolume |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| CTAX3.SA | Contax Participações S.A. | R$ 1.57 | R$ 1.95 | **-19.49%** 📉 | -34.16% ⬇️ |
-| USIM6.SA | Usinas Siderúrgicas de Minas Gerais S.A. | R$ 7.10 | R$ 8.65 | **-17.92%** 📉 | +500.00% ⬆️ |
-| AZEV4.SA | Azevedo & Travassos S.A. | R$ 1.29 | R$ 1.57 | **-17.83%** 📉 | -29.26% ⬇️ |
-| SEQL3.SA | Sequoia Logística e Transportes S.A. | R$ 0.06 | R$ 0.07 | **-14.29%** 📉 | -70.43% ⬇️ |
-| ESTR4.SA | Manufatura de Brinquedos Estrela S.A. | R$ 1.30 | R$ 1.51 | **-13.91%** 📉 | -51.35% ⬇️ |
+| HAPV3.SA | Hapvida Participações e Investimentos S.A. | R$ 6.41 | R$ 9.58 | **-33.09%** 📉 | +853.47% ⬆️ |
+| OSXB3.SA | OSX Brasil S.A. | R$ 0.90 | R$ 1.03 | **-12.62%** 📉 | +119.65% ⬆️ |
+| FIQE3.SA | Unifique Telecomunicações S.A. | R$ 4.77 | R$ 5.22 | **-8.62%** 📉 | +362.09% ⬆️ |
+| BEEF3.SA | Minerva S.A. | R$ 3.04 | R$ 3.29 | **-7.60%** 📉 | +340.44% ⬆️ |
+| SBSP3.SA | Companhia de Saneamento Básico do Estado de São Paulo - SABESP | R$ 24.28 | R$ 26.12 | **-7.04%** 📉 | +468.96% ⬆️ |
