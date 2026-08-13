@@ -1632,6 +1632,7 @@ class B3App {
       let currentQty = 0;
       let totalRealizedProfit = 0;
       let totalCostOfSoldShares = 0;
+      let totalVendaValue = 0;
       let swingTradeLots = []; // FIFO queue
 
       const byDay = {};
@@ -1647,6 +1648,7 @@ class B3App {
 
         let dtProfit = 0;
         let dtCostBasis = 0;
+        let dtSaleValue = 0;
 
         // Day Trade matching (FIFO within the day)
         let buyPtr = 0, sellPtr = 0;
@@ -1661,6 +1663,10 @@ class B3App {
 
           const bCostsProp = (b.costs || 0) * (matchQty / b.originalQty);
           dtCostBasis += (b.purchase_price * matchQty) + bCostsProp;
+
+          const sCostsProp = (s.costs || 0) * (matchQty / s.originalQty);
+          const netSaleValueDayTrade = (s.purchase_price * matchQty) - sCostsProp;
+          dtSaleValue += netSaleValueDayTrade;
 
           b.quantity -= matchQty;
           s.quantity -= matchQty;
@@ -1697,12 +1703,14 @@ class B3App {
               }
               totalRealizedProfit += (netSaleValue - costBasisSold);
               totalCostOfSoldShares += costBasisSold;
+              totalVendaValue += netSaleValue;
               currentQty -= remainingQty;
             }
           }
         });
         totalRealizedProfit += dtProfit;
         totalCostOfSoldShares += dtCostBasis;
+        totalVendaValue += dtSaleValue;
       });
 
       const totalInvested = swingTradeLots.reduce((acc, lot) => acc + (lot.qty * lot.unitCost), 0);
@@ -1715,11 +1723,82 @@ class B3App {
         totalInvested: totalInvested,
         realizedProfit: totalRealizedProfit,
         costOfSoldShares: totalCostOfSoldShares,
+        totalVenda: totalVendaValue,
         transactions: grouped[ticker]
       };
     });
 
     return Object.values(consolidated);
+  }
+
+  getAveragePriceAndQtyOnDate(ticker, date) {
+    const transactions = this.portfolio.positions.filter(p => p.ticker === ticker);
+    const sorted = [...transactions].sort((a, b) => {
+      const cmp = a.purchase_date.localeCompare(b.purchase_date);
+      if (cmp !== 0) return cmp;
+      const typeA = a.type || 'buy';
+      const typeB = b.type || 'buy';
+      if (typeA !== typeB) {
+        return typeA === 'buy' ? -1 : 1;
+      }
+      return (a.originalIndex || 0) - (b.originalIndex || 0);
+    });
+
+    let qty = 0;
+    let totalCost = 0;
+
+    for (const t of sorted) {
+      if (t.purchase_date > date) break;
+      const type = t.type || 'buy';
+      if (type === 'buy') {
+        qty += t.quantity;
+        totalCost += (t.quantity * t.purchase_price) + (t.costs || 0);
+      } else {
+        if (qty > 0) {
+          const pm = totalCost / qty;
+          qty -= t.quantity;
+          totalCost -= (t.quantity * pm);
+          if (qty <= 0) {
+            qty = 0;
+            totalCost = 0;
+          }
+        }
+      }
+    }
+
+    const pm = qty > 0 ? totalCost / qty : 0;
+    return { qty, pm, invested: totalCost };
+  }
+
+  getDividendInvestedCostForTicker(ticker, endDate = null) {
+    const asset = this.marketData && this.marketData.assets && this.marketData.assets[ticker];
+    if (!asset || !asset.dividends || !asset.dividends.dates) return 0;
+
+    const transactions = this.portfolio.positions.filter(p => p.ticker === ticker);
+    const eventInvestments = [];
+
+    asset.dividends.dates.forEach((divDate, divIdx) => {
+      if (endDate && divDate > endDate) return;
+
+      // Quantity owned up to divDate (using transactions on or before divDate)
+      let qtyOnDate = 0;
+      transactions.forEach(t => {
+        if (t.purchase_date <= divDate) {
+          const type = t.type || 'buy';
+          if (type === 'buy') qtyOnDate += t.quantity;
+          else qtyOnDate -= t.quantity;
+        }
+      });
+
+      if (qtyOnDate > 0) {
+        const pmObj = this.getAveragePriceAndQtyOnDate(ticker, divDate);
+        eventInvestments.push(qtyOnDate * pmObj.pm);
+      }
+    });
+
+    if (eventInvestments.length === 0) return 0;
+    const sum = eventInvestments.reduce((acc, v) => acc + v, 0);
+    return sum / eventInvestments.length;
   }
 
   findCloseForDate(asset, targetDateStr) {
@@ -1919,13 +1998,22 @@ class B3App {
 
     // We use projected rentability for the return metrics if requested, or total
     let totalCostOfSoldShares = 0;
+    let totalVendaPortfolio = 0;
+    let totalInvestimentoReferenteProventos = 0;
+
     consolidated.forEach(item => {
       totalCostOfSoldShares += item.costOfSoldShares;
+      totalVendaPortfolio += (item.totalVenda || 0);
+
+      const divInvested = this.getDividendInvestedCostForTicker(item.ticker);
+      totalInvestimentoReferenteProventos += divInvested;
     });
 
-    // Rentab. Real - lucro realizado (proventos + lucro de operações liquidadas) / investimento realizado (liquidado)
-    const rentDenominator = totalCostOfSoldShares;
-    const portfolioRentReal = rentDenominator > 0 ? ((totalEffectiveProfit + totalDividendsValue) / rentDenominator * 100) : 0;
+    // Rentab. Real - (total venda + total proventos) / (investimento do que foi vendido + investimento referente às ações que renderam dividendos) - 1
+    const rentDenominator = totalCostOfSoldShares + totalInvestimentoReferenteProventos;
+    const portfolioRentReal = rentDenominator > 0
+      ? (((totalVendaPortfolio + totalDividendsValue) / rentDenominator) - 1) * 100
+      : 0;
 
     // Rentab. Projetada - o lucro projetado / totalInvestedValue (custo total das posições ativas)
     const portfolioRentProj = totalInvestedValue > 0 ? (totalProjectedProfit / totalInvestedValue * 100) : 0;
@@ -2612,6 +2700,14 @@ class B3App {
 
     const bvspStartPrice = plotCloses[0];
 
+    // Get final portfolioRentReal from current analysis
+    const portfolioRentReal = this.analysis && this.analysis.summary ? this.analysis.summary.portfolio_rentability_real : 0;
+
+    const N = plotDates.length;
+    const rFinalDec = portfolioRentReal / 100;
+    const base = Math.max(0.0001, 1 + rFinalDec);
+    const rDaily = N > 1 ? Math.pow(base, 1 / (N - 1)) - 1 : 0;
+
     plotDates.forEach((dStr, i) => {
       // 1. Taxa de Atratividade (Option C: compounded daily business days base 252)
       const atratividade = (Math.pow(1 + (R / 100), i / 252) - 1) * 100;
@@ -2624,7 +2720,7 @@ class B3App {
       }
       bvspValues.push(bvspRent);
 
-      // 3 & 4. Portfolio State
+      // 3. Portfolio State (Projected Rentability)
       const state = this.getPortfolioStateAsOf(dStr);
 
       let projRent = 0;
@@ -2632,18 +2728,15 @@ class B3App {
         projRent = ((state.totalMarketValue - state.totalInvested) / state.totalInvested) * 100;
       }
 
-      let effRent = 0;
-      if (state.totalCostOfSoldShares > 0) {
-        effRent = ((state.totalRealizedProfit + state.totalDividendsReceived) / state.totalCostOfSoldShares) * 100;
-      }
-
       // Force start at 0% for cumulative comparison
       if (i === 0) {
         projRent = 0;
-        effRent = 0;
       }
 
       projectedRentabilityValues.push(projRent);
+
+      // 4. Effective Rentability (descapitalizado e acumulado no período no gráfico)
+      const effRent = (Math.pow(1 + rDaily, i) - 1) * 100;
       effectiveRentabilityValues.push(effRent);
     });
 
