@@ -1,21 +1,21 @@
-## Resumo de Mercado - 2026-08-13
+## Resumo de Mercado - 2026-08-14
 
 ### 📈 Maiores Altas (Dia)
 
 | Ativo | Nome | Fechamento | Anterior | Variação | DeltaVolume |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| ESTR4.SA | Manufatura de Brinquedos Estrela S.A. | R$ 1.71 | R$ 1.30 | **+31.54%** 🚀 | +291.78% ⬆️ |
-| MLAS3.SA | Grupo Multi S.A. | R$ 1.92 | R$ 1.56 | **+23.08%** 🚀 | +455.48% ⬆️ |
-| AZEV3.SA | Azevedo & Travassos S.A. | R$ 3.88 | R$ 3.27 | **+18.65%** 🚀 | -52.73% ⬇️ |
-| ALLD3.SA | Allied Tecnologia S.A. | R$ 5.23 | R$ 4.45 | **+17.53%** 🚀 | +610.57% ⬆️ |
-| SEQL3.SA | Sequoia Logística e Transportes S.A. | R$ 0.07 | R$ 0.06 | **+16.67%** 🚀 | -36.10% ⬇️ |
+| PATI3.SA | Panatlântica S.A. | R$ 36.00 | R$ 27.50 | **+30.91%** 🚀 | +343.84% ⬆️ |
+| ESTR4.SA | Manufatura de Brinquedos Estrela S.A. | R$ 2.19 | R$ 1.71 | **+28.07%** 🚀 | -86.17% ⬇️ |
+| DOTZ3.SA | Dotz S.A. | R$ 7.30 | R$ 6.02 | **+21.26%** 🚀 | +375.95% ⬆️ |
+| MEAL3.SA | International Meal Company Alimentação S.A. | R$ 0.64 | R$ 0.57 | **+12.28%** 🚀 | +189.12% ⬆️ |
+| AZEV3.SA | Azevedo & Travassos S.A. | R$ 4.35 | R$ 3.88 | **+12.11%** 🚀 | -23.70% ⬇️ |
 
 ### 📉 Maiores Baixas (Dia)
 
 | Ativo | Nome | Fechamento | Anterior | Variação | DeltaVolume |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| HAPV3.SA | Hapvida Participações e Investimentos S.A. | R$ 6.41 | R$ 9.58 | **-33.09%** 📉 | +853.47% ⬆️ |
-| OSXB3.SA | OSX Brasil S.A. | R$ 0.90 | R$ 1.03 | **-12.62%** 📉 | +119.65% ⬆️ |
-| FIQE3.SA | Unifique Telecomunicações S.A. | R$ 4.77 | R$ 5.22 | **-8.62%** 📉 | +362.09% ⬆️ |
-| BEEF3.SA | Minerva S.A. | R$ 3.04 | R$ 3.29 | **-7.60%** 📉 | +340.44% ⬆️ |
-| SBSP3.SA | Companhia de Saneamento Básico do Estado de São Paulo - SABESP | R$ 24.28 | R$ 26.12 | **-7.04%** 📉 | +468.96% ⬆️ |
+| GSHP3.SA | General Shopping e Outlets do Brasil S.A. | R$ 2.75 | R$ 3.59 | **-23.40%** 📉 | -50.00% ⬇️ |
+| DASA3.SA | Diagnósticos da América S.A. | R$ 2.11 | R$ 2.51 | **-15.94%** 📉 | +327.93% ⬆️ |
+| PMAM3.SA | Paranapanema S.A. | R$ 0.12 | R$ 0.14 | **-14.29%** 📉 | +60.48% ⬆️ |
+| IFCM3.SA | Infracommerce CXaaS S.A. | R$ 1.94 | R$ 2.21 | **-12.22%** 📉 | -7.18% ⬇️ |
+| ATED3.SA | ATED3.SA | R$ 1.32 | R$ 1.50 | **-12.00%** 📉 | -12.71% ⬇️ |
