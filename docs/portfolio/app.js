@@ -1801,6 +1801,159 @@ class B3App {
     return sum / eventInvestments.length;
   }
 
+  calculateXIRR(cashFlows) {
+    if (!cashFlows || cashFlows.length < 2) return 0;
+
+    let hasPositive = false;
+    let hasNegative = false;
+    cashFlows.forEach(cf => {
+      if (cf.amount > 0) hasPositive = true;
+      if (cf.amount < 0) hasNegative = true;
+    });
+    if (!hasPositive || !hasNegative) return 0;
+
+    const dates = cashFlows.map(cf => new Date(cf.date).getTime());
+    const minDate = Math.min(...dates);
+    const flows = cashFlows.map(cf => ({
+      t: (new Date(cf.date).getTime() - minDate) / (1000 * 60 * 60 * 24 * 365.25),
+      amount: cf.amount
+    }));
+
+    const npv = r => flows.reduce((acc, cf) => acc + cf.amount / Math.pow(1 + r, cf.t), 0);
+    const dnpv = r => flows.reduce((acc, cf) => acc - (cf.t * cf.amount) / Math.pow(1 + r, cf.t + 1), 0);
+
+    let rate = 0.1;
+    for (let iter = 0; iter < 100; iter++) {
+      const val = npv(rate);
+      const deriv = dnpv(rate);
+
+      if (Math.abs(val) < 1e-6) {
+        return rate;
+      }
+
+      if (Math.abs(deriv) < 1e-9) break;
+
+      const nextRate = rate - val / deriv;
+
+      if (isNaN(nextRate) || nextRate <= -0.9999 || nextRate > 100) {
+        break;
+      }
+
+      if (Math.abs(nextRate - rate) < 1e-6) {
+        return nextRate;
+      }
+      rate = nextRate;
+    }
+
+    let low = -0.99;
+    let high = 10.0;
+    let npvLow = npv(low);
+    let npvHigh = npv(high);
+
+    if (npvLow * npvHigh > 0) return 0;
+
+    for (let i = 0; i < 100; i++) {
+      const mid = (low + high) / 2;
+      const npvMid = npv(mid);
+      if (Math.abs(npvMid) < 1e-5 || (high - low) < 1e-5) {
+        return mid;
+      }
+      if (npvLow * npvMid < 0) {
+        high = mid;
+        npvHigh = npvMid;
+      } else {
+        low = mid;
+        npvLow = npvMid;
+      }
+    }
+
+    return 0;
+  }
+
+  getPortfolioCashFlowsAsOf(targetDateStr) {
+    if (!this.portfolio || !this.portfolio.positions) return [];
+
+    const cashFlows = [];
+
+    // 1. Transactions (Buys and Sells up to targetDateStr)
+    this.portfolio.positions.forEach(pos => {
+      if (pos.purchase_date <= targetDateStr) {
+        const type = pos.type || 'buy';
+        const qty = pos.quantity || 0;
+        const price = pos.purchase_price || 0;
+        const costs = pos.costs || 0;
+
+        if (type === 'buy') {
+          cashFlows.push({
+            date: pos.purchase_date,
+            amount: -((qty * price) + costs)
+          });
+        } else {
+          cashFlows.push({
+            date: pos.purchase_date,
+            amount: (qty * price) - costs
+          });
+        }
+      }
+    });
+
+    // 2. Dividends up to targetDateStr
+    const consolidated = this.consolidatePortfolio();
+    consolidated.forEach(item => {
+      const asset = this.marketData && this.marketData.assets && this.marketData.assets[item.ticker];
+      if (asset && asset.dividends && asset.dividends.dates) {
+        asset.dividends.dates.forEach((divDate, divIdx) => {
+          if (divDate <= targetDateStr) {
+            const val = asset.dividends.values[divIdx];
+            let qtyOnDate = 0;
+            this.portfolio.positions.forEach(p => {
+              if (p.ticker === item.ticker && p.purchase_date <= divDate) {
+                const type = p.type || 'buy';
+                if (type === 'buy') qtyOnDate += p.quantity;
+                else qtyOnDate -= p.quantity;
+              }
+            });
+
+            if (qtyOnDate > 0) {
+              cashFlows.push({
+                date: divDate,
+                amount: qtyOnDate * val
+              });
+            }
+          }
+        });
+      }
+    });
+
+    // 3. Terminal Value as of targetDateStr
+    let totalTerminalValue = 0;
+    consolidated.forEach(item => {
+      let openQty = 0;
+      this.portfolio.positions.forEach(p => {
+        if (p.ticker === item.ticker && p.purchase_date <= targetDateStr) {
+          const type = p.type || 'buy';
+          if (type === 'buy') openQty += p.quantity;
+          else openQty -= p.quantity;
+        }
+      });
+
+      if (openQty > 0) {
+        const asset = this.marketData && this.marketData.assets && this.marketData.assets[item.ticker];
+        const closePrice = this.findCloseForDate(asset, targetDateStr) || (asset ? asset.last_price : 0) || 0;
+        totalTerminalValue += (openQty * closePrice);
+      }
+    });
+
+    if (totalTerminalValue > 0) {
+      cashFlows.push({
+        date: targetDateStr,
+        amount: totalTerminalValue
+      });
+    }
+
+    return cashFlows;
+  }
+
   findCloseForDate(asset, targetDateStr) {
     if (!asset || !asset.history || !asset.history.dates.length) return null;
 
@@ -2009,11 +2162,11 @@ class B3App {
       totalInvestimentoReferenteProventos += divInvested;
     });
 
-    // Rentab. Real - (total venda + total proventos) / (investimento do que foi vendido + investimento referente às ações que renderam dividendos) - 1
-    const rentDenominator = totalCostOfSoldShares + totalInvestimentoReferenteProventos;
-    const portfolioRentReal = rentDenominator > 0
-      ? (((totalVendaPortfolio + totalDividendsValue) / rentDenominator) - 1) * 100
-      : 0;
+    // TIR carteira (XIRR) - Taxa Interna de Retorno Anualizada da Carteira
+    const todayStr = new Date().toISOString().split('T')[0];
+    const todayCashFlows = this.getPortfolioCashFlowsAsOf(todayStr);
+    const portfolioXIRR = this.calculateXIRR(todayCashFlows);
+    const portfolioRentReal = portfolioXIRR * 100;
 
     // Rentab. Projetada - o lucro projetado / totalInvestedValue (custo total das posições ativas)
     const portfolioRentProj = totalInvestedValue > 0 ? (totalProjectedProfit / totalInvestedValue * 100) : 0;
@@ -2345,7 +2498,7 @@ class B3App {
       this.$('statTotalValue').textContent = 'R$ 0,00';
       this.$('statTotalInvested').textContent = 'R$ 0,00';
       this.$('statTotalProventos').textContent = 'R$ 0,00';
-      this.$('statRentabilityReal').textContent = '0%';
+      this.$('statRentabilityReal').textContent = '0,00% a.a.';
       this.$('statRentabilityProj').textContent = '0%';
       this.$('statPositions').textContent = '0';
       this.$('statVolatility').textContent = '0%';
@@ -2365,7 +2518,7 @@ class B3App {
     this.$('statPositions').textContent = s.num_positions || 0;
 
     const rentRealEl = this.$('statRentabilityReal');
-    rentRealEl.textContent = (s.portfolio_rentability_real > 0 ? '+' : '') + this.formatNumber(s.portfolio_rentability_real, 2) + '%';
+    rentRealEl.textContent = (s.portfolio_rentability_real > 0 ? '+' : '') + this.formatNumber(s.portfolio_rentability_real, 2) + '% a.a.';
     rentRealEl.className = 'stat-value ' + (s.portfolio_rentability_real >= 0 ? 'positive' : 'negative');
 
     const rentProjEl = this.$('statRentabilityProj');
@@ -2700,14 +2853,6 @@ class B3App {
 
     const bvspStartPrice = plotCloses[0];
 
-    // Get final portfolioRentReal from current analysis
-    const portfolioRentReal = this.analysis && this.analysis.summary ? this.analysis.summary.portfolio_rentability_real : 0;
-
-    const N = plotDates.length;
-    const rFinalDec = portfolioRentReal / 100;
-    const base = Math.max(0.0001, 1 + rFinalDec);
-    const rDaily = N > 1 ? Math.pow(base, 1 / (N - 1)) - 1 : 0;
-
     plotDates.forEach((dStr, i) => {
       // 1. Taxa de Atratividade (Option C: compounded daily business days base 252)
       const atratividade = (Math.pow(1 + (R / 100), i / 252) - 1) * 100;
@@ -2735,8 +2880,10 @@ class B3App {
 
       projectedRentabilityValues.push(projRent);
 
-      // 4. Effective Rentability (descapitalizado e acumulado no período no gráfico)
-      const effRent = (Math.pow(1 + rDaily, i) - 1) * 100;
+      // 4. TIR Efetiva da Carteira (XIRR pontual na data dStr)
+      const cFlows = this.getPortfolioCashFlowsAsOf(dStr);
+      const xirrPoint = this.calculateXIRR(cFlows);
+      const effRent = xirrPoint * 100;
       effectiveRentabilityValues.push(effRent);
     });
 
@@ -2751,6 +2898,7 @@ class B3App {
     const lastBvsp = bvspValues[bvspValues.length - 1] || 0;
 
     const formatPct = val => (val >= 0 ? '+' : '') + this.formatNumber(val, 2) + '%';
+    const formatPctAA = val => (val >= 0 ? '+' : '') + this.formatNumber(val, 2) + '% a.a.';
 
     this.charts.historicalComparison = new Chart(canvas, {
       type: 'line',
@@ -2767,7 +2915,7 @@ class B3App {
             tension: 0.1
           },
           {
-            label: `Rentabilidade Efetiva (${formatPct(lastEff)})`,
+            label: `TIR efetiva da carteira (${formatPctAA(lastEff)})`,
             data: effectiveRentabilityValues,
             borderColor: '#22c55e', // Green
             borderWidth: 1.5,
