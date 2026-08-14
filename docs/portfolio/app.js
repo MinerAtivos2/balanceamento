@@ -437,6 +437,10 @@ class B3App {
     // Sort listeners
     this.$('sortPositions').addEventListener('change', () => this.renderPositions());
     this.$('hideClosedPositions').addEventListener('change', () => this.renderPositions());
+    const inputAtr = this.$('inputAtratividade');
+    if (inputAtr) {
+      inputAtr.addEventListener('input', () => this.renderHistoricalComparisonChart());
+    }
     this.$('sortBarsi').addEventListener('change', () => this.renderBarsi());
     this.$('sortRebalance').addEventListener('change', () => this.renderRebalance());
 
@@ -1628,6 +1632,7 @@ class B3App {
       let currentQty = 0;
       let totalRealizedProfit = 0;
       let totalCostOfSoldShares = 0;
+      let totalVendaValue = 0;
       let swingTradeLots = []; // FIFO queue
 
       const byDay = {};
@@ -1642,6 +1647,8 @@ class B3App {
         let sells = dayTrans.filter(t => t.type === 'sell').map(t => ({ ...t }));
 
         let dtProfit = 0;
+        let dtCostBasis = 0;
+        let dtSaleValue = 0;
 
         // Day Trade matching (FIFO within the day)
         let buyPtr = 0, sellPtr = 0;
@@ -1653,6 +1660,13 @@ class B3App {
           const grossResult = (s.purchase_price - b.purchase_price) * matchQty;
           const propCosts = ((b.costs || 0) * (matchQty / b.originalQty)) + ((s.costs || 0) * (matchQty / s.originalQty));
           dtProfit += (grossResult - propCosts);
+
+          const bCostsProp = (b.costs || 0) * (matchQty / b.originalQty);
+          dtCostBasis += (b.purchase_price * matchQty) + bCostsProp;
+
+          const sCostsProp = (s.costs || 0) * (matchQty / s.originalQty);
+          const netSaleValueDayTrade = (s.purchase_price * matchQty) - sCostsProp;
+          dtSaleValue += netSaleValueDayTrade;
 
           b.quantity -= matchQty;
           s.quantity -= matchQty;
@@ -1689,11 +1703,14 @@ class B3App {
               }
               totalRealizedProfit += (netSaleValue - costBasisSold);
               totalCostOfSoldShares += costBasisSold;
+              totalVendaValue += netSaleValue;
               currentQty -= remainingQty;
             }
           }
         });
         totalRealizedProfit += dtProfit;
+        totalCostOfSoldShares += dtCostBasis;
+        totalVendaValue += dtSaleValue;
       });
 
       const totalInvested = swingTradeLots.reduce((acc, lot) => acc + (lot.qty * lot.unitCost), 0);
@@ -1706,11 +1723,235 @@ class B3App {
         totalInvested: totalInvested,
         realizedProfit: totalRealizedProfit,
         costOfSoldShares: totalCostOfSoldShares,
+        totalVenda: totalVendaValue,
         transactions: grouped[ticker]
       };
     });
 
     return Object.values(consolidated);
+  }
+
+  getAveragePriceAndQtyOnDate(ticker, date) {
+    const transactions = this.portfolio.positions.filter(p => p.ticker === ticker);
+    const sorted = [...transactions].sort((a, b) => {
+      const cmp = a.purchase_date.localeCompare(b.purchase_date);
+      if (cmp !== 0) return cmp;
+      const typeA = a.type || 'buy';
+      const typeB = b.type || 'buy';
+      if (typeA !== typeB) {
+        return typeA === 'buy' ? -1 : 1;
+      }
+      return (a.originalIndex || 0) - (b.originalIndex || 0);
+    });
+
+    let qty = 0;
+    let totalCost = 0;
+
+    for (const t of sorted) {
+      if (t.purchase_date > date) break;
+      const type = t.type || 'buy';
+      if (type === 'buy') {
+        qty += t.quantity;
+        totalCost += (t.quantity * t.purchase_price) + (t.costs || 0);
+      } else {
+        if (qty > 0) {
+          const pm = totalCost / qty;
+          qty -= t.quantity;
+          totalCost -= (t.quantity * pm);
+          if (qty <= 0) {
+            qty = 0;
+            totalCost = 0;
+          }
+        }
+      }
+    }
+
+    const pm = qty > 0 ? totalCost / qty : 0;
+    return { qty, pm, invested: totalCost };
+  }
+
+  getDividendInvestedCostForTicker(ticker, endDate = null) {
+    const asset = this.marketData && this.marketData.assets && this.marketData.assets[ticker];
+    if (!asset || !asset.dividends || !asset.dividends.dates) return 0;
+
+    const transactions = this.portfolio.positions.filter(p => p.ticker === ticker);
+    const eventInvestments = [];
+
+    asset.dividends.dates.forEach((divDate, divIdx) => {
+      if (endDate && divDate > endDate) return;
+
+      // Quantity owned up to divDate (using transactions on or before divDate)
+      let qtyOnDate = 0;
+      transactions.forEach(t => {
+        if (t.purchase_date <= divDate) {
+          const type = t.type || 'buy';
+          if (type === 'buy') qtyOnDate += t.quantity;
+          else qtyOnDate -= t.quantity;
+        }
+      });
+
+      if (qtyOnDate > 0) {
+        const pmObj = this.getAveragePriceAndQtyOnDate(ticker, divDate);
+        eventInvestments.push(qtyOnDate * pmObj.pm);
+      }
+    });
+
+    if (eventInvestments.length === 0) return 0;
+    const sum = eventInvestments.reduce((acc, v) => acc + v, 0);
+    return sum / eventInvestments.length;
+  }
+
+  calculateXIRR(cashFlows) {
+    if (!cashFlows || cashFlows.length < 2) return 0;
+
+    let hasPositive = false;
+    let hasNegative = false;
+    cashFlows.forEach(cf => {
+      if (cf.amount > 0) hasPositive = true;
+      if (cf.amount < 0) hasNegative = true;
+    });
+    if (!hasPositive || !hasNegative) return 0;
+
+    const dates = cashFlows.map(cf => new Date(cf.date).getTime());
+    const minDate = Math.min(...dates);
+    const flows = cashFlows.map(cf => ({
+      t: (new Date(cf.date).getTime() - minDate) / (1000 * 60 * 60 * 24 * 365.25),
+      amount: cf.amount
+    }));
+
+    const npv = r => flows.reduce((acc, cf) => acc + cf.amount / Math.pow(1 + r, cf.t), 0);
+    const dnpv = r => flows.reduce((acc, cf) => acc - (cf.t * cf.amount) / Math.pow(1 + r, cf.t + 1), 0);
+
+    let rate = 0.1;
+    for (let iter = 0; iter < 100; iter++) {
+      const val = npv(rate);
+      const deriv = dnpv(rate);
+
+      if (Math.abs(val) < 1e-6) {
+        return rate;
+      }
+
+      if (Math.abs(deriv) < 1e-9) break;
+
+      const nextRate = rate - val / deriv;
+
+      if (isNaN(nextRate) || nextRate <= -0.9999 || nextRate > 100) {
+        break;
+      }
+
+      if (Math.abs(nextRate - rate) < 1e-6) {
+        return nextRate;
+      }
+      rate = nextRate;
+    }
+
+    let low = -0.99;
+    let high = 10.0;
+    let npvLow = npv(low);
+    let npvHigh = npv(high);
+
+    if (npvLow * npvHigh > 0) return 0;
+
+    for (let i = 0; i < 100; i++) {
+      const mid = (low + high) / 2;
+      const npvMid = npv(mid);
+      if (Math.abs(npvMid) < 1e-5 || (high - low) < 1e-5) {
+        return mid;
+      }
+      if (npvLow * npvMid < 0) {
+        high = mid;
+        npvHigh = npvMid;
+      } else {
+        low = mid;
+        npvLow = npvMid;
+      }
+    }
+
+    return 0;
+  }
+
+  getPortfolioCashFlowsAsOf(targetDateStr) {
+    if (!this.portfolio || !this.portfolio.positions) return [];
+
+    const cashFlows = [];
+
+    // 1. Transactions (Buys and Sells up to targetDateStr)
+    this.portfolio.positions.forEach(pos => {
+      if (pos.purchase_date <= targetDateStr) {
+        const type = pos.type || 'buy';
+        const qty = pos.quantity || 0;
+        const price = pos.purchase_price || 0;
+        const costs = pos.costs || 0;
+
+        if (type === 'buy') {
+          cashFlows.push({
+            date: pos.purchase_date,
+            amount: -((qty * price) + costs)
+          });
+        } else {
+          cashFlows.push({
+            date: pos.purchase_date,
+            amount: (qty * price) - costs
+          });
+        }
+      }
+    });
+
+    // 2. Dividends up to targetDateStr
+    const consolidated = this.consolidatePortfolio();
+    consolidated.forEach(item => {
+      const asset = this.marketData && this.marketData.assets && this.marketData.assets[item.ticker];
+      if (asset && asset.dividends && asset.dividends.dates) {
+        asset.dividends.dates.forEach((divDate, divIdx) => {
+          if (divDate <= targetDateStr) {
+            const val = asset.dividends.values[divIdx];
+            let qtyOnDate = 0;
+            this.portfolio.positions.forEach(p => {
+              if (p.ticker === item.ticker && p.purchase_date <= divDate) {
+                const type = p.type || 'buy';
+                if (type === 'buy') qtyOnDate += p.quantity;
+                else qtyOnDate -= p.quantity;
+              }
+            });
+
+            if (qtyOnDate > 0) {
+              cashFlows.push({
+                date: divDate,
+                amount: qtyOnDate * val
+              });
+            }
+          }
+        });
+      }
+    });
+
+    // 3. Terminal Value as of targetDateStr
+    let totalTerminalValue = 0;
+    consolidated.forEach(item => {
+      let openQty = 0;
+      this.portfolio.positions.forEach(p => {
+        if (p.ticker === item.ticker && p.purchase_date <= targetDateStr) {
+          const type = p.type || 'buy';
+          if (type === 'buy') openQty += p.quantity;
+          else openQty -= p.quantity;
+        }
+      });
+
+      if (openQty > 0) {
+        const asset = this.marketData && this.marketData.assets && this.marketData.assets[item.ticker];
+        const closePrice = this.findCloseForDate(asset, targetDateStr) || (asset ? asset.last_price : 0) || 0;
+        totalTerminalValue += (openQty * closePrice);
+      }
+    });
+
+    if (totalTerminalValue > 0) {
+      cashFlows.push({
+        date: targetDateStr,
+        amount: totalTerminalValue
+      });
+    }
+
+    return cashFlows;
   }
 
   findCloseForDate(asset, targetDateStr) {
@@ -1909,9 +2150,29 @@ class B3App {
     });
 
     // We use projected rentability for the return metrics if requested, or total
+    let totalCostOfSoldShares = 0;
+    let totalVendaPortfolio = 0;
+    let totalInvestimentoReferenteProventos = 0;
+
+    consolidated.forEach(item => {
+      totalCostOfSoldShares += item.costOfSoldShares;
+      totalVendaPortfolio += (item.totalVenda || 0);
+
+      const divInvested = this.getDividendInvestedCostForTicker(item.ticker);
+      totalInvestimentoReferenteProventos += divInvested;
+    });
+
+    // TIR carteira (XIRR) - Taxa Interna de Retorno Anualizada da Carteira
+    const todayStr = new Date().toISOString().split('T')[0];
+    const todayCashFlows = this.getPortfolioCashFlowsAsOf(todayStr);
+    const portfolioXIRR = this.calculateXIRR(todayCashFlows);
+    const portfolioRentReal = portfolioXIRR * 100;
+
+    // Rentab. Projetada - o lucro projetado / totalInvestedValue (custo total das posições ativas)
+    const portfolioRentProj = totalInvestedValue > 0 ? (totalProjectedProfit / totalInvestedValue * 100) : 0;
+
     const portfolioReturn = (totalInvestedValue > 0) ? (totalProjectedProfit / totalInvestedValue * 100) : 0;
     const portfolioVol = positions.reduce((acc, p, idx) => acc + ((p.total_equity / (totalEquityValue || 1)) * (p.volatility || 0)), 0);
-    const portfolioRentTotal = (totalInvestedValue > 0) ? ((totalEffectiveProfit + totalProjectedProfit + totalDividendsValue) / totalInvestedValue * 100) : 0;
 
     const riskFree = parseFloat(this.$('riskFreeRate').value) || 10;
     const sharpe = (portfolioVol > 0) ? (portfolioReturn - riskFree) / portfolioVol : 0;
@@ -1930,7 +2191,8 @@ class B3App {
         total_projected_profit: totalProjectedProfit,
         num_positions: positions.filter(p => p.quantity > 0).length,
         avg_rentability: portfolioReturn,
-        portfolio_rentability_real: portfolioRentTotal,
+        portfolio_rentability_real: portfolioRentReal,
+        portfolio_rentability_proj: portfolioRentProj,
         portfolio_volatility: portfolioVol,
         sharpe_ratio: sharpe
       }
@@ -2236,7 +2498,8 @@ class B3App {
       this.$('statTotalValue').textContent = 'R$ 0,00';
       this.$('statTotalInvested').textContent = 'R$ 0,00';
       this.$('statTotalProventos').textContent = 'R$ 0,00';
-      this.$('statRentabilityReal').textContent = '0%';
+      this.$('statRentabilityReal').textContent = '0,00% a.a.';
+      this.$('statRentabilityProj').textContent = '0%';
       this.$('statPositions').textContent = '0';
       this.$('statVolatility').textContent = '0%';
       this.$('statSharpe').textContent = '0.00';
@@ -2247,19 +2510,29 @@ class B3App {
     this.$('statTotalValue').textContent = this.formatCurrency(s.total_market_value + s.total_proventos + s.total_effective_profit);
     this.$('statTotalInvested').textContent = this.formatCurrency(s.total_invested || 0);
     this.$('statTotalProventos').textContent = this.formatCurrency(s.total_proventos || 0);
-    this.$('statRealizedProfit').textContent = this.formatCurrency(s.total_effective_profit || 0);
-    this.$('statRealizedProfit').className = 'stat-value ' + (s.total_effective_profit >= 0 ? 'positive' : 'negative');
+
+    // Lucro Realizado: Proventos Totais + Lucro de Operações Liquidadas
+    const totalLucroRealizado = (s.total_effective_profit || 0) + (s.total_proventos || 0);
+    this.$('statRealizedProfit').textContent = this.formatCurrency(totalLucroRealizado);
+    this.$('statRealizedProfit').className = 'stat-value ' + (totalLucroRealizado >= 0 ? 'positive' : 'negative');
     this.$('statPositions').textContent = s.num_positions || 0;
 
     const rentRealEl = this.$('statRentabilityReal');
-    rentRealEl.textContent = (s.portfolio_rentability_real > 0 ? '+' : '') + this.formatNumber(s.portfolio_rentability_real, 2) + '%';
+    rentRealEl.textContent = (s.portfolio_rentability_real > 0 ? '+' : '') + this.formatNumber(s.portfolio_rentability_real, 2) + '% a.a.';
     rentRealEl.className = 'stat-value ' + (s.portfolio_rentability_real >= 0 ? 'positive' : 'negative');
+
+    const rentProjEl = this.$('statRentabilityProj');
+    if (rentProjEl) {
+      rentProjEl.textContent = (s.portfolio_rentability_proj > 0 ? '+' : '') + this.formatNumber(s.portfolio_rentability_proj, 2) + '%';
+      rentProjEl.className = 'stat-value ' + (s.portfolio_rentability_proj >= 0 ? 'positive' : 'negative');
+    }
 
     this.$('statVolatility').textContent = this.formatNumber(s.portfolio_volatility, 2) + '%';
     this.$('statSharpe').textContent = this.formatNumber(s.sharpe_ratio || 0, 2);
 
     this.renderAllocationChart();
     this.renderRentabilityChart();
+    this.renderHistoricalComparisonChart();
   }
 
   renderAllocationChart() {
@@ -2380,6 +2653,335 @@ class B3App {
           },
         },
       },
+    });
+  }
+
+  getPortfolioStateAsOf(dStr) {
+    if (!this.portfolio || !this.portfolio.positions) {
+      return { totalInvested: 0, totalMarketValue: 0, totalRealizedProfit: 0, totalCostOfSoldShares: 0, totalDividendsReceived: 0 };
+    }
+
+    const filtered = this.portfolio.positions.filter(pos => pos.purchase_date <= dStr);
+    if (filtered.length === 0) {
+      return { totalInvested: 0, totalMarketValue: 0, totalRealizedProfit: 0, totalCostOfSoldShares: 0, totalDividendsReceived: 0 };
+    }
+
+    const grouped = {};
+    filtered.forEach((pos, originalIndex) => {
+      const ticker = pos.ticker;
+      if (!grouped[ticker]) grouped[ticker] = [];
+      grouped[ticker].push({ ...pos, originalQty: pos.quantity, originalIndex });
+    });
+
+    let totalInvestedPortfolio = 0;
+    let totalMarketValuePortfolio = 0;
+    let totalRealizedProfitPortfolio = 0;
+    let totalCostOfSoldSharesPortfolio = 0;
+    let totalDividendsReceivedPortfolio = 0;
+
+    Object.keys(grouped).forEach(ticker => {
+      const transactions = [...grouped[ticker]];
+      transactions.sort((a, b) => a.purchase_date.localeCompare(b.purchase_date) || a.originalIndex - b.originalIndex);
+
+      let currentQty = 0;
+      let totalRealizedProfit = 0;
+      let totalCostOfSoldShares = 0;
+      let swingTradeLots = [];
+
+      const byDay = {};
+      transactions.forEach(t => {
+        if (!byDay[t.purchase_date]) byDay[t.purchase_date] = [];
+        byDay[t.purchase_date].push(t);
+      });
+
+      Object.keys(byDay).sort().forEach(date => {
+        const dayTrans = byDay[date];
+        let buys = dayTrans.filter(t => (t.type || 'buy') === 'buy').map(t => ({ ...t }));
+        let sells = dayTrans.filter(t => t.type === 'sell').map(t => ({ ...t }));
+
+        let dtProfit = 0;
+        let dtCostBasis = 0;
+
+        // Day Trade matching
+        let buyPtr = 0, sellPtr = 0;
+        while (buyPtr < buys.length && sellPtr < sells.length) {
+          let b = buys[buyPtr];
+          let s = sells[sellPtr];
+          let matchQty = Math.min(b.quantity, s.quantity);
+
+          const grossResult = (s.purchase_price - b.purchase_price) * matchQty;
+          const propCosts = ((b.costs || 0) * (matchQty / b.originalQty)) + ((s.costs || 0) * (matchQty / s.originalQty));
+          dtProfit += (grossResult - propCosts);
+
+          const bCostsProp = (b.costs || 0) * (matchQty / b.originalQty);
+          dtCostBasis += (b.purchase_price * matchQty) + bCostsProp;
+
+          b.quantity -= matchQty;
+          s.quantity -= matchQty;
+
+          if (b.quantity === 0) buyPtr++;
+          if (s.quantity === 0) sellPtr++;
+        }
+
+        // Swing Trade
+        dayTrans.forEach(t => {
+          const type = t.type || 'buy';
+          let remainingQty = (type === 'sell') ? sells.find(s => s.originalIndex === t.originalIndex).quantity
+                                               : buys.find(b => b.originalIndex === t.originalIndex).quantity;
+
+          if (remainingQty > 0) {
+            if (type === 'buy') {
+              const propCosts = (t.costs || 0) * (remainingQty / t.originalQty);
+              const totalCost = (remainingQty * t.purchase_price) + propCosts;
+              const unitCost = totalCost / remainingQty;
+              swingTradeLots.push({ qty: remainingQty, unitCost: unitCost });
+              currentQty += remainingQty;
+            } else {
+              const propCosts = (t.costs || 0) * (remainingQty / t.originalQty);
+              const netSaleValue = (remainingQty * t.purchase_price) - propCosts;
+              let costBasisSold = 0;
+              let toSell = remainingQty;
+              while (toSell > 0 && swingTradeLots.length > 0) {
+                let lot = swingTradeLots[0];
+                let take = Math.min(toSell, lot.qty);
+                costBasisSold += (take * lot.unitCost);
+                lot.qty -= take;
+                toSell -= take;
+                if (lot.qty === 0) swingTradeLots.shift();
+              }
+              totalRealizedProfit += (netSaleValue - costBasisSold);
+              totalCostOfSoldShares += costBasisSold;
+              currentQty -= remainingQty;
+            }
+          }
+        });
+        totalRealizedProfit += dtProfit;
+        totalCostOfSoldShares += dtCostBasis;
+      });
+
+      const totalInvested = swingTradeLots.reduce((acc, lot) => acc + (lot.qty * lot.unitCost), 0);
+
+      const asset = this.marketData && this.marketData.assets && this.marketData.assets[ticker];
+      const closePrice = this.findCloseForDate(asset, dStr) || 0;
+      const marketValue = currentQty * closePrice;
+
+      // Calculate slice-in-time dividends/proventos for this ticker announced on or before dStr
+      let tickerDividendsReceived = 0;
+      if (asset && asset.dividends && asset.dividends.dates) {
+        asset.dividends.dates.forEach((divDate, divIdx) => {
+          if (divDate <= dStr) {
+            const value = asset.dividends.values[divIdx];
+            // Quantity owned up to divDate (using transactions on or before divDate)
+            let qtyOnDate = 0;
+            transactions.forEach(t => {
+              if (t.purchase_date <= divDate) {
+                const type = t.type || 'buy';
+                if (type === 'buy') qtyOnDate += t.quantity;
+                else qtyOnDate -= t.quantity;
+              }
+            });
+            tickerDividendsReceived += (qtyOnDate * value);
+          }
+        });
+      }
+
+      totalInvestedPortfolio += totalInvested;
+      totalMarketValuePortfolio += marketValue;
+      totalRealizedProfitPortfolio += totalRealizedProfit;
+      totalCostOfSoldSharesPortfolio += totalCostOfSoldShares;
+      totalDividendsReceivedPortfolio += tickerDividendsReceived;
+    });
+
+    return {
+      totalInvested: totalInvestedPortfolio,
+      totalMarketValue: totalMarketValuePortfolio,
+      totalRealizedProfit: totalRealizedProfitPortfolio,
+      totalCostOfSoldShares: totalCostOfSoldSharesPortfolio,
+      totalDividendsReceived: totalDividendsReceivedPortfolio
+    };
+  }
+
+  renderHistoricalComparisonChart() {
+    const canvas = this.$('historicalComparisonChart');
+    const container = this.$('historicalComparisonChartContainer');
+    const emptyState = this.$('historicalComparisonEmptyState');
+
+    if (!canvas) return;
+
+    if (!this.portfolio || !this.portfolio.positions || this.portfolio.positions.length === 0) {
+      if (container) container.style.display = 'none';
+      if (emptyState) emptyState.style.display = 'flex';
+      return;
+    }
+
+    if (container) container.style.display = 'block';
+    if (emptyState) emptyState.style.display = 'none';
+
+    // 1. Find earliest purchase date
+    const transactions = [...this.portfolio.positions];
+    transactions.sort((a, b) => a.purchase_date.localeCompare(b.purchase_date));
+    const firstDate = transactions[0].purchase_date;
+
+    // 2. Get dates from ^BVSP starting from firstDate
+    const bvspAsset = this.marketData && this.marketData.assets && this.marketData.assets['^BVSP'];
+    if (!bvspAsset || !bvspAsset.history || !bvspAsset.history.dates || !bvspAsset.history.dates.length) {
+      return;
+    }
+
+    const dates = bvspAsset.history.dates;
+    const closes = bvspAsset.history.closes;
+
+    const startIndex = dates.findIndex(d => d >= firstDate);
+    if (startIndex === -1) {
+      return;
+    }
+
+    const plotDates = dates.slice(startIndex);
+    const plotCloses = closes.slice(startIndex);
+
+    if (plotDates.length === 0) return;
+
+    // Get the specified annual target rate
+    const inputRateEl = this.$('inputAtratividade');
+    const R = inputRateEl ? (parseFloat(inputRateEl.value) || 10) : 10;
+
+    // Series arrays
+    const atratividadeValues = [];
+    const bvspValues = [];
+    const projectedRentabilityValues = [];
+    const effectiveRentabilityValues = [];
+
+    const bvspStartPrice = plotCloses[0];
+
+    plotDates.forEach((dStr, i) => {
+      // 1. Taxa de Atratividade (Option C: compounded daily business days base 252)
+      const atratividade = (Math.pow(1 + (R / 100), i / 252) - 1) * 100;
+      atratividadeValues.push(atratividade);
+
+      // 2. BVSP Rentability (normalized to 0% at start)
+      let bvspRent = 0;
+      if (bvspStartPrice > 0) {
+        bvspRent = ((plotCloses[i] - bvspStartPrice) / bvspStartPrice) * 100;
+      }
+      bvspValues.push(bvspRent);
+
+      // 3. Portfolio State (Projected Rentability)
+      const state = this.getPortfolioStateAsOf(dStr);
+
+      let projRent = 0;
+      if (state.totalInvested > 0) {
+        projRent = ((state.totalMarketValue - state.totalInvested) / state.totalInvested) * 100;
+      }
+
+      // Force start at 0% for cumulative comparison
+      if (i === 0) {
+        projRent = 0;
+      }
+
+      projectedRentabilityValues.push(projRent);
+
+      // 4. TIR Efetiva da Carteira (XIRR pontual na data dStr)
+      const cFlows = this.getPortfolioCashFlowsAsOf(dStr);
+      const xirrPoint = this.calculateXIRR(cFlows);
+      const effRent = xirrPoint * 100;
+      effectiveRentabilityValues.push(effRent);
+    });
+
+    // Recreate chart
+    if (this.charts.historicalComparison) {
+      this.charts.historicalComparison.destroy();
+    }
+
+    const lastProj = projectedRentabilityValues[projectedRentabilityValues.length - 1] || 0;
+    const lastEff = effectiveRentabilityValues[effectiveRentabilityValues.length - 1] || 0;
+    const lastAtr = atratividadeValues[atratividadeValues.length - 1] || 0;
+    const lastBvsp = bvspValues[bvspValues.length - 1] || 0;
+
+    const formatPct = val => (val >= 0 ? '+' : '') + this.formatNumber(val, 2) + '%';
+    const formatPctAA = val => (val >= 0 ? '+' : '') + this.formatNumber(val, 2) + '% a.a.';
+
+    this.charts.historicalComparison = new Chart(canvas, {
+      type: 'line',
+      data: {
+        labels: plotDates,
+        datasets: [
+          {
+            label: `Rentabilidade Projetada (${formatPct(lastProj)})`,
+            data: projectedRentabilityValues,
+            borderColor: '#6366f1', // Indigo/violet
+            borderWidth: 1.5,
+            pointRadius: 0,
+            fill: false,
+            tension: 0.1
+          },
+          {
+            label: `TIR efetiva da carteira (${formatPctAA(lastEff)})`,
+            data: effectiveRentabilityValues,
+            borderColor: '#22c55e', // Green
+            borderWidth: 1.5,
+            pointRadius: 0,
+            fill: false,
+            tension: 0.1
+          },
+          {
+            label: `Taxa de Atratividade (${formatPct(lastAtr)})`,
+            data: atratividadeValues,
+            borderColor: '#fbbf24', // Amber/Yellow
+            borderWidth: 1.5,
+            pointRadius: 0,
+            fill: false,
+            tension: 0.1
+          },
+          {
+            label: `BVSP (Ibovespa) (${formatPct(lastBvsp)})`,
+            data: bvspValues,
+            borderColor: '#3b82f6', // Blue
+            borderWidth: 1.5,
+            pointRadius: 0,
+            fill: false,
+            tension: 0.1
+          },
+          {
+            label: 'Ref',
+            data: Array(plotDates.length).fill(0),
+            borderColor: 'rgba(255, 255, 255, 0.25)',
+            borderWidth: 1,
+            borderDash: [4, 4],
+            pointRadius: 0,
+            fill: false
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          x: {
+            ticks: { color: '#94a3b8', font: { family: 'Inter', size: 10 } },
+            grid: { color: 'rgba(255,255,255,0.02)' }
+          },
+          y: {
+            ticks: { color: '#94a3b8', callback: v => v.toFixed(1) + '%' },
+            grid: { color: 'rgba(255,255,255,0.05)' }
+          }
+        },
+        plugins: {
+          legend: {
+            display: true,
+            position: 'top',
+            labels: {
+              color: '#94a3b8',
+              font: { family: 'Inter', size: 11 },
+              filter: (item) => item.text !== 'Ref'
+            }
+          },
+          tooltip: {
+            callbacks: {
+              label: ctx => `${ctx.dataset.label}: ${this.formatNumber(ctx.raw, 2)}%`
+            }
+          }
+        }
+      }
     });
   }
 
