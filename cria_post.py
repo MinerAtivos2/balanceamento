@@ -92,8 +92,10 @@ def generate_cover_image(date_str, slug):
 
             print(f"📸 Capa capturada via Playwright: {img_filepath}")
             return relative_img_path
+    except (ImportError, ModuleNotFoundError):
+        print("ℹ️ Módulo Playwright não encontrado. Usando imagem padrão como capa.")
     except Exception as e:
-        print(f"⚠️ Erro ao capturar print do Treemap via Playwright ({e}). Usando imagem padrão.")
+        print(f"⚠️ Não foi possível capturar print do Treemap via Playwright ({e}). Usando imagem padrão.")
 
     return DEFAULT_COVER
 
