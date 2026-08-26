@@ -1,5 +1,20 @@
 [
   {
+    "id": "resumo-do-mercado-10-07-2026",
+    "title": "Resumo do mercado 10.07.2026",
+    "description": "Resumo do mercado do dia 10/07/2026 com destaques de altas, baixas e notícias da B3.",
+    "imageUrl": "assets/blog/resumo-do-mercado-2026-07-10.png",
+    "path": "posts/resumo-do-mercado-10-07-2026.html",
+    "date": "2026-07-10",
+    "tags": [
+      "resumo",
+      "mercado",
+      "b3",
+      "altas",
+      "baixas"
+    ]
+  },
+  {
     "id": "como-usar-indicadores-tecnicos",
     "title": "Como usar indicadores técnicos",
     "description": "<H1 class=\"title no-thumb large bold\" style=\"FONT-SIZE: 34px; BORDER-TOP: 0px; FONT-FAMILY: Lato, sans-serif; BORDER-RIGHT: 0px; VERTICAL-ALIGN: basel...",
@@ -24,17 +39,6 @@
     ]
   },
   {
-    "id": "teoria-de-markowitz-para-investidores",
-    "title": "Teoria de Markowitz para Investidores",
-    "description": "<script src=\"https://cdn.jsdelivr.net/npm/chart.js\"></script>\n\n<body>\n\n\n    <div>\n        <header>\n            <h1>Guia Definitivo da Teoria de Markow...",
-    "imageUrl": "../assets/logo4.png",
-    "path": "posts/teoria-de-markowitz-para-investidores.html",
-    "date": "2026-05-21",
-    "tags": [
-      "Conteúdo"
-    ]
-  },
-  {
     "id": "radar-intraday-movimentacoes-do-mercado",
     "title": "Radar Intraday: Movimentações do Mercado",
     "description": "<p>Novidade!</p>\n<img src=\"../../assets/20250822_resumo.png\" alt=\"Radar\">\n<p>Teste de postagem</p>...",
@@ -46,6 +50,17 @@
       "Intraday",
       "Bovespa",
       "Novidade"
+    ]
+  },
+  {
+    "id": "teoria-de-markowitz-para-investidores",
+    "title": "Teoria de Markowitz para Investidores",
+    "description": "<script src=\"https://cdn.jsdelivr.net/npm/chart.js\"></script>\n\n<body>\n\n\n    <div>\n        <header>\n            <h1>Guia Definitivo da Teoria de Markow...",
+    "imageUrl": "../assets/logo4.png",
+    "path": "posts/teoria-de-markowitz-para-investidores.html",
+    "date": "2026-05-21",
+    "tags": [
+      "Conteúdo"
     ]
   },
   {
