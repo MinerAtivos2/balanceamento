@@ -1,17 +1,7 @@
 {
-  "last_update": "2026-08-26T23:49:12.399560",
+  "last_update": "2026-08-28T04:24:18.310513",
   "date": "2026-08-26",
-  "ibov": {
-    "ticker": "^BVSP",
-    "name": "IBOVESPA",
-    "last_close": 174586.27,
-    "date": "2026-08-26",
-    "daily_delta": 5.3099778321241686e-05,
-    "monthly_delta": -0.004270282601876452,
-    "delta_volume": 0,
-    "prev_close": 174577.0,
-    "yearly_delta": 0.2672207503756232
-  },
+  "ibov": null,
   "gainers": [
     {
       "ticker": "TELB3.SA",
@@ -20,7 +10,7 @@
       "date": "2026-08-26",
       "daily_delta": 0.3753623188405797,
       "monthly_delta": 0.8162679425837323,
-      "delta_volume": 17.161490683229815,
+      "delta_volume": 18.850931677018636,
       "prev_close": 13.8,
       "yearly_delta": 0.6490008688097308
     },
@@ -31,7 +21,7 @@
       "date": "2026-08-26",
       "daily_delta": 0.23677248677248675,
       "monthly_delta": 0.29680998613037435,
-      "delta_volume": 14.415692821368948,
+      "delta_volume": 14.449180327868852,
       "prev_close": 7.56,
       "yearly_delta": 0.2466666666666666
     },
@@ -42,7 +32,7 @@
       "date": "2026-08-26",
       "daily_delta": 0.14193548387096766,
       "monthly_delta": 0.39370078740157477,
-      "delta_volume": 0.10340609717033833,
+      "delta_volume": 0.13067416963723444,
       "prev_close": 1.55,
       "yearly_delta": -0.8330188679245283
     },
@@ -53,7 +43,7 @@
       "date": "2026-08-26",
       "daily_delta": 0.1384615384615384,
       "monthly_delta": 0.29824561403508776,
-      "delta_volume": 1.572273587167941,
+      "delta_volume": 1.5823985505315608,
       "prev_close": 0.65,
       "yearly_delta": -0.3833333333333333
     },
@@ -64,7 +54,7 @@
       "date": "2026-08-26",
       "daily_delta": 0.13186813186813184,
       "monthly_delta": 4.589147286821706,
-      "delta_volume": 0.8406711049633548,
+      "delta_volume": 1.2588787113937783,
       "prev_close": 12.74,
       "yearly_delta": 0.44199999999999995
     }
@@ -77,7 +67,7 @@
       "date": "2026-08-26",
       "daily_delta": -0.2400000000000001,
       "monthly_delta": -0.08064516129032262,
-      "delta_volume": -0.11874037232627088,
+      "delta_volume": -0.004979344626633964,
       "prev_close": 0.75,
       "yearly_delta": 0.9655172413793103
     },
@@ -88,7 +78,7 @@
       "date": "2026-08-26",
       "daily_delta": -0.14355231143552316,
       "monthly_delta": -0.42105263157894735,
-      "delta_volume": 1.6083388830033312,
+      "delta_volume": 1.692621676138705,
       "prev_close": 4.11,
       "yearly_delta": -0.6004540295119183
     },
@@ -110,7 +100,7 @@
       "date": "2026-08-26",
       "daily_delta": -0.11428571428571421,
       "monthly_delta": -0.37875751503006017,
-      "delta_volume": 3.3849469496021216,
+      "delta_volume": 3.4048408488063657,
       "prev_close": 3.5,
       "yearly_delta": -0.6612021857923498
     },
@@ -134,7 +124,7 @@
       "date": "2026-08-26",
       "daily_delta": 0.13186813186813184,
       "monthly_delta": 4.589147286821706,
-      "delta_volume": 0.8406711049633548,
+      "delta_volume": 1.2588787113937783,
       "prev_close": 12.74,
       "yearly_delta": 0.44199999999999995
     },
@@ -145,7 +135,7 @@
       "date": "2026-08-26",
       "daily_delta": 0.0971428571428572,
       "monthly_delta": 2.1475409836065573,
-      "delta_volume": 1.1955041425751451,
+      "delta_volume": 1.2589542157840867,
       "prev_close": 1.75,
       "yearly_delta": -0.33333333333333337
     },
@@ -156,7 +146,7 @@
       "date": "2026-08-26",
       "daily_delta": 0.0010256410256410664,
       "monthly_delta": 1.0504201680672272,
-      "delta_volume": -0.4593288219859135,
+      "delta_volume": -0.457947797265571,
       "prev_close": 9.75,
       "yearly_delta": 0.3480662983425413
     },
@@ -167,7 +157,7 @@
       "date": "2026-08-26",
       "daily_delta": 0.3753623188405797,
       "monthly_delta": 0.8162679425837323,
-      "delta_volume": 17.161490683229815,
+      "delta_volume": 18.850931677018636,
       "prev_close": 13.8,
       "yearly_delta": 0.6490008688097308
     },
@@ -178,7 +168,7 @@
       "date": "2026-08-26",
       "daily_delta": -0.0012330456226880004,
       "monthly_delta": 0.7880794701986753,
-      "delta_volume": -0.37912750060255485,
+      "delta_volume": -0.3236004621363302,
       "prev_close": 8.11,
       "yearly_delta": 0.28980891719745205
     }
@@ -191,7 +181,7 @@
       "date": "2026-08-26",
       "daily_delta": -0.07692307692307698,
       "monthly_delta": -0.5555555555555556,
-      "delta_volume": -0.3834422940433998,
+      "delta_volume": -0.36405372097473454,
       "prev_close": 0.39,
       "yearly_delta": -0.881578947368421
     },
@@ -202,7 +192,7 @@
       "date": "2026-08-26",
       "daily_delta": 0.0769230769230771,
       "monthly_delta": -0.5333333333333332,
-      "delta_volume": -0.6775993331945025,
+      "delta_volume": -0.6764615467319693,
       "prev_close": 0.13,
       "yearly_delta": -0.8870967741935484
     },
@@ -213,7 +203,7 @@
       "date": "2026-08-26",
       "daily_delta": -0.14355231143552316,
       "monthly_delta": -0.42105263157894735,
-      "delta_volume": 1.6083388830033312,
+      "delta_volume": 1.692621676138705,
       "prev_close": 4.11,
       "yearly_delta": -0.6004540295119183
     },
@@ -235,7 +225,7 @@
       "date": "2026-08-26",
       "daily_delta": 0.0,
       "monthly_delta": -0.3823529411764707,
-      "delta_volume": -0.16745576216044644,
+      "delta_volume": -0.1582246673896368,
       "prev_close": 0.21,
       "yearly_delta": -0.9843866171003718
     }
@@ -248,7 +238,7 @@
       "date": "2026-08-26",
       "daily_delta": 0.0017889087656528524,
       "monthly_delta": 0.02564102564102555,
-      "delta_volume": 1.4464225401218092,
+      "delta_volume": 1.498710991256997,
       "prev_close": 11.18,
       "yearly_delta": 2.478260869565217
     },
@@ -259,7 +249,7 @@
       "date": "2026-08-26",
       "daily_delta": 0.026252983293555854,
       "monthly_delta": 0.018957345971563955,
-      "delta_volume": -0.2624324827714658,
+      "delta_volume": -0.25498230582976344,
       "prev_close": 8.38,
       "yearly_delta": 1.606060606060606
     },
@@ -281,7 +271,7 @@
       "date": "2026-08-26",
       "daily_delta": 0.01621621621621605,
       "monthly_delta": 0.062146892655367214,
-      "delta_volume": -0.3221110825229344,
+      "delta_volume": -0.3241879668527494,
       "prev_close": 1.85,
       "yearly_delta": 1.0888888888888886
     },
@@ -292,7 +282,7 @@
       "date": "2026-08-26",
       "daily_delta": -0.003816793893129833,
       "monthly_delta": -0.08421052631578951,
-      "delta_volume": -0.22833121100983766,
+      "delta_volume": -0.26972998578872576,
       "prev_close": 2.62,
       "yearly_delta": 1.0714285714285712
     }
@@ -316,7 +306,7 @@
       "date": "2026-08-26",
       "daily_delta": 0.0,
       "monthly_delta": 0.0625,
-      "delta_volume": 0.10525313566107553,
+      "delta_volume": 0.10640025879097803,
       "prev_close": 0.17,
       "yearly_delta": -0.9868928296067849
     },
@@ -327,7 +317,7 @@
       "date": "2026-08-26",
       "daily_delta": 0.0,
       "monthly_delta": -0.3823529411764707,
-      "delta_volume": -0.16745576216044644,
+      "delta_volume": -0.1582246673896368,
       "prev_close": 0.21,
       "yearly_delta": -0.9843866171003718
     },
@@ -349,23 +339,12 @@
       "date": "2026-08-26",
       "daily_delta": 0.007518796992481258,
       "monthly_delta": 0.08064516129032273,
-      "delta_volume": 0.16814824089144853,
+      "delta_volume": 0.1909624712790401,
       "prev_close": 1.33,
       "yearly_delta": -0.9627777777777777
     }
   ],
   "all_assets": [
-    {
-      "ticker": "^BVSP",
-      "name": "IBOVESPA",
-      "last_close": 174586.27,
-      "date": "2026-08-26",
-      "daily_delta": 5.3099778321241686e-05,
-      "monthly_delta": -0.004270282601876452,
-      "delta_volume": 0,
-      "prev_close": 174577.0,
-      "yearly_delta": 0.2672207503756232
-    },
     {
       "ticker": "AALR3.SA",
       "name": "Alliança Saúde e Participações S.A.",
@@ -373,7 +352,7 @@
       "date": "2026-08-26",
       "daily_delta": 0.003389830508474523,
       "monthly_delta": -0.08074534161490687,
-      "delta_volume": 0.16129032258064524,
+      "delta_volume": 0.16526054590570727,
       "prev_close": 2.95,
       "yearly_delta": -0.5218093699515347
     },
@@ -395,7 +374,7 @@
       "date": "2026-08-26",
       "daily_delta": -0.004572175048987659,
       "monthly_delta": -0.0390920554854981,
-      "delta_volume": -0.5849993183605473,
+      "delta_volume": -0.5842367792784169,
       "prev_close": 15.31,
       "yearly_delta": 0.3240660295395308
     },
@@ -406,7 +385,7 @@
       "date": "2026-08-26",
       "daily_delta": 0.0,
       "monthly_delta": -0.014634146341463317,
-      "delta_volume": -0.02921597633136097,
+      "delta_volume": -0.02551775147928992,
       "prev_close": 2.02,
       "yearly_delta": -0.5167464114832536
     },
@@ -444,13 +423,24 @@
       "yearly_delta": -0.7564766839378239
     },
     {
+      "ticker": "AHEB3.SA",
+      "name": "São Paulo Turismo S.A.",
+      "last_close": 23.89,
+      "date": "2026-08-26",
+      "daily_delta": 0.0,
+      "monthly_delta": -0.0004184100418409553,
+      "delta_volume": 0,
+      "prev_close": 23.89,
+      "yearly_delta": -0.25226917057902964
+    },
+    {
       "ticker": "ALLD3.SA",
       "name": "Allied Tecnologia S.A.",
       "last_close": 5.2,
       "date": "2026-08-26",
       "daily_delta": 0.0038610038610038533,
       "monthly_delta": 0.1378555798687089,
-      "delta_volume": 0.05921260210580437,
+      "delta_volume": 0.0622509436387646,
       "prev_close": 5.18,
       "yearly_delta": -0.14893617021276595
     },
@@ -461,7 +451,7 @@
       "date": "2026-08-26",
       "daily_delta": -0.004894578313253017,
       "monthly_delta": -0.0022650056625140857,
-      "delta_volume": -0.20259303605336043,
+      "delta_volume": -0.20227858205435212,
       "prev_close": 26.56,
       "yearly_delta": 0.29431929480901076
     },
@@ -472,7 +462,7 @@
       "date": "2026-08-26",
       "daily_delta": 0.017875920084121866,
       "monthly_delta": 0.08764044943820215,
-      "delta_volume": -0.9059929494712103,
+      "delta_volume": -0.9058454295802275,
       "prev_close": 9.51,
       "yearly_delta": 0.12427409988385607
     },
@@ -483,7 +473,7 @@
       "date": "2026-08-26",
       "daily_delta": 0.027190332326283873,
       "monthly_delta": 0.18881118881118875,
-      "delta_volume": -0.031806026562289924,
+      "delta_volume": 0.0071714631647574745,
       "prev_close": 13.24,
       "yearly_delta": 0.6524908869987849
     },
@@ -505,7 +495,7 @@
       "date": "2026-08-26",
       "daily_delta": -0.00274977085242889,
       "monthly_delta": -0.07874682472480943,
-      "delta_volume": 2.9188467698878804,
+      "delta_volume": 3.2014882655981687,
       "prev_close": 10.91,
       "yearly_delta": 0.07297830374753445
     },
@@ -538,7 +528,7 @@
       "date": "2026-08-26",
       "daily_delta": 0.1384615384615384,
       "monthly_delta": 0.29824561403508776,
-      "delta_volume": 1.572273587167941,
+      "delta_volume": 1.5823985505315608,
       "prev_close": 0.65,
       "yearly_delta": -0.3833333333333333
     },
@@ -549,7 +539,7 @@
       "date": "2026-08-26",
       "daily_delta": 0.0,
       "monthly_delta": 0.0625,
-      "delta_volume": 0.10525313566107553,
+      "delta_volume": 0.10640025879097803,
       "prev_close": 0.17,
       "yearly_delta": -0.9868928296067849
     },
@@ -560,7 +550,7 @@
       "date": "2026-08-26",
       "daily_delta": 0.0,
       "monthly_delta": 0.10854503464203225,
-      "delta_volume": 0.47960905544231003,
+      "delta_volume": 0.44713144706619334,
       "prev_close": 4.8,
       "yearly_delta": -0.10780669144981414
     },
@@ -582,7 +572,7 @@
       "date": "2026-08-26",
       "daily_delta": -0.0036496350364964014,
       "monthly_delta": 0.30000000000000004,
-      "delta_volume": 0.18561187942908686,
+      "delta_volume": 0.18829798975824197,
       "prev_close": 2.74,
       "yearly_delta": -0.125
     },
@@ -593,7 +583,7 @@
       "date": "2026-08-26",
       "daily_delta": 0.0,
       "monthly_delta": 0.14197530864197527,
-      "delta_volume": -0.2542677091564648,
+      "delta_volume": -0.23127600980444307,
       "prev_close": 3.7,
       "yearly_delta": 0.06936416184971095
     },
@@ -615,7 +605,7 @@
       "date": "2026-08-26",
       "daily_delta": -0.06584821428571441,
       "monthly_delta": 0.0320591861898889,
-      "delta_volume": 1.6149530848209004,
+      "delta_volume": 1.6924157161152378,
       "prev_close": 8.96,
       "yearly_delta": -0.1476578411405296
     },
@@ -637,7 +627,7 @@
       "date": "2026-08-26",
       "daily_delta": -0.01501501501501512,
       "monthly_delta": 0.01863354037267073,
-      "delta_volume": -0.5689598674132815,
+      "delta_volume": -0.5614729833455707,
       "prev_close": 3.33,
       "yearly_delta": -0.14583333333333337
     },
@@ -648,7 +638,7 @@
       "date": "2026-08-26",
       "daily_delta": 0.013071895424836555,
       "monthly_delta": -0.04151943462897534,
-      "delta_volume": 0.18045426130443842,
+      "delta_volume": 0.21741205599182645,
       "prev_close": 10.71,
       "yearly_delta": 0.001846722068328699
     },
@@ -670,7 +660,7 @@
       "date": "2026-08-26",
       "daily_delta": -0.004473438956197562,
       "monthly_delta": 0.041739808855080884,
-      "delta_volume": -0.23510458587102334,
+      "delta_volume": -0.23001605978044515,
       "prev_close": 53.65,
       "yearly_delta": 0.2817374610031196
     },
@@ -681,7 +671,7 @@
       "date": "2026-08-26",
       "daily_delta": -0.0046948356807511304,
       "monthly_delta": 0.04950495049504955,
-      "delta_volume": -0.4604701213975855,
+      "delta_volume": -0.46033560883747515,
       "prev_close": 53.25,
       "yearly_delta": 0.09958506224066377
     },
@@ -692,7 +682,7 @@
       "date": "2026-08-26",
       "daily_delta": 0.13186813186813184,
       "monthly_delta": 4.589147286821706,
-      "delta_volume": 0.8406711049633548,
+      "delta_volume": 1.2588787113937783,
       "prev_close": 12.74,
       "yearly_delta": 0.44199999999999995
     },
@@ -703,7 +693,7 @@
       "date": "2026-08-26",
       "daily_delta": 0.14193548387096766,
       "monthly_delta": 0.39370078740157477,
-      "delta_volume": 0.10340609717033833,
+      "delta_volume": 0.13067416963723444,
       "prev_close": 1.55,
       "yearly_delta": -0.8330188679245283
     },
@@ -714,7 +704,7 @@
       "date": "2026-08-26",
       "daily_delta": 0.09558823529411753,
       "monthly_delta": 0.18253968253968256,
-      "delta_volume": 0.2012613746856169,
+      "delta_volume": 0.21792996237746065,
       "prev_close": 1.36,
       "yearly_delta": -0.7134615384615385
     },
@@ -725,7 +715,7 @@
       "date": "2026-08-26",
       "daily_delta": 0.017076502732240373,
       "monthly_delta": -0.12974868497954406,
-      "delta_volume": -0.04648358461129698,
+      "delta_volume": -0.03141862354042824,
       "prev_close": 14.64,
       "yearly_delta": -0.5151416476717681
     },
@@ -736,9 +726,20 @@
       "date": "2026-08-26",
       "daily_delta": 0.0,
       "monthly_delta": 0.00190839694656475,
-      "delta_volume": -0.255386261100904,
+      "delta_volume": -0.252687972172991,
       "prev_close": 15.75,
       "yearly_delta": 0.3347457627118644
+    },
+    {
+      "ticker": "BALM3.SA",
+      "name": "Baumer S.A.",
+      "last_close": 26.0,
+      "date": "2026-08-26",
+      "daily_delta": 0.0,
+      "monthly_delta": 0.0,
+      "delta_volume": 0,
+      "prev_close": 26.0,
+      "yearly_delta": 0.5411973918197983
     },
     {
       "ticker": "BALM4.SA",
@@ -747,7 +748,7 @@
       "date": "2026-08-26",
       "daily_delta": -0.053987730061349715,
       "monthly_delta": -0.053987730061349715,
-      "delta_volume": 21.80851063829787,
+      "delta_volume": 22.319148936170212,
       "prev_close": 16.3,
       "yearly_delta": 0.22673031026252977
     },
@@ -769,7 +770,7 @@
       "date": "2026-08-26",
       "daily_delta": -0.0025549310168625494,
       "monthly_delta": -0.04780487804878053,
-      "delta_volume": 0.29453049486674576,
+      "delta_volume": 0.30314797377110425,
       "prev_close": 19.57,
       "yearly_delta": -0.019588146659969885
     },
@@ -780,7 +781,7 @@
       "date": "2026-08-26",
       "daily_delta": 0.009472259810554773,
       "monthly_delta": -0.08071472581638939,
-      "delta_volume": 0.06577805500083156,
+      "delta_volume": 0.07249827837104439,
       "prev_close": 14.78,
       "yearly_delta": 0.1628994544037412
     },
@@ -791,7 +792,7 @@
       "date": "2026-08-26",
       "daily_delta": 0.0125148986889152,
       "monthly_delta": -0.08949624866023587,
-      "delta_volume": -0.05812837417999783,
+      "delta_volume": -0.042662080500043276,
       "prev_close": 16.78,
       "yearly_delta": 0.13342228152101399
     },
@@ -802,9 +803,31 @@
       "date": "2026-08-26",
       "daily_delta": 0.013110539845758273,
       "monthly_delta": 0.021513737687921086,
-      "delta_volume": -0.4247440308114655,
+      "delta_volume": -0.41362222144730776,
       "prev_close": 38.9,
       "yearly_delta": 0.3789363191042687
+    },
+    {
+      "ticker": "BDLL3.SA",
+      "name": "Bardella S.A. Indústrias Mecânicas",
+      "last_close": 4.46,
+      "date": "2026-08-26",
+      "daily_delta": 0.0,
+      "monthly_delta": -0.008888888888888946,
+      "delta_volume": 0,
+      "prev_close": 4.46,
+      "yearly_delta": -0.4053333333333333
+    },
+    {
+      "ticker": "BDLL4.SA",
+      "name": "Bardella S.A. Indústrias Mecânicas",
+      "last_close": 3.9,
+      "date": "2026-08-26",
+      "daily_delta": 0.0,
+      "monthly_delta": 0.08333333333333326,
+      "delta_volume": 0,
+      "prev_close": 3.9,
+      "yearly_delta": -0.5357142857142858
     },
     {
       "ticker": "BEEF3.SA",
@@ -813,7 +836,7 @@
       "date": "2026-08-26",
       "daily_delta": 0.012345679012345734,
       "monthly_delta": 0.18497109826589586,
-      "delta_volume": -0.37888244045494224,
+      "delta_volume": -0.3769072809425017,
       "prev_close": 4.05,
       "yearly_delta": -0.28321678321678323
     },
@@ -840,13 +863,24 @@
       "yearly_delta": 0.19518716577540096
     },
     {
+      "ticker": "BGIP3.SA",
+      "name": "Banco do Estado de Sergipe S.A.",
+      "last_close": 46.38,
+      "date": "2026-08-26",
+      "daily_delta": 0.0,
+      "monthly_delta": -0.01945031712473566,
+      "delta_volume": 0,
+      "prev_close": 46.38,
+      "yearly_delta": 0.41661576053756866
+    },
+    {
       "ticker": "BGIP4.SA",
       "name": "Banco do Estado de Sergipe S.A.",
       "last_close": 32.7,
       "date": "2026-08-26",
       "daily_delta": 0.0030674846625766694,
       "monthly_delta": 0.005844355582897753,
-      "delta_volume": 1.237762237762238,
+      "delta_volume": 1.4615384615384617,
       "prev_close": 32.6,
       "yearly_delta": 0.2708900116595414
     },
@@ -857,7 +891,7 @@
       "date": "2026-08-26",
       "daily_delta": -0.07692307692307698,
       "monthly_delta": -0.5555555555555556,
-      "delta_volume": -0.3834422940433998,
+      "delta_volume": -0.36405372097473454,
       "prev_close": 0.39,
       "yearly_delta": -0.881578947368421
     },
@@ -868,7 +902,7 @@
       "date": "2026-08-26",
       "daily_delta": -0.039184952978056464,
       "monthly_delta": -0.16027397260273968,
-      "delta_volume": 1.4761904761904763,
+      "delta_volume": 1.5396825396825395,
       "prev_close": 6.38,
       "yearly_delta": 0.8803680981595092
     },
@@ -879,7 +913,7 @@
       "date": "2026-08-26",
       "daily_delta": -0.048744460856720684,
       "monthly_delta": 0.08783783783783794,
-      "delta_volume": -0.8028068928761769,
+      "delta_volume": -0.7628458498023716,
       "prev_close": 6.77,
       "yearly_delta": -0.006172839506172867
     },
@@ -890,7 +924,7 @@
       "date": "2026-08-26",
       "daily_delta": -0.019459459459459483,
       "monthly_delta": 0.03420752565564422,
-      "delta_volume": -0.6182910969737443,
+      "delta_volume": -0.6165336895012478,
       "prev_close": 9.25,
       "yearly_delta": 0.015677491601343796
     },
@@ -901,7 +935,7 @@
       "date": "2026-08-26",
       "daily_delta": -0.039584558103076706,
       "monthly_delta": 0.006365503080081991,
-      "delta_volume": 1.2779369627507164,
+      "delta_volume": 1.4498567335243555,
       "prev_close": 51.03,
       "yearly_delta": 0.33943700464607796
     },
@@ -912,7 +946,7 @@
       "date": "2026-08-26",
       "daily_delta": -0.022304832713754608,
       "monthly_delta": 0.01687170474516697,
-      "delta_volume": -0.19277748274030804,
+      "delta_volume": -0.11195074167366359,
       "prev_close": 59.18,
       "yearly_delta": 0.3531337698783912
     },
@@ -923,9 +957,31 @@
       "date": "2026-08-26",
       "daily_delta": 0.005825242718446422,
       "monthly_delta": -0.00956022944550683,
-      "delta_volume": -0.4688339017487846,
+      "delta_volume": -0.45355245420664503,
       "prev_close": 5.15,
       "yearly_delta": 0.6037151702786376
+    },
+    {
+      "ticker": "BMIN3.SA",
+      "name": "Banco Mercantil de Investimentos S.A.",
+      "last_close": 19.5,
+      "date": "2026-08-26",
+      "daily_delta": 0.0,
+      "monthly_delta": -0.09260120986505349,
+      "delta_volume": 0,
+      "prev_close": 19.5,
+      "yearly_delta": -0.13140311804008908
+    },
+    {
+      "ticker": "BMIN4.SA",
+      "name": "Banco Mercantil de Investimentos S.A.",
+      "last_close": 18.88,
+      "date": "2026-08-26",
+      "daily_delta": 0.0,
+      "monthly_delta": -0.000529380624669229,
+      "delta_volume": 0,
+      "prev_close": 18.88,
+      "yearly_delta": 0.172670807453416
     },
     {
       "ticker": "BMKS3.SA",
@@ -948,6 +1004,28 @@
       "delta_volume": 0.027257852097218427,
       "prev_close": 23.78,
       "yearly_delta": 0.33535911602209945
+    },
+    {
+      "ticker": "BNBR3.SA",
+      "name": "Banco do Nordeste do Brasil S.A.",
+      "last_close": 107.0,
+      "date": "2026-08-26",
+      "daily_delta": 0.0,
+      "monthly_delta": -0.0742342965911057,
+      "delta_volume": 0,
+      "prev_close": 107.0,
+      "yearly_delta": 0.15800865800865793
+    },
+    {
+      "ticker": "BOBR4.SA",
+      "name": "Bombril S.A.",
+      "last_close": 1.24,
+      "date": "2026-08-26",
+      "daily_delta": 0.0,
+      "monthly_delta": 0.008130081300812941,
+      "delta_volume": 0,
+      "prev_close": 1.24,
+      "yearly_delta": -0.015873015873015928
     },
     {
       "ticker": "BPAC3.SA",
@@ -978,7 +1056,7 @@
       "date": "2026-08-26",
       "daily_delta": -0.0023985239852398754,
       "monthly_delta": -0.012420091324200855,
-      "delta_volume": -0.1713023726416819,
+      "delta_volume": -0.17050593871522202,
       "prev_close": 54.2,
       "yearly_delta": 0.29014554998806985
     },
@@ -1000,7 +1078,7 @@
       "date": "2026-08-26",
       "daily_delta": 0.002740977615349527,
       "monthly_delta": 0.009195402298850519,
-      "delta_volume": -0.3603753851372361,
+      "delta_volume": -0.344348585591865,
       "prev_close": 21.89,
       "yearly_delta": 0.5264255910987481
     },
@@ -1011,7 +1089,7 @@
       "date": "2026-08-26",
       "daily_delta": -0.02637362637362639,
       "monthly_delta": -0.1561904761904762,
-      "delta_volume": -0.29428804547221776,
+      "delta_volume": -0.3315243787924904,
       "prev_close": 18.2,
       "yearly_delta": -0.09267793138760894
     },
@@ -1022,7 +1100,7 @@
       "date": "2026-08-26",
       "daily_delta": 0.011664074650077794,
       "monthly_delta": -0.09337979094076654,
-      "delta_volume": -0.2516745979837164,
+      "delta_volume": -0.24784050159002236,
       "prev_close": 12.86,
       "yearly_delta": -0.11676849966055669
     },
@@ -1033,7 +1111,7 @@
       "date": "2026-08-26",
       "daily_delta": -0.11428571428571421,
       "monthly_delta": -0.37875751503006017,
-      "delta_volume": 3.3849469496021216,
+      "delta_volume": 3.4048408488063657,
       "prev_close": 3.5,
       "yearly_delta": -0.6612021857923498
     },
@@ -1044,7 +1122,7 @@
       "date": "2026-08-26",
       "daily_delta": -0.14355231143552316,
       "monthly_delta": -0.42105263157894735,
-      "delta_volume": 1.6083388830033312,
+      "delta_volume": 1.692621676138705,
       "prev_close": 4.11,
       "yearly_delta": -0.6004540295119183
     },
@@ -1071,13 +1149,24 @@
       "yearly_delta": 0.619626168224299
     },
     {
+      "ticker": "BRSR5.SA",
+      "name": "Banco do Estado do Rio Grande do Sul S.A.",
+      "last_close": 18.0,
+      "date": "2026-08-26",
+      "daily_delta": 0.0,
+      "monthly_delta": 0.12994350282485878,
+      "delta_volume": 0,
+      "prev_close": 18.0,
+      "yearly_delta": 0.24653739612188375
+    },
+    {
       "ticker": "BRSR6.SA",
       "name": "Banco do Estado do Rio Grande do Sul S.A.",
       "last_close": 13.85,
       "date": "2026-08-26",
       "daily_delta": -0.010714285714285787,
       "monthly_delta": -0.017033356990773574,
-      "delta_volume": -0.39750997842397473,
+      "delta_volume": -0.3998686751341417,
       "prev_close": 14.0,
       "yearly_delta": 0.37673956262425445
     },
@@ -1088,7 +1177,7 @@
       "date": "2026-08-26",
       "daily_delta": -0.025179856115107868,
       "monthly_delta": -0.014545454545454528,
-      "delta_volume": 0.34457914279391155,
+      "delta_volume": 0.3455627412890059,
       "prev_close": 2.78,
       "yearly_delta": -0.03558718861209964
     },
@@ -1110,9 +1199,20 @@
       "date": "2026-08-26",
       "daily_delta": 0.007407407407407307,
       "monthly_delta": -0.08108108108108103,
-      "delta_volume": 3.064028457092041,
+      "delta_volume": 3.1351711871943087,
       "prev_close": 2.7,
       "yearly_delta": -0.7258064516129032
+    },
+    {
+      "ticker": "CALI3.SA",
+      "name": "Construtora Adolpho Lindenberg S.A.",
+      "last_close": 29.99,
+      "date": "2026-08-26",
+      "daily_delta": 0.0,
+      "monthly_delta": 0.1646601941747572,
+      "delta_volume": 0,
+      "prev_close": 29.99,
+      "yearly_delta": 0.36256247160381627
     },
     {
       "ticker": "CAMB3.SA",
@@ -1132,7 +1232,7 @@
       "date": "2026-08-26",
       "daily_delta": 0.01446280991735538,
       "monthly_delta": 0.04690831556503183,
-      "delta_volume": 0.05347727843334171,
+      "delta_volume": 0.02020445947033722,
       "prev_close": 4.84,
       "yearly_delta": 0.1445221445221445
     },
@@ -1143,7 +1243,7 @@
       "date": "2026-08-26",
       "daily_delta": 0.026881720430107503,
       "monthly_delta": 0.3233256351039262,
-      "delta_volume": -0.017832445091928384,
+      "delta_volume": 0.030537824162794935,
       "prev_close": 5.58,
       "yearly_delta": 0.1741803278688525
     },
@@ -1154,7 +1254,7 @@
       "date": "2026-08-26",
       "daily_delta": 0.0017889087656528524,
       "monthly_delta": 0.02564102564102555,
-      "delta_volume": 1.4464225401218092,
+      "delta_volume": 1.498710991256997,
       "prev_close": 11.18,
       "yearly_delta": 2.478260869565217
     },
@@ -1170,13 +1270,24 @@
       "yearly_delta": -0.35389133627019076
     },
     {
+      "ticker": "CCTY3.SA",
+      "name": "RDVC City S.A.",
+      "last_close": 5.75,
+      "date": "2026-08-26",
+      "daily_delta": 0.0,
+      "monthly_delta": -0.29963459196102327,
+      "delta_volume": 0,
+      "prev_close": 5.75,
+      "yearly_delta": -0.8802083333333334
+    },
+    {
       "ticker": "CEAB3.SA",
       "name": "C&A Modas S.A.",
       "last_close": 7.85,
       "date": "2026-08-26",
       "daily_delta": -0.018750000000000044,
       "monthly_delta": -0.18229166666666663,
-      "delta_volume": -0.1064516325672219,
+      "delta_volume": -0.09101652295528562,
       "prev_close": 8.0,
       "yearly_delta": -0.5078369905956113
     },
@@ -1187,7 +1298,7 @@
       "date": "2026-08-26",
       "daily_delta": -0.003821656050955413,
       "monthly_delta": -0.03057851239669418,
-      "delta_volume": 0.5652173913043479,
+      "delta_volume": 0.8265541059094397,
       "prev_close": 23.55,
       "yearly_delta": 0.17652958876629876
     },
@@ -1198,7 +1309,7 @@
       "date": "2026-08-26",
       "daily_delta": -0.01432181971356361,
       "monthly_delta": -0.01680672268907568,
-      "delta_volume": -0.05977165883143054,
+      "delta_volume": 0.007387508394895992,
       "prev_close": 23.74,
       "yearly_delta": 0.19754350051177072
     },
@@ -1236,6 +1347,17 @@
       "yearly_delta": 0.44838212634822794
     },
     {
+      "ticker": "CEEB5.SA",
+      "name": "Companhia de Eletricidade do Estado da Bahia - COELBA",
+      "last_close": 40.0,
+      "date": "2026-08-26",
+      "daily_delta": 0.0,
+      "monthly_delta": -0.06103286384976525,
+      "delta_volume": 0,
+      "prev_close": 40.0,
+      "yearly_delta": 0.2449424214130096
+    },
+    {
       "ticker": "CEED3.SA",
       "name": "Companhia Estadual de Distribuição de Energia Elétrica",
       "last_close": 9.26,
@@ -1245,6 +1367,28 @@
       "delta_volume": -0.33333333333333337,
       "prev_close": 9.49,
       "yearly_delta": 0.21842105263157907
+    },
+    {
+      "ticker": "CEGR3.SA",
+      "name": "Companhia Distribuidora de Gás do Rio de Janeiro - CEG",
+      "last_close": 29.99,
+      "date": "2026-08-26",
+      "daily_delta": 0.0,
+      "monthly_delta": -0.14314285714285724,
+      "delta_volume": 0,
+      "prev_close": 29.99,
+      "yearly_delta": -0.6864282726892514
+    },
+    {
+      "ticker": "CGAS3.SA",
+      "name": "Companhia de Gás de São Paulo - COMGÁS",
+      "last_close": 125.5,
+      "date": "2026-08-26",
+      "daily_delta": 0.0,
+      "monthly_delta": 0.0040000000000000036,
+      "delta_volume": 0,
+      "prev_close": 125.5,
+      "yearly_delta": 0.10993190059255342
     },
     {
       "ticker": "CGAS5.SA",
@@ -1264,7 +1408,7 @@
       "date": "2026-08-26",
       "daily_delta": -0.004366812227074135,
       "monthly_delta": -0.05707196029776673,
-      "delta_volume": -0.671280276816609,
+      "delta_volume": -0.47404844290657433,
       "prev_close": 22.9,
       "yearly_delta": 0.23778501628664483
     },
@@ -1275,7 +1419,7 @@
       "date": "2026-08-26",
       "daily_delta": -0.007104795737122527,
       "monthly_delta": -0.07104279185708351,
-      "delta_volume": -0.5568982880161129,
+      "delta_volume": -0.5166163141993958,
       "prev_close": 22.52,
       "yearly_delta": 0.062232779097387114
     },
@@ -1286,7 +1430,7 @@
       "date": "2026-08-26",
       "daily_delta": 0.0,
       "monthly_delta": 0.039288245020077106,
-      "delta_volume": -0.6666666666666667,
+      "delta_volume": 0,
       "prev_close": 132.0,
       "yearly_delta": 0.47190008920606585
     },
@@ -1297,7 +1441,7 @@
       "date": "2026-08-26",
       "daily_delta": -0.019977582910265745,
       "monthly_delta": 0.0755426917510853,
-      "delta_volume": 0.9911504424778761,
+      "delta_volume": 1.0132743362831858,
       "prev_close": 151.67,
       "yearly_delta": 0.5970774685720426
     },
@@ -1308,7 +1452,7 @@
       "date": "2026-08-26",
       "daily_delta": 0.009293680297397744,
       "monthly_delta": -0.021033653846153966,
-      "delta_volume": 0.16156765902958803,
+      "delta_volume": 0.16431151964146884,
       "prev_close": 16.14,
       "yearly_delta": 0.1977941176470588
     },
@@ -1319,7 +1463,7 @@
       "date": "2026-08-26",
       "daily_delta": -0.0009514747859181716,
       "monthly_delta": -0.059982094897045646,
-      "delta_volume": -0.14257839309632636,
+      "delta_volume": -0.12193836171938366,
       "prev_close": 10.51,
       "yearly_delta": 0.06815869786368256
     },
@@ -1330,9 +1474,20 @@
       "date": "2026-08-26",
       "daily_delta": 0.018707482993197244,
       "monthly_delta": 0.03275862068965529,
-      "delta_volume": -0.2735081702150268,
+      "delta_volume": -0.2910529171864773,
       "prev_close": 5.88,
       "yearly_delta": 0.27718550106609796
+    },
+    {
+      "ticker": "COCE3.SA",
+      "name": "Companhia Energética do Ceará - COELCE",
+      "last_close": 29.5,
+      "date": "2026-08-26",
+      "daily_delta": 0.0,
+      "monthly_delta": -0.18055555555555558,
+      "delta_volume": 0,
+      "prev_close": 29.5,
+      "yearly_delta": -0.1752865529773554
     },
     {
       "ticker": "COCE5.SA",
@@ -1352,7 +1507,7 @@
       "date": "2026-08-26",
       "daily_delta": 0.02764976958525356,
       "monthly_delta": 0.037209302325581506,
-      "delta_volume": -0.004672820206911288,
+      "delta_volume": 0.019410754424055376,
       "prev_close": 2.17,
       "yearly_delta": -0.1220472440944882
     },
@@ -1363,7 +1518,7 @@
       "date": "2026-08-26",
       "daily_delta": 0.007007233273055968,
       "monthly_delta": -0.004469273743016866,
-      "delta_volume": -0.3345758532667652,
+      "delta_volume": -0.33654727637559545,
       "prev_close": 44.24,
       "yearly_delta": 0.21654833424358277
     },
@@ -1374,9 +1529,20 @@
       "date": "2026-08-26",
       "daily_delta": 0.0,
       "monthly_delta": -0.008795669824086527,
-      "delta_volume": -0.2203243818414523,
+      "delta_volume": -0.20890518324752294,
       "prev_close": 14.65,
       "yearly_delta": 0.4195736434108528
+    },
+    {
+      "ticker": "CRPG3.SA",
+      "name": "Tronox Pigmentos do Brasil S.A.",
+      "last_close": 17.0,
+      "date": "2026-08-26",
+      "daily_delta": 0.0,
+      "monthly_delta": -0.05555555555555558,
+      "delta_volume": 0,
+      "prev_close": 17.0,
+      "yearly_delta": 0.0
     },
     {
       "ticker": "CRPG5.SA",
@@ -1390,13 +1556,24 @@
       "yearly_delta": -0.3632707774798928
     },
     {
+      "ticker": "CRPG6.SA",
+      "name": "Tronox Pigmentos do Brasil S.A.",
+      "last_close": 10.2,
+      "date": "2026-08-26",
+      "daily_delta": 0.0,
+      "monthly_delta": -0.1885441527446301,
+      "delta_volume": 0,
+      "prev_close": 10.2,
+      "yearly_delta": -0.36250000000000004
+    },
+    {
       "ticker": "CSAN3.SA",
       "name": "Cosan S.A.",
       "last_close": 3.71,
       "date": "2026-08-26",
       "daily_delta": -0.010666666666666713,
       "monthly_delta": -0.06075949367088618,
-      "delta_volume": 0.07432419640227317,
+      "delta_volume": 0.14077012261196886,
       "prev_close": 3.75,
       "yearly_delta": -0.3142329020332717
     },
@@ -1407,7 +1584,7 @@
       "date": "2026-08-26",
       "daily_delta": 0.029082774049216997,
       "monthly_delta": 0.13861386138613851,
-      "delta_volume": -0.16566109291501463,
+      "delta_volume": -0.14267655002011148,
       "prev_close": 4.47,
       "yearly_delta": 0.09263657957244642
     },
@@ -1418,7 +1595,7 @@
       "date": "2026-08-26",
       "daily_delta": -0.007207207207207134,
       "monthly_delta": -0.13105188456079475,
-      "delta_volume": -0.17189590242257324,
+      "delta_volume": -0.17407929250957055,
       "prev_close": 55.5,
       "yearly_delta": 1.0683183183183185
     },
@@ -1429,7 +1606,7 @@
       "date": "2026-08-26",
       "daily_delta": 0.03740157480314954,
       "monthly_delta": -0.07705779334500884,
-      "delta_volume": 0.06513201173571459,
+      "delta_volume": 0.06482527785756376,
       "prev_close": 5.08,
       "yearly_delta": -0.2731034482758621
     },
@@ -1440,9 +1617,20 @@
       "date": "2026-08-26",
       "daily_delta": -0.0007440476190475609,
       "monthly_delta": -0.06476323119777161,
-      "delta_volume": 0.2505167424555601,
+      "delta_volume": 0.3218333166181928,
       "prev_close": 13.44,
       "yearly_delta": -0.17353846153846153
+    },
+    {
+      "ticker": "CTAX3.SA",
+      "name": "Contax Participações S.A.",
+      "last_close": 1.35,
+      "date": "2026-08-26",
+      "daily_delta": 0.0,
+      "monthly_delta": -0.03571428571428559,
+      "delta_volume": 0,
+      "prev_close": 1.35,
+      "yearly_delta": -0.6029411764705882
     },
     {
       "ticker": "CTKA4.SA",
@@ -1462,7 +1650,7 @@
       "date": "2026-08-26",
       "daily_delta": -0.01810926949048497,
       "monthly_delta": 0.073489932885906,
-      "delta_volume": -0.22802348639972092,
+      "delta_volume": -0.21144087587773808,
       "prev_close": 32.58,
       "yearly_delta": 0.11153578874218195
     },
@@ -1473,7 +1661,7 @@
       "date": "2026-08-26",
       "daily_delta": 0.02298850574712641,
       "monthly_delta": 0.3088235294117647,
-      "delta_volume": -0.22426833203274288,
+      "delta_volume": -0.21838721200214328,
       "prev_close": 1.74,
       "yearly_delta": -0.12315270935960576
     },
@@ -1484,7 +1672,7 @@
       "date": "2026-08-26",
       "daily_delta": 0.0036572622779520447,
       "monthly_delta": -0.05601965601965608,
-      "delta_volume": -0.3355892825576403,
+      "delta_volume": -0.3510595315846561,
       "prev_close": 19.14,
       "yearly_delta": 0.4961059190031154
     },
@@ -1495,7 +1683,7 @@
       "date": "2026-08-26",
       "daily_delta": -0.025879498584714944,
       "monthly_delta": 0.1357850070721358,
-      "delta_volume": 0.7601388716946891,
+      "delta_volume": 0.7560698253822646,
       "prev_close": 24.73,
       "yearly_delta": -0.016333197223356466
     },
@@ -1506,7 +1694,7 @@
       "date": "2026-08-26",
       "daily_delta": -0.03667790893760525,
       "monthly_delta": 0.14364364364364368,
-      "delta_volume": -0.3701128277280229,
+      "delta_volume": -0.3695716875456587,
       "prev_close": 23.72,
       "yearly_delta": -0.05967078189300412
     },
@@ -1517,7 +1705,7 @@
       "date": "2026-08-26",
       "daily_delta": -0.003816793893129833,
       "monthly_delta": -0.08421052631578951,
-      "delta_volume": -0.22833121100983766,
+      "delta_volume": -0.26972998578872576,
       "prev_close": 2.62,
       "yearly_delta": 1.0714285714285712
     },
@@ -1550,7 +1738,7 @@
       "date": "2026-08-26",
       "daily_delta": 0.012893982808023008,
       "monthly_delta": -0.01805555555555549,
-      "delta_volume": 1.4785894206549117,
+      "delta_volume": 1.6297229219143574,
       "prev_close": 6.98,
       "yearly_delta": -0.04070556309362272
     },
@@ -1561,7 +1749,7 @@
       "date": "2026-08-26",
       "daily_delta": -0.024800708591674048,
       "monthly_delta": -0.07010135135135132,
-      "delta_volume": 0.03995890947795089,
+      "delta_volume": 0.037715511636226884,
       "prev_close": 11.29,
       "yearly_delta": -0.18202080237741458
     },
@@ -1572,9 +1760,20 @@
       "date": "2026-08-26",
       "daily_delta": -0.0207006369426751,
       "monthly_delta": -0.01125401929260439,
-      "delta_volume": -0.26873416194038857,
+      "delta_volume": -0.2566670689031012,
       "prev_close": 6.28,
       "yearly_delta": 0.2732919254658386
+    },
+    {
+      "ticker": "DOHL3.SA",
+      "name": "Döhler S.A.",
+      "last_close": 6.46,
+      "date": "2026-08-26",
+      "daily_delta": 0.0,
+      "monthly_delta": -0.007680491551459223,
+      "delta_volume": 0,
+      "prev_close": 6.46,
+      "yearly_delta": -0.0030864197530865445
     },
     {
       "ticker": "DOHL4.SA",
@@ -1594,9 +1793,20 @@
       "date": "2026-08-26",
       "daily_delta": 0.0010256410256410664,
       "monthly_delta": 1.0504201680672272,
-      "delta_volume": -0.4593288219859135,
+      "delta_volume": -0.457947797265571,
       "prev_close": 9.75,
       "yearly_delta": 0.3480662983425413
+    },
+    {
+      "ticker": "DTCY3.SA",
+      "name": "DTCOM - Direct to Company S.A.",
+      "last_close": 2.35,
+      "date": "2026-08-26",
+      "daily_delta": 0.0,
+      "monthly_delta": -0.02083333333333326,
+      "delta_volume": 0,
+      "prev_close": 2.35,
+      "yearly_delta": -0.18965517241379304
     },
     {
       "ticker": "DXCO3.SA",
@@ -1605,7 +1815,7 @@
       "date": "2026-08-26",
       "daily_delta": -0.003883495145631133,
       "monthly_delta": 0.013833992094861802,
-      "delta_volume": 1.3259552063770634,
+      "delta_volume": 1.3275953976233628,
       "prev_close": 5.15,
       "yearly_delta": 0.015841584158415856
     },
@@ -1627,7 +1837,7 @@
       "date": "2026-08-26",
       "daily_delta": 0.00917431192660545,
       "monthly_delta": -0.009900990099009799,
-      "delta_volume": 0.47473073736536864,
+      "delta_volume": 0.8061309030654515,
       "prev_close": 10.9,
       "yearly_delta": 0.06589147286821695
     },
@@ -1638,7 +1848,7 @@
       "date": "2026-08-26",
       "daily_delta": 0.0,
       "monthly_delta": -0.02524544179523136,
-      "delta_volume": -0.2374426621841078,
+      "delta_volume": -0.2039165404759009,
       "prev_close": 6.95,
       "yearly_delta": -0.01278409090909094
     },
@@ -1649,7 +1859,7 @@
       "date": "2026-08-26",
       "daily_delta": -0.00034662045060662727,
       "monthly_delta": -0.020713073005093396,
-      "delta_volume": -0.6451384125828772,
+      "delta_volume": -0.6393066047789329,
       "prev_close": 28.85,
       "yearly_delta": 0.06656804733727806
     },
@@ -1671,7 +1881,7 @@
       "date": "2026-08-26",
       "daily_delta": 0.012978790756568603,
       "monthly_delta": -0.1123439667128987,
-      "delta_volume": -0.8338870431893688,
+      "delta_volume": -0.8397435897435898,
       "prev_close": 31.59,
       "yearly_delta": 0.10344827586206895
     },
@@ -1682,7 +1892,7 @@
       "date": "2026-08-26",
       "daily_delta": 0.009238115009341907,
       "monthly_delta": 0.1188722669735327,
-      "delta_volume": -0.3032172058300746,
+      "delta_volume": -0.26517416290169105,
       "prev_close": 96.34,
       "yearly_delta": 0.28662167526796356
     },
@@ -1693,7 +1903,7 @@
       "date": "2026-08-26",
       "daily_delta": -0.01161483701760968,
       "monthly_delta": 0.035728307813113425,
-      "delta_volume": 0.26299472758550735,
+      "delta_volume": 0.27832357513810324,
       "prev_close": 26.69,
       "yearly_delta": 0.7586666666666666
     },
@@ -1704,7 +1914,7 @@
       "date": "2026-08-26",
       "daily_delta": 0.01285347043701801,
       "monthly_delta": 0.011120615911035081,
-      "delta_volume": -0.7159090909090908,
+      "delta_volume": -0.6306818181818181,
       "prev_close": 11.67,
       "yearly_delta": 0.011120615911035081
     },
@@ -1715,7 +1925,7 @@
       "date": "2026-08-26",
       "daily_delta": -0.0011235955056179137,
       "monthly_delta": -0.05826271186440668,
-      "delta_volume": -0.47406866325785246,
+      "delta_volume": -0.2987582176771366,
       "prev_close": 8.9,
       "yearly_delta": 0.17748344370860947
     },
@@ -1726,7 +1936,7 @@
       "date": "2026-08-26",
       "daily_delta": 0.006985605419136398,
       "monthly_delta": -0.031160896130346227,
-      "delta_volume": 0.6478396900495089,
+      "delta_volume": 0.6482532330663826,
       "prev_close": 47.24,
       "yearly_delta": 0.13261904761904764
     },
@@ -1737,7 +1947,7 @@
       "date": "2026-08-26",
       "daily_delta": -0.025974025974025983,
       "monthly_delta": -0.03846153846153855,
-      "delta_volume": -0.11402812429122255,
+      "delta_volume": -0.09569441294322223,
       "prev_close": 0.77,
       "yearly_delta": -0.03846153846153855
     },
@@ -1786,13 +1996,24 @@
       "yearly_delta": 0.0772277227722773
     },
     {
+      "ticker": "EQPA5.SA",
+      "name": "Equatorial Pará Distribuidora de Energia S.A.",
+      "last_close": 9.89,
+      "date": "2026-08-26",
+      "daily_delta": 0.0,
+      "monthly_delta": -0.049038461538461475,
+      "delta_volume": 0,
+      "prev_close": 9.89,
+      "yearly_delta": 0.608130081300813
+    },
+    {
       "ticker": "EQTL3.SA",
       "name": "Equatorial S.A.",
       "last_close": 36.83,
       "date": "2026-08-26",
       "daily_delta": -0.008613728129205911,
       "monthly_delta": -0.05077319587628859,
-      "delta_volume": -0.2646671534367593,
+      "delta_volume": -0.260918373810188,
       "prev_close": 37.15,
       "yearly_delta": 0.07784606379865378
     },
@@ -1836,7 +2057,7 @@
       "date": "2026-08-26",
       "daily_delta": 0.004761904761904745,
       "monthly_delta": -0.047833935018050444,
-      "delta_volume": -0.01754385964912286,
+      "delta_volume": 0.4736842105263157,
       "prev_close": 21.0,
       "yearly_delta": 0.1853932584269664
     },
@@ -1847,7 +2068,7 @@
       "date": "2026-08-26",
       "daily_delta": -0.01538461538461533,
       "monthly_delta": -0.032524049473201866,
-      "delta_volume": -0.2640941959429193,
+      "delta_volume": -0.2615345235809816,
       "prev_close": 21.45,
       "yearly_delta": 0.30936143831370133
     },
@@ -1869,9 +2090,20 @@
       "date": "2026-08-26",
       "daily_delta": -0.017857142857142794,
       "monthly_delta": 0.01672535211267623,
-      "delta_volume": 0.29763961758419955,
+      "delta_volume": 0.29889911795614577,
       "prev_close": 11.76,
       "yearly_delta": 0.1031518624641834
+    },
+    {
+      "ticker": "FESA3.SA",
+      "name": "Cia de Ferro Ligas da Bahia S.A. - FERBASA",
+      "last_close": 9.49,
+      "date": "2026-08-26",
+      "daily_delta": 0.0,
+      "monthly_delta": -0.0768482490272373,
+      "delta_volume": 0,
+      "prev_close": 9.49,
+      "yearly_delta": -0.17190226876090753
     },
     {
       "ticker": "FESA4.SA",
@@ -1880,7 +2112,7 @@
       "date": "2026-08-26",
       "daily_delta": 0.007751937984496138,
       "monthly_delta": -0.13188647746243742,
-      "delta_volume": 0.9820685486683147,
+      "delta_volume": 1.053489481257039,
       "prev_close": 5.16,
       "yearly_delta": -0.08931698774080554
     },
@@ -1902,9 +2134,20 @@
       "date": "2026-08-26",
       "daily_delta": -0.050000000000000044,
       "monthly_delta": -0.050000000000000044,
-      "delta_volume": -0.7777777777777778,
+      "delta_volume": -0.7171717171717171,
       "prev_close": 0.2,
       "yearly_delta": -0.9431137724550898
+    },
+    {
+      "ticker": "FIEI3.SA",
+      "name": "Fica Empreendimentos Imobiliarios S.A",
+      "last_close": 9.39,
+      "date": "2026-08-26",
+      "daily_delta": 0.0,
+      "monthly_delta": 0.0,
+      "delta_volume": 0,
+      "prev_close": 9.39,
+      "yearly_delta": -0.5305
     },
     {
       "ticker": "FIQE3.SA",
@@ -1913,7 +2156,7 @@
       "date": "2026-08-26",
       "daily_delta": -0.0021505376344087557,
       "monthly_delta": -0.1594202898550725,
-      "delta_volume": -0.5671455289399966,
+      "delta_volume": -0.5624086309548116,
       "prev_close": 4.65,
       "yearly_delta": 0.376854599406528
     },
@@ -1924,7 +2167,7 @@
       "date": "2026-08-26",
       "daily_delta": 0.0010729613733906351,
       "monthly_delta": 0.15398886827458247,
-      "delta_volume": -0.27680858067261294,
+      "delta_volume": -0.2246366751398443,
       "prev_close": 18.64,
       "yearly_delta": 0.4276970160673297
     },
@@ -1935,9 +2178,20 @@
       "date": "2026-08-26",
       "daily_delta": -0.010706638115631661,
       "monthly_delta": 0.11325301204819294,
-      "delta_volume": -0.42963153012690203,
+      "delta_volume": -0.4047642542777635,
       "prev_close": 23.35,
       "yearly_delta": 0.03541012998655324
+    },
+    {
+      "ticker": "GEPA3.SA",
+      "name": "Rio Paranapanema Energia S.A.",
+      "last_close": 35.0,
+      "date": "2026-08-26",
+      "daily_delta": 0.0,
+      "monthly_delta": 0.09375,
+      "delta_volume": 0,
+      "prev_close": 35.0,
+      "yearly_delta": 0.2580877066858376
     },
     {
       "ticker": "GEPA4.SA",
@@ -1957,7 +2211,7 @@
       "date": "2026-08-26",
       "daily_delta": 0.0,
       "monthly_delta": -0.3823529411764707,
-      "delta_volume": -0.16745576216044644,
+      "delta_volume": -0.1582246673896368,
       "prev_close": 0.21,
       "yearly_delta": -0.9843866171003718
     },
@@ -1979,7 +2233,7 @@
       "date": "2026-08-26",
       "daily_delta": 0.019153674832962153,
       "monthly_delta": -0.05571605447791994,
-      "delta_volume": -0.028108204928579017,
+      "delta_volume": -0.05137482410618277,
       "prev_close": 22.45,
       "yearly_delta": 0.4140914709517922
     },
@@ -2001,7 +2255,7 @@
       "date": "2026-08-26",
       "daily_delta": -0.008620689655172376,
       "monthly_delta": 0.20104438642297628,
-      "delta_volume": 0.41301948555138623,
+      "delta_volume": 0.4407202571532225,
       "prev_close": 4.64,
       "yearly_delta": -0.32253313696612673
     },
@@ -2023,7 +2277,7 @@
       "date": "2026-08-26",
       "daily_delta": 0.010162601626016121,
       "monthly_delta": -0.058712121212121327,
-      "delta_volume": 0.09253761979175734,
+      "delta_volume": 0.10085374082004361,
       "prev_close": 9.84,
       "yearly_delta": 0.47259259259259245
     },
@@ -2034,9 +2288,20 @@
       "date": "2026-08-26",
       "daily_delta": -0.002865329512894088,
       "monthly_delta": -0.046575342465753455,
-      "delta_volume": -0.477087379954926,
+      "delta_volume": -0.43983552412515925,
       "prev_close": 3.49,
       "yearly_delta": -0.10997442455242967
+    },
+    {
+      "ticker": "GSHP3.SA",
+      "name": "General Shopping e Outlets do Brasil S.A.",
+      "last_close": 2.75,
+      "date": "2026-08-26",
+      "daily_delta": 0.0,
+      "monthly_delta": -0.2567567567567568,
+      "delta_volume": 0,
+      "prev_close": 2.75,
+      "yearly_delta": 0.02230483271375472
     },
     {
       "ticker": "HAGA3.SA",
@@ -2056,7 +2321,7 @@
       "date": "2026-08-26",
       "daily_delta": 0.06285714285714294,
       "monthly_delta": 0.17721518987341778,
-      "delta_volume": 6.288135593220339,
+      "delta_volume": 6.299435028248587,
       "prev_close": 1.75,
       "yearly_delta": 0.5762711864406782
     },
@@ -2067,7 +2332,7 @@
       "date": "2026-08-26",
       "daily_delta": -0.006230529595015577,
       "monthly_delta": -0.3738959764474975,
-      "delta_volume": -0.1937598199220586,
+      "delta_volume": -0.1767082014579947,
       "prev_close": 6.42,
       "yearly_delta": -0.8361581920903954
     },
@@ -2078,7 +2343,7 @@
       "date": "2026-08-26",
       "daily_delta": 0.03015075376884413,
       "monthly_delta": 0.10810810810810789,
-      "delta_volume": 0.3741512753807792,
+      "delta_volume": 0.4343850861947991,
       "prev_close": 1.99,
       "yearly_delta": -0.3492063492063493
     },
@@ -2100,9 +2365,42 @@
       "date": "2026-08-26",
       "daily_delta": 0.011494252873563315,
       "monthly_delta": 0.08307692307692305,
-      "delta_volume": -0.2902556511399347,
+      "delta_volume": -0.28958831309074584,
       "prev_close": 3.48,
       "yearly_delta": 0.008595988538681931
+    },
+    {
+      "ticker": "HBTS5.SA",
+      "name": "Companhia Habitasul de Participações",
+      "last_close": 32.0,
+      "date": "2026-08-26",
+      "daily_delta": 0.0,
+      "monthly_delta": -0.011735639283508403,
+      "delta_volume": 0,
+      "prev_close": 32.0,
+      "yearly_delta": 0.06030483764082173
+    },
+    {
+      "ticker": "HETA4.SA",
+      "name": "Hercules S.A - Fábrica de Talheres",
+      "last_close": 4.8,
+      "date": "2026-08-26",
+      "daily_delta": 0.0,
+      "monthly_delta": 0.0,
+      "delta_volume": 0,
+      "prev_close": 4.8,
+      "yearly_delta": -0.020408163265306256
+    },
+    {
+      "ticker": "HOOT3.SA",
+      "name": "Hoteis Othon SA",
+      "last_close": 3.3,
+      "date": "2026-08-26",
+      "daily_delta": 0.0,
+      "monthly_delta": 0.0,
+      "delta_volume": 0,
+      "prev_close": 3.3,
+      "yearly_delta": 0.0
     },
     {
       "ticker": "HOOT4.SA",
@@ -2122,7 +2420,7 @@
       "date": "2026-08-26",
       "daily_delta": 0.009633027522935711,
       "monthly_delta": 0.04510921177587868,
-      "delta_volume": -0.04007450909373145,
+      "delta_volume": -0.01660091870873126,
       "prev_close": 21.8,
       "yearly_delta": -0.016092981671882
     },
@@ -2144,7 +2442,7 @@
       "date": "2026-08-26",
       "daily_delta": -0.012820512820512886,
       "monthly_delta": -0.04938271604938271,
-      "delta_volume": -0.7079995944438812,
+      "delta_volume": -0.7458081310772529,
       "prev_close": 3.12,
       "yearly_delta": 0.203125
     },
@@ -2155,7 +2453,7 @@
       "date": "2026-08-26",
       "daily_delta": 0.011257035647279423,
       "monthly_delta": 0.010309278350515427,
-      "delta_volume": -0.6335329341317366,
+      "delta_volume": -0.6124401913875598,
       "prev_close": 10.66,
       "yearly_delta": 0.11941848390446497
     },
@@ -2166,7 +2464,7 @@
       "date": "2026-08-26",
       "daily_delta": 0.006987258528565521,
       "monthly_delta": -0.015668943350743314,
-      "delta_volume": -0.1892316830299431,
+      "delta_volume": -0.18870759232731216,
       "prev_close": 24.33,
       "yearly_delta": 0.13583681038479378
     },
@@ -2188,7 +2486,7 @@
       "date": "2026-08-26",
       "daily_delta": -0.022222222222222254,
       "monthly_delta": -0.25,
-      "delta_volume": -0.7141041931385006,
+      "delta_volume": -0.650571791613723,
       "prev_close": 1.35,
       "yearly_delta": -0.1258278145695364
     },
@@ -2199,7 +2497,7 @@
       "date": "2026-08-26",
       "daily_delta": 0.02123142250530785,
       "monthly_delta": 0.08496240601503757,
-      "delta_volume": -0.5648881813899969,
+      "delta_volume": -0.5628610778228907,
       "prev_close": 14.13,
       "yearly_delta": 0.30588235294117627
     },
@@ -2210,7 +2508,7 @@
       "date": "2026-08-26",
       "daily_delta": 0.0086890819795995,
       "monthly_delta": -0.011111111111111183,
-      "delta_volume": 0.7647547935409842,
+      "delta_volume": 0.7436158591176785,
       "prev_close": 52.94,
       "yearly_delta": 0.1697699890470974
     },
@@ -2221,7 +2519,7 @@
       "date": "2026-08-26",
       "daily_delta": -0.03021806853582565,
       "monthly_delta": -0.026883401062832157,
-      "delta_volume": -0.6,
+      "delta_volume": -0.5789473684210527,
       "prev_close": 32.1,
       "yearly_delta": 0.044981537428667284
     },
@@ -2232,7 +2530,7 @@
       "date": "2026-08-26",
       "daily_delta": 0.01095993953136798,
       "monthly_delta": 0.002623688155922066,
-      "delta_volume": -0.20824972695638921,
+      "delta_volume": -0.22210166927127395,
       "prev_close": 26.46,
       "yearly_delta": 0.2665719696969697
     },
@@ -2243,7 +2541,7 @@
       "date": "2026-08-26",
       "daily_delta": -0.0037707390648565875,
       "monthly_delta": -0.03857350800582238,
-      "delta_volume": -0.41689640847464027,
+      "delta_volume": -0.41983594332587626,
       "prev_close": 13.26,
       "yearly_delta": 0.3674948240165632
     },
@@ -2254,7 +2552,7 @@
       "date": "2026-08-26",
       "daily_delta": 0.0038910505836575737,
       "monthly_delta": -0.05976676384839652,
-      "delta_volume": -0.009568721695412896,
+      "delta_volume": -0.01055407182156387,
       "prev_close": 12.85,
       "yearly_delta": 0.3271604938271604
     },
@@ -2265,7 +2563,7 @@
       "date": "2026-08-26",
       "daily_delta": 0.0,
       "monthly_delta": -0.05856353591160213,
-      "delta_volume": -0.19969404802640844,
+      "delta_volume": -0.20903702157894477,
       "prev_close": 42.6,
       "yearly_delta": 0.4494726097312012
     },
@@ -2276,7 +2574,7 @@
       "date": "2026-08-26",
       "daily_delta": 0.0002535496957405403,
       "monthly_delta": -0.07546285446449497,
-      "delta_volume": -0.21342741804692633,
+      "delta_volume": -0.2113815602256255,
       "prev_close": 39.44,
       "yearly_delta": 0.18896925858951175
     },
@@ -2287,7 +2585,7 @@
       "date": "2026-08-26",
       "daily_delta": 0.05349794238683114,
       "monthly_delta": 0.28,
-      "delta_volume": -0.13244065397799853,
+      "delta_volume": -0.12122855226034135,
       "prev_close": 2.43,
       "yearly_delta": -0.06227106227106227
     },
@@ -2298,7 +2596,7 @@
       "date": "2026-08-26",
       "daily_delta": 0.024390243902439046,
       "monthly_delta": -0.22222222222222232,
-      "delta_volume": -0.36342042755344417,
+      "delta_volume": -0.281076801266825,
       "prev_close": 0.41,
       "yearly_delta": -0.7162162162162162
     },
@@ -2309,9 +2607,20 @@
       "date": "2026-08-26",
       "daily_delta": 0.0009624639076033503,
       "monthly_delta": -0.051094890510948954,
-      "delta_volume": -0.40111532155065943,
+      "delta_volume": -0.38888087632391766,
       "prev_close": 10.39,
       "yearly_delta": 1.051282051282051
+    },
+    {
+      "ticker": "JOPA3.SA",
+      "name": "JOSAPAR Joaquim Oliveira S.A. Participações",
+      "last_close": 17.1,
+      "date": "2026-08-26",
+      "daily_delta": 0.0,
+      "monthly_delta": -0.07567567567567557,
+      "delta_volume": 0,
+      "prev_close": 17.1,
+      "yearly_delta": -0.20833333333333337
     },
     {
       "ticker": "JSLG3.SA",
@@ -2320,7 +2629,7 @@
       "date": "2026-08-26",
       "daily_delta": -0.01814882032667875,
       "monthly_delta": -0.026978417266186994,
-      "delta_volume": -0.1806339580736297,
+      "delta_volume": -0.17987185838010267,
       "prev_close": 5.51,
       "yearly_delta": 0.3457711442786071
     },
@@ -2331,7 +2640,7 @@
       "date": "2026-08-26",
       "daily_delta": 0.018749999999999822,
       "monthly_delta": 0.018749999999999822,
-      "delta_volume": 0.0527488998635639,
+      "delta_volume": 0.05420934299275548,
       "prev_close": 6.4,
       "yearly_delta": -0.09065550906555098
     },
@@ -2342,7 +2651,7 @@
       "date": "2026-08-26",
       "daily_delta": -0.0078125,
       "monthly_delta": 0.07323943661971843,
-      "delta_volume": -0.5044785086921806,
+      "delta_volume": -0.5040041741440238,
       "prev_close": 3.84,
       "yearly_delta": 0.11078717201166177
     },
@@ -2353,7 +2662,7 @@
       "date": "2026-08-26",
       "daily_delta": 0.0,
       "monthly_delta": 0.04507042253521121,
-      "delta_volume": -0.37916730424559386,
+      "delta_volume": -0.3764542776619917,
       "prev_close": 3.71,
       "yearly_delta": 0.0976331360946745
     },
@@ -2364,7 +2673,7 @@
       "date": "2026-08-26",
       "daily_delta": -0.0016008537886871288,
       "monthly_delta": 0.058257918552036214,
-      "delta_volume": -0.08799615779560688,
+      "delta_volume": -0.0876019017478088,
       "prev_close": 18.74,
       "yearly_delta": 0.10123602118893471
     },
@@ -2386,7 +2695,7 @@
       "date": "2026-08-26",
       "daily_delta": -0.010617760617760541,
       "monthly_delta": -0.0019474196689386325,
-      "delta_volume": -0.4022362503610183,
+      "delta_volume": -0.38587269829427917,
       "prev_close": 10.36,
       "yearly_delta": -0.05004633920296564
     },
@@ -2397,7 +2706,7 @@
       "date": "2026-08-26",
       "daily_delta": -0.01910248635536671,
       "monthly_delta": 0.033546325878594185,
-      "delta_volume": -0.34298254430931086,
+      "delta_volume": -0.3413073340704258,
       "prev_close": 32.98,
       "yearly_delta": 0.27966772151898733
     },
@@ -2408,7 +2717,7 @@
       "date": "2026-08-26",
       "daily_delta": 0.0,
       "monthly_delta": 0.07395498392282951,
-      "delta_volume": -0.006085834408691704,
+      "delta_volume": -0.004121050659784409,
       "prev_close": 3.34,
       "yearly_delta": -0.4638844301765651
     },
@@ -2419,7 +2728,7 @@
       "date": "2026-08-26",
       "daily_delta": 0.0,
       "monthly_delta": 0.033898305084745894,
-      "delta_volume": -0.2715094975590132,
+      "delta_volume": -0.2695958508660339,
       "prev_close": 1.22,
       "yearly_delta": -0.4852320675105486
     },
@@ -2430,7 +2739,7 @@
       "date": "2026-08-26",
       "daily_delta": 0.0008368200836821327,
       "monthly_delta": -0.07573415765069547,
-      "delta_volume": 0.5513806473725926,
+      "delta_volume": 0.5522375270452646,
       "prev_close": 23.9,
       "yearly_delta": 0.49593495934959364
     },
@@ -2463,7 +2772,7 @@
       "date": "2026-08-26",
       "daily_delta": -0.025270758122743597,
       "monthly_delta": -0.213401310997815,
-      "delta_volume": -0.12504321448235156,
+      "delta_volume": -0.09466490377185299,
       "prev_close": 11.08,
       "yearly_delta": -0.2668024439918534
     },
@@ -2485,7 +2794,7 @@
       "date": "2026-08-26",
       "daily_delta": -0.040000000000000036,
       "monthly_delta": -0.11439114391143912,
-      "delta_volume": -0.29444009397024273,
+      "delta_volume": -0.28112764291307757,
       "prev_close": 2.5,
       "yearly_delta": -0.3258426966292135
     },
@@ -2496,9 +2805,20 @@
       "date": "2026-08-26",
       "daily_delta": -0.011848341232227444,
       "monthly_delta": 0.14560439560439553,
-      "delta_volume": -0.4167819146040008,
+      "delta_volume": -0.41875582077897777,
       "prev_close": 4.22,
       "yearly_delta": 0.12398921832884091
+    },
+    {
+      "ticker": "MAPT3.SA",
+      "name": "Cemepe Investimentos S.A.",
+      "last_close": 2.5,
+      "date": "2026-08-26",
+      "daily_delta": 0.0,
+      "monthly_delta": 0.0,
+      "delta_volume": 0,
+      "prev_close": 2.5,
+      "yearly_delta": -0.16943521594684374
     },
     {
       "ticker": "MATD3.SA",
@@ -2518,7 +2838,7 @@
       "date": "2026-08-26",
       "daily_delta": 0.013653741125068342,
       "monthly_delta": 0.16803020767778465,
-      "delta_volume": -0.3171262715886114,
+      "delta_volume": -0.34577943170618075,
       "prev_close": 18.31,
       "yearly_delta": -0.1859649122807019
     },
@@ -2529,7 +2849,7 @@
       "date": "2026-08-26",
       "daily_delta": 0.0023108030040439598,
       "monthly_delta": 0.01048340128130465,
-      "delta_volume": -0.03627088362753128,
+      "delta_volume": -0.034794356714137,
       "prev_close": 17.31,
       "yearly_delta": -0.383658969804618
     },
@@ -2540,7 +2860,7 @@
       "date": "2026-08-26",
       "daily_delta": 0.0024449877750611915,
       "monthly_delta": -0.03149606299212593,
-      "delta_volume": 0.183018315236549,
+      "delta_volume": 0.1848056519558925,
       "prev_close": 24.54,
       "yearly_delta": 0.14899579635684268
     },
@@ -2551,7 +2871,7 @@
       "date": "2026-08-26",
       "daily_delta": 0.0,
       "monthly_delta": 0.031746031746031855,
-      "delta_volume": -0.19944038551220267,
+      "delta_volume": -0.19379685734825924,
       "prev_close": 0.65,
       "yearly_delta": -0.5
     },
@@ -2562,7 +2882,7 @@
       "date": "2026-08-26",
       "daily_delta": -0.027210884353741527,
       "monthly_delta": -0.01038062283737029,
-      "delta_volume": 0.464362107540629,
+      "delta_volume": 0.4642939233737797,
       "prev_close": 2.94,
       "yearly_delta": -0.14880952380952384
     },
@@ -2584,7 +2904,7 @@
       "date": "2026-08-26",
       "daily_delta": 0.037444933920704804,
       "monthly_delta": -0.024844720496894457,
-      "delta_volume": -0.20027016411113852,
+      "delta_volume": -0.1769575549116965,
       "prev_close": 4.54,
       "yearly_delta": -0.2863636363636364
     },
@@ -2595,7 +2915,7 @@
       "date": "2026-08-26",
       "daily_delta": -0.005079365079365128,
       "monthly_delta": 0.01621271076523989,
-      "delta_volume": 0.09561650858754156,
+      "delta_volume": 0.09715457574980779,
       "prev_close": 15.75,
       "yearly_delta": 0.4631185807656395
     },
@@ -2606,9 +2926,20 @@
       "date": "2026-08-26",
       "daily_delta": 0.01621621621621605,
       "monthly_delta": 0.062146892655367214,
-      "delta_volume": -0.3221110825229344,
+      "delta_volume": -0.3241879668527494,
       "prev_close": 1.85,
       "yearly_delta": 1.0888888888888886
+    },
+    {
+      "ticker": "MNDL3.SA",
+      "name": "Mundial S.A. - Produtos de Consumo",
+      "last_close": 17.66,
+      "date": "2026-08-26",
+      "daily_delta": 0.0,
+      "monthly_delta": 0.029737609329446135,
+      "delta_volume": 0,
+      "prev_close": 17.66,
+      "yearly_delta": -0.03179824561403499
     },
     {
       "ticker": "MNPR3.SA",
@@ -2617,7 +2948,7 @@
       "date": "2026-08-26",
       "daily_delta": -0.041564792176039145,
       "monthly_delta": -0.0075949367088608,
-      "delta_volume": 2.454657618753856,
+      "delta_volume": 2.948180135718692,
       "prev_close": 4.09,
       "yearly_delta": 0.2564102564102564
     },
@@ -2628,7 +2959,7 @@
       "date": "2026-08-26",
       "daily_delta": -0.001322751322751281,
       "monthly_delta": 0.033538672142368275,
-      "delta_volume": 0.8690336147318911,
+      "delta_volume": 0.8207076221820515,
       "prev_close": 15.12,
       "yearly_delta": 0.11686390532544388
     },
@@ -2639,7 +2970,7 @@
       "date": "2026-08-26",
       "daily_delta": -0.030997304582210172,
       "monthly_delta": -0.122100122100122,
-      "delta_volume": 0.053601826366984184,
+      "delta_volume": 0.05921003530153568,
       "prev_close": 7.42,
       "yearly_delta": 0.11128284389489962
     },
@@ -2650,9 +2981,20 @@
       "date": "2026-08-26",
       "daily_delta": 0.009157509157509125,
       "monthly_delta": 0.17987152034261245,
-      "delta_volume": 0.2716375060186498,
+      "delta_volume": 0.3093798946693438,
       "prev_close": 5.46,
       "yearly_delta": -0.24829467939972716
+    },
+    {
+      "ticker": "MSPA3.SA",
+      "name": "Companhia Melhoramentos de São Paulo",
+      "last_close": 37.4,
+      "date": "2026-08-26",
+      "daily_delta": 0.0,
+      "monthly_delta": -0.07196029776674939,
+      "delta_volume": 0,
+      "prev_close": 37.4,
+      "yearly_delta": -0.18695652173913047
     },
     {
       "ticker": "MTRE3.SA",
@@ -2661,7 +3003,7 @@
       "date": "2026-08-26",
       "daily_delta": 0.03514376996805124,
       "monthly_delta": 0.10204081632653073,
-      "delta_volume": 0.10925388915235534,
+      "delta_volume": 0.1476316865663263,
       "prev_close": 3.13,
       "yearly_delta": 0.028571428571428692
     },
@@ -2683,7 +3025,7 @@
       "date": "2026-08-26",
       "daily_delta": -0.003633720930232509,
       "monthly_delta": -0.03991596638655448,
-      "delta_volume": -0.17969617540368366,
+      "delta_volume": -0.17936994101431292,
       "prev_close": 27.52,
       "yearly_delta": 0.07698350353495687
     },
@@ -2705,7 +3047,7 @@
       "date": "2026-08-26",
       "daily_delta": -0.011943539630836164,
       "monthly_delta": -0.023605150214592308,
-      "delta_volume": -0.3822357183526286,
+      "delta_volume": -0.3901261303444441,
       "prev_close": 9.21,
       "yearly_delta": -0.3121693121693122
     },
@@ -2716,7 +3058,7 @@
       "date": "2026-08-26",
       "daily_delta": 0.020547945205479312,
       "monthly_delta": 0.053003533568904526,
-      "delta_volume": -0.2828989384818287,
+      "delta_volume": -0.3067742379631968,
       "prev_close": 8.76,
       "yearly_delta": -0.0033444816053512794
     },
@@ -2760,7 +3102,7 @@
       "date": "2026-08-26",
       "daily_delta": -0.04953145917001345,
       "monthly_delta": 0.1359999999999999,
-      "delta_volume": 0.7085981472428013,
+      "delta_volume": 0.7306607498777782,
       "prev_close": 7.47,
       "yearly_delta": -0.7041666666666666
     },
@@ -2776,13 +3118,35 @@
       "yearly_delta": 0.1663498098859315
     },
     {
+      "ticker": "OIBR3.SA",
+      "name": "Oi S.A.",
+      "last_close": 0.1,
+      "date": "2026-08-26",
+      "daily_delta": 0.0,
+      "monthly_delta": -0.23076923076923073,
+      "delta_volume": 0,
+      "prev_close": 0.1,
+      "yearly_delta": -0.8333333333333333
+    },
+    {
+      "ticker": "OIBR4.SA",
+      "name": "Oi S.A.",
+      "last_close": 0.5,
+      "date": "2026-08-26",
+      "daily_delta": 0.0,
+      "monthly_delta": 0.25,
+      "delta_volume": 0,
+      "prev_close": 0.5,
+      "yearly_delta": -0.9327956989247312
+    },
+    {
       "ticker": "ONCO3.SA",
       "name": "Oncoclínicas do Brasil Serviços Médicos S.A.",
       "last_close": 1.92,
       "date": "2026-08-26",
       "daily_delta": 0.0971428571428572,
       "monthly_delta": 2.1475409836065573,
-      "delta_volume": 1.1955041425751451,
+      "delta_volume": 1.2589542157840867,
       "prev_close": 1.75,
       "yearly_delta": -0.33333333333333337
     },
@@ -2826,7 +3190,7 @@
       "date": "2026-08-26",
       "daily_delta": 0.037634408602150504,
       "monthly_delta": -0.08458498023715422,
-      "delta_volume": 0.7232145463035928,
+      "delta_volume": 0.7838695061169008,
       "prev_close": 22.32,
       "yearly_delta": -0.15443592552026286
     },
@@ -2859,7 +3223,7 @@
       "date": "2026-08-26",
       "daily_delta": -0.009933774834437026,
       "monthly_delta": 0.09124087591240881,
-      "delta_volume": -0.2118730153310342,
+      "delta_volume": -0.22071850575063623,
       "prev_close": 3.02,
       "yearly_delta": -0.17630853994490348
     },
@@ -2870,7 +3234,7 @@
       "date": "2026-08-26",
       "daily_delta": 0.007518796992481258,
       "monthly_delta": 0.08064516129032273,
-      "delta_volume": 0.16814824089144853,
+      "delta_volume": 0.1909624712790401,
       "prev_close": 1.33,
       "yearly_delta": -0.9627777777777777
     },
@@ -2881,9 +3245,31 @@
       "date": "2026-08-26",
       "daily_delta": -0.016853932584269704,
       "monthly_delta": -0.125,
-      "delta_volume": -0.3539464585597155,
+      "delta_volume": -0.3341894695248444,
       "prev_close": 1.78,
       "yearly_delta": 0.7156862745098038
+    },
+    {
+      "ticker": "PEAB3.SA",
+      "name": "Companhia de Participações Aliança da Bahia",
+      "last_close": 38.86,
+      "date": "2026-08-26",
+      "daily_delta": 0.0,
+      "monthly_delta": -0.0035897435897436214,
+      "delta_volume": 0,
+      "prev_close": 38.86,
+      "yearly_delta": 0.12735712213519013
+    },
+    {
+      "ticker": "PEAB4.SA",
+      "name": "Companhia de Participações Aliança da Bahia",
+      "last_close": 38.87,
+      "date": "2026-08-26",
+      "daily_delta": 0.0,
+      "monthly_delta": -0.015949367088607613,
+      "delta_volume": 0,
+      "prev_close": 38.87,
+      "yearly_delta": 0.07852386237513875
     },
     {
       "ticker": "PETR3.SA",
@@ -2892,7 +3278,7 @@
       "date": "2026-08-26",
       "daily_delta": -0.0010874293170943794,
       "monthly_delta": 0.0254521098459477,
-      "delta_volume": 0.9577891741143074,
+      "delta_volume": 0.9568488331378309,
       "prev_close": 45.98,
       "yearly_delta": 0.5198544010589015
     },
@@ -2903,7 +3289,7 @@
       "date": "2026-08-26",
       "daily_delta": 0.002418379685610761,
       "monthly_delta": 0.042505030181086534,
-      "delta_volume": 0.5844350679395336,
+      "delta_volume": 0.6649666966503898,
       "prev_close": 41.35,
       "yearly_delta": 0.49423215573179546
     },
@@ -2914,7 +3300,7 @@
       "date": "2026-08-26",
       "daily_delta": -0.005333333333333301,
       "monthly_delta": 0.2032258064516128,
-      "delta_volume": -0.05361988833088993,
+      "delta_volume": -0.052372188776942497,
       "prev_close": 7.5,
       "yearly_delta": 0.013586956521739024
     },
@@ -2925,7 +3311,7 @@
       "date": "2026-08-26",
       "daily_delta": -0.017094017094017033,
       "monthly_delta": 0.03915662650602414,
-      "delta_volume": -0.39006861308827956,
+      "delta_volume": -0.3981898778780806,
       "prev_close": 3.51,
       "yearly_delta": 0.0
     },
@@ -2947,7 +3333,7 @@
       "date": "2026-08-26",
       "daily_delta": -0.017431192660550376,
       "monthly_delta": -0.2148093841642228,
-      "delta_volume": -0.0978372617262292,
+      "delta_volume": -0.09801835225212929,
       "prev_close": 10.9,
       "yearly_delta": 0.7879799666110185
     },
@@ -2969,7 +3355,7 @@
       "date": "2026-08-26",
       "daily_delta": -0.0442953020134228,
       "monthly_delta": -0.07170795306388522,
-      "delta_volume": 0.14556600098898587,
+      "delta_volume": 0.1615644091923718,
       "prev_close": 7.45,
       "yearly_delta": -0.46944858420268254
     },
@@ -2980,7 +3366,7 @@
       "date": "2026-08-26",
       "daily_delta": 0.0769230769230771,
       "monthly_delta": -0.5333333333333332,
-      "delta_volume": -0.6775993331945025,
+      "delta_volume": -0.6764615467319693,
       "prev_close": 0.13,
       "yearly_delta": -0.8870967741935484
     },
@@ -2991,7 +3377,7 @@
       "date": "2026-08-26",
       "daily_delta": -0.00738916256157629,
       "monthly_delta": 0.039552880481513286,
-      "delta_volume": -0.2122821620621771,
+      "delta_volume": -0.21719492660381823,
       "prev_close": 12.18,
       "yearly_delta": 0.23241590214067265
     },
@@ -3002,7 +3388,7 @@
       "date": "2026-08-26",
       "daily_delta": 0.012315270935960854,
       "monthly_delta": -0.1383647798742137,
-      "delta_volume": 0.34402292512101207,
+      "delta_volume": 0.3263029717143362,
       "prev_close": 4.06,
       "yearly_delta": -0.25543478260869557
     },
@@ -3013,7 +3399,7 @@
       "date": "2026-08-26",
       "daily_delta": 0.006849315068493178,
       "monthly_delta": -0.138671875,
-      "delta_volume": 0.4410188400030086,
+      "delta_volume": 0.44776066989336316,
       "prev_close": 4.38,
       "yearly_delta": -0.37887323943661966
     },
@@ -3024,9 +3410,20 @@
       "date": "2026-08-26",
       "daily_delta": -0.011661807580174988,
       "monthly_delta": -0.03693181818181812,
-      "delta_volume": 0.20807786991880772,
+      "delta_volume": 0.21101333635775332,
       "prev_close": 3.43,
       "yearly_delta": -0.16911764705882348
+    },
+    {
+      "ticker": "PPAR3.SA",
+      "name": "Polpar SA",
+      "last_close": 83.34,
+      "date": "2026-08-26",
+      "daily_delta": 0.0,
+      "monthly_delta": 0.0,
+      "delta_volume": 0,
+      "prev_close": 83.34,
+      "yearly_delta": -0.17025089605734767
     },
     {
       "ticker": "PRIO3.SA",
@@ -3035,7 +3432,7 @@
       "date": "2026-08-26",
       "daily_delta": -0.001971090670170872,
       "monthly_delta": 0.09064799856399208,
-      "delta_volume": -0.14281544470717478,
+      "delta_volume": -0.1336056729513898,
       "prev_close": 60.88,
       "yearly_delta": 0.6103896103896105
     },
@@ -3046,7 +3443,7 @@
       "date": "2026-08-26",
       "daily_delta": 0.01917489831493313,
       "monthly_delta": -0.0778128286014722,
-      "delta_volume": -0.2173502207846486,
+      "delta_volume": -0.21462448438153037,
       "prev_close": 17.21,
       "yearly_delta": 0.14790575916230364
     },
@@ -3057,7 +3454,7 @@
       "date": "2026-08-26",
       "daily_delta": 0.006218905472636704,
       "monthly_delta": -0.1059126911033339,
-      "delta_volume": -0.35833646526916885,
+      "delta_volume": -0.34835166684429886,
       "prev_close": 48.24,
       "yearly_delta": 0.011249999999999982
     },
@@ -3068,7 +3465,7 @@
       "date": "2026-08-26",
       "daily_delta": -0.08000000000000007,
       "monthly_delta": -0.19767441860465118,
-      "delta_volume": 1.2418589428898708,
+      "delta_volume": 1.2469726722304042,
       "prev_close": 1.5,
       "yearly_delta": -0.6506329113924051
     },
@@ -3079,7 +3476,7 @@
       "date": "2026-08-26",
       "daily_delta": -0.029585798816568087,
       "monthly_delta": 0.16312056737588643,
-      "delta_volume": -0.1383245576371156,
+      "delta_volume": -0.14051195276628425,
       "prev_close": 1.69,
       "yearly_delta": -0.08888888888888902
     },
@@ -3090,7 +3487,7 @@
       "date": "2026-08-26",
       "daily_delta": -0.01429300663603883,
       "monthly_delta": 0.06274078150798013,
-      "delta_volume": -0.12423911113008779,
+      "delta_volume": -0.09937577910890949,
       "prev_close": 19.59,
       "yearly_delta": 0.11232718894009208
     },
@@ -3101,7 +3498,7 @@
       "date": "2026-08-26",
       "daily_delta": 0.004129387474191448,
       "monthly_delta": 0.05724637681159406,
-      "delta_volume": 0.5156828815267418,
+      "delta_volume": 0.5159907172148259,
       "prev_close": 14.53,
       "yearly_delta": 0.006206896551724128
     },
@@ -3112,7 +3509,7 @@
       "date": "2026-08-26",
       "daily_delta": -0.04166666666666663,
       "monthly_delta": -0.11538461538461542,
-      "delta_volume": -0.6218211394308665,
+      "delta_volume": -0.6159117916702765,
       "prev_close": 0.24,
       "yearly_delta": -0.7745098039215687
     },
@@ -3123,7 +3520,7 @@
       "date": "2026-08-26",
       "daily_delta": -0.010282776349614386,
       "monthly_delta": -0.025316455696202556,
-      "delta_volume": -0.0640081390596603,
+      "delta_volume": -0.04505178215841599,
       "prev_close": 7.78,
       "yearly_delta": 0.06353591160220984
     },
@@ -3134,7 +3531,7 @@
       "date": "2026-08-26",
       "daily_delta": -0.0012330456226880004,
       "monthly_delta": 0.7880794701986753,
-      "delta_volume": -0.37912750060255485,
+      "delta_volume": -0.3236004621363302,
       "prev_close": 8.11,
       "yearly_delta": 0.28980891719745205
     },
@@ -3145,7 +3542,7 @@
       "date": "2026-08-26",
       "daily_delta": -0.01039501039501034,
       "monthly_delta": -0.024590163934426257,
-      "delta_volume": -0.3513245612330178,
+      "delta_volume": -0.3432563701681558,
       "prev_close": 4.81,
       "yearly_delta": -0.28955223880597025
     },
@@ -3156,7 +3553,7 @@
       "date": "2026-08-26",
       "daily_delta": 0.0,
       "monthly_delta": -0.11111111111111105,
-      "delta_volume": -0.22912119816590915,
+      "delta_volume": 0.0647273896098679,
       "prev_close": 0.4,
       "yearly_delta": -0.024390243902438935
     },
@@ -3167,7 +3564,7 @@
       "date": "2026-08-26",
       "daily_delta": -0.2400000000000001,
       "monthly_delta": -0.08064516129032262,
-      "delta_volume": -0.11874037232627088,
+      "delta_volume": -0.004979344626633964,
       "prev_close": 0.75,
       "yearly_delta": 0.9655172413793103
     },
@@ -3178,7 +3575,7 @@
       "date": "2026-08-26",
       "daily_delta": -0.021347380094261292,
       "monthly_delta": 0.050595238095237915,
-      "delta_volume": -0.31962789398076297,
+      "delta_volume": -0.3213704558377186,
       "prev_close": 36.07,
       "yearly_delta": 0.03762492651381533
     },
@@ -3189,7 +3586,7 @@
       "date": "2026-08-26",
       "daily_delta": -0.02077431539187924,
       "monthly_delta": 0.0464177598385469,
-      "delta_volume": 0.0369261420876974,
+      "delta_volume": 0.038895986582544895,
       "prev_close": 10.59,
       "yearly_delta": -0.05383211678832134
     },
@@ -3211,7 +3608,7 @@
       "date": "2026-08-26",
       "daily_delta": -0.007012622720897643,
       "monthly_delta": -0.06150583244962882,
-      "delta_volume": 0.4333829985811921,
+      "delta_volume": 0.4417521645852909,
       "prev_close": 35.65,
       "yearly_delta": 0.0799267846247711
     },
@@ -3233,7 +3630,7 @@
       "date": "2026-08-26",
       "daily_delta": -0.019858156028368712,
       "monthly_delta": -0.12752525252525249,
-      "delta_volume": -0.2384457498761413,
+      "delta_volume": -0.23766720928586593,
       "prev_close": 7.05,
       "yearly_delta": 0.1309328968903436
     },
@@ -3244,7 +3641,7 @@
       "date": "2026-08-26",
       "daily_delta": 0.041095890410958846,
       "monthly_delta": -0.02564102564102566,
-      "delta_volume": -0.282617264485613,
+      "delta_volume": -0.2794639337800552,
       "prev_close": 0.73,
       "yearly_delta": -0.2549019607843137
     },
@@ -3255,7 +3652,7 @@
       "date": "2026-08-26",
       "daily_delta": 0.05405405405405417,
       "monthly_delta": 0.026315789473684292,
-      "delta_volume": 0.37463306002631835,
+      "delta_volume": 0.380706549245875,
       "prev_close": 0.74,
       "yearly_delta": -0.21999999999999997
     },
@@ -3271,13 +3668,57 @@
       "yearly_delta": -0.23324396782841827
     },
     {
+      "ticker": "RPAD3.SA",
+      "name": "Alfa Holdings S.A.",
+      "last_close": 7.0,
+      "date": "2026-08-26",
+      "daily_delta": 0.0,
+      "monthly_delta": 0.07526881720430101,
+      "delta_volume": 0,
+      "prev_close": 7.0,
+      "yearly_delta": 0.43149284253578735
+    },
+    {
+      "ticker": "RPAD5.SA",
+      "name": "Alfa Holdings S.A.",
+      "last_close": 7.79,
+      "date": "2026-08-26",
+      "daily_delta": 0.0,
+      "monthly_delta": 0.12409812409812404,
+      "delta_volume": 0,
+      "prev_close": 7.79,
+      "yearly_delta": 0.3407917383821
+    },
+    {
+      "ticker": "RPAD6.SA",
+      "name": "Alfa Holdings S.A.",
+      "last_close": 7.0,
+      "date": "2026-08-26",
+      "daily_delta": 0.0,
+      "monthly_delta": 0.07692307692307687,
+      "delta_volume": 0,
+      "prev_close": 7.0,
+      "yearly_delta": 0.7369727047146402
+    },
+    {
+      "ticker": "RPMG3.SA",
+      "name": "Refinaria de Petróleos de Manguinhos S.A.",
+      "last_close": 0.85,
+      "date": "2026-08-26",
+      "daily_delta": 0.0,
+      "monthly_delta": -0.2796610169491526,
+      "delta_volume": 0,
+      "prev_close": 0.85,
+      "yearly_delta": -0.7079037800687286
+    },
+    {
       "ticker": "RSUL4.SA",
       "name": "Metalúrgica Riosulense S.A.",
       "last_close": 39.51,
       "date": "2026-08-26",
       "daily_delta": -0.002272727272727315,
       "monthly_delta": -0.08942152569716533,
-      "delta_volume": -0.17355371900826444,
+      "delta_volume": -0.09090909090909094,
       "prev_close": 39.6,
       "yearly_delta": -0.3923408182097816
     },
@@ -3299,7 +3740,7 @@
       "date": "2026-08-26",
       "daily_delta": 0.01708817498291193,
       "monthly_delta": 0.11044776119402977,
-      "delta_volume": -0.7891474161176438,
+      "delta_volume": -0.7855755972648226,
       "prev_close": 14.63,
       "yearly_delta": 0.22975206611570265
     },
@@ -3310,7 +3751,7 @@
       "date": "2026-08-26",
       "daily_delta": -0.0020229265003370855,
       "monthly_delta": 0.06474820143884896,
-      "delta_volume": -0.7893875172562105,
+      "delta_volume": -0.7813410035703808,
       "prev_close": 14.83,
       "yearly_delta": 0.10778443113772473
     },
@@ -3321,7 +3762,7 @@
       "date": "2026-08-26",
       "daily_delta": 0.001347254968002698,
       "monthly_delta": 0.08662280701754388,
-      "delta_volume": -0.656534900854258,
+      "delta_volume": -0.6564174411934945,
       "prev_close": 29.69,
       "yearly_delta": 0.16771406127258448
     },
@@ -3332,7 +3773,7 @@
       "date": "2026-08-26",
       "daily_delta": -0.006830601092896238,
       "monthly_delta": -0.09577114427860689,
-      "delta_volume": -0.23806977676781182,
+      "delta_volume": -0.23283802864250658,
       "prev_close": 7.32,
       "yearly_delta": -0.03066666666666673
     },
@@ -3343,7 +3784,7 @@
       "date": "2026-08-26",
       "daily_delta": -0.013595166163141936,
       "monthly_delta": -0.08157524613220812,
-      "delta_volume": -0.2912572243258573,
+      "delta_volume": -0.2795947370548778,
       "prev_close": 6.62,
       "yearly_delta": 0.020312499999999956
     },
@@ -3365,7 +3806,7 @@
       "date": "2026-08-26",
       "daily_delta": -0.023501762632197387,
       "monthly_delta": -0.1316614420062696,
-      "delta_volume": -0.35546755215223813,
+      "delta_volume": -0.33402536444464503,
       "prev_close": 8.51,
       "yearly_delta": -0.18128078817733984
     },
@@ -3376,7 +3817,7 @@
       "date": "2026-08-26",
       "daily_delta": 0.014985824220332011,
       "monthly_delta": -0.13197090405264988,
-      "delta_volume": 0.08491847782239192,
+      "delta_volume": 0.07376461532697798,
       "prev_close": 24.69,
       "yearly_delta": 0.13188798554652204
     },
@@ -3398,7 +3839,7 @@
       "date": "2026-08-26",
       "daily_delta": -0.018287614297589294,
       "monthly_delta": 0.021626297577854725,
-      "delta_volume": 2.3969852514729557,
+      "delta_volume": 2.4002374073813098,
       "prev_close": 12.03,
       "yearly_delta": 0.40930787589498796
     },
@@ -3431,7 +3872,7 @@
       "date": "2026-08-26",
       "daily_delta": 0.008908685968819663,
       "monthly_delta": -0.008752735229759279,
-      "delta_volume": -0.2870332489302182,
+      "delta_volume": -0.2828809208991211,
       "prev_close": 4.49,
       "yearly_delta": 0.05348837209302326
     },
@@ -3442,7 +3883,7 @@
       "date": "2026-08-26",
       "daily_delta": -0.015243902439024293,
       "monthly_delta": -0.15445026178010468,
-      "delta_volume": -0.17791673674071584,
+      "delta_volume": -0.18637050593084004,
       "prev_close": 6.56,
       "yearly_delta": -0.2993492407809111
     },
@@ -3453,7 +3894,7 @@
       "date": "2026-08-26",
       "daily_delta": 0.023884349465744803,
       "monthly_delta": 0.217488789237668,
-      "delta_volume": -0.17413349504982467,
+      "delta_volume": -0.18406905911911353,
       "prev_close": 15.91,
       "yearly_delta": 0.1172839506172838
     },
@@ -3464,7 +3905,7 @@
       "date": "2026-08-26",
       "daily_delta": -0.00859598853868182,
       "monthly_delta": -0.12493677288821436,
-      "delta_volume": -0.4523904615763443,
+      "delta_volume": -0.43884318360267904,
       "prev_close": 17.45,
       "yearly_delta": -0.23451327433628322
     },
@@ -3475,9 +3916,20 @@
       "date": "2026-08-26",
       "daily_delta": 0.009209100758396538,
       "monthly_delta": 0.26993865030674846,
-      "delta_volume": 0.00555636572679763,
+      "delta_volume": -0.011544430704367947,
       "prev_close": 18.46,
       "yearly_delta": 0.13046116504854366
+    },
+    {
+      "ticker": "SNSY5.SA",
+      "name": "Sansuy S.A.",
+      "last_close": 2.36,
+      "date": "2026-08-26",
+      "daily_delta": 0.0,
+      "monthly_delta": -0.052208835341365556,
+      "delta_volume": 0,
+      "prev_close": 2.36,
+      "yearly_delta": -0.3237822349570202
     },
     {
       "ticker": "SOJA3.SA",
@@ -3486,9 +3938,31 @@
       "date": "2026-08-26",
       "daily_delta": -0.027576197387518042,
       "monthly_delta": 0.1317567567567568,
-      "delta_volume": -0.3475474355039627,
+      "delta_volume": -0.3455013750729661,
       "prev_close": 6.89,
       "yearly_delta": -0.28799149840595106
+    },
+    {
+      "ticker": "SOND5.SA",
+      "name": "Sondotécnica Engenharia de Solos S.A.",
+      "last_close": 77.0,
+      "date": "2026-08-26",
+      "daily_delta": 0.0,
+      "monthly_delta": -0.0011674665974834575,
+      "delta_volume": 0,
+      "prev_close": 77.0,
+      "yearly_delta": 0.745240253853128
+    },
+    {
+      "ticker": "SOND6.SA",
+      "name": "Sondotécnica Engenharia de Solos S.A.",
+      "last_close": 79.52,
+      "date": "2026-08-26",
+      "daily_delta": 0.0,
+      "monthly_delta": -0.0057514378594649695,
+      "delta_volume": 0,
+      "prev_close": 79.52,
+      "yearly_delta": 0.9226305609284331
     },
     {
       "ticker": "SUZB3.SA",
@@ -3497,7 +3971,7 @@
       "date": "2026-08-26",
       "daily_delta": -0.004100129477773051,
       "monthly_delta": 0.10222116073561027,
-      "delta_volume": 0.07613534174954073,
+      "delta_volume": 0.049759863620034483,
       "prev_close": 46.34,
       "yearly_delta": -0.10370945814721311
     },
@@ -3508,7 +3982,7 @@
       "date": "2026-08-26",
       "daily_delta": -0.024390243902438935,
       "monthly_delta": -0.11111111111111105,
-      "delta_volume": -0.2992430191286868,
+      "delta_volume": -0.30098606980748166,
       "prev_close": 3.69,
       "yearly_delta": -0.12195121951219501
     },
@@ -3519,7 +3993,7 @@
       "date": "2026-08-26",
       "daily_delta": 0.01735015772870674,
       "monthly_delta": -0.00462962962962965,
-      "delta_volume": -0.5789339778654115,
+      "delta_volume": -0.5713013611499809,
       "prev_close": 12.68,
       "yearly_delta": 0.22274881516587675
     },
@@ -3530,7 +4004,7 @@
       "date": "2026-08-26",
       "daily_delta": 0.013127413127413057,
       "monthly_delta": -0.017964071856287456,
-      "delta_volume": -0.5607936535733674,
+      "delta_volume": -0.5579916992101991,
       "prev_close": 12.95,
       "yearly_delta": 0.23424270931326419
     },
@@ -3541,7 +4015,7 @@
       "date": "2026-08-26",
       "daily_delta": 0.0020586721564590515,
       "monthly_delta": -0.009664292980671507,
-      "delta_volume": -0.6149639413819132,
+      "delta_volume": -0.614171686117267,
       "prev_close": 38.86,
       "yearly_delta": 0.224143351147438
     },
@@ -3563,7 +4037,7 @@
       "date": "2026-08-26",
       "daily_delta": 0.07884615384615379,
       "monthly_delta": 0.16390041493775942,
-      "delta_volume": 1.2128417991651426,
+      "delta_volume": 1.3979488141581853,
       "prev_close": 5.2,
       "yearly_delta": 0.23296703296703303
     },
@@ -3574,7 +4048,7 @@
       "date": "2026-08-26",
       "daily_delta": -0.016129032258064502,
       "monthly_delta": -0.0757575757575758,
-      "delta_volume": 0.8910992093853609,
+      "delta_volume": 0.9819234020417453,
       "prev_close": 0.62,
       "yearly_delta": -0.5821917808219178
     },
@@ -3585,7 +4059,7 @@
       "date": "2026-08-26",
       "daily_delta": 0.02206619859578729,
       "monthly_delta": 0.04085801838610825,
-      "delta_volume": -0.02636350955502864,
+      "delta_volume": -0.010490501842925992,
       "prev_close": 9.97,
       "yearly_delta": 0.5921874999999999
     },
@@ -3596,7 +4070,7 @@
       "date": "2026-08-26",
       "daily_delta": 0.3753623188405797,
       "monthly_delta": 0.8162679425837323,
-      "delta_volume": 17.161490683229815,
+      "delta_volume": 18.850931677018636,
       "prev_close": 13.8,
       "yearly_delta": 0.6490008688097308
     },
@@ -3607,7 +4081,7 @@
       "date": "2026-08-26",
       "daily_delta": 0.23677248677248675,
       "monthly_delta": 0.29680998613037435,
-      "delta_volume": 14.415692821368948,
+      "delta_volume": 14.449180327868852,
       "prev_close": 7.56,
       "yearly_delta": 0.2466666666666666
     },
@@ -3618,7 +4092,7 @@
       "date": "2026-08-26",
       "daily_delta": -0.04098115465151053,
       "monthly_delta": 0.060886829913964435,
-      "delta_volume": 0.35897087220212676,
+      "delta_volume": 0.3601312700009973,
       "prev_close": 33.43,
       "yearly_delta": 0.5871287128712872
     },
@@ -3629,7 +4103,7 @@
       "date": "2026-08-26",
       "daily_delta": -0.010802469135802517,
       "monthly_delta": -0.09463276836158196,
-      "delta_volume": 0.7267994351995426,
+      "delta_volume": 0.7359817739238905,
       "prev_close": 12.96,
       "yearly_delta": -0.1631853785900783
     },
@@ -3640,7 +4114,7 @@
       "date": "2026-08-26",
       "daily_delta": 0.0053977272727272485,
       "monthly_delta": 0.1828208556149733,
-      "delta_volume": 0.17510107127688035,
+      "delta_volume": 0.20066846638385405,
       "prev_close": 35.2,
       "yearly_delta": 0.0685386473429952
     },
@@ -3651,20 +4125,9 @@
       "date": "2026-08-26",
       "daily_delta": 0.0,
       "monthly_delta": -0.12837209302325592,
-      "delta_volume": -0.31775935164397406,
+      "delta_volume": -0.3640993298242925,
       "prev_close": 18.74,
       "yearly_delta": -0.12593283582089565
-    },
-    {
-      "ticker": "TOKY3.SA",
-      "name": "Grupo Toky S.A.",
-      "last_close": 0.33,
-      "date": "2026-08-26",
-      "daily_delta": 0.0,
-      "monthly_delta": -0.25,
-      "delta_volume": -0.35497415173065316,
-      "prev_close": 0.33,
-      "yearly_delta": -0.9168765743073048
     },
     {
       "ticker": "TOTS3.SA",
@@ -3673,7 +4136,7 @@
       "date": "2026-08-26",
       "daily_delta": -0.004580152671755711,
       "monthly_delta": 0.10959836623553443,
-      "delta_volume": -0.23528275038209512,
+      "delta_volume": -0.23449517510489726,
       "prev_close": 32.75,
       "yearly_delta": -0.19704433497536944
     },
@@ -3684,9 +4147,20 @@
       "date": "2026-08-26",
       "daily_delta": 0.026252983293555854,
       "monthly_delta": 0.018957345971563955,
-      "delta_volume": -0.2624324827714658,
+      "delta_volume": -0.25498230582976344,
       "prev_close": 8.38,
       "yearly_delta": 1.606060606060606
+    },
+    {
+      "ticker": "TRAD3.SA",
+      "name": "TC S.A.",
+      "last_close": 1.05,
+      "date": "2026-08-26",
+      "daily_delta": 0.01941747572815533,
+      "monthly_delta": -0.045454545454545525,
+      "delta_volume": -0.8677800974251914,
+      "prev_close": 1.03,
+      "yearly_delta": -0.8462664714494875
     },
     {
       "ticker": "TRIS3.SA",
@@ -3706,7 +4180,7 @@
       "date": "2026-08-26",
       "daily_delta": -0.02617801047120427,
       "monthly_delta": -0.26771653543307083,
-      "delta_volume": -0.3829125095724054,
+      "delta_volume": -0.4613978076948584,
       "prev_close": 11.46,
       "yearly_delta": -0.21684210526315784
     },
@@ -3717,7 +4191,7 @@
       "date": "2026-08-26",
       "daily_delta": -0.02084690553745927,
       "monthly_delta": -0.030322580645161357,
-      "delta_volume": -0.581490376778204,
+      "delta_volume": -0.525928661557874,
       "prev_close": 15.35,
       "yearly_delta": 0.04158004158004158
     },
@@ -3739,7 +4213,7 @@
       "date": "2026-08-26",
       "daily_delta": -0.004759071980963592,
       "monthly_delta": 0.07346807828039781,
-      "delta_volume": 0.45657709425099613,
+      "delta_volume": 0.5033594567739013,
       "prev_close": 33.62,
       "yearly_delta": 0.9904818560380728
     },
@@ -3772,7 +4246,7 @@
       "date": "2026-08-26",
       "daily_delta": -0.03286304198210588,
       "monthly_delta": -0.09338709677419355,
-      "delta_volume": 1.758799844135602,
+      "delta_volume": 1.7920631176115962,
       "prev_close": 58.12,
       "yearly_delta": 0.008975049362771603
     },
@@ -3783,7 +4257,7 @@
       "date": "2026-08-26",
       "daily_delta": 0.051724137931034475,
       "monthly_delta": -0.12857142857142856,
-      "delta_volume": 0.7326964207826878,
+      "delta_volume": 0.7585596659849312,
       "prev_close": 6.38,
       "yearly_delta": 0.5604651162790699
     },
@@ -3794,9 +4268,20 @@
       "date": "2026-08-26",
       "daily_delta": 0.022955523672883782,
       "monthly_delta": -0.17189314750290352,
-      "delta_volume": -0.07811537891742626,
+      "delta_volume": -0.07570951094599276,
       "prev_close": 6.97,
       "yearly_delta": 0.7057416267942584
+    },
+    {
+      "ticker": "USIM6.SA",
+      "name": "Usinas Siderúrgicas de Minas Gerais S.A.",
+      "last_close": 6.47,
+      "date": "2026-08-26",
+      "daily_delta": 0.0,
+      "monthly_delta": -0.25202312138728333,
+      "delta_volume": 0,
+      "prev_close": 6.47,
+      "yearly_delta": -0.19125000000000003
     },
     {
       "ticker": "VALE3.SA",
@@ -3805,7 +4290,7 @@
       "date": "2026-08-26",
       "daily_delta": -0.0031766200762388674,
       "monthly_delta": 0.06560717196414023,
-      "delta_volume": -0.31686015976310644,
+      "delta_volume": -0.3111800192484927,
       "prev_close": 78.7,
       "yearly_delta": 0.5316282702069506
     },
@@ -3816,7 +4301,7 @@
       "date": "2026-08-26",
       "daily_delta": 0.013289036544850585,
       "monthly_delta": -0.03785488958990535,
-      "delta_volume": -0.08477292790117918,
+      "delta_volume": -0.07051995176526493,
       "prev_close": 3.01,
       "yearly_delta": -0.1801075268817205
     },
@@ -3827,7 +4312,7 @@
       "date": "2026-08-26",
       "daily_delta": -0.014080375476679508,
       "monthly_delta": -0.025797101449275384,
-      "delta_volume": 0.3729140940693725,
+      "delta_volume": 0.3661574052222252,
       "prev_close": 34.09,
       "yearly_delta": 0.7147959183673467
     },
@@ -3838,7 +4323,7 @@
       "date": "2026-08-26",
       "daily_delta": -0.03785488958990535,
       "monthly_delta": -0.1055718475073315,
-      "delta_volume": -0.1811040190783475,
+      "delta_volume": -0.1864266071706533,
       "prev_close": 3.17,
       "yearly_delta": -0.30205949656750575
     },
@@ -3849,7 +4334,7 @@
       "date": "2026-08-26",
       "daily_delta": 0.02854553692795636,
       "monthly_delta": 0.03134938664243525,
-      "delta_volume": -0.31719499211325464,
+      "delta_volume": -0.316849013252563,
       "prev_close": 22.07,
       "yearly_delta": -0.17213712618526633
     },
@@ -3860,20 +4345,9 @@
       "date": "2026-08-26",
       "daily_delta": 0.0,
       "monthly_delta": -0.1124260355029586,
-      "delta_volume": -0.8727272727272728,
+      "delta_volume": -0.8726114649681529,
       "prev_close": 1.5,
       "yearly_delta": -0.7580645161290323
-    },
-    {
-      "ticker": "VIVT3.SA",
-      "name": "Telefônica Brasil S.A.",
-      "last_close": 30.06,
-      "date": "2026-08-26",
-      "daily_delta": 0.0020000000000000018,
-      "monthly_delta": -0.1638386648122393,
-      "delta_volume": -0.39336259040752886,
-      "prev_close": 30.0,
-      "yearly_delta": -0.06500777604976671
     },
     {
       "ticker": "VLID3.SA",
@@ -3915,7 +4389,7 @@
       "date": "2026-08-26",
       "daily_delta": -0.01763409257898607,
       "monthly_delta": -0.04500000000000004,
-      "delta_volume": 0.3299124991047693,
+      "delta_volume": 0.3326929801279863,
       "prev_close": 13.61,
       "yearly_delta": -0.18226299694189618
     },
@@ -3926,7 +4400,7 @@
       "date": "2026-08-26",
       "daily_delta": -0.02898550724637672,
       "monthly_delta": 0.030769230769230882,
-      "delta_volume": -0.17720812682574594,
+      "delta_volume": -0.03095152131814749,
       "prev_close": 0.69,
       "yearly_delta": -0.23863636363636365
     },
@@ -3948,7 +4422,7 @@
       "date": "2026-08-26",
       "daily_delta": 0.01694231544977831,
       "monthly_delta": 0.08663793103448292,
-      "delta_volume": 0.02834560076644599,
+      "delta_volume": -0.028478550909809996,
       "prev_close": 49.58,
       "yearly_delta": 0.40016662038322703
     },
@@ -3959,7 +4433,7 @@
       "date": "2026-08-26",
       "daily_delta": 0.0174825174825175,
       "monthly_delta": -0.1415929203539823,
-      "delta_volume": -0.1921182266009852,
+      "delta_volume": -0.023228111971411503,
       "prev_close": 2.86,
       "yearly_delta": 0.32876712328767144
     },
@@ -3992,9 +4466,20 @@
       "date": "2026-08-26",
       "daily_delta": 0.01675257731958757,
       "monthly_delta": -0.03545232273838628,
-      "delta_volume": -0.17865118991735307,
+      "delta_volume": -0.17409920482510421,
       "prev_close": 7.76,
       "yearly_delta": 0.05622489959839361
+    },
+    {
+      "ticker": "WLMM3.SA",
+      "name": "WLM Participações e Comércio de Máquinas e Veículos S.A.",
+      "last_close": 19.69,
+      "date": "2026-08-26",
+      "daily_delta": 0.0,
+      "monthly_delta": -0.009557344064386242,
+      "delta_volume": 0,
+      "prev_close": 19.69,
+      "yearly_delta": -0.08247903075489282
     },
     {
       "ticker": "WLMM4.SA",
@@ -4014,7 +4499,7 @@
       "date": "2026-08-26",
       "daily_delta": -0.013729977116704872,
       "monthly_delta": 0.08564231738035244,
-      "delta_volume": -0.14210328273441075,
+      "delta_volume": -0.11281923776997993,
       "prev_close": 8.74,
       "yearly_delta": -0.2905349794238684
     }
