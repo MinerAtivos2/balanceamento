@@ -1,44 +1,30 @@
 {
-  "last_update": "2026-09-15T23:03:19.138257",
-  "market_last_date": "2026-09-15",
+  "last_update": "2026-09-16T23:08:37.921503",
+  "market_last_date": "2026-09-16",
   "market_summary": "O mercado brasileiro segue atento ao cenário fiscal e movimentações de commodities.",
   "ibov": {
     "ticker": "^BVSP",
     "name": "IBOVESPA",
-    "last_close": 186502.64,
-    "date": "2026-09-15",
-    "daily_delta": 0.005399647441253652,
-    "monthly_delta": 0.1172238130039418,
+    "last_close": 185547.66,
+    "date": "2026-09-16",
+    "daily_delta": -0.005122384090336385,
+    "monthly_delta": 0.11250275805832688,
     "delta_volume": 0,
-    "prev_close": 185501.0,
-    "yearly_delta": 0.2992444286540299
+    "prev_close": 186503.0,
+    "yearly_delta": 0.2879708736516222
   },
   "assets": {
-    "MGEL4.SA": {
+    "HETA4.SA": {
       "summary": "Sem notícias recentes de impacto encontradas nos principais canais financeiros.",
       "period": "",
       "sources": [],
-      "updated_at": "2026-09-15T23:03:19.717214",
+      "updated_at": "2026-09-16T23:08:38.416878",
       "is_outdated": false,
-      "last_close": 6.2,
-      "daily_delta": 0.1832061068702291,
-      "monthly_delta": 0.14602587800369693,
-      "yearly_delta": 0.08391608391608396,
-      "price_date": "2026-09-15"
-    },
-    "WDCN3.SA": {
-      "summary": "Resumo: [Google News] Imobiliário +7,4% puxa semana, TI recua -1,8% na B3 - Visno Invest. ...",
-      "period": "Em 06/09/2026",
-      "sources": [
-        "https://news.google.com/rss/articles/CBMiigFBVV95cUxQamtWQmI1ZXNvUGdvTjR6akxCY2UtNEVGM0ltbUxPZzdyVGJyRFplRVpCUTE0S0taY0xDNEI3djBBTnhYWDBOaGIyX1VvX2tNWnNfUTgwU2NlTEdiVUYzamRSeVk3eUlJa254dGNUb1hDT0lINlo4WGkyRGlKWHg2WVlhVEwyVkhaNHc?oc=5"
-      ],
-      "updated_at": "2026-09-15T23:03:23.304545",
-      "is_outdated": true,
-      "last_close": 3.17,
-      "daily_delta": 0.11228070175438587,
-      "monthly_delta": 0.3099173553719008,
-      "yearly_delta": -0.14324324324324333,
-      "price_date": "2026-09-15"
+      "last_close": 6.35,
+      "daily_delta": 0.2450980392156863,
+      "monthly_delta": 0.32291666666666674,
+      "yearly_delta": 0.29591836734693855,
+      "price_date": "2026-09-16"
     },
     "ESTR4.SA": {
       "summary": "Resumo: [Google News] Ibovespa fecha último pregão aos 185.608 pontos - capitalnews.com.br. ...",
@@ -46,121 +32,180 @@
       "sources": [
         "https://news.google.com/rss/articles/CBMimgFBVV95cUxNLUYxaGF2RkZmZ2J2b0R0Y3phSW9Wa2dqSHY0eW4wb2RJTGxwNTFnenVqQW1Fa18xQV9LU1cxZU84T01aMFp5Qmo3Mm1yVF8zMmYzVmdkdS1iVkRWQ0JlN29xWlZXREZ4Mkk0M19STVN4ZXF3RU4yOFN2YUFtMjA2RkQ5cndtakw4MHl6dkh4bDhfaFl6cnlQMmFn?oc=5"
       ],
-      "updated_at": "2026-09-15T23:03:24.609478",
+      "updated_at": "2026-09-16T23:08:42.125919",
       "is_outdated": true,
-      "last_close": 1.51,
-      "daily_delta": 0.11029411764705865,
-      "monthly_delta": -0.3105022831050228,
-      "yearly_delta": -0.7483333333333333,
-      "price_date": "2026-09-15"
+      "last_close": 1.79,
+      "daily_delta": 0.185430463576159,
+      "monthly_delta": -0.10499999999999998,
+      "yearly_delta": -0.7016666666666667,
+      "price_date": "2026-09-16"
     },
-    "RVEE3.SA": {
+    "RCSL3.SA": {
       "summary": "Sem notícias recentes de impacto encontradas nos principais canais financeiros.",
       "period": "",
       "sources": [],
-      "updated_at": "2026-09-15T23:03:25.521630",
+      "updated_at": "2026-09-16T23:08:42.944183",
       "is_outdated": false,
-      "last_close": 0.74,
-      "daily_delta": 0.08823529411764697,
-      "monthly_delta": 0.0,
-      "yearly_delta": -0.9628140703517588,
-      "price_date": "2026-09-15"
+      "last_close": 0.52,
+      "daily_delta": 0.18181818181818188,
+      "monthly_delta": 0.2682926829268293,
+      "yearly_delta": 0.13043478260869557,
+      "price_date": "2026-09-16"
     },
-    "WEST3.SA": {
+    "LUXM4.SA": {
       "summary": "Sem notícias recentes de impacto encontradas nos principais canais financeiros.",
       "period": "",
       "sources": [],
-      "updated_at": "2026-09-15T23:03:26.341088",
+      "updated_at": "2026-09-16T23:08:43.727657",
       "is_outdated": false,
-      "last_close": 3.14,
-      "daily_delta": 0.07903780068728516,
-      "monthly_delta": 0.16296296296296298,
-      "yearly_delta": 0.4337899543378996,
-      "price_date": "2026-09-15"
+      "last_close": 3.44,
+      "daily_delta": 0.15436241610738244,
+      "monthly_delta": 0.3281853281853282,
+      "yearly_delta": -0.036414565826330514,
+      "price_date": "2026-09-16"
     },
-    "PMAM3.SA": {
-      "summary": "Resumo: [Google News] Paranapanema (PMAM3) ganha acionista com 8,21% e mercado monitora possível próximo passo - Guia do Investidor. [Google News] João Carlos C. de Vargas atinge 8% da Paranapanema (PMAM3) - Visno Invest. [Google News] Paranapanema (PMAM3) registra aumento de capital de R$ 2,7 mi - Visno In...",
-      "period": "De 09/09/2026 a 11/09/2026",
+    "VSTE3.SA": {
+      "summary": "Resumo: [Yahoo Finance] Veste SA Estilo (BSP:VSTE3) (Q2 2026) Earnings Call Highlights: Net Profit Soars 80. .... [Yahoo Finance] Veste SA Estilo (BSP:VSTE3) Q4 2025 Earnings Call Highlights: Strong Revenue Growth and .... ...",
+      "period": "De 10/03/2026 a 14/08/2026",
       "sources": [
-        "https://news.google.com/rss/articles/CBMiwwFBVV95cUxNWUtvNWpvWVZaXzVoYUNLQjRzbUdxc19WeFozSHBtOUs3V3VxQ3RjcmRIVzVBZlhueVNSYVFOc2p3aHl3ZXNOWW9IWjlHcVJqSy1uMEFQb29lV2ZRd2VyWTk3ZEJsZ2Jvd0VhejRGS0hGc3FTOEpZdVdHbEtjclVtYm5zZjdTZWRSWjlUc2xKT2JINlFxalVqNGVDZGVUbktUOHl1bVR3WEgtTzlmMGEzY2ZJbnpCcF9RM2Ewa2lmZGhvbEU?oc=5",
-        "https://news.google.com/rss/articles/CBMilwFBVV95cUxOcWg5S3c3Qm1UOUhNd3BuaFpDQm15d2ZDNlcwd1ZNMExwbEVUcGVIcVcwOENPWU5OLUVqcGVJQ3J3NS1nN0lvcnBkd3dpbHNNRlcxbXUtQi1uNXZjXzJldnItNlBLRjJPWTZlSmx0dUNkbU1xeDJCNnRCaElWTFdadl8yb3JyTlZ3QWNqeWlPOG02U3dkdF93?oc=5",
-        "https://news.google.com/rss/articles/CBMimwFBVV95cUxOdGJtNjhSdW5sRTU5YkQ1OC1tdnVidmNUVjdfQmdIRW1vdDRJZDAzeWVUUEw5SXlkdU15RG5kdU5PMFRJR2M0TG5yWEllbmUzZVpiUTlUSXg2RDdYUXZfV0tYNU1uOTNuQ2lBVHRVUktNa0FBVjZBcy14ckU0T3A3Zm05RWdnOHoyV2pYWFQzNUUxbkl2ZGdBbFRIVQ?oc=5"
+        "https://finance.yahoo.com/markets/stocks/articles/veste-sa-estilo-bsp-vste3-010652162.html",
+        "https://finance.yahoo.com/news/veste-sa-estilo-bsp-vste3-010205898.html"
       ],
-      "updated_at": "2026-09-15T23:03:27.490209",
+      "updated_at": "2026-09-16T23:08:44.881870",
       "is_outdated": true,
-      "last_close": 0.39,
-      "daily_delta": -0.3709677419354839,
-      "monthly_delta": 2.2500000000000004,
-      "yearly_delta": -0.7214285714285714,
-      "price_date": "2026-09-15"
+      "last_close": 2.74,
+      "daily_delta": 0.10483870967741948,
+      "monthly_delta": 0.0703125,
+      "yearly_delta": -0.49446494464944646,
+      "price_date": "2026-09-16"
     },
-    "CTAX3.SA": {
-      "summary": "Sem notícias recentes de impacto encontradas nos principais canais financeiros.",
-      "period": "",
-      "sources": [],
-      "updated_at": "2026-09-15T23:03:28.295242",
-      "is_outdated": false,
-      "last_close": 1.51,
-      "daily_delta": -0.24120603015075381,
-      "monthly_delta": 0.07092198581560294,
-      "yearly_delta": -0.6128205128205129,
-      "price_date": "2026-09-15"
-    },
-    "EQPA7.SA": {
-      "summary": "Resumo: [Yahoo Finance] Equatorial Para Distribuidora De Energia SA (BSP:EQPA3) Q1 2026 Earnings Call Highlights: .... [Yahoo Finance] Equatorial Para Distribuidora De Energia SA (BSP:EQPA3) Q4 2025 Earnings Call Highlights: .... ...",
-      "period": "De 01/04/2026 a 19/05/2026",
+    "BRKM5.SA": {
+      "summary": "Resumo: [Google News] Pressão aumenta sobre a Braskem: UBS BB recomenda venda e alerta para diluição - Estadão. [Google News] “Sem saída fácil”: Braskem (BRKM5) despenca mais de 13% após UBS BB rebaixar ação e cortar preço-alvo em 74% - Seu Dinheiro. [Google News] UBS rebaixa Braskem (BRKM5) e reduz preço-a...",
+      "period": "Em 16/09/2026",
       "sources": [
-        "https://finance.yahoo.com/sectors/energy/articles/equatorial-para-distribuidora-energia-sa-010224795.html",
-        "https://finance.yahoo.com/sectors/energy/articles/equatorial-para-distribuidora-energia-sa-010056602.html"
+        "https://news.google.com/rss/articles/CBMivgFBVV95cUxOSXpvUG8wdV9pOWxhLTNZaWgycnM5a2lqQW0wVF9sd1d5UjdCUG9sTVFpLS1UVHFqLWFNcmJhcGVDVlZ0U2VCS01aSzNCZHhZTEplaFF5MS1YU0xVOTVlZGxUOTdCWnVIYVVlcjI5cjA0cG96TDlPdUwycG03OTdZN1Zrb256SENadkxhOF9KSS1GMTRiUTJIWU5aMWduMUNwbjl0VUExOTRIYkVkOXB1NFAzV3ZNa2VfN1hLZF9R0gG-AUFVX3lxTE5Jem9QbzB1X2k5bGEtM1lpaDJyczlraWpBbTBUX2x3V3lSN0JQb2xNUWktLVRUcWotYU1yYmFwZUNWVnRTZUJLTVpLM0JkeFlMSmVoUXkxLVhTTFU5NWVkbFQ5N0JadUhhVWVyMjlyMDRwb3pMOU91TDJwbTc5N1k3VmtvbnpIQ1p2TGE4X0pJLUYxNGJRMkhZTloxZ24xQ3BuOXRVQTE5NEhiRWQ5cHU0UDNXdk1rZV83WEtkX1E?oc=5",
+        "https://news.google.com/rss/articles/CBMi3gFBVV95cUxQQ2hRRUl5WDlERVlSY3dXSmxwX2hXckxYcHJsdlVpb01MNnRHTTFMMURIMGhUOFFuWl9tUFp3cGlIbHR5UXVCMEt0SjhnTHk5cWhDTXJSdFczYUxNNDJpZGtEdUhtZXNHUHBwbEcxNXgzN1VNWVBvY2JITGxVNF9idXJELXVZY1NwN2lKQVJmaXAxdDJDWC0yRWpBWDdoMjRzVEIyelQxY29BdFV0TWdjN0xOWnJUUTNFSEFMNmlkanZjbURYZk81cmQ5c2pTM2NwZ2F0TVBrU1BTRFhQSFE?oc=5",
+        "https://news.google.com/rss/articles/CBMiuwFBVV95cUxPSFF2dGF5MHVQcVkwTHhxbFhyZmEtdFJuQ3ktazJ5UllSRUpCRFFqeUV6VGNndzB3Zll6M3NwaVNRajNOclRfdlhocWFtYk1TN2I0NkZFSTNQdlRCTDI1c2NaM0w4Q3VmTDJ4cE9rNWszQUtvc2dwS0NfT19YeWd5c3lwSFhhdDFPUTQ3NVlMaHRFN1dudnRTX25rclQzNFlSaVV3dVpOeTBGcGlZcm9IS2loOERScjZLRDd30gG7AUFVX3lxTE9IUXZ0YXkwdVBxWTBMeHFsWHJmYS10Um5DeS1rMnlSWVJFSkJEUWp5RXpUY2d3MHdmWXozc3BpU1FqM05yVF92WGhxYW1iTVM3YjQ2RkVJM1B2VEJMMjVzY1ozTDhDdWZMMnhwT2s1azNBS29zZ3BLQ19PX1h5Z3lzeXBIWGF0MU9RNDc1WUxodEU3V252dFNfbmtyVDM0WVJpVXd1Wk55MEZwaVlyb0hLaWg4RFJyNktEN3c?oc=5",
+        "https://news.google.com/rss/articles/CBMivwFBVV95cUxQYlhsQ1lzYzQwcm10b2U0R24xX1lxdTlJVnhXT3FkbUh4XzJONDhPVmFPcWhYTmxkUGJYT3F2bUJ4UjRzTG4zRnBkNlkyUEd4MXFmTlFXMHJHZUpnSm9kUzBwbTN3U0VmRHNLXzlqeDJjYkRCY1FBQlExRWZDSGN0emFxRGx6bkNBMXJ5am52RnZZakR2bDc4dFpnVlhUbGxHZXFuNjZuZG5jQ0d6QXNUOUJkdDZxOEZJcVZjcHhaRQ?oc=5"
       ],
-      "updated_at": "2026-09-15T23:03:29.569005",
+      "updated_at": "2026-09-16T23:08:46.058617",
+      "is_outdated": false,
+      "last_close": 4.53,
+      "daily_delta": -0.1516853932584269,
+      "monthly_delta": -0.12884615384615383,
+      "yearly_delta": -0.4983388704318936,
+      "price_date": "2026-09-16"
+    },
+    "ENMT4.SA": {
+      "summary": "Resumo: [Yahoo Finance] Energisa Mato Grosso Distribuidora de Energia SA (BSP:ENMT3) (Q2 2026) Earnings Call .... ...",
+      "period": "Em 11/08/2026",
+      "sources": [
+        "https://finance.yahoo.com/energy/articles/energisa-mato-grosso-distribuidora-energia-010722628.html"
+      ],
+      "updated_at": "2026-09-16T23:08:47.141736",
       "is_outdated": true,
-      "last_close": 8.01,
-      "daily_delta": -0.19900000000000007,
-      "monthly_delta": -0.19090909090909092,
-      "yearly_delta": 0.2982171799027553,
-      "price_date": "2026-09-15"
+      "last_close": 37.24,
+      "daily_delta": -0.11206485455412485,
+      "monthly_delta": 0.11197372349955215,
+      "yearly_delta": -0.27590900252770756,
+      "price_date": "2026-09-16"
     },
-    "AGXY3.SA": {
-      "summary": "Sem notícias recentes de impacto encontradas nos principais canais financeiros.",
-      "period": "",
-      "sources": [],
-      "updated_at": "2026-09-15T23:03:30.385081",
-      "is_outdated": false,
-      "last_close": 0.65,
-      "daily_delta": -0.1875,
-      "monthly_delta": -0.5517241379310345,
-      "yearly_delta": -0.8885077186963979,
-      "price_date": "2026-09-15"
-    },
-    "NORD3.SA": {
-      "summary": "Sem notícias recentes de impacto encontradas nos principais canais financeiros.",
-      "period": "",
-      "sources": [],
-      "updated_at": "2026-09-15T23:03:31.173885",
-      "is_outdated": false,
-      "last_close": 1.25,
-      "daily_delta": -0.11347517730496448,
-      "monthly_delta": -0.07407407407407418,
-      "yearly_delta": -0.7654784240150094,
-      "price_date": "2026-09-15"
-    },
-    "WEGE3.SA": {
-      "summary": "Resumo: [Google News] Dividendos e JCP: WEG (WEGE3) aprova quase meio bilhão de reais em proventos; saiba quem tem direito - Seu Dinheiro. [Google News] WEG (WEGE3): Conselho de Administração aprova pagamento de R$ 450 milhões em JCP - InfoMoney. [Google News] Alerta Estratégia Radar | Swing Trade Venda Weg...",
+    "AZEV3.SA": {
+      "summary": "Resumo: [Google News] Controlador da Azevedo & Travassos se desfaz de 22% das preferenciais - VEJA. [Google News] AZEV4 - Azevedo & Travassos: cotação, indicadores e dividendos - Visno Invest. [Google News] AZEV3 (-17,1%) e TEND3 lideram quedas da semana na B3 - Visno Invest. [Google News] Nêmesis reduz par...",
       "period": "De 11/09/2026 a 15/09/2026",
       "sources": [
-        "https://news.google.com/rss/articles/CBMi3AFBVV95cUxPMmR2ekgtVERSWmJkS2RBdWxiaEdkWGhHWGRjNC1Cb2hLMVV3Z3dSN2I1TDJjbG8xYU9kRVN1V2RrVEpNSy1pZWlzbHhQT2h1LU9laTNZWm9ZaGNWQjRMY0g2cDRDMHFKQk11N25sUEFxeFhhT1VQSU5aSE9Yckk5T3lGcFpUZmtTbFUwSlNKVUNjWEExMVIwNTVVcjNpbWlEZ0wxUFdQRFc3M3ZvTnRZSjEzTXVjMnF2MjdXS3NSVmJvU0RVVmgzQTNpQ0NBTXhDMWFGWTg0aHMzZElS?oc=5",
-        "https://news.google.com/rss/articles/CBMitgFBVV95cUxPQXhlWjJWUERoWVRrZ3pGaHo1WFFMVEhIdlo4TXdBZTluclNZWVdUel9UU2VCaE9DeHo5cHl1Zm9DeWpFV3h6Qy1IeEsyS1lfcjZFUXFmcnlhYlBLWlJRbWFxME5aRGRHRE9MSGN2b0VPMGM1eTBMQkFoMUk5dTAwYWI4Nmt2OHU1ejR2N1V2ckp5OU9lQi1Jd0RTc1EzcGF6MDNUY2tvRXcxLVB0U3NrdmNpejZTUdIBuwFBVV95cUxNZEdESFBCdV90RDRBS2YzTnl6UGZJZDE0azNobnJqV2FSRjNqaTdxemRTRTVJLWtySUlnNi1rNHFpNlVoVHNnRkoyZVk0TExHSjBscWs4bGZYb2lYdUJOMUZZRU9EVVotbUM2eWtqS0xES0EtaXBzNlpuSnU5eE9PZ0lNOVlCbTdtTmpZQkM4UWhJc0l5SHpMZTNhdS10ZE1BSnhYa2ViS0I3eHVUMHJfS2ZhWDhHNXo1TWhB?oc=5",
-        "https://news.google.com/rss/articles/CBMic0FVX3lxTE1RalZnYV9vTUNBT1RPSEFDMF84U1ZnRThzM2x5dVdncTE3clk5cTk2d2I5SlBqWnNoR2pYdVo5MGdjbVNrTS1rRW45MGdKbVlQakRhM1pFT2JvQTV4N0pHX0FSbGhYdFZNREVqbHBPWDlOYWc?oc=5",
-        "https://news.google.com/rss/articles/CBMiUEFVX3lxTE11UFZWaTdrYWVzSVJQNV9lWWpQVjN6WEFna3MyQ1NIcTlLY2djblVGeVRDMkpTOVVHR05JY294VHlfczhpRnYwc1dudHVueWsy?oc=5"
+        "https://news.google.com/rss/articles/CBMipAFBVV95cUxQVlNzWF82RDRfS2c4UGVjZDI4YlhCdWJFbnlZbUotRUg2M3BmWEozVTg2Zk9LSWpOaUJjaFZuazUwSmlpX3VtM2Rub2QxMmVEQThRdVAyRnhDVExuSVBxY3RuZXBXaTFDcG5rODhFOGNZMm53QTRzME5wSUx0VGNVNlh1R0Y4eGFVRE1BNDV1N3ZIcVpGYmdtS1ZjbGN6anQ4R3ZjXw?oc=5",
+        "https://news.google.com/rss/articles/CBMiUEFVX3lxTE9fZlFOVUZrV3hpLXFaNGY1TVF2VFUwTVhneFNYMldFc1lRdDcwdVhNdURVYUc1ZWU2VU1JYW9fb0pzbVBkTi1ydFZqV0xfdVhx?oc=5",
+        "https://news.google.com/rss/articles/CBMijwFBVV95cUxOLV9RM2s2d0VodmhZaEczb29MaGJDTy0waXNHS0czNFozdnhpbVJ1b1RRVElGaFpjMjNkWDdOY1JqR1lsbVk3Sm44ellNR0g1SVA4bUJ0azlwcXNoUVA1LVdyYVNLbWJyaUo0b1JCeXVOd0hmeHlvZ1pnZVNvc3RKaUZjbHV0REZxT1lNbVhwSQ?oc=5",
+        "https://news.google.com/rss/articles/CBMioAFBVV95cUxOUGpHbVhfZ256cGxNM2xNUEMyM1ppQjViOG80TzhUa2RILWJwUHhETmhWbERuaFhkM0ZwdjZyWFlweVdBcXNXd196d2NjU0ViMnhnTGZfeWxZUUFFbUhiVjlNWm1hM3RZRUliNDgwczlPaGw3bGdZVWpyMzdrM003ckJLWWI2R1RJY1E1Nm9MQWpFTDkxYmxBa0I0dmRMNDRL?oc=5"
       ],
-      "updated_at": "2026-09-15T23:03:32.541801",
+      "updated_at": "2026-09-16T23:08:48.302683",
+      "is_outdated": true,
+      "last_close": 7.21,
+      "daily_delta": -0.09079445145018916,
+      "monthly_delta": 0.3733333333333333,
+      "yearly_delta": -0.21630434782608687,
+      "price_date": "2026-09-16"
+    },
+    "OBTC3.SA": {
+      "summary": "Resumo: [Google News] OranjeBTC (OBTC3) anuncia data de estreia do primeiro ETF de ‘Bitcoin Treasuries’ na B3; Itaú BBA será distribuir do ativo - Money Times. [Google News] OBTC3 - OranjeBTC: cotação, indicadores e dividendos - Visno Invest. ...",
+      "period": "Em 11/09/2026",
+      "sources": [
+        "https://news.google.com/rss/articles/CBMi6AFBVV95cUxPMkxMNFRGdjBxOHRVMXExbWRVaHNsUVpXd213dklmVWQ4SGJPSkcyZ3otbDFkQnF3ZmlXc0ZqeFhmVVZrX0xwN0I5cnpELVlsM3g1OTJMbWRJVG9INElxa0M2ZlRwMzU5b3B1c2tiSTlWUGpQcEdGZXpjeUxvMVFzemhRUGNHN3RySFFiaFIxTFFYZnk5eHI2THJZM3plckd6djBhTUp4cGhvWm41eDI1ZHJBczJ1VWhQQTFGOE9wMUFnUnpKcFBGZHotTGdjSG95dkpGQ3NWTV9XY3dmSC1IR0pIX0liWGhY?oc=5",
+        "https://news.google.com/rss/articles/CBMiUEFVX3lxTE43SXIyeE81UERYQXlyTEh3VmxjS0VaZ0xsZFJBQ0xzYjFsYmhlT2VSQWEwVm9pd3YzMXdMVjZHNVBnYWRIdUdzclRjdVhsbEot?oc=5"
+      ],
+      "updated_at": "2026-09-16T23:08:49.582396",
+      "is_outdated": true,
+      "last_close": 6.29,
+      "daily_delta": -0.0844250363901019,
+      "monthly_delta": -0.04407294832826747,
+      "yearly_delta": -0.7379166666666667,
+      "price_date": "2026-09-16"
+    },
+    "WDCN3.SA": {
+      "summary": "Resumo: [Google News] Imobiliário +7,4% puxa semana, TI recua -1,8% na B3 - Visno Invest. ...",
+      "period": "Em 06/09/2026",
+      "sources": [
+        "https://news.google.com/rss/articles/CBMiigFBVV95cUxQamtWQmI1ZXNvUGdvTjR6akxCY2UtNEVGM0ltbUxPZzdyVGJyRFplRVpCUTE0S0taY0xDNEI3djBBTnhYWDBOaGIyX1VvX2tNWnNfUTgwU2NlTEdiVUYzamRSeVk3eUlJa254dGNUb1hDT0lINlo4WGkyRGlKWHg2WVlhVEwyVkhaNHc?oc=5"
+      ],
+      "updated_at": "2026-09-16T23:08:50.671668",
+      "is_outdated": true,
+      "last_close": 2.92,
+      "daily_delta": -0.07886435331230279,
+      "monthly_delta": 0.2268907563025211,
+      "yearly_delta": -0.21293800539083563,
+      "price_date": "2026-09-16"
+    },
+    "PETR4.SA": {
+      "summary": "Resumo: [Yahoo Finance] Vallourec Pipes Up With Another Brazilian Win. [Yahoo Finance] Sempra (SRE) Stock May Be About Right After Fresh LNG Deal. [Yahoo Finance] Petrobras (PBR) Advances While Market Declines: Some Information for Investors. [Google News] Petrobras (PETR4) dispara mais de 2% com alta do pe...",
+      "period": "De 15/09/2026 a 16/09/2026",
+      "sources": [
+        "https://app.moby.co/home/news/news-vallourec-pipes-up-with-another-brazilian-win?utm_source=yahoo_finance&utm_medium=rss",
+        "https://finance.yahoo.com/markets/stocks/articles/sempra-sre-stock-may-fresh-131207179.html",
+        "https://finance.yahoo.com/markets/stocks/articles/petrobras-pbr-advances-while-market-215005345.html",
+        "https://news.google.com/rss/articles/CBMiiwFBVV95cUxONnNzNE1WZzM0MlY3N3poeFp1UGVfLTFDUThDTUc0UnNDMm1wQWVLME11a2RnS3k2S3VtU3hoOVlYZE1XaFZCRDZ6WHd2U1FZLTV0VXFVcVlSandUR2ZqT1pVelhXbl9SYTVDZGN2MVlwc0gybU4tSGJPNGpFQkRsQXYwb0dXU3VOMzA00gGQAUFVX3lxTFB3SkRNcXRLWVZJZ3ZUQWZVM1RIREFzcS1RbzdqZUx3WXFrZmVTWV9QODFTWG5oLWdUclp0NUdEZGhWelhHd0VDLVpteWV4TUxKdGVZT0QzT3FNcE1UekdLR25VVHdoN0FiOE00R280a19sZUJCQW1HTk5TTURVaGNiRlFpMl9LbURDVGEyVldqdg?oc=5"
+      ],
+      "updated_at": "2026-09-16T23:08:52.144169",
       "is_outdated": false,
-      "last_close": 50.88,
-      "daily_delta": 0.0027591643673630095,
-      "monthly_delta": 0.07115789473684209,
-      "yearly_delta": 0.4545454545454548,
-      "price_date": "2026-09-15"
+      "last_close": 48.65,
+      "daily_delta": -0.035296450525480916,
+      "monthly_delta": 0.1813987372510928,
+      "yearly_delta": 0.6927627000695895,
+      "price_date": "2026-09-16"
+    },
+    "ABEV3.SA": {
+      "summary": "Resumo: [Google News] Preço da cerveja sobe mais que a inflação e favorece Ambev, diz Citi - Estadão. [Google News] Sangria na bolsa: Ibovespa perde mais de 3 mil pontos e dólar sobe; juro do Treasury passa de 5% - Seu Dinheiro. [Google News] ABEV3 - Ambev: cotação, indicadores e dividendos - Visno Invest. ...",
+      "period": "De 12/09/2026 a 14/09/2026",
+      "sources": [
+        "https://news.google.com/rss/articles/CBMi2AFBVV95cUxOX3diY3RHLXBsZzd0azlQRU5jdHBKZmdKOEZENkR2OGdWbE92WThaMktDaU1MUjJzWGxNMWtFWG9kY3dtNkhzVEw2QzJKdU03ZTRQVXpqd1FtQnluRzRxWnMxTzNBRWx5cnZ6Y3NTMWdYSkpVeEdUbFJrMmVhaVprd2tPX2RhRF9FSGpQYlZVWlluOG43TXZnbTlxeFdvSmZOOWpSVC1BZ2RLNmc2cEhwVi1QaGYtb0VRaXZhSFY0Wk1xY0JQNzFQQW9TeG9XdW9rNDZsVW05eDDSAd4BQVVfeXFMUHlIOHotU2s0czc4bVpaOHFpVUpBbFNXNnpKTmVkd2pVTE1SN1lPUGRXaTQ1N0NEV1RFYTFJaU8wVjVZWGJMaV9WZEo0T2FfOVF3YlJfNWNOdWNxdVVRWVE0LXJad19LODdWdXYwN3VXSDUxVjEtaVVmX1k4ZzlKMjRva01KbmlCbXZkX0dwanU0ZmFzSFJla1NKVWVxcW8yMGZVVGVyMnk4a0h0UVk1SWZvUk5Ebk5mRXN0a3hYOWtpcndRa0tZVUxWY1puX3ptbWZ1SnIzcEJRV3dURTln?oc=5",
+        "https://news.google.com/rss/articles/CBMi0gFBVV95cUxQc3dVVU5jc0RQTkFWSmZWWHJyaGhnQUNBa3ZQOF9aTUF6Q3JKbjlJTkNEYmJERm5aTW1kR0I5cnpCcHU1Y3dtUUdmTGVseFp2eUFEVEtGYlRGU2VuUEJNNG9lN0sxYXNEUFYzczFwQ0dlRjZJZVhLS2k5MHhTYXlYVkhMdnRlVDQzSlFGOGNCRkZsVmdGN2d3dUtoM1lMYmhXdllfTjZ4NzgzcUxzTGN3azROUWIxTkIzYVgxay02WWZmYklUX0d5a1NCcEZ3bU5aelE?oc=5",
+        "https://news.google.com/rss/articles/CBMiUEFVX3lxTFBnQkF3VnBpT2txU1EzdzBocnFGdWNTNjBjNjZOMmRCajlHdzB3SVNBRnU1QVlWaUw1R1hpS21GTEp5amdoTndqUzEybUczdUFt?oc=5",
+        "https://news.google.com/rss/articles/CBMisAFBVV95cUxPZUtaaHNSUS00ZndBR3B1dEhPb1l6dkZWa3FxMHI1WTlqTjBIeEtRLWVNYnl6MWtKZm1ZUVVzMU5uU29XTXZFQmdsRnJwMjM4Q1JsVzhTNEhKbWlSa2xveWlYcUlJeGVhMlpxbFNCdkZ4dUY3bGFZQWJxVk05WEhVVmRXaVVQUjctNGxvOE1lVlJpUTlxbDUtd2lwX3BDSjJHN3gwd2Nob0xnaUxrRFYySQ?oc=5"
+      ],
+      "updated_at": "2026-09-16T23:08:53.428361",
+      "is_outdated": true,
+      "last_close": 15.63,
+      "daily_delta": -0.006357279084551748,
+      "monthly_delta": 0.06543967280163598,
+      "yearly_delta": 0.3014154870940884,
+      "price_date": "2026-09-16"
+    },
+    "VALE3.SA": {
+      "summary": "Resumo: [Yahoo Finance] VALE S.A. (VALE) Declines More Than Market: Some Information for Investors. [Google News] O segredo da Vale (VALE3) não está mais tão bem guardado assim — e já aparece no preço da ação - Seu Dinheiro. [Google News] Investidores - vale.com. [Yahoo Finance] Vale S.A. (VALE) Deepens Chi...",
+      "period": "Em 14/09/2026",
+      "sources": [
+        "https://finance.yahoo.com/markets/stocks/articles/vale-vale-declines-more-market-220003251.html",
+        "https://news.google.com/rss/articles/CBMi1AFBVV95cUxOeXhqUG16andXaVFxc1RhSlBXcnAwZzkwMXZYMUpqVDJqMnA3am0wMlFFZnVJYy1kWE9aYnp2SXh0V1lOaXVxXzVoMnZTTUlORklxU3JfN096UmUtNjVCQ1lWNVpQY1E2M0p3ZUtpYlEwWE9aYVNoQ0JOdFlmZl9td2hLazB4X05jSHotM2lDaElHLVYxa1REMXlkeWNMdHBtU1g4NnVMTUdEeDBCTWxHbWd5VjR1Vm9ZaUlsTEdYb01qNWpMZ0E0QVczamZMRkU0YVRiUw?oc=5",
+        "https://news.google.com/rss/articles/CBMiR0FVX3lxTFAtSG55T19tUnJ4RldkbnZkSmd4c3RNMWtYOUZnbGFIbDMxeVZKMldRaDUwcEE4UGNjQkExUWFXNy1FYUo5RWxr?oc=5",
+        "https://finance.yahoo.com/markets/currencies/articles/vale-vale-deepens-china-ties-150347789.html"
+      ],
+      "updated_at": "2026-09-16T23:08:54.708115",
+      "is_outdated": true,
+      "last_close": 73.0,
+      "daily_delta": -0.021447721179624568,
+      "monthly_delta": 0.02226578910516741,
+      "yearly_delta": 0.3688355522220139,
+      "price_date": "2026-09-16"
     },
     "BBAS3.SA": {
       "summary": "Resumo: [Google News] Lucro do Banco do Brasil (BBAS3) despenca -40% no 4T25 - Nord Investimentos. [Yahoo Finance] Banco do Brasil SA BB Brasil's Dividend Analysis. ...",
@@ -169,124 +214,88 @@
         "https://news.google.com/rss/articles/CBMihwFBVV95cUxObEJDbmMyMmFkb1ktTjJhdjJDeG1ReVAtYlJDSWsxZlI2blJRdVlieWstdzZaM3NEMTVoM3V1aEplajQySFpwanU0UVRDRVFTN3VVRVh2WFdLSmlrSFFKSXBiS3VPakZWa3NjRVNPNE9ISUc1TlpacHBZLVRsWmw3endtSjdUbU3SAYwBQVVfeXFMTlV0aHJhdjczQ2xpcWNfUTVKRFN1cVNsSVdJa1NPRklUQWFOQ3IwRHlwRnFPQ2FfdkpxT0czbE45N3hHUjZiWVR5dmtmbWdXZ0RJcTFSSGh6OUtja0NUQWF5QlMtWU5haFVUREZIY3FUZ0pXMnhkWmlxYlVTSGxmdDQ5c3BQVlFDV2FOYjE?oc=5",
         "https://finance.yahoo.com/markets/stocks/articles/banco-brasil-sa-bb-brasils-110621159.html"
       ],
-      "updated_at": "2026-09-15T23:03:33.903748",
+      "updated_at": "2026-09-16T23:08:56.042170",
       "is_outdated": true,
-      "last_close": 22.04,
-      "daily_delta": -0.003616636528029016,
-      "monthly_delta": 0.20503007107709137,
-      "yearly_delta": 0.036688617121354516,
-      "price_date": "2026-09-15"
-    },
-    "VALE3.SA": {
-      "summary": "Resumo: [Yahoo Finance] VALE S.A. (VALE) Declines More Than Market: Some Information for Investors. [Google News] O segredo da Vale (VALE3) não está mais tão bem guardado assim — e já aparece no preço da ação - Seu Dinheiro. [Yahoo Finance] Vale S.A. (VALE) Deepens China Ties with Potential Yuan Bond Debut....",
-      "period": "De 12/09/2026 a 14/09/2026",
-      "sources": [
-        "https://finance.yahoo.com/markets/stocks/articles/vale-vale-declines-more-market-220003251.html",
-        "https://news.google.com/rss/articles/CBMi1AFBVV95cUxOeXhqUG16andXaVFxc1RhSlBXcnAwZzkwMXZYMUpqVDJqMnA3am0wMlFFZnVJYy1kWE9aYnp2SXh0V1lOaXVxXzVoMnZTTUlORklxU3JfN096UmUtNjVCQ1lWNVpQY1E2M0p3ZUtpYlEwWE9aYVNoQ0JOdFlmZl9td2hLazB4X05jSHotM2lDaElHLVYxa1REMXlkeWNMdHBtU1g4NnVMTUdEeDBCTWxHbWd5VjR1Vm9ZaUlsTEdYb01qNWpMZ0E0QVczamZMRkU0YVRiUw?oc=5",
-        "https://finance.yahoo.com/markets/currencies/articles/vale-vale-deepens-china-ties-150347789.html",
-        "https://news.google.com/rss/articles/CBMiWEFVX3lxTE1Ib1VWQWtvbVFHeTEzamZWSG5PYWFlVVFIWU5wd0szU2dURm11WTMzZnc2MG40S1FfRGtzYURmVjFmbWNmWThTaTM5SWhfalh6bDBETWJwZDk?oc=5"
-      ],
-      "updated_at": "2026-09-15T23:03:35.300150",
-      "is_outdated": true,
-      "last_close": 74.6,
-      "daily_delta": -0.011658717541070618,
-      "monthly_delta": 0.04628330995792429,
-      "yearly_delta": 0.40357478833490124,
-      "price_date": "2026-09-15"
-    },
-    "ITUB4.SA": {
-      "summary": "Resumo: [Google News] Itaú (ITUB4) consolida operações de atacado em Luxemburgo; veja detalhes - suno.com.br. [Google News] ITUB4 - Banco Itaú - Resultados, Dividendos, Cotação e Indicadores - Investidor10. [Google News] Itaú Unibanco (ITUB4) emite R$ 5 bi em letras financeiras - InfoMoney. [Google News] IT...",
-      "period": "De 11/09/2026 a 15/09/2026",
-      "sources": [
-        "https://news.google.com/rss/articles/CBMinAFBVV95cUxQM240Xzgtd0FlOHQ0TGFlcnZYcjl4cTlzWFktalhMdXRZTUlFczRxeXJiLURWM1JBbUNTeDktR01wemg4RmxZTEV2ZVhDRlBZWVdBcjZrLTJTOEVqUUVkZEkwcUtMZ1YzZk0wY1d5RHE3dW1YSmhONkctNklIN044aF9oZm9lcEtxVVNRaUdtNjRRZHR1YTlGdDFHUDLSAaIBQVVfeXFMTXdwV0VnUHByM3lMdnA2LWVQa0lYcGZFTXFsSDlRWl9nRy1WOG1qaC1uT3FlcGw0TlFtQWdOcm5fZUVJTDNwNFhOanNvMXMxNlJldjJGQTU0YW9yLXg5OWdwUXUyaFR6Nk01WWE3Y0EzaFAzN2pMWVNzNzg0Rnp3THJXVlZUblB0TzMtNEtyMi1Ia1RJM3hId19keG9IUmVtbXF3?oc=5",
-        "https://news.google.com/rss/articles/CBMiUkFVX3lxTE1TdzJFbjEwRFdLbXJ5dFVQZjk0QW1hbjRoM3lHOWRjZXc2b3p0YjBTaENUQy16eTlVRmhPeW1KS25VWEFfeC1Lb3hYbWFOR280aXc?oc=5",
-        "https://news.google.com/rss/articles/CBMimAFBVV95cUxPX3pUMDNCbWVTNWNYbGdhWmZtX1piUHRCSC1RNmVHUVFJNkZYUHJvMEpjem96WE1LVFBkR0N6eW9oajVTNTNQTjJibUJfUk9oVEdwaFhKVmtXQ1FlaklhcENkaUl0SzgwWFctXzZqRVFTZzJsR19lUEd4S3hwM1hMYjE3RE0zSWtublVHSHQ0amVMLTZMSnVtd9IBngFBVV95cUxPYmdtdnJIRHFGQ0c5d0o5UTUybEFOR25BZEFuS21qbzlIX0lid1RiekpPbHNwWG12LUh3R0NhQmJIakFIUVBvRWdNQVBQOUZ4LVQ1bjRad2RnNXJQUnZMNkxPd0QtU3l3bTc5VzNtMnVvLVhaNjVMU1dCLXBNbnZ4SWRjTkVWZHNFWXBfTGo4RDFUVzVNUDRQWTE1S28tZw?oc=5",
-        "https://news.google.com/rss/articles/CBMikAFBVV95cUxOWWdoTlo1V0Z4MHVTOVROSGJwbkFoeWFXLUVjeHRLRlNnUHdiVG0zYUgzeW4xRS1BZFBTNnFFT3JibnRIRE1udm11VGhybk9TLXBXaHVjY3B3RzgtMVBsMzlpYV9jSFhiR0ZoZ0FUT2dUZm1RNHAyM0FJUEhfQllLWTh1dHVOSU1wRlBTQkFZLWY?oc=5"
-      ],
-      "updated_at": "2026-09-15T23:03:36.738368",
-      "is_outdated": false,
-      "last_close": 42.67,
-      "daily_delta": 0.007556080283352973,
-      "monthly_delta": 0.09466393022062602,
-      "yearly_delta": 0.25058616647127807,
-      "price_date": "2026-09-15"
-    },
-    "BBDC4.SA": {
-      "summary": "Resumo: [Google News] Bradesco (BBDC4) paga dividendos nesta terça-feira; saiba mais - suno.com.br. [Google News] Agenda de dividendos: Bradesco (BBDC4), Metalúrgica Gerdau (GOAU4) e Motiva (MOTV3) remuneram o investidor nesta semana - Bora Investir. [Google News] BBDC4 - Banco Bradesco - Resultados, Divide...",
-      "period": "De 14/09/2026 a 15/09/2026",
-      "sources": [
-        "https://news.google.com/rss/articles/CBMigwFBVV95cUxNVWc3N3MyZ3hCdm9BQlhLQVdQbEhiRHdRRnQzYUVaLVBoSHpTTTUzbHl5amhKb0JzNXNSMmM4VWIxMEZQd2c3NHRwYkFKWEFySDZhcXczZ2xVMlEzX1pxeXl2UlEwdnZHS1dXRHRnay14MXpQNHUxYlVyZjRmUXdUX0UyUdIBiAFBVV95cUxORE5oWFh6bkVQbGtnbEF0NGVTem92NWstaHBBVDFtUTlzcS0wVVNvNnlWT01kbUM1RzlBb01uSE5WdUlQYnRWS0JiTkRveHFrV20zeVU2ZkNvTnhfZDZlZFdlQURPRHJnM2M4QWNITXR0UzktdGktYUJzUWs4ZEE4aXRTZlM1MlJS?oc=5",
-        "https://news.google.com/rss/articles/CBMilgJBVV95cUxPUHk2SmdnN2x1UXhtTXdYN09WeWtlS05KNi1PZ2xrczdmeU9nZWhKeXdhNzdqUHlwa1VRZDZldVEzVFI3NVdnZ2pxbXZmc0pTZGtmV005SVJ1cmhDY3ltNllsYThmN3lzeWUxdVIxRUVUU0hEcThZNUlfR0JZdkhxNW5OaWJka1FCOWFPVzVQaTlZS05qX3R4d1ROTTFWbzlqMUo4TFF1UnhTa2h6VHNsM0duLV93ZnVIbWV1RUlKbEV1LWhwNzU2LTFnMlVXNVdvSnVfOHVZdVR5dVBCeWJqZVUwQTd5c3BnQ2YwN2Y2WkV4UE5PbnRCZkp0a2xjdkxtUWQ1OXR2cHpzVW1Ea1JRZ1NLZ2ZsUQ?oc=5",
-        "https://news.google.com/rss/articles/CBMiUkFVX3lxTE1Eenpqb3dobnYyTWppWnFRazg2dk9jX05vaUlnYlRMVG81M1haOTJrY0huSTN2RTFaVjRUdURteW95amNmb3BJVjYxTFZESDR3bWc?oc=5"
-      ],
-      "updated_at": "2026-09-15T23:03:38.140504",
-      "is_outdated": false,
-      "last_close": 18.2,
-      "daily_delta": -0.007092198581560183,
-      "monthly_delta": 0.10169491525423724,
-      "yearly_delta": 0.16293929712460065,
-      "price_date": "2026-09-15"
-    },
-    "ABEV3.SA": {
-      "summary": "Resumo: [Google News] Preço da cerveja dá sinal “reconfortante” para Ambev, mas Citi reforça recomendação neutra - Estadão. [Google News] Sangria na bolsa: Ibovespa perde mais de 3 mil pontos e dólar sobe; juro do Treasury passa de 5% - Seu Dinheiro. [Google News] Dividendos: MOVI3 paga 4,59% e PETR4 entra ...",
-      "period": "De 11/09/2026 a 14/09/2026",
-      "sources": [
-        "https://news.google.com/rss/articles/CBMi3gFBVV95cUxQeUg4ei1TazRzNzhtWlo4cWlVSkFsU1c2ekpOZWR3alVMTVI3WU9QZFdpNDU3Q0RXVEVhMUlpTzBWNVlYYkxpX1ZkSjRPYV85UXdiUl81Y051Y3F1VVFZUTQtclp3X0s4N1Z1djA3dVdINTFWMS1pVWZfWThnOUoyNG9rTUpuaUJtdmRfR3BqdTRmYXNIUmVrU0pVZXFxbzIwZlVUZXIyeThrSHRRWTVJZm9STkRuTmZFc3RreFg5a2lyd1FrS1lVTFZjWm5fem1tZnVKcjNwQlFXd1RFOWfSAd4BQVVfeXFMUHlIOHotU2s0czc4bVpaOHFpVUpBbFNXNnpKTmVkd2pVTE1SN1lPUGRXaTQ1N0NEV1RFYTFJaU8wVjVZWGJMaV9WZEo0T2FfOVF3YlJfNWNOdWNxdVVRWVE0LXJad19LODdWdXYwN3VXSDUxVjEtaVVmX1k4ZzlKMjRva01KbmlCbXZkX0dwanU0ZmFzSFJla1NKVWVxcW8yMGZVVGVyMnk4a0h0UVk1SWZvUk5Ebk5mRXN0a3hYOWtpcndRa0tZVUxWY1puX3ptbWZ1SnIzcEJRV3dURTln?oc=5",
-        "https://news.google.com/rss/articles/CBMi0gFBVV95cUxQc3dVVU5jc0RQTkFWSmZWWHJyaGhnQUNBa3ZQOF9aTUF6Q3JKbjlJTkNEYmJERm5aTW1kR0I5cnpCcHU1Y3dtUUdmTGVseFp2eUFEVEtGYlRGU2VuUEJNNG9lN0sxYXNEUFYzczFwQ0dlRjZJZVhLS2k5MHhTYXlYVkhMdnRlVDQzSlFGOGNCRkZsVmdGN2d3dUtoM1lMYmhXdllfTjZ4NzgzcUxzTGN3azROUWIxTkIzYVgxay02WWZmYklUX0d5a1NCcEZ3bU5aelE?oc=5",
-        "https://news.google.com/rss/articles/CBMisAFBVV95cUxPZUtaaHNSUS00ZndBR3B1dEhPb1l6dkZWa3FxMHI1WTlqTjBIeEtRLWVNYnl6MWtKZm1ZUVVzMU5uU29XTXZFQmdsRnJwMjM4Q1JsVzhTNEhKbWlSa2xveWlYcUlJeGVhMlpxbFNCdkZ4dUY3bGFZQWJxVk05WEhVVmRXaVVQUjctNGxvOE1lVlJpUTlxbDUtd2lwX3BDSjJHN3gwd2Nob0xnaUxrRFYySQ?oc=5",
-        "https://news.google.com/rss/articles/CBMiUEFVX3lxTFBnQkF3VnBpT2txU1EzdzBocnFGdWNTNjBjNjZOMmRCajlHdzB3SVNBRnU1QVlWaUw1R1hpS21GTEp5amdoTndqUzEybUczdUFt?oc=5"
-      ],
-      "updated_at": "2026-09-15T23:03:39.424113",
-      "is_outdated": true,
-      "last_close": 15.73,
-      "daily_delta": -0.008821676118462407,
-      "monthly_delta": 0.06644067796610176,
-      "yearly_delta": 0.3185247275775356,
-      "price_date": "2026-09-15"
+      "last_close": 22.71,
+      "daily_delta": 0.030399274047187008,
+      "monthly_delta": 0.27155655095184783,
+      "yearly_delta": 0.06469760900140664,
+      "price_date": "2026-09-16"
     },
     "MGLU3.SA": {
-      "summary": "Resumo: [Google News] PMAM3 (+100,0%) lidera altas; AZEV3, MGLU3 e CSNA3 avançam com notícias - Visno Invest. [Google News] Magalu (MGLU3) dispara 16% após fechar parceria com Mercado Livre (MELI34) - InfoMoney. ...",
-      "period": "De 02/09/2026 a 05/09/2026",
+      "summary": "Resumo: [Google News] MGLU3 - Magazine Luiza: cotação, indicadores e dividendos - Visno Invest. ...",
+      "period": "Em 14/09/2026",
       "sources": [
-        "https://news.google.com/rss/articles/CBMipAFBVV95cUxOVGNVUTFUUWQwcUVDX2t6U3pfcERTTG1BcWVoVFlSaElVTDdRUXJpa04zTEh2dXZwaTBOZmR0ZmlGUkNjdmM0Nnc2SWFpM2dhODljbDZlYzI2Q0lIc3NkNG5ZYlRqaTVadDlBMkhITXNHZFpPWmxFUExQTHU5SG5oZUlQaHdhajBrTDRtUG5XM18wZ2ZnOVpUM1RCV2pNd0tBQWJKVA?oc=5",
-        "https://news.google.com/rss/articles/CBMiqwFBVV95cUxPeTZ1cEFJTWctay1tNEtVNGpfWlptQXpGNjNMVjNvUzlZc2RPZGNtVEZnU0tDdi1oMGd0U1pMS2ZnM1N0UHprVDlXdDFfSkVCbEZHS0RXNzZLVE1lYlBITVN4UEdDWnVqWGRIRDFvNVJzdUNSOUxIWl9QWXphbGlJWTJ3Q0t0d28yN2JHYkwxMGgxTEx3aG9xam5feUlnbElsOVVkUHVId2tOVkXSAbABQVVfeXFMUHZYR0tSWHdSMk5uX3BmaXJwaHhFQ1ZOZmJNa1R3QmpibC1ka0ViM3JhZG9hTlE0bVJteXkzSzFaYk84clF0TW8ySnM0cGxkSzUzTHV3NE9wbnhjMVUtR3dVTVdlUno0UHhOLWtBbG5DS1R0MlVJMFlqdUlCTDF0T1N6RGFnNTNCWW9vaHltV2xiVS1tdTBLX0xDaWxzWlN4aWQ4a2d2cWw2YTVBbmREXzE?oc=5"
+        "https://news.google.com/rss/articles/CBMiUEFVX3lxTFBISmoyNnRTOXF5ZkttcTlBVWlyY1RWZ0xjaGpaMS1pYURhZjVzVGhlNDVEcXFSUk5Xbi1RZzBGdnp1RlhSR0ZzaW1xQXhtM3o2?oc=5"
       ],
-      "updated_at": "2026-09-15T23:03:40.808303",
+      "updated_at": "2026-09-16T23:08:57.317766",
       "is_outdated": true,
-      "last_close": 5.57,
-      "daily_delta": 0.0,
-      "monthly_delta": 0.42455242966751916,
-      "yearly_delta": -0.4418837675350701,
-      "price_date": "2026-09-15"
+      "last_close": 5.94,
+      "daily_delta": 0.06642728904847406,
+      "monthly_delta": 0.4042553191489362,
+      "yearly_delta": -0.4136229022704837,
+      "price_date": "2026-09-16"
     },
-    "PETR4.SA": {
-      "summary": "Resumo: [Yahoo Finance] Petrobras (PBR) Advances While Market Declines: Some Information for Investors. [Google News] Por que a Petrobras (PETR3;PETR4) subiu forte hoje? Ações avançaram mais de 3% - InfoMoney. [Yahoo Finance] Petrobras Receives $434 Million in New Diesel Subsidy Payments. [Yahoo Finance] Se...",
-      "period": "Em 15/09/2026",
+    "BBDC4.SA": {
+      "summary": "Resumo: [Google News] BBDC4 - Banco Bradesco - Resultados, Dividendos, Cotação e Indicadores - Investidor10. [Google News] Bradesco (BBDC4) paga dividendos nesta terça-feira; saiba mais - suno.com.br. [Google News] BBDC4: Perguntaram se Vale a Pena Comprar as Ações do BRADESCO - Investing.com Brasil - Finan...",
+      "period": "De 11/09/2026 a 16/09/2026",
       "sources": [
-        "https://finance.yahoo.com/markets/stocks/articles/petrobras-pbr-advances-while-market-215005345.html",
-        "https://news.google.com/rss/articles/CBMiuAFBVV95cUxNWHN1cURsakotR19KN0RMQm1MR3gxVGtqMzZvVFpFa0RxSWVDaFlvLURDT3k2TnRsUnczQlZFVjFDVUN6TUwwNlI4Z0d0M1FzS3I4Vk1LcW1raFk1ZnpkeHpocUxkd1ctZWlwUDBlVGstMzBURGFFWUp6dnE0T1hXZUtkekp3ampUN21idGNqbGJSWVNtbFJvSG1FalhlbmJYTVhfY1RNdVpRVW45bHlJWjZzMW9NY0Np0gG-AUFVX3lxTE5wT2JDaHZBS1pwS3pXd2Y0TnBWdXNSaDBJWjgxUjA0aVFmY0hyTTE4SjEwUHpvdUk0NkJ2NHBWTEQtRW9Ba2YxeEV4TUFIQU1SQUVDbFlURHl0OEdySWlTellXTmFWOWtTNWhHdTZqZFFrYjF3dGFVczFXSWtGRTJSWVBFZFZnbXlaaWJpODAtUmRob2FnM1JyMjBJcjdGYTdkeTludUlxeTVObmtyelppWlAxNmdXQ0VwTHJSUEE?oc=5",
-        "https://finance.yahoo.com/energy/articles/petrobras-receives-434-million-diesel-134000532.html",
-        "https://finance.yahoo.com/energy/articles/sempra-locks-petrobras-20-u-003328108.html"
+        "https://news.google.com/rss/articles/CBMiUkFVX3lxTE1Eenpqb3dobnYyTWppWnFRazg2dk9jX05vaUlnYlRMVG81M1haOTJrY0huSTN2RTFaVjRUdURteW95amNmb3BJVjYxTFZESDR3bWc?oc=5",
+        "https://news.google.com/rss/articles/CBMigwFBVV95cUxNVWc3N3MyZ3hCdm9BQlhLQVdQbEhiRHdRRnQzYUVaLVBoSHpTTTUzbHl5amhKb0JzNXNSMmM4VWIxMEZQd2c3NHRwYkFKWEFySDZhcXczZ2xVMlEzX1pxeXl2UlEwdnZHS1dXRHRnay14MXpQNHUxYlVyZjRmUXdUX0UyUdIBiAFBVV95cUxORE5oWFh6bkVQbGtnbEF0NGVTem92NWstaHBBVDFtUTlzcS0wVVNvNnlWT01kbUM1RzlBb01uSE5WdUlQYnRWS0JiTkRveHFrV20zeVU2ZkNvTnhfZDZlZFdlQURPRHJnM2M4QWNITXR0UzktdGktYUJzUWs4ZEE4aXRTZlM1MlJS?oc=5",
+        "https://news.google.com/rss/articles/CBMiqAFBVV95cUxOTVZKUi1aWllGclVvd19uclB3bU9OTUpWdUpZcUl4Q01CWllUNXBZaHVCeDdlYkxiaHhFMUVJSEpyb3duOGhoNkNzTTBSRXMxYmRFblo0OWJ2eTRXOGhLZ3B6eXpjVXF3N1hIZEZBM1hINXhtbC0xblZjVE9FbmxhZVh1NWphSTMxcERlSDFGRF9WR18wY2RYZ2ZYTFZjeVpsQnFzTE8ycFg?oc=5"
       ],
-      "updated_at": "2026-09-15T23:03:42.308523",
+      "updated_at": "2026-09-16T23:08:58.567491",
       "is_outdated": false,
-      "last_close": 50.43,
-      "daily_delta": 0.0308667211774325,
-      "monthly_delta": 0.23572653761332996,
-      "yearly_delta": 0.7589815137774676,
-      "price_date": "2026-09-15"
+      "last_close": 18.21,
+      "daily_delta": 0.0005494505494505475,
+      "monthly_delta": 0.12407407407407423,
+      "yearly_delta": 0.1665598975016016,
+      "price_date": "2026-09-16"
+    },
+    "ITUB4.SA": {
+      "summary": "Resumo: [Google News] Itaú (ITUB4) consolida operações de atacado em Luxemburgo; veja detalhes - suno.com.br. [Google News] ITAU UNIBANCO PN (ITUB4) Preço da ação - ADVFN. [Google News] Itaú (ITUB4) emite renda fixa pagadora de juros compostos até 2037 - Investidor10. ...",
+      "period": "De 10/09/2026 a 15/09/2026",
+      "sources": [
+        "https://news.google.com/rss/articles/CBMinAFBVV95cUxQM240Xzgtd0FlOHQ0TGFlcnZYcjl4cTlzWFktalhMdXRZTUlFczRxeXJiLURWM1JBbUNTeDktR01wemg4RmxZTEV2ZVhDRlBZWVdBcjZrLTJTOEVqUUVkZEkwcUtMZ1YzZk0wY1d5RHE3dW1YSmhONkctNklIN044aF9oZm9lcEtxVVNRaUdtNjRRZHR1YTlGdDFHUDLSAaIBQVVfeXFMTXdwV0VnUHByM3lMdnA2LWVQa0lYcGZFTXFsSDlRWl9nRy1WOG1qaC1uT3FlcGw0TlFtQWdOcm5fZUVJTDNwNFhOanNvMXMxNlJldjJGQTU0YW9yLXg5OWdwUXUyaFR6Nk01WWE3Y0EzaFAzN2pMWVNzNzg0Rnp3THJXVlZUblB0TzMtNEtyMi1Ia1RJM3hId19keG9IUmVtbXF3?oc=5",
+        "https://news.google.com/rss/articles/CBMikAFBVV95cUxOWWdoTlo1V0Z4MHVTOVROSGJwbkFoeWFXLUVjeHRLRlNnUHdiVG0zYUgzeW4xRS1BZFBTNnFFT3JibnRIRE1udm11VGhybk9TLXBXaHVjY3B3RzgtMVBsMzlpYV9jSFhiR0ZoZ0FUT2dUZm1RNHAyM0FJUEhfQllLWTh1dHVOSU1wRlBTQkFZLWY?oc=5",
+        "https://news.google.com/rss/articles/CBMirgFBVV95cUxPODR5Rmo0YUsyeWo0SXZGUVV6TmRGYnBVU09TbmI0bUJ6Y3c3bGxqUTc2V3NVTjZlNVprOTNzQlhkbzJkc3dCaWJMZjgtMm5KbXpLaGZ1amFqVXplTnB4YVNFTzBoaDJpN3BvWjV4OG9TcHRxWDlFTERqNHJBOWhFd2Q5WEYwZGdOamFMVFd0NU4yZkJuVjNvTmN3WVBYekV4WjlyemxqRlZYRW1LUnfSAbMBQVVfeXFMT3FNaGJFaEplQXQ3T0J3andoWTdvbjdlR1d0M1dTVnJ2d2txMzZISUNUQ1QxRU9ZdmhUSjdHUFNBN1FXcjUzWE1aeDFUQkVXZ1RRcVdXTFIyNmVSZWNVRHFvZTdWNlVRaFBldmprUXNuS1lDUnE2ZDJkV1N3M1liVWVyZXdEbzExcjVYcjZMbEJjRE9Bcl9DbmdDUEhud0MyOUZHMllrSl9VdGx6aXRoZTdXUTA?oc=5"
+      ],
+      "updated_at": "2026-09-16T23:08:59.885605",
+      "is_outdated": true,
+      "last_close": 42.62,
+      "daily_delta": -0.0011717834544177075,
+      "monthly_delta": 0.11105318039624601,
+      "yearly_delta": 0.2524243314722303,
+      "price_date": "2026-09-16"
+    },
+    "WEGE3.SA": {
+      "summary": "Resumo: [Google News] WEG (WEGE3): reembolso de tarifas dos EUA pode elevar margem acima das projeções - InfoMoney. [Google News] Dividendos e JCP: WEG (WEGE3) aprova quase meio bilhão de reais em proventos — mas não está sozinha - Seu Dinheiro. [Google News] Alerta Estratégia Radar | Swing Trade Venda Weg ...",
+      "period": "De 15/09/2026 a 16/09/2026",
+      "sources": [
+        "https://news.google.com/rss/articles/CBMitwFBVV95cUxOai1OY2c2MUJPNU0tb0E5RktYTTJua29RaEhsQkZVN2ZtLUJVenprb1BfQlAyRFBibm92SVhTd01tT3hWUWY2TkdTcTAtVk9mcjN3M2lnMWdIbXNGY054UUY2N1NMTWRCUk1jdlVqMVlOOTljSEtqUWlxRmt6Y3RHZTFNRDRlR2o0YzFEdHpDN3RhWkFyMkxYdEw1WTlfWFFhWEZCZ2MtazFCSzMzTjNMTURBYkRjLWfSAbwBQVVfeXFMT2pYM2ZWN2dDaUlkblJjclpQVEFwdTJsbjZsWWhnY0FKMUVpYTNkQ0ZOMlJPcmROYkdad3UtQ0F4bFI3aXlaNGlvUEtYb0tRcEhyYmlpWEpMZ2NfLWl0eEZpeUQtNGJPS3l1WEUwRVRlWS1EMHdEc2NhUkM5NDFVX2pmWC0wWm1RQlpzUzl0WmJaUEt1c2ZkXzRCRDlSZ0ZmbTkwc3ZyWjlCd2I4cml5V1hDaWgtS1NPdFFnMUM?oc=5",
+        "https://news.google.com/rss/articles/CBMi3AFBVV95cUxPMmR2ekgtVERSWmJkS2RBdWxiaEdkWGhHWGRjNC1Cb2hLMVV3Z3dSN2I1TDJjbG8xYU9kRVN1V2RrVEpNSy1pZWlzbHhQT2h1LU9laTNZWm9ZaGNWQjRMY0g2cDRDMHFKQk11N25sUEFxeFhhT1VQSU5aSE9Yckk5T3lGcFpUZmtTbFUwSlNKVUNjWEExMVIwNTVVcjNpbWlEZ0wxUFdQRFc3M3ZvTnRZSjEzTXVjMnF2MjdXS3NSVmJvU0RVVmgzQTNpQ0NBTXhDMWFGWTg0aHMzZElS?oc=5",
+        "https://news.google.com/rss/articles/CBMic0FVX3lxTE1RalZnYV9vTUNBT1RPSEFDMF84U1ZnRThzM2x5dVdncTE3clk5cTk2d2I5SlBqWnNoR2pYdVo5MGdjbVNrTS1rRW45MGdKbVlQakRhM1pFT2JvQTV4N0pHX0FSbGhYdFZNREVqbHBPWDlOYWc?oc=5",
+        "https://news.google.com/rss/articles/CBMiUkFVX3lxTE5rZjNUeTBEMEl1OXp2bVFRdVhDRFVwUHFMdHRRYjVwSWtnV2c3X1FBR1BhSkFkcndMYlJ4QmVlS2VIQUZZa1hGY3d4T20zVHRCV0E?oc=5"
+      ],
+      "updated_at": "2026-09-16T23:09:01.082870",
+      "is_outdated": false,
+      "last_close": 51.28,
+      "daily_delta": 0.007861635220125729,
+      "monthly_delta": 0.0685559491560741,
+      "yearly_delta": 0.4555776326994041,
+      "price_date": "2026-09-16"
     }
   },
   "market_movers": [
-    "MGEL4.SA",
-    "WDCN3.SA",
+    "HETA4.SA",
     "ESTR4.SA",
-    "RVEE3.SA",
-    "WEST3.SA",
-    "PMAM3.SA",
-    "CTAX3.SA",
-    "EQPA7.SA",
-    "AGXY3.SA",
-    "NORD3.SA"
+    "RCSL3.SA",
+    "LUXM4.SA",
+    "VSTE3.SA",
+    "BRKM5.SA",
+    "ENMT4.SA",
+    "AZEV3.SA",
+    "OBTC3.SA",
+    "WDCN3.SA"
   ]
 }
