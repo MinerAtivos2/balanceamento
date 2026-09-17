@@ -1,21 +1,21 @@
-## Resumo de Mercado - 2026-09-16
+## Resumo de Mercado - 2026-09-17
 
 ### 📈 Maiores Altas (Dia)
 
 | Ativo | Nome | Fechamento | Anterior | Variação | DeltaVolume |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| HETA4.SA | Hercules S.A - Fábrica de Talheres | R$ 6.35 | R$ 5.10 | **+24.51%** 🚀 | +1500.00% ⬆️ |
-| ESTR4.SA | Manufatura de Brinquedos Estrela S.A. | R$ 1.79 | R$ 1.51 | **+18.54%** 🚀 | +9.55% ⬆️ |
-| RCSL3.SA | Recrusul S/A | R$ 0.52 | R$ 0.44 | **+18.18%** 🚀 | +1436.44% ⬆️ |
-| LUXM4.SA | Trevisa Investimentos S.A. | R$ 3.44 | R$ 2.98 | **+15.44%** 🚀 | +170.05% ⬆️ |
-| VSTE3.SA | Veste S.A. Estilo | R$ 2.74 | R$ 2.48 | **+10.48%** 🚀 | -67.25% ⬇️ |
+| TXRX4.SA | Têxtil Renauxview S.A. | R$ 2.14 | R$ 1.77 | **+20.90%** 🚀 | +624.49% ⬆️ |
+| ARND3.SA | Arandu Investimentos S.A. | R$ 0.58 | R$ 0.49 | **+18.37%** 🚀 | -97.18% ⬇️ |
+| BHIA3.SA | Grupo Casas Bahia S.A. | R$ 0.82 | R$ 0.75 | **+9.33%** 🚀 | +6.39% ⬆️ |
+| JFEN3.SA | João Fortes Engenharia S.A. | R$ 0.47 | R$ 0.43 | **+9.30%** 🚀 | -5.39% ⬇️ |
+| AZEV3.SA | Azevedo & Travassos S.A. | R$ 7.83 | R$ 7.21 | **+8.60%** 🚀 | -40.78% ⬇️ |
 
 ### 📉 Maiores Baixas (Dia)
 
 | Ativo | Nome | Fechamento | Anterior | Variação | DeltaVolume |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| BRKM5.SA | Braskem S.A. | R$ 4.53 | R$ 5.34 | **-15.17%** 📉 | +38.09% ⬆️ |
-| ENMT4.SA | Energisa Mato Grosso - Distribuidora de Energia S/A | R$ 37.24 | R$ 41.94 | **-11.21%** 📉 | +229.75% ⬆️ |
-| AZEV3.SA | Azevedo & Travassos S.A. | R$ 7.21 | R$ 7.93 | **-9.08%** 📉 | -55.66% ⬇️ |
-| OBTC3.SA | Oranjebtc S.A. - Educação e Investimento | R$ 6.29 | R$ 6.87 | **-8.44%** 📉 | +184.20% ⬆️ |
-| WDCN3.SA | Livetech da Bahia Indústria e Comércio S.A. | R$ 2.92 | R$ 3.17 | **-7.89%** 📉 | +70.35% ⬆️ |
+| EQPA5.SA | Equatorial Pará Distribuidora de Energia S.A. | R$ 8.00 | R$ 9.78 | **-18.20%** 📉 | +500.00% ⬆️ |
+| LUXM4.SA | Trevisa Investimentos S.A. | R$ 3.00 | R$ 3.44 | **-12.79%** 📉 | +5.59% ⬆️ |
+| OPCT3.SA | OceanPact Serviços Marítimos S.A. | R$ 9.21 | R$ 10.45 | **-11.87%** 📉 | +360.19% ⬆️ |
+| OSXB3.SA | OSX Brasil S.A. | R$ 0.90 | R$ 1.02 | **-11.76%** 📉 | +450.75% ⬆️ |
+| VSTE3.SA | Veste S.A. Estilo | R$ 2.45 | R$ 2.74 | **-10.58%** 📉 | -69.01% ⬇️ |
