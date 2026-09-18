@@ -1,21 +1,21 @@
-## Resumo de Mercado - 2026-09-17
+## Resumo de Mercado - 2026-09-18
 
 ### 📈 Maiores Altas (Dia)
 
 | Ativo | Nome | Fechamento | Anterior | Variação | DeltaVolume |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| TXRX4.SA | Têxtil Renauxview S.A. | R$ 2.14 | R$ 1.77 | **+20.90%** 🚀 | +624.49% ⬆️ |
-| ARND3.SA | Arandu Investimentos S.A. | R$ 0.58 | R$ 0.49 | **+18.37%** 🚀 | -97.18% ⬇️ |
-| BHIA3.SA | Grupo Casas Bahia S.A. | R$ 0.82 | R$ 0.75 | **+9.33%** 🚀 | +6.39% ⬆️ |
-| JFEN3.SA | João Fortes Engenharia S.A. | R$ 0.47 | R$ 0.43 | **+9.30%** 🚀 | -5.39% ⬇️ |
-| AZEV3.SA | Azevedo & Travassos S.A. | R$ 7.83 | R$ 7.21 | **+8.60%** 🚀 | -40.78% ⬇️ |
+| JFEN3.SA | João Fortes Engenharia S.A. | R$ 1.60 | R$ 0.43 | **+272.09%** 🚀 | -83.76% ⬇️ |
+| ONCO3.SA | Oncoclínicas do Brasil Serviços Médicos S.A. | R$ 1.29 | R$ 1.03 | **+25.24%** 🚀 | -82.12% ⬇️ |
+| TXRX4.SA | Têxtil Renauxview S.A. | R$ 2.14 | R$ 1.77 | **+20.90%** 🚀 | +170.41% ⬆️ |
+| AMBP3.SA | Ambipar Participações e Empreendimentos S.A. | R$ 0.18 | R$ 0.15 | **+20.00%** 🚀 | +129.41% ⬆️ |
+| AGXY3.SA | AgroGalaxy Participações S.A. | R$ 0.70 | R$ 0.62 | **+12.90%** 🚀 | +277.79% ⬆️ |
 
 ### 📉 Maiores Baixas (Dia)
 
 | Ativo | Nome | Fechamento | Anterior | Variação | DeltaVolume |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| EQPA5.SA | Equatorial Pará Distribuidora de Energia S.A. | R$ 8.00 | R$ 9.78 | **-18.20%** 📉 | +500.00% ⬆️ |
-| LUXM4.SA | Trevisa Investimentos S.A. | R$ 3.00 | R$ 3.44 | **-12.79%** 📉 | +5.59% ⬆️ |
-| OPCT3.SA | OceanPact Serviços Marítimos S.A. | R$ 9.21 | R$ 10.45 | **-11.87%** 📉 | +360.19% ⬆️ |
-| OSXB3.SA | OSX Brasil S.A. | R$ 0.90 | R$ 1.02 | **-11.76%** 📉 | +450.75% ⬆️ |
-| VSTE3.SA | Veste S.A. Estilo | R$ 2.45 | R$ 2.74 | **-10.58%** 📉 | -69.01% ⬇️ |
+| EQPA5.SA | Equatorial Pará Distribuidora de Energia S.A. | R$ 7.90 | R$ 9.78 | **-19.22%** 📉 | +500.00% ⬆️ |
+| LUXM4.SA | Trevisa Investimentos S.A. | R$ 2.99 | R$ 3.44 | **-13.08%** 📉 | +71.88% ⬆️ |
+| OPCT3.SA | OceanPact Serviços Marítimos S.A. | R$ 9.32 | R$ 10.45 | **-10.81%** 📉 | +93.93% ⬆️ |
+| RCSL4.SA | Recrusul S/A | R$ 0.35 | R$ 0.39 | **-10.26%** 📉 | -46.46% ⬇️ |
+| CMIN3.SA | CSN Mineração S.A. | R$ 5.46 | R$ 6.08 | **-10.20%** 📉 | +64.05% ⬆️ |
