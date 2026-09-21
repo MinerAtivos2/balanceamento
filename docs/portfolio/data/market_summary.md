@@ -1,21 +1,21 @@
-## Resumo de Mercado - 2026-09-18
+## Resumo de Mercado - 2026-09-21
 
 ### 📈 Maiores Altas (Dia)
 
 | Ativo | Nome | Fechamento | Anterior | Variação | DeltaVolume |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| JFEN3.SA | João Fortes Engenharia S.A. | R$ 1.60 | R$ 0.43 | **+272.09%** 🚀 | -83.76% ⬇️ |
-| ONCO3.SA | Oncoclínicas do Brasil Serviços Médicos S.A. | R$ 1.29 | R$ 1.03 | **+25.24%** 🚀 | -82.12% ⬇️ |
-| TXRX4.SA | Têxtil Renauxview S.A. | R$ 2.14 | R$ 1.77 | **+20.90%** 🚀 | +170.41% ⬆️ |
-| AMBP3.SA | Ambipar Participações e Empreendimentos S.A. | R$ 0.18 | R$ 0.15 | **+20.00%** 🚀 | +129.41% ⬆️ |
-| AGXY3.SA | AgroGalaxy Participações S.A. | R$ 0.70 | R$ 0.62 | **+12.90%** 🚀 | +277.79% ⬆️ |
+| DASA3.SA | Diagnósticos da América S.A. | R$ 3.23 | R$ 2.84 | **+13.73%** 🚀 | +113.32% ⬆️ |
+| TASA4.SA | Taurus Armas S.A. | R$ 9.09 | R$ 8.06 | **+12.78%** 🚀 | +310.47% ⬆️ |
+| CEEB5.SA | Companhia de Eletricidade do Estado da Bahia - COELBA | R$ 45.00 | R$ 40.00 | **+12.50%** 🚀 | 0.00% — |
+| ARML3.SA | Armac Locação, Logística e Serviços S.A. | R$ 4.54 | R$ 4.07 | **+11.55%** 🚀 | +53.25% ⬆️ |
+| AMBP3.SA | Ambipar Participações e Empreendimentos S.A. | R$ 0.20 | R$ 0.18 | **+11.11%** 🚀 | -1.13% ⬇️ |
 
 ### 📉 Maiores Baixas (Dia)
 
 | Ativo | Nome | Fechamento | Anterior | Variação | DeltaVolume |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| EQPA5.SA | Equatorial Pará Distribuidora de Energia S.A. | R$ 7.90 | R$ 9.78 | **-19.22%** 📉 | +500.00% ⬆️ |
-| LUXM4.SA | Trevisa Investimentos S.A. | R$ 2.99 | R$ 3.44 | **-13.08%** 📉 | +71.88% ⬆️ |
-| OPCT3.SA | OceanPact Serviços Marítimos S.A. | R$ 9.32 | R$ 10.45 | **-10.81%** 📉 | +93.93% ⬆️ |
-| RCSL4.SA | Recrusul S/A | R$ 0.35 | R$ 0.39 | **-10.26%** 📉 | -46.46% ⬇️ |
-| CMIN3.SA | CSN Mineração S.A. | R$ 5.46 | R$ 6.08 | **-10.20%** 📉 | +64.05% ⬆️ |
+| BNBR3.SA | Banco do Nordeste do Brasil S.A. | R$ 105.00 | R$ 115.24 | **-8.89%** 📉 | +200.00% ⬆️ |
+| RCSL4.SA | Recrusul S/A | R$ 0.32 | R$ 0.35 | **-8.57%** 📉 | -33.66% ⬇️ |
+| PCAR3.SA | Companhia Brasileira De Distribuicao | R$ 2.90 | R$ 3.05 | **-4.92%** 📉 | +58.25% ⬆️ |
+| GFSA3.SA | Gafisa S.A. | R$ 0.25 | R$ 0.26 | **-3.85%** 📉 | -22.28% ⬇️ |
+| OPCT3.SA | OceanPact Serviços Marítimos S.A. | R$ 8.98 | R$ 9.32 | **-3.65%** 📉 | -3.66% ⬇️ |
