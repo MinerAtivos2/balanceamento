@@ -1,21 +1,21 @@
-## Resumo de Mercado - 2026-09-24
+## Resumo de Mercado - 2026-09-25
 
 ### 📈 Maiores Altas (Dia)
 
 | Ativo | Nome | Fechamento | Anterior | Variação | DeltaVolume |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| PMAM3.SA | Paranapanema S.A. | R$ 0.42 | R$ 0.34 | **+23.53%** 🚀 | -14.15% ⬇️ |
-| DASA3.SA | Diagnósticos da América S.A. | R$ 3.78 | R$ 3.23 | **+17.03%** 🚀 | +181.12% ⬆️ |
-| SEQL3.SA | Sequoia Logística e Transportes S.A. | R$ 0.07 | R$ 0.06 | **+16.67%** 🚀 | +80.32% ⬆️ |
-| AMBP3.SA | Ambipar Participações e Empreendimentos S.A. | R$ 0.28 | R$ 0.25 | **+12.00%** 🚀 | +7.44% ⬆️ |
-| OSXB3.SA | OSX Brasil S.A. | R$ 1.20 | R$ 1.11 | **+8.11%** 🚀 | -96.42% ⬇️ |
+| AZZA3.SA | Azzas 2154 S.A. | R$ 16.38 | R$ 14.50 | **+12.97%** 🚀 | +196.53% ⬆️ |
+| BHIA3.SA | Grupo Casas Bahia S.A. | R$ 1.01 | R$ 0.91 | **+10.99%** 🚀 | -11.53% ⬇️ |
+| HOOT4.SA | Hotéis Othon S.A. | R$ 7.66 | R$ 7.03 | **+8.96%** 🚀 | +339.29% ⬆️ |
+| ROMI3.SA | Romi S.A. | R$ 6.33 | R$ 5.88 | **+7.65%** 🚀 | +1888.69% ⬆️ |
+| MGLU3.SA | Magazine Luiza S.A. | R$ 6.76 | R$ 6.30 | **+7.30%** 🚀 | +36.26% ⬆️ |
 
 ### 📉 Maiores Baixas (Dia)
 
 | Ativo | Nome | Fechamento | Anterior | Variação | DeltaVolume |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| BRKM6.SA | Braskem S.A. | R$ 5.20 | R$ 6.50 | **-20.00%** 📉 | +220.00% ⬆️ |
-| HOOT4.SA | Hotéis Othon S.A. | R$ 7.03 | R$ 8.06 | **-12.78%** 📉 | +100.00% ⬆️ |
-| SBFG3.SA | Grupo SBF S.A. | R$ 7.66 | R$ 8.44 | **-9.24%** 📉 | +249.08% ⬆️ |
-| SNSY5.SA | Sansuy S.A. | R$ 2.45 | R$ 2.69 | **-8.92%** 📉 | +32.10% ⬆️ |
-| PGMN3.SA | Empreendimentos Pague Menos S.A. | R$ 3.45 | R$ 3.75 | **-8.00%** 📉 | +217.68% ⬆️ |
+| BRKM6.SA | Braskem S.A. | R$ 4.66 | R$ 5.20 | **-10.38%** 📉 | +409.09% ⬆️ |
+| ARML3.SA | Armac Locação, Logística e Serviços S.A. | R$ 4.22 | R$ 4.67 | **-9.64%** 📉 | +248.33% ⬆️ |
+| JFEN3.SA | João Fortes Engenharia S.A. | R$ 2.90 | R$ 3.16 | **-8.23%** 📉 | +156.24% ⬆️ |
+| AMBP3.SA | Ambipar Participações e Empreendimentos S.A. | R$ 0.26 | R$ 0.28 | **-7.14%** 📉 | -47.09% ⬇️ |
+| PMAM3.SA | Paranapanema S.A. | R$ 0.39 | R$ 0.42 | **-7.14%** 📉 | -48.63% ⬇️ |
